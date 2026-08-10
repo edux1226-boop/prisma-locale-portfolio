@@ -1,0 +1,188 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase Demo Ristoranti | Agency Client Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TOP CONTROL BAR -->
+    <header class="showcase-header">
+        <div class="header-left">
+            <div class="agency-badge">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>AGENCY DEMO PROTECTED</span>
+            </div>
+            <h1 class="project-title" id="headerTitle">Pizzeria Annarè — <span>Anteprima Progetto Web</span></h1>
+        </div>
+
+        <!-- DEVICE SWITCHER -->
+        <div class="device-switcher">
+            <button class="device-btn active" data-device="desktop" title="Vista Desktop">
+                <i class="fa-solid fa-desktop"></i> <span>Desktop</span>
+            </button>
+            <button class="device-btn" data-device="tablet" title="Vista Tablet">
+                <i class="fa-solid fa-tablet-screen-button"></i> <span>Tablet</span>
+            </button>
+            <button class="device-btn" data-device="mobile" title="Vista Smartphone">
+                <i class="fa-solid fa-mobile-screen-button"></i> <span>Mobile</span>
+            </button>
+        </div>
+
+        <div class="header-right">
+            <a href="https://wa.me/393000000000?text=Ho%20visto%20la%20demo%20e%20voglio%20attivarla%20per%20il%20mio%20locale" class="btn btn-primary" target="_blank">
+                <i class="fa-solid fa-rocket"></i> Attiva per il tuo Locale
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN SHOWCASE LAYOUT -->
+    <main class="showcase-container">
+        
+        <!-- SIDEBAR STRATEGICA E SELECTOR CASE STUDY -->
+        <aside class="showcase-sidebar">
+            
+            <!-- SELETTORE PROGETTI DEMO -->
+            <div class="case-selector-box">
+                <span class="box-tag">Seleziona Case Study Demo</span>
+                <div class="case-tabs">
+                    <button class="case-tab active" data-case="annare">
+                        <i class="fa-solid fa-pizza-slice"></i> Pizzeria Annarè
+                    </button>
+                    <button class="case-tab" data-case="rusticana">
+                        <i class="fa-solid fa-utensils"></i> Trattoria La Rusticana
+                    </button>
+                    <button class="case-tab" data-case="crust">
+                        <i class="fa-solid fa-beer-mug-empty"></i> Crust & Craft Pub
+                    </button>
+                </div>
+            </div>
+
+            <!-- SCHEDA DETTAGLIO CASE STUDY (DINAMICA) -->
+            <div class="sidebar-box" id="caseDetails">
+                <h2 id="caseTitle">Pizzeria Annarè</h2>
+                <p id="caseDesc">Sito ad alta conversione progettato per azzerare le commissioni delle app terze e catturare prenotazioni direct via WhatsApp.</p>
+                
+                <div class="kpi-mini-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-value" id="kpi1">+100%</span>
+                        <span class="kpi-label" id="kpi1Label">Direct Booking</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-value" id="kpi2">-77%</span>
+                        <span class="kpi-label" id="kpi2Label">Chiamate Perse</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOTSPOT CARATTERISTICHE -->
+            <div class="features-list">
+                <div class="feature-item active">
+                    <div class="f-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="f-content">
+                        <h4>Caricamento Instantaneo</h4>
+                        <p>Prestazioni mobile con punteggio Google PageSpeed > 95/100.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="f-icon"><i class="fa-solid fa-mobile-retro"></i></div>
+                    <div class="f-content">
+                        <h4>Prenotazione WhatsApp Direct</h4>
+                        <p>Form d'invio rapido che notifica la prenotazione direttamente sullo smartphone del locale.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="f-icon"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+                    <div class="f-content">
+                        <h4>SEO Locale Integrata</h4>
+                        <p>Dati strutturati Schema.org per dominare i risultati di ricerca Google Maps.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AVVISO PROTEZIONE PROPRIETÀ INTELLETTUALE -->
+            <div class="protection-notice">
+                <i class="fa-solid fa-lock"></i>
+                <div>
+                    <strong>Proprietà Intellettuale Riservata</strong>
+                    <p>Anteprima protetta. L'integrazione del codice sorgente completo e l'attivazione sul dominio definitivo avverranno a saldo concordato.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- VIEWPORT ANTEPRIMA CON SCREENSHOT DEMO PROTETTO -->
+        <section class="viewport-wrapper">
+            <div class="device-frame desktop" id="deviceFrame">
+                
+                <!-- BARRA BROWSER SIMULATA -->
+                <div class="frame-bar">
+                    <div class="frame-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="frame-url">
+                        <i class="fa-solid fa-lock"></i>
+                        <span id="mockUrl">demo-preview.agenzia.it/pizzeria-annare</span>
+                    </div>
+                    <div class="frame-status">
+                        <span class="status-badge">LIVE DEMO PREVIEW</span>
+                    </div>
+                </div>
+
+                <!-- CONTENITORE MEDIA PROTETTO (NO IFRAME ROTTO / NO 404) -->
+                <div class="protected-media-container" id="protectedContainer">
+                    
+                    <!-- WATERMARK ANTIMANOPOSTAZIONE SOVRAPPOSTO -->
+                    <div class="watermark-overlay">
+                        <div class="watermark-text">PROPRIETÀ RISERVATA — DEMO AGENZIA</div>
+                        <div class="watermark-text">PROPRIETÀ RISERVATA — DEMO AGENZIA</div>
+                        <div class="watermark-text">PROPRIETÀ RISERVATA — DEMO AGENZIA</div>
+                        <div class="watermark-text">PROPRIETÀ RISERVATA — DEMO AGENZIA</div>
+                    </div>
+
+                    <!-- SHIELD TRASPARENTE ANTI-CLICK DEDICATO -->
+                    <div class="interaction-shield"></div>
+
+                    <!-- SCREENSHOT DELLA DEMO (SOSTITUIBILE CON I TUOI MOCKUP REALI) -->
+                    <img src="img/prewiew.jpg" 
+                         alt="Anteprima Demo Ristorante" 
+                         id="demoImage"
+                         class="demo-screenshot"
+                         oncontextmenu="return false;"
+                         ondragstart="return false;">
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER PROMOZIONALE -->
+    <footer class="showcase-footer">
+        <div class="footer-content">
+            <div class="fc-info">
+                <strong>Vuoi una struttura identica personalizzata per il tuo ristorante?</strong>
+                <p>Personalizziamo menu, colori, grafica e sistema di prenotazione in soli 5 giorni lavorativi.</p>
+            </div>
+            <div class="fc-actions">
+                <button class="btn btn-outline" id="btnSpecs">
+                    <i class="fa-solid fa-list-check"></i> Specifiche Tecniche
+                </button>
+                <a href="tel:+393000000000" class="btn btn-primary">
+                    <i class="fa-solid fa-phone"></i> Chiama l'Agenzia
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MO 

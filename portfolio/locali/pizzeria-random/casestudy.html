@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Pizzeria Annarè | Agency Premium Showcase</title>
+    
+    <!-- FONTS: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- ICONS: FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           1. DESIGN SYSTEM & VARIABLES (Linear/Framer Style)
+           ========================================== */
+        :root {
+            --bg-body: #090D14;
+            --bg-surface: #121824;
+            --bg-card: #182030;
+            --bg-card-hover: #1E293B;
+            
+            --accent: #6366F1; /* Dark Violet / Indigo modern */
+            --accent-glow: rgba(99, 102, 241, 0.25);
+            --accent-emerald: #10B981;
+            --accent-gold: #F59E0B;
+            --accent-danger: #EF4444;
+
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --text-subtle: #64748B;
+
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.18);
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+
+            --font-head: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.15);
+        }
+
+        /* RESET & BASE */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body {
+            position: relative;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, .font-head {
+            font-family: var(--font-head);
+            letter-spacing: -0.03em;
+            color: var(--text-main);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* LAYOUT UTILS */
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 64px;
+        }
+
+        .section-header .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-full);
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        /* UI BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-body);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #FFFFFF;
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #FFFFFF;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            background: #4F46E5;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
+        }
+
+        /* ==========================================
+           2. NAVIGATION BAR
+           ========================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            background: rgba(9, 13, 20, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .brand-logo .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent), #A855F7);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* ==========================================
+           3. HERO SECTION
+           ========================================== */
+        .hero-section {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        /* HERO MOCKUP (FRAMEWORKS STYLE) */
+        .hero-mockup-wrapper {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-mockup {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-lg);
+            padding: 12px;
+            box-shadow: var(--shadow-glow), 0 30px 60px rgba(0,0,0,0.6);
+            transform: rotateY(-8deg) rotateX(4deg);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-mockup-wrapper:hover .hero-mockup {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px 16px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #FF5F56; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #27C93F; }
+
+        .mockup-screen {
+            width: 100%;
+            height: 380px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #000;
+            position: relative;
+        }
+
+        .mockup-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: object-position 4s ease-in-out;
+        }
+
+        .hero-mockup-wrapper:hover .mockup-screen img {
+            object-position: bottom;
+        }
+
+        /* ==========================================
+           4. IL PROBLEMA (BEFORE CARD)
+           ========================================== */
+        .problem-card {
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, rgba(18, 24, 36, 0.8) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .problem-item i {
+            color: var(--accent-danger);
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .problem-item h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .problem-item p {
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           5. LA SOLUZIONE (FEATURES)
+           ========================================== */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            transition: var(--transition-smooth);
+        }
+
+        .feature-box:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background: var(--bg-card);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================
+           6. GALLERIA DEMO MULTI-DEVICE
+           ========================================== */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-body);
+            border-color: var(--text-main);
+        }
+
+        .viewport-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 520px;
+        }
+
+        .device-wrapper {
+            transition: var(--transition-smooth);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .device-desktop {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .device-desktop .screen {
+            height: 500px;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+        }
+
+        .device-tablet {
+            width: 600px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .device-tablet .screen {
+            height: 480px;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+
+        .device-mobile {
+            width: 300px;
+            background: var(--bg-surface);
+            border: 2px solid var(--border-hover);
+            border-radius: 36px;
+            padding: 12px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .device-mobile .screen {
+            height: 520px;
+            overflow: hidden;
+            border-radius: 26px;
+        }
+
+        .screen img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ==========================================
+           7. PRIMA VS DOPO
+           ========================================== */
+        .compare-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .compare-box {
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid var(--border);
+        }
+
+        .compare-box.before {
+            background: rgba(239, 68, 68, 0.02);
+            border-color: rgba(239, 68, 68, 0.15);
+        }
+
+        .compare-box.after {
+            background: rgba(16, 185, 129, 0.02);
+            border-color: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.05);
+        }
+
+        .compare-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .compare-head badge {
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .before .compare-head badge {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent-danger);
+        }
+
+        .after .compare-head badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+        }
+
+        .compare-img-wrap {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .before .compare-img-wrap { height: 180px; opacity: 0.6; filter: grayscale(80%); }
+        .after .compare-img-wrap { height: 320px; }
+
+        .compare-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .compare-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .compare-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .before .compare-list i { color: var(--accent-danger); }
+        .after .compare-list i { color: var(--accent-emerald); }
+
+        /* ==========================================
+           8. COSA RENDE QUESTO SITO EFFICACE (6 CARDS)
+           ========================================== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card-premium {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .card-premium:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+        }
+
+        .card-premium:hover::before {
+            opacity: 1;
+        }
+
+        .card-number {
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-subtle);
+            margin-bottom: 16px;
+        }
+
+        /* ==========================================
+           9. PROCESSO DI LAVORO (TIMELINE)
+           ========================================== */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            position: relative;
+        }
+
+        .timeline-step {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .timeline-step h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-step p {
+            font-size: 0.82rem;
+        }
+
+        /* ==========================================
+           10. STATISTICHE (PERCHÉ SCEGLIERE NOI)
+           ========================================== */
+        .stats-wrapper {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item .value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1;
+            margin-bottom: 8px;
+            font-family: var(--font-head);
+        }
+
+        .stat-item .value span { color: var(--accent); }
+        .stat-item .label { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* ==========================================
+           11. TESTIMONIANZA
+           ========================================== */
+        .testimonial-card {
+            background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-lg);
+            padding: 56px;
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .quote {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--text-main);
+            line-height: 1.5;
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .client-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .client-info h4 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+            text-align: left;
+        }
+
+        .client-info p {
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        /* ==========================================
+           12. CTA FINALE
+           ========================================== */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-box p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.15rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+        }
+
+        /* ANIMATIONS (SCROLL REVEAL) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .hero-grid, .compare-container { grid-template-columns: 1fr; }
+            .solution-grid, .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline { grid-template-columns: 1fr; }
+            .stats-wrapper { grid-template-columns: repeat(2, 1fr); }
+            .hero-mockup { transform: none !important; }
+        }
+
+        @media (max-width: 640px) {
+            .solution-grid, .cards-grid, .stats-wrapper { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Mobile Menu fallback simplified */
+            .section { padding: 70px 0; }
+            .testimonial-card { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+                <span>NEXUS STUDIO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#problema">Il Problema</a></li>
+                <li><a href="#soluzione">La Soluzione</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#processo">Metodo</a></li>
+            </ul>
+            <a href="#cta" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.85rem;">
+                Contattaci
+            </a>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content reveal">
+                <span class="section-header" style="text-align: left; margin: 0 0 16px 0;">
+                    <span class="tag"><i class="fa-solid fa-trophy"></i> Case Study di Successo</span>
+                </span>
+                <h1>Come abbiamo trasformato la presenza online di <span>Pizzeria Annarè</span></h1>
+                <p>Abbiamo progettato un sistema digitale ad alta conversione capace di azzerare le commissioni delle app di delivery e catturare prenotazioni dirette via WhatsApp.</p>
+                <div class="hero-actions">
+                    <a href="#cta" class="btn btn-primary">
+                        Richiedi una demo gratuita <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- HERO MOCKUP -->
+            <div class="hero-mockup-wrapper reveal">
+                <div class="hero-mockup">
+                    <div class="mockup-header">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <div class="mockup-screen">
+                        <!-- SOSTITUISCI L'URL DELL'IMMAGINE QUI SOTTO CON LO SCREENSHOT DESKTOP -->
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" alt="Preview Sito Pizzeria Annarè">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. IL PROBLEMA -->
+    <section class="section" id="problema">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">La Situazione Iniziale</span>
+                <h2>Le sfide prima del nostro intervento</h2>
+                <p>Prima di collaborare con noi, l'attività affrontava i problemi tipici della maggior parte delle realtà locali.</p>
+            </div>
+
+            <div class="problem-card reveal">
+                <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Stato del progetto: <span style="color: var(--accent-danger)">Critico</span></h3>
+                <p style="font-size: 0.95rem;">L'assenza di una strategia digitale mirata limitava la crescita dell'attività:</p>
+
+                <div class="problem-grid">
+                    <div class="problem-item">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <div>
+                            <h4>Presenza online debole</h4>
+                            <p>Sito web datato, non ottimizzato per i dispositivi mobile.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <div>
+                            <h4>Design poco professionale</h4>
+                            <p>Grafica generica che non valorizzava l'unicità del brand.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <div>
+                            <h4>Difficoltà a trasmettere fiducia</h4>
+                            <p>Mancanza di elementi di riprova sociale e recensioni in evidenza.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <div>
+                            <h4>Esperienza utente inefficace</h4>
+                            <p>Processo di prenotazione complesso con troppi passaggi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. LA SOLUZIONE -->
+    <section class="section" id="soluzione">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Il Nostro Intervento</span>
+                <h2>Un'architettura progettata per convertire</h2>
+                <p>Non abbiamo creato un semplice sito vetrina, ma un'infrastruttura di vendita digitale automatizzata.</p>
+            </div>
+
+            <div class="solution-grid">
+                <div class="feature-box reveal">
+                    <div class="feature-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3>Nuovo Design Su Misura</h3>
+                    <p>Interfaccia moderna e personalizzata, studiata per far risaltare l'identità del locale fin dal primo secondo.</p>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h3>Mobile-First Responsive</h3>
+                    <p>Navigazione fluida e perfetta su qualsiasi smartphone, tablet o schermo desktop.</p>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="feature-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    <h3>Caricamento Istantaneo</h3>
+                    <p>Codice pulito senza appesantimenti per un punteggio Google PageSpeed superiore a 95/100.</p>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="feature-icon"><i class="fa-solid fa-filter-circle-dollar"></i></div>
+                    <h3>Funnel Orientato alle Conversioni</h3>
+                    <p>Architettura delle informazioni ideata per guidare l'utente alla prenotazione rapida.</p>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="feature-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3>SEO Locale Integrata</h3>
+                    <p>Ottimizzazione dei dati strutturati Schema.org per dominare i risultati di ricerca su Google Maps.</p>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="feature-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>CTA Strategiche</h3>
+                    <p>Pulsanti di azione rapida visibili in ogni sezione per prenotazioni veloci via WhatsApp o telefono.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. GALLERIA DEMO MULTI-DEVICE -->
+    <section class="section" id="demo">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Anteprima Interattiva</span>
+                <h2>Esplora il progetto su ogni dispositivo</h2>
+                <p>Passa da una vista all'altra per verificare la resa estetica e funzionale dell'interfaccia.</p>
+            </div>
+
+            <div class="gallery-tabs reveal">
+                <button class="tab-btn active" onclick="switchDevice('desktop')"><i class="fa-solid fa-desktop"></i> Desktop</button>
+                <button class="tab-btn" onclick="switchDevice('tablet')"><i class="fa-solid fa-tablet-screen-button"></i> Tablet</button>
+                <button class="tab-btn" onclick="switchDevice('mobile')"><i class="fa-solid fa-mobile-screen-button"></i> Mobile</button>
+            </div>
+
+            <div class="viewport-display reveal">
+                <div id="deviceContainer" class="device-wrapper">
+                    <div class="device-desktop">
+                        <div class="mockup-header">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="screen">
+                            <!-- SOSTITUISCI IMMAGINE DESKTOP -->
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" alt="Desktop View">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PRIMA VS DOPO -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Impatto Visivo</span>
+                <h2>Il confronto diretto: Prima vs Dopo</h2>
+                <p>Guarda la differenza tra la vecchia presenza digitale e la nuova soluzione ad alte prestazioni.</p>
+            </div>
+
+            <div class="compare-container">
+                <!-- PRIMA -->
+                <div class="compare-box before reveal">
+                    <div class="compare-head">
+                        <h3>Vecchia Versione</h3>
+                        <badge><i class="fa-solid fa-xmark"></i> PRIMA</badge>
+                    </div>
+                    <div class="compare-img-wrap">
+                        <!-- SOSTITUISCI CON SCREENSHOT VECCHIO SITO -->
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Sito Vecchio">
+                    </div>
+                    <ul class="compare-list">
+                        <li><i class="fa-solid fa-circle-xmark"></i> Caricamento lento (> 5 secondi)</li>
+                        <li><i class="fa-solid fa-circle-xmark"></i> Menu PDF difficile da leggere da smartphone</li>
+                        <li><i class="fa-solid fa-circle-xmark"></i> Nessun sistema di prenotazione diretta</li>
+                        <li><i class="fa-solid fa-circle-xmark"></i> Design generico non coordinato</li>
+                    </ul>
+                </div>
+
+                <!-- DOPO -->
+                <div class="compare-box after reveal">
+                    <div class="compare-head">
+                        <h3>Nuovo Web System</h3>
+                        <badge><i class="fa-solid fa-check"></i> DOPO</badge>
+                    </div>
+                    <div class="compare-img-wrap">
+                        <!-- SOSTITUISCI CON SCREENSHOT NUOVO SITO -->
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" alt="Sito Nuovo">
+                    </div>
+                    <ul class="compare-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Caricamento istantaneo in 0.8s</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Menu digitale interattivo ultra-veloce</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Integrazione prenotazioni WhatsApp in 1-Click</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Brand Identity d'impatto ad alto valore percepito</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. COSA RENDE QUESTO SITO EFFICACE -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Punti di Forza</span>
+                <h2>Cosa rende questo sito una macchina da conversioni</h2>
+                <p>Ogni elemento grafico e di codice è stato sviluppato con uno scopo preciso.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card-premium reveal">
+                    <div class="card-number">01</div>
+                    <h3>Design Professionale</h3>
+                    <p>Estetica curata nei minimi dettagli per posizionare il brand nella fascia alta del mercato locale.</p>
+                </div>
+                <div class="card-premium reveal">
+                    <div class="card-number">02</div>
+                    <h3>Velocità Estrema</h3>
+                    <p>Prestazioni da primato per azzerare il tasso di abbandono degli utenti durante il caricamento.</p>
+                </div>
+                <div class="card-premium reveal">
+                    <div class="card-number">03</div>
+                    <h3>Responsive Flawless</h3>
+                    <p>Adattamento dinamico pixel-perfect su ogni risoluzione di schermo esistente.</p>
+                </div>
+                <div class="card-premium reveal">
+                    <div class="card-number">04</div>
+                    <h3>SEO Strategica</h3>
+                    <p>Struttura ottimizzata per scalare le posizioni organiche su Google nelle ricerche di zona.</p>
+                </div>
+                <div class="card-premium reveal">
+                    <div class="card-number">05</div>
+                    <h3>UX Intuitiva</h3>
+                    <p>Percorsi utente privi di frizioni per guidare l'utente esattamente dove si desidera.</p>
+                </div>
+                <div class="card-premium reveal">
+                    <div class="card-number">06</div>
+                    <h3>Call To Action Efficaci</h3>
+                    <p>Punti di contatto posizionati nei punti di massimo interesse della pagina.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PROCESSO DI LAVORO -->
+    <section class="section" id="processo">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Workflow</span>
+                <h2>Il nostro metodo di lavoro in 5 step</h2>
+                <p>Un processo collaudato che garantisce tempi certi e risultati misurabili.</p>
+            </div>
+
+            <div class="timeline reveal">
+                <div class="timeline-step">
+                    <div class="step-num">1</div>
+                    <h4>Analisi</h4>
+                    <p>Studio del brand, dei concorrenti e degli obiettivi commerciali.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-num">2</div>
+                    <h4>Progettazione</h4>
+                    <p>Definizione dell'architettura delle informazioni e dei testi (Copywriting).</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-num">3</div>
+                    <h4>Design</h4>
+                    <p>Creazione del layout grafico su misura in alta definizione.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-num">4</div>
+                    <h4>Sviluppo</h4>
+                    <p>Programmazione codice pulito, ottimizzazione SEO e performance.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-num">5</div>
+                    <h4>Consegna</h4>
+                    <p>Collaudo finale, pubblicazione e formazione per la gestione.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PERCHÉ SCEGLIERE NOI (STATISTICHE) -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-wrapper reveal">
+                <div class="stat-item">
+                    <div class="value">100<span>%</span></div>
+                    <div class="label">Responsive & Mobile First</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">&gt;95</div>
+                    <div class="label">Score Google PageSpeed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">100<span>%</span></div>
+                    <div class="label">SEO Friendly & Strutturato</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">24<span>/7</span></div>
+                    <div class="label">Supporto Dedicato</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. TESTIMONIANZA -->
+    <section class="section">
+        <div class="container">
+            <div class="testimonial-card reveal">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="quote">"Grazie al nuovo sito abbiamo azzerato le commissioni che prima pagavamo alle piattaforme terze. Ora le prenotazioni arrivano direttamente su WhatsApp in automatico. Il miglior investimento fatto quest'anno per la nostra attività."</p>
+                <div class="client-profile">
+                    <!-- SOSTITUISCI FOTO CLIENTE -->
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=200&q=80" alt="Foto Cliente" class="client-avatar">
+                    <div class="client-info">
+                        <h4>Marco Esposito</h4>
+                        <p>Titolare, Pizzeria Annarè</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CTA FINALE -->
+    <section class="section" id="cta">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2>Il tuo locale potrebbe essere il prossimo.</h2>
+                <p>Aumenta il valore percepito del tuo brand e inizia a convertire i visitatori in clienti paganti con un sistema su misura.</p>
+                <a href="https://wa.me/393000000000?text=Ciao!%20Ho%20visto%20il%20vostro%20case%20study%20e%20vorrei%20prenotare%20una%20consulenza%20gratuita." target="_blank" class="btn btn-accent" style="padding: 20px 40px; font-size: 1.1rem;">
+                    <i class="fa-brands fa-whatsapp"></i> Prenota una consulenza gratuita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Nexus Studio — Agenzia Sviluppo Web & Marketing Strategico. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. NAVBAR SCROLL EFFECT
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 2. SCROLL REVEAL ANIMATION (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // 3. INTERACTIVE DEVICE SWITCHER (GALLERY)
+        // SOSTITUISCI GLI URL DELLE IMMAGINI CON QUELLE REALI DEL TUO PROGETTO
+        const mockImages = {
+            desktop: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80",
+            tablet: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+            mobile: "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=600&q=80"
+        };
+
+        function switchDevice(device) {
+            const container = document.getElementById('deviceContainer');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            // Aggiorna stato attivo dei bottoni
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Renderizza il mockup corrispondente
+            if (device === 'desktop') {
+                container.innerHTML = `
+                    <div class="device-desktop">
+                        <div class="mockup-header">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="screen">
+                            <img src="${mockImages.desktop}" alt="Desktop Preview">
+                        </div>
+                    </div>
+                `;
+            } else if (device === 'tablet') {
+                container.innerHTML = `
+                    <div class="device-tablet">
+                        <div class="mockup-header">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="screen">
+                            <img src="${mockImages.tablet}" alt="Tablet Preview">
+                        </div>
+                    </div>
+                `;
+            } else if (device === 'mobile') {
+                container.innerHTML = `
+                    <div class="device-mobile">
+                        <div class="screen">
+                            <img src="${mockImages.mobile}" alt="Mobile Preview">
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

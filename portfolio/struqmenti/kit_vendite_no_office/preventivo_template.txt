@@ -1,0 +1,40 @@
+TEMPLATE PREVENTIVO SEMPLICE
+
+Nome cliente:
+Attività:
+Data:
+Pacchetto scelto:
+
+RIEPILOGO PROGETTO
+Realizzazione di un sito web moderno e responsive per presentare l'attività online, mostrare prodotti/servizi e facilitare il contatto con i clienti.
+
+PACCHETTO
+[Starter / Standard / Premium]
+
+INCLUDE
+- Sito web responsive
+- Sezioni principali concordate
+- Collegamenti WhatsApp / Instagram / Google Maps
+- Testi rivisti e ottimizzati
+- Versione mobile
+- Pubblicazione online, se concordata
+
+PREZZO
+Totale: [___]€
+Acconto 50%: [___]€
+Saldo finale 50%: [___]€
+
+TEMPI
+Consegna stimata: [___] giorni dalla ricezione del materiale necessario.
+
+MATERIALE NECESSARIO
+- Logo, se disponibile
+- Foto, se disponibili
+- Testi o informazioni dell'attività
+- Link social
+- Numero WhatsApp / telefono
+- Indirizzo Google Maps
+
+NOTE
+Il saldo finale viene pagato prima della pubblicazione definitiva o della consegna dei file.
+Essendo minorenne, la parte di pagamento viene gestita tramite genitore/tutore.

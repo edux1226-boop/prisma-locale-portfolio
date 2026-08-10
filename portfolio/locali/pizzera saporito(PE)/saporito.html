@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saporito Pescara — Demo Case Study</title>
+  <meta name="description" content="Demo non ufficiale di sito web per Saporito Pescara, realizzata a scopo portfolio." />
+
+  <style>
+    :root {
+      --black: #070707;
+      --black-soft: #111111;
+      --dark-card: #181818;
+      --pink: #ff4fa3;
+      --pink-soft: #ff8fc5;
+      --white: #ffffff;
+      --gray: #cfcfcf;
+      --gray-dark: #8d8d8d;
+      --border: rgba(255, 255, 255, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 79, 163, 0.12);
+      color: var(--pink-soft);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--pink);
+      color: var(--black);
+      box-shadow: 0 12px 35px rgba(255, 79, 163, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: var(--pink-soft);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      border-color: var(--pink);
+      color: var(--pink-soft);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7, 7, 7, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      color: var(--pink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: var(--gray);
+    }
+
+    .nav-links a:hover {
+      color: var(--pink-soft);
+    }
+
+    .hero {
+      padding: 90px 0 70px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 79, 163, 0.22), transparent 36%),
+        radial-gradient(circle at bottom left, rgba(255, 79, 163, 0.12), transparent 28%),
+        var(--black);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin-top: 22px;
+      font-size: clamp(2.6rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin-top: 24px;
+      color: var(--gray);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 520px;
+      border-radius: 36px;
+      overflow: hidden;
+      background: var(--dark-card);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .hero-card img {
+      height: 100%;
+      min-height: 520px;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 55%);
+    }
+
+    .hero-card-label {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(7, 7, 7, 0.72);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card-label strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    .hero-card-label small {
+      color: var(--gray);
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      color: var(--gray);
+      font-size: 1.05rem;
+    }
+
+    .intro {
+      background: var(--black-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+    }
+
+    .info-card span {
+      display: block;
+      color: var(--pink-soft);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .info-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      color: var(--gray);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .text-panel {
+      padding: 34px;
+      border-radius: var(--radius);
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+    }
+
+    .text-panel h3 {
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .text-panel p {
+      color: var(--gray);
+      margin-bottom: 14px;
+    }
+
+    .highlight-panel {
+      padding: 34px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255, 79, 163, 0.22), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 79, 163, 0.35);
+    }
+
+    .highlight-panel h3 {
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .highlight-panel ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--gray);
+    }
+
+    .highlight-panel li {
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .highlight-panel li::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      color: var(--pink);
+    }
+
+    .preview {
+      background: var(--black-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mockup {
+      border-radius: 32px;
+      overflow: hidden;
+      background: #0d0d0d;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .mockup-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      background: #141414;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .dot:nth-child(2) {
+      background: var(--pink-soft);
+    }
+
+    .dot:nth-child(3) {
+      background: var(--gray-dark);
+    }
+
+    .mockup-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+    }
+
+    .mockup-img {
+      min-height: 360px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--dark-card);
+    }
+
+    .mockup-img img {
+      height: 100%;
+      min-height: 360px;
+    }
+
+    .mockup-copy {
+      padding: 32px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 79, 163, 0.16), rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mockup-copy h3 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .mockup-copy h3 span {
+      color: var(--pink);
+    }
+
+    .mockup-copy p {
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .color-card {
+      min-height: 180px;
+      border-radius: 24px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid var(--border);
+    }
+
+    .color-card strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .color-card small {
+      color: rgba(255, 255, 255, 0.74);
+      font-weight: 700;
+    }
+
+    .color-black {
+      background: #070707;
+    }
+
+    .color-soft {
+      background: #181818;
+    }
+
+    .color-pink {
+      background: #ff4fa3;
+      color: #070707;
+    }
+
+    .color-light {
+      background: #ffffff;
+      color: #070707;
+    }
+
+    .color-light small,
+    .color-pink small {
+      color: rgba(7, 7, 7, 0.72);
+    }
+
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .site-section-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+    }
+
+    .site-section-card h3 {
+      color: var(--pink-soft);
+      margin-bottom: 10px;
+    }
+
+    .site-section-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .gallery {
+      background: var(--black-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 18px;
+    }
+
+    .gallery-card {
+      position: relative;
+      min-height: 320px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+    }
+
+    .gallery-card img {
+      height: 100%;
+      min-height: 320px;
+    }
+
+    .gallery-card.large {
+      grid-row: span 2;
+      min-height: 660px;
+    }
+
+    .gallery-card.large img {
+      min-height: 660px;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(7, 7, 7, 0.72);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+
+    .result-box {
+      padding: 40px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(255, 79, 163, 0.2), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 79, 163, 0.35);
+    }
+
+    .result-box h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .result-box p {
+      color: var(--gray);
+      max-width: 840px;
+      margin-bottom: 16px;
+    }
+
+    .notice {
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--gray);
+    }
+
+    .notice strong {
+      color: var(--pink-soft);
+    }
+
+    .cta {
+      text-align: center;
+      padding: 100px 0;
+      background:
+        radial-gradient(circle at center, rgba(255, 79, 163, 0.22), transparent 42%),
+        var(--black);
+    }
+
+    .cta h2 {
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      max-width: 820px;
+      margin: 0 auto 20px;
+    }
+
+    .cta p {
+      color: var(--gray);
+      max-width: 620px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--border);
+      color: var(--gray-dark);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .split,
+      .mockup-content {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-grid,
+      .palette-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sections-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-card.large {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .hero {
+        padding: 58px 0 56px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .hero-card,
+      .hero-card img {
+        min-height: 390px;
+      }
+
+      .intro-grid,
+      .palette-grid,
+      .sections-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-card.large {
+        grid-column: auto;
+        min-height: 360px;
+      }
+
+      .gallery-card.large img {
+        min-height: 360px;
+      }
+
+      .text-panel,
+      .highlight-panel,
+      .result-box {
+        padding: 26px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">Portfolio / <span>Saporito Demo</span></a>
+
+      <nav class="nav-links" aria-label="Navigazione principale">
+        <a href="#progetto">Progetto</a>
+        <a href="#problema">Problema</a>
+        <a href="#soluzione">Soluzione</a>
+        <a href="#anteprima">Anteprima</a>
+        <a href="#contatti">CTA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO DEL PROGETTO -->
+    <section class="hero" id="progetto">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Demo non ufficiale · Portfolio project</div>
+
+          <h1>Saporito Pescara <span>case study</span></h1>
+
+          <p>
+            Una demo di sito web pensata per un’attività food locale giovane,
+            moderna e legata al mondo street food, pizza, poke, dolci e sapori pugliesi.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#anteprima" class="btn btn-primary">Guarda il progetto</a>
+            <a href="#nota" class="btn btn-secondary">Leggi la nota</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <!-- Placeholder: sostituisci con immagine autorizzata o mockup creato da te -->
+          <img src="images/IMG_HERO_SAPORITO.jpg" alt="Placeholder hero per demo sito Saporito Pescara" />
+
+          <div class="hero-card-label">
+            <strong>Street food mood, design pulito.</strong>
+            <small>Landing page moderna per migliorare presenza online e contatti.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BREVE DESCRIZIONE -->
+    <section class="intro">
+      <div class="container">
+        <div class="section-header">
+          <h2>Descrizione del progetto</h2>
+          <p>
+            Ho creato una demo di sito web per mostrare come un’attività locale possa
+            comunicare meglio online attraverso una pagina chiara, moderna e coerente con il brand.
+          </p>
+        </div>
+
+        <div class="intro-grid">
+          <article class="info-card">
+            <span>Cliente</span>
+            <h3>Saporito Pescara</h3>
+            <p>Demo non commissionata, realizzata solo a scopo portfolio.</p>
+          </article>
+
+          <article class="info-card">
+            <span>Settore</span>
+            <h3>Food locale</h3>
+            <p>Pizza, poke, calzoni dolci, prodotti pugliesi, fritti e dolci.</p>
+          </article>
+
+          <article class="info-card">
+            <span>Stile</span>
+            <h3>Giovane e moderno</h3>
+            <p>Palette nero e rosa, tono diretto, visual energico e food lovers oriented.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section id="problema">
+      <div class="container split">
+        <div class="text-panel">
+          <h3>Il problema</h3>
+          <p>
+            Molte attività locali comunicano principalmente tramite social. Instagram è ottimo
+            per mostrare contenuti visivi, ma spesso non basta per organizzare in modo chiaro
+            informazioni come menu, prodotti, contatti, posizione e identità del locale.
+          </p>
+          <p>
+            Un utente interessato potrebbe voler capire subito cosa offre l’attività,
+            dove si trova e come contattarla. Se queste informazioni non sono semplici da trovare,
+            il rischio è perdere attenzione, ordini o visite.
+          </p>
+        </div>
+
+        <div class="highlight-panel">
+          <h3>Punti critici individuati</h3>
+          <ul>
+            <li>Informazioni potenzialmente sparse tra post, storie e bio social.</li>
+            <li>Mancanza di una pagina web strutturata e sempre consultabile.</li>
+            <li>Necessità di presentare i prodotti in modo più ordinato.</li>
+            <li>Possibilità di migliorare contatti, richieste e visite in locale.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUZIONE -->
+    <section class="intro" id="soluzione">
+      <div class="container split">
+        <div class="highlight-panel">
+          <h3>La soluzione</h3>
+          <ul>
+            <li>Landing page moderna e responsive.</li>
+            <li>Design coerente con colori nero e rosa.</li>
+            <li>Sezioni chiare per prodotti, gallery, storia e contatti.</li>
+            <li>CTA pensate per trasformare l’interesse in azione.</li>
+          </ul>
+        </div>
+
+        <div class="text-panel">
+          <h3>Un sito semplice, diretto e utile</h3>
+          <p>
+            Ho progettato una pagina capace di affiancare la comunicazione social,
+            offrendo agli utenti un punto di riferimento più stabile e ordinato.
+          </p>
+          <p>
+            Il risultato è una demo che comunica energia, appetibilità e professionalità,
+            senza fingere una collaborazione ufficiale con il brand.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBIETTIVI -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Obiettivi del sito</h2>
+          <p>
+            Il sito è stato pensato per migliorare la presenza online di una realtà locale
+            e rendere più semplice il percorso dell’utente.
+          </p>
+        </div>
+
+        <div class="intro-grid">
+          <article class="info-card">
+            <span>01</span>
+            <h3>Presentare il brand</h3>
+            <p>Comunicare subito stile, personalità e tipologia di offerta.</p>
+          </article>
+
+          <article class="info-card">
+            <span>02</span>
+            <h3>Mostrare i prodotti</h3>
+            <p>Dare spazio a pizza, poke, calzoni, dolci, fritti e specialità pugliesi.</p>
+          </article>
+
+          <article class="info-card">
+            <span>03</span>
+            <h3>Generare contatti</h3>
+            <p>Guidare l’utente verso richiesta informazioni, ordine o visita in locale.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANTEPRIMA SITO -->
+    <section class="preview" id="anteprima">
+      <div class="container">
+        <div class="section-header">
+          <h2>Anteprima sito</h2>
+          <p>
+            Una possibile hero section per il sito demo: impatto visivo forte,
+            messaggio diretto e CTA immediata.
+          </p>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <div class="mockup-content">
+            <div class="mockup-copy">
+              <h3>Sapori pugliesi, <span>mood street.</span></h3>
+              <p>
+                Pizza, poke, dolci e sfizi in una proposta giovane, colorata e pensata
+                per chi ama il buon cibo senza troppi giri di parole.
+              </p>
+              <a href="#contatti" class="btn btn-primary">Scopri il menu</a>
+            </div>
+
+            <div class="mockup-img">
+              <!-- Placeholder: sostituisci con foto food autorizzata -->
+              <img src="images/IMG_PIZZA.jpg" alt="Placeholder pizza per demo Saporito" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PALETTE COLORI -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Palette colori</h2>
+          <p>
+            La palette usa il nero come base visiva e il rosa come colore principale
+            per CTA, dettagli e accenti grafici.
+          </p>
+        </div>
+
+        <div class="palette-grid">
+          <div class="color-card color-black">
+            <strong>Nero base</strong>
+            <small>#070707</small>
+          </div>
+
+          <div class="color-card color-soft">
+            <strong>Nero soft</strong>
+            <small>#181818</small>
+          </div>
+
+          <div class="color-card color-pink">
+            <strong>Rosa principale</strong>
+            <small>#FF4FA3</small>
+          </div>
+
+          <div class="color-card color-light">
+            <strong>Bianco testo</strong>
+            <small>#FFFFFF</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONI PROGETTATE -->
+    <section class="intro">
+      <div class="container">
+        <div class="section-header">
+          <h2>Sezioni progettate</h2>
+          <p>
+            La struttura è pensata per essere semplice da navigare e utile per un potenziale cliente.
+          </p>
+        </div>
+
+        <div class="sections-grid">
+          <article class="site-section-card">
+            <h3>Home</h3>
+            <p>Hero d’impatto con messaggio chiaro, stile visivo forte e CTA principale.</p>
+          </article>
+
+          <article class="site-section-card">
+            <h3>Menu</h3>
+            <p>Panoramica ordinata dei prodotti principali e delle categorie food.</p>
+          </article>
+
+          <article class="site-section-card">
+            <h3>Gallery</h3>
+            <p>Spazio visual per foto di prodotti, locale, packaging e contenuti social.</p>
+          </article>
+
+          <article class="site-section-card">
+            <h3>Chi siamo</h3>
+            <p>Sezione narrativa per raccontare mood, identità e ispirazione pugliese.</p>
+          </article>
+
+          <article class="site-section-card">
+            <h3>Contatti</h3>
+            <p>Area finale con CTA per facilitare richieste, ordini e visite in locale.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY PLACEHOLDER -->
+    <section class="gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2>Gallery prodotti</h2>
+          <p>
+            Questi spazi immagine sono placeholder. Non usare foto o loghi ufficiali senza permesso:
+            inserisci contenuti tuoi, autorizzati o creati appositamente per la demo.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-card large">
+            <img src="images/IMG_POKE.jpg" alt="Placeholder poke per demo Saporito" />
+            <span class="gallery-label">IMG_POKE.jpg</span>
+          </div>
+
+          <div class="gallery-card">
+            <img src="images/IMG_CALZONE.jpg" alt="Placeholder calzone dolce per demo Saporito" />
+            <span class="gallery-label">IMG_CALZONE.jpg</span>
+          </div>
+
+          <div class="gallery-card">
+            <img src="images/IMG_GALLERY_1.jpg" alt="Placeholder gallery 1 per demo Saporito" />
+            <span class="gallery-label">IMG_GALLERY_1.jpg</span>
+          </div>
+
+          <div class="gallery-card">
+            <img src="images/IMG_GALLERY_2.jpg" alt="Placeholder gallery 2 per demo Saporito" />
+            <span class="gallery-label">IMG_GALLERY_2.jpg</span>
+          </div>
+
+          <div class="gallery-card">
+            <img src="images/IMG_PIZZA.jpg" alt="Placeholder pizza per demo Saporito" />
+            <span class="gallery-label">IMG_PIZZA.jpg</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISULTATO FINALE -->
+    <section>
+      <div class="container">
+        <div class="result-box">
+          <h2>Risultato finale</h2>
+
+          <p>
+            Il risultato è una demo moderna, pulita e coerente con lo stile giovane del brand.
+            La pagina comunica energia, appetibilità e immediatezza, mantenendo un tono
+            professionale e adatto a un’attività locale.
+          </p>
+
+          <p>
+            Il progetto mostra come un sito web ben strutturato possa completare la comunicazione
+            social, rendere più chiare le informazioni e aiutare l’attività a trasformare
+            l’interesse online in contatti, ordini e visite reali.
+          </p>
+
+          <p>
+            Questa demo rappresenta un esempio concreto del mio metodo di lavoro:
+            analisi del brand, progettazione della struttura, definizione dello stile visivo,
+            scrittura dei contenuti e sviluppo responsive della pagina.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTA DEMO NON UFFICIALE -->
+    <section class="intro" id="nota">
+      <div class="container">
+        <div class="notice">
+          <p>
+            <strong>Nota importante:</strong>
+            Demo non ufficiale realizzata a scopo portfolio. Non affiliata a Saporito.
+            Questo progetto non è stato commissionato dal brand e non utilizza foto,
+            loghi o materiali ufficiali senza autorizzazione.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINALE -->
+    <section class="cta" id="contatti">
+      <div class="container">
+        <h2>Vuoi un sito simile per la tua attività?</h2>
+        <p>
+          Posso progettare una pagina moderna, responsive e chiara per presentare meglio
+          il tuo brand, i tuoi prodotti e i tuoi contatti online.
+        </p>
+
+        <a href="mailto:tuamail@example.com" class="btn btn-primary">
+          Contattami per un progetto
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>Portfolio project — Demo non ufficiale.</p>
+      <p>Design & sviluppo: Il tuo nome</p>
+    </div>
+  </footer>
+</body>
+</html>

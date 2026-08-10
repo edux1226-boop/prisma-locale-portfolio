@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timesheet Freelance Casa</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;--card:#ffffff;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;
+      --accent:#2563eb;--accent2:#10b981;--warn:#f59e0b;--bad:#ef4444;
+      --shadow:0 10px 30px rgba(17,24,39,.08);--radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    header{padding:28px 22px 10px;max-width:1180px;margin:0 auto}
+    h1{margin:0 0 8px;font-size:30px;letter-spacing:-.03em}
+    .sub{color:var(--muted);font-size:15px;line-height:1.45}
+    main{max-width:1180px;margin:0 auto;padding:12px 22px 40px}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .card h2{font-size:18px;margin:0 0 14px}
+    .row{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    label{display:block;font-size:12px;font-weight:700;color:#374151;margin-bottom:6px}
+    input,select,textarea{width:100%;border:1px solid #d1d5db;border-radius:12px;padding:11px 12px;background:#fff;font:inherit;color:var(--ink)}
+    textarea{min-height:72px;resize:vertical}
+    .span2{grid-column:span 2}.span3{grid-column:span 3}.span4{grid-column:span 4}.span6{grid-column:span 6}.span8{grid-column:span 8}.span12{grid-column:span 12}
+    button{border:0;border-radius:12px;padding:11px 14px;font-weight:800;cursor:pointer;background:var(--accent);color:#fff}
+    button.secondary{background:#111827}.ghost{background:#eef2ff;color:#1e40af}.danger{background:#fee2e2;color:#991b1b}.ok{background:#d1fae5;color:#065f46}
+    .buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    .kpi{background:#f9fafb;border:1px solid var(--line);border-radius:16px;padding:14px}
+    .kpi .n{font-size:24px;font-weight:900;letter-spacing:-.03em}
+    .kpi .t{font-size:12px;color:var(--muted);margin-top:3px}
+    table{width:100%;border-collapse:separate;border-spacing:0;background:#fff}
+    th,td{text-align:left;border-bottom:1px solid var(--line);padding:10px 8px;font-size:13px;vertical-align:top}
+    th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;background:#f9fafb;position:sticky;top:0;z-index:1}
+    .tablewrap{max-height:430px;overflow:auto;border:1px solid var(--line);border-radius:16px}
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#eef2ff;color:#1e40af;font-size:12px;font-weight:800}
+    .barrow{display:grid;grid-template-columns:80px 1fr 58px;align-items:center;gap:10px;margin:9px 0}
+    .bar{height:12px;border-radius:99px;background:#e5e7eb;overflow:hidden}
+    .bar > i{display:block;height:100%;background:var(--accent2);border-radius:99px;width:0%}
+    .routine li{margin:8px 0;color:#374151}
+    .small{font-size:12px;color:var(--muted);line-height:1.45}
+    .split{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.span2,.span3,.span4,.span6,.span8{grid-column:span 12}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Timesheet Freelance Casa</h1>
+  <div class="sub">Traccia ore nette, ore fatturabili, ricavo stimato, focus e distrazioni. I dati restano nel tuo browser. Esporta CSV quando vuoi.</div>
+</header>
+
+<main>
+  <div class="grid">
+    <section class="card">
+      <div class="split">
+        <h2>Nuova sessione</h2>
+        <span class="pill" id="todayPill"></span>
+      </div>
+      <form id="entryForm">
+        <div class="row">
+          <div class="span3">
+            <label>Data</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="span3">
+            <label>Inizio</label>
+            <input type="time" id="start" required>
+          </div>
+          <div class="span3">
+            <label>Fine</label>
+            <input type="time" id="end" required>
+          </div>
+          <div class="span3">
+            <label>Pausa minuti</label>
+            <input type="number" id="breakMin" min="0" step="5" value="0">
+          </div>
+
+          <div class="span4">
+            <label>Cliente</label>
+            <input id="client" placeholder="Es. Cliente A">
+          </div>
+          <div class="span4">
+            <label>Progetto</label>
+            <input id="project" placeholder="Es. Landing page">
+          </div>
+          <div class="span4">
+            <label>Attività</label>
+            <select id="activity">
+              <option>Deep work</option>
+              <option>Call / meeting</option>
+              <option>Amministrazione</option>
+              <option>Studio / formazione</option>
+              <option>Marketing / sales</option>
+              <option>Manutenzione</option>
+              <option>Altro</option>
+            </select>
+          </div>
+
+          <div class="span3">
+            <label>Fatturabile?</label>
+            <select id="billable">
+              <option>Sì</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="span3">
+            <label>Tariffa €/h</label>
+            <input type="number" id="rate" min="0" step="1" value="35">
+          </div>
+          <div class="span3">
+            <label>Focus 1-5</label>
+            <input type="number" id="focus" min="1" max="5" step="1" value="4">
+          </div>
+          <div class="span3">
+            <label>Distrazioni</label>
+            <input type="number" id="distractions" min="0" step="1" value="0">
+          </div>
+
+          <div class="span12">
+            <label>Risultato concreto prodotto</label>
+            <textarea id="result" placeholder="Es. Completata sezione hero, inviata proposta, risolto bug, ecc."></textarea>
+          </div>
+        </div>
+        <div class="buttons">
+          <button type="submit">Aggiungi sessione</button>
+          <button type="button" class="ghost" id="fillNow">Compila ora</button>
+          <button type="button" class="secondary" id="exportCsv">Esporta CSV</button>
+          <button type="button" class="danger" id="clearAll">Svuota tutto</button>
+        </div>
+      </form>
+      <p class="small">Regola d’oro: inserisci una sessione appena finisce. Se aspetti sera, il timesheet diventa un romanzo fantasy.</p>
+    </section>
+
+    <aside class="card">
+      <h2>Dashboard settimana</h2>
+      <div class="kpis">
+        <div class="kpi"><div class="n" id="kpiNet">0h</div><div class="t">Ore nette</div></div>
+        <div class="kpi"><div class="n" id="kpiBill">0h</div><div class="t">Ore fatturabili</div></div>
+        <div class="kpi"><div class="n" id="kpiRev">€0</div><div class="t">Ricavo stimato</div></div>
+        <div class="kpi"><div class="n" id="kpiFocus">0/5</div><div class="t">Focus medio</div></div>
+      </div>
+      <h2 style="margin-top:18px">Andamento giornaliero</h2>
+      <div id="bars"></div>
+      <h2 style="margin-top:18px">Routine consigliata</h2>
+      <ol class="routine">
+        <li>Prima di iniziare: scegli 1 risultato principale della giornata.</li>
+        <li>Lavora in blocchi da 60–90 minuti, poi pausa vera lontano dal PC.</li>
+        <li>Segna ogni blocco appena chiuso: cliente, attività, focus e risultato.</li>
+        <li>A fine giornata: controlla ore nette, distrazioni e cosa migliorare domani.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <section class="card" style="margin-top:18px">
+    <div class="split">
+      <h2>Registro sessioni</h2>
+      <span class="muted" id="count"></span>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th><th>Orario</th><th>Ore nette</th><th>Cliente</th><th>Progetto</th><th>Attività</th><th>Fatt.</th><th>€</th><th>Focus</th><th>Distr.</th><th>Risultato</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+const KEY = "timesheet_freelance_casa_v1";
+const fmt = new Intl.NumberFormat("it-IT", { maximumFractionDigits: 2 });
+const euro = new Intl.NumberFormat("it-IT", { style:"currency", currency:"EUR", maximumFractionDigits: 0 });
+const $ = id => document.getElementById(id);
+let entries = JSON.parse(localStorage.getItem(KEY) || "[]");
+
+function todayISO(){ return new Date().toISOString().slice(0,10); }
+function timeNow(){ const d = new Date(); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
+function minutesBetween(start,end){
+  let [sh,sm] = start.split(":").map(Number), [eh,em] = end.split(":").map(Number);
+  let s = sh*60+sm, e = eh*60+em;
+  if(e < s) e += 24*60;
+  return Math.max(0, e-s);
+}
+function weekKey(dateStr){
+  const d = new Date(dateStr + "T00:00:00");
+  const day = (d.getDay()+6)%7;
+  const monday = new Date(d); monday.setDate(d.getDate()-day);
+  return monday.toISOString().slice(0,10);
+}
+function save(){ localStorage.setItem(KEY, JSON.stringify(entries)); render(); }
+function hours(e){ return Math.max(0, (minutesBetween(e.start,e.end) - Number(e.breakMin||0))/60); }
+function revenue(e){ return e.billable === "Sì" ? hours(e) * Number(e.rate||0) : 0; }
+
+function render(){
+  const nowWeek = weekKey(todayISO());
+  const weekEntries = entries.filter(e => weekKey(e.date) === nowWeek);
+  const net = weekEntries.reduce((s,e)=>s+hours(e),0);
+  const bill = weekEntries.filter(e=>e.billable==="Sì").reduce((s,e)=>s+hours(e),0);
+  const rev = weekEntries.reduce((s,e)=>s+revenue(e),0);
+  const focus = weekEntries.length ? weekEntries.reduce((s,e)=>s+Number(e.focus||0),0)/weekEntries.length : 0;
+
+  $("kpiNet").textContent = fmt.format(net) + "h";
+  $("kpiBill").textContent = fmt.format(bill) + "h";
+  $("kpiRev").textContent = euro.format(rev);
+  $("kpiFocus").textContent = fmt.format(focus) + "/5";
+  $("count").textContent = entries.length + " sessioni totali";
+  $("todayPill").textContent = "Settimana dal " + nowWeek.split("-").reverse().join("/");
+
+  const daily = {};
+  weekEntries.forEach(e => daily[e.date] = (daily[e.date] || 0) + hours(e));
+  const days = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
+  const monday = new Date(nowWeek + "T00:00:00");
+  let max = Math.max(1, ...Object.values(daily));
+  $("bars").innerHTML = days.map((d,i)=>{
+    const date = new Date(monday); date.setDate(monday.getDate()+i);
+    const iso = date.toISOString().slice(0,10);
+    const val = daily[iso] || 0;
+    return `<div class="barrow"><span class="small">${d}</span><div class="bar"><i style="width:${Math.min(100,val/max*100)}%"></i></div><span class="small">${fmt.format(val)}h</span></div>`;
+  }).join("");
+
+  const sorted = [...entries].sort((a,b)=>(b.date+a.start).localeCompare(a.date+b.start));
+  $("tbody").innerHTML = sorted.map((e,idx)=>{
+    const realIdx = entries.indexOf(e);
+    return `<tr>
+      <td>${escapeHtml(e.date)}</td><td>${escapeHtml(e.start)}–${escapeHtml(e.end)}</td>
+      <td><b>${fmt.format(hours(e))}</b></td><td>${escapeHtml(e.client)}</td><td>${escapeHtml(e.project)}</td>
+      <td>${escapeHtml(e.activity)}</td><td>${escapeHtml(e.billable)}</td><td>${euro.format(revenue(e))}</td>
+      <td>${escapeHtml(e.focus)}/5</td><td>${escapeHtml(e.distractions)}</td><td>${escapeHtml(e.result)}</td>
+      <td><button class="danger" onclick="del(${realIdx})">Elimina</button></td>
+    </tr>`;
+  }).join("");
+}
+function escapeHtml(s){ return String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function del(i){ entries.splice(i,1); save(); }
+
+$("date").value = todayISO();
+$("fillNow").onclick = () => { $("date").value = todayISO(); $("end").value = timeNow(); };
+$("entryForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const entry = {
+    date:$("date").value, start:$("start").value, end:$("end").value, breakMin:$("breakMin").value,
+    client:$("client").value.trim(), project:$("project").value.trim(), activity:$("activity").value,
+    billable:$("billable").value, rate:$("rate").value, focus:$("focus").value,
+    distractions:$("distractions").value, result:$("result").value.trim()
+  };
+  entries.push(entry);
+  ["client","project","result"].forEach(id => $(id).value = "");
+  $("breakMin").value = "0"; $("distractions").value = "0";
+  save();
+});
+$("exportCsv").onclick = () => {
+  const headers = ["Data","Inizio","Fine","Pausa minuti","Ore nette","Cliente","Progetto","Attività","Fatturabile","Tariffa €/h","Ricavo stimato","Focus","Distrazioni","Risultato"];
+  const rows = entries.map(e => [e.date,e.start,e.end,e.breakMin,fmt.format(hours(e)),e.client,e.project,e.activity,e.billable,e.rate,fmt.format(revenue(e)),e.focus,e.distractions,e.result]);
+  const csv = [headers, ...rows].map(r => r.map(v => `"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "timesheet_freelance_export.csv";
+  a.click();
+};
+$("clearAll").onclick = () => {
+  if(confirm("Vuoi davvero cancellare tutte le sessioni salvate in questo browser?")){
+    entries = [];
+    save();
+  }
+};
+render();
+</script>
+</body>
+</html>

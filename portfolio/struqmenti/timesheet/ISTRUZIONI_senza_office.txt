@@ -1,0 +1,17 @@
+COME USARLO SENZA OFFICE
+
+OPZIONE 1 — Browser, la più semplice
+1. Scarica e apri timesheet_freelance_browser.html.
+2. Si apre nel browser: Chrome, Safari, Firefox o Edge.
+3. Inserisci le sessioni di lavoro.
+4. I dati restano salvati nel browser del tuo computer.
+5. Usa “Esporta CSV” per fare backup o aprire i dati in Google Sheets.
+
+OPZIONE 2 — Google Sheets
+1. Vai su Google Drive.
+2. Clicca Nuovo > Caricamento file.
+3. Carica timesheet_google_sheets_import.csv.
+4. Aprilo con Fogli Google.
+5. Puoi modificare le righe e aggiungerne altre.
+
+Nota: il file Excel .xlsx che ti avevo creato può comunque essere caricato su Google Drive e aperto con Fogli Google, anche senza Office.

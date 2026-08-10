@@ -1,0 +1,21 @@
+# Come usare questo kit senza Office
+
+1. Apri `kit_vendite_senza_office.html` con Chrome, Edge o Safari.
+2. Usa `messaggi_pronti.txt` per copiare i messaggi.
+3. Usa `contatti_aziende.csv` per tenere traccia delle aziende.
+4. Usa `preventivo_template.txt` quando qualcuno è interessato.
+
+## Dove aprire il CSV gratis
+
+- Google Sheets: carica il file CSV e modificalo online.
+- LibreOffice Calc: alternativa gratuita a Excel.
+- Notion: puoi importare CSV come tabella.
+- VS Code / Notepad: puoi aprirlo come testo, ma è meno comodo.
+
+## Cosa fare oggi
+
+- Trova 20 attività locali.
+- Inseriscile in `contatti_aziende.csv`.
+- Manda 10 messaggi Instagram.
+- Segna chi risponde.
+- Fai follow-up dopo 2–3 giorni.

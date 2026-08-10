@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Annarè | Tradizione Italiana & Pizza Artigianale a Pescara</title>
+    
+    <!-- SEO Locale & Meta Tags -->
+    <meta name="description" content="Pizzeria e Cucina Tradizionale Annarè a Pescara. Scopri il gusto autentico della pizza italiana in Viale G. Marconi 63. Prenotazione tavoli, asporto e consegna.">
+    <meta name="keywords" content="Pizzeria Annarè Pescara, Pizza Marconi Pescara, Ristorante italiano Pescara, Consegna pizza Pescara, Cucina tradizionale Abruzzo">
+    <meta property="og:title" content="Pizzeria Annarè | Il Gusto della Tradizione a Pescara">
+    <meta property="og:description" content="Ingredienti selezionati, impasto ad alta digeribilità e ambiente accogliente in Viale G. Marconi 63.">
+    <meta property="og:type" content="restaurant">
+
+    <!-- SEO Schema.org (JSON-LD) per Ristorante Locale -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Pizzeria Annarè",
+      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Viale G. Marconi 63",
+        "addressLocality": "Pescara",
+        "postalCode": "65126",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.4589,
+        "longitude": 14.2215
+      },
+      "telephone": "+390859876543",
+      "servesCuisine": ["Italian", "Pizza"],
+      "priceRange": "€€"
+    }
+    </script>
+
+    <!-- Font Google: Cinzel (Elegante/Classico) + Plus Jakarta Sans (Moderno) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- STRISCIA INFORMATIVA IN ALTO -->
+    <div class="top-bar">
+        <div class="container top-bar-flex">
+            <span><i class="fa-solid fa-location-dot"></i> Viale G. Marconi 63, Pescara</span>
+            <span><i class="fa-solid fa-clock"></i> Mar - Dom: 19:00 - 23:30</span>
+            <span><i class="fa-solid fa-phone"></i> +39 085 987 6543</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="header" id="mainHeader">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand-logo">
+                <span class="brand-name">ANNARÈ</span>
+                <span class="brand-sub">PIZZERIA & CUCINA</span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#storia" class="nav-link">La Nostra Storia</a></li>
+                    <li><a href="#menu" class="nav-link">Menu Digitale</a></li>
+                    <li><a href="#qualita" class="nav-link">Valori</a></li>
+                    <li><a href="#gallery" class="nav-link">Galleria</a></li>
+                    <li><a href="#recensioni" class="nav-link">Recensioni</a></li>
+                </ul>
+                <div class="mobile-cta">
+                    <a href="#prenota" class="btn btn-wine btn-sm">Prenota Tavolo</a>
+                </div>
+            </nav>
+
+            <div class="nav-right">
+                <a href="#prenota" class="btn btn-wine desktop-cta">
+                    <i class="fa-solid fa-utensils"></i> Prenota Tavolo
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Apri Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-card fade-in-up">
+                <span class="hero-tag"><i class="fa-solid fa-wheat-awn"></i> Tradizione & Passione a Pescara</span>
+                <h1>Il gusto della tradizione italiana a Pescara</h1>
+                <p>Dal forno a legna alla tua tavola: impasti ad alta digeribilità, ingredienti del territorio abruzzese e l'accoglienza di una vera famiglia italiana.</p>
+                <div class="hero-btn-group">
+                    <a href="#prenota" class="btn btn-gold btn-lg">
+                        <i class="fa-solid fa-calendar-check"></i> Prenota il tuo tavolo
+                    </a>
+                    <a href="#menu" class="btn btn-outline-light btn-lg">
+                        <i class="fa-solid fa-book-open"></i> Guarda il Menu
+                    </a>
+                </div>
+                <div class="hero-badges">
+                    <div class="h-badge"><i class="fa-solid fa-leaf"></i> Opzioni Vegetariane</div>
+                    <div class="h-badge"><i class="fa-solid fa-truck-fast"></i> Asporto & Consegna</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORIA DEL LOCALE -->
+    <section class="storia section-padding" id="storia">
+        <div class="container grid-storia">
+            <div class="storia-image-box reveal-element">
+                <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=900&q=80" alt="Pizzaiolo Annarè prepara la pizza">
+                <div class="experience-card">
+                    <span class="exp-years">48h</span>
+                    <span class="exp-text">Lievitazione Naturale dell'Impasto</span>
+                </div>
+            </div>
+
+            <div class="storia-content reveal-element">
+                <span class="section-subtitle">UN'AUTENTICA STORIA DI FAMIGLIA</span>
+                <h2>Dove ogni pizza ha una storia da raccontare</h2>
+                <p class="lead-text">Pizzeria Annarè nasce nel cuore di Pescara dal desiderio di portare in tavola i sapori autentici di una volta, in un ambiente caldo e ospitale.</p>
+                <p>La nostra filosofia è semplice: rispetto per le ricette tradizionali, selezione rigorosa delle farine e una lievitazione lenta di almeno 48 ore che rende le nostre pizze straordinariamente leggere e digeribili.</p>
+                <p>Da Annarè ogni ospite è parte di casa nostra. Che tu voglia festeggiare in compagnia o goderti una cena intima, ti accoglieremo con il sorriso e il profumo inconfondibile del nostro forno.</p>
+
+                <div class="storia-highlights">
+                    <div class="sh-item">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <div>
+                            <h4>Alta Digeribilità</h4>
+                            <p>Farine tipo 1 e poco lievito per un impasto leggero.</p>
+                        </div>
+                    </div>
+                    <div class="sh-item">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                        <div>
+                            <h4>Prodotti Selezionati</h4>
+                            <p>Pomodoro San Marzano DOP e Mozzarella di Bufala freschissima.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU DIGITALE -->
+    <section class="menu-section section-padding" id="menu">
+        <div class="container">
+            <div class="section-heading text-center">
+                <span class="section-subtitle">SCOPRI LE NOSTRE SPECIALITÀ</span>
+                <h2>Il Nostro Menu Digitale</h2>
+                <p>Seleziona una categoria e lasciati stuzzicare dalle nostre proposte.</p>
+            </div>
+
+            <!-- TAB CATEGORIE -->
+            <div class="menu-tabs-wrapper">
+                <button class="menu-tab active" data-filter="classiche">Pizze Classiche</button>
+                <button class="menu-tab" data-filter="speciali">Pizze Speciali</button>
+                <button class="menu-tab" data-filter="cucina">Cucina Italiana</button>
+                <button class="menu-tab" data-filter="dolci">Dolci Artigianali</button>
+                <button class="menu-tab" data-filter="bevande">Bevande & Vini</button>
+            </div>
+
+            <!-- GRIGLIA MENU -->
+            <div class="menu-cards-grid">
+                
+                <!-- CLASSICHE -->
+                <div class="menu-item-card" data-category="classiche">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80" alt="Margherita Tradizionale">
+                        <span class="mic-tag veg"><i class="fa-solid fa-seedling"></i> Vegetariana</span>
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Margherita Saporita</h3>
+                            <span class="mic-price">€ 8,00</span>
+                        </div>
+                        <p>Pomodoro italiano, fiordilatte di Agerola, basilico fresco e olio EVO delle colline pescaresi.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item-card" data-category="classiche">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Diavola">
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Diavola Piccante</h3>
+                            <span class="mic-price">€ 9,50</span>
+                        </div>
+                        <p>Pomodoro, mozzarella fiordilatte, spianata piccante calabra e olio al peperoncino.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item-card" data-category="classiche">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Capricciosa">
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Capricciosa Annarè</h3>
+                            <span class="mic-price">€ 11,00</span>
+                        </div>
+                        <p>Pomodoro, mozzarella, prosciutto cotto scelto, funghi champignon, carciofi grigliati e olive nere.</p>
+                    </div>
+                </div>
+
+                <!-- SPECIALI -->
+                <div class="menu-item-card" data-category="speciali">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Abruzzese">
+                        <span class="mic-tag gourmet"><i class="fa-solid fa-crown"></i> Consigliata</span>
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Sua Maestà Abruzzese</h3>
+                            <span class="mic-price">€ 14,50</span>
+                        </div>
+                        <p>Base provola affumicata, salsiccia nostrana, crema di pecorino di Farindola e scaglie di tartufo.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item-card" data-category="speciali">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Pistacchiosa">
+                        <span class="mic-tag veg"><i class="fa-solid fa-seedling"></i> Vegetariana</span>
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Pistacchio & Stracciatella</h3>
+                            <span class="mic-price">€ 13,50</span>
+                        </div>
+                        <p>Fiordilatte, pesto di pistacchio di Bronte, stracciatella di bufala a crudo e granella dorata.</p>
+                    </div>
+                </div>
+
+                <!-- CUCINA -->
+                <div class="menu-item-card" data-category="cucina">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281318?auto=format&fit=crop&w=600&q=80" alt="Chitarra Teramana">
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Maccheroni alla Chitarra</h3>
+                            <span class="mic-price">€ 12,00</span>
+                        </div>
+                        <p>Pasta fresca fatta in casa con ragù artigianale e pallottine tradizionali.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item-card" data-category="cucina">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Arrosticini">
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Arrosticini Artigianali (10pz)</h3>
+                            <span class="mic-price">€ 12,50</span>
+                        </div>
+                        <p>Carne di pecora tagliata a mano, cotta sul canale tradizionale e servita con pane e olio.</p>
+                    </div>
+                </div>
+
+                <!-- DOLCI -->
+                <div class="menu-item-card" data-category="dolci">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80" alt="Tiramisù">
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Tiramisù della Nonna</h3>
+                            <span class="mic-price">€ 5,50</span>
+                        </div>
+                        <p>Mascarpone fresco, savoiardi inzuppati nel caffè espresso e una spolverata di cacao amaro.</p>
+                    </div>
+                </div>
+
+                <!-- BEVANDE -->
+                <div class="menu-item-card" data-category="bevande">
+                    <div class="mic-image">
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Montepulciano d'Abruzzo">
+                    </div>
+                    <div class="mic-details">
+                        <div class="mic-header">
+                            <h3>Montepulciano d'Abruzzo DOC</h3>
+                            <span class="mic-price">€ 18,00</span>
+                        </div>
+                        <p>Vino rosso intenso ed strutturato, perfetto da abbinare alle nostre pizze speciali e alla cucina locale.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VALORI E QUALITÀ -->
+    <section class="qualita section-padding" id="qualita">
+        <div class="container">
+            <div class="section-heading text-center">
+                <span class="section-subtitle">IL SEGRETO DI ANNARÈ</span>
+                <h2>Perché la Nostra Pizza è Speciale</h2>
+            </div>
+            <div class="qualita-grid">
+                <div class="qualita-card">
+                    <div class="q-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <h3>Ingredienti Selezionati</h3>
+                    <p>Utilizziamo unicamente prodotti freschi di filiera corta abruzzese e ingredienti DOP italiani.</p>
+                </div>
+                <div class="qualita-card">
+                    <div class="q-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3>Impasto Artigianale</h3>
+                    <p>Lavorazione manuale e 48 ore di lievitazione per offrire il massimo della leggerezza.</p>
+                </div>
+                <div class="qualita-card">
+                    <div class="q-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    <h3>Tradizione Italiana</h3>
+                    <p>Forno a legna ad alta temperatura per una cottura uniforme, fragrante e dorata.</p>
+                </div>
+                <div class="qualita-card">
+                    <div class="q-icon"><i class="fa-solid fa-face-smile"></i></div>
+                    <h3>Servizio Attento</h3>
+                    <p>Ci prendiamo cura di ogni cliente con un'accoglienza calorosa e un servizio rapido ed efficiente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERIA LOCALE -->
+    <section class="gallery-section section-padding" id="gallery">
+        <div class="container">
+            <div class="section-heading text-center">
+                <span class="section-subtitle">IMMERSIONE NEI SAPORI</span>
+                <h2>Galleria Fotografica</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" alt="Pizza sfornata">
+                    <div class="gallery-overlay"><span>Pizza Artigianale</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Sala Pizzeria">
+                    <div class="gallery-overlay"><span>La Nostra Sala</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=800&q=80" alt="Ingredienti freschi">
+                    <div class="gallery-overlay"><span>Materie Prime DOP</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80" alt="Pizzaiolo al lavoro">
+                    <div class="gallery-overlay"><span>Passione al Forno</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECENSIONI -->
+    <section class="recensioni section-padding" id="recensioni">
+        <div class="container">
+            <div class="section-heading text-center">
+                <span class="section-subtitle">PAROLA AI NOSTRI OSPITI</span>
+                <h2>Cosa Dicono di Annarè</h2>
+            </div>
+            <div class="recensioni-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Pizza eccezionale! L'impasto è leggerissimo e non ti pesa per niente. La 'Sua Maestà Abruzzese' vale assolutamente la visita. Torneremo spesso!"</p>
+                    <div class="rev-user">
+                        <strong>Lorenzo M.</strong>
+                        <span>Recensione Google</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Ambiente super accogliente in Viale Marconi. Il personale ti fa sentire subito a casa e il servizio è rapido anche nel fine settimana."</p>
+                    <div class="rev-user">
+                        <strong>Elena P.</strong>
+                        <span>Recensione TripAdvisor</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Ordinata anche da asporto: arrivata calda e fragrante come se fosse appena stata tolta dal forno. Qualità indiscutibile!"</p>
+                    <div class="rev-user">
+                        <strong>Matteo G.</strong>
+                        <span>Cliente Abituale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRENOTAZIONE TAVOLO -->
+    <section class="prenotazione section-padding" id="prenota">
+        <div class="container grid-booking">
+            <div class="booking-info">
+                <span class="section-subtitle">GARANTISCITI UN POSTO</span>
+                <h2>Prenota la tua esperienza da Annarè</h2>
+                <p>Che si tratti di una cena in famiglia, un'uscita tra amici o un'occasione speciale, prenota comodamente online per evitare attese.</p>
+
+                <div class="b-contact-box">
+                    <div class="bc-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <span>Telefono Diretto</span>
+                            <strong>+39 085 987 6543</strong>
+                        </div>
+                    </div>
+                    <div class="bc-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <span>Prenotazione Rapida WhatsApp</span>
+                            <a href="https://wa.me/390859876543?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20da%20Pizzeria%20Annar%C3%A8" target="_blank" class="wa-link">Clicca qui per scriverci</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booking-form-card">
+                <h3>Modulo di Prenotazione</h3>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="fullName">Nome e Cognome *</label>
+                        <input type="text" id="fullName" required placeholder="Es. Marco Rossi">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefono *</label>
+                            <input type="tel" id="phone" required placeholder="333 1234567">
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Ospiti *</label>
+                            <select id="guests" required>
+                                <option value="2">2 Persone</option>
+                                <option value="3">3 Persone</option>
+                                <option value="4">4 Persone</option>
+                                <option value="5">5 Persone</option>
+                                <option value="6+">6+ Persone</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookingDate">Data *</label>
+                            <input type="date" id="bookingDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingTime">Orario *</label>
+                            <select id="bookingTime" required>
+                                <option value="19:30">19:30</option>
+                                <option value="20:15">20:15</option>
+                                <option value="21:00">21:00</option>
+                                <option value="21:45">21:45</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Note speciali / Intolleranze</label>
+                        <textarea id="message" rows="3" placeholder="Es. Seggiolone per bambino, intolleranza al lattosio..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-wine btn-block">
+                        <i class="fa-solid fa-paper-plane"></i> Conferma Prenotazione
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPPA E CONTATTI -->
+    <section class="contatti section-padding">
+        <div class="container grid-contatti">
+            <div class="contatti-details">
+                <span class="section-subtitle">VIENI A TROVARCI</span>
+                <h2>Dove Siamo & Orari</h2>
+                <div class="contact-list">
+                    <div class="c-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Indirizzo</strong>
+                            <p>Viale G. Marconi 63, 65126 Pescara (PE)</p>
+                        </div>
+                    </div>
+                    <div class="c-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <strong>Orari di Apertura</strong>
+                            <p>Lunedì: Chiuso</p>
+                            <p>Martedì - Domenica: 19:00 - 23:30</p>
+                        </div>
+                    </div>
+                    <div class="c-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@pizzeriaannare.it</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Viale+G.+Marconi+63+Pescara" target="_blank" class="btn btn-olive">
+                    <i class="fa-solid fa-map-location-dot"></i> Ottieni Indicazioni su Google Maps
+                </a>
+            </div>
+
+            <div class="map-box">
+                <!-- Simulazione/Embed Mappa -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2944.51234!2d14.2215!3d42.4589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDI3JzMyLjAiTiAxNMKwMTMnMTcuNCJF!5e0!3m2!1sit!2sit!4v1600000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="brand-logo">
+                    <span class="brand-name">ANNARÈ</span>
+                    <span class="brand-sub">PIZZERIA & CUCINA</span>
+                </div>
+                <p>La vera pizza della tradizione italiana a Pescara. Passione, alta digeribilità e accoglienza familiare in Viale Marconi 63.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Link Rapidi</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#storia">La Storia</a></li>
+                    <li><a href="#menu">Menu Digitale</a></li>
+                    <li><a href="#prenota">Prenota Tavolo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Servizi</h4>
+                <ul>
+                    <li>Cena al Tavolo</li>
+                    <li>Asporto Veloce</li>
+                    <li>Consegna a Domicilio</li>
+                    <li>Menu Vegetariani</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Seguici sui Social</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Pizzeria Annarè - Tutti i diritti riservati.</p>
+            <p class="agency-tag">Progetto Demo sviluppato da <strong>Digital Marketing Agency</strong> per la crescita dei locali locali.</p>
+        </div>
+    </footer>
+
+    <!-- BOTTONE FLOTTANTE WHATSAPP -->
+    <a href="https://wa.me/390859876543?text=Ciao!%20Vorrei%20informazioni%20su%20tavoli%20o%20asporto" target="_blank" class="float-wa-btn" title="Scrivici su WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
