@@ -1,0 +1,25 @@
+# Note di lavoro non destinate al repository pubblico
+NOTE-INTERNE.md
+
+# Sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Dipendenze e build (il sito non ne usa, ma evita commit accidentali)
+node_modules/
+dist/
+.cache/
+
+# Variabili d'ambiente
+.env
+.env.*
+
+# Netlify
+.netlify/

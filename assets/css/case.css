@@ -1,0 +1,140 @@
+/* ==========================================================================
+   PRISMA LOCALE — PAGINA CASE STUDY
+   Riusa tokens, base e sections. Qui solo ciò che è specifico del progetto.
+   ========================================================================== */
+
+.case-hero {
+  padding-top: clamp(120px, 15vw, 172px);
+  padding-bottom: clamp(48px, 6vw, 80px);
+  position: relative;
+  overflow: hidden;
+}
+
+.case-hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1000px, 130vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(245, 165, 36, 0.13), rgba(108, 77, 246, 0.07) 40%, transparent 66%);
+  pointer-events: none;
+}
+
+.case-hero__inner { position: relative; }
+
+.case-hero__title {
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin-top: var(--s-5);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--ink-muted);
+  transition: color var(--dur) var(--ease), gap var(--dur) var(--ease);
+}
+
+.back-link:hover { color: var(--ink); gap: 12px; }
+
+/* Scheda dei dati del progetto */
+.meta-grid {
+  display: grid;
+  gap: 1px;
+  margin-top: clamp(40px, 5vw, 64px);
+  background: var(--line);
+  border-block: 1px solid var(--line);
+}
+
+@media (min-width: 700px) { .meta-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.meta-grid > div { background: var(--paper); padding: var(--s-5) var(--s-4) var(--s-5) 0; }
+
+@media (min-width: 700px) { .meta-grid > div { padding-inline: var(--s-5); } .meta-grid > div:first-child { padding-left: 0; } }
+
+.meta-grid dt {
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.meta-grid dd { font-weight: 700; letter-spacing: -0.02em; }
+
+/* Blocco immagine a piena larghezza */
+.shot {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper-3);
+}
+
+.shot--bleed { border-radius: 0; border-inline: 0; }
+
+.shot figcaption {
+  padding: var(--s-4) var(--s-5);
+  font-size: var(--fs-xs);
+  color: var(--ink-muted);
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+}
+
+/* Blocco di testo stretto, ritmo editoriale */
+.prose { max-width: 62ch; }
+.prose p + p { margin-top: var(--s-4); }
+.prose p { color: var(--ink-soft); font-size: var(--fs-lead); line-height: 1.6; }
+
+.prose--dark p { color: var(--on-dark-muted); }
+
+/* Le decisioni di progetto */
+.decisions { display: grid; gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); border-radius: var(--r-lg); overflow: hidden; }
+
+@media (min-width: 700px) { .decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1080px) { .decisions { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.decision { background: var(--ink); padding: clamp(24px, 3vw, 34px); display: grid; gap: var(--s-3); align-content: start; }
+.decision__num { font-size: var(--fs-xs); font-weight: 800; letter-spacing: var(--tr-eyebrow); color: var(--on-dark-muted); }
+.decision h3 { font-size: var(--fs-h4); }
+.decision p { font-size: var(--fs-sm); color: var(--on-dark-muted); }
+
+/* Galleria mobile */
+.phones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+
+@media (min-width: 760px) { .phones { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); } }
+
+.phones .frame-phone:nth-child(even) { transform: translateY(clamp(12px, 3vw, 32px)); }
+
+/* Palette del progetto */
+.swatches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+@media (min-width: 700px) { .swatches { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.swatch { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: var(--paper-2); }
+.swatch__chip { height: 92px; }
+.swatch__body { padding: var(--s-3) var(--s-4) var(--s-4); }
+.swatch__name { font-weight: 700; font-size: var(--fs-sm); }
+.swatch__hex { font-size: var(--fs-xs); color: var(--ink-muted); letter-spacing: 0.04em; }
+
+/* Nota legale del progetto */
+.notice {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--spec-4);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  background: var(--paper-2);
+  max-width: 68ch;
+}
+
+.notice h3 { font-size: var(--fs-h4); margin-bottom: var(--s-2); }
+.notice p { font-size: var(--fs-sm); color: var(--ink-soft); }

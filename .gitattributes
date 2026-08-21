@@ -1,0 +1,15 @@
+# Normalizza i fine riga: LF nel repository, nativi in locale.
+* text=auto eol=lf
+
+# Windows richiede CRLF per gli script batch.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# File binari: nessuna conversione, nessun diff testuale.
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
