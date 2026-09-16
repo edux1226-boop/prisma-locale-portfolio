@@ -14,7 +14,7 @@
     overflow: hidden;
   }
 
-  /* Il canvas occupa l'intera viewport ed è l'unico elemento "visivo" */
+  /* Il canvas occupa l'intera viewport */
   #scene {
     display: block;
     width: 100vw;
@@ -23,48 +23,142 @@
     touch-action: manipulation;
   }
 
-  /* Testo di stato: sottile, discreto, visibile solo durante la pausa */
-  #hint {
+  /* Strato di interfaccia: non intercetta mai i clic, che vanno al canvas */
+  #ui {
     position: fixed;
-    left: 50%;
-    bottom: 8vh;
-    transform: translate(-50%, 12px);
-    margin: 0;
-    padding: 10px 22px;
-    max-width: min(90vw, 560px);
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    padding: 0 16px 7vh;
+    pointer-events: none;
     font: 300 13px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-    letter-spacing: .22em;
-    text-transform: uppercase;
     text-align: center;
-    color: rgba(255, 228, 196, .82);
-    text-shadow: 0 0 18px rgba(255, 150, 60, .35);
-    border: 1px solid rgba(255, 190, 130, .16);
-    border-radius: 999px;
-    background: rgba(10, 6, 4, .35);
-    backdrop-filter: blur(3px);
-    opacity: 0;
-    pointer-events: none;           /* i clic passano sempre al canvas */
-    transition: opacity .7s ease, transform .7s ease;
   }
 
-  #hint.is-visible {
-    opacity: 1;
-    transform: translate(-50%, 0);
+  /* --- Pannello del countdown --- */
+  #timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 18px 34px;
+    border: 1px solid rgba(255, 190, 130, .18);
+    border-radius: 18px;
+    background: rgba(10, 6, 4, .42);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transform: translateY(14px) scale(.96);
+    transition: opacity .45s ease, transform .45s ease, border-color .3s ease;
+  }
+
+  #timer.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+  #count {
+    font-size: clamp(38px, 7vw, 62px);
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: .03em;
+    font-variant-numeric: tabular-nums;   /* le cifre non ballano mentre scorrono */
+    color: rgba(255, 234, 208, .95);
+    text-shadow: 0 0 26px rgba(255, 150, 60, .45);
+  }
+
+  #timerLabel {
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255, 214, 178, .58);
+  }
+
+  /* Ultimi 3 secondi: il pannello vira al rosso e pulsa */
+  #timer.is-urgent { border-color: rgba(255, 90, 60, .45); }
+  #timer.is-urgent #count {
+    color: #ff9d72;
+    text-shadow: 0 0 34px rgba(255, 70, 30, .7);
+    animation: pulse .9s ease-in-out infinite;
+  }
+
+  /* Timer congelato con [0]: tutto si smorza e resta immobile */
+  #timer.is-frozen #count {
+    color: rgba(170, 200, 255, .8);
+    text-shadow: 0 0 26px rgba(90, 140, 255, .4);
+    animation: none;
+  }
+  #timer.is-frozen { border-color: rgba(140, 180, 255, .3); }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: .45; }
+  }
+
+  /* --- Riga di suggerimento --- */
+  #hint {
+    margin: 0;
+    max-width: min(92vw, 620px);
+    padding: 9px 20px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255, 228, 196, .8);
+    text-shadow: 0 0 18px rgba(255, 150, 60, .35);
+    border: 1px solid rgba(255, 190, 130, .14);
+    border-radius: 999px;
+    background: rgba(10, 6, 4, .32);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+
+  #hint.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* Stato finale: la pagina è stata divorata, resta solo l'invito a ripartire */
+  #hint.is-devoured {
+    border-color: rgba(255, 255, 255, .22);
+    color: rgba(255, 255, 255, .88);
+    text-shadow: 0 0 22px rgba(255, 255, 255, .25);
+  }
+
+  kbd {
+    display: inline-block;
+    min-width: 1.6em;
+    margin: 0 .15em;
+    padding: 1px 6px;
+    font: inherit;
+    font-weight: 500;
+    letter-spacing: .08em;
+    color: rgba(255, 244, 228, .95);
+    border: 1px solid rgba(255, 200, 150, .32);
+    border-radius: 5px;
+    background: rgba(255, 180, 120, .1);
   }
 
   @media (max-width: 520px) {
-    #hint { font-size: 11px; letter-spacing: .1em; padding: 9px 14px; max-width: 94vw; }
+    #ui { padding-bottom: 5vh; gap: 14px; }
+    #hint { font-size: 11px; letter-spacing: .1em; padding: 8px 14px; }
+    #timer { padding: 14px 24px; }
+    #timerLabel { letter-spacing: .12em; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #hint { transition: none; }
+    #timer, #hint { transition: none; }
+    #timer.is-urgent #count { animation: none; }
   }
 </style>
 </head>
 <body>
 
 <canvas id="scene"></canvas>
-<p id="hint">Animazione sospesa · Clicca per riprendere l'espansione</p>
+
+<div id="ui">
+  <div id="timer">
+    <span id="count">10.0</span>
+    <span id="timerLabel">secondi al collasso</span>
+  </div>
+  <p id="hint"></p>
+</div>
 
 <script>
 (() => {
@@ -73,43 +167,67 @@
   /* =====================================================================
      GARGANTUA — buco nero in Canvas 2D nativo (nessuna libreria esterna)
      ---------------------------------------------------------------------
-     Modello di rendering, dal fondo verso l'osservatore:
+     RENDERING, dal fondo verso l'osservatore:
        1. campo stellare, deformato dalla lente gravitazionale
-       2. metà POSTERIORE del disco, piegata dalla luce in due archi
-          (uno sopra e uno sotto l'ombra) -> disegnata PRIMA
+       2. metà POSTERIORE del disco, piegata in due archi -> disegnata PRIMA
        3. orizzonte degli eventi: disco di nero assoluto
        4. alone di lensing + anello di fotoni
        5. metà ANTERIORE del disco -> disegnata DOPO, passa davanti al nero
        6. vignettatura
+
+     MACCHINA A STATI:
+       RUNNING  --[SPAZIO]--> STOPPED
+       STOPPED  --[SPAZIO]--> RUNNING          (riavvio)
+       STOPPED  --[0]-------> countdown congelato (toggle)
+       STOPPED  --[countdown a 0]--> RUNAWAY   (espansione infinita)
+       RUNAWAY  --[schermo divorato]--> DEVOURED
+       *        --[R]-------> RUNNING          (reset totale)
      ===================================================================== */
 
   const canvas = document.getElementById('scene');
   const ctx    = canvas.getContext('2d', { alpha: false });
-  const hint   = document.getElementById('hint');
+  const ui = {
+    timer: document.getElementById('timer'),
+    count: document.getElementById('count'),
+    label: document.getElementById('timerLabel'),
+    hint:  document.getElementById('hint')
+  };
 
   /* ------------------------------------------------------------------
      Costanti di regia
      ------------------------------------------------------------------ */
-  const PHASE_SECONDS = 10;      // durata ESATTA di ogni ciclo di espansione
+  const COUNTDOWN     = 10;      // secondi del timer che compare con SPAZIO
   const FLATTEN       = 0.22;    // schiacciamento prospettico: vista quasi di taglio
   const R_START       = 0.045;   // raggio iniziale, in frazione del lato minore
-  const R_MAX         = 0.30;    // raggio massimo raggiungibile
-  const GROW_PER_SEC  = (R_MAX - R_START) / 24;  // ~2,4 cicli per arrivare al massimo
+  const R_MAX         = 0.30;    // tetto del raggio durante l'espansione normale
+  const GROW_PER_SEC  = (R_MAX - R_START) / 24;
+  const RUNAWAY_RATE  = 0.42;    // costante di crescita esponenziale del collasso
   const PHOTON_RING   = 1.34;    // anello di fotoni, in unità di R
   const DISK_INNER    = 1.5;     // bordo interno del disco, in unità di R
   const DISK_OUTER    = 4.7;     // bordo esterno del disco, in unità di R
   const IDLE_SPEED    = 0.05;    // velocità residua durante la stasi (5%)
+  const HINT_TIMEOUT  = 4;       // secondi di visibilità del suggerimento iniziale
+
+  const STATE = {
+    RUNNING:  'running',
+    STOPPED:  'stopped',
+    RUNAWAY:  'runaway',
+    DEVOURED: 'devoured'
+  };
 
   /* ------------------------------------------------------------------
      Stato globale
      ------------------------------------------------------------------ */
-  let W = 0, H = 0, DPR = 1;     // dimensioni in pixel CSS e device pixel ratio
-  let cx = 0, cy = 0, minDim = 0;
+  let W = 0, H = 0, DPR = 1;
+  let cx = 0, cy = 0, minDim = 0, coverFrac = 1;  // coverFrac: raggio che copre lo schermo
 
-  let radiusFrac = R_START;      // raggio memorizzato come frazione -> resize gratis
-  let phaseTime  = 0;            // secondi di espansione accumulati nel ciclo
-  let paused     = false;
-  let speed      = 1;            // moltiplicatore di velocità, interpolato dolcemente
+  let state       = STATE.RUNNING;
+  let radiusFrac  = R_START;     // raggio come frazione -> il resize è gratuito
+  let countdown   = COUNTDOWN;
+  let timerFrozen = false;
+  let speed       = 1;           // moltiplicatore di velocità, interpolato dolcemente
+  let hintTimer   = 0;           // secondi residui del suggerimento a scomparsa
+  let devourFade  = 1;           // 1 = disco visibile, 0 = inghiottito dall'ombra
 
   let particles = [];
   let stars     = [];
@@ -159,7 +277,7 @@
     particles = new Array(target);
 
     for (let i = 0; i < target; i++) {
-      // distribuzione addensata verso l'interno (pow < 1 schiaccia verso DISK_INNER)
+      // distribuzione addensata verso l'interno
       const t  = Math.pow(Math.random(), 1.7);
       const rn = DISK_INNER + (DISK_OUTER - DISK_INNER) * t;
 
@@ -211,6 +329,9 @@
     cy = H / 2;
     minDim = Math.min(W, H);
 
+    // raggio (in frazioni) necessario a coprire l'angolo più lontano dello schermo
+    coverFrac = Math.hypot(W, H) / 2 / minDim;
+
     buildStars();
     if (!particles.length || Math.abs(particles.length - (W * H) / 210) > 2500) {
       buildParticles();
@@ -228,10 +349,8 @@
 
     for (let i = 0; i < stars.length; i++) {
       const s  = stars[i];
-      const sx = s.x * W;
-      const sy = s.y * H;
-      const dx = sx - cx;
-      const dy = sy - cy;
+      const dx = s.x * W - cx;
+      const dy = s.y * H - cy;
       const d  = Math.hypot(dx, dy) || 0.001;
 
       const dd = d + k / d;                  // posizione apparente, spinta verso l'esterno
@@ -262,8 +381,9 @@
      `mirror`= true -> secondo arco lensato, ribaltato sotto l'ombra
      ------------------------------------------------------------------ */
   function drawDisk(R, half, mirror) {
-    const Rp     = R * PHOTON_RING;
-    const scale  = Math.max(0.6, Math.min(2.4, R / (0.10 * minDim)));
+    if (devourFade <= 0) return;          // interamente oltre l'orizzonte: niente da disegnare
+    const Rp    = R * PHOTON_RING;
+    const scale = Math.max(0.6, Math.min(2.4, R / (0.10 * minDim)));
     ctx.globalCompositeOperation = 'lighter';
 
     for (let i = 0; i < particles.length; i++) {
@@ -308,7 +428,7 @@
       const beaming = 0.42 + 0.58 * (cos * 0.5 + 0.5);
       const near    = 1 + 0.5 * Math.max(0, 1 - (p.rn - DISK_INNER) / 1.2);
 
-      ctx.globalAlpha = Math.min(1, alpha * beaming * near);
+      ctx.globalAlpha = Math.min(1, alpha * beaming * near) * devourFade;
       const s = p.size * scale * (2.6 + beaming);
       ctx.drawImage(sprites[p.ci], x - s / 2, y - s / 2, s, s);
     }
@@ -327,7 +447,9 @@
 
   /* Alone di lensing + anello di fotoni, in blending additivo. */
   function drawHalo(R) {
+    if (devourFade <= 0) return;
     ctx.globalCompositeOperation = 'lighter';
+    ctx.globalAlpha = devourFade;
 
     // alone sfumato: parte esattamente dal bordo dell'orizzonte
     const glow = ctx.createRadialGradient(cx, cy, R * 0.99, cx, cy, R * 3.1);
@@ -360,6 +482,7 @@
     ctx.arc(cx, cy, R * (PHOTON_RING + 0.03), 0, Math.PI * 2);
     ctx.stroke();
 
+    ctx.globalAlpha = 1;
     ctx.globalCompositeOperation = 'source-over';
   }
 
@@ -384,9 +507,98 @@
     ctx.fillRect(0, 0, W, H);
   }
 
-  /* ------------------------------------------------------------------
-     Ciclo di animazione
-     ------------------------------------------------------------------ */
+  /* =====================================================================
+     INTERFACCIA
+     ===================================================================== */
+
+  function showHint(html, devoured) {
+    ui.hint.innerHTML = html;
+    ui.hint.classList.toggle('is-devoured', !!devoured);
+    ui.hint.classList.add('is-visible');
+  }
+
+  function hideHint() {
+    ui.hint.classList.remove('is-visible');
+  }
+
+  /* Sincronizza i pannelli con lo stato corrente. */
+  function syncUI() {
+    const stopped = (state === STATE.STOPPED);
+    ui.timer.classList.toggle('is-visible', stopped);
+    ui.timer.classList.toggle('is-frozen', stopped && timerFrozen);
+    ui.timer.classList.toggle('is-urgent', stopped && !timerFrozen && countdown <= 3);
+
+    if (stopped) {
+      ui.count.textContent = Math.max(0, countdown).toFixed(1);
+      ui.label.textContent = timerFrozen ? 'conto alla rovescia bloccato' : 'secondi al collasso';
+    }
+
+    switch (state) {
+      case STATE.STOPPED:
+        showHint(timerFrozen
+          ? '<kbd>0</kbd> riprende il conteggio · <kbd>spazio</kbd> riavvia l\'espansione'
+          : '<kbd>spazio</kbd> riavvia · <kbd>0</kbd> blocca il timer');
+        break;
+
+      case STATE.RUNAWAY:
+        showHint('Espansione fuori controllo');
+        break;
+
+      case STATE.DEVOURED:
+        showHint('Pagina divorata · premi <kbd>R</kbd> per far ripartire tutto', true);
+        break;
+
+      case STATE.RUNNING:
+        // suggerimento iniziale, a scomparsa automatica
+        if (hintTimer > 0) showHint('<kbd>spazio</kbd> per fermare l\'espansione');
+        else hideHint();
+        break;
+    }
+  }
+
+  /* =====================================================================
+     TRANSIZIONI DI STATO
+     ===================================================================== */
+
+  /* SPAZIO (o clic): ferma l'espansione e avvia il countdown, oppure riavvia. */
+  function toggleStop() {
+    if (state === STATE.RUNNING) {
+      state = STATE.STOPPED;
+      countdown = COUNTDOWN;
+      timerFrozen = false;
+    } else if (state === STATE.STOPPED) {
+      state = STATE.RUNNING;
+      hintTimer = HINT_TIMEOUT;
+    } else {
+      return;   // durante RUNAWAY e DEVOURED non si torna indietro: resta solo R
+    }
+    syncUI();
+  }
+
+  /* 0: congela / scongela il conto alla rovescia, senza riavviare l'espansione. */
+  function toggleFreeze() {
+    if (state !== STATE.STOPPED) return;
+    timerFrozen = !timerFrozen;
+    syncUI();
+  }
+
+  /* R: reset totale, da qualunque stato. */
+  function reset() {
+    state = STATE.RUNNING;
+    radiusFrac = R_START;
+    countdown = COUNTDOWN;
+    timerFrozen = false;
+    speed = 1;
+    devourFade = 1;
+    hintTimer = HINT_TIMEOUT;
+    buildParticles();     // nuova estrazione casuale: il disco non si ripete mai uguale
+    buildStars();
+    syncUI();
+  }
+
+  /* =====================================================================
+     CICLO DI ANIMAZIONE
+     ===================================================================== */
   let lastTime = 0;
   let clock    = 0;   // tempo "scenico", scalato dalla velocità corrente
 
@@ -395,26 +607,53 @@
     const dt = lastTime ? Math.min((now - lastTime) / 1000, 0.05) : 0.016;
     lastTime = now;
 
-    // interpolazione dolce della velocità tra moto pieno e stasi
-    const targetSpeed = paused ? IDLE_SPEED : 1;
+    let targetSpeed = 1;
+
+    switch (state) {
+      case STATE.RUNNING:
+        // espansione progressiva, con tetto a R_MAX
+        radiusFrac = Math.min(R_MAX, radiusFrac + GROW_PER_SEC * dt);
+
+        // il suggerimento iniziale svanisce da solo
+        if (hintTimer > 0) {
+          hintTimer -= dt;
+          if (hintTimer <= 0) { hintTimer = 0; hideHint(); }
+        }
+        break;
+
+      case STATE.STOPPED:
+        targetSpeed = IDLE_SPEED;        // le particelle rallentano quasi a fermarsi
+        if (!timerFrozen) {
+          countdown -= dt;
+          if (countdown <= 0) {
+            countdown = 0;
+            state = STATE.RUNAWAY;       // nessuno è intervenuto: collasso
+          }
+        }
+        syncUI();
+        break;
+
+      case STATE.RUNAWAY:
+        /* Crescita esponenziale: dr/dt = k·r + c. Il termine additivo evita
+           la stasi se r fosse piccolo, quello moltiplicativo dà l'accelerazione
+           che fa "divorare" la pagina in un paio di secondi. */
+        radiusFrac += (radiusFrac * RUNAWAY_RATE + 0.03) * dt;
+        targetSpeed = 2.6;               // il gas precipita e vortica sempre più veloce
+        if (radiusFrac >= coverFrac) {   // l'ombra ha raggiunto gli angoli dello schermo
+          state = STATE.DEVOURED;
+          syncUI();
+        }
+        break;
+
+      case STATE.DEVOURED:
+        targetSpeed = 0;
+        break;
+    }
+
+    // interpolazione dolce della velocità: nessuno scatto nei cambi di stato
     speed += (targetSpeed - speed) * Math.min(1, dt * 2.2);
     clock += dt * speed;
 
-    if (!paused) {
-      phaseTime += dt;
-
-      // espansione progressiva dell'orizzonte degli eventi
-      radiusFrac = Math.min(R_MAX, radiusFrac + GROW_PER_SEC * dt);
-
-      // ...fermata esattamente al decimo secondo
-      if (phaseTime >= PHASE_SECONDS) {
-        phaseTime = PHASE_SECONDS;
-        paused = true;
-        hint.classList.add('is-visible');
-      }
-    }
-
-    // avanzamento orbitale (rallenta insieme a `speed` durante la stasi)
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.a += p.w * speed * dt;
@@ -422,6 +661,12 @@
     }
 
     const R = radiusFrac * minDim;
+
+    /* Dissolvenza di divoramento: negli ultimi 35% di crescita verso la
+       copertura totale, disco e alone si spengono. Senza questo, la metà
+       ANTERIORE del disco — disegnata dopo l'orizzonte — resterebbe visibile
+       sopra il nero anche a schermo interamente coperto. */
+    devourFade = Math.max(0, Math.min(1, (coverFrac - radiusFrac) / (coverFrac * 0.35)));
 
     // --- pipeline di disegno: dal fondo verso l'osservatore ---
     drawBackground();
@@ -436,18 +681,30 @@
     requestAnimationFrame(frame);
   }
 
-  /* ------------------------------------------------------------------
-     Interazione: un clic del mouse riavvia l'espansione per altri 10s
-     (nessuna scorciatoia da tastiera, come richiesto)
-     ------------------------------------------------------------------ */
-  function resume() {
-    if (!paused) return;
-    paused = false;
-    phaseTime = 0;
-    hint.classList.remove('is-visible');
-  }
+  /* =====================================================================
+     INPUT
+     ===================================================================== */
+  window.addEventListener('keydown', (e) => {
+    if (e.repeat || e.metaKey || e.ctrlKey || e.altKey) return;
 
-  canvas.addEventListener('pointerdown', resume);   // copre mouse, penna e touch
+    switch (e.code) {
+      case 'Space':
+        e.preventDefault();               // niente scroll della pagina
+        toggleStop();
+        break;
+      case 'Digit0':
+      case 'Numpad0':
+        toggleFreeze();
+        break;
+      case 'KeyR':
+        reset();
+        break;
+    }
+  });
+
+  // Il clic è un alias di SPAZIO: comodo da touch, dove la tastiera non c'è
+  canvas.addEventListener('pointerdown', toggleStop);
+
   window.addEventListener('resize', resize);
   window.addEventListener('orientationchange', resize);
 
@@ -455,6 +712,8 @@
   buildSprites();
   resize();
   buildParticles();
+  hintTimer = HINT_TIMEOUT;
+  syncUI();
   requestAnimationFrame(frame);
 })();
 </script>
