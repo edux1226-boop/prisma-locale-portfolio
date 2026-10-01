@@ -70,7 +70,7 @@ export function initScena({ leggero }) {
 
   function monta(createNigiri) {
     nigiri = createNigiri(tela, {
-      grains: leggero ? 800 : 1800,
+      grains: leggero ? 1100 : 2600,
       dpr: leggero ? 1.5 : 1.75,
       onReady() {
         if (chiusa) return;

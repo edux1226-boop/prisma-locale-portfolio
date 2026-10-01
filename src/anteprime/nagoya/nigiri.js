@@ -11,6 +11,7 @@ import {
   BackSide,
   BoxGeometry,
   BufferAttribute,
+  BufferGeometry,
   CanvasTexture,
   Color,
   DirectionalLight,
@@ -63,13 +64,31 @@ function random(seed) {
 
 /* ---- Riso ---------------------------------------------------------------- */
 
+/* Un chicco vero: non un ellissoide perfetto ma un seme con un'estremità
+   più stretta e il dorso appena curvo. */
+function geometriaChicco() {
+  const geometry = new SphereGeometry(1, 10, 7);
+  geometry.deleteAttribute('uv');
+  const pos = geometry.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i);
+    const stretto = 1 - 0.22 * Math.max(0, x) ** 2;
+    const y = pos.getY(i) * stretto + 0.14 * (x * x - 0.35);
+    const z = pos.getZ(i) * stretto * 0.9;
+    pos.setXYZ(i, x * 0.074, y * 0.034, z * 0.034);
+  }
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
 function chicchi(count, rand) {
   const { a, b, c, p } = SHARI;
   const start = new Float32Array(count * 3);
+  const cumulo = new Float32Array(count * 3);
   const target = new Float32Array(count * 3);
   const quatA = new Float32Array(count * 4);
   const quatB = new Float32Array(count * 4);
-  const tempi = new Float32Array(count * 2);
+  const tempi = new Float32Array(count * 4);
   const colori = [];
 
   const n = new Vector3();
@@ -86,12 +105,19 @@ function chicchi(count, rand) {
     const y = rand() * b;
     const z = (rand() * 2 - 1) * c;
     const f = Math.abs(x / a) ** p + Math.abs(y / b) ** p + Math.abs(z / c) ** p;
-    // Solo un guscio vicino alla superficie: i chicchi interni non si vedono.
-    if (f > 1 || f < 0.62 || y < 0.025) continue;
-
+    // Guscio sottile vicino alla superficie: fitto, senza buchi sul cuore.
+    if (f > 1 || f < 0.74 || y < 0.02) continue;
     target.set([x, y, z], i * 3);
 
-    // Il chicco si stende sulla superficie: asse lungo tangente, "su" lungo la normale.
+    // Prima del pressaggio il riso è un mucchietto più largo e più basso.
+    const hx = x * 1.3 + (rand() - 0.5) * 0.12;
+    const hy = y * 0.58 + rand() * 0.03;
+    const hz = z * 1.38 + (rand() - 0.5) * 0.12;
+    cumulo.set([hx, hy, hz], i * 3);
+
+    // Cade dall'alto, poco sopra il punto in cui atterra.
+    start.set([hx + (rand() - 0.5) * 0.5, 1.7 + rand() * 1.2 + (y / b) * 0.5, hz + (rand() - 0.5) * 0.4], i * 3);
+
     n.set(
       (Math.sign(x) * Math.abs(x / a) ** (p - 1)) / a,
       (Math.abs(y / b) ** (p - 1)) / b,
@@ -107,68 +133,84 @@ function chicchi(count, rand) {
     quatA.set([qa.x, qa.y, qa.z, qa.w], i * 4);
     quatB.set([qb.x, qb.y, qb.z, qb.w], i * 4);
 
-    // Partenza: un anello basso e largo attorno al punto in cui nascerà il nigiri.
-    const ang = rand() * Math.PI * 2;
-    const raggio = 2.3 + rand() ** 0.8 * 1.7;
-    start.set([Math.cos(ang) * raggio, 0.15 + rand() ** 1.5 * 1.1, Math.sin(ang) * raggio * 0.8], i * 3);
-
-    // Prima arrivano i chicchi della base, poi quelli in cima.
+    // x: ritardo (prima la base), y: seme, z: taglia, w: rapporto lunghezza/spessore.
     const seme = rand();
-    tempi.set([(y / b) * 0.24 + seme * 0.16, seme], i * 2);
+    tempi.set([(y / b) * 0.2 + seme * 0.3, seme, 0.86 + rand() * 0.28, 0.88 + rand() * 0.24], i * 4);
 
-    const l = 0.93 + rand() * 0.07;
-    colori.push(new Color().setRGB(l, l * (0.985 + rand() * 0.015), l * (0.95 + rand() * 0.03)));
+    const l = 0.9 + rand() * 0.1;
+    colori.push(new Color().setRGB(l, l * (0.98 + rand() * 0.02), l * (0.93 + rand() * 0.05)));
     i += 1;
   }
-  return { start, target, quatA, quatB, tempi, colori };
+  return { start, cumulo, target, quatA, quatB, tempi, colori };
 }
 
 function materialeRiso(uniforms) {
-  const material = new MeshStandardMaterial({
-    color: '#FFFDF8',
-    roughness: 0.36,
+  // Riso cotto: perlato, appena lucido e appiccicoso.
+  const material = new MeshPhysicalMaterial({
+    color: '#FFFCF5',
+    roughness: 0.3,
     metalness: 0,
-    emissive: '#3b3832',
+    clearcoat: 0.35,
+    clearcoatRoughness: 0.35,
+    sheen: 0.5,
+    sheenRoughness: 0.5,
+    sheenColor: new Color('#ffffff'),
+    emissive: '#2c2924',
   });
   material.onBeforeCompile = (shader) => {
-    shader.uniforms.uConverge = uniforms.uConverge;
-    shader.uniforms.uTime = uniforms.uTime;
+    Object.assign(shader.uniforms, uniforms);
     shader.vertexShader = shader.vertexShader
       .replace(
         '#include <common>',
         /* glsl */ `#include <common>
         attribute vec3 aStart;
+        attribute vec3 aCumulo;
         attribute vec3 aTarget;
         attribute vec4 aQuatA;
         attribute vec4 aQuatB;
-        attribute vec2 aTempi;
+        attribute vec4 aTempi;
         uniform float uConverge;
+        uniform float uPressa;
+        uniform float uSchiaccia;
+        uniform float uFetta;
         uniform float uTime;
-        vec3 ruotaQ(vec3 v, vec4 q) { return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v); }
-        vec3 ruotaY(vec3 p, float a) { float c = cos(a); float s = sin(a); return vec3(c * p.x + s * p.z, p.y, -s * p.x + c * p.z); }
-        float morbido(float t) { return t < 0.5 ? 4.0 * t * t * t : 1.0 - pow(-2.0 * t + 2.0, 3.0) * 0.5; }`,
+        varying float vOcc;
+        vec3 ruotaQ(vec3 v, vec4 q) { return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v); }`,
       )
       .replace(
         '#include <beginnormal_vertex>',
-        /* glsl */ `float gE = morbido(clamp((uConverge - aTempi.x) / 0.6, 0.0, 1.0));
-        vec4 gQ = normalize(mix(aQuatA, aQuatB, gE));
-        vec3 objectNormal = ruotaQ(normal, gQ);`,
+        /* glsl */ `float gCade = clamp((uConverge - aTempi.x) / 0.3, 0.0, 1.0);
+        vec4 gQ = normalize(mix(aQuatA, aQuatB, clamp(gCade * 0.35 + uPressa * 0.65, 0.0, 1.0)));
+        vec3 gScala = vec3(aTempi.w, 1.0, 1.0) * aTempi.z;
+        vec3 objectNormal = ruotaQ(normalize(normal / gScala), gQ);`,
       )
       .replace(
         '#include <begin_vertex>',
-        /* glsl */ `float gLibero = 1.0 - gE;
-        vec3 gDeriva = vec3(sin(uTime * 0.7 + aTempi.y * 40.0), cos(uTime * 0.55 + aTempi.y * 31.0), sin(uTime * 0.45 + aTempi.y * 23.0)) * 0.08;
-        vec3 gDa = ruotaY(aStart + gDeriva * gLibero, (aTempi.y * 2.4 + uTime * 0.07) * gLibero);
-        vec3 gPos = mix(gDa, aTarget, gE);
-        gPos.y += sin(gE * 3.14159) * (0.2 + aTempi.y * 0.35);
-        vec3 transformed = ruotaQ(position, gQ) + gPos;`,
+        /* glsl */ `// Caduta: orizzontale morbida, verticale accelerata come per gravità,
+        // poi un piccolo rimbalzo all'atterraggio.
+        vec3 gPos;
+        gPos.xz = mix(aStart.xz, aCumulo.xz, 1.0 - (1.0 - gCade) * (1.0 - gCade));
+        gPos.y = mix(aStart.y, aCumulo.y, gCade * gCade);
+        float gDopo = clamp((uConverge - aTempi.x - 0.3) / 0.08, 0.0, 1.0);
+        gPos.y += sin(gDopo * 3.14159) * 0.035 * (1.0 - uPressa);
+        // Il pressaggio porta il mucchietto alla forma del nigiri.
+        gPos = mix(gPos, aTarget, uPressa);
+        gPos.y *= 1.0 - 0.05 * uSchiaccia;
+        gPos.xz *= 1.0 + 0.02 * uSchiaccia;
+        // Ombra della fetta sul riso e contatto col piano.
+        float gSotto = smoothstep(0.55, 0.95, aTarget.y / ${SHARI.b.toFixed(2)}) * (1.0 - smoothstep(0.5, 1.0, abs(aTarget.z) / ${SHARI.c.toFixed(2)}));
+        vOcc = (1.0 - 0.35 * uFetta * gSotto) * mix(0.82, 1.0, smoothstep(0.0, 0.1, gPos.y));
+        vec3 transformed = ruotaQ(position * gScala, gQ) + gPos;`,
       );
+    shader.fragmentShader = shader.fragmentShader
+      .replace('#include <common>', '#include <common>\nvarying float vOcc;')
+      .replace('#include <color_fragment>', '#include <color_fragment>\ndiffuseColor.rgb *= vOcc;');
   };
-  material.customProgramCacheKey = () => 'nagoya-riso';
+  material.customProgramCacheKey = () => 'nagoya-riso-2';
   return material;
 }
 
-/* Il "cuore" del nigiri: riempie i vuoti tra i chicchi quando sono arrivati. */
+/* Il "cuore" del nigiri: riempie i vuoti tra i chicchi quando sono pressati. */
 function geometriaCuore() {
   const { a, b, c, p } = SHARI;
   const geometry = new SphereGeometry(1, 64, 24, 0, Math.PI * 2, 0, Math.PI / 2);
@@ -177,7 +219,7 @@ function geometriaCuore() {
   for (let i = 0; i < pos.count; i++) {
     v.fromBufferAttribute(pos, i);
     const s = (Math.abs(v.x / a) ** p + Math.abs(v.y / b) ** p + Math.abs(v.z / c) ** p) ** (-1 / p);
-    v.multiplyScalar(s * 0.93);
+    v.multiplyScalar(s * 0.94);
     pos.setXYZ(i, v.x, v.y, v.z);
   }
   geometry.computeVertexNormals();
@@ -186,80 +228,151 @@ function geometriaCuore() {
 
 /* ---- Salmone ------------------------------------------------------------- */
 
-function tramaSalmone() {
-  const canvas = document.createElement('canvas');
-  canvas.width = 1024;
-  canvas.height = 512;
-  const g = canvas.getContext('2d');
-  const fondo = g.createLinearGradient(0, 0, 0, 512);
-  fondo.addColorStop(0, '#D4461E');
-  fondo.addColorStop(0.35, '#FF7A4D');
-  fondo.addColorStop(0.7, '#FA7042');
-  fondo.addColorStop(1, '#E2582D');
-  g.fillStyle = fondo;
-  g.fillRect(0, 0, 1024, 512);
+/* Colore e rilievo dalla stessa mano: le venature di grasso sono diagonali,
+   come i tagli del sito, e appena in rilievo sulla carne. */
+function trameSalmone() {
+  const W = 1024;
+  const H = 512;
+  const colore = document.createElement('canvas');
+  const rilievo = document.createElement('canvas');
+  colore.width = rilievo.width = W;
+  colore.height = rilievo.height = H;
+  const g = colore.getContext('2d');
+  const r = rilievo.getContext('2d');
 
-  // Le venature di grasso: diagonali, come i tagli di tutto il sito.
+  const fondo = g.createLinearGradient(0, 0, 0, H);
+  fondo.addColorStop(0, '#C9401B');
+  fondo.addColorStop(0.3, '#F2683A');
+  fondo.addColorStop(0.55, '#FF7A4D');
+  fondo.addColorStop(0.85, '#F46A3E');
+  fondo.addColorStop(1, '#D9502A');
+  g.fillStyle = fondo;
+  g.fillRect(0, 0, W, H);
+  r.fillStyle = '#6a6a6a';
+  r.fillRect(0, 0, W, H);
+
+  // Carne non uniforme: macchie morbide più chiare e più scure.
   const rand = random(11);
-  g.lineCap = 'round';
-  let x0 = -620;
+  for (let k = 0; k < 140; k++) {
+    const x = rand() * W;
+    const y = rand() * H;
+    const raggio = 20 + rand() * 70;
+    const macchia = g.createRadialGradient(x, y, 0, x, y, raggio);
+    const tinta = rand() > 0.5 ? '255,150,110' : '190,60,25';
+    macchia.addColorStop(0, `rgba(${tinta},${0.05 + rand() * 0.08})`);
+    macchia.addColorStop(1, `rgba(${tinta},0)`);
+    g.fillStyle = macchia;
+    g.fillRect(x - raggio, y - raggio, raggio * 2, raggio * 2);
+  }
+
+  g.lineCap = r.lineCap = 'round';
+  let x0 = -640;
   while (x0 < 1100) {
-    const larghezza = 4 + rand() ** 1.6 * 12;
-    const curva = 160 + rand() * 120;
-    const sbieco = 430 + rand() * 90;
-    g.shadowColor = 'rgba(255, 228, 210, 0.8)';
-    g.shadowBlur = 9;
-    g.strokeStyle = `rgba(255, 236, 224, ${0.5 + rand() * 0.38})`;
-    g.lineWidth = larghezza;
-    g.beginPath();
-    g.moveTo(x0, -30);
-    g.quadraticCurveTo(x0 + curva, 256, x0 + sbieco, 542);
-    g.stroke();
-    if (rand() > 0.45) {
-      g.shadowBlur = 0;
-      g.strokeStyle = 'rgba(255, 216, 196, 0.28)';
-      g.lineWidth = 1.5 + rand() * 1.5;
-      const scarto = larghezza + 10 + rand() * 14;
+    const larghezza = 3 + rand() ** 1.5 * 13;
+    const curva = 150 + rand() * 140;
+    const sbieco = 420 + rand() * 110;
+    // Ogni venatura è a tratti: più piena al centro, sfumata ai lati.
+    const tratti = 14;
+    for (let s = 0; s < tratti; s++) {
+      const t0 = s / tratti;
+      const t1 = (s + 1) / tratti;
+      const punto = (tt) => {
+        const xa = (1 - tt) ** 2 * x0 + 2 * (1 - tt) * tt * (x0 + curva) + tt * tt * (x0 + sbieco);
+        const ya = (1 - tt) ** 2 * -30 + 2 * (1 - tt) * tt * 256 + tt * tt * 542;
+        return [xa, ya];
+      };
+      const [ax, ay] = punto(t0);
+      const [bx, by] = punto(t1);
+      const pieno = 0.45 + 0.45 * Math.sin(t0 * Math.PI) * (0.7 + rand() * 0.3);
+      const spessore = larghezza * (0.7 + rand() * 0.5);
+      g.shadowColor = 'rgba(255, 226, 206, 0.75)';
+      g.shadowBlur = 8;
+      g.strokeStyle = `rgba(255, 238, 228, ${pieno})`;
+      g.lineWidth = spessore;
+      g.beginPath();
+      g.moveTo(ax, ay);
+      g.lineTo(bx, by);
+      g.stroke();
+      r.strokeStyle = `rgba(235,235,235,${pieno})`;
+      r.lineWidth = spessore * 1.3;
+      r.beginPath();
+      r.moveTo(ax, ay);
+      r.lineTo(bx, by);
+      r.stroke();
+    }
+    g.shadowBlur = 0;
+    if (rand() > 0.4) {
+      const scarto = larghezza + 10 + rand() * 16;
+      g.strokeStyle = 'rgba(255, 214, 196, 0.25)';
+      g.lineWidth = 1.2 + rand() * 1.4;
       g.beginPath();
       g.moveTo(x0 + scarto, -30);
       g.quadraticCurveTo(x0 + curva + scarto, 256, x0 + sbieco + scarto, 542);
       g.stroke();
     }
-    x0 += 58 + rand() * 62;
+    x0 += 52 + rand() * 66;
   }
-  const texture = new CanvasTexture(canvas);
-  texture.colorSpace = SRGBColorSpace;
-  texture.anisotropy = 4;
-  return texture;
+
+  const mappa = new CanvasTexture(colore);
+  mappa.colorSpace = SRGBColorSpace;
+  mappa.anisotropy = 4;
+  const bump = new CanvasTexture(rilievo);
+  bump.anisotropy = 4;
+  return { mappa, bump };
 }
 
-/* Una fetta tagliata a sbieco: spessore che cala verso le punte, facce
-   delle estremità inclinate. Il morph target è la stessa fetta posata e
-   piegata sul riso. */
+/* La fetta: due superfici (sopra e sotto) che si chiudono sui bordi, quindi
+   niente spigoli da scatola. Il taglio a sbieco sposta il dorso rispetto alla
+   base; le punte si assottigliano. Il morph target è la fetta posata sul riso. */
 function geometriaFetta(dettaglio) {
   const { lunghezza: L, spessore: T, larghezza: W } = FETTA;
-  const geometry = new BoxGeometry(L, T, W, dettaglio, 2, Math.round(dettaglio / 3));
-  const pos = geometry.attributes.position;
-  const piatta = new Float32Array(pos.array.length);
-  const posata = new Float32Array(pos.array.length);
-  for (let i = 0; i < pos.count; i++) {
-    let x = pos.getX(i);
-    let y = pos.getY(i);
-    let z = pos.getZ(i);
-    const u = x / (L / 2);
-    const v = z / (W / 2);
-    y *= 1 - 0.45 * u * u;
-    z *= 1 - 0.2 * Math.abs(u) ** 4;
-    x += y * 1.6;
-    piatta.set([x, y, z], i * 3);
-    const cala = 0.3 * u * u + 0.07 * u ** 4;
-    posata.set([x * 0.97, y - cala - 0.07 * v * v, z * 0.98], i * 3);
+  const nu = dettaglio;
+  const nv = Math.round(dettaglio / 3);
+  const riga = nu + 1;
+  const perFaccia = riga * (nv + 1);
+  const piatta = new Float32Array(perFaccia * 2 * 3);
+  const posata = new Float32Array(perFaccia * 2 * 3);
+  const uv = new Float32Array(perFaccia * 2 * 2);
+  const indici = [];
+
+  for (let faccia = 0; faccia < 2; faccia++) {
+    const segno = faccia === 0 ? 1 : -1;
+    for (let j = 0; j <= nv; j++) {
+      for (let i = 0; i <= nu; i++) {
+        const u = (i / nu) * 2 - 1;
+        const v = (j / nv) * 2 - 1;
+        const meta = (W / 2) * (1 - 0.2 * Math.abs(u) ** 4);
+        const z = v * meta;
+        const spessore = (T / 2) * (1 - 0.5 * u * u) * Math.sqrt(Math.max(0, 1 - v ** 6)) * Math.sqrt(Math.max(0, 1 - u ** 8));
+        const y = segno * spessore + (faccia === 0 ? 0.012 * Math.sin(u * 9 + v * 3) * (1 - u * u) : 0);
+        const x = u * (L / 2) + segno * spessore * 1.3;
+        const k = faccia * perFaccia + j * riga + i;
+        piatta.set([x, y, z], k * 3);
+        const cala = 0.3 * u * u + 0.07 * u ** 4;
+        posata.set([x * 0.97, y - cala - 0.08 * v * v, z * 0.98], k * 3);
+        uv.set([i / nu, j / nv], k * 2);
+      }
+    }
+    for (let j = 0; j < nv; j++) {
+      for (let i = 0; i < nu; i++) {
+        const a = faccia * perFaccia + j * riga + i;
+        const b = a + 1;
+        const c = a + riga;
+        const d = c + 1;
+        if (faccia === 0) indici.push(a, c, b, b, c, d);
+        else indici.push(a, b, c, b, d, c);
+      }
+    }
   }
-  pos.array.set(piatta);
+
+  const geometry = new BufferGeometry();
+  geometry.setAttribute('position', new BufferAttribute(piatta, 3));
+  geometry.setAttribute('uv', new BufferAttribute(uv, 2));
+  geometry.setIndex(indici);
   geometry.computeVertexNormals();
 
   const piegata = geometry.clone();
-  piegata.attributes.position.array.set(posata);
+  piegata.setAttribute('position', new BufferAttribute(posata.slice(), 3));
   piegata.computeVertexNormals();
   geometry.morphAttributes.position = [new BufferAttribute(posata, 3)];
   geometry.morphAttributes.normal = [piegata.attributes.normal.clone()];
@@ -392,7 +505,7 @@ export function createNigiri(host, options = {}) {
   /* Piano laccato scuro: riflette le strisce di luce, sfuma nella nebbia. */
   const piano = new Mesh(
     new PlaneGeometry(40, 40),
-    new MeshPhysicalMaterial({ color: '#0a0e0c', roughness: 0.55, metalness: 0, clearcoat: 0.45, clearcoatRoughness: 0.22, envMapIntensity: 0.32 }),
+    new MeshPhysicalMaterial({ color: '#0a0e0c', roughness: 0.7, metalness: 0, clearcoat: 0.25, clearcoatRoughness: 0.3, envMapIntensity: 0.12 }),
   );
   piano.rotation.x = -Math.PI / 2;
   scene.add(piano);
@@ -416,16 +529,22 @@ export function createNigiri(host, options = {}) {
   scene.add(ombra);
 
   /* Riso */
-  const uniforms = { uConverge: { value: 0 }, uTime: { value: 0 } };
+  const uniforms = {
+    uConverge: { value: 0 },
+    uPressa: { value: 0 },
+    uSchiaccia: { value: 0 },
+    uFetta: { value: 0 },
+    uTime: { value: 0 },
+  };
   const dati = chicchi(grains, random(2026));
-  const geometriaChicco = new SphereGeometry(1, 9, 6);
-  geometriaChicco.scale(0.08, 0.036, 0.036);
-  geometriaChicco.setAttribute('aStart', new InstancedBufferAttribute(dati.start, 3));
-  geometriaChicco.setAttribute('aTarget', new InstancedBufferAttribute(dati.target, 3));
-  geometriaChicco.setAttribute('aQuatA', new InstancedBufferAttribute(dati.quatA, 4));
-  geometriaChicco.setAttribute('aQuatB', new InstancedBufferAttribute(dati.quatB, 4));
-  geometriaChicco.setAttribute('aTempi', new InstancedBufferAttribute(dati.tempi, 2));
-  const riso = new InstancedMesh(geometriaChicco, materialeRiso(uniforms), grains);
+  const chicco = geometriaChicco();
+  chicco.setAttribute('aStart', new InstancedBufferAttribute(dati.start, 3));
+  chicco.setAttribute('aCumulo', new InstancedBufferAttribute(dati.cumulo, 3));
+  chicco.setAttribute('aTarget', new InstancedBufferAttribute(dati.target, 3));
+  chicco.setAttribute('aQuatA', new InstancedBufferAttribute(dati.quatA, 4));
+  chicco.setAttribute('aQuatB', new InstancedBufferAttribute(dati.quatB, 4));
+  chicco.setAttribute('aTempi', new InstancedBufferAttribute(dati.tempi, 4));
+  const riso = new InstancedMesh(chicco, materialeRiso(uniforms), grains);
   const identita = new Matrix4();
   for (let i = 0; i < grains; i++) {
     riso.setMatrixAt(i, identita);
@@ -435,22 +554,26 @@ export function createNigiri(host, options = {}) {
   riso.frustumCulled = false;
   scene.add(riso);
 
-  const cuore = new Mesh(geometriaCuore(), new MeshStandardMaterial({ color: '#F6F1E7', roughness: 0.7, emissive: '#2a2722' }));
+  const cuore = new Mesh(geometriaCuore(), new MeshStandardMaterial({ color: '#F2EDE2', roughness: 0.7, emissive: '#26231e' }));
   scene.add(cuore);
 
   /* Salmone */
+  const trame = trameSalmone();
   const fetta = new Mesh(
-    geometriaFetta(still ? 96 : 64),
+    geometriaFetta(still ? 120 : 84),
     new MeshPhysicalMaterial({
-      map: tramaSalmone(),
-      roughness: 0.34,
+      map: trame.mappa,
+      bumpMap: trame.bump,
+      bumpScale: 1.6,
+      roughness: 0.4,
       clearcoat: 1,
-      clearcoatRoughness: 0.1,
+      clearcoatRoughness: 0.07,
       sheen: 0.6,
       sheenRoughness: 0.45,
       sheenColor: new Color('#ffb393'),
-      emissive: new Color('#5a1c08'),
-      emissiveIntensity: 0.35,
+      // La carne lascia passare un po' di luce: un bagliore caldo nelle ombre.
+      emissive: new Color('#6a2008'),
+      emissiveIntensity: 0.4,
       specularIntensity: 0.7,
     }),
   );
@@ -470,22 +593,30 @@ export function createNigiri(host, options = {}) {
 
   function applica(P, t) {
     const C = smooth(0, 0.5, P);
+    const pressa = morbido(clamp01((C - 0.8) / 0.2));
     uniforms.uConverge.value = C;
+    uniforms.uPressa.value = pressa;
     uniforms.uTime.value = t;
-    cuore.scale.setScalar(Math.max(0.001, smooth(0.62, 0.97, C)));
+    cuore.scale.set(1, 1, 1).multiplyScalar(Math.max(0.001, smooth(0.15, 1, pressa)));
     ombra.material.opacity = 0.85 * smooth(0.25, 1, C);
 
-    const F = morbido(clamp01((P - 0.46) / 0.32));
+    // La fetta scende, si posa piegandosi sul riso, e le dita la premono un attimo.
+    const F = morbido(clamp01((P - 0.46) / 0.3));
+    const tocco = Math.sin(clamp01((P - 0.74) / 0.12) * Math.PI);
+    uniforms.uSchiaccia.value = tocco;
+    uniforms.uFetta.value = smooth(0.6, 1, F);
+    cuore.scale.y *= 1 - 0.05 * tocco;
     fetta.visible = P > 0.42;
-    fetta.position.set(lerp(-0.55, 0, F), lerp(3.4, QUOTA_FETTA, F), lerp(0.25, 0, F));
+    fetta.position.set(lerp(-0.55, 0, F), lerp(3.4, QUOTA_FETTA, F) - 0.03 * tocco, lerp(0.25, 0, F));
     fetta.rotation.set(lerp(0.3, 0, F), lerp(0.85, 0.05, F), lerp(-0.45, 0, F));
-    fetta.morphTargetInfluences[0] = smooth(0.5, 1, F);
+    fetta.scale.set(1 + 0.02 * tocco, 1 - 0.12 * tocco, 1 + 0.02 * tocco);
+    fetta.morphTargetInfluences[0] = smooth(0.45, 1, F);
 
     const e = morbido(P);
     const az = lerp(-0.9, 0.55, e) + Math.sin(t * 0.21) * 0.035;
-    // Si parte dall'alto, come guardando il tagliere; si scende all'altezza del banco.
-    const el = lerp(0.95, 0.33, e);
-    const r = state.distanza * lerp(1.18, 1, e);
+    // Si parte un po' più in alto e più lontani; si scende all'altezza del banco.
+    const el = lerp(0.62, 0.33, e);
+    const r = state.distanza * lerp(1.22, 1, e);
     camera.position.set(Math.sin(az) * Math.cos(el) * r, Math.sin(el) * r + GUARDA.y, Math.cos(az) * Math.cos(el) * r);
     camera.lookAt(GUARDA);
   }

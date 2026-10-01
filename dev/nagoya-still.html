@@ -16,7 +16,7 @@
   const tela = document.getElementById('tela');
   tela.style.width = `${q.get('w') || 1600}px`;
   tela.style.height = `${q.get('h') || 1000}px`;
-  const scena = await createNigiri(tela, { grains: 1800, still: { time: 6, progress: Number(q.get('p') ?? 1) } });
+  const scena = await createNigiri(tela, { grains: 2600, still: { time: 6, progress: Number(q.get('p') ?? 1) } });
   window.__still = scena.canvas.toDataURL('image/webp', Number(q.get('q') || 0.8));
 </script>
 </body>
