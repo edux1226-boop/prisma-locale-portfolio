@@ -1,7 +1,10 @@
-# Sito statico: nessuna build, si pubblica la cartella così com'è.
+# Sito Vite multipagina: Netlify esegue la build e pubblica dist/.
 [build]
-  publish = "."
-  command = ""
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
 
 [[headers]]
   for = "/*"
@@ -9,20 +12,10 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
 
-# Gli asset con hash o versione non cambiano: cache lunga.
+# JS e CSS hanno l'hash nel nome, font e immagini non cambiano: cache lunga.
 [[headers]]
-  for = "/assets/img/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
