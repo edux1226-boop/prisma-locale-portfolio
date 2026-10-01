@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nagoya Sushi · Roseto degli Abruzzi · anteprima riservata</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Anteprima riservata del sito di Nagoya Sushi, Via Nazionale 21, Roseto degli Abruzzi. Demo realizzata da Prisma Locale.">
+<meta name="theme-color" content="#0F1412">
+<meta name="color-scheme" content="dark">
+<!-- Unico punto da cambiare per la scadenza dell'anteprima (ora italiana). -->
+<meta name="anteprima-scadenza" content="2026-10-31T23:59:59+01:00">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Nagoya Sushi, anteprima riservata">
+<meta property="og:description" content="La proposta di sito per Nagoya Sushi, Via Nazionale 21, Roseto. Preparata da Prisma Locale.">
+<meta property="og:image" content="https://prismalocale.it/assets/img/nagoya-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F1412'/%3E%3Cpath d='M6 26 26 6' stroke='%23FF7A4D' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/shippori-mincho-b1-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+
+<script>
+  (function (d) {
+    var r = d.documentElement;
+    var m = d.querySelector('meta[name="anteprima-scadenza"]');
+    var fine = m ? Date.parse(m.content) : NaN;
+    if (fine && Date.now() > fine) { r.classList.add('is-scaduta'); return; }
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion', 'is-loading');
+  })(document);
+</script>
+<script type="module" src="/src/anteprime/nagoya/main.js"></script>
+</head>
+
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M7.1 3.6h2.5l1.5 4.1-2.1 1.5a11.6 11.6 0 0 0 5.8 5.8l1.5-2.1 4.1 1.5v2.5a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 5.1 5.8a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.5 5.5h15v10.2H10l-4.6 3.6v-3.6h-.9Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-obliqua" viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-rotta" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+</svg>
+
+<!-- Mostrato solo dopo la data di scadenza (vedi lo script qui sopra). -->
+<div class="scaduta">
+  <p class="scaduta__kanji" aria-hidden="true">名古屋</p>
+  <h1 class="scaduta__titolo">Anteprima scaduta, contatta Prisma Locale</h1>
+  <p class="scaduta__link">
+    <a href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20l%27anteprima%20di%20Nagoya%20Sushi%20%C3%A8%20scaduta." rel="noopener">WhatsApp</a>
+    <span aria-hidden="true">·</span>
+    <a href="mailto:info@prismalocale.it">info@prismalocale.it</a>
+  </p>
+</div>
+
+<p class="anteprima" role="note"><span class="anteprima__punto" aria-hidden="true"></span>Anteprima riservata · Prisma Locale</p>
+<div class="filigrana" aria-hidden="true"></div>
+
+<div class="taglio" aria-hidden="true" data-taglio>
+  <div class="taglio__meta taglio__meta--su" data-meta="su"><span class="taglio__filo" data-filo></span></div>
+  <div class="taglio__meta taglio__meta--giu" data-meta="giu"><span class="taglio__filo" data-filo></span></div>
+  <span class="taglio__lama" data-lama></span>
+</div>
+
+<header class="testata" data-intro>
+  <a class="marchio" href="#inizio" aria-label="Nagoya Sushi, torna all'inizio">Nagoya <span>Sushi</span></a>
+  <nav class="testata__nav" aria-label="Sezioni">
+    <ul role="list">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#orari">Orari</a></li>
+      <li><a href="#dove">Dove siamo</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+  <a class="testata__tel" href="tel:+390852034515"><svg aria-hidden="true"><use href="#i-tel"/></svg>085 203 4515</a>
+</header>
+
+<main id="contenuto" tabindex="-1">
+
+<section class="hero" id="inizio" aria-labelledby="hero-titolo" data-hero>
+  <div class="hero__luce" aria-hidden="true"></div>
+  <p class="hero__occhiello" data-intro>Ristorante giapponese<br>Roseto degli Abruzzi</p>
+  <p class="hero__kanji" aria-hidden="true" data-intro>名古屋</p>
+
+  <h1 class="hero__titolo" id="hero-titolo">
+    <span class="sr-only">Nagoya Sushi</span>
+    <span class="hero__fette" aria-hidden="true" data-fette>
+      <span class="hero__fetta" data-fetta-titolo="su">Nagoya</span>
+      <span class="hero__fetta" data-fetta-titolo="giu">Nagoya</span>
+    </span>
+  </h1>
+  <span class="hero__lama" aria-hidden="true" data-hero-lama></span>
+
+  <div class="hero__testo">
+    <p class="hero__sotto" data-intro>Sushi in Via Nazionale, a&nbsp;Roseto.</p>
+    <div class="hero__azioni" data-intro>
+      <a class="btn btn--salmone" href="tel:+390852034515">
+        <svg class="btn__icona" aria-hidden="true"><use href="#i-tel"/></svg>
+        Chiama <span class="btn__extra">085 203 4515</span>
+      </a>
+      <a class="btn btn--linea" href="https://www.google.com/maps/dir/?api=1&amp;destination=Nagoya%20Sushi%2C%20Via%20Nazionale%2021%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener">
+        Indicazioni<span class="sr-only"> (si apre in una nuova scheda)</span>
+        <svg class="btn__freccia" aria-hidden="true"><use href="#i-obliqua"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <p class="hero__indirizzo" data-intro>Via Nazionale 21<br>64026 Roseto degli Abruzzi (TE)</p>
+</section>
+
+<section class="scena" id="nigiri" aria-label="Un nigiri, in tre passaggi" data-scena>
+  <div class="scena__palco" data-palco>
+    <div class="scena__tela" data-tela></div>
+    <picture class="scena__foto">
+      <source media="(min-aspect-ratio: 1/1)" srcset="/assets/img/nagoya-nigiri-wide-1600.webp 1600w, /assets/img/nagoya-nigiri-wide-2400.webp 2400w" sizes="100vw" width="1600" height="1000">
+      <img src="/assets/img/nagoya-nigiri-tall-900.webp" width="900" height="1500" loading="lazy" decoding="async"
+           alt="Un nigiri di salmone ripreso da vicino: riso compatto e una fetta lucida con le venature diagonali, su un piano scuro.">
+    </picture>
+    <ol class="scena__frasi" role="list">
+      <li class="frase frase--1" data-frase>Prima il riso.</li>
+      <li class="frase frase--2" data-frase>Sopra, una fetta sola.</li>
+      <li class="frase frase--3" data-frase>Un gesto preciso. Niente di più.</li>
+    </ol>
+    <div class="scena__corsa" aria-hidden="true"><span data-corsa></span></div>
+  </div>
+</section>
+
+<section class="menu fascia" id="menu" aria-labelledby="menu-titolo" data-menu>
+  <span class="fascia__taglio" aria-hidden="true" data-linea></span>
+  <div class="tagliere" data-tagliere>
+   <div class="tagliere__binario" data-binario>
+    <div class="menu__testa">
+      <p class="etichetta">Menu d'esempio</p>
+      <h2 class="titolo" id="menu-titolo" data-rivela>Il menu, una fetta alla volta</h2>
+      <p class="menu__nota">Struttura d'esempio: piatti e prezzi sono <span class="dc">[DA CONFERMARE]</span> con il locale.</p>
+    </div>
+    <ol class="fette" role="list" data-fette-lista>
+      <li class="fetta" data-fetta>
+        <div class="fetta__corpo">
+          <div class="fetta__contenuto" data-fetta-contenuto>
+            <h3 class="fetta__nome">Nigiri</h3>
+            <ul class="piatti" role="list">
+              <li class="piatto"><span class="piatto__nome">Sake</span><span class="piatto__desc">salmone</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Maguro</span><span class="piatto__desc">tonno</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Ebi</span><span class="piatto__desc">gambero</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Suzuki</span><span class="piatto__desc">branzino</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+            </ul>
+          </div>
+        </div>
+        <span class="fetta__velo" aria-hidden="true" data-velo></span>
+      </li>
+      <li class="fetta" data-fetta>
+        <div class="fetta__corpo">
+          <div class="fetta__contenuto" data-fetta-contenuto>
+            <h3 class="fetta__nome">Uramaki</h3>
+            <ul class="piatti" role="list">
+              <li class="piatto"><span class="piatto__nome">California</span><span class="piatto__desc">surimi, avocado, cetriolo</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Philadelphia</span><span class="piatto__desc">salmone, formaggio fresco</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Ebiten</span><span class="piatto__desc">gambero in tempura</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Spicy tuna</span><span class="piatto__desc">tonno, salsa piccante</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+            </ul>
+          </div>
+        </div>
+        <span class="fetta__velo" aria-hidden="true" data-velo></span>
+      </li>
+      <li class="fetta" data-fetta>
+        <div class="fetta__corpo">
+          <div class="fetta__contenuto" data-fetta-contenuto>
+            <h3 class="fetta__nome">Sashimi</h3>
+            <ul class="piatti" role="list">
+              <li class="piatto"><span class="piatto__nome">Salmone</span><span class="piatto__desc">a fette</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Tonno</span><span class="piatto__desc">a fette</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Branzino</span><span class="piatto__desc">a fette</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Misto</span><span class="piatto__desc">scelta del banco</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+            </ul>
+          </div>
+        </div>
+        <span class="fetta__velo" aria-hidden="true" data-velo></span>
+      </li>
+      <li class="fetta" data-fetta>
+        <div class="fetta__corpo">
+          <div class="fetta__contenuto" data-fetta-contenuto>
+            <h3 class="fetta__nome">Temaki</h3>
+            <ul class="piatti" role="list">
+              <li class="piatto"><span class="piatto__nome">Salmone</span><span class="piatto__desc">e avocado</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Tonno</span><span class="piatto__desc">piccante</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Gambero</span><span class="piatto__desc">in tempura</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+              <li class="piatto"><span class="piatto__nome">Verdure</span><span class="piatto__desc">di stagione</span><span class="piatto__prezzo dc">[DA CONFERMARE]</span></li>
+            </ul>
+          </div>
+        </div>
+        <span class="fetta__velo" aria-hidden="true" data-velo></span>
+      </li>
+    </ol>
+   </div>
+    <p class="tagliere__guida" aria-hidden="true"><span data-fetta-num>1</span> / 4 · scorri le fette</p>
+  </div>
+</section>
+
+<section class="orari sezione" id="orari" aria-labelledby="orari-titolo">
+  <div class="orari__testa">
+    <h2 class="titolo" id="orari-titolo" data-rivela>Quando trovarci</h2>
+  </div>
+
+  <dl class="formula" data-sfuma>
+    <div><dt>Formula</dt><dd>All you can eat o alla carta <span class="dc">[DA CONFERMARE]</span></dd></div>
+    <div><dt>Prezzi</dt><dd><span class="dc">[DA CONFERMARE]</span></dd></div>
+    <div><dt>Asporto</dt><dd><span class="dc">[DA CONFERMARE]</span></dd></div>
+    <div><dt>Consegna</dt><dd><span class="dc">[DA CONFERMARE]</span></dd></div>
+  </dl>
+
+  <div class="tabella" data-sfuma>
+    <table>
+      <caption>Orari della settimana <span class="dc">[DA CONFERMARE]</span></caption>
+      <thead>
+        <tr><th scope="col">Giorno</th><th scope="col">Pranzo</th><th scope="col">Cena</th></tr>
+      </thead>
+      <tbody data-giorni>
+        <tr data-giorno="1"><th scope="row">Lunedì</th><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td></tr>
+        <tr data-giorno="2"><th scope="row">Martedì</th><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td></tr>
+        <tr data-giorno="3"><th scope="row">Mercoledì</th><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td></tr>
+        <tr data-giorno="4"><th scope="row">Giovedì</th><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td></tr>
+        <tr data-giorno="5"><th scope="row">Venerdì</th><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td></tr>
+        <tr data-giorno="6"><th scope="row">Sabato</th><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td></tr>
+        <tr data-giorno="0"><th scope="row">Domenica</th><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td><td><span class="slot" aria-label="da confermare">––:–– · ––:––</span></td></tr>
+      </tbody>
+      <tfoot>
+        <tr><th scope="row">Chiusura</th><td colspan="2"><span class="dc">[DA CONFERMARE]</span></td></tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<section class="dove sezione fascia" id="dove" aria-labelledby="dove-titolo">
+  <span class="fascia__taglio" aria-hidden="true" data-linea></span>
+  <div class="dove__testo">
+    <h2 class="titolo" id="dove-titolo" data-rivela>Via Nazionale 21</h2>
+    <address class="dove__indirizzo" data-sfuma>64026 Roseto degli Abruzzi (TE)</address>
+    <dl class="dove__info" data-sfuma>
+      <div><dt>Parcheggio</dt><dd><span class="dc">[DA CONFERMARE]</span></dd></div>
+    </dl>
+    <a class="btn btn--salmone" data-sfuma href="https://www.google.com/maps/dir/?api=1&amp;destination=Nagoya%20Sushi%2C%20Via%20Nazionale%2021%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener">
+      <svg class="btn__icona" aria-hidden="true"><use href="#i-rotta"/></svg>
+      Indicazioni<span class="sr-only"> (si apre in una nuova scheda)</span>
+      <svg class="btn__freccia" aria-hidden="true"><use href="#i-obliqua"/></svg>
+    </a>
+  </div>
+
+  <figure class="mappa" data-mappa>
+    <svg viewBox="0 0 600 600" role="img" aria-labelledby="mappa-desc">
+      <desc id="mappa-desc">Mappa schematica: Via Nazionale corre parallela alla costa adriatica e il segnaposto indica Nagoya Sushi al numero 21.</desc>
+      <defs>
+        <pattern id="mappa-griglia" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M40 0H0V40" fill="none" stroke="currentColor" stroke-width="1" opacity=".07"/>
+        </pattern>
+        <pattern id="mappa-mare" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-32)">
+          <path d="M0 7h14" stroke="currentColor" stroke-width="1" opacity=".16"/>
+        </pattern>
+      </defs>
+      <rect width="600" height="600" fill="url(#mappa-griglia)"/>
+      <path d="M418 0H600V600H538Z" fill="url(#mappa-mare)"/>
+      <path class="mappa__costa" d="M418 0 538 600" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".45" data-traccia/>
+      <text class="mappa__mare" transform="translate(520 330) rotate(78.7)">Mare Adriatico</text>
+      <path class="mappa__strada" d="M306 0 426 600" fill="none" stroke="currentColor" stroke-width="3" data-traccia/>
+      <text class="mappa__via" transform="translate(298 44) rotate(78.7)">Via Nazionale</text>
+      <text class="mappa__citta" x="64" y="476">Roseto degli Abruzzi</text>
+      <g class="mappa__nord" transform="translate(64 72)">
+        <path d="M0 26 0-10M-6-3 0-11 6-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="-5" y="44">N</text>
+      </g>
+      <g class="mappa__segno" transform="translate(366 300)" data-segno>
+        <circle class="mappa__onda" r="22" fill="none" stroke="#FF7A4D" stroke-width="1.2"/>
+        <circle r="8" fill="#FF7A4D"/>
+      </g>
+      <g class="mappa__etichetta" transform="translate(150 286)">
+        <text class="mappa__nome" x="0" y="0">Nagoya Sushi</text>
+        <text class="mappa__civico" x="0" y="24">Via Nazionale 21</text>
+        <path d="M168 6H196" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      </g>
+    </svg>
+    <figcaption>Schema non in scala.</figcaption>
+  </figure>
+</section>
+
+<section class="contatti sezione" id="contatti" aria-labelledby="contatti-titolo">
+  <h2 class="contatti__numero" id="contatti-titolo" data-sfuma><a href="tel:+390852034515" aria-label="Chiama il numero 085 203 4515">085 203 4515</a></h2>
+  <p class="contatti__nota" data-sfuma>Telefono fisso del ristorante.</p>
+  <div class="contatti__azioni" data-sfuma>
+    <a class="btn btn--salmone" href="tel:+390852034515">
+      <svg class="btn__icona" aria-hidden="true"><use href="#i-tel"/></svg>
+      Chiama
+    </a>
+    <span class="btn btn--spento" aria-disabled="true">
+      <svg class="btn__icona" aria-hidden="true"><use href="#i-chat"/></svg>
+      WhatsApp <span class="dc">[DA CONFERMARE]</span>
+    </span>
+  </div>
+</section>
+
+<section class="serve fascia" id="cosa-serve" aria-labelledby="serve-titolo">
+  <span class="fascia__taglio" aria-hidden="true" data-linea></span>
+  <div class="serve__foglio">
+    <p class="etichetta">Nota di Prisma Locale per il titolare</p>
+    <h2 class="titolo" id="serve-titolo" data-rivela>Cosa ci serve per andare online</h2>
+    <p class="serve__intro" data-sfuma>La struttura c'è. Mancano i dati che solo il locale conosce: spunta quello che hai già pronto.</p>
+
+    <ul class="lista" role="list" data-lista>
+      <li><label><input type="checkbox" value="foto"><span class="lista__voce"><b>Foto</b><span>Piatti, banco, sala e ingresso, con luce naturale.</span></span></label></li>
+      <li><label><input type="checkbox" value="orari"><span class="lista__voce"><b>Orari e chiusura</b><span>Pranzo e cena giorno per giorno, più le ferie.</span></span></label></li>
+      <li><label><input type="checkbox" value="menu"><span class="lista__voce"><b>Menu con prezzi</b><span>Va bene anche una foto del menu cartaceo.</span></span></label></li>
+      <li><label><input type="checkbox" value="formula"><span class="lista__voce"><b>Formula</b><span>All you can eat, alla carta o tutte e due, con i prezzi.</span></span></label></li>
+      <li><label><input type="checkbox" value="logo"><span class="lista__voce"><b>Logo</b><span>Il file originale. Se non c'è, una foto dell'insegna.</span></span></label></li>
+      <li><label><input type="checkbox" value="whatsapp"><span class="lista__voce"><b>Numero WhatsApp</b><span>Solo se volete ricevere messaggi anche lì.</span></span></label></li>
+      <li><label><input type="checkbox" value="servizi"><span class="lista__voce"><b>Asporto, consegna, parcheggio</b><span>Sì o no, e come funziona.</span></span></label></li>
+    </ul>
+
+    <div class="serve__piede">
+      <p class="serve__conto" aria-live="polite"><span data-conto>0</span> di 7 pronti</p>
+      <a class="btn btn--salmone" href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20sono%20di%20Nagoya%20Sushi.%20Ho%20visto%20l%27anteprima%20del%20sito." target="_blank" rel="noopener" data-invia>
+        <svg class="btn__icona" aria-hidden="true"><use href="#i-chat"/></svg>
+        Rispondi a Prisma Locale<span class="sr-only"> su WhatsApp (si apre in una nuova scheda)</span>
+      </a>
+      <p class="serve__mail">oppure <a href="mailto:info@prismalocale.it?subject=Nagoya%20Sushi%2C%20materiale%20per%20il%20sito">info@prismalocale.it</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="piede">
+  <p class="piede__firma">Demo realizzata da <a href="https://prismalocale.it/">Prisma Locale</a></p>
+  <p class="piede__nota">Anteprima non commissionata, valida fino al 31 ottobre 2026. Il nome Nagoya Sushi appartiene ai legittimi proprietari. Le voci <span class="dc">[DA CONFERMARE]</span> vanno verificate con il locale.</p>
+</footer>
+
+<nav class="barra" aria-label="Azioni rapide">
+  <a class="barra__voce barra__voce--chiama" href="tel:+390852034515"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
+  <span class="barra__voce barra__voce--spenta" aria-disabled="true"><svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp<small>[DA CONFERMARE]</small></span>
+  <a class="barra__voce" href="https://www.google.com/maps/dir/?api=1&amp;destination=Nagoya%20Sushi%2C%20Via%20Nazionale%2021%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-rotta"/></svg>Indicazioni<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+</nav>
+</body>
+</html>
