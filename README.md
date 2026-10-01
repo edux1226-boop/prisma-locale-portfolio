@@ -43,6 +43,7 @@ che a sua volta aggiorna ScrollTrigger.
 .
 ├── index.html                 home
 ├── progetti/saporito.html     caso studio (demo non commissionata)
+├── anteprime/                 demo riservate per potenziali clienti (noindex)
 ├── privacy.html · grazie.html · 404.html
 ├── src/
 │   ├── styles/                tokens.css · base.css · home.css · page.css
@@ -117,6 +118,18 @@ la scena si regola da sola (vedi sotto).
 - **Netlify Forms**: al primo deploy attivare le notifiche email del modulo "contatti".
 - **Privacy**: il testo è aggiornato al modulo e ai caratteri self-hosted, ma va fatto
   rivedere a un consulente.
+
+## Anteprime per i clienti
+
+`anteprime/` contiene demo riservate da mostrare ai titolari prima di un incarico.
+Non sono linkate dal sito, hanno `noindex, nofollow` (meta e header Netlify) e una
+filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
+
+- **Nagoya Sushi** (`/anteprime/nagoya-sushi/`): concept "Il taglio", scena Three.js
+  pinnata (`src/anteprime/nagoya/`). La scadenza è il meta `anteprima-scadenza`
+  nella pagina: dopo quella data resta solo "Anteprima scaduta, contatta Prisma Locale".
+  La scadenza è lato client, quindi è un deterrente, non una protezione.
+  Immagini statiche e immagine social: `node scripts/render-nagoya.mjs` con il dev server attivo.
 
 ## Progetti mostrati
 

@@ -16,6 +16,7 @@ export default defineConfig({
         privacy: resolve(root, 'privacy.html'),
         grazie: resolve(root, 'grazie.html'),
         notFound: resolve(root, '404.html'),
+        nagoya: resolve(root, 'anteprime/nagoya-sushi/index.html'),
       },
     },
   },
