@@ -1,113 +1,130 @@
 # Prisma Locale
 
-Sito di presentazione di **Prisma Locale**, studio di presenza digitale per attività
-locali di Pescara e dell'Abruzzo: siti web, social media, identità visiva.
+Sito di **Prisma Locale**, studio digitale di Roseto degli Abruzzi: siti web, landing page,
+branding e presenza locale per ristoranti, palestre, saloni, B&B e società sportive.
 
 **Online:** [prismalocale.it](https://prismalocale.it)
 
 ---
 
-## Impostazione tecnica
+## L'idea
 
-Sito statico in HTML, CSS e JavaScript nativo. **Nessuna dipendenza a runtime,
-nessun passaggio di build**: la cartella si pubblica così com'è.
+Un prisma prende la luce bianca e la scompone nei colori. Prisma Locale prende un'attività
+che online sembra uguale alle altre e ne tira fuori l'identità. Il sito resta quasi
+acromatico (Notte, Calce) e lo spettro compare **solo dove nasce un'identità**: il fascio
+nell'hero, la vetrina che diventa un sito, i lavori.
 
-La scelta è deliberata. Per un sito di presentazione di poche pagine, un framework
-aggiungerebbe peso e manutenzione senza restituire nulla al visitatore. Il risultato
-è un primo caricamento sotto il megabyte, comprese tutte le immagini.
+Tre mosse firma, tutto il resto quieto:
+
+1. **Il prisma** (hero) — vetro fisico in Three.js (`MeshPhysicalMaterial` con
+   `transmission` e `dispersion`) che rifrange un fascio di luce nello spettro.
+   Segue il mouse, ruota e scivola con lo scroll.
+2. **La vetrina grigia** (Prima e dopo) — sezione pinnata: insegna, vetrina, lavagna e
+   foglio sulla porta di una pizzeria qualunque entrano nel prisma ed escono a colori,
+   ricomponendo un sito vivo. Pizzeria Bianca è un esempio inventato.
+3. **Titoli a maschera** — rivelazione riga per riga con SplitText.
+
+## Stack
 
 | | |
 |---|---|
-| Peso totale | ~0,9 MB |
-| Dipendenze | nessuna |
-| Build | nessuna |
-| JavaScript | 5 moduli ES, ~6 KB non compressi |
-| Immagini | WebP, dimensionate per breakpoint |
+| Build | Vite 8 (multipagina) |
+| 3D | Three.js r186, caricato solo su desktop |
+| Movimento | GSAP 3.15 (ScrollTrigger, SplitText) + Lenis |
+| Caratteri | Newsreader (display, ottica 72) e Schibsted Grotesk, self-hosted e ridotti al latino (~76 KB in tutto) |
+| Hosting | Netlify (build `npm run build`, pubblica `dist/`), modulo su Netlify Forms |
+
+Lenis è collegato al ticker di GSAP (`autoRaf: false`): un solo ciclo guida lo scroll,
+che a sua volta aggiorna ScrollTrigger.
 
 ## Struttura
 
 ```
 .
-├── index.html              homepage
-├── privacy.html            informativa privacy e cookie
-├── progetti/
-│   └── saporito.html       case study
-├── assets/
-│   ├── css/
-│   │   ├── tokens.css      design system: colore, tipografia, spazio, movimento
-│   │   ├── base.css        reset, layout, bottoni, card, mockup
-│   │   ├── sections.css    sezioni della homepage, prisma 3D, tilt
-│   │   └── case.css        pagina case study
-│   ├── js/
-│   │   ├── main.js         entry point (modulo ES)
-│   │   └── modules/
-│   │       ├── reveal.js   comparsa al rientro in viewport
-│   │       ├── nav.js      navigazione, menu mobile, link attivo
-│   │       ├── parallax.js parallasse 3D della hero
-│   │       └── tilt.js     inclinazione 3D al passaggio del puntatore
-│   └── img/                screenshot in WebP, favicon SVG
-├── robots.txt
-├── sitemap.xml
-└── netlify.toml            directory di pubblicazione, header, cache
+├── index.html                 home
+├── progetti/saporito.html     caso studio (demo non commissionata)
+├── privacy.html · grazie.html · 404.html
+├── src/
+│   ├── styles/                tokens.css · base.css · home.css · page.css
+│   └── js/
+│       ├── main.js            ingresso della home
+│       ├── page.js            ingresso delle pagine interne
+│       ├── core/motion.js     GSAP, ScrollTrigger, SplitText, Lenis
+│       ├── hero.js            regia dell'hero: 3D o immagine statica
+│       ├── prism/             scena Three.js e shader
+│       ├── story.js           la vetrina grigia (timeline pinnata)
+│       └── ui/                nav, intro, titoli, banco ottico, modulo
+├── public/                    font, immagini, favicon, robots, sitemap
+├── dev/                       pagine di servizio per generare le immagini (non pubblicate)
+└── scripts/render-stills.mjs  rigenera immagini statiche, immagine social e icone
 ```
 
-## Design system
-
-Ogni valore cromatico passa da `assets/css/tokens.css`, ed è derivato dal logo.
-
-| Token | Valore | Origine |
-|---|---|---|
-| `--ink` | `#070C18` | fondo del marchio |
-| `--paper` | `#F3F6FB` | bianco freddo coordinato |
-| `--accent` | `#2563EB` | blu del lettering |
-| `--accent-deep` | `#1740B5` | blu profondo del pin |
-| `--mint` | `#14C9A0` | verde della tagline |
-| `--spectrum` | blu profondo → blu → azzurro → menta | rifrazione, la firma visiva |
-
-Modificando questi valori cambia l'intera identità cromatica: si propagano a bottoni,
-linee, superfici scure, prisma 3D e aloni.
-
-## Movimento
-
-Le animazioni sono costruite su `transform` e `opacity`, quindi restano sulla GPU e
-non provocano reflow. Il JavaScript scrive solo variabili CSS; le trasformazioni le
-calcola il foglio di stile.
-
-Ogni effetto è condizionato a `prefers-reduced-motion`, e quelli basati sul puntatore
-anche a `(hover: hover) and (pointer: fine)`: su touch e per chi ha ridotto le
-animazioni di sistema, il sito è statico e completo.
-
-## Sviluppo locale
+## Sviluppo
 
 ```bash
-npx serve -l 4321
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # produzione in dist/
+npm run preview    # anteprima della build
 ```
 
-Poi apri `http://localhost:4321`. Su Windows è disponibile anche `scripts/dev.cmd`.
+Su Windows c'è anche `scripts/dev.cmd`.
 
-## Pubblicazione
+### Immagini statiche del prisma
 
-Deploy continuo su **Netlify** dal branch `main`.
+Su mobile, con movimento ridotto o se WebGL non è disponibile, l'hero mostra
+un'immagine: è **la stessa scena Three.js**, renderizzata in anticipo con la stessa
+composizione. Per rigenerarle (dopo aver toccato la scena):
 
-- **Build command:** nessuno
-- **Publish directory:** `.` (radice)
+```bash
+npm run dev                              # in un terminale
+node scripts/render-stills.mjs           # in un altro (richiede Playwright)
+```
 
-La configurazione è in `netlify.toml`, versionata insieme al sito: definisce la
-directory di pubblicazione, gli header di sicurezza e la cache lunga sulle immagini.
+## Qualità
+
+Misurato con Lighthouse 13 sulla build di produzione:
+
+| Pagina | Performance | Accessibilità | Best practice | SEO |
+|---|---|---|---|---|
+| Home — mobile | 99 | 100 | 100 | 100 |
+| Home — desktop | 100 | 100 | 100 | 100 |
+| Caso Saporito — mobile | 99 | 100 | 100 | 100 |
+
+Home mobile: FCP 1,4 s · LCP 2,1 s · TBT 30 ms · CLS 0.
+Lighthouse gira senza GPU, quindi il punteggio desktop non misura il costo del 3D: per quello
+la scena si regola da sola (vedi sotto).
+
+- **Mobile-first**: niente Three.js sotto i 1024 px o con puntatore touch (il chunk da
+  ~146 KB gzip non viene nemmeno scaricato).
+- **Il 3D si adatta**: misura il frame rate; se scende abbassa risoluzione e trasmissione,
+  se non basta passa all'immagine statica. Si ferma quando l'hero esce dallo schermo o la
+  scheda è nascosta.
+- **Pulizia**: `cancelAnimationFrame`, dispose di geometrie, materiali, texture, ambiente
+  PMREM e renderer, gestione di `webglcontextlost` / `webglcontextrestored`.
+- **`prefers-reduced-motion`**: niente Lenis, niente split, niente pin; il prima e il dopo
+  restano affiancati e completi.
+- **Solo `transform` e `opacity`** nelle animazioni CSS e GSAP.
+- **Avvio leggero**: tutto ciò che sta sotto la piega si prepara in `requestIdleCallback`;
+  i titoli si dividono solo quando si avvicinano allo schermo; `ScrollTrigger.refresh()`
+  una volta, dopo caratteri e immagini.
+- HTML semantico, skip link, menu mobile su `<dialog>` nativo, contrasti AA, SEO locale
+  (dati strutturati `ProfessionalService`, area servita, Open Graph).
+
+## Da completare
+
+- **Partita IVA** nel footer (obbligatoria per i siti di attività in Italia).
+- **Netlify Forms**: al primo deploy attivare le notifiche email del modulo "contatti".
+- **Privacy**: il testo è aggiornato al modulo e ai caratteri self-hosted, ma va fatto
+  rivedere a un consulente.
 
 ## Progetti mostrati
 
-I lavori nella sezione Progetti — Saporito, Frida Fitness, Pizzeria Annarè — sono
-**concept dimostrativi**, non incarichi commissionati. Non sono affiliati né approvati
-dalle attività citate, i cui marchi appartengono ai rispettivi proprietari.
-
-Il sito lo dichiara apertamente in quattro punti: l'etichetta *Concept* su ogni card,
-la nota sotto il case study in evidenza, la chiusura della sezione Progetti e la
-pagina del case study. È una scelta di trasparenza, non una formalità: un portfolio
-che finge commesse inesistenti non regge la prima domanda di un cliente.
+Saporito è una **demo non commissionata**: non è affiliata né approvata dall'attività,
+il cui marchio appartiene ai legittimi proprietari. Il sito lo dichiara nella card dei
+lavori, nel caso studio e nella privacy.
 
 ---
 
-© 2026 Prisma Locale. Tutti i diritti riservati.
-Il codice è pubblico a scopo di trasparenza e consultazione; grafica, testi e
-identità visiva non sono riutilizzabili senza autorizzazione.
+© 2026 Prisma Locale. Codice pubblico a scopo di trasparenza; grafica, testi e identità
+visiva non sono riutilizzabili senza autorizzazione.

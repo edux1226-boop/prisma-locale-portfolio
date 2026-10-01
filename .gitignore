@@ -12,7 +12,7 @@ Desktop.ini
 .idea/
 *.swp
 
-# Dipendenze e build (il sito non ne usa, ma evita commit accidentali)
+# Dipendenze e build
 node_modules/
 dist/
 .cache/

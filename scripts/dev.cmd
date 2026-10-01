@@ -1,3 +1,4 @@
 @echo off
 cd /d "%~dp0.."
-npx --yes serve -l 4321 .
+if not exist node_modules call npm install
+npm run dev

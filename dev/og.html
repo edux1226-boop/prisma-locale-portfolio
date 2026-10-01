@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Immagine social (solo sviluppo)</title>
+<style>
+  @font-face { font-family: "Newsreader Display"; src: url("/assets/fonts/newsreader-display.woff2") format("woff2"); }
+  @font-face { font-family: "Newsreader Display"; font-style: italic; src: url("/assets/fonts/newsreader-display-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Schibsted Grotesk"; src: url("/assets/fonts/schibsted-grotesk.woff2") format("woff2"); font-weight: 400 700; }
+  html, body { margin: 0; }
+  .og {
+    position: relative; width: 1200px; height: 630px; overflow: hidden;
+    background: #0A0F24 url("/assets/img/prisma-wide-1600.webp") 62% 10% / 1300px auto no-repeat;
+    color: #EEEAE2; font-family: "Schibsted Grotesk", sans-serif;
+  }
+  .og::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(10 15 36 / .85), rgb(10 15 36 / .2) 60%, transparent); }
+  .kicker { position: absolute; left: 64px; top: 58px; font-size: 18px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #9AA0B4; }
+  h1 { position: absolute; left: 60px; bottom: 120px; margin: 0; font: 440 104px/0.92 "Newsreader Display", serif; letter-spacing: -.035em; }
+  em { font-style: italic; background: linear-gradient(90deg,#FF5A48,#FF9F43 17%,#FFE066 33%,#6EE7A8 50%,#5CC8FF 66%,#6F7BFF 83%,#B07CFF); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: .06em; }
+  .foot { position: absolute; left: 64px; right: 64px; bottom: 52px; display: flex; justify-content: space-between; font-size: 22px; }
+  .brand { font: 440 30px/1 "Newsreader Display", serif; letter-spacing: -.02em; }
+  .brand i { font-style: italic; }
+  .foot span:last-child { color: #9AA0B4; }
+</style>
+</head>
+<body>
+  <div class="og" id="og">
+    <div class="kicker">Studio digitale · Roseto degli Abruzzi</div>
+    <h1>La tua attività<br>ha già un <em>colore.</em></h1>
+    <div class="foot"><span class="brand">Prisma <i>Locale</i></span><span>prismalocale.it</span></div>
+  </div>
+</body>
+</html>

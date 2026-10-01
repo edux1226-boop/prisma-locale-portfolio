@@ -1,853 +1,653 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<title>Prisma Locale — Siti web per attività locali a Pescara e in Abruzzo</title>
-<meta name="description" content="Progettiamo siti web e presenza digitale per ristoranti, palestre, saloni e negozi di Pescara e dell'Abruzzo. Design su misura, mobile-first, pensato per farti trovare e ricordare.">
+<title>Prisma Locale — Siti web e branding per attività locali a Roseto degli Abruzzi</title>
+<meta name="description" content="Siti web, landing page, branding e presenza su Google per ristoranti, palestre, saloni, B&amp;B e società sportive di Roseto degli Abruzzi e della costa teramana. Fatti a mano, di persona.">
 <link rel="canonical" href="https://prismalocale.it/">
-<meta name="theme-color" content="#F3F6FB" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#070C18" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0A0F24">
+<meta name="color-scheme" content="dark">
+<meta name="geo.region" content="IT-TE">
+<meta name="geo.placename" content="Roseto degli Abruzzi">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="Prisma Locale">
 <meta property="og:url" content="https://prismalocale.it/">
-<meta property="og:title" content="Prisma Locale — Siti web per attività locali a Pescara e in Abruzzo">
-<meta property="og:description" content="La tua attività vale più di come appare online. Siti e presenza digitale su misura per le attività locali.">
-<meta property="og:image" content="https://prismalocale.it/assets/img/saporito-wide.webp">
+<meta property="og:title" content="Prisma Locale — La tua attività ha già un colore. Lo tiriamo fuori.">
+<meta property="og:description" content="Siti, landing page, branding e presenza locale per le attività di Roseto degli Abruzzi e della costa teramana.">
+<meta property="og:image" content="https://prismalocale.it/assets/img/og-prisma-locale.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un prisma di vetro scompone un fascio di luce bianca nei colori dello spettro">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/img/favicon.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/img/saporito-desktop-1280.webp" fetchpriority="high">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/sections.css">
-<script>document.documentElement.className += ' js';</script>
+<link rel="preload" href="/assets/fonts/newsreader-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader-display-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Prisma Locale",
-  "url": "https://prismalocale.it/",
-  "image": "https://prismalocale.it/assets/img/saporito-wide.webp",
-  "description": "Progettazione di siti web e presenza digitale per attività locali a Pescara e in Abruzzo.",
-  "email": "info@prismalocale.it",
-  "telephone": "+39 375 835 0800",
-  "sameAs": ["https://www.instagram.com/prismalocale/"],
-  "areaServed": [
-    { "@type": "City", "name": "Pescara" },
-    { "@type": "AdministrativeArea", "name": "Provincia di Pescara" },
-    { "@type": "AdministrativeArea", "name": "Abruzzo" }
-  ],
-  "knowsAbout": ["Web design", "Siti web per ristoranti", "Identità visiva", "Social media per attività locali"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Servizi",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Siti web per attività locali" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Identità visiva" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contenuti social" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soluzioni digitali e automazioni" } }
-    ]
-  }
-}
+<script>
+  (function (d) {
+    var r = d.documentElement;
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion', 'is-loading');
+  })(document);
 </script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Ho già Instagram. Mi serve davvero un sito?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Instagram è ottimo per farti scoprire, ma decide lui chi vede i tuoi post e chi non ha un profilo resta fuori. Il sito è l'unico posto online davvero tuo, che compare su Google. Nella pratica lavorano insieme: Instagram porta le persone, il sito le trasforma in prenotazioni, chiamate e visite." }
+      "@type": "ProfessionalService",
+      "@id": "https://prismalocale.it/#studio",
+      "name": "Prisma Locale",
+      "url": "https://prismalocale.it/",
+      "logo": "https://prismalocale.it/apple-touch-icon.png",
+      "image": "https://prismalocale.it/assets/img/og-prisma-locale.jpg",
+      "description": "Studio digitale di Roseto degli Abruzzi: siti web, landing page, branding e presenza locale per ristoranti, palestre, saloni, B&B e società sportive.",
+      "email": "info@prismalocale.it",
+      "telephone": "+39 375 835 0800",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Cristoforo Colombo 125",
+        "postalCode": "64026",
+        "addressLocality": "Roseto degli Abruzzi",
+        "addressRegion": "TE",
+        "addressCountry": "IT"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Roseto degli Abruzzi" },
+        { "@type": "City", "name": "Giulianova" },
+        { "@type": "City", "name": "Pineto" },
+        { "@type": "City", "name": "Silvi" },
+        { "@type": "City", "name": "Teramo" },
+        { "@type": "City", "name": "Atri" },
+        { "@type": "AdministrativeArea", "name": "Provincia di Teramo" }
+      ],
+      "sameAs": ["https://www.instagram.com/prismalocale/"],
+      "knowsAbout": ["Siti web per attività locali", "Landing page", "Branding", "Google Business Profile", "SEO locale"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servizi",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Siti web" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing page" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Presenza locale e scheda Google" } }
+        ]
+      }
     },
     {
-      "@type": "Question",
-      "name": "Quanto tempo ci vuole per realizzare il sito?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Dipende da quante pagine servono e da quanto in fretta arrivano foto e informazioni. La data di consegna viene indicata insieme al preventivo, prima di iniziare." }
-    },
-    {
-      "@type": "Question",
-      "name": "Non ho foto belle e non so cosa scrivere.",
-      "acceptedAnswer": { "@type": "Answer", "text": "I testi li scriviamo noi partendo da come racconti la tua attività a voce. Per le foto indichiamo esattamente cosa serve e come ottenerlo, oppure organizziamo uno scatto dedicato." }
-    },
-    {
-      "@type": "Question",
-      "name": "Dopo la consegna posso aggiornare il sito da solo?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sì, per le cose che cambiano spesso come orari, menu, prezzi e chiusure. Lasciamo un modo semplice per farlo e una spiegazione senza tecnicismi. Per le modifiche più grosse ci occupiamo noi." }
-    },
-    {
-      "@type": "Question",
-      "name": "Perché costa più di un sito trovato online a 50 euro?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A quella cifra si compra un modello già pronto, uguale a centinaia di altri. Qui si paga il tempo di capire l'attività, decidere cosa mettere in prima pagina e progettare il percorso che porta una persona dalla curiosità alla prenotazione." }
+      "@type": "WebSite",
+      "@id": "https://prismalocale.it/#sito",
+      "url": "https://prismalocale.it/",
+      "name": "Prisma Locale",
+      "inLanguage": "it-IT",
+      "publisher": { "@id": "https://prismalocale.it/#studio" }
     }
   ]
 }
 </script>
+<script type="module" src="/src/js/main.js"></script>
 </head>
 
 <body>
-<a class="skip-link" href="#main">Vai al contenuto</a>
+<a class="skip-link" href="#contenuto">Vai al contenuto</a>
 
-<!-- ============================ NAV ============================ -->
-<header class="nav" data-nav>
-  <div class="container nav__inner">
-    <a class="brand" href="#top" aria-label="Prisma Locale, torna all'inizio">
-      <img class="brand__mark" src="assets/img/favicon.svg" width="28" height="28" alt="" aria-hidden="true">
-      <span class="brand__name">Prisma<span>Locale</span></span>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="f-destra" viewBox="0 0 16 16"><path d="M2.5 8h10.5M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="f-obliqua" viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="f-giu" viewBox="0 0 16 16"><path d="M8 2.5V13M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="f-sinistra" viewBox="0 0 16 16"><path d="M13.5 8H3M7 3.5 2.5 8 7 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="glifo" viewBox="0 0 40 36">
+    <path d="M0 19.6 12 18" stroke="#FBF8F1" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <path d="M12 18h16" stroke="#FBF8F1" stroke-width="1.2" stroke-linecap="round" opacity=".45"/>
+    <path d="M20 3.5 34.4 31H5.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    <g stroke-width="1.6" stroke-linecap="round" fill="none">
+      <path d="m28.2 16.8 11.3-5.4" stroke="#FF5A48"/>
+      <path d="m28.4 17.8 11.3-1.2" stroke="#FFE066"/>
+      <path d="m28.4 18.8 11.3 3" stroke="#5CC8FF"/>
+      <path d="m28.2 19.8 11.3 7" stroke="#B07CFF"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="site-header" data-header>
+  <a class="brand" href="#contenuto" data-intro aria-label="Prisma Locale, torna all'inizio">
+    <svg class="brand__mark" aria-hidden="true"><use href="#glifo"/></svg>
+    <span class="brand__name">Prisma <em>Locale</em></span>
+  </a>
+
+  <nav class="site-nav" aria-label="Principale" data-intro>
+    <ul role="list">
+      <li><a class="link-grow" href="#servizi" data-spy>Servizi</a></li>
+      <li><a class="link-grow" href="#prima-dopo" data-spy>Prima e dopo</a></li>
+      <li><a class="link-grow" href="#metodo" data-spy>Metodo</a></li>
+      <li><a class="link-grow" href="#lavori" data-spy>Lavori</a></li>
+      <li><a class="link-grow" href="#contatti" data-spy>Contatti</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions" data-intro>
+    <a class="btn btn--primary header-wa" href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20vorrei%20parlare%20della%20mia%20attivit%C3%A0." target="_blank" rel="noopener">
+      <span class="header-wa__dot" aria-hidden="true"></span>
+      <span class="header-wa__text">WhatsApp</span>
+      <span class="sr-only">(si apre in una nuova scheda)</span>
+      <svg class="btn__arrow" aria-hidden="true"><use href="#f-obliqua"/></svg>
     </a>
-
-    <nav class="nav__links" aria-label="Navigazione principale">
-      <a class="nav__link" data-nav-link href="#progetti">Progetti</a>
-      <a class="nav__link" data-nav-link href="#servizi">Servizi</a>
-      <a class="nav__link" data-nav-link href="#metodo">Metodo</a>
-      <a class="nav__link" data-nav-link href="#pacchetti">Pacchetti</a>
-    </nav>
-
-    <a class="btn nav__cta" href="#contatti">
-      Parliamone <span class="btn__arrow" aria-hidden="true">→</span>
-    </a>
-
-    <button class="nav__toggle" data-nav-toggle type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Apri il menu">
-      <i></i><i></i><i></i>
-    </button>
+    <button class="menu-toggle" type="button" aria-haspopup="dialog" aria-controls="menu" data-menu-open>Menu</button>
   </div>
 </header>
 
-<div class="nav-panel" id="nav-panel" data-nav-panel>
-  <a href="#progetti">Progetti</a>
-  <a href="#servizi">Servizi</a>
-  <a href="#metodo">Metodo</a>
-  <a href="#pacchetti">Pacchetti</a>
-  <a href="#domande">Domande</a>
-  <a class="btn btn--lg" href="#contatti">Parliamo del tuo progetto <span class="btn__arrow" aria-hidden="true">→</span></a>
-  <p class="nav-panel__meta">Pescara · provincia · Abruzzo<br>WhatsApp 375 835 0800<br>info@prismalocale.it</p>
-</div>
+<dialog class="menu" id="menu" aria-label="Menu" data-menu>
+  <button class="menu-toggle menu__close" type="button" data-menu-close>Chiudi</button>
+  <nav aria-label="Menu mobile">
+    <ul class="menu__list" role="list">
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#prima-dopo">Prima e dopo</a></li>
+      <li><a href="#metodo">Metodo</a></li>
+      <li><a href="#lavori">Lavori</a></li>
+      <li><a href="#perche-locale">Perché locale</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--primary" href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20vorrei%20parlare%20della%20mia%20attivit%C3%A0." target="_blank" rel="noopener">Scrivici su WhatsApp <span class="sr-only">(si apre in una nuova scheda)</span><svg class="btn__arrow" aria-hidden="true"><use href="#f-obliqua"/></svg></a>
+    <p>Roseto degli Abruzzi (TE) · <a href="mailto:info@prismalocale.it">info@prismalocale.it</a></p>
+  </div>
+</dialog>
 
-<main id="main">
+<main id="contenuto" tabindex="-1">
 
 <!-- ============================ HERO ============================ -->
-<section class="hero" id="top" data-hero>
-  <div class="container hero__grid">
-
-    <div class="hero__copy">
-      <p class="eyebrow" data-reveal>Pescara · provincia · Abruzzo</p>
-
-      <h1 class="hero__title" data-reveal-lines style="margin-top:var(--s-5)">
-        <span class="line-mask"><span class="line-inner">La tua attività</span></span>
-        <span class="line-mask"><span class="line-inner"><span class="serif">vale più</span> di come</span></span>
-        <span class="line-mask"><span class="line-inner">appare online.</span></span>
-      </h1>
-
-      <p class="lead hero__sub" data-reveal style="--reveal-delay:180ms; margin-top:var(--s-5)">
-        Progettiamo siti e presenza digitale per ristoranti, palestre, saloni e negozi.
-        Chi ti cerca deve capire in dieci secondi chi sei, cosa offri e come raggiungerti.
-      </p>
-
-      <div class="row hero__actions" data-reveal style="--reveal-delay:280ms">
-        <a class="btn btn--lg" href="#contatti">
-          Parliamo del tuo progetto <span class="btn__arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="btn btn--lg btn--ghost" href="#progetti">
-          Guarda i progetti <span aria-hidden="true">↓</span>
-        </a>
-      </div>
-
-      <ul class="hero__meta" data-reveal style="--reveal-delay:360ms">
-        <li>Progettati su misura</li>
-        <li>Prima da telefono</li>
-        <li>Prezzi chiari dall'inizio</li>
-      </ul>
-    </div>
-
-    <!-- Composizione prismatica: luce che entra, lavoro reale che esce -->
-    <div class="prism-stage" data-parallax data-reveal style="--reveal-delay:120ms">
-      <div class="prism-stage__beam" aria-hidden="true"></div>
-
-      <!-- Il prisma di vetro: tre facce che ruotano e cambiano colore -->
-      <div class="prism3d" aria-hidden="true">
-        <div class="prism3d__inner">
-          <span class="prism3d__face prism3d__face--a"></span>
-          <span class="prism3d__face prism3d__face--b"></span>
-          <span class="prism3d__face prism3d__face--c"></span>
-          <span class="prism3d__cap prism3d__cap--top"></span>
-          <span class="prism3d__cap prism3d__cap--bottom"></span>
-        </div>
-      </div>
-
-      <svg class="prism-stage__glass prism-stage__rays" viewBox="0 0 300 560" fill="none" aria-hidden="true">
-        <line class="ray ray--in" x1="150" y1="0" x2="150" y2="152"></line>
-        <line class="ray ray--1" x1="150" y1="236" x2="34" y2="560"></line>
-        <line class="ray ray--2" x1="150" y1="236" x2="112" y2="560"></line>
-        <line class="ray ray--3" x1="150" y1="236" x2="190" y2="560"></line>
-        <line class="ray ray--4" x1="150" y1="236" x2="268" y2="560"></line>
-      </svg>
-
-      <figure class="frame-desktop prism-stage__desktop">
-        <div class="frame-desktop__bar" aria-hidden="true">
-          <span class="frame-desktop__dots"><i></i><i></i><i></i></span>
-          <span class="frame-desktop__url">saporito-pescara.it</span>
-        </div>
-        <img src="assets/img/saporito-desktop-1280.webp" width="1280" height="1013"
-             alt="Home page del sito Saporito Pescara progettato da Prisma Locale, con titolo grande e foto della pizza in teglia"
-             fetchpriority="high" decoding="async">
-      </figure>
-
-      <figure class="frame-phone prism-stage__phone">
-        <img src="assets/img/saporito-phone-3-440.webp" width="440" height="705"
-             alt="Versione da smartphone del sito Saporito, con titolo grande e due pulsanti di azione"
-             decoding="async">
-      </figure>
-
-      <span class="tag tag--live prism-stage__chip">Saporito Pescara — concept</span>
-    </div>
-
+<section class="hero" aria-labelledby="hero-title" data-hero>
+  <div class="hero__visual" aria-hidden="true">
+    <!-- Desktop con mouse e movimento: niente immagine, arriva il prisma 3D.
+         Altrove: la stessa scena, renderizzata in anticipo. -->
+    <picture class="hero__still" data-hero-still>
+      <source media="(min-width: 64em) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <source media="(min-width: 64em)" srcset="/assets/img/prisma-wide-1600.webp 1600w, /assets/img/prisma-wide-2400.webp 2400w" sizes="100vw" width="1600" height="1000">
+      <img src="/assets/img/prisma-tall-720.webp" srcset="/assets/img/prisma-tall-720.webp 720w, /assets/img/prisma-tall-1080.webp 1080w" sizes="100vw" width="720" height="1280" alt="" fetchpriority="high" decoding="async">
+    </picture>
+    <div class="hero__fallback"></div>
+    <noscript><style>@media (min-width: 64em) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) { .hero__fallback { opacity: 1; background-image: url("/assets/img/prisma-wide-1600.webp"); } }</style></noscript>
+    <div class="hero__canvas" data-prism-host></div>
+    <div class="hero__shade"></div>
   </div>
-</section>
 
-<!-- ============================ IL PROBLEMA ============================ -->
-<section class="section section--dark" id="problema">
-  <div class="container problem__grid">
+  <div class="hero__inner wrap grid">
+    <p class="hero__eyebrow label" data-intro>Studio digitale a Roseto degli Abruzzi</p>
 
-    <div class="problem__aside">
-      <p class="eyebrow" data-reveal>Il punto di partenza</p>
-      <h2 class="problem__title" data-reveal style="--reveal-delay:80ms; margin-top:var(--s-5)">
-        Il tuo locale può essere il migliore della zona. Ma se online non si vede, per molti <em>non esiste</em>.
-      </h2>
-      <p class="lead" data-reveal style="--reveal-delay:160ms; margin-top:var(--s-5)">
-        Ogni giorno qualcuno cerca quello che fai. Cerca su Google, chiede a un amico,
-        apre Instagram. In quei pochi secondi decide se venire da te o dal locale accanto.
+    <h1 class="hero__title display" id="hero-title">
+      <span class="line"><span class="line__in">La tua attività</span></span>
+      <span class="line"><span class="line__in">ha già un <em class="colore"><span class="colore__base">colore.</span><span class="colore__spettro" aria-hidden="true">colore.</span></em></span></span>
+      <span class="line"><span class="line__in">Lo tiriamo fuori.</span></span>
+    </h1>
+
+    <div class="hero__foot">
+      <p class="hero__lead lead" data-intro>
+        Siti web, landing page, branding e presenza su Google per ristoranti, palestre,
+        saloni, B&amp;B e società sportive della costa teramana. Prima ti ascoltiamo,
+        poi costruiamo qualcosa che ti somiglia.
       </p>
-    </div>
-
-    <div>
-      <ul class="symptoms" data-reveal-stagger="60">
-        <li class="symptom" data-reveal>
-          <span class="symptom__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
-          <span class="symptom__text">Chi ti cerca su Google trova solo Instagram
-            <span class="symptom__note">E chi non ha Instagram, o non ti segue, si ferma lì.</span>
-          </span>
-        </li>
-        <li class="symptom" data-reveal>
-          <span class="symptom__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
-          <span class="symptom__text">Il sito c'è, ma è fermo a dieci anni fa
-            <span class="symptom__note">Un sito datato non è neutro: fa sembrare datata anche l'attività.</span>
-          </span>
-        </li>
-        <li class="symptom" data-reveal>
-          <span class="symptom__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
-          <span class="symptom__text">Da telefono si legge male
-            <span class="symptom__note">Testi minuscoli, bottoni che non si toccano, pagine lente.</span>
-          </span>
-        </li>
-        <li class="symptom" data-reveal>
-          <span class="symptom__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
-          <span class="symptom__text">Menu, orari e indirizzo sono difficili da trovare
-            <span class="symptom__note">Sono le prime cose che cerca chi apre il sito di un locale.</span>
-          </span>
-        </li>
-        <li class="symptom" data-reveal>
-          <span class="symptom__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
-          <span class="symptom__text">Ogni post ha uno stile diverso
-            <span class="symptom__note">Colori, caratteri e tono cambiano, e il brand non si fissa in testa.</span>
-          </span>
-        </li>
-        <li class="symptom" data-reveal>
-          <span class="symptom__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
-          <span class="symptom__text">Nessuno dice al visitatore cosa fare
-            <span class="symptom__note">Niente prenota, niente chiama, niente indicazioni. Solo una pagina.</span>
-          </span>
-        </li>
-      </ul>
-
-      <p class="problem__punch" data-reveal>
-        Se ne hai riconosciuti due o tre, non è un problema della tua attività.
-        È un problema di come viene presentata.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================ PROGETTI ============================ -->
-<section class="section" id="progetti">
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <p class="eyebrow" data-reveal>Portfolio selezionato</p>
-        <h2 class="section-head__title" data-reveal style="--reveal-delay:80ms; margin-top:var(--s-4)">
-          Pochi progetti. Curati uno per uno.
-        </h2>
-      </div>
-      <div class="section-head__aside" data-reveal style="--reveal-delay:140ms">
-        <p class="muted">
-          Preferiamo mostrare poco e mostrarlo bene. Ogni progetto qui sotto parte da un'attività vera
-          di Pescara e da una domanda concreta: come si presenterebbe online se fosse fatta come si deve?
-        </p>
+      <div class="hero__actions" data-intro>
+        <a class="btn btn--primary" href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20vorrei%20parlare%20della%20mia%20attivit%C3%A0." target="_blank" rel="noopener">
+          Scrivici su WhatsApp <span class="sr-only">(si apre in una nuova scheda)</span><svg class="btn__arrow" aria-hidden="true"><use href="#f-obliqua"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#prima-dopo">Guarda il prima e dopo <svg class="btn__arrow btn__arrow--down" aria-hidden="true"><use href="#f-giu"/></svg></a>
       </div>
     </div>
 
-    <!-- CASE STUDY IN EVIDENZA -->
-    <article class="case" data-reveal>
-      <div class="case__grid">
-
-        <div>
-          <div class="row" style="gap:var(--s-2)">
-            <span class="tag tag--dark">Food · Pescara</span>
-            <span class="tag tag--dark">Concept</span>
-          </div>
-
-          <h3 class="case__title" style="margin-top:var(--s-5)">Saporito Pescara</h3>
-          <p class="lead" style="margin-top:var(--s-3)">
-            Pizza in teglia e street food pugliese. Un brand con carattere,
-            raccontato quasi solo dai social.
-          </p>
-
-          <dl class="case__facts">
-            <div class="case__fact">
-              <dt>Il problema</dt>
-              <dd>Tutta la comunicazione vive su Instagram. Chi arriva da Google o da un consiglio
-                  non trova un posto dove vedere il menu, capire dov'è il locale e ordinare.</dd>
-            </div>
-            <div class="case__fact">
-              <dt>La direzione</dt>
-              <dd>Il nero e il rosa del brand restano protagonisti, ma dentro una struttura leggibile.
-                  Food first: foto grandi, testi corti, tre strade chiare — menu, chiamata, mappa.</dd>
-            </div>
-            <div class="case__fact">
-              <dt>Il risultato</dt>
-              <dd>Una demo completa e navigabile: home, prodotti, menu, storia e contatti.
-                  Disegnata prima per lo smartphone, dove arriva chi ti scopre da Instagram.</dd>
-            </div>
-            <div class="case__fact">
-              <dt>Deliverable</dt>
-              <dd>Concept UI · Design system (nero, rosa, crema) · 4 sezioni · Versione mobile · Copy</dd>
-            </div>
-          </dl>
-
-          <div class="row case__actions">
-            <a class="btn btn--light" href="progetti/saporito.html">
-              Vedi il progetto <span class="btn__arrow" aria-hidden="true">→</span>
-            </a>
-          </div>
-
-          <p class="case__disclaimer">
-            Progetto dimostrativo realizzato a scopo di portfolio. Non è commissionato,
-            affiliato né approvato da Saporito.
-          </p>
-        </div>
-
-        <div class="case__visual">
-          <figure class="frame-desktop">
-            <div class="frame-desktop__bar" aria-hidden="true">
-              <span class="frame-desktop__dots"><i></i><i></i><i></i></span>
-              <span class="frame-desktop__url">saporito-pescara.it/menu</span>
-            </div>
-            <img src="assets/img/saporito-menu-1280.webp" width="1280" height="1013" loading="lazy" decoding="async"
-                 alt="Sezione menu del concept Saporito: quattro categorie in un blocco nero su fondo crema">
-          </figure>
-          <figure class="frame-phone case__phone">
-            <img src="assets/img/saporito-phone-2-440.webp" width="440" height="952" loading="lazy" decoding="async"
-                 alt="Schermata contatti del concept Saporito su smartphone">
-          </figure>
-        </div>
-
-      </div>
-    </article>
-
-    <!-- ALTRI PROGETTI -->
-    <div class="projects-grid" data-reveal-stagger="90">
-
-      <article class="project" data-tilt data-tilt-max="5" data-reveal>
-        <span class="tilt-sheen" aria-hidden="true"></span>
-        <div class="project__shot">
-          <img src="assets/img/frida-desktop-760.webp" width="760" height="601" loading="lazy" decoding="async"
-               alt="Home page del concept Frida Fitness, palestra femminile a Pescara">
-        </div>
-        <div class="stack-3">
-          <div class="project__meta">
-            <span class="tag">Fitness · Pescara</span>
-            <span class="xs muted">Concept</span>
-          </div>
-          <h3>Frida Fitness</h3>
-          <p class="small muted">
-            Una palestra pensata per le donne aveva bisogno di trasmettere accoglienza prima ancora
-            che prestazione. Verde profondo, foto calde, un solo invito: prenota la prova.
-          </p>
-        </div>
-      </article>
-
-      <article class="project" data-tilt data-tilt-max="5" data-reveal>
-        <span class="tilt-sheen" aria-hidden="true"></span>
-        <div class="project__shot">
-          <img src="assets/img/annare-760.webp" width="760" height="485" loading="lazy" decoding="async"
-               alt="Home page del concept Pizzeria Annarè, pizzeria tradizionale a Pescara">
-        </div>
-        <div class="stack-3">
-          <div class="project__meta">
-            <span class="tag">Ristorazione · Pescara</span>
-            <span class="xs muted">Concept</span>
-          </div>
-          <h3>Pizzeria Annarè</h3>
-          <p class="small muted">
-            Tradizione senza polvere. Una pagina sola che porta il visitatore dal piatto
-            al menu al telefono, senza passaggi inutili.
-          </p>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="small muted" data-reveal style="margin-top:var(--s-6); max-width:64ch">
-      I progetti mostrati sono concept sviluppati da Prisma Locale a partire da attività reali del territorio,
-      per dimostrare metodo e qualità. Non sono lavori commissionati dalle attività citate.
+    <p class="hero__fig" data-intro aria-hidden="true">
+      <span class="label">Fig. 1</span>
+      Luce bianca in entrata.<br>Identità in uscita.
     </p>
-
   </div>
 </section>
 
 <!-- ============================ SERVIZI ============================ -->
-<section class="section section--alt" id="servizi">
-  <div class="container">
+<section class="section servizi" id="servizi" aria-labelledby="servizi-title">
+  <div class="wrap">
+    <div class="section-head grid">
+      <p class="label">Cosa facciamo</p>
+      <h2 class="section-head__title display" id="servizi-title" data-split>Poche cose, fatte da vicino.</h2>
+    </div>
 
-    <div class="section-head">
-      <div>
-        <p class="eyebrow" data-reveal>Cosa facciamo</p>
-        <h2 class="section-head__title" data-reveal style="--reveal-delay:80ms; margin-top:var(--s-4)">
-          Quattro cose, fatte bene.
-        </h2>
+    <div class="servizi__intro grid">
+      <p class="lead" data-fade>
+        Niente pacchetti uguali per tutti. Partiamo da quello che ti serve adesso e lo facciamo bene,
+        che sia un sito completo o una pagina per la serata di sabato.
+      </p>
+    </div>
+
+    <ol class="servizi__list" role="list">
+      <li class="servizio grid" data-fade>
+        <h3 class="servizio__title display">Siti web</h3>
+        <p class="servizio__text">Il tuo locale, aperto anche quando abbassi la serranda. Veloce sul telefono,
+          facile da aggiornare, tuo per davvero: menu, orari, prenotazioni, mappa.</p>
+        <p class="servizio__per"><span class="sr-only">Per: </span>Ristoranti · B&amp;B · Saloni</p>
+        <span class="servizio__ray" aria-hidden="true"></span>
+      </li>
+      <li class="servizio grid" data-fade>
+        <h3 class="servizio__title display">Landing page</h3>
+        <p class="servizio__text">Una pagina, un solo obiettivo: la serata di sabato, il corso di settembre,
+          il torneo d'estate. Chi arriva capisce subito cosa fare, e lo fa.</p>
+        <p class="servizio__per"><span class="sr-only">Per: </span>Eventi · Palestre · Società sportive</p>
+        <span class="servizio__ray" aria-hidden="true"></span>
+      </li>
+      <li class="servizio grid" data-fade>
+        <h3 class="servizio__title display">Branding</h3>
+        <p class="servizio__text">Nome, logo, colori, insegna, menu. Un segno che si riconosce dal lungomare
+          a Instagram, prima ancora di leggere il nome.</p>
+        <p class="servizio__per"><span class="sr-only">Per: </span>Nuove aperture · Restyling</p>
+        <span class="servizio__ray" aria-hidden="true"></span>
+      </li>
+      <li class="servizio grid" data-fade>
+        <h3 class="servizio__title display">Presenza locale</h3>
+        <p class="servizio__text">Scheda Google curata, foto vere, orari giusti, recensioni a cui si risponde.
+          Chi cerca vicino a te trova informazioni chiare, non una scheda dimenticata.</p>
+        <p class="servizio__per"><span class="sr-only">Per: </span>Google · Mappe · Social</p>
+        <span class="servizio__ray" aria-hidden="true"></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ PRIMA E DOPO (scroll story) ============================ -->
+<section class="story" id="prima-dopo" aria-labelledby="story-title" data-story>
+  <div class="story__pin" data-story-pin>
+    <div class="story__head wrap">
+      <p class="label">Prima e dopo</p>
+      <h2 class="story__title display" id="story-title" data-split>La vetrina <em>grigia.</em></h2>
+    </div>
+
+    <div class="story__stage" aria-hidden="true" data-story-stage>
+      <!-- PRIMA: una vetrina qualunque, costruita in CSS -->
+      <div class="story__side story__side--prima">
+        <span class="story__tag label">Prima</span>
+        <div class="shop">
+          <div class="shop__wall"></div>
+          <div class="shop__ghost shop__ghost--sign"></div>
+          <div class="shop__ghost shop__ghost--window"></div>
+          <div class="shop__ghost shop__ghost--board"></div>
+          <div class="shop__ghost shop__ghost--note"></div>
+          <div class="shop__awning"></div>
+          <div class="shop__door"><span class="shop__handle"></span></div>
+          <div class="shop__ground"></div>
+
+          <div class="shop__piece shop__sign" data-piece><span>PIZZERIA</span></div>
+          <div class="shop__piece shop__window" data-piece>
+            <span class="shop__poster"></span>
+            <span class="shop__glare"></span>
+          </div>
+          <div class="shop__piece shop__board" data-piece>
+            <span class="shop__board-title">MENU</span>
+            <span class="shop__scribble"></span>
+            <span class="shop__scribble"></span>
+            <span class="shop__scribble shop__scribble--short"></span>
+          </div>
+          <div class="shop__piece shop__note" data-piece>
+            <span>APERTO</span>
+            <span>19–23</span>
+            <span class="shop__note-tel">tel. 085…</span>
+          </div>
+        </div>
       </div>
-      <div class="section-head__aside" data-reveal style="--reveal-delay:140ms">
-        <p class="muted">
-          Non serve tutto e subito. Nella prima chiacchierata capiamo da dove conviene partire
-          e cosa può aspettare.
-        </p>
+
+      <!-- Il prisma: grigio entra, colore esce -->
+      <div class="story__prism" data-story-prism>
+        <span class="story__beam-in"></span>
+        <span class="story__glass"></span>
+        <span class="story__flash" data-story-flash></span>
+      </div>
+
+      <!-- DOPO: lo stesso negozio, ricomposto in un sito vivo -->
+      <div class="story__side story__side--dopo">
+        <span class="story__tag label">Dopo</span>
+        <div class="site">
+          <div class="site__bar">
+            <span class="site__lock"></span>
+            <span class="site__url">pizzeria bianca</span>
+            <span class="site__live" data-story-live><i></i>online</span>
+          </div>
+          <div class="site__body">
+            <div class="site__slot site__slot--brand" data-slot>
+              <span class="site__skel"></span>
+              <div class="site__piece site__brand">
+                <span class="site__logo"><em>Bianca</em><small>pizzeria</small></span>
+                <span class="site__nav"><i>Menu</i><i>Dove</i><i>Prenota</i></span>
+              </div>
+            </div>
+            <div class="site__slot site__slot--hero" data-slot>
+              <span class="site__skel"></span>
+              <div class="site__piece site__hero">
+                <span class="site__headline">Pizza <em>bianca</em>,<br>forno a legna.</span>
+                <span class="site__pizza"><i></i><i></i><i></i><i></i><i></i></span>
+              </div>
+            </div>
+            <div class="site__slot site__slot--menu" data-slot>
+              <span class="site__skel"></span>
+              <div class="site__piece site__menu">
+                <span class="site__menu-title">Il menu</span>
+                <span class="site__dish"><b>Bianca</b> mozzarella, olio, rosmarino</span>
+                <span class="site__dish"><b>Marinara</b> pomodoro, aglio, origano</span>
+                <span class="site__dish"><b>Ortolana</b> verdure dell'orto, provola</span>
+              </div>
+            </div>
+            <div class="site__slot site__slot--cta" data-slot>
+              <span class="site__skel"></span>
+              <div class="site__piece site__cta">
+                <span class="site__open"><i></i>Aperto stasera</span>
+                <span class="site__wa">Prenota su WhatsApp</span>
+                <span class="site__map">Roseto degli Abruzzi · indicazioni</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="services" data-reveal-stagger="70">
-
-      <article class="service" data-reveal>
-        <p class="service__num">01</p>
-        <h3 class="service__title">Siti web</h3>
-        <div>
-          <p class="service__body">
-            Il posto dove chi ti cerca decide se venire. Costruito intorno alle informazioni che conta davvero
-            trovare — menu, listino, orari, indirizzo, prenotazione — e veloce da usare con una mano sola.
-          </p>
-          <div class="service__tags">
-            <span class="tag">One-page</span><span class="tag">Multipagina</span>
-            <span class="tag">Menu digitale</span><span class="tag">Google Maps</span>
-            <span class="tag">Modulo contatti</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="service" data-reveal>
-        <p class="service__num">02</p>
-        <h3 class="service__title">Identità visiva</h3>
-        <div>
-          <p class="service__body">
-            Colori, caratteri e materiali che ti fanno riconoscere a colpo d'occhio. Così il sito, l'insegna,
-            il menu e i post sembrano finalmente la stessa attività.
-          </p>
-          <div class="service__tags">
-            <span class="tag">Logo</span><span class="tag">Palette</span>
-            <span class="tag">Materiali stampa</span><span class="tag">Linee guida</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="service" data-reveal>
-        <p class="service__num">03</p>
-        <h3 class="service__title">Social</h3>
-        <div>
-          <p class="service__body">
-            Contenuti pensati come parte della stessa presenza, non come un mondo a parte.
-            Un piano semplice: cosa pubblichi, quando, e con che faccia.
-          </p>
-          <div class="service__tags">
-            <span class="tag">Reel</span><span class="tag">Post</span>
-            <span class="tag">Piano editoriale</span><span class="tag">Grafiche</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="service" data-reveal>
-        <p class="service__num">04</p>
-        <h3 class="service__title">Soluzioni digitali</h3>
-        <div>
-          <p class="service__body">
-            Solo quello che ti fa risparmiare tempo davvero: richieste che arrivano su WhatsApp,
-            prenotazioni online, un menu che aggiorni da solo in due minuti.
-          </p>
-          <div class="service__tags">
-            <span class="tag">Prenotazioni</span><span class="tag">WhatsApp</span>
-            <span class="tag">Menu aggiornabile</span><span class="tag">Automazioni</span>
-          </div>
-        </div>
-      </article>
-
+    <div class="story__foot wrap">
+      <ol class="story__steps" role="list" data-story-steps>
+        <li class="story__step">
+          <span class="story__n label label--num">00</span>
+          <p><strong>Prima.</strong> Così ti vede chi ti cerca online: una vetrina grigia, ferma,
+            uguale a quella accanto. Dentro c'è tutto, da fuori non si vede niente.</p>
+        </li>
+        <li class="story__step">
+          <span class="story__n label label--num">01</span>
+          <p><strong>L'insegna diventa un marchio.</strong> Una scritta qualunque non si ricorda.
+            Un segno pensato per te sì: sull'insegna, sul menu, sul profilo.</p>
+        </li>
+        <li class="story__step">
+          <span class="story__n label label--num">02</span>
+          <p><strong>La vetrina diventa la prima pagina.</strong> Il piatto migliore, il locale,
+            la tua luce: la prima cosa che vede chi apre il sito.</p>
+        </li>
+        <li class="story__step">
+          <span class="story__n label label--num">03</span>
+          <p><strong>La lavagna diventa un menu sempre giusto.</strong> Leggibile dal telefono,
+            e lo aggiorni da solo anche la sera prima.</p>
+        </li>
+        <li class="story__step">
+          <span class="story__n label label--num">04</span>
+          <p><strong>Il foglio sulla porta diventa un tasto.</strong> Orari giusti, la mappa,
+            e un tocco per scriverti su WhatsApp. Niente numeri sbiaditi.</p>
+        </li>
+        <li class="story__step">
+          <span class="story__n label label--num">05</span>
+          <p><strong>Dopo.</strong> Stessa pizzeria, stesse persone, stesso forno. Ma adesso si vede.
+            <span class="story__note">Pizzeria Bianca è un esempio inventato.</span></p>
+        </li>
+      </ol>
+      <div class="story__progress" aria-hidden="true"><span data-story-progress></span></div>
     </div>
   </div>
 </section>
 
 <!-- ============================ METODO ============================ -->
-<section class="section" id="metodo">
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <p class="eyebrow" data-reveal>Come lavoriamo</p>
-        <h2 class="section-head__title" data-reveal style="--reveal-delay:80ms; margin-top:var(--s-4)">
-          Quattro passaggi, zero sorprese.
-        </h2>
-      </div>
-      <div class="section-head__aside" data-reveal style="--reveal-delay:140ms">
-        <p class="muted">
-          Sai sempre a che punto siamo, cosa serve da te e quando lo vedrai online.
-        </p>
-      </div>
+<section class="section section--light metodo" id="metodo" aria-labelledby="metodo-title">
+  <div class="wrap">
+    <div class="section-head section-head--right grid">
+      <p class="label">Il metodo</p>
+      <h2 class="section-head__title display" id="metodo-title" data-split>Tre passi. Gli stessi della luce.</h2>
     </div>
 
-    <div class="steps" data-reveal-stagger="110">
-      <div class="step" data-reveal>
-        <span class="step__dot" aria-hidden="true"></span>
-        <span class="step__num">01</span>
-        <h3>Conosciamo l'attività</h3>
-        <p>Una chiacchierata, di persona o al telefono. Chi sono i tuoi clienti, cosa ti chiedono
-           sempre, cosa ti fa perdere tempo.</p>
-      </div>
-      <div class="step" data-reveal>
-        <span class="step__dot" aria-hidden="true"></span>
-        <span class="step__num">02</span>
-        <h3>Definiamo la direzione</h3>
-        <p>Decidiamo insieme quante pagine servono, che tono usare e qual è l'azione più importante
-           da far compiere a chi visita.</p>
-      </div>
-      <div class="step" data-reveal>
-        <span class="step__dot" aria-hidden="true"></span>
-        <span class="step__num">03</span>
-        <h3>Progettiamo</h3>
-        <p>Prima la versione da telefono, poi il resto. Vedi il progetto mentre nasce e puoi
-           dire la tua prima che sia tardi.</p>
-      </div>
-      <div class="step" data-reveal>
-        <span class="step__dot" aria-hidden="true"></span>
-        <span class="step__num">04</span>
-        <h3>Andiamo online</h3>
-        <p>Pubblicazione, collegamento a Google e ai social, e una spiegazione semplice
-           di come aggiornare quello che cambia spesso.</p>
-      </div>
+    <div class="metodo__bench" aria-hidden="true" data-bench>
+      <span class="metodo__beam"><i data-bench-beam></i></span>
+      <svg class="metodo__prism" viewBox="0 0 80 72" data-bench-prism><path d="M40 4 76 68H4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span class="metodo__rays" data-bench-rays>
+        <i style="--a:-9deg;--c:var(--s-rosso)"></i>
+        <i style="--a:-6deg;--c:var(--s-arancio)"></i>
+        <i style="--a:-3deg;--c:var(--s-giallo)"></i>
+        <i style="--a:0deg;--c:var(--s-verde)"></i>
+        <i style="--a:3deg;--c:var(--s-ciano)"></i>
+        <i style="--a:6deg;--c:var(--s-blu)"></i>
+        <i style="--a:9deg;--c:var(--s-viola)"></i>
+      </span>
     </div>
 
+    <ol class="metodo__steps grid" role="list">
+      <li class="passo" data-fade>
+        <p class="passo__n label label--num"><span aria-hidden="true">01 — </span>Entra la luce</p>
+        <h3 class="passo__title display">Ascoltiamo.</h3>
+        <p>Veniamo da te: al bancone, in sala pesi, dietro la poltrona. Un'ora di chiacchiere vale più
+          di un questionario. Chi sono i tuoi clienti, cosa ti chiedono sempre, cosa ti fa perdere tempo.</p>
+      </li>
+      <li class="passo" data-fade>
+        <p class="passo__n label label--num"><span aria-hidden="true">02 — </span>Si scompone</p>
+        <h3 class="passo__title display">Scegliamo.</h3>
+        <p>Separiamo quello che ti rende unico da quello che fa solo rumore. Ne esce una direzione chiara,
+          cosa dire, a chi e con che faccia, che vedi e approvi prima di qualsiasi riga di codice.</p>
+      </li>
+      <li class="passo" data-fade>
+        <p class="passo__n label label--num"><span aria-hidden="true">03 — </span>Esce a colori</p>
+        <h3 class="passo__title display">Costruiamo, e restiamo.</h3>
+        <p>Sito, marchio, scheda Google: tutto con la stessa voce. Lo mettiamo online, ti mostriamo come
+          cambiare orari e menu da solo e restiamo a una telefonata di distanza.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
-<!-- ============================ PERCHÉ NOI ============================ -->
-<section class="section section--tight" id="perche">
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <p class="eyebrow" data-reveal>Perché Prisma Locale</p>
-        <h2 class="section-head__title" data-reveal style="--reveal-delay:80ms; margin-top:var(--s-4)">
-          Costa meno da un'altra parte. Ma non è la stessa cosa.
-        </h2>
-      </div>
-      <div class="section-head__aside" data-reveal style="--reveal-delay:140ms">
-        <p class="muted">
-          Un sito si può comprare ovunque. Quello che cambia è quanto è tuo,
-          e quanto lavora al posto tuo.
-        </p>
-      </div>
+<!-- ============================ LAVORI ============================ -->
+<section class="section lavori" id="lavori" aria-labelledby="lavori-title">
+  <div class="wrap">
+    <div class="section-head grid">
+      <p class="label">Lavori</p>
+      <h2 class="section-head__title display" id="lavori-title" data-split>Il primo è una demo. Il prossimo può essere tuo.</h2>
     </div>
 
-    <div class="reasons" data-reveal>
-
-      <article class="reason">
-        <svg class="reason__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">
-          <path d="M16 4 L28 26 H4 Z"/><path d="M2 15h6" stroke-linecap="round"/><path d="M24 12h6M24 17h6M24 22h6" stroke-linecap="round"/>
-        </svg>
-        <h3>Si parte dalla tua attività, non da un tema</h3>
-        <p>Niente template comprato e riempito con il tuo logo. Struttura, testi e immagini
-           nascono da com'è fatta la tua attività e da cosa ti serve far succedere.</p>
-      </article>
-
-      <article class="reason">
-        <svg class="reason__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 27V13l11-8 11 8v14"/><path d="M12 27v-8h8v8"/>
-        </svg>
-        <h3>Sappiamo cosa cerca chi apre il sito di un locale</h3>
-        <p>Menu, orari, dove sei, come si prenota. Vengono prima di tutto il resto,
-           e devono stare a un tocco di distanza.</p>
-      </article>
-
-      <article class="reason">
-        <svg class="reason__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c3.5 4 3.5 20 0 24M16 4c-3.5 4-3.5 20 0 24"/>
-        </svg>
-        <h3>Da Pescara, senza confini</h3>
-        <p>Conosciamo il territorio, i suoi ritmi e la sua concorrenza. Ma lavoriamo con lo stesso
-           standard che useremmo per un progetto ovunque.</p>
-      </article>
-
-      <article class="reason">
-        <svg class="reason__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M17 4 8 18h7l-1 10 10-14h-7z"/>
-        </svg>
-        <h3>Niente funzioni che non userai mai</h3>
-        <p>Ogni cosa in più è una cosa in più da mantenere. Mettiamo solo quello che ti serve,
-           e lo teniamo veloce.</p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================ PACCHETTI ============================ -->
-<section class="section section--alt" id="pacchetti">
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <p class="eyebrow" data-reveal>Da dove si parte</p>
-        <h2 class="section-head__title" data-reveal style="--reveal-delay:80ms; margin-top:var(--s-4)">
-          Prezzi chiari, prima di iniziare.
-        </h2>
+    <article class="work grid" aria-labelledby="work-saporito">
+      <div class="work__media" data-fade>
+        <figure class="work__shot work__shot--desk">
+          <img src="/assets/img/saporito-desktop-1280.webp"
+               srcset="/assets/img/saporito-desktop-760.webp 760w, /assets/img/saporito-desktop-1280.webp 1280w"
+               sizes="(min-width: 64em) 56vw, 92vw" width="1280" height="1013" loading="lazy" decoding="async"
+               alt="Home page della demo Saporito: titolo Street food con carattere su fondo nero, accanto la foto di una pizza">
+        </figure>
+        <figure class="work__shot work__shot--phone">
+          <img src="/assets/img/saporito-phone-3-440.webp" width="440" height="705" loading="lazy" decoding="async"
+               alt="La stessa home su smartphone, con i pulsanti Scopri il menu e Dove siamo">
+        </figure>
       </div>
-      <div class="section-head__aside" data-reveal style="--reveal-delay:140ms">
-        <p class="muted">
-          Non ti facciamo aspettare tre email per sapere quanto costa. Queste sono le basi di partenza:
-          il preventivo finale dipende da quante pagine servono e da quanto materiale hai già.
-        </p>
-      </div>
-    </div>
 
-    <div class="plans" data-reveal-stagger="90">
-
-      <article class="plan" data-tilt data-tilt-max="4" data-reveal>
-        <span class="tilt-sheen" aria-hidden="true"></span>
-        <h3>Vetrina Base</h3>
-        <p class="plan__price">da €200</p>
-        <p class="plan__desc">Una pagina sola, fatta bene. Per chi oggi online non c'è
-           e deve esserci prima possibile.</p>
-        <span class="plan__sep"></span>
-        <ul class="plan__list">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Sito one-page su misura</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Ottimizzato per smartphone</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Contatti, mappa e social collegati</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Testi scritti insieme a te</li>
+      <div class="work__info">
+        <p class="label work__kicker">01 — Demo · non commissionata</p>
+        <h3 class="work__title display" id="work-saporito">
+          <a class="work__link" href="/progetti/saporito.html">Pizzeria Saporito</a>
+        </h3>
+        <p class="work__text">Street food pugliese a Pescara, con un'identità forte e una comunicazione
+          che vive solo su Instagram. Abbiamo disegnato il sito che le manca: menu chiaro, dove siamo, ordina ora.</p>
+        <ul class="work__tags" role="list">
+          <li>Sito web</li><li>Prima il telefono</li><li>Testi</li>
         </ul>
-        <a class="btn btn--ghost btn--block plan__cta" href="#contatti">Chiedi un preventivo</a>
-      </article>
-
-      <article class="plan plan--featured" data-tilt data-tilt-max="4" data-reveal>
-        <span class="plan__flag">Il più richiesto</span>
-        <span class="tilt-sheen" aria-hidden="true"></span>
-        <h3>Presenza Locale</h3>
-        <p class="plan__price">da €400</p>
-        <p class="plan__desc">Da 3 a 5 pagine. Per chi ha più da raccontare:
-           menu, servizi, storia, squadra.</p>
-        <span class="plan__sep"></span>
-        <ul class="plan__list">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Tutto quello della Vetrina Base</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> 3–5 pagine con struttura dedicata</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Menu o listino digitale</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Impostazione SEO locale</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Modulo richieste o prenotazioni</li>
-        </ul>
-        <a class="btn btn--light btn--block plan__cta" href="#contatti">Chiedi un preventivo</a>
-      </article>
-
-      <article class="plan" data-tilt data-tilt-max="4" data-reveal>
-        <span class="tilt-sheen" aria-hidden="true"></span>
-        <h3>Social</h3>
-        <p class="plan__price">€150 <small>/ mese</small></p>
-        <p class="plan__desc">Contenuti costanti, con lo stesso stile del sito.
-           Per non ripartire da zero ogni settimana.</p>
-        <span class="plan__sep"></span>
-        <ul class="plan__list">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> 8 reel al mese</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> 4 post al mese</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Piano editoriale mensile</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg> Grafiche coordinate al brand</li>
-        </ul>
-        <a class="btn btn--ghost btn--block plan__cta" href="#contatti">Parliamone</a>
-      </article>
-
-    </div>
-
-    <p class="plans__note" data-reveal>
-      Dominio e hosting hanno un costo annuale a parte, che dipende dal fornitore scelto:
-      te lo mostriamo prima di firmare, senza ricarichi nascosti.
-      Il preventivo è gratuito e senza impegno.
-    </p>
-
-  </div>
-</section>
-
-<!-- ============================ DOMANDE ============================ -->
-<section class="section" id="domande">
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <p class="eyebrow" data-reveal>Prima che tu lo chieda</p>
-        <h2 class="section-head__title" data-reveal style="--reveal-delay:80ms; margin-top:var(--s-4)">
-          Le domande che arrivano sempre.
-        </h2>
+        <span class="work__cta" aria-hidden="true">Leggi il caso <svg class="btn__arrow" aria-hidden="true"><use href="#f-destra"/></svg></span>
+        <p class="work__note">Progetto dimostrativo a scopo di portfolio: non è commissionato, affiliato né approvato da Saporito.</p>
       </div>
-    </div>
+    </article>
 
-    <div class="faq" data-reveal>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          Ho già Instagram. Mi serve davvero un sito?
-          <span class="faq__sign" aria-hidden="true">
-            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
-          </span>
-        </summary>
-        <div class="faq__a">
-          <p>Instagram è ottimo per farti scoprire, ma è casa d'altri: decide lui chi vede i tuoi post,
-             e chi non ha un profilo resta fuori. Il sito è l'unico posto online che è davvero tuo,
-             che compare su Google e che nessuno può cambiare o chiudere.</p>
-          <p>Nella pratica lavorano insieme: Instagram porta le persone, il sito le trasforma in
-             prenotazioni, chiamate e visite.</p>
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          Quanto tempo ci vuole?
-          <span class="faq__sign" aria-hidden="true">
-            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
-          </span>
-        </summary>
-        <div class="faq__a">
-          <p>Dipende da quante pagine servono e da quanto in fretta arrivano foto e informazioni,
-             che sono la parte che di solito rallenta. Per questo la data di consegna te la diamo
-             insieme al preventivo, prima di iniziare, non a lavoro avviato.</p>
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          Non ho foto belle e non so cosa scrivere.
-          <span class="faq__sign" aria-hidden="true">
-            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
-          </span>
-        </summary>
-        <div class="faq__a">
-          <p>È la situazione più comune, e non è un problema. I testi li scriviamo noi partendo da come
-             racconti la tua attività a voce. Per le foto ti diciamo esattamente cosa serve e come
-             ottenerlo, oppure organizziamo uno scatto dedicato.</p>
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          Dopo la consegna posso aggiornarlo da solo?
-          <span class="faq__sign" aria-hidden="true">
-            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
-          </span>
-        </summary>
-        <div class="faq__a">
-          <p>Sì, per le cose che cambiano spesso — orari, menu, prezzi, chiusure. Ti lasciamo un modo
-             semplice per farlo e una spiegazione senza tecnicismi. Per le modifiche più grosse
-             ci siamo noi.</p>
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          Perché costa più di un sito trovato online a 50 euro?
-          <span class="faq__sign" aria-hidden="true">
-            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
-          </span>
-        </summary>
-        <div class="faq__a">
-          <p>Perché non è lo stesso prodotto. A quella cifra si compra un modello già pronto,
-             uguale a centinaia di altri, dove il tuo nome è l'unica cosa che cambia.</p>
-          <p>Qui si paga il tempo di capire la tua attività, decidere cosa mettere in prima pagina
-             e progettare il percorso che porta una persona dalla curiosità alla prenotazione.
-             È la differenza tra esserci ed essere scelti.</p>
-        </div>
-      </details>
-
+    <div class="via" aria-labelledby="via-title">
+      <div class="via__head">
+        <h3 class="via__title display" id="via-title">Più in là, la via è ancora da accendere.</h3>
+        <p class="via__text">Tre vetrine libere, per ora. Una aspetta una palestra, una un B&amp;B sul mare,
+          una il tuo nome sopra la porta.</p>
+      </div>
+      <ul class="via__row" role="list" aria-label="Spazi liberi per i prossimi lavori">
+        <li class="vetrina vetrina--larga" data-fade>
+          <div class="vetrina__glass" aria-hidden="true"><span class="vetrina__gleam"></span></div>
+          <p class="vetrina__sign vetrina__sign--grande">
+            <span class="display">Vetrina libera</span>
+            <span class="vetrina__hand">Ci starebbe bene una palestra.</span>
+          </p>
+        </li>
+        <li class="vetrina vetrina--stretta" data-fade>
+          <div class="vetrina__glass" aria-hidden="true"><span class="vetrina__gleam"></span></div>
+          <p class="vetrina__sign vetrina__sign--appeso">
+            <span class="label">Prossima apertura</span>
+            <span class="vetrina__hand">Un B&amp;B sul mare?</span>
+          </p>
+        </li>
+        <li class="vetrina vetrina--media" data-fade>
+          <span class="vetrina__insegna" aria-hidden="true"></span>
+          <div class="vetrina__glass" aria-hidden="true"><span class="vetrina__gleam"></span></div>
+          <p class="vetrina__sign vetrina__sign--basso">
+            <span class="vetrina__hand">Qui sopra va la tua insegna.</span>
+          </p>
+        </li>
+      </ul>
+      <div class="via__foot">
+        <a class="btn btn--ghost" href="#contatti">Prenota una vetrina <svg class="btn__arrow" aria-hidden="true"><use href="#f-destra"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ CTA FINALE ============================ -->
-<section class="section section--dark final" id="contatti">
-  <div class="container final__inner">
-
-    <p class="eyebrow" data-reveal>Parliamone</p>
-
-    <h2 class="final__title" data-reveal style="--reveal-delay:80ms">
-      La tua attività merita di essere vista bene <em>anche online</em>.
-    </h2>
-
-    <p class="lead" data-reveal style="--reveal-delay:160ms; text-align:center">
-      Raccontaci cosa fai e cosa vorresti succedesse quando qualcuno ti cerca.
-      Ti rispondiamo con un'idea concreta e un preventivo chiaro, senza impegno.
-    </p>
-
-    <div class="row final__actions" data-reveal style="--reveal-delay:240ms; justify-content:center">
-      <a class="btn btn--lg btn--light" href="https://wa.me/393758350800?text=Ciao%2C%20vorrei%20un%20sito%20per%20la%20mia%20attivit%C3%A0" target="_blank" rel="noopener">
-        Scrivici su WhatsApp <span class="btn__arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="btn btn--lg btn--outline-light" href="mailto:info@prismalocale.it?subject=Progetto%20per%20la%20mia%20attivit%C3%A0">
-        Scrivici una mail
-      </a>
+<!-- ============================ PERCHÉ LOCALE ============================ -->
+<section class="section section--light locale" id="perche-locale" aria-labelledby="locale-title">
+  <div class="wrap">
+    <div class="section-head grid">
+      <p class="label">Perché un'agenzia locale</p>
+      <h2 class="section-head__title display" id="locale-title" data-split>Siamo a Roseto. <em>Come te.</em></h2>
     </div>
 
-    <div class="contacts" style="width:100%" data-reveal>
-      <a class="contact" href="https://wa.me/393758350800" target="_blank" rel="noopener">
-        <span class="contact__label">WhatsApp</span>
-        <span class="contact__value">375 835 0800 <span class="btn__arrow" aria-hidden="true">→</span></span>
-      </a>
-      <a class="contact" href="mailto:info@prismalocale.it">
-        <span class="contact__label">Email</span>
-        <span class="contact__value">info@prismalocale.it <span class="btn__arrow" aria-hidden="true">→</span></span>
-      </a>
-      <a class="contact" href="https://www.instagram.com/prismalocale/" target="_blank" rel="noopener">
-        <span class="contact__label">Instagram</span>
-        <span class="contact__value">@prismalocale <span class="btn__arrow" aria-hidden="true">→</span></span>
-      </a>
-      <div class="contact">
-        <span class="contact__label">Dove lavoriamo</span>
-        <span class="contact__value">Pescara, provincia e Abruzzo</span>
+    <div class="locale__body grid">
+      <p class="locale__lead lead" data-fade>
+        Non siamo un numero sconosciuto che chiama da Milano. Siamo qui: possiamo passare in negozio,
+        vedere la palestra piena il lunedì sera, assaggiare la pizza prima di raccontarla.
+      </p>
+
+      <ol class="locale__list" role="list">
+        <li class="ragione" data-fade>
+          <h3 class="ragione__title display">Di persona.</h3>
+          <p>Ci sediamo al tuo tavolo, non in una call. E quando serve una modifica, hai un numero che risponde.</p>
+        </li>
+        <li class="ragione" data-fade>
+          <h3 class="ragione__title display">Con la stagione.</h3>
+          <p>Sappiamo cosa vuol dire luglio sul lungomare e novembre in centro. Il sito cambia passo con te:
+            orari estivi, eventi, chiusure.</p>
+        </li>
+        <li class="ragione" data-fade>
+          <h3 class="ragione__title display">Nella tua lingua.</h3>
+          <p>Scriviamo per chi abita qui e per chi arriva in vacanza. Frasi chiare, niente parole da dépliant.</p>
+        </li>
+        <li class="ragione" data-fade>
+          <h3 class="ragione__title display">Anche dopo.</h3>
+          <p>Il giorno del lancio è l'inizio. Restiamo vicini per aggiornamenti, dubbi e idee nuove.</p>
+        </li>
+      </ol>
+
+      <aside class="costa" aria-labelledby="costa-title" data-fade>
+        <h3 class="label" id="costa-title">Dove lavoriamo</h3>
+        <ol class="costa__line" role="list">
+          <li>Giulianova</li>
+          <li class="costa__qui"><span class="costa__dot" aria-hidden="true"></span>Roseto degli Abruzzi <small>siamo qui</small></li>
+          <li>Pineto</li>
+          <li>Silvi</li>
+        </ol>
+        <p class="costa__inland"><span class="label">Entroterra</span> Teramo, Atri, Notaresco e dintorni.</p>
+        <p class="costa__note">Per il resto d'Abruzzo c'è il telefono. E la macchina.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTATTI ============================ -->
+<section class="section contatti" id="contatti" aria-labelledby="contatti-title">
+  <div class="wrap">
+    <div class="section-head section-head--right grid">
+      <p class="label">Contatti</p>
+      <h2 class="section-head__title display" id="contatti-title" data-split>Raccontaci la tua attività.</h2>
+    </div>
+
+    <div class="contatti__body grid">
+      <div class="contatti__intro">
+        <p class="lead" data-fade>Un messaggio basta. Ti risponde una persona, non un modulo automatico,
+          con un'idea concreta e un preventivo chiaro. Senza impegno.</p>
+
+        <ul class="canali" role="list" data-fade>
+          <li>
+            <a class="canale canale--wa" href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20vorrei%20parlare%20della%20mia%20attivit%C3%A0." target="_blank" rel="noopener">
+              <span class="label">WhatsApp</span>
+              <span class="canale__val display">375 835 0800</span>
+              <span class="sr-only">(si apre in una nuova scheda)</span>
+              <svg class="canale__arrow" aria-hidden="true"><use href="#f-obliqua"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="canale" href="mailto:info@prismalocale.it">
+              <span class="label">Email</span>
+              <span class="canale__val display">info@prismalocale.it</span>
+              <svg class="canale__arrow" aria-hidden="true"><use href="#f-destra"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="canale" href="https://www.instagram.com/prismalocale/" target="_blank" rel="noopener">
+              <span class="label">Instagram</span>
+              <span class="canale__val display">@prismalocale</span>
+              <span class="sr-only">(si apre in una nuova scheda)</span>
+              <svg class="canale__arrow" aria-hidden="true"><use href="#f-obliqua"/></svg>
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
 
+      <form class="form" name="contatti" method="POST" action="/grazie.html" data-netlify="true" netlify-honeypot="azienda-web" data-form data-fade>
+        <input type="hidden" name="form-name" value="contatti">
+        <p class="form__hp" aria-hidden="true">
+          <label>Non compilare questo campo <input name="azienda-web" tabindex="-1" autocomplete="off"></label>
+        </p>
+
+        <h3 class="form__title display">Oppure lasciaci due righe.</h3>
+
+        <div class="field">
+          <label for="f-nome">Come ti chiami <span aria-hidden="true">*</span></label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-attivita">La tua attività</label>
+          <input id="f-attivita" name="attivita" type="text" autocomplete="organization" aria-describedby="f-attivita-hint">
+          <p class="field__hint" id="f-attivita-hint">Pizzeria, palestra, B&amp;B, salone…</p>
+        </div>
+        <div class="field">
+          <label for="f-contatto">Email o telefono <span aria-hidden="true">*</span></label>
+          <input id="f-contatto" name="contatto" type="text" inputmode="email" autocomplete="email" required aria-describedby="f-contatto-hint">
+          <p class="field__hint" id="f-contatto-hint">Dove preferisci che ti rispondiamo.</p>
+        </div>
+
+        <fieldset class="field chips">
+          <legend>Cosa ti serve</legend>
+          <label class="chip"><input type="checkbox" name="servizi" value="Sito web"><span>Sito web</span></label>
+          <label class="chip"><input type="checkbox" name="servizi" value="Landing page"><span>Landing page</span></label>
+          <label class="chip"><input type="checkbox" name="servizi" value="Branding"><span>Branding</span></label>
+          <label class="chip"><input type="checkbox" name="servizi" value="Presenza locale"><span>Presenza locale</span></label>
+          <label class="chip"><input type="checkbox" name="servizi" value="Non lo so ancora"><span>Non lo so ancora</span></label>
+        </fieldset>
+
+        <div class="field">
+          <label for="f-messaggio">Raccontaci qualcosa</label>
+          <textarea id="f-messaggio" name="messaggio" rows="4"></textarea>
+        </div>
+
+        <div class="field field--check">
+          <input id="f-privacy" name="privacy" type="checkbox" value="accettata" required>
+          <label for="f-privacy">Ho letto l'<a href="/privacy.html">informativa privacy</a> e accetto che i miei dati
+            siano usati per rispondermi. <span aria-hidden="true">*</span></label>
+        </div>
+
+        <div class="form__end">
+          <button class="btn btn--primary form__submit" type="submit">Invia il messaggio <svg class="btn__arrow" aria-hidden="true"><use href="#f-destra"/></svg></button>
+          <p class="form__req"><span aria-hidden="true">*</span> obbligatorio</p>
+        </div>
+        <p class="form__status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -855,70 +655,44 @@
 
 <!-- ============================ FOOTER ============================ -->
 <footer class="footer">
-  <div class="container">
+  <div class="wrap">
 
-    <div class="footer__top">
-      <div>
-        <a class="brand" href="#top" style="color:var(--on-dark)">
-          <img class="brand__mark" src="assets/img/favicon.svg" width="28" height="28" alt="" aria-hidden="true">
-          <span class="brand__name">Prisma<span>Locale</span></span>
-        </a>
-        <p class="footer__tagline">Digital growth. <span>Local impact.</span></p>
-        <p class="footer__brandline">
-          Siti web e presenza digitale per le attività locali di Pescara,
-          della provincia e di tutto l'Abruzzo.
-        </p>
+    <div class="footer__grid grid">
+      <p class="footer__claim display">Fatto a mano a <em>Roseto degli Abruzzi.</em></p>
+      <div class="footer__col footer__col--addr">
+        <h2 class="label">Studio</h2>
+        <address>
+          Prisma Locale<br>
+          Via Cristoforo Colombo&nbsp;125<br>
+          64026 Roseto degli Abruzzi&nbsp;(TE)
+        </address>
       </div>
-
-      <div>
-        <h4>Naviga</h4>
-        <ul class="footer__list">
-          <li><a href="#progetti">Progetti</a></li>
-          <li><a href="#servizi">Servizi</a></li>
-          <li><a href="#metodo">Metodo</a></li>
-          <li><a href="#pacchetti">Pacchetti</a></li>
-          <li><a href="#domande">Domande</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Servizi</h4>
-        <ul class="footer__list">
-          <li><a href="#servizi">Siti web</a></li>
-          <li><a href="#servizi">Identità visiva</a></li>
-          <li><a href="#servizi">Social</a></li>
-          <li><a href="#servizi">Soluzioni digitali</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Contatti</h4>
-        <ul class="footer__list">
-          <li><a href="https://wa.me/393758350800" target="_blank" rel="noopener">WhatsApp 375 835 0800</a></li>
+      <div class="footer__col">
+        <h2 class="label">Scrivici</h2>
+        <ul role="list">
+          <li><a href="https://wa.me/393758350800" target="_blank" rel="noopener">WhatsApp<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
           <li><a href="mailto:info@prismalocale.it">info@prismalocale.it</a></li>
-          <li><a href="https://www.instagram.com/prismalocale/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#contatti">Richiedi un preventivo</a></li>
+          <li><a href="https://www.instagram.com/prismalocale/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h2 class="label">Sito</h2>
+        <ul role="list">
+          <li><a href="#servizi">Servizi</a></li>
+          <li><a href="#lavori">Lavori</a></li>
+          <li><a href="/progetti/saporito.html">Caso Saporito</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> Prisma Locale — Pescara, Abruzzo</p>
-      <nav aria-label="Note legali">
-        <a href="privacy.html">Privacy</a>
-        <a href="privacy.html#cookie">Cookie</a>
-      </nav>
+      <p>© 2026 Prisma Locale · Roseto degli Abruzzi</p>
+      <ul role="list">
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/privacy.html#cookie">Cookie</a></li>
+      </ul>
     </div>
-
   </div>
 </footer>
-
-<!-- Barra azione mobile: la CTA resta sempre raggiungibile col pollice -->
-<div class="dock" data-dock>
-  <a class="btn btn--light" href="https://wa.me/393758350800?text=Ciao%2C%20vorrei%20un%20sito%20per%20la%20mia%20attivit%C3%A0" target="_blank" rel="noopener">WhatsApp</a>
-  <a class="btn btn--outline-light" href="#contatti">Parliamone</a>
-</div>
-
-<script type="module" src="assets/js/main.js"></script>
 </body>
 </html>

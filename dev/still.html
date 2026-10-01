@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Render statico del prisma (solo sviluppo)</title>
+<style>html, body { margin: 0; background: #0A0F24; } #host { position: relative; }</style>
+</head>
+<body>
+<div id="host"></div>
+<script type="module">
+  // Usato da scripts/render-stills.mjs: un fotogramma della scena, già aperto.
+  import { createPrism } from '/src/js/prism/prism.js';
+
+  const params = new URLSearchParams(location.search);
+  const layout = params.get('layout') || 'tall';
+  const width = Number(params.get('w')) || 720;
+  const height = Number(params.get('h')) || 1280;
+  const quality = Number(params.get('q')) || 0.86;
+
+  const host = document.getElementById('host');
+  host.style.width = `${width}px`;
+  host.style.height = `${height}px`;
+  const still = createPrism(host, { still: { layout, width, height } });
+  window.__still = still.canvas.toDataURL('image/webp', quality);
+  window.__png = params.has('png') ? still.canvas.toDataURL('image/png') : null;
+</script>
+</body>
+</html>
