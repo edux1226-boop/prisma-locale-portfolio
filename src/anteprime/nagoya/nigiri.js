@@ -228,96 +228,102 @@ function geometriaCuore() {
 
 /* ---- Salmone ------------------------------------------------------------- */
 
-/* Colore e rilievo dalla stessa mano: le venature di grasso sono diagonali,
-   come i tagli del sito, e appena in rilievo sulla carne. */
+/* Colore e rilievo dalla stessa mano. Come nel salmone vero: bande di grasso
+   larghe e sfumate che attraversano la fetta in diagonale con una leggera
+   curva, carne che scurisce tra una banda e l'altra, fibre sottili. */
 function trameSalmone() {
-  const W = 1024;
-  const H = 512;
+  const W = 2048;
+  const H = 1024;
   const colore = document.createElement('canvas');
   const rilievo = document.createElement('canvas');
   colore.width = rilievo.width = W;
   colore.height = rilievo.height = H;
   const g = colore.getContext('2d');
   const r = rilievo.getContext('2d');
+  const rand = random(11);
 
   const fondo = g.createLinearGradient(0, 0, 0, H);
-  fondo.addColorStop(0, '#C9401B');
-  fondo.addColorStop(0.3, '#F2683A');
-  fondo.addColorStop(0.55, '#FF7A4D');
-  fondo.addColorStop(0.85, '#F46A3E');
-  fondo.addColorStop(1, '#D9502A');
+  fondo.addColorStop(0, '#D85A33');
+  fondo.addColorStop(0.35, '#EC7348');
+  fondo.addColorStop(0.65, '#F07B50');
+  fondo.addColorStop(1, '#DE6238');
   g.fillStyle = fondo;
   g.fillRect(0, 0, W, H);
-  r.fillStyle = '#6a6a6a';
+  r.fillStyle = '#707070';
   r.fillRect(0, 0, W, H);
 
-  // Carne non uniforme: macchie morbide più chiare e più scure.
-  const rand = random(11);
-  for (let k = 0; k < 140; k++) {
-    const x = rand() * W;
-    const y = rand() * H;
-    const raggio = 20 + rand() * 70;
-    const macchia = g.createRadialGradient(x, y, 0, x, y, raggio);
-    const tinta = rand() > 0.5 ? '255,150,110' : '190,60,25';
-    macchia.addColorStop(0, `rgba(${tinta},${0.05 + rand() * 0.08})`);
-    macchia.addColorStop(1, `rgba(${tinta},0)`);
-    g.fillStyle = macchia;
-    g.fillRect(x - raggio, y - raggio, raggio * 2, raggio * 2);
+  // Il percorso di una banda: dal bordo superiore a quello inferiore,
+  // spostata in avanti (la diagonale) e appena incurvata.
+  const percorso = (ctx, x, piega, sbieco) => {
+    ctx.beginPath();
+    ctx.moveTo(x, -40);
+    ctx.bezierCurveTo(x + sbieco * 0.25 + piega, H * 0.3, x + sbieco * 0.7 - piega, H * 0.7, x + sbieco, H + 40);
+  };
+
+  const bande = [];
+  let x = -760;
+  while (x < W + 80) {
+    bande.push({ x, piega: (rand() - 0.5) * 120, sbieco: 560 + rand() * 140, larga: 22 + rand() ** 1.4 * 46 });
+    x += 120 + rand() * 120;
   }
 
   g.lineCap = r.lineCap = 'round';
-  let x0 = -640;
-  while (x0 < 1100) {
-    const larghezza = 3 + rand() ** 1.5 * 13;
-    const curva = 150 + rand() * 140;
-    const sbieco = 420 + rand() * 110;
-    // Ogni venatura è a tratti: più piena al centro, sfumata ai lati.
-    const tratti = 14;
-    for (let s = 0; s < tratti; s++) {
-      const t0 = s / tratti;
-      const t1 = (s + 1) / tratti;
-      const punto = (tt) => {
-        const xa = (1 - tt) ** 2 * x0 + 2 * (1 - tt) * tt * (x0 + curva) + tt * tt * (x0 + sbieco);
-        const ya = (1 - tt) ** 2 * -30 + 2 * (1 - tt) * tt * 256 + tt * tt * 542;
-        return [xa, ya];
-      };
-      const [ax, ay] = punto(t0);
-      const [bx, by] = punto(t1);
-      const pieno = 0.45 + 0.45 * Math.sin(t0 * Math.PI) * (0.7 + rand() * 0.3);
-      const spessore = larghezza * (0.7 + rand() * 0.5);
-      g.shadowColor = 'rgba(255, 226, 206, 0.75)';
-      g.shadowBlur = 8;
-      g.strokeStyle = `rgba(255, 238, 228, ${pieno})`;
-      g.lineWidth = spessore;
-      g.beginPath();
-      g.moveTo(ax, ay);
-      g.lineTo(bx, by);
+  for (const [i, b] of bande.entries()) {
+    // La carne si fa più scura verso la banda successiva.
+    const passo = (bande[i + 1]?.x ?? b.x + 180) - b.x;
+    g.strokeStyle = 'rgba(150, 40, 15, 0.16)';
+    g.lineWidth = passo * 0.45;
+    g.save();
+    g.translate(passo * 0.55, 0);
+    percorso(g, b.x, b.piega, b.sbieco);
+    g.stroke();
+    g.restore();
+    // Fibre: righe sottilissime parallele alle bande.
+    for (let f = 0; f < 7; f++) {
+      const scarto = b.larga * 0.6 + rand() * passo * 0.8;
+      g.strokeStyle = rand() > 0.5 ? 'rgba(255, 190, 160, 0.08)' : 'rgba(140, 35, 10, 0.08)';
+      g.lineWidth = 1 + rand() * 1.5;
+      percorso(g, b.x + scarto, b.piega, b.sbieco);
       g.stroke();
-      r.strokeStyle = `rgba(235,235,235,${pieno})`;
-      r.lineWidth = spessore * 1.3;
-      r.beginPath();
-      r.moveTo(ax, ay);
-      r.lineTo(bx, by);
-      r.stroke();
+    }
+  }
+
+  // Il grasso: tre passate, alone largo, corpo, nucleo più chiaro.
+  for (const b of bande) {
+    const strati = [
+      [b.larga * 1.9, 'rgba(250, 196, 170, 0.28)', 26],
+      [b.larga, 'rgba(250, 214, 196, 0.62)', 10],
+      [b.larga * 0.4, 'rgba(255, 232, 220, 0.45)', 4],
+    ];
+    for (const [larghezza, tinta, sfuma] of strati) {
+      g.shadowColor = tinta;
+      g.shadowBlur = sfuma;
+      g.strokeStyle = tinta;
+      g.lineWidth = larghezza;
+      percorso(g, b.x, b.piega, b.sbieco);
+      g.stroke();
     }
     g.shadowBlur = 0;
-    if (rand() > 0.4) {
-      const scarto = larghezza + 10 + rand() * 16;
-      g.strokeStyle = 'rgba(255, 214, 196, 0.25)';
-      g.lineWidth = 1.2 + rand() * 1.4;
-      g.beginPath();
-      g.moveTo(x0 + scarto, -30);
-      g.quadraticCurveTo(x0 + curva + scarto, 256, x0 + sbieco + scarto, 542);
-      g.stroke();
-    }
-    x0 += 52 + rand() * 66;
+    r.shadowColor = 'rgba(210,210,210,0.8)';
+    r.shadowBlur = 14;
+    r.strokeStyle = 'rgba(200,200,200,0.8)';
+    r.lineWidth = b.larga;
+    percorso(r, b.x, b.piega, b.sbieco);
+    r.stroke();
+    r.shadowBlur = 0;
+  }
+
+  // Grana minuta della carne.
+  for (let k = 0; k < 9000; k++) {
+    g.fillStyle = rand() > 0.5 ? 'rgba(255,200,170,0.05)' : 'rgba(120,30,10,0.05)';
+    g.fillRect(rand() * W, rand() * H, 2 + rand() * 3, 2 + rand() * 3);
   }
 
   const mappa = new CanvasTexture(colore);
   mappa.colorSpace = SRGBColorSpace;
-  mappa.anisotropy = 4;
+  mappa.anisotropy = 8;
   const bump = new CanvasTexture(rilievo);
-  bump.anisotropy = 4;
+  bump.anisotropy = 8;
   return { mappa, bump };
 }
 
@@ -333,6 +339,7 @@ function geometriaFetta(dettaglio) {
   const piatta = new Float32Array(perFaccia * 2 * 3);
   const posata = new Float32Array(perFaccia * 2 * 3);
   const uv = new Float32Array(perFaccia * 2 * 2);
+  const colori = new Float32Array(perFaccia * 2 * 3);
   const indici = [];
 
   for (let faccia = 0; faccia < 2; faccia++) {
@@ -351,6 +358,9 @@ function geometriaFetta(dettaglio) {
         const cala = 0.3 * u * u + 0.07 * u ** 4;
         posata.set([x * 0.97, y - cala - 0.08 * v * v, z * 0.98], k * 3);
         uv.set([i / nu, j / nv], k * 2);
+        // Dove la fetta è sottile la luce passa: più chiara e più rosata.
+        const sottile = 1 - Math.min(1, spessore / (T / 2));
+        colori.set([0.86 + 0.14 * sottile, 0.84 + 0.16 * sottile, 0.84 + 0.16 * sottile], k * 3);
       }
     }
     for (let j = 0; j < nv; j++) {
@@ -368,6 +378,7 @@ function geometriaFetta(dettaglio) {
   const geometry = new BufferGeometry();
   geometry.setAttribute('position', new BufferAttribute(piatta, 3));
   geometry.setAttribute('uv', new BufferAttribute(uv, 2));
+  geometry.setAttribute('color', new BufferAttribute(colori, 3));
   geometry.setIndex(indici);
   geometry.computeVertexNormals();
 
@@ -564,17 +575,20 @@ export function createNigiri(host, options = {}) {
     new MeshPhysicalMaterial({
       map: trame.mappa,
       bumpMap: trame.bump,
-      bumpScale: 1.6,
-      roughness: 0.4,
-      clearcoat: 1,
-      clearcoatRoughness: 0.07,
-      sheen: 0.6,
-      sheenRoughness: 0.45,
-      sheenColor: new Color('#ffb393'),
+      bumpScale: 0.9,
+      vertexColors: true,
+      // Superficie umida, non laccata: riflesso morbido e largo.
+      roughness: 0.46,
+      clearcoat: 0.4,
+      clearcoatRoughness: 0.3,
+      sheen: 0.35,
+      sheenRoughness: 0.5,
+      sheenColor: new Color('#ffc8ae'),
+      specularColor: new Color('#ffe6da'),
       // La carne lascia passare un po' di luce: un bagliore caldo nelle ombre.
-      emissive: new Color('#6a2008'),
-      emissiveIntensity: 0.4,
-      specularIntensity: 0.7,
+      emissive: new Color('#5c1c08'),
+      emissiveIntensity: 0.3,
+      specularIntensity: 0.55,
     }),
   );
   scene.add(fetta);
