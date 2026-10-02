@@ -42,7 +42,9 @@
 
     /* ---- Scene 3D ---- */
     var scene = { lanterne: null, giro: null };
-    var puoi3D = Boolean(window.THREE) && webglOk();
+    var puoi3D = webglOk();
+    var giroVicino = false;
+    var introPartita = false;
     var hero = document.querySelector('[data-hero]');
     var hostLanterne = document.querySelector('[data-lanterne]');
     var sezGiro = document.querySelector('[data-giro]');
@@ -54,13 +56,13 @@
     var soglie = [0.16, 0.44, 0.72];
 
     function montaLanterne() {
-      if (!puoi3D || scene.lanterne) return Boolean(scene.lanterne);
+      if (!puoi3D || !window.THREE || scene.lanterne) return Boolean(scene.lanterne);
       scene.lanterne = creaLanterne(hostLanterne, { piccolo: PICCOLO, statico: RIDOTTO });
       root.classList.toggle('con-3d', Boolean(scene.lanterne));
       return Boolean(scene.lanterne);
     }
     function montaGiro() {
-      if (!puoi3D || scene.giro) return;
+      if (!puoi3D || !window.THREE || scene.giro) return;
       scene.giro = creaGiro(hostGiro, { piccolo: PICCOLO, statico: RIDOTTO });
       if (scene.giro) {
         root.classList.add('con-3d-giro');
@@ -76,12 +78,28 @@
       root.classList.remove('con-3d', 'con-3d-giro');
     }
 
-    var conLanterne = montaLanterne();
-    if (!conLanterne) root.classList.add('senza-3d');
+    if (!montaLanterne()) {
+      if (puoi3D && !window.THREE) {
+        // cdnjs non ha risposto: la stessa Three.js r128, da jsdelivr.
+        caricaThree().then(function (ok) {
+          if (!ok || !montaLanterne()) { root.classList.add('senza-3d'); return; }
+          var r = hero.getBoundingClientRect();
+          scene.lanterne.visibile = r.bottom > 0 && r.top < window.innerHeight;
+          // Se l'apertura è già passata, le lanterne vere si accendono adesso.
+          if (introPartita && !RIDOTTO) scene.lanterne.accendi(G.timeline(), 0, 1.4);
+          if (giroVicino) montaGiro();
+        });
+      } else {
+        root.classList.add('senza-3d');
+      }
+    }
 
     // Il giro si prepara solo quando ci si avvicina.
     var vicino = new IntersectionObserver(function (voci) {
-      if (voci[0].isIntersecting) { montaGiro(); vicino.disconnect(); }
+      if (!voci[0].isIntersecting) return;
+      giroVicino = true;
+      montaGiro();
+      if (scene.giro || !puoi3D) vicino.disconnect();
     }, { rootMargin: '120% 0px' });
     vicino.observe(sezGiro);
 
@@ -117,7 +135,10 @@
     } else {
       // SplitText misura le lettere: prima i caratteri (sono già nella pagina, ma vanno attivati).
       var caratteri = document.fonts ? Promise.race([document.fonts.ready, new Promise(function (ok) { setTimeout(ok, 1200); })]) : Promise.resolve();
-      caratteri.then(function () { introHero(G, SPLIT, scene.lanterne); });
+      caratteri.then(function () {
+        introPartita = true;
+        introHero(G, SPLIT, scene.lanterne);
+      });
       ST.create({
         trigger: hero, start: 'top top', end: 'bottom top',
         onUpdate: function (s) { if (scene.lanterne) scene.lanterne.setScroll(s.progress); },
@@ -223,6 +244,16 @@
     } catch (e) {
       return false;
     }
+  }
+
+  function caricaThree() {
+    return new Promise(function (ok) {
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js';
+      s.onload = function () { ok(Boolean(window.THREE)); };
+      s.onerror = function () { ok(false); };
+      document.head.appendChild(s);
+    });
   }
 
   function sbloccaIntro() {
