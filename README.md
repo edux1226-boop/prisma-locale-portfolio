@@ -130,6 +130,10 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
   nella pagina: dopo quella data resta solo "Anteprima scaduta, contatta Prisma Locale".
   La scadenza è lato client, quindi è un deterrente, non una protezione.
   Immagini statiche e immagine social: `node scripts/render-nagoya.mjs` con il dev server attivo.
+- **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
+  autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
+  Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con
+  `node dev/destino/build.mjs`, che scrive `public/anteprime/destino/index.html`.
 
 ## Progetti mostrati
 
