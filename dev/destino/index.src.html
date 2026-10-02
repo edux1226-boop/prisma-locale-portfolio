@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Destino · Churrascaria e Cocktail Bar a Roseto degli Abruzzi</title>
+<meta name="description" content="Churrascaria con servizio delle spade al tavolo, antipasti a volontà, buffet con sushi e cocktail bar sul Lungomare Trieste a Roseto degli Abruzzi. Aperto tutti i giorni dalle 17 alle 3.">
+<meta name="theme-color" content="#EFE6D8">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Destino · Churrascaria & Cocktail Bar a Roseto degli Abruzzi">
+<meta property="og:description" content="Il mare a pochi passi, le luci che si accendono. Lungomare Trieste 44, tutti i giorni dalle 17 alle 3.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23EFE6D8'/%3E%3Cpath d='M8 27V15a8 8 0 0 1 16 0v12' fill='none' stroke='%23B5603F' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Destino - Churrascaria & Cocktail Bar",
+  "alternateName": "Destino",
+  "description": "Churrascaria con servizio delle spade al tavolo, antipasti a volontà, buffet con sushi e cocktail bar sul lungomare di Roseto degli Abruzzi.",
+  "servesCuisine": "Churrascaria",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lungomare Trieste 44",
+    "addressLocality": "Roseto degli Abruzzi",
+    "postalCode": "64026",
+    "addressRegion": "TE",
+    "addressCountry": "IT"
+  },
+  "telephone": "+39 349 088 5513",
+  "email": "destinoroseto@gmail.com",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "17:00",
+    "closes": "03:00"
+  }],
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Destino%20Churrascaria%20Lungomare%20Trieste%2044%2064026%20Roseto%20degli%20Abruzzi",
+  "acceptsReservations": true,
+  "sameAs": ["https://www.instagram.com/destino_roseto/"],
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Accessibile in sedia a rotelle", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Area giochi per bambini", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Cani ammessi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Tavoli all'aperto", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Musica dal vivo", "value": true }
+  ]
+}
+</script>
+
+<script>
+  (function (r) {
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion');
+  })(document.documentElement);
+</script>
+
+<style>
+/* Italiana © 2011 Santiago Orozco · Familjen Grotesk © 2021 The Familjen Grotesk Project Authors.
+   Entrambi sotto SIL Open Font License 1.1, incorporati ridotti al latino. */
+@font-face {
+  font-family: "Italiana";
+  src: url(data:font/woff2;base64,__FONT_ITALIANA__) format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url(data:font/woff2;base64,__FONT_FAMILJEN__) format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   DESTINO · "Dalle 17 alle 3"
+   La pagina comincia chiara come la terrazza al tramonto e scurisce fino
+   alla notte. Ogni sezione si apre con un arco bianco, come quelli del locale.
+   ========================================================================== */
+:root {
+  --sabbia: #EFE6D8;
+  --sabbia-rgb: 239 230 216;
+  --notte: #15130F;
+  --notte-rgb: 21 19 15;
+  --salvia: #8F9B7A;
+  --terracotta: #B5603F;
+  --brace: #FF6A2B;
+  --oliva: #4F5A3F;
+  --legno: #6E4B33;
+  --calce: #F4EEE4;              /* la muratura bianca degli archi */
+  --acqua: #82ACA2;              /* le piastrelle smaltate del bancone */
+  --rattan: #C59B62;             /* le lampade del bar interno */
+
+  --inchiostro: #241E17;         /* testo su sabbia, 13:1 */
+  --inchiostro-2: #5A5045;       /* secondario su sabbia, 6.3:1 */
+  --terracotta-scura: #8E4429;   /* terracotta leggibile su sabbia, 5.6:1 */
+  --sabbia-2: #B5AB9B;           /* secondario su notte, 8:1 */
+
+  --f-titoli: "Italiana", serif;
+  --f-testo: "Familjen Grotesk", sans-serif;
+
+  --t-mega: clamp(5.4rem, 1.4rem + 15vw, 17rem);
+  --t-titolo: clamp(2.7rem, 1.5rem + 5vw, 6.6rem);
+  --t-sotto: clamp(1.7rem, 1.15rem + 1.9vw, 2.9rem);
+  --t-corpo: clamp(1rem, 0.96rem + 0.2vw, 1.14rem);
+
+  --gutter: clamp(18px, 4vw, 64px);
+  --col-gap: clamp(12px, 1.6vw, 28px);
+  --arco-h: clamp(64px, 10vw, 170px);
+  --barra-h: 64px;
+  --barra-spazio: calc(var(--barra-h) + env(safe-area-inset-bottom, 0px) + 28px);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Il rimbalzo di iOS mostra sabbia in alto e notte in fondo. */
+  background: linear-gradient(var(--sabbia) 50%, var(--notte) 50%);
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  margin: 0;
+  font-family: var(--f-testo);
+  font-size: var(--t-corpo);
+  line-height: 1.55;
+  color: var(--inchiostro);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Grana leggera su tutta la pagina: niente tinte piatte. */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 1.2 -.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, p, ul, ol, figure, dl, dd, address { margin: 0; }
+address { font-style: normal; }
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus, currentColor); outline-offset: 3px; border-radius: 3px; }
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.salta {
+  position: fixed; left: 12px; top: 12px; z-index: 200;
+  padding: 12px 18px; background: var(--notte); color: var(--sabbia);
+  font-weight: 600; text-decoration: none; border-radius: 6px;
+  transform: translateY(-160%);
+}
+.salta:focus { transform: none; }
+
+/* ---- Temi ---------------------------------------------------------------- */
+.tema-chiaro {
+  --testo: var(--inchiostro); --testo-2: var(--inchiostro-2);
+  --dc: var(--terracotta-scura); --filo: rgb(36 30 23 / 0.16); --focus: var(--inchiostro);
+  color: var(--testo);
+}
+.tema-scuro {
+  --testo: var(--sabbia); --testo-2: var(--sabbia-2);
+  --dc: #E3A07F; --filo: rgb(var(--sabbia-rgb) / 0.16); --focus: var(--sabbia);
+  color: var(--testo);
+}
+
+/* Dati da confermare: sempre lo stesso segno, tratteggiato come uno spazio da riempire. */
+.dc {
+  display: inline-block;
+  font-family: var(--f-testo); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.05em; line-height: 1.35;
+  color: var(--dc);
+  border: 1px dashed currentColor; border-radius: 4px;
+  padding: 0.12em 0.45em;
+  white-space: nowrap; vertical-align: 0.15em;
+}
+.dc--lungo { white-space: normal; }
+
+/* ---- Pulsanti: in alto tondi come gli archi, in basso dritti ------------- */
+.btn {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6em;
+  min-height: 54px; padding: 0 1.6em;
+  border-radius: 1.8em 1.8em 0.45em 0.45em;
+  font-family: var(--f-testo); font-size: 1rem; font-weight: 600; line-height: 1;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  border: 0; background: none;
+  transition: transform 0.4s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn--brace { background: var(--brace); color: var(--notte); }
+.btn--linea { box-shadow: inset 0 0 0 1.5px currentColor; }
+
+.link {
+  position: relative; display: inline-block;
+  font-weight: 600; text-decoration: none;
+  padding-bottom: 3px;
+}
+.link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px;
+  background: currentColor; transform-origin: 0 50%;
+  transition: transform 0.5s var(--ease);
+}
+.link:hover::after { transform: scaleX(0.35); }
+
+/* ---- Tipografia ---------------------------------------------------------- */
+.titolo {
+  font-family: var(--f-titoli); font-weight: 400;
+  font-size: var(--t-titolo); line-height: 1.02; letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+/* Le maschere di SplitText tagliano alla riga: spazio sotto per g, p, q. */
+.riga-mask { padding-bottom: 0.2em; margin-bottom: -0.2em; }
+.frase {
+  font-family: var(--f-titoli); font-size: var(--t-sotto); line-height: 1.15;
+  text-wrap: balance;
+}
+.testo-2 { color: var(--testo-2); }
+.corpo { max-width: 34rem; }
+.corpo + .corpo { margin-top: 1em; }
+
+/* ---- Orologio: dalle 17 alle 3 ------------------------------------------- */
+.orologio {
+  position: fixed; z-index: 80;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: var(--gutter);
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 14px 6px 6px;
+  border-radius: 999px;
+  background: rgb(var(--notte-rgb) / 0.82);
+  color: var(--sabbia);
+  box-shadow: inset 0 0 0 1px rgb(var(--sabbia-rgb) / 0.14);
+  font-variant-numeric: tabular-nums; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.03em;
+  pointer-events: none;
+}
+.orologio svg { width: 34px; height: 34px; }
+/* Su telefono più piccolo: copre meno i titoli quando passano sotto. */
+@media (max-width: 47.99em) {
+  .orologio { gap: 7px; padding: 4px 10px 4px 4px; font-size: 0.85rem; }
+  .orologio svg { width: 26px; height: 26px; }
+}
+.orologio__ore, .orologio__minuti { transform-origin: 20px 20px; }
+html:not(.js) .orologio { display: none; }
+
+/* ---- Barra in basso, sempre presente ------------------------------------- */
+.barra {
+  position: fixed; z-index: 90;
+  left: 0; right: 0; bottom: 0;
+  display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 6px;
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px));
+  background: rgb(var(--notte-rgb) / 0.94);
+  box-shadow: inset 0 1px 0 rgb(var(--sabbia-rgb) / 0.1);
+}
+.barra a {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; border-radius: 1.4em 1.4em 0.4em 0.4em;
+  color: var(--sabbia); text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  box-shadow: inset 0 0 0 1px rgb(var(--sabbia-rgb) / 0.22);
+}
+.barra a svg { width: 19px; height: 19px; }
+.barra .barra__wa { background: var(--brace); color: var(--notte); box-shadow: none; }
+.barra a:focus-visible { outline-color: var(--sabbia); }
+@media (min-width: 64em) {
+  .barra {
+    left: 50%; right: auto; bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    grid-template-columns: repeat(3, auto); gap: 6px;
+    padding: 6px; border-radius: 2em 2em 0.8em 0.8em;
+    box-shadow: inset 0 0 0 1px rgb(var(--sabbia-rgb) / 0.12);
+  }
+  .barra a { padding: 0 22px; }
+}
+
+/* ---- Testata -------------------------------------------------------------- */
+.testata {
+  position: absolute; z-index: 10; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px;
+  padding: calc(18px + env(safe-area-inset-top, 0px)) calc(var(--gutter) + 150px) 18px var(--gutter);
+}
+.marchio {
+  font-family: var(--f-titoli); font-size: 1.55rem; letter-spacing: 0.34em; line-height: 1;
+  text-decoration: none;
+}
+.testata__nav { display: none; margin-left: auto; }
+.testata__nav ul { display: flex; gap: clamp(16px, 1.8vw, 30px); }
+.testata__nav a { font-size: 0.95rem; text-decoration: none; font-weight: 500; }
+@media (min-width: 64em) { .testata__nav { display: block; } }
+@media (max-width: 47.99em) { .testata { padding-right: calc(var(--gutter) + 120px); } .testata .dc { font-size: 0.62rem; } }
+
+/* ---- Hero · 17:00 -------------------------------------------------------- */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 100svh;
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  align-content: end;
+  padding: calc(150px + env(safe-area-inset-top, 0px)) var(--gutter) calc(var(--arco-h) + var(--barra-spazio));
+}
+.hero__cielo {
+  position: absolute; inset: 0; z-index: -3;
+  background:
+    radial-gradient(55% 45% at 78% 4%, rgb(255 170 118 / 0.5), transparent 70%),
+    radial-gradient(40% 30% at 8% 18%, rgb(143 155 122 / 0.22), transparent 70%),
+    linear-gradient(180deg, #E2BFA0 0%, #E9D2BA 34%, var(--sabbia) 70%);
+}
+.hero__lanterne { position: absolute; inset: 0 0 auto 0; height: 66svh; z-index: -2; pointer-events: none; }
+.hero__lanterne canvas { width: 100%; height: 100%; }
+.lanterne-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.js .lanterne-svg { opacity: 0; animation: mostra 0.6s 4s forwards; }
+.con-3d .lanterne-svg { display: none; }
+.senza-3d .lanterne-svg { animation: none; opacity: 1; }
+@keyframes mostra { to { opacity: 1; } }
+
+.hero__testo { position: relative; z-index: 2; }
+.hero__titolo { font-weight: 400; }
+.hero__nome {
+  display: block;
+  font-family: var(--f-titoli); font-size: var(--t-mega);
+  line-height: 0.84; letter-spacing: -0.012em; margin-left: -0.045em;
+}
+/* Finché non parte l'apertura il titolo resta nascosto; se lo script non arriva, compare da solo. */
+.js.motion .hero__nome, .js.motion [data-intro] { opacity: 0; animation: mostra 0.6s 3.5s forwards; }
+.hero__sotto {
+  display: block; margin-top: clamp(16px, 1.8vw, 26px);
+  font-family: var(--f-testo); font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem); font-weight: 500;
+  letter-spacing: 0.01em; line-height: 1.4;
+}
+.hero__frase { margin-top: clamp(22px, 2.6vw, 38px); max-width: 15em; }
+.hero__meta { margin-top: 14px; color: var(--testo-2); }
+.hero__azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(24px, 3vw, 38px); }
+.hero__foto { position: relative; z-index: 1; margin-top: clamp(40px, 8vw, 70px); }
+
+.foto-arco {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: clamp(6px, 0.7vw, 11px) solid var(--calce);
+  border-radius: 50% 50% 10px 10px / 36% 36% 10px 10px;
+  box-shadow: 0 40px 70px -40px rgb(36 30 23 / 0.55);
+  background: var(--legno);
+}
+.foto-arco img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 63.99em) {
+  .hero { padding-top: calc(38svh + env(safe-area-inset-top, 0px)); }
+}
+@media (max-width: 47.99em) {
+  .hero__azioni .btn { flex: 1 1 100%; }
+}
+@media (min-width: 64em) {
+  .hero {
+    grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap);
+    padding-top: 140px;
+  }
+  .hero__testo { grid-column: 1 / span 8; grid-row: 1; align-self: end; }
+  .hero__foto { grid-column: 9 / -1; grid-row: 1; align-self: end; margin: 0 0 clamp(40px, 6vh, 90px); }
+}
+
+/* ---- Sezioni con l'arco --------------------------------------------------- */
+.sezione {
+  position: relative; isolation: isolate;
+  padding: clamp(120px, 13vw, 210px) var(--gutter) calc(var(--arco-h) + clamp(96px, 11vw, 170px));
+  /* Il primo schermo ha ancora il colore di prima: l'arco porta quello nuovo. */
+  background: linear-gradient(180deg, var(--prima) 0, var(--prima) 100svh, var(--fondo) 100svh);
+  overflow-x: clip;
+}
+.sezione__arco {
+  position: absolute; z-index: -1;
+  left: 50%; top: calc(-1 * var(--arco-h));
+  width: 124vw; height: calc(100svh + var(--arco-h)); margin-left: -62vw;
+  background: var(--strati), var(--fondo);
+  border: clamp(6px, 0.8vw, 12px) solid var(--calce); border-bottom: 0;
+  border-radius: 50% 50% 0 0 / var(--arco-h) var(--arco-h) 0 0;
+  transform-origin: 50% var(--arco-h);
+  pointer-events: none;
+}
+.tema-chiaro > .sezione__arco { outline: 1px solid rgb(36 30 23 / 0.08); }
+/* La chiave di volta: l'ora in cui si entra in questa sala. */
+.sezione__chiave {
+  position: absolute; left: 50%; top: calc(var(--arco-h) * 0.32);
+  transform: translateX(-50%);
+  font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.08em;
+  color: var(--testo-2);
+}
+
+/* ---- Le tre anime · 18:30 ------------------------------------------------ */
+.anime { --prima: var(--sabbia); --fondo: #E9DBC7;
+  --strati: radial-gradient(80% 45% at 30% 4%, rgb(181 96 63 / 0.1), transparent 70%),
+            radial-gradient(45% 40% at 88% 70%, rgb(143 155 122 / 0.2), transparent 70%); }
+.anime__titolo { max-width: 13em; }
+.anime__griglia { display: grid; gap: clamp(72px, 10vw, 150px); margin-top: clamp(56px, 7vw, 110px); }
+.anima h3 { font-family: var(--f-titoli); font-weight: 400; font-size: clamp(2rem, 1.3rem + 2.4vw, 3.6rem); line-height: 1.05; margin-top: clamp(20px, 2.4vw, 32px); }
+.anima p { margin-top: 12px; max-width: 30rem; }
+.anima .link { margin-top: 18px; }
+.anima__visivo { position: relative; overflow: hidden; }
+
+/* Churrascaria: una finestra ad arco sulla brace. */
+.visivo-brace {
+  aspect-ratio: 1 / 1.08;
+  border-radius: 50% 50% 8px 8px / 38% 38% 8px 8px;
+  border: clamp(6px, 0.7vw, 11px) solid var(--calce);
+  background:
+    radial-gradient(60% 26% at 50% 100%, rgb(255 106 43 / 0.75), rgb(181 96 63 / 0.35) 45%, transparent 75%),
+    radial-gradient(35% 14% at 30% 96%, rgb(255 190 120 / 0.55), transparent 70%),
+    radial-gradient(30% 12% at 72% 98%, rgb(255 150 80 / 0.5), transparent 70%),
+    linear-gradient(180deg, #5A3826 0%, #33231A 55%, #1E1611 100%);
+}
+.visivo-brace svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.visivo-brace__bagliore { position: absolute; inset: auto 0 0 0; height: 40%; background: radial-gradient(60% 70% at 50% 100%, rgb(255 120 50 / 0.45), transparent 70%); }
+.motion .visivo-brace__bagliore { animation: respiro 3.6s ease-in-out infinite alternate; }
+@keyframes respiro { from { opacity: 0.55; } to { opacity: 1; } }
+
+/* Experience: un globo, come le lanterne. */
+.visivo-globo {
+  aspect-ratio: 1; border-radius: 50%;
+  background:
+    radial-gradient(70% 55% at 50% 0%, rgb(255 206 150 / 0.22), transparent 70%),
+    radial-gradient(circle at 50% 120%, #2C2018, #15130F 70%);
+  box-shadow: inset 0 0 0 1px rgb(var(--sabbia-rgb) / 0.14), 0 0 0 clamp(6px, 0.7vw, 11px) var(--calce);
+}
+.visivo-globo svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Park: una fascia salvia, l'altalena che dondola. */
+.visivo-parco {
+  aspect-ratio: 16 / 8;
+  border-radius: 10px;
+  background:
+    radial-gradient(60% 60% at 20% 0%, rgb(255 236 200 / 0.35), transparent 70%),
+    linear-gradient(180deg, #AEB89A 0%, #96A282 70%, #8F9B7A 100%);
+}
+.visivo-parco svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.parco__seggiolino { transform-origin: 500px 104px; }
+.motion .parco__seggiolino { animation: dondola 3.4s ease-in-out infinite alternate; }
+@keyframes dondola { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
+
+@media (min-width: 48em) {
+  .anime__griglia { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); }
+  .anima--churrascaria { grid-column: 1 / span 6; }
+  .anima--experience { grid-column: 8 / -1; margin-top: clamp(120px, 18vw, 300px); }
+  .anima--park { grid-column: 2 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); column-gap: var(--col-gap); align-items: end; }
+  .anima--park .anima__visivo { grid-column: 2; grid-row: 1 / span 4; }
+  .anima--park h3 { margin-top: 0; }
+}
+@media (max-width: 47.99em) {
+  .anima--experience .anima__visivo { width: 82%; margin-left: auto; }
+}
+
+/* ---- Il giro · 20:00 ------------------------------------------------------ */
+.giro { --prima: #E9DBC7; --fondo: #1B1612; padding: 0;
+  --strati: linear-gradient(180deg, #7A4128 0%, #4A2A1C 32%, #1B1612 72%); }
+.giro__palco { position: relative; height: 100svh; overflow: hidden; }
+.giro__tela { position: absolute; inset: 0; z-index: 1; }
+.giro__tela canvas { width: 100%; height: 100%; }
+.giro__testa { position: absolute; z-index: 3; top: clamp(84px, 12vh, 130px); left: var(--gutter); right: var(--gutter); }
+.giro__testa .titolo { max-width: 9em; }
+.tempi {
+  position: absolute; z-index: 3; left: var(--gutter); right: var(--gutter);
+  top: calc(clamp(84px, 12vh, 130px) + clamp(120px, 15vw, 200px));
+  display: grid; gap: 18px;
+}
+.tempo { max-width: 22rem; opacity: 0.32; transition: opacity 0.8s var(--ease); }
+.tempo.is-acceso { opacity: 1; }
+.tempo__quando { font-size: 0.9rem; font-weight: 600; color: var(--testo-2); letter-spacing: 0.02em; }
+.tempo__titolo { font-family: var(--f-titoli); font-weight: 400; font-size: clamp(1.7rem, 1.1rem + 1.9vw, 3.2rem); line-height: 1.04; margin-top: 4px; }
+.tempo__brace {
+  display: block; width: 64px; height: 2px; margin: 12px 0 10px;
+  background: var(--brace); box-shadow: 0 0 14px 1px rgb(255 106 43 / 0.75);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 1s var(--ease);
+}
+.tempo.is-acceso .tempo__brace { transform: scaleX(1); }
+.tempo p:last-child { color: var(--testo-2); font-size: 0.98rem; }
+.giro__brace-css {
+  position: absolute; z-index: 0; left: -5%; right: -5%; bottom: 0; height: 38%;
+  background:
+    radial-gradient(34% 40% at 28% 78%, rgb(255 140 60 / 0.6), transparent 70%),
+    radial-gradient(30% 36% at 70% 82%, rgb(255 106 43 / 0.55), transparent 70%),
+    radial-gradient(70% 55% at 50% 100%, rgb(181 96 63 / 0.55), transparent 75%);
+}
+.motion .giro__brace-css { animation: respiro 2.8s ease-in-out infinite alternate; }
+.giro__spada-svg { position: absolute; z-index: 2; left: 0; top: 64%; width: 150%; height: auto; transform: translateX(-100%); }
+.con-3d-giro .giro__spada-svg, .con-3d-giro .giro__brace-css { display: none; }
+
+@media (max-width: 63.99em) {
+  .tempo p:last-child { display: none; }
+  .tempo__brace { margin: 8px 0 0; }
+}
+@media (min-width: 64em) {
+  .tempi { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--col-gap); top: 38%; }
+}
+/* Senza movimento: niente pin, i tre tempi già accesi uno sotto l'altro. */
+html:not(.motion) .giro { padding: clamp(120px, 13vw, 210px) var(--gutter) calc(var(--arco-h) + 120px); }
+html:not(.motion) .giro__palco { height: auto; overflow: visible; display: grid; gap: 48px; }
+html:not(.motion) .giro__testa, html:not(.motion) .tempi { position: static; }
+html:not(.motion) .giro__tela { position: relative; height: 48vh; min-height: 280px; border-radius: 12px; overflow: hidden; }
+html:not(.motion) .tempo { opacity: 1; }
+html:not(.motion) .tempo__brace { transform: none; }
+html:not(.motion) .giro__spada-svg { position: relative; top: auto; width: 100%; transform: none; }
+html:not(.motion) .giro__brace-css { display: none; }
+
+/* ---- Menu e prezzi · 21:00 ------------------------------------------------ */
+.menu { --prima: #1B1612; --fondo: #221C16;
+  --strati: radial-gradient(40% 30% at 12% 0%, rgb(255 214 160 / 0.12), transparent 70%),
+            radial-gradient(35% 26% at 82% 4%, rgb(255 214 160 / 0.09), transparent 70%); }
+.menu__intro { margin-top: 22px; }
+.menu__griglia { display: grid; gap: clamp(56px, 7vw, 96px); margin-top: clamp(56px, 7vw, 100px); }
+.prezzi { display: grid; gap: 34px; align-content: start; }
+.prezzo { border-top: 1px solid var(--filo); padding-top: 20px; }
+.prezzo__chi { font-family: var(--f-titoli); font-size: clamp(2rem, 1.4rem + 2vw, 3.4rem); line-height: 1; }
+.prezzo__cifra { display: flex; align-items: baseline; gap: 12px; margin-top: 10px; font-size: clamp(2.4rem, 1.6rem + 2.6vw, 4.2rem); font-weight: 400; line-height: 1; }
+.prezzo__cifra .dc { font-size: 0.78rem; }
+.prezzo__nota { margin-top: 10px; color: var(--testo-2); font-size: 0.95rem; }
+.compreso h3, .domande h3, .cocktail h3 {
+  font-family: var(--f-titoli); font-weight: 400; font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.6rem); line-height: 1.05;
+}
+.compreso ul { margin-top: 16px; }
+.compreso li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding: 14px 0; border-bottom: 1px solid var(--filo); }
+.compreso li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--salvia); transform: translateY(-2px); }
+.compreso .a-parte li::before { background: none; box-shadow: inset 0 0 0 1px var(--testo-2); }
+.compreso h3 + ul + h3 { margin-top: 36px; }
+.domande details { border-bottom: 1px solid var(--filo); }
+.domande details:first-of-type { margin-top: 12px; }
+.domande summary {
+  display: flex; justify-content: space-between; gap: 18px; align-items: center;
+  padding: 18px 0; cursor: pointer; font-weight: 600; list-style: none;
+}
+.domande summary::-webkit-details-marker { display: none; }
+.domande summary::after { content: "+"; font-family: var(--f-titoli); font-size: 2rem; line-height: 0.6; transition: transform 0.4s var(--ease); }
+.domande details[open] summary::after { transform: rotate(45deg); }
+.domande details p { padding: 0 0 20px; max-width: 34rem; color: var(--testo-2); }
+.cocktail__nomi { font-family: var(--f-titoli); font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem); line-height: 1.3; margin-top: 16px; }
+.cocktail__nomi span { white-space: nowrap; }
+.cocktail__nomi span:not(:last-child)::after { content: "·"; margin-left: 0.35em; color: var(--salvia); }
+.cocktail p:last-child { margin-top: 14px; }
+/* Sotto il titolo, una fila di piastrelle del bancone col bordo in terracotta. */
+.cocktail h3::after {
+  content: ""; display: block; max-width: 18rem; height: 16px; margin-top: 16px;
+  border-top: 3px solid var(--terracotta); border-radius: 2px;
+  background: repeating-linear-gradient(90deg, #7FA9A0 0 14px, #D3C9B6 14px 16px, #8DB6AB 16px 30px, #D3C9B6 30px 32px, #6E9A91 32px 46px, #D3C9B6 46px 48px, #98BEB3 48px 62px, #D3C9B6 62px 64px);
+}
+
+@media (min-width: 64em) {
+  .menu__griglia { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); }
+  .prezzi { grid-column: 1 / span 4; }
+  .compreso { grid-column: 6 / -1; }
+  .domande { grid-column: 1 / span 7; }
+  .cocktail { grid-column: 9 / -1; align-self: end; }
+}
+
+/* ---- Destino Park · 21:30 ------------------------------------------------- */
+.park { --prima: #221C16; --fondo: #1C1F17;
+  --strati: radial-gradient(50% 40% at 72% 16%, rgb(143 155 122 / 0.22), transparent 70%),
+            radial-gradient(40% 30% at 10% 60%, rgb(143 155 122 / 0.1), transparent 70%); }
+.park__griglia { display: grid; gap: clamp(40px, 6vw, 80px); margin-top: clamp(40px, 5vw, 72px); }
+.park__frase { max-width: 16em; margin-top: 22px; }
+/* I servizi come una frase lunga, non come un'altra lista a righe. */
+.servizi { font-family: var(--f-titoli); font-size: clamp(1.7rem, 1.2rem + 1.7vw, 2.8rem); line-height: 1.32; }
+.servizi li { display: inline; }
+.servizi li:not(:last-child)::after { content: " · "; color: var(--salvia); }
+.servizi .dc { font-size: 0.7rem; vertical-align: 0.5em; }
+.park .visivo-parco { border: clamp(6px, 0.7vw, 11px) solid var(--calce); border-radius: 50% 50% 10px 10px / 30% 30% 10px 10px; aspect-ratio: 5 / 4; }
+@media (min-width: 64em) {
+  .park__griglia { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: end; }
+  .park__griglia .visivo-parco { grid-column: 1 / span 6; grid-row: 1; }
+  .park__griglia .servizi { grid-column: 8 / -1; grid-row: 1; }
+  .park .titolo, .park__frase { margin-left: calc((100% + var(--col-gap)) / 12 * 7); }
+}
+
+/* ---- Destino Experience · 23:00 ------------------------------------------- */
+.experience { --prima: #1C1F17; --fondo: #15130F;
+  --strati: radial-gradient(30% 22% at 20% 4%, rgb(255 210 150 / 0.16), transparent 70%),
+            radial-gradient(26% 20% at 62% 0%, rgb(255 210 150 / 0.12), transparent 70%),
+            radial-gradient(22% 16% at 92% 10%, rgb(255 210 150 / 0.1), transparent 70%); }
+.experience__griglia { display: grid; gap: clamp(48px, 7vw, 96px); }
+.experience__frase { margin-top: 24px; max-width: 14em; }
+.experience__elenco { margin-top: 38px; font-family: var(--f-titoli); font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem); line-height: 1.25; }
+.experience__elenco li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.experience__elenco li::before { content: ""; width: 0.5em; height: 1px; background: var(--salvia); transform: translateY(-0.3em); }
+.experience figure { position: relative; }
+.experience figcaption { margin-top: 16px; color: var(--testo-2); font-size: 0.95rem; max-width: 26rem; }
+.experience figcaption q { font-family: var(--f-titoli); font-size: 1.5rem; line-height: 1.2; color: var(--testo); display: block; margin-bottom: 6px; quotes: "«" "»"; }
+.experience__luci { position: absolute; inset: -8% -6% auto; height: 40%; pointer-events: none; }
+/* Il bancone del bar interno: verde acqua, terracotta, rattan. */
+.bancone { margin-top: clamp(80px, 10vw, 150px); }
+.bancone__finestra {
+  position: relative; overflow: hidden;
+  aspect-ratio: 1440 / 560;
+  border: clamp(6px, 0.7vw, 11px) solid var(--calce);
+  border-radius: 50% 50% 10px 10px / 28% 28% 10px 10px;
+  background: #5A2D1D;
+}
+.bancone__finestra svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bancone figcaption { margin-top: 14px; color: var(--testo-2); font-size: 0.95rem; }
+.motion .bancone__lampada { animation: lampada 5.5s ease-in-out infinite alternate; }
+.motion .bancone__lampada:nth-of-type(2) { animation-duration: 6.5s; animation-delay: -2s; }
+.motion .bancone__lampada:nth-of-type(3) { animation-delay: -4s; }
+@keyframes lampada { from { transform: rotate(-1.4deg); } to { transform: rotate(1.4deg); } }
+@media (max-width: 47.99em) {
+  .bancone__finestra { aspect-ratio: 1 / 1; border-radius: 50% 50% 10px 10px / 30% 30% 10px 10px; }
+}
+@media (min-width: 64em) {
+  .experience__griglia { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: start; }
+  .experience__testo { grid-column: 1 / span 6; }
+  .experience figure { grid-column: 8 / -1; margin-top: clamp(40px, 8vw, 140px); }
+}
+
+/* ---- Eventi · 00:30 ------------------------------------------------------- */
+.eventi { --prima: #15130F; --fondo: #191511;
+  --strati: radial-gradient(45% 35% at 8% 26%, rgb(181 96 63 / 0.18), transparent 70%); }
+.eventi__griglia { display: grid; gap: clamp(48px, 6vw, 90px); }
+.eventi__intro { margin-top: 22px; }
+.eventi__simone { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; font-family: var(--f-titoli); font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.3rem); }
+.preventivo {
+  position: relative;
+  padding: clamp(26px, 3.4vw, 46px);
+  border-radius: 40% 40% 12px 12px / 12% 12% 12px 12px;
+  background:
+    radial-gradient(80% 40% at 50% 0%, rgb(255 214 160 / 0.07), transparent 70%),
+    rgb(var(--sabbia-rgb) / 0.04);
+  box-shadow: inset 0 0 0 1px var(--filo);
+  display: grid; gap: 22px;
+}
+.preventivo h3 { font-family: var(--f-titoli); font-weight: 400; font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.6rem); text-align: center; margin-bottom: 6px; }
+.campo { display: grid; gap: 6px; }
+.campo label { font-size: 0.9rem; font-weight: 600; color: var(--testo-2); }
+.campo input, .campo select, .campo textarea {
+  width: 100%; min-height: 50px; padding: 10px 2px;
+  background: transparent; border: 0; border-bottom: 1.5px solid rgb(var(--sabbia-rgb) / 0.4);
+  border-radius: 0; color: var(--sabbia);
+  color-scheme: dark;
+}
+.campo select option { background: var(--notte); }
+.campo ::placeholder { color: rgb(var(--sabbia-rgb) / 0.55); }
+.campo textarea { resize: vertical; min-height: 90px; }
+.campo [aria-invalid="true"] { border-bottom-color: var(--dc); }
+.campi-doppi { display: grid; gap: 22px; }
+.preventivo .btn { justify-self: start; }
+.preventivo__esito { min-height: 1.5em; font-size: 0.95rem; color: var(--testo-2); }
+@media (min-width: 40em) { .campi-doppi { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 64em) {
+  .eventi__griglia { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: start; }
+  .eventi__testo { grid-column: 1 / span 5; position: sticky; top: 120px; }
+  .preventivo { grid-column: 7 / -1; }
+}
+
+/* ---- Recensioni, orari, mappa · 01:30 ------------------------------------- */
+.info { --prima: #191511; --fondo: #12100D;
+  --strati: radial-gradient(45% 35% at 92% 8%, rgb(143 155 122 / 0.12), transparent 70%); }
+.info__griglia { display: grid; gap: clamp(72px, 9vw, 130px); }
+.temi { margin-top: 30px; display: grid; gap: 0; }
+.temi li { padding: 20px 0; border-bottom: 1px solid var(--filo); }
+.temi li:first-child { border-top: 1px solid var(--filo); }
+.temi h3 { font-family: var(--f-titoli); font-weight: 400; font-size: clamp(1.6rem, 1.2rem + 1vw, 2.2rem); line-height: 1.1; }
+.temi p { margin-top: 6px; color: var(--testo-2); max-width: 32rem; }
+.recensioni__fonte { margin-top: 18px; color: var(--testo-2); font-size: 0.95rem; }
+.orari__ore { display: grid; gap: 4px; margin-top: 20px; font-family: var(--f-titoli); font-size: clamp(4rem, 2rem + 8vw, 9rem); line-height: 0.9; }
+.orari__ore span:nth-child(2) { font-family: var(--f-testo); font-size: 1rem; font-weight: 600; color: var(--testo-2); letter-spacing: 0.04em; padding: 6px 0 10px 0.3em; }
+.orari p { margin-top: 18px; }
+.dove__griglia { display: grid; gap: 28px; margin-top: 26px; }
+.mappa { position: relative; }
+.mappa svg { width: 100%; height: auto; border-radius: 50% 50% 10px 10px / 22% 22% 10px 10px; border: clamp(6px, 0.7vw, 10px) solid var(--calce); background: #1A1712; }
+.mappa figcaption { margin-top: 12px; color: var(--testo-2); font-size: 0.9rem; }
+.mappa text { font-family: var(--f-testo); }
+.dove__azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+/* Il 4 di Italiana somiglia a una barra: i numeri restano in Familjen. */
+.indirizzo { font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.7rem); line-height: 1.35; font-weight: 500; }
+@media (min-width: 64em) {
+  .info__griglia { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); }
+  .recensioni { grid-column: 1 / span 6; }
+  .orari { grid-column: 8 / -1; }
+  .dove { grid-column: 1 / -1; }
+  .dove__griglia { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: end; }
+  .mappa { grid-column: 1 / span 7; }
+  .dove__dati { grid-column: 9 / -1; }
+}
+
+/* ---- Piede · 02:45 -------------------------------------------------------- */
+.piede { --prima: #12100D; --fondo: #0E0C0A; --strati: radial-gradient(50% 30% at 50% 0%, rgb(255 214 160 / 0.06), transparent 70%);
+  padding-bottom: calc(var(--barra-spazio) + 48px); }
+.piede__notte { font-family: var(--f-titoli); font-size: clamp(3.4rem, 1.6rem + 7vw, 8.5rem); line-height: 0.95; max-width: 9em; }
+.piede__dati { display: grid; gap: 30px; margin-top: clamp(56px, 7vw, 100px); padding-top: 34px; border-top: 1px solid var(--filo); }
+.piede__dati p, .piede__dati address { color: var(--testo-2); }
+.piede__dati a { color: var(--sabbia); }
+.piede__elenco { display: grid; gap: 8px; }
+.piede__firma { margin-top: 56px; color: var(--testo-2); font-size: 0.95rem; }
+@media (min-width: 48em) { .piede__dati { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4.2 19.8 5.3 16A8.2 8.2 0 1 1 8.4 19z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.3 8.6c.3-.7.6-.7.9-.7h.5c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.7l-.5.6c-.1.2-.2.3 0 .6.4.7 1 1.4 1.7 1.9.4.3.9.5 1.2.6.2.1.4 0 .5-.1l.6-.8c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.4.4 0 .5-.2 1.2-.7 1.6-.5.4-1.4.6-2.4.3-1-.3-2.3-.8-3.6-2-1.4-1.3-2.2-2.7-2.4-3.5-.3-1 0-1.7.4-2.4Z" fill="currentColor"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M7.1 3.6h2.5l1.5 4.1-2.1 1.5a11.6 11.6 0 0 0 5.8 5.8l1.5-2.1 4.1 1.5v2.5a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 5.1 5.8a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-festa" viewBox="0 0 24 24"><path d="M5 21V11a7 7 0 0 1 14 0v10" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 21h18M12 4V2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-mappa" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+</svg>
+
+<div class="orologio" aria-hidden="true">
+  <svg viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.2"/>
+    <g stroke="currentColor" stroke-opacity=".5" stroke-width="1.2" stroke-linecap="round">
+      <path d="M20 4.5v2.4M20 33.1v2.4M4.5 20h2.4M33.1 20h2.4"/>
+    </g>
+    <line class="orologio__ore" x1="20" y1="20" x2="20" y2="11.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" data-lancetta-ore/>
+    <line class="orologio__minuti" x1="20" y1="20" x2="20" y2="6.5" stroke="#FF6A2B" stroke-width="1.5" stroke-linecap="round" data-lancetta-minuti/>
+    <circle cx="20" cy="20" r="1.8" fill="currentColor"/>
+  </svg>
+  <span data-ora-testo>17:00</span>
+</div>
+
+<header class="testata tema-chiaro">
+  <a class="marchio" href="#inizio" aria-label="Destino, torna all'inizio">DESTINO</a>
+  <span class="dc">[LOGO VETTORIALE DA RICHIEDERE]</span>
+  <nav class="testata__nav" aria-label="Sezioni">
+    <ul role="list">
+      <li><a href="#giro">Il giro</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#park">Park</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#eventi">Eventi</a></li>
+      <li><a href="#dove">Dove</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="contenuto" tabindex="-1">
+
+<!-- 17:00 ================================================================ -->
+<section class="hero tema-chiaro" id="inizio" aria-labelledby="titolo" data-ora="17:00" data-hero>
+  <div class="hero__cielo" aria-hidden="true"></div>
+  <div class="hero__lanterne" aria-hidden="true" data-lanterne>
+    <svg class="lanterne-svg" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMin slice">
+      <defs>
+        <radialGradient id="g-globo" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#FFFBF2"/><stop offset=".6" stop-color="#FFE9C8"/><stop offset="1" stop-color="#F1D2A8"/></radialGradient>
+        <radialGradient id="g-alone"><stop offset="0" stop-color="#FFF1D6" stop-opacity=".85"/><stop offset="1" stop-color="#FFF1D6" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g fill="none" stroke="#2F271F" stroke-width="1.6" opacity=".75">
+        <path d="M-40 70 Q 700 260 1480 110"/>
+        <path d="M-40 150 Q 520 300 1480 40"/>
+      </g>
+      <g data-lanterne-svg>
+        <g><circle cx="150" cy="148" r="60" fill="url(#g-alone)"/><path d="M150 112v14" stroke="#2F271F"/><circle cx="150" cy="148" r="22" fill="url(#g-globo)"/></g>
+        <g><circle cx="330" cy="206" r="70" fill="url(#g-alone)"/><path d="M330 158v20" stroke="#2F271F"/><circle cx="330" cy="206" r="28" fill="url(#g-globo)"/></g>
+        <g><circle cx="520" cy="236" r="62" fill="url(#g-alone)"/><path d="M520 196v16" stroke="#2F271F"/><circle cx="520" cy="236" r="24" fill="url(#g-globo)"/></g>
+        <g><circle cx="700" cy="250" r="74" fill="url(#g-alone)"/><path d="M700 196v24" stroke="#2F271F"/><circle cx="700" cy="250" r="30" fill="url(#g-globo)"/></g>
+        <g><circle cx="890" cy="230" r="64" fill="url(#g-alone)"/><path d="M890 190v16" stroke="#2F271F"/><circle cx="890" cy="230" r="24" fill="url(#g-globo)"/></g>
+        <g><circle cx="1080" cy="196" r="70" fill="url(#g-alone)"/><path d="M1080 150v18" stroke="#2F271F"/><circle cx="1080" cy="196" r="27" fill="url(#g-globo)"/></g>
+        <g><circle cx="1270" cy="160" r="58" fill="url(#g-alone)"/><path d="M1270 128v12" stroke="#2F271F"/><circle cx="1270" cy="160" r="21" fill="url(#g-globo)"/></g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero__testo">
+    <h1 class="hero__titolo" id="titolo">
+      <span class="hero__nome" data-titolo>Destino</span>
+      <span class="hero__sotto">Churrascaria &amp; Cocktail Bar sul lungomare di Roseto degli Abruzzi</span>
+    </h1>
+    <p class="hero__frase frase" data-intro>Il mare a pochi passi, le luci che si accendono.</p>
+    <p class="hero__meta" data-intro>Lungomare Trieste 44 · tutti i giorni dalle 17 alle 3</p>
+    <div class="hero__azioni" data-intro>
+      <a class="btn btn--brace" href="https://wa.me/393490885513?text=Ciao%20Destino!%20Vorrei%20prenotare%20un%20tavolo." target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Prenota su WhatsApp<span class="sr-only"> (si apre in una nuova scheda)</span>
+      </a>
+      <a class="btn btn--linea" href="tel:+393490885513"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
+    </div>
+  </div>
+
+  <figure class="hero__foto foto-arco" data-intro>
+    <img src="data:image/webp;base64,__IMG_TERRAZZA__" width="1281" height="1600" decoding="async" fetchpriority="high"
+         alt="La terrazza di Destino al tramonto: tavoli apparecchiati, palme, un arco bianco e lanterne a globo appese ai fili.">
+  </figure>
+</section>
+
+<!-- 18:30 ================================================================ -->
+<section class="sezione anime tema-chiaro" id="anime" aria-labelledby="anime-titolo" data-ora="18:30">
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">18:30</span></div>
+  <h2 class="titolo anime__titolo" id="anime-titolo" data-rivela>Un unico nome. Tre modi diversi di vivere Destino.</h2>
+
+  <div class="anime__griglia">
+    <article class="anima anima--churrascaria">
+      <div class="anima__visivo visivo-brace" aria-hidden="true">
+        <div class="visivo-brace__bagliore"></div>
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="g-lama" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F6F3EE"/><stop offset=".42" stop-color="#B9BEC2"/><stop offset=".58" stop-color="#6F757A"/><stop offset="1" stop-color="#DADDE0"/>
+            </linearGradient>
+            <linearGradient id="g-manico" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A6245"/><stop offset="1" stop-color="#4B3122"/></linearGradient>
+          </defs>
+          <g transform="rotate(-21 200 300)">
+            <rect x="-10" y="294" width="64" height="16" rx="7" fill="url(#g-manico)"/>
+            <rect x="52" y="291" width="7" height="22" rx="2" fill="#C9A86A"/>
+            <path d="M59 297.5 L360 299 L392 302 L360 305 L59 306.5 Z" fill="url(#g-lama)"/>
+            <path d="M59 298.2 L360 299.6" stroke="#fff" stroke-opacity=".8" stroke-width=".8"/>
+          </g>
+          <g fill="#FFC27A">
+            <circle cx="96" cy="420" r="2"/><circle cx="182" cy="396" r="1.6"/><circle cx="246" cy="430" r="2.2"/><circle cx="300" cy="404" r="1.4"/><circle cx="140" cy="452" r="1.8"/>
+          </g>
+        </svg>
+      </div>
+      <h3>Destino, la Churrascaria</h3>
+      <p>Antipasti a volontà, un buffet dove c'è anche il sushi, poi la carne servita dalle spade direttamente al tavolo.</p>
+      <a class="link" href="#giro">Come funziona il giro</a>
+    </article>
+
+    <article class="anima anima--experience">
+      <div class="anima__visivo visivo-globo" aria-hidden="true">
+        <svg viewBox="0 0 400 400"><defs><linearGradient id="gb-muro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A3F28"/><stop offset="1" stop-color="#5A2D1D"/></linearGradient><radialGradient id="gb-nicchia" cx="50%" cy="25%" r="85%"><stop offset="0" stop-color="#5E3221"/><stop offset="1" stop-color="#241410"/></radialGradient><radialGradient id="gb-alone"><stop offset="0" stop-color="#FFD9A0" stop-opacity=".5"/><stop offset="1" stop-color="#FFD9A0" stop-opacity="0"/></radialGradient><radialGradient id="gb-pozza"><stop offset="0" stop-color="#FFE0AE" stop-opacity=".6"/><stop offset="1" stop-color="#FFE0AE" stop-opacity="0"/></radialGradient><radialGradient id="gb-luce" cx="50%" cy="100%" r="95%"><stop offset="0" stop-color="#FFE6B6" stop-opacity=".9"/><stop offset=".55" stop-color="#FFCF8A" stop-opacity=".25"/><stop offset="1" stop-color="#FFCF8A" stop-opacity="0"/></radialGradient><pattern id="gb-vimini" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="#C59B62"/><path d="M0 0L9 9M9 0L0 9" stroke="#86602F" stroke-width="1.6"/></pattern><linearGradient id="gb-zellige-smalto" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".32"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".12"/></linearGradient><pattern id="gb-zellige" width="154" height="124" patternUnits="userSpaceOnUse" patternTransform="scale(0.62)"><rect width="154" height="124" fill="#D3C9B6"/><rect x="1" y="1" width="20" height="60" rx="2" fill="#7FA9A0"/><rect x="1" y="1" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="23" y="1" width="20" height="60" rx="2" fill="#8DB6AB"/><rect x="23" y="1" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="45" y="1" width="20" height="60" rx="2" fill="#6E9A91"/><rect x="45" y="1" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="67" y="1" width="20" height="60" rx="2" fill="#98BEB3"/><rect x="67" y="1" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="89" y="1" width="20" height="60" rx="2" fill="#78A39A"/><rect x="89" y="1" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="111" y="1" width="20" height="60" rx="2" fill="#86B0A6"/><rect x="111" y="1" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="133" y="1" width="20" height="60" rx="2" fill="#6A958C"/><rect x="133" y="1" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="-10" y="63" width="20" height="60" rx="2" fill="#8AB3A8"/><rect x="-10" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="12" y="63" width="20" height="60" rx="2" fill="#74A097"/><rect x="12" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="34" y="63" width="20" height="60" rx="2" fill="#93BAAF"/><rect x="34" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="56" y="63" width="20" height="60" rx="2" fill="#6C978E"/><rect x="56" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="78" y="63" width="20" height="60" rx="2" fill="#82ACA2"/><rect x="78" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="100" y="63" width="20" height="60" rx="2" fill="#9AC0B5"/><rect x="100" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="122" y="63" width="20" height="60" rx="2" fill="#77A299"/><rect x="122" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/><rect x="144" y="63" width="20" height="60" rx="2" fill="#8AB3A8"/><rect x="144" y="63" width="20" height="60" rx="2" fill="url(#gb-zellige-smalto)"/></pattern></defs><rect width="400" height="400" fill="url(#gb-muro)"/><path d="M106 300 V176 Q106 104 200 104 Q294 104 294 176 V300 Z" fill="url(#gb-nicchia)"/><rect x="114" y="214" width="172" height="4" fill="#C59B62" opacity=".55"/><rect x="128" y="184" width="14" height="30" rx="6" fill="#E8DCC6"/><rect x="150" y="178" width="14" height="36" rx="6" fill="#4A2B1A"/><rect x="152" y="183" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="170" y="188" width="12" height="26" rx="5" fill="#1F2A22"/><rect x="172" y="193" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="190" y="184" width="14" height="30" rx="6" fill="#4A2B1A"/><rect x="192" y="189" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="220" y="172" width="14" height="42" rx="6" fill="#3B2316"/><rect x="222" y="177" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="242" y="184" width="14" height="30" rx="6" fill="#4A2B1A"/><rect x="244" y="189" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="114" y="276" width="172" height="4" fill="#C59B62" opacity=".55"/><rect x="128" y="250" width="10" height="26" rx="4" fill="#E8DCC6"/><rect x="144" y="240" width="10" height="36" rx="4" fill="#1F2A22"/><rect x="146" y="245" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="170" y="234" width="14" height="42" rx="6" fill="#4A2B1A"/><rect x="172" y="239" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="200" y="234" width="10" height="42" rx="4" fill="#1F2A22"/><rect x="202" y="239" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="216" y="250" width="10" height="26" rx="4" fill="#4A2B1A"/><rect x="218" y="255" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="234" y="240" width="14" height="36" rx="6" fill="#4A2B1A"/><rect x="236" y="245" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="258" y="234" width="14" height="42" rx="6" fill="#4A2B1A"/><rect x="260" y="239" width="2" height="31" fill="#F1D9B5" opacity=".2"/><ellipse cx="200" cy="303" rx="150" ry="20" fill="url(#gb-pozza)"/><rect y="298" width="400" height="15" fill="#B9653F"/><rect y="298" width="400" height="2.5" fill="#E6A07A" opacity=".75"/><rect y="313" width="400" height="87" fill="url(#gb-zellige)"/><rect y="313" width="400" height="8" fill="#000" opacity=".2"/><g class="globo__lampada" style="transform-origin: 200px 0px"><line x1="200" y1="0" x2="200" y2="60" stroke="#24180F" stroke-width="2"/><ellipse cx="200" cy="118" rx="130" ry="86" fill="url(#gb-alone)"/><path d="M138 98 C138 46 262 46 262 98 Z" fill="url(#gb-vimini)"/><path d="M138 98 C138 46 262 46 262 98 Z" fill="url(#gb-luce)"/><path d="M138 98 C138 46 262 46 262 98 Z" fill="none" stroke="#7A5630" stroke-width="2"/><ellipse cx="200" cy="98" rx="61" ry="7" fill="#FFE9BE"/></g></svg>
+      </div>
+      <h3>Destino Experience</h3>
+      <p>L'area della sera: il cocktail bar, le luci accese e la musica dal vivo.</p>
+      <a class="link" href="#experience">La sera da Destino</a>
+    </article>
+
+    <article class="anima anima--park">
+      <div class="anima__visivo visivo-parco" aria-hidden="true">
+        <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="g-gonfio" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FAF5EC"/><stop offset="1" stop-color="#DCCFB7"/></linearGradient>
+            <radialGradient id="g-lampadina"><stop offset="0" stop-color="#FFF6E6"/><stop offset="1" stop-color="#FFF6E6" stop-opacity="0"/></radialGradient>
+          </defs>
+          <path d="M-10 44 Q 320 106 650 32" fill="none" stroke="#4F5A3F" stroke-width="1.1" opacity=".8"/>
+          <g><circle cx="70" cy="62" r="13" fill="url(#g-lampadina)"/><circle cx="170" cy="80" r="13" fill="url(#g-lampadina)"/><circle cx="270" cy="88" r="13" fill="url(#g-lampadina)"/><circle cx="370" cy="86" r="13" fill="url(#g-lampadina)"/><circle cx="470" cy="73" r="13" fill="url(#g-lampadina)"/><circle cx="570" cy="54" r="13" fill="url(#g-lampadina)"/></g>
+          <g fill="#FBF7EF"><circle cx="70" cy="62" r="4.5"/><circle cx="170" cy="80" r="4.5"/><circle cx="270" cy="88" r="4.5"/><circle cx="370" cy="86" r="4.5"/><circle cx="470" cy="73" r="4.5"/><circle cx="570" cy="54" r="4.5"/></g>
+          <g stroke="#4F5A3F" stroke-width="1.5" stroke-linejoin="round">
+            <path d="M44 272 V204 Q44 160 88 160 Q132 160 132 204 V272 Z" fill="url(#g-gonfio)"/>
+            <path d="M220 272 V204 Q220 160 264 160 Q308 160 308 204 V272 Z" fill="url(#g-gonfio)"/>
+            <path d="M116 272 V182 Q116 124 176 124 Q236 124 236 182 V272 Z" fill="url(#g-gonfio)"/>
+            <path d="M150 272 V220 Q150 194 176 194 Q202 194 202 220 V272" fill="#7D8968"/>
+          </g>
+          <g stroke="#4F5A3F" stroke-width="2.6" fill="none" stroke-linecap="round">
+            <path d="M392 272 L438 112 L484 272 M520 272 L566 112 L612 272 M438 112 H566"/>
+          </g>
+          <g class="parco__seggiolino" style="transform-origin: 502px 112px">
+            <path d="M488 112 V220 M516 112 V220" stroke="#4F5A3F" stroke-width="1.4"/>
+            <rect x="480" y="218" width="44" height="7" rx="3" fill="#6E4B33"/>
+          </g>
+          <path d="M0 272 H640" stroke="#4F5A3F" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <h3>Destino Park</h3>
+      <p>L'area bimbi, con i gonfiabili e le altalene.</p>
+      <a class="link" href="#park">Per le famiglie</a>
+    </article>
+  </div>
+</section>
+
+<!-- 20:00 ================================================================ -->
+<section class="sezione giro tema-scuro" id="giro" aria-labelledby="giro-titolo" data-ora="20:00" data-ora-fine="21:00" data-giro>
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">20:00</span></div>
+  <div class="giro__palco" data-giro-palco>
+    <div class="giro__brace-css" aria-hidden="true"></div>
+    <div class="giro__tela" aria-hidden="true" data-giro-tela></div>
+    <svg class="giro__spada-svg" viewBox="0 0 1200 60" aria-hidden="true" data-spada-svg>
+      <defs>
+        <linearGradient id="g-lama2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F3EE"/><stop offset=".45" stop-color="#AEB3B7"/><stop offset=".6" stop-color="#5E6469"/><stop offset="1" stop-color="#E2D2C4"/></linearGradient>
+      </defs>
+      <rect x="0" y="22" width="150" height="16" rx="7" fill="#6E4B33"/>
+      <rect x="148" y="18" width="10" height="24" rx="2" fill="#C9A86A"/>
+      <path d="M158 25 L1110 28 L1200 30 L1110 32 L158 35 Z" fill="url(#g-lama2)"/>
+    </svg>
+    <div class="giro__testa">
+      <h2 class="titolo" id="giro-titolo" data-rivela>Il giro, in tre tempi.</h2>
+    </div>
+    <ol class="tempi" role="list">
+      <li class="tempo" data-tempo>
+        <p class="tempo__quando">Primo tempo</p>
+        <h3 class="tempo__titolo">Antipasti e buffet</h3>
+        <span class="tempo__brace" aria-hidden="true"></span>
+        <p>Antipasti a volontà e un buffet dove trovi anche il sushi.</p>
+      </li>
+      <li class="tempo" data-tempo>
+        <p class="tempo__quando">Secondo tempo</p>
+        <h3 class="tempo__titolo">La carne alle spade</h3>
+        <span class="tempo__brace" aria-hidden="true"></span>
+        <p>Le spade passano tra i tavoli e la carne si taglia direttamente nel piatto.</p>
+      </li>
+      <li class="tempo" data-tempo>
+        <p class="tempo__quando">Terzo tempo</p>
+        <h3 class="tempo__titolo">Il dolce</h3>
+        <span class="tempo__brace" aria-hidden="true"></span>
+        <p>Per chiudere la cena. <span class="dc">[DA CONFERMARE SE INCLUSO]</span></p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 21:00 ================================================================ -->
+<section class="sezione menu tema-scuro" id="menu" aria-labelledby="menu-titolo" data-ora="21:00">
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">21:00</span></div>
+  <h2 class="titolo" id="menu-titolo" data-rivela>Cosa c'è nel prezzo.</h2>
+  <p class="menu__intro corpo testo-2">Prima di sederti, tutto chiaro: cosa comprende la formula, cosa si paga a parte e come funziona il giro.</p>
+
+  <div class="menu__griglia">
+    <div class="prezzi">
+      <div class="prezzo">
+        <p class="prezzo__chi">Adulti</p>
+        <p class="prezzo__cifra">€ <span class="dc">[DA CONFERMARE]</span></p>
+      </div>
+      <div class="prezzo">
+        <p class="prezzo__chi">Bambini</p>
+        <p class="prezzo__cifra">€ <span class="dc">[DA CONFERMARE]</span></p>
+        <p class="prezzo__nota">Fino a <span class="dc">[ETÀ DA CONFERMARE]</span></p>
+      </div>
+    </div>
+
+    <div class="compreso">
+      <h3>Nel prezzo</h3>
+      <ul role="list">
+        <li>Antipasti a volontà</li>
+        <li>Buffet, con anche il sushi</li>
+        <li>Il giro delle spade al tavolo</li>
+        <li>Il dolce <span class="dc">[DA CONFERMARE SE INCLUSO]</span></li>
+      </ul>
+      <h3>A parte</h3>
+      <ul role="list" class="a-parte">
+        <li>Bevande <span class="dc">[DA CONFERMARE]</span></li>
+        <li>Coperto <span class="dc">[DA CONFERMARE]</span></li>
+      </ul>
+    </div>
+
+    <div class="domande">
+      <h3>Prima di prenotare</h3>
+      <details>
+        <summary>Quali tagli passano durante il giro?</summary>
+        <p>La picanha e gli altri tagli della serata. <span class="dc">[ELENCO DA CONFERMARE]</span></p>
+      </details>
+      <details>
+        <summary>La picanha passa più di una volta?</summary>
+        <p><span class="dc dc--lungo">[DA CONFERMARE: ogni quanto passa e se si può richiedere]</span></p>
+      </details>
+      <details>
+        <summary>Ogni quanto passano le spade?</summary>
+        <p><span class="dc dc--lungo">[DA CONFERMARE: ritmo del giro e quanto dura]</span></p>
+      </details>
+      <details>
+        <summary>Come chiedo di fermare il giro?</summary>
+        <p><span class="dc">[DA CONFERMARE]</span></p>
+      </details>
+      <details>
+        <summary>C'è qualcosa per chi non mangia carne?</summary>
+        <p>Sì, ci sono piatti vegetariani e vegani: nelle recensioni piacciono gli gnocchi. Per le intolleranze, dillo quando prenoti.</p>
+      </details>
+      <details>
+        <summary>E per i bambini?</summary>
+        <p>C'è un prezzo dedicato e c'è il Park, con gonfiabili e altalene. <span class="dc">[PREZZO DA CONFERMARE]</span></p>
+      </details>
+    </div>
+
+    <div class="cocktail">
+      <h3>Carta cocktail</h3>
+      <p class="cocktail__nomi"><span>Caipirinha</span> <span>Spritz</span> <span>Negroni</span> <span>Moscow Mule</span></p>
+      <p class="testo-2">Sono solo esempi. <span class="dc">[CARTA E PREZZI DA CONFERMARE]</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 21:30 ================================================================ -->
+<section class="sezione park tema-scuro" id="park" aria-labelledby="park-titolo" data-ora="21:30">
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">21:30</span></div>
+  <h2 class="titolo" id="park-titolo" data-rivela>Destino Park</h2>
+  <p class="park__frase frase">Lo spazio dei bambini: gonfiabili, altalene e animazione.</p>
+
+  <div class="park__griglia">
+    <ul class="servizi" role="list">
+      <li>Gonfiabili e altalene</li>
+      <li>animazione per i bambini <span class="dc">[GIORNI DA CONFERMARE]</span></li>
+      <li>seggioloni</li>
+      <li>cani ammessi</li>
+      <li>accessibile in sedia a rotelle</li>
+      <li>tavoli all'aperto con vista mare</li>
+    </ul>
+    <div class="anima__visivo visivo-parco" aria-hidden="true">
+      <svg viewBox="0 0 640 512" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="g-sole"><stop offset="0" stop-color="#FFF2D8" stop-opacity=".7"/><stop offset="1" stop-color="#FFF2D8" stop-opacity="0"/></radialGradient>
+          <radialGradient id="g-lampadina-2"><stop offset="0" stop-color="#FFF6E6"/><stop offset="1" stop-color="#FFF6E6" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="470" cy="190" r="170" fill="url(#g-sole)"/>
+        <path d="M-10 150 Q 320 230 650 140" fill="none" stroke="#4F5A3F" stroke-width="1.2" opacity=".75"/>
+        <g><circle cx="80" cy="168" r="16" fill="url(#g-lampadina-2)"/><circle cx="200" cy="192" r="16" fill="url(#g-lampadina-2)"/><circle cx="320" cy="200" r="16" fill="url(#g-lampadina-2)"/><circle cx="440" cy="194" r="16" fill="url(#g-lampadina-2)"/><circle cx="560" cy="172" r="16" fill="url(#g-lampadina-2)"/></g>
+        <g fill="#FBF7EF"><circle cx="80" cy="168" r="5.5"/><circle cx="200" cy="192" r="5.5"/><circle cx="320" cy="200" r="5.5"/><circle cx="440" cy="194" r="5.5"/><circle cx="560" cy="172" r="5.5"/></g>
+        <path d="M40 78 H600" stroke="#4F5A3F" stroke-width="9" stroke-linecap="round"/>
+        <g class="parco__seggiolino" style="transform-origin: 320px 78px">
+          <path d="M262 78 V384 M378 78 V384" stroke="#4F5A3F" stroke-width="2.2"/>
+          <rect x="242" y="380" width="156" height="17" rx="7" fill="#6E4B33"/>
+        </g>
+        <g stroke="#4F5A3F" stroke-width="1.3" fill="#E9DFCC" opacity=".9">
+          <path d="M486 470 V438 Q486 418 506 418 Q526 418 526 438 V470 Z"/>
+          <path d="M520 470 V428 Q520 402 548 402 Q576 402 576 428 V470 Z"/>
+        </g>
+        <path d="M0 470 Q 320 452 640 470" fill="none" stroke="#4F5A3F" stroke-width="1.4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 23:00 ================================================================ -->
+<section class="sezione experience tema-scuro" id="experience" aria-labelledby="experience-titolo" data-ora="23:00">
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">23:00</span></div>
+  <div class="experience__griglia">
+    <div class="experience__testo">
+      <h2 class="titolo" id="experience-titolo" data-rivela>Destino Experience</h2>
+      <p class="experience__frase frase">Le luci accese, un cocktail, la musica. Una serata da vivere senza fretta.</p>
+      <ul class="experience__elenco" role="list">
+        <li>Cocktail bar</li>
+        <li>Musica dal vivo <span class="dc">[GIORNI DA CONFERMARE]</span></li>
+        <li>Aperto fino alle 3</li>
+      </ul>
+      <p class="corpo testo-2" style="margin-top:28px">Drink e location sono lodati nelle recensioni. <a class="link" href="#menu">Carta cocktail</a></p>
+    </div>
+    <figure>
+      <div class="foto-arco">
+        <img src="data:image/webp;base64,__IMG_LOVE__" width="1281" height="1600" loading="lazy" decoding="async"
+             alt="Le grandi lettere LOVE verde salvia e un'amaca con un cuscino, tra le palme di Destino.">
+      </div>
+      <figcaption><q>Chi ha detto che a Destino bisogna stare sempre a tavola?</q>Da un post di @destino_roseto.</figcaption>
+    </figure>
+  </div>
+  <figure class="bancone">
+    <div class="bancone__finestra" role="img" aria-label="Illustrazione del bar interno: il bancone in piastrelle verde acqua con il piano in terracotta, le lampade in rattan accese e le nicchie ad arco con le bottiglie.">
+      <svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="bm-muro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A3F28"/><stop offset="1" stop-color="#5A2D1D"/></linearGradient><radialGradient id="bm-nicchia" cx="50%" cy="25%" r="85%"><stop offset="0" stop-color="#5E3221"/><stop offset="1" stop-color="#241410"/></radialGradient><radialGradient id="bm-alone"><stop offset="0" stop-color="#FFD9A0" stop-opacity=".5"/><stop offset="1" stop-color="#FFD9A0" stop-opacity="0"/></radialGradient><radialGradient id="bm-pozza"><stop offset="0" stop-color="#FFE0AE" stop-opacity=".6"/><stop offset="1" stop-color="#FFE0AE" stop-opacity="0"/></radialGradient><radialGradient id="bm-luce" cx="50%" cy="100%" r="95%"><stop offset="0" stop-color="#FFE6B6" stop-opacity=".9"/><stop offset=".55" stop-color="#FFCF8A" stop-opacity=".25"/><stop offset="1" stop-color="#FFCF8A" stop-opacity="0"/></radialGradient><pattern id="bm-vimini" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="#C59B62"/><path d="M0 0L9 9M9 0L0 9" stroke="#86602F" stroke-width="1.6"/></pattern><linearGradient id="bm-zellige-smalto" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".32"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".12"/></linearGradient><pattern id="bm-zellige" width="154" height="124" patternUnits="userSpaceOnUse"><rect width="154" height="124" fill="#D3C9B6"/><rect x="1" y="1" width="20" height="60" rx="2" fill="#7FA9A0"/><rect x="1" y="1" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="23" y="1" width="20" height="60" rx="2" fill="#8DB6AB"/><rect x="23" y="1" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="45" y="1" width="20" height="60" rx="2" fill="#6E9A91"/><rect x="45" y="1" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="67" y="1" width="20" height="60" rx="2" fill="#98BEB3"/><rect x="67" y="1" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="89" y="1" width="20" height="60" rx="2" fill="#78A39A"/><rect x="89" y="1" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="111" y="1" width="20" height="60" rx="2" fill="#86B0A6"/><rect x="111" y="1" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="133" y="1" width="20" height="60" rx="2" fill="#6A958C"/><rect x="133" y="1" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="-10" y="63" width="20" height="60" rx="2" fill="#8AB3A8"/><rect x="-10" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="12" y="63" width="20" height="60" rx="2" fill="#74A097"/><rect x="12" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="34" y="63" width="20" height="60" rx="2" fill="#93BAAF"/><rect x="34" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="56" y="63" width="20" height="60" rx="2" fill="#6C978E"/><rect x="56" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="78" y="63" width="20" height="60" rx="2" fill="#82ACA2"/><rect x="78" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="100" y="63" width="20" height="60" rx="2" fill="#9AC0B5"/><rect x="100" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="122" y="63" width="20" height="60" rx="2" fill="#77A299"/><rect x="122" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/><rect x="144" y="63" width="20" height="60" rx="2" fill="#8AB3A8"/><rect x="144" y="63" width="20" height="60" rx="2" fill="url(#bm-zellige-smalto)"/></pattern></defs><rect width="1440" height="432" fill="url(#bm-muro)"/><path d="M170 412 V180 Q170 96 290 96 Q410 96 410 180 V412 Z" fill="url(#bm-nicchia)"/><rect x="178" y="220" width="224" height="4" fill="#C59B62" opacity=".55"/><rect x="192" y="190" width="14" height="30" rx="6" fill="#2A1810"/><rect x="194" y="195" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="216" y="194" width="12" height="26" rx="5" fill="#4A2B1A"/><rect x="218" y="199" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="244" y="178" width="10" height="42" rx="4" fill="#2A1810"/><rect x="246" y="183" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="270" y="194" width="12" height="26" rx="5" fill="#4A2B1A"/><rect x="272" y="199" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="288" y="178" width="12" height="42" rx="5" fill="#3B2316"/><rect x="290" y="183" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="306" y="184" width="10" height="36" rx="4" fill="#2A1810"/><rect x="308" y="189" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="322" y="194" width="12" height="26" rx="5" fill="#3B2316"/><rect x="324" y="199" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="350" y="194" width="14" height="26" rx="6" fill="#3B2316"/><rect x="352" y="199" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="178" y="300" width="224" height="4" fill="#C59B62" opacity=".55"/><rect x="192" y="258" width="14" height="42" rx="6" fill="#3B2316"/><rect x="194" y="263" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="216" y="270" width="14" height="30" rx="6" fill="#3B2316"/><rect x="218" y="275" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="246" y="264" width="10" height="36" rx="4" fill="#4A2B1A"/><rect x="248" y="269" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="262" y="270" width="14" height="30" rx="6" fill="#1F2A22"/><rect x="264" y="275" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="282" y="264" width="14" height="36" rx="6" fill="#E8DCC6"/><rect x="312" y="270" width="12" height="30" rx="5" fill="#1F2A22"/><rect x="314" y="275" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="340" y="258" width="14" height="42" rx="6" fill="#2A1810"/><rect x="342" y="263" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="370" y="270" width="14" height="30" rx="6" fill="#4A2B1A"/><rect x="372" y="275" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="178" y="380" width="224" height="4" fill="#C59B62" opacity=".55"/><rect x="192" y="350" width="12" height="30" rx="5" fill="#E8DCC6"/><rect x="214" y="354" width="12" height="26" rx="5" fill="#E8DCC6"/><rect x="232" y="350" width="14" height="30" rx="6" fill="#4A2B1A"/><rect x="234" y="355" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="256" y="338" width="14" height="42" rx="6" fill="#2A1810"/><rect x="258" y="343" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="286" y="354" width="12" height="26" rx="5" fill="#E8DCC6"/><rect x="314" y="350" width="10" height="30" rx="4" fill="#E8DCC6"/><rect x="332" y="354" width="10" height="26" rx="4" fill="#E8DCC6"/><rect x="350" y="338" width="14" height="42" rx="6" fill="#1F2A22"/><rect x="352" y="343" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="374" y="338" width="12" height="42" rx="5" fill="#E8DCC6"/><path d="M1030 412 V180 Q1030 96 1150 96 Q1270 96 1270 180 V412 Z" fill="url(#bm-nicchia)"/><rect x="1038" y="220" width="224" height="4" fill="#C59B62" opacity=".55"/><rect x="1052" y="194" width="10" height="26" rx="4" fill="#2A1810"/><rect x="1054" y="199" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="1072" y="190" width="14" height="30" rx="6" fill="#1F2A22"/><rect x="1074" y="195" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="1096" y="190" width="14" height="30" rx="6" fill="#2A1810"/><rect x="1098" y="195" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="1118" y="178" width="14" height="42" rx="6" fill="#4A2B1A"/><rect x="1120" y="183" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="1142" y="178" width="14" height="42" rx="6" fill="#1F2A22"/><rect x="1144" y="183" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="1162" y="194" width="12" height="26" rx="5" fill="#4A2B1A"/><rect x="1164" y="199" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="1184" y="178" width="12" height="42" rx="5" fill="#E8DCC6"/><rect x="1204" y="190" width="10" height="30" rx="4" fill="#3B2316"/><rect x="1206" y="195" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="1220" y="190" width="12" height="30" rx="5" fill="#3B2316"/><rect x="1222" y="195" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="1038" y="300" width="224" height="4" fill="#C59B62" opacity=".55"/><rect x="1052" y="264" width="14" height="36" rx="6" fill="#E8DCC6"/><rect x="1074" y="258" width="12" height="42" rx="5" fill="#E8DCC6"/><rect x="1096" y="264" width="12" height="36" rx="5" fill="#4A2B1A"/><rect x="1098" y="269" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="1116" y="258" width="14" height="42" rx="6" fill="#4A2B1A"/><rect x="1118" y="263" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="1138" y="258" width="12" height="42" rx="5" fill="#4A2B1A"/><rect x="1140" y="263" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="1160" y="258" width="12" height="42" rx="5" fill="#1F2A22"/><rect x="1162" y="263" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="1188" y="258" width="14" height="42" rx="6" fill="#3B2316"/><rect x="1190" y="263" width="2" height="31" fill="#F1D9B5" opacity=".2"/><rect x="1212" y="270" width="14" height="30" rx="6" fill="#1F2A22"/><rect x="1214" y="275" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="1038" y="380" width="224" height="4" fill="#C59B62" opacity=".55"/><rect x="1052" y="344" width="12" height="36" rx="5" fill="#E8DCC6"/><rect x="1080" y="344" width="14" height="36" rx="6" fill="#3B2316"/><rect x="1082" y="349" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="1110" y="344" width="14" height="36" rx="6" fill="#E8DCC6"/><rect x="1130" y="344" width="14" height="36" rx="6" fill="#2A1810"/><rect x="1132" y="349" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="1152" y="354" width="10" height="26" rx="4" fill="#E8DCC6"/><rect x="1168" y="344" width="14" height="36" rx="6" fill="#3B2316"/><rect x="1170" y="349" width="2" height="25" fill="#F1D9B5" opacity=".2"/><rect x="1188" y="350" width="12" height="30" rx="5" fill="#3B2316"/><rect x="1190" y="355" width="2" height="19" fill="#F1D9B5" opacity=".2"/><rect x="1208" y="354" width="12" height="26" rx="5" fill="#2A1810"/><rect x="1210" y="359" width="2" height="15" fill="#F1D9B5" opacity=".2"/><rect x="1226" y="344" width="12" height="36" rx="5" fill="#3B2316"/><rect x="1228" y="349" width="2" height="25" fill="#F1D9B5" opacity=".2"/><ellipse cx="520" cy="415" rx="170" ry="26" fill="url(#bm-pozza)"/><ellipse cx="720" cy="415" rx="200" ry="30" fill="url(#bm-pozza)"/><ellipse cx="920" cy="415" rx="170" ry="26" fill="url(#bm-pozza)"/><rect y="412" width="1440" height="20" fill="#B9653F"/><rect y="412" width="1440" height="3" fill="#E6A07A" opacity=".75"/><rect y="432" width="1440" height="128" fill="url(#bm-zellige)"/><rect y="432" width="1440" height="12" fill="#000" opacity=".2"/><g class="bancone__lampada" style="transform-origin: 520px 0px"><line x1="520" y1="0" x2="520" y2="136" stroke="#24180F" stroke-width="2"/><ellipse cx="520" cy="194" rx="130" ry="86" fill="url(#bm-alone)"/><path d="M458 174 C458 122 582 122 582 174 Z" fill="url(#bm-vimini)"/><path d="M458 174 C458 122 582 122 582 174 Z" fill="url(#bm-luce)"/><path d="M458 174 C458 122 582 122 582 174 Z" fill="none" stroke="#7A5630" stroke-width="2"/><ellipse cx="520" cy="174" rx="61" ry="7" fill="#FFE9BE"/></g><g class="bancone__lampada" style="transform-origin: 720px 0px"><line x1="720" y1="0" x2="720" y2="186" stroke="#24180F" stroke-width="2"/><ellipse cx="720" cy="244" rx="130" ry="86" fill="url(#bm-alone)"/><path d="M658 224 C658 172 782 172 782 224 Z" fill="url(#bm-vimini)"/><path d="M658 224 C658 172 782 172 782 224 Z" fill="url(#bm-luce)"/><path d="M658 224 C658 172 782 172 782 224 Z" fill="none" stroke="#7A5630" stroke-width="2"/><ellipse cx="720" cy="224" rx="61" ry="7" fill="#FFE9BE"/></g><g class="bancone__lampada" style="transform-origin: 920px 0px"><line x1="920" y1="0" x2="920" y2="136" stroke="#24180F" stroke-width="2"/><ellipse cx="920" cy="194" rx="130" ry="86" fill="url(#bm-alone)"/><path d="M858 174 C858 122 982 122 982 174 Z" fill="url(#bm-vimini)"/><path d="M858 174 C858 122 982 122 982 174 Z" fill="url(#bm-luce)"/><path d="M858 174 C858 122 982 122 982 174 Z" fill="none" stroke="#7A5630" stroke-width="2"/><ellipse cx="920" cy="174" rx="61" ry="7" fill="#FFE9BE"/></g></svg>
+    </div>
+    <figcaption>Il bar interno: piastrelle verde acqua, pareti in terracotta, lampade in rattan.</figcaption>
+  </figure>
+
+</section>
+
+<!-- 00:30 ================================================================ -->
+<section class="sezione eventi tema-scuro" id="eventi" aria-labelledby="eventi-titolo" data-ora="00:30">
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">00:30</span></div>
+  <div class="eventi__griglia">
+    <div class="eventi__testo">
+      <h2 class="titolo" id="eventi-titolo" data-rivela>Compleanni e feste</h2>
+      <p class="eventi__intro corpo testo-2">Dicci la data e quanti siete. Il messaggio parte già scritto su WhatsApp: lo controlli e lo invii tu.</p>
+      <p class="eventi__simone">Chiedi di Simone <span class="dc">[DA CONFERMARE]</span></p>
+    </div>
+
+    <div class="preventivo" role="group" aria-labelledby="preventivo-titolo" data-preventivo>
+      <h3 id="preventivo-titolo">Richiesta di preventivo</h3>
+      <div class="campo">
+        <label for="p-nome">Nome</label>
+        <input id="p-nome" type="text" autocomplete="name" required>
+      </div>
+      <div class="campi-doppi">
+        <div class="campo">
+          <label for="p-tipo">Tipo di festa</label>
+          <select id="p-tipo">
+            <option>Compleanno</option>
+            <option>Anniversario</option>
+            <option>Laurea</option>
+            <option>Cena aziendale</option>
+            <option>Altro</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="p-data">Data</label>
+          <input id="p-data" type="date" required>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="p-ospiti">Ospiti</label>
+        <input id="p-ospiti" type="number" inputmode="numeric" min="1" step="1">
+      </div>
+      <div class="campo">
+        <label for="p-note">Note</label>
+        <textarea id="p-note" rows="3" placeholder="Torta, allergie, orario, buffet..."></textarea>
+      </div>
+      <button class="btn btn--brace" type="button" data-invia><svg aria-hidden="true"><use href="#i-wa"/></svg>Invia su WhatsApp</button>
+      <p class="preventivo__esito" role="status" aria-live="polite" data-esito></p>
+    </div>
+  </div>
+</section>
+
+<!-- 01:30 ================================================================ -->
+<section class="sezione info tema-scuro" id="dove" aria-labelledby="recensioni-titolo" data-ora="01:30">
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">01:30</span></div>
+  <div class="info__griglia">
+    <div class="recensioni">
+      <h2 class="titolo" id="recensioni-titolo" data-rivela>Cosa scrivono gli ospiti</h2>
+      <p class="recensioni__fonte">Temi riassunti dalle recensioni su Tripadvisor: 4,1 su 5, 16 recensioni (ottobre 2026).</p>
+      <ul class="temi" role="list">
+        <li><h3>I drink e la location</h3><p>Lodati in più recensioni.</p></li>
+        <li><h3>Le feste</h3><p>Diverse recensioni citano Simone per l'organizzazione. Una festa per i 40 anni con buffet è andata molto bene.</p></li>
+        <li><h3>A tavola tutti</h3><p>Attenzione per intolleranze, vegetariani e vegani (piacciono gli gnocchi) e per i bambini.</p></li>
+      </ul>
+    </div>
+
+    <div class="orari">
+      <h2 class="titolo">Orari</h2>
+      <p class="orari__ore" aria-hidden="true"><span>17:00</span><span>tutti i giorni fino alle</span><span>03:00</span></p>
+      <p>Aperti tutti i giorni dalle 17:00 alle 03:00.</p>
+      <p class="testo-2">Orari invernali <span class="dc">[DA CONFERMARE]</span></p>
+    </div>
+
+    <div class="dove">
+      <h2 class="titolo" data-rivela>Dove siamo</h2>
+      <div class="dove__griglia">
+        <figure class="mappa">
+          <svg viewBox="0 0 640 420" role="img" aria-labelledby="mappa-desc">
+            <desc id="mappa-desc">Mappa schematica: il Lungomare Trieste corre lungo la spiaggia di Roseto degli Abruzzi, con il mare Adriatico a est. Il segnaposto indica Destino al numero 44.</desc>
+            <defs>
+              <pattern id="p-onde" width="36" height="14" patternUnits="userSpaceOnUse"><path d="M0 7 q 9 -6 18 0 t 18 0" fill="none" stroke="#8F9B7A" stroke-opacity=".45" stroke-width="1.2"/></pattern>
+              <pattern id="p-sabbia" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1" fill="#EFE6D8" fill-opacity=".28"/><circle cx="9" cy="9" r="1" fill="#EFE6D8" fill-opacity=".18"/></pattern>
+            </defs>
+            <path d="M440 0 H640 V420 H530 Z" fill="url(#p-onde)"/>
+            <path d="M372 0 H440 L530 420 H462 Z" fill="url(#p-sabbia)"/>
+            <path d="M440 0 L530 420" stroke="#8F9B7A" stroke-opacity=".7" stroke-width="1.4"/>
+            <path d="M360 -4 L452 424" stroke="#EFE6D8" stroke-width="4" stroke-linecap="round"/>
+            <text x="0" y="0" transform="translate(352 40) rotate(77.6)" fill="#EFE6D8" font-size="14" font-weight="600" letter-spacing="2">LUNGOMARE TRIESTE</text>
+            <text x="0" y="0" transform="translate(560 250) rotate(77.6)" fill="#8F9B7A" font-size="14" font-weight="600" letter-spacing="3">MARE ADRIATICO</text>
+            <text x="64" y="360" fill="#B5AB9B" font-size="14" font-weight="600" letter-spacing="2">ROSETO DEGLI ABRUZZI</text>
+            <g transform="translate(64 70)" stroke="#B5AB9B" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M0 28V-8M-6-1 0-9 6-1"/>
+            </g>
+            <text x="58" y="122" fill="#B5AB9B" font-size="14" font-weight="600">N</text>
+            <g transform="translate(406 210)">
+              <circle r="26" fill="none" stroke="#FF6A2B" stroke-opacity=".5" stroke-width="1.4"/>
+              <circle r="9" fill="#FF6A2B"/>
+            </g>
+            <text x="222" y="204" fill="#EFE6D8" font-size="26" font-family="Italiana, serif">Destino</text>
+            <text x="222" y="228" fill="#B5AB9B" font-size="14">Lungomare Trieste 44</text>
+            <path d="M362 210 H376" stroke="#B5AB9B"/>
+          </svg>
+          <figcaption>Schema non in scala.</figcaption>
+        </figure>
+        <div class="dove__dati">
+          <address class="indirizzo">Lungomare Trieste 44<br>64026 Roseto degli Abruzzi (TE)</address>
+          <div class="dove__azioni">
+            <a class="btn btn--brace" href="https://www.google.com/maps/dir/?api=1&amp;destination=Lungomare%20Trieste%2044%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-mappa"/></svg>Indicazioni<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+            <a class="btn btn--linea" href="https://www.google.com/maps/search/?api=1&amp;query=Destino%20Churrascaria%20Lungomare%20Trieste%2044%2064026%20Roseto%20degli%20Abruzzi" target="_blank" rel="noopener">Apri in Google Maps<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 02:45 ================================================================ -->
+<footer class="sezione piede tema-scuro" data-ora="02:45">
+  <div class="sezione__arco" aria-hidden="true" data-arco><span class="sezione__chiave">02:45</span></div>
+  <p class="piede__notte" data-rivela>Alle tre si chiude. Buonanotte.</p>
+  <div class="piede__dati">
+    <div>
+      <p class="marchio" style="color:var(--sabbia)">DESTINO</p>
+      <p style="margin-top:10px">Churrascaria &amp; Cocktail Bar</p>
+      <p style="margin-top:12px"><span class="dc">[LOGO VETTORIALE DA RICHIEDERE]</span></p>
+    </div>
+    <address>Lungomare Trieste 44<br>64026 Roseto degli Abruzzi (TE)</address>
+    <div class="piede__elenco">
+      <a href="tel:+393490885513">+39 349 088 5513</a>
+      <a href="https://wa.me/393490885513" target="_blank" rel="noopener">WhatsApp<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+      <a href="mailto:destinoroseto@gmail.com">destinoroseto@gmail.com</a>
+      <a href="https://www.instagram.com/destino_roseto/" target="_blank" rel="noopener">Instagram @destino_roseto<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+    </div>
+    <p>Tutti i giorni<br>17:00 – 03:00</p>
+  </div>
+  <p class="piede__firma">Sito realizzato da <a class="link" href="https://prismalocale.it/" target="_blank" rel="noopener">Prisma Locale</a></p>
+</footer>
+
+<nav class="barra" aria-label="Contatti rapidi">
+  <a class="barra__wa" href="https://wa.me/393490885513?text=Ciao%20Destino!%20Vorrei%20prenotare%20un%20tavolo." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+  <a href="tel:+393490885513"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
+  <a href="#eventi"><svg aria-hidden="true"><use href="#i-festa"/></svg>Eventi</a>
+</nav>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+__SCRIPT__
+</script>
+</body>
+</html>
