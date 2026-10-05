@@ -1,8 +1,9 @@
-import { gsap, lockScroll } from '../../../js/core/motion.js';
+import { gsap } from '../../../js/core/motion.js';
 
 /* Visore a tutto schermo su <dialog>: frecce, tastiera, swipe, Esc.
-   Mostra la versione grande dell'immagine quando esiste. */
-const grande = (src) => src.replace(/-m\.webp$/, '-l.webp');
+   Mostra la versione grande dell'immagine quando esiste, nello stesso
+   formato (AVIF o WebP) che il browser ha scelto per la miniatura. */
+const grande = (src) => src.replace(/-m\.(avif|webp)$/, '-l.$1');
 
 export function creaVisore(voci, { movimento }) {
   const finestra = document.querySelector('[data-visore-finestra]');
@@ -16,8 +17,8 @@ export function creaVisore(voci, { movimento }) {
     indice = (i + voci.length) % voci.length;
     const voce = voci[indice];
     const cambia = () => {
-      img.src = grande(voce.src);
-      img.alt = voce.alt;
+      img.src = grande(voce.img.currentSrc || voce.img.src);
+      img.alt = voce.img.alt;
       dida.textContent = voce.dida;
       conto.textContent = `${String(indice + 1).padStart(2, '0')} / ${String(voci.length).padStart(2, '0')}`;
     };
@@ -32,20 +33,17 @@ export function creaVisore(voci, { movimento }) {
     origine = da;
     mostra(i);
     finestra.showModal();
-    lockScroll(true);
     if (movimento) gsap.fromTo(img, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 1, ease: 'expo.out' });
   };
 
-  finestra.querySelector('[data-visore-prec]').addEventListener('click', () => mostra(indice - 1, -1));
-  finestra.querySelector('[data-visore-succ]').addEventListener('click', () => mostra(indice + 1, 1));
+  const passa = (verso) => mostra(indice + verso, verso);
+  finestra.querySelector('[data-visore-prec]').addEventListener('click', () => passa(-1));
+  finestra.querySelector('[data-visore-succ]').addEventListener('click', () => passa(1));
   finestra.querySelector('[data-visore-chiudi]').addEventListener('click', () => finestra.close());
-  finestra.addEventListener('close', () => {
-    lockScroll(false);
-    origine?.focus({ preventScroll: true });
-  });
+  finestra.addEventListener('close', () => origine?.focus({ preventScroll: true }));
   finestra.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') mostra(indice + 1, 1);
-    if (e.key === 'ArrowLeft') mostra(indice - 1, -1);
+    if (e.key === 'ArrowRight') passa(1);
+    if (e.key === 'ArrowLeft') passa(-1);
   });
   // swipe orizzontale
   let x0 = null;
@@ -55,7 +53,7 @@ export function creaVisore(voci, { movimento }) {
     if (x0 === null) return;
     const dx = e.clientX - x0;
     x0 = null;
-    if (Math.abs(dx) > 50) mostra(indice + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+    if (Math.abs(dx) > 50) passa(dx < 0 ? 1 : -1);
   });
 
   return { apri };

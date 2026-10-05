@@ -65,30 +65,47 @@ const browser = await chromium.launch({
 const page = await browser.newPage();
 page.on('pageerror', (e) => console.error('[pagina]', e.message));
 
+// Disegna una tavola (o fotografa una pagina di servizio) in un PNG.
+async function disegna(scena, w, h, opz, png) {
+  if (scena === 'plastico' || scena === 'og') {
+    await page.setViewportSize({ width: w, height: h });
+    await page.goto(`${base}/dev/borgo/${scena}.html?${new URLSearchParams({ w, h, ...opz })}`);
+    await page.waitForFunction(() => window.__pronto, null, { timeout: 300_000 });
+    await page.screenshot({ path: png });
+    return;
+  }
+  await page.goto(`${base}/dev/borgo/tavole.html?${new URLSearchParams({ t: scena, w, h, ...opz })}`);
+  const handle = await page.waitForFunction(() => window.__still, null, { timeout: 300_000 });
+  await writeFile(png, Buffer.from((await handle.jsonValue()).split(',')[1], 'base64'));
+}
+
+// WebP per tutti, AVIF accanto (con la trasparenza, quando c'è).
+function codifica(png, dest, alfa) {
+  const avif = ['-c:v', 'libaom-av1', '-still-picture', '1', '-crf', '30', '-cpu-used', '6'];
+  if (alfa) {
+    ff(['-i', png, '-c:v', 'libwebp', '-pix_fmt', 'yuva420p', '-quality', '82', `${dest}.webp`]);
+    ff(['-i', png, '-filter_complex', '[0:v]format=yuva420p,split[c][a];[a]alphaextract[al]', '-map', '[c]', '-map', '[al]', ...avif, `${dest}.avif`]);
+  } else {
+    ff(['-i', png, '-c:v', 'libwebp', '-quality', '80', `${dest}.webp`]);
+    ff(['-i', png, ...avif, '-pix_fmt', 'yuv420p', `${dest}.avif`]);
+  }
+}
+
 for (const [nome, scena, opz, misure, alfa = false] of jobs) {
   if (solo && nome !== solo) continue;
-  for (const [w, h, suff] of misure) {
+  // ogni proporzione si disegna una volta, alla misura più grande; le altre
+  // misure con la stessa proporzione si ricavano scalando quel PNG
+  const grandi = new Map();
+  for (const [w, h, suff] of [...misure].sort((m1, m2) => m2[0] - m1[0])) {
     const png = join(tmp, `${nome}-${suff}.png`);
-    if (scena === 'plastico' || scena === 'og') {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto(`${base}/dev/borgo/${scena}.html?${new URLSearchParams({ w, h, ...opz })}`);
-      await page.waitForFunction(() => window.__pronto, null, { timeout: 300_000 });
-      await page.screenshot({ path: png });
-    } else {
-      const q = new URLSearchParams({ t: scena, w, h, ...opz });
-      await page.goto(`${base}/dev/borgo/tavole.html?${q}`);
-      const handle = await page.waitForFunction(() => window.__still, null, { timeout: 300_000 });
-      await writeFile(png, Buffer.from((await handle.jsonValue()).split(',')[1], 'base64'));
+    const proporzione = (w / h).toFixed(3);
+    if (grandi.has(proporzione)) ff(['-i', grandi.get(proporzione), '-vf', `scale=${w}:${h}:flags=lanczos`, png]);
+    else {
+      await disegna(scena, w, h, opz, png);
+      grandi.set(proporzione, png);
     }
-    const dest = join(out, `${nome}-${suff}`);
-    if (scena === 'og') {
-      ff(['-i', png, '-q:v', '3', fileURLToPath(new URL('../public/assets/img/borgo-og.jpg', import.meta.url))]);
-    } else if (alfa) {
-      ff(['-i', png, '-c:v', 'libwebp', '-pix_fmt', 'yuva420p', '-quality', '82', `${dest}.webp`]);
-    } else {
-      ff(['-i', png, '-c:v', 'libwebp', '-quality', '80', `${dest}.webp`]);
-      ff(['-i', png, '-c:v', 'libaom-av1', '-still-picture', '1', '-crf', '30', '-cpu-used', '6', '-pix_fmt', 'yuv420p', `${dest}.avif`]);
-    }
+    if (scena === 'og') ff(['-i', png, '-q:v', '3', fileURLToPath(new URL('../public/assets/img/borgo-og.jpg', import.meta.url))]);
+    else codifica(png, join(out, `${nome}-${suff}`), alfa);
     console.log('✓', suff ? `${nome}-${suff}` : nome, `${w}×${h}`);
   }
 }

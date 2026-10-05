@@ -142,16 +142,20 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
   - **Codice** in `src/anteprime/borgo/`: `sections/` (una per sezione), `animations/`
     (rivelazioni, parallasse, cursore e magneti, apertura), `components/visore.js`,
     `three/plastico.js` (scaricato solo su desktop con puntatore fine, quando la sezione
-    si avvicina), `styles/` (token, base e un foglio per gruppo di sezioni).
+    si avvicina; disegna solo quando cambiano scroll, mouse o misura, l'ombra si calcola
+    una volta), `styles/` (token, base e un foglio per gruppo di sezioni). Le finestre
+    (`<dialog>`) bloccano la pagina con una sola regola CSS (`html:has(dialog:modal)`) e
+    hanno `data-lenis-prevent`, così dentro si scorre.
   - **Immagini provvisorie**: non sono foto ma tavole dipinte da uno shader
     (`dev/borgo/tavole.js`), più il plastico fotografato da `dev/borgo/plastico.html`.
     Si rigenerano con `node scripts/render-borgo.mjs` (dev server attivo, Playwright e
-    ffmpeg) in `public/assets/img/borgo/`, AVIF + WebP. Per mettere le foto vere basta
+    ffmpeg) in `public/assets/img/borgo/`, AVIF + WebP (AVIF con trasparenza per i piani
+    dell'hero); ogni proporzione si disegna una volta e le misure minori si scalano. Per mettere le foto vere basta
     sostituire i file con lo stesso nome: nell'HTML ogni immagine ha un commento `FOTO:`
     con soggetto e proporzioni.
   - Testi d'esempio, recensioni, menu e contatti sono marcati "da confermare"; il modulo
     non invia nulla. Scadenza nel meta `anteprima-scadenza` (30 novembre 2026).
-  - Lighthouse (build, Chromium headless): mobile 90 / 100 / 100, desktop 98 / 100 / 100
+  - Lighthouse (build, Chromium headless): mobile 93 / 100 / 100, desktop 98 / 100 / 100
     (prestazioni, accessibilità, best practice; la SEO è bassa di proposito per il noindex).
 - **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
   autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
