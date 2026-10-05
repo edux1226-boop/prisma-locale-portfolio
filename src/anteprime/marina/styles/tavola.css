@@ -128,6 +128,7 @@
   /* l'indice delle portate resta a portata di pollice */
   .carta__indice {
     position: sticky; top: calc(var(--banner-h) + var(--testata-compatta) - 1px); z-index: 5;
+    transition: top 0.7s var(--lento);
     margin-inline: calc(var(--margine) * -1); padding: 0 var(--margine);
     background: var(--carta-2);
     overflow-x: auto; scrollbar-width: none;
@@ -137,6 +138,8 @@
   .carta__indice a { border: 0; padding: 14px 0; white-space: nowrap; }
   .carta__indice a::after { display: none; }
   .carta__indice a[aria-current] { text-decoration: underline; text-underline-offset: 6px; }
+  /* quando la testata si ritira, l'indice sale con lei */
+  html:has(.testata.is-nascosta) .carta__indice { top: var(--banner-h); }
 }
 @media (max-width: 47.99em) {
   .voce { grid-template-columns: minmax(0, 1fr); }

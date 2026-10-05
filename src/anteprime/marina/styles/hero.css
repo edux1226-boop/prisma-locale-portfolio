@@ -76,6 +76,8 @@
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 24px;
 }
 .hero__motto { font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m); line-height: 1.15; }
+/* le scritte piccole restano leggibili anche sopra le scintille */
+.hero__luogo, .hero__motto, .hero__carta, .hero__scendi { text-shadow: 0 0 16px rgb(var(--adriatico-rgb) / 0.75), 0 1px 2px rgb(var(--adriatico-rgb) / 0.5); }
 .hero__motto em { font-weight: 300; }
 .hero__scendi {
   display: grid; justify-items: center; gap: 12px;
