@@ -1,0 +1,54 @@
+{
+  "_leggimi": "Le foto della galleria. file = percorso in /assets/img/casetta/ senza misura né estensione (servono le versioni -600 e -1200, in .avif e .webp, formato 4:3). alt = descrizione per chi non vede l'immagine; dida = didascalia breve.",
+  "home": ["piatti/chitarra-pallottine", "sala/tavola-per-due", "piatti/arrosticini", "cucina/sfoglia", "sala/casetta-sera", "piatti/pizza-dolce"],
+  "categorie": [
+    {
+      "id": "piatti",
+      "titolo": "I nostri piatti",
+      "foto": [
+        { "file": "piatti/chitarra-pallottine", "dida": "Chitarra con le pallottine", "alt": "Spaghetti alla chitarra al sugo di pomodoro con piccole polpette, pecorino grattugiato e basilico." },
+        { "file": "piatti/mugnaia", "dida": "Pasta alla mugnaia al sugo abruzzese", "alt": "Pasta alla mugnaia spessa e irregolare con ragù di carne." },
+        { "file": "piatti/arrosticini", "dida": "Arrosticini", "alt": "Dieci arrosticini dorati dalla brace con una fetta di pane e il sale." },
+        { "file": "piatti/agnello-diavola", "dida": "Agnello alla diavola", "alt": "Costolette d'agnello alla brace con peperoncino, rosmarino e patate al forno." },
+        { "file": "piatti/scrippelle", "dida": "Scrippelle 'mbusse", "alt": "Crespelle arrotolate nel brodo dorato, in una scodella di coccio." },
+        { "file": "piatti/timballo", "dida": "Timballo teramano", "alt": "Porzione di timballo gratinato con il ragù." },
+        { "file": "piatti/tagliere", "dida": "Tagliere della Casetta", "alt": "Tagliere con salumi abruzzesi, formaggi e pane abbrustolito." },
+        { "file": "piatti/pallotte", "dida": "Pallotte cace e ove", "alt": "Polpette di formaggio e uova nel sugo di pomodoro, nel tegame di coccio." },
+        { "file": "piatti/chitarra-tartufo", "dida": "Chitarra al tartufo nero", "alt": "Spaghetti alla chitarra con lamelle di tartufo nero." },
+        { "file": "piatti/grigliata", "dida": "Grigliata mista della casa", "alt": "Salsiccia, costolette, pancetta e arrosticini alla brace." },
+        { "file": "piatti/pizza-e-foje", "dida": "Pizza e foje", "alt": "Verdure di campo ripassate con pizza di granturco." },
+        { "file": "piatti/ravioli", "dida": "Ravioli di ricotta al pomodoro", "alt": "Ravioli quadrati nel sugo di pomodoro con basilico." },
+        { "file": "piatti/sagne-e-ceci", "dida": "Sagne e ceci", "alt": "Sagne a losanghe con ceci, rosmarino e olio." },
+        { "file": "piatti/formaggi", "dida": "Formaggi d'Abruzzo", "alt": "Pecorino, caciotta e ricotta con miele e noci." },
+        { "file": "piatti/pizza-dolce", "dida": "Pizza dolce teramana", "alt": "Fetta di pizza dolce teramana con crema, cioccolato e mandorle." },
+        { "file": "piatti/bocconotti", "dida": "Bocconotti", "alt": "Bocconotti di pasta frolla spolverati di zucchero a velo." }
+      ]
+    },
+    {
+      "id": "sala",
+      "titolo": "La sala e l'atmosfera",
+      "foto": [
+        { "file": "sala/tavola-per-due", "dida": "La tavola per due", "alt": "Tavola apparecchiata per due con calici di vino rosso, pane e una candela accesa." },
+        { "file": "sala/casetta-sera", "dida": "La Casetta, di sera", "alt": "La facciata della Casetta di sera, con le finestre illuminate e una lanterna accanto alla porta." },
+        { "file": "sala/tavolata", "dida": "La tavolata della domenica", "alt": "Lunga tavola apparecchiata per una famiglia, con i piatti da condividere al centro." },
+        { "file": "sala/calici", "dida": "Montepulciano, Cerasuolo, Trebbiano", "alt": "Tre calici con vino rosso, rosato e bianco sulla tovaglia di lino." },
+        { "file": "sala/pane-olio", "dida": "Pane fatto in casa e olio nuovo", "alt": "Cestino di pane casereccio a fette accanto a un'oliera e a una ciotola di olive." },
+        { "file": "sala/cantina", "dida": "La cantina", "alt": "Parete di bottiglie di vino coricate negli scaffali di legno." },
+        { "file": "sala/luci", "dida": "Luci della sera", "alt": "Luci calde e sfocate nella sala, di sera." },
+        { "file": "sala/caffe", "dida": "Il caffè, alla fine", "alt": "Due tazzine di caffè e un bocconotto sulla tovaglia." }
+      ]
+    },
+    {
+      "id": "cucina",
+      "titolo": "Dietro le quinte",
+      "foto": [
+        { "file": "cucina/farina-uova", "dida": "Farina e uova: si comincia", "alt": "La fontana di farina con le uova al centro, sulla spianatoia di legno." },
+        { "file": "cucina/sfoglia", "dida": "La sfoglia tirata a mano", "alt": "Una sfoglia di pasta gialla stesa sulla spianatoia con il mattarello." },
+        { "file": "cucina/chitarra", "dida": "La chitarra", "alt": "La chitarra di legno con le corde d'acciaio e la sfoglia tagliata in spaghetti." },
+        { "file": "cucina/spiedini", "dida": "Gli arrosticini, uno per uno", "alt": "Cubetti di carne e spiedini di legno sul tagliere, mentre si preparano gli arrosticini." },
+        { "file": "cucina/brace", "dida": "Sulla canala", "alt": "Arrosticini allineati sulla canala, sopra la brace accesa." },
+        { "file": "cucina/dolci-forno", "dida": "Appena sfornati", "alt": "Teglia di bocconotti appena sfornati." }
+      ]
+    }
+  ]
+}

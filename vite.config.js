@@ -1,10 +1,20 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import { casetta } from './src/anteprime/casetta/render/plugin.js';
 
 const root = import.meta.dirname;
 
+// Anteprima "La Casetta di Paparill": un sito di più pagine, composto dai
+// contenuti JSON in src/anteprime/casetta/contenuti/.
+const CASETTA = ['', 'menu'];
+const casettaInput = Object.fromEntries(CASETTA.map((pagina) => [
+  `casetta${pagina ? `-${pagina}` : ''}`,
+  resolve(root, 'anteprime/casetta-paparill', pagina, 'index.html'),
+]));
+
 export default defineConfig({
   appType: 'mpa',
+  plugins: [casetta({ root })],
   build: {
     target: 'es2022',
     // three.js (~146 kB gzip) vive in un chunk a parte, caricato solo su desktop.
@@ -18,6 +28,7 @@ export default defineConfig({
         notFound: resolve(root, '404.html'),
         nagoya: resolve(root, 'anteprime/nagoya-sushi/index.html'),
         borgo: resolve(root, 'anteprime/borgo-spoltino/index.html'),
+        ...casettaInput,
       },
     },
   },

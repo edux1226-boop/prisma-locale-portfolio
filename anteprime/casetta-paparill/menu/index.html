@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="it" data-pagina="menu">
+<head>
+<!-- @testa -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/menu.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<main id="contenuto" tabindex="-1">
+
+<header class="intestazione">
+  <div class="contenitore">
+    <!-- @briciole -->
+    <h1 class="intestazione__titolo">{{md t.menuPagina.titolo}}</h1>
+    <p class="intestazione__lead">{{md t.menuPagina.intro}}</p>
+    <div class="intestazione__azioni">
+      <!-- @menu-pdf -->
+      <a class="btn btn--accento" href="{{url prenota}}" data-prenota="menu-testa">{{t.comuni.prenota}}</a>
+    </div>
+  </div>
+</header>
+
+<!-- Indice delle sezioni: resta in vista sotto la testata. -->
+<!-- @menu-indice -->
+
+<div class="contenitore menu-pagina">
+  <div class="menu-pagina__strumenti">
+    <!-- @avviso menuPagina.notaAnteprima -->
+    <!-- @menu-filtri -->
+    <!-- @menu-legenda -->
+  </div>
+
+  <!-- ==================================================================
+       LE SEZIONI — FOTO: per i piatti con foto, 4:3, vista dall'alto,
+       stessa luce e stesso fondo (file in /assets/img/casetta/piatti/).
+       ================================================================== -->
+  <!-- @menu-sezioni -->
+
+  <!-- @menu-note -->
+</div>
+
+<!-- @prenota-fascia widget -->
+
+</main>
+
+<!-- @piede -->
+<!-- @lightbox -->
+<!-- @fine -->
+</body>
+</html>

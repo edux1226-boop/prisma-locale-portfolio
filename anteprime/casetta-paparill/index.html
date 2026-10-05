@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="it" data-pagina="home">
+<head>
+<!-- @testa -->
+<!-- @precarica-hero -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/home.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<main id="contenuto" tabindex="-1">
+
+<!-- ====================================================================
+     HERO — FOTO: il piatto simbolo (chitarra con le pallottine) sulla
+     tavola apparecchiata, vista dall'alto, luce naturale da sinistra.
+     Due tagli: 16:9 (2048 e 1280 px) e 9:16 (1080 e 720 px).
+     ==================================================================== -->
+<section class="hero" aria-labelledby="hero-titolo">
+  <!-- @hero-foto -->
+  <div class="hero__velo" aria-hidden="true"></div>
+  <div class="hero__contenuto contenitore">
+    <p class="hero__occhiello">{{md t.home.hero.occhiello}}</p>
+    <!-- @hero-titolo -->
+    <!-- @hero-voto -->
+    <div class="hero__azioni">
+      <a class="btn btn--accento btn--grande" href="{{url prenota}}" data-prenota="hero">{{t.comuni.prenota}}</a>
+      <a class="btn btn--chiaro btn--grande" href="{{url menu}}">{{t.comuni.menu}}</a>
+    </div>
+    <!-- @hero-badge -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     PERCHÉ SCEGLIERCI
+     ==================================================================== -->
+<section class="sezione" aria-labelledby="perche-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa sezione__testa--centro">
+      <p class="occhiello">La Casetta di Paparill</p>
+      <h2 class="sezione__titolo" id="perche-titolo">{{md t.home.perche.titolo}}</h2>
+      <p class="sezione__intro">{{md t.home.perche.intro}}</p>
+    </header>
+    <!-- @perche-carte -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     I PIATTI DELLA CASA — FOTO: dal menu (4:3, stessa luce).
+     ==================================================================== -->
+<section class="sezione sezione--sabbia" aria-labelledby="piatti-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa sezione__testa--riga">
+      <div>
+        <p class="occhiello">Dal menu</p>
+        <h2 class="sezione__titolo" id="piatti-titolo">{{md t.home.piatti.titolo}}</h2>
+        <p class="sezione__intro">{{md t.home.piatti.intro}}</p>
+      </div>
+      <a class="link-freccia" href="{{url menu}}">{{t.home.piatti.link}} <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-freccia"/></svg></a>
+    </header>
+    <!-- @piatti-scelti -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     GALLERIA — 3 piatti, 2 della sala, 1 della cucina. Clic = visore.
+     ==================================================================== -->
+<section class="sezione" aria-labelledby="galleria-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa sezione__testa--riga">
+      <div>
+        <p class="occhiello">Galleria</p>
+        <h2 class="sezione__titolo" id="galleria-titolo">{{md t.home.galleria.titolo}}</h2>
+        <p class="sezione__intro">{{md t.home.galleria.intro}}</p>
+      </div>
+      <a class="link-freccia" href="{{url galleria}}">{{t.home.galleria.link}} <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-freccia"/></svg></a>
+    </header>
+    <!-- @galleria-home -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     RECENSIONI — d'esempio nell'anteprima; al lancio il widget ufficiale.
+     ==================================================================== -->
+<section class="sezione sezione--sabbia" aria-labelledby="recensioni-titolo">
+  <div class="contenitore recensioni-sezione">
+    <header class="sezione__testa">
+      <p class="occhiello">TripAdvisor</p>
+      <h2 class="sezione__titolo" id="recensioni-titolo">{{md t.home.recensioni.titolo}}</h2>
+    </header>
+    <!-- @recensioni -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     DOVE E QUANDO
+     ==================================================================== -->
+<section class="sezione" aria-labelledby="dove-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa sezione__testa--riga">
+      <div>
+        <p class="occhiello">Roseto degli Abruzzi</p>
+        <h2 class="sezione__titolo" id="dove-titolo">{{md t.home.dove.titolo}}</h2>
+        <p class="sezione__intro">{{md t.home.dove.testo}}</p>
+      </div>
+      <a class="link-freccia" href="{{url contatti}}">{{t.home.dove.link}} <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-freccia"/></svg></a>
+    </header>
+    <!-- @dove-breve -->
+  </div>
+</section>
+
+<!-- @prenota-fascia widget -->
+
+</main>
+
+<!-- @piede -->
+<!-- @nota -->
+<!-- @lightbox -->
+<!-- @fine -->
+</body>
+</html>

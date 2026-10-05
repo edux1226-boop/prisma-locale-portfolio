@@ -7,6 +7,8 @@
 
 # File binari: nessuna conversione, nessun diff testuale.
 *.webp binary
+*.avif binary
+*.pdf  binary
 *.png  binary
 *.jpg  binary
 *.jpeg binary

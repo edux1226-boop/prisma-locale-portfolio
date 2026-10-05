@@ -1,0 +1,22 @@
+{
+  "name": "La Casetta di Paparill",
+  "short_name": "Paparill",
+  "description": "Cucina abruzzese e teramana a Roseto degli Abruzzi: menu, orari e prenotazioni.",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#1a3a52",
+  "icons": [
+    { "src": "icona-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icona-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icona-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Menu", "url": "menu/" },
+    { "name": "Prenota un tavolo", "url": "prenota/" },
+    { "name": "Contatti e orari", "url": "contatti/" }
+  ]
+}

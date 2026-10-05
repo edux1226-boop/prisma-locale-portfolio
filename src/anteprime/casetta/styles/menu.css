@@ -1,0 +1,209 @@
+/* ---- Indice delle sezioni (resta in vista) ------------------------------- */
+.indice {
+  position: sticky; top: var(--testata-h); z-index: 40;
+  background: rgb(250 249 247 / 0.96);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linea);
+}
+.indice__voci {
+  display: flex; gap: 8px;
+  max-width: calc(var(--larghezza) + 2 * var(--margine));
+  margin-inline: auto;
+  padding: 10px var(--margine);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-padding-inline: var(--margine);
+}
+.indice__voci::-webkit-scrollbar { display: none; }
+.indice__voce {
+  display: inline-flex; align-items: center;
+  min-height: 40px; padding: 6px 16px;
+  border: 1.5px solid var(--linea-forte); border-radius: 999px;
+  background: var(--carta);
+  font-size: var(--t-piccolo); font-weight: 600; color: var(--blu); text-decoration: none; white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.indice__voce:hover { border-color: var(--blu); }
+.indice__voce[aria-current="true"] { background: var(--blu); border-color: var(--blu); color: #fff; }
+.indice__voce.is-spenta { opacity: 0.4; }
+
+.menu-pagina { padding-block: clamp(28px, 4vw, 48px) var(--spazio-sezione); }
+.menu-pagina :target, .menu-sezione { scroll-margin-top: calc(var(--testata-h) + 72px); }
+
+/* ---- Strumenti: avviso, filtri, legenda ---------------------------------- */
+.menu-pagina__strumenti { display: grid; gap: 16px; margin-bottom: clamp(24px, 3vw, 40px); }
+.filtri {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
+  padding: 16px 20px;
+  border-radius: var(--raggio); background: var(--carta); box-shadow: var(--ombra);
+}
+.filtri__titolo { font-weight: 600; color: var(--blu); }
+.filtri__voci { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.filtri__conto { margin-left: auto; font-size: var(--t-piccolo); color: var(--tenue); font-variant-numeric: tabular-nums; }
+@media (max-width: 39.99em) { .filtri__conto { margin-left: 0; width: 100%; } }
+
+/* Interruttore: casella vera (accessibile), disegnata come un cursore. */
+.interruttore { position: relative; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; font-weight: 500; }
+.interruttore input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.interruttore__pista {
+  position: relative; flex: none;
+  width: 46px; height: 28px;
+  border-radius: 999px;
+  background: #c9c2b5;
+  transition: background-color 0.2s;
+}
+.interruttore__pista::after {
+  content: ""; position: absolute; top: 3px; left: 3px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
+  transition: transform 0.2s var(--ease);
+}
+.interruttore input:checked + .interruttore__pista { background: var(--verde); }
+.interruttore input:checked + .interruttore__pista::after { transform: translateX(18px); }
+.interruttore input:focus-visible + .interruttore__pista { outline: 3px solid var(--oro-testo); outline-offset: 3px; }
+.interruttore .ico { color: var(--verde); }
+
+.legenda { border-radius: var(--raggio); background: var(--sabbia); border: 1px solid var(--linea); }
+.legenda summary {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 48px; padding: 10px 16px;
+  font-weight: 600; color: var(--blu); cursor: pointer;
+}
+.legenda summary .ico { color: var(--oro-testo); }
+.legenda__voci { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 4px 16px 16px; font-size: var(--t-piccolo); }
+.legenda__voci li { display: inline-flex; align-items: center; gap: 6px; }
+.legenda__voci .ico { width: 20px; height: 20px; color: var(--oro-testo); }
+
+/* ---- Sezioni e piatti ---------------------------------------------------- */
+.menu-sezione { padding-top: clamp(32px, 5vw, 64px); }
+.menu-sezione__testa { padding-bottom: 16px; margin-bottom: 8px; border-bottom: 2px solid var(--blu); }
+.menu-sezione__titolo { font-size: var(--t-h2); }
+.menu-sezione__testa p { margin-top: 6px; color: var(--tenue); }
+.menu-sezione__vuota { padding: 20px 0; color: var(--tenue); font-style: italic; }
+
+.piatti { display: grid; column-gap: 48px; }
+@media (min-width: 60em) { .piatti { grid-template-columns: 1fr 1fr; } }
+
+.piatto {
+  display: grid; grid-template-columns: 1fr auto; gap: 16px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--linea);
+  scroll-margin-top: calc(var(--testata-h) + 80px);
+}
+.piatto:target { background: linear-gradient(90deg, var(--oro-chiaro), transparent); }
+.piatto__testo { display: grid; align-content: start; gap: 8px; min-width: 0; }
+.piatto__riga { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.piatto__nome { font-size: clamp(1.15rem, 1.1rem + 0.25vw, 1.3125rem); }
+.piatto__prezzo .prezzo { font-size: 1.125rem; }
+.piatto__desc { color: var(--tenue); font-size: var(--t-piccolo); line-height: 1.55; }
+.piatto__tag, .allergeni { display: flex; flex-wrap: wrap; gap: 6px; }
+.allergene {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px 2px 5px;
+  border-radius: 999px;
+  border: 1px solid var(--linea);
+  font-size: var(--t-mini); color: var(--tenue);
+}
+.allergene .ico { width: 16px; height: 16px; color: var(--oro-testo); }
+
+.piatto__foto {
+  position: relative;
+  width: 112px; aspect-ratio: 4 / 3;
+  padding: 0; border: 0; border-radius: 6px;
+  overflow: hidden; background: var(--sabbia);
+  cursor: zoom-in;
+  align-self: start;
+  margin-top: 4px;
+}
+.piatto__foto picture { height: 100%; }
+.piatto__foto img { transform: scale(1.4); transform-origin: 44% 50%; }
+.piatto__zoom {
+  position: absolute; right: 4px; bottom: 4px;
+  display: grid; place-items: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgb(255 255 255 / 0.9); color: var(--blu);
+}
+.piatto__zoom .ico { width: 15px; height: 15px; }
+@media (min-width: 48em) { .piatto__foto { width: 168px; } }
+.piatto--chef .piatto__nome::before {
+  content: ""; display: inline-block;
+  width: 8px; height: 8px; margin-right: 8px; vertical-align: 0.2em;
+  border-radius: 50%; background: var(--corallo);
+}
+
+/* ---- Menu degustazione --------------------------------------------------- */
+.degustazioni { display: grid; gap: var(--gap); padding-top: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+.degustazione {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--raggio);
+  background: var(--carta); box-shadow: var(--ombra);
+  border-top: 5px solid var(--oro);
+}
+.degustazione__testa { display: grid; gap: 4px; }
+.degustazione__portate { font-size: var(--t-mini); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--oro-testo); }
+.degustazione__nome { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); }
+.degustazione__prezzo .prezzo { font-size: 2rem; }
+.degustazione__prezzo span:last-child { color: var(--tenue); font-size: var(--t-piccolo); }
+.degustazione__desc { color: var(--tenue); }
+.degustazione__piatti { counter-reset: portata; display: grid; gap: 0; }
+.degustazione__piatti li {
+  counter-increment: portata;
+  display: flex; gap: 12px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px dashed var(--linea);
+}
+.degustazione__piatti li::before {
+  content: counter(portata);
+  flex: none; display: inline-grid; place-items: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--blu); color: #fff; font-size: var(--t-mini); font-weight: 600;
+}
+.degustazione .btn { margin-top: auto; align-self: flex-start; }
+
+/* ---- Vini ---------------------------------------------------------------- */
+.vini { display: grid; column-gap: 48px; }
+@media (min-width: 60em) { .vini { grid-template-columns: 1fr 1fr; } }
+.vino { padding-block: 16px; border-bottom: 1px solid var(--linea); }
+.vino__riga { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.vino__nome { font-size: 1.125rem; }
+.vino__prezzo { font-weight: 700; color: var(--blu); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.vino__desc { margin-top: 4px; font-size: var(--t-piccolo); color: var(--tenue); }
+.vini__nota { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: var(--t-piccolo); color: var(--tenue); }
+
+/* ---- Note ---------------------------------------------------------------- */
+.menu-note {
+  margin-top: clamp(40px, 6vw, 72px);
+  padding: clamp(22px, 3vw, 32px);
+  border-radius: var(--raggio); background: var(--sabbia); border: 1px solid var(--linea);
+}
+.menu-note__titolo { font-size: var(--t-h3); margin-bottom: 12px; }
+.menu-note ul { display: grid; gap: 10px; padding-left: 1.2em; list-style: disc; }
+.menu-note li { font-size: var(--t-piccolo); color: var(--testo); }
+.menu-note li::marker { color: var(--oro-testo); }
+
+/* ---- Stampa / PDF del menu ----------------------------------------------- */
+@media print {
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  html, body { background: #fff; font-size: 10.5pt; padding: 0; }
+  .testata, .menu-mobile, .indice, .menu-pagina__strumenti, .intestazione__azioni, .briciole,
+  .fascia-prenota, .piede, .barra, .anteprima, .filigrana, .scelta, .uscita, .lightbox,
+  .piatto__foto, .degustazione .btn, .menu-sezione__vuota, .dc, .avviso-demo, .cookie { display: none !important; }
+  .intestazione { padding: 0 0 8mm; background: none; border-bottom: 2px solid #1a3a52; }
+  .intestazione__titolo { font-size: 26pt; margin: 0; }
+  .intestazione__titolo::after { content: " · La Casetta di Paparill"; font-size: 14pt; font-weight: 500; color: #85642c; }
+  .intestazione__lead { font-size: 10pt; margin-top: 3mm; max-width: none; }
+  .contenitore { padding: 0; max-width: none; }
+  .menu-pagina { padding: 0; }
+  .menu-sezione { padding-top: 7mm; break-inside: auto; }
+  .menu-sezione__testa { break-after: avoid; padding-bottom: 2mm; margin-bottom: 0; }
+  .menu-sezione__titolo { font-size: 16pt; }
+  .piatti, .vini { grid-template-columns: 1fr 1fr; column-gap: 10mm; }
+  .piatto, .vino { padding-block: 3mm; break-inside: avoid; grid-template-columns: 1fr; }
+  .piatto__nome, .vino__nome { font-size: 11.5pt; }
+  .piatto__desc, .vino__desc { font-size: 9pt; }
+  .tag, .allergene { padding: 0 4pt; font-size: 7.5pt; border-color: #ccc; background: none !important; }
+  .degustazioni { grid-template-columns: 1fr 1fr; }
+  .degustazione { box-shadow: none; border: 1px solid #ddd; border-top: 3pt solid #c9a66b; break-inside: avoid; padding: 5mm; }
+  .menu-note { break-inside: avoid; background: none; }
+  .piatto:target { background: none; }
+}

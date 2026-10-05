@@ -1,0 +1,455 @@
+{
+  "_leggimi": "I testi di tutte le pagine. *parola* = corsivo, **parola** = grassetto, [dc] = da confermare (visibile solo nell'anteprima). Titoli e descrizioni SEO in 'seo'.",
+  "seo": {
+    "home": {
+      "titolo": "Ristorante tipico a Roseto degli Abruzzi | La Casetta di Paparill",
+      "descrizione": "580 recensioni, 4,5/5 su TripAdvisor. Pasta fatta in casa, arrosticini e cucina teramana. Prenota su TheFork o chiama ora. Menu completo online."
+    },
+    "menu": {
+      "titolo": "Menu e prezzi | La Casetta di Paparill, Roseto degli Abruzzi",
+      "descrizione": "Il menu completo con prezzi e allergeni: antipasti della tradizione, pasta fatta in casa, arrosticini, agnello e dolci della casa. Filtri per vegetariani e senza glutine."
+    },
+    "galleria": {
+      "titolo": "Galleria | La Casetta di Paparill, Roseto degli Abruzzi",
+      "descrizione": "I piatti, la sala e la cucina della Casetta di Paparill: pasta tirata a mano, arrosticini sulla brace e dolci fatti in casa."
+    },
+    "chi-siamo": {
+      "titolo": "Chi siamo | La Casetta di Paparill, cucina teramana a Roseto",
+      "descrizione": "Una cucina di famiglia a Roseto degli Abruzzi: pasta fatta a mano con grani teramani, carni del territorio e ricette tramandate."
+    },
+    "eventi-privati": {
+      "titolo": "Feste ed eventi privati a Roseto | La Casetta di Paparill",
+      "descrizione": "Compleanni, comunioni, cene aziendali e anniversari con la cucina abruzzese della Casetta di Paparill. Menu per gruppi su misura."
+    },
+    "contatti": {
+      "titolo": "Contatti e orari | La Casetta di Paparill, Roseto degli Abruzzi",
+      "descrizione": "Indirizzo, orari, telefono e indicazioni per raggiungere La Casetta di Paparill in Via Salara 11 a Roseto degli Abruzzi (TE)."
+    },
+    "prenota": {
+      "titolo": "Prenota un tavolo | La Casetta di Paparill, Roseto degli Abruzzi",
+      "descrizione": "Prenota su TheFork, chiamaci o scrivici su WhatsApp. Per gruppi ed eventi privati compila il modulo: ti rispondiamo noi."
+    },
+    "lavora-con-noi": {
+      "titolo": "Lavora con noi | La Casetta di Paparill, Roseto degli Abruzzi",
+      "descrizione": "Cerchiamo persone per la sala e la cucina, anche per la stagione estiva. Mandaci il tuo curriculum."
+    },
+    "404": {
+      "titolo": "Pagina non trovata | La Casetta di Paparill",
+      "descrizione": "La pagina che cerchi non esiste. Torna alla home della Casetta di Paparill."
+    }
+  },
+
+  "comuni": {
+    "prenota": "Prenota un tavolo",
+    "prenotaBreve": "Prenota",
+    "chiama": "Chiama",
+    "whatsapp": "WhatsApp",
+    "thefork": "TheFork",
+    "menu": "Scopri il menu",
+    "nuovaScheda": "(si apre in una nuova scheda)",
+    "chiuso": "Chiuso",
+    "pranzo": "Pranzo",
+    "cena": "Cena",
+    "oggi": "oggi",
+    "illustrazione": "Illustrazione provvisoria"
+  },
+
+  "testata": {
+    "salta": "Vai al contenuto",
+    "apriMenu": "Menu",
+    "chiudiMenu": "Chiudi",
+    "home": "La Casetta di Paparill, torna alla home"
+  },
+
+  "sceltaPrenotazione": {
+    "titolo": "Come vuoi prenotare?",
+    "intro": "Scegli tu: ti rispondiamo noi.",
+    "telefono": "Chiama ora",
+    "whatsapp": "Scrivi su WhatsApp",
+    "whatsappMessaggio": "Ciao, vorrei prenotare un tavolo alla Casetta di Paparill.",
+    "thefork": "Prenota online su TheFork",
+    "gruppi": "Siete più di 10? Scrivici",
+    "tutte": "Tutti i modi per prenotare"
+  },
+
+  "home": {
+    "hero": {
+      "occhiello": "Roseto degli Abruzzi · Cucina teramana",
+      "titoli": [
+        { "id": "a", "testo": "Pasta fatta in casa e tradizione abruzzese a Roseto" },
+        { "id": "b", "testo": "Pasta fatta in casa ogni giorno, tradizione abruzzese da sempre" },
+        { "id": "c", "testo": "580 recensioni eccellenti ti aspettano a Roseto" },
+        { "id": "d", "testo": "La tradizione nel piatto, l'Abruzzo nel cuore" }
+      ],
+      "sottotitolo": "recensioni su TripAdvisor",
+      "badge": [
+        { "marchio": "TripAdvisor", "testo": "Tra i ristoranti più votati di Roseto [dc]", "icona": "stella", "link": "tripadvisor" },
+        { "marchio": "TheFork", "testo": "Prenotazione online [dc]", "icona": "posate", "link": "thefork" }
+      ],
+      "fotoAlt": "Un piatto di chitarra con le pallottine sulla tavola apparecchiata, con il pane, un calice di Montepulciano e il pecorino."
+    },
+    "perche": {
+      "titolo": "Perché sceglierci",
+      "intro": "Una cucina di famiglia, dove ti siedi come a casa di amici e mangi da re.",
+      "carte": [
+        {
+          "icona": "mattarello",
+          "titolo": "Pasta fatta in casa, ogni giorno",
+          "testo": "La impastiamo e la tiriamo a mano, con farine di grani teramani macinati a pietra."
+        },
+        {
+          "icona": "ricette",
+          "titolo": "Ricette abruzzesi tramandate da generazioni",
+          "testo": "Chitarra con le pallottine, scrippelle 'mbusse, timballo: i piatti di casa, fatti come una volta."
+        },
+        {
+          "icona": "stella",
+          "titolo": "580 recensioni, 4,5 su 5",
+          "testo": "Su TripAdvisor gli ospiti tornano a parlare della pasta fatta in casa, degli arrosticini e dell'accoglienza."
+        }
+      ]
+    },
+    "piatti": {
+      "titolo": "I piatti della casa",
+      "intro": "Quattro buoni motivi per sedersi a tavola. Gli altri sono nel menu.",
+      "scelti": ["chitarra-pallottine", "mugnaia", "arrosticini", "pizza-dolce"],
+      "link": "Vedi tutto il menu"
+    },
+    "galleria": {
+      "titolo": "Uno sguardo alla Casetta",
+      "intro": "I piatti, la sala e la cucina. Tocca una foto per ingrandirla.",
+      "link": "Apri la galleria"
+    },
+    "recensioni": {
+      "titolo": "Cosa dicono di noi",
+      "link": "Leggi tutte le recensioni su TripAdvisor"
+    },
+    "dove": {
+      "titolo": "Ti aspettiamo in Via Salara",
+      "testo": "A Roseto degli Abruzzi, in provincia di Teramo. Orari, telefono e indicazioni sono tutti qui.",
+      "link": "Orari e indicazioni"
+    },
+    "prenota": {
+      "titolo": "Prenota direttamente con noi",
+      "testo": "Chiamaci o scrivici su WhatsApp: rispondiamo noi, senza intermediari. Se preferisci, prenota online su TheFork."
+    }
+  },
+
+  "menuPagina": {
+    "titolo": "Il menu",
+    "intro": "Pasta tirata a mano, carni d'Abruzzo e dolci fatti in casa. I piatti seguono le stagioni: chiedi sempre i fuori menu del giorno.",
+    "notaAnteprima": "Menu d'esempio, scritto sulla cucina della Casetta: piatti e prezzi vanno confermati con il ristorante.",
+    "indice": "Sezioni del menu",
+    "filtri": "Filtra i piatti",
+    "vegetariano": "Solo vegetariani",
+    "senzaGlutine": "Solo senza glutine",
+    "conteggio": "piatti",
+    "nessuno": "Nessun piatto di questa sezione corrisponde ai filtri.",
+    "consigliato": "Consigliato dallo chef",
+    "tagVegetariano": "Vegetariano",
+    "tagSenzaGlutine": "Senza glutine",
+    "tagStagionale": "Di stagione",
+    "legenda": "Allergeni",
+    "nessunAllergene": "Senza allergeni principali",
+    "pdf": "Scarica il menu in PDF",
+    "degustazionePortate": "portate",
+    "degustazionePrenota": "Prenota il menu degustazione",
+    "noteTitolo": "Da sapere",
+    "prenotaTitolo": "Ti è venuta fame?",
+    "prenotaTesto": "Prenota il tavolo: in sala ti aspettano anche i fuori menu del giorno."
+  },
+
+  "galleriaPagina": {
+    "titolo": "Galleria",
+    "intro": "I piatti, la sala, la cucina: la Casetta prima ancora di sedersi a tavola. Tocca una foto per ingrandirla.",
+    "notaAnteprima": "Illustrazioni provvisorie, disegnate per tenere il posto alle fotografie del ristorante.",
+    "schede": "Categorie della galleria",
+    "apri": "Ingrandisci",
+    "precedente": "Foto precedente",
+    "successiva": "Foto successiva",
+    "chiudi": "Chiudi",
+    "cta": "Ti abbiamo fatto venire fame?"
+  },
+
+  "prenotaPagina": {
+    "titolo": "Prenota un tavolo",
+    "intro": "Scegli il modo che preferisci. Per gruppi oltre 10 persone ed eventi privati c'è il modulo in fondo alla pagina.",
+    "thefork": {
+      "titolo": "Online su TheFork",
+      "testo": "Vedi i tavoli liberi in tempo reale e ricevi subito la conferma.",
+      "segnaposto": "Qui comparirà il calendario di TheFork con la disponibilità in tempo reale.",
+      "segnapostoNota": "Si attiva con il codice del widget da TheFork Manager.",
+      "link": "Apri TheFork"
+    },
+    "telefono": {
+      "titolo": "Chiamaci",
+      "testo": "Il modo più veloce, negli orari di apertura."
+    },
+    "whatsapp": {
+      "titolo": "Scrivici su WhatsApp",
+      "testo": "Scegli persone, giorno e ora: il messaggio lo prepariamo noi.",
+      "persone": "Persone",
+      "data": "Giorno",
+      "ora": "Ora",
+      "anteprima": "Il messaggio che invierai",
+      "messaggio": "Ciao, vorrei prenotare un tavolo per {persone} {data} alle {ora}.",
+      "messaggioVuoto": "Ciao, vorrei prenotare un tavolo per {persone}.",
+      "bottone": "Apri WhatsApp con il messaggio",
+      "chiuso": "Il {giorno} siamo chiusi: scegli un altro giorno.",
+      "piuDi": "Per più di 10 persone chiamaci direttamente: prepariamo la sala insieme."
+    },
+    "gruppi": {
+      "titolo": "Gruppi ed eventi privati",
+      "testo": "Oltre 10 persone, feste, cene di lavoro: raccontaci cosa hai in mente e ti richiamiamo noi.",
+      "link": "Vai al modulo"
+    },
+    "info": {
+      "orari": "Orari di apertura",
+      "risposta": "Tempi di risposta",
+      "gruppi": "Gruppi"
+    },
+    "modulo": {
+      "titolo": "Modulo per gruppi ed eventi privati",
+      "intro": "Compila i campi: ti ricontattiamo per definire menu e dettagli."
+    }
+  },
+
+  "chiSiamo": {
+    "titolo": "Chi siamo",
+    "lead": "Una cucina di famiglia a Roseto degli Abruzzi.",
+    "storia": [
+      "*La Casetta di Paparill* nasce dalla passione per la cucina teramana e per le ricette che nostra madre ci ha insegnato. [dc]",
+      "Ogni giorno impastiamo la pasta a mano, con farine di grani teramani macinati a pietra, perché crediamo che la qualità si riconosca dal primo assaggio.",
+      "I nostri primi seguono la tradizione abruzzese, con quel tocco in più che solo chi cucina con il cuore sa dare. I dolci li prepariamo noi, spesso in giornata, con quello che offre la stagione."
+    ],
+    "fotoStoriaAlt": "La Casetta di sera, con le finestre accese e una lanterna sulla porta.",
+    "filosofia": {
+      "titolo": "Come lavoriamo",
+      "voci": [
+        { "titolo": "La farina", "testo": "Grani teramani macinati a pietra. La pasta si impasta e si tira a mano, ogni giorno." },
+        { "titolo": "La carne", "testo": "Agnello del Centro Italia IGP e pecora del territorio, per la brace e per i piatti della tradizione. [dc]" },
+        { "titolo": "Le ricette", "testo": "Quelle di casa, tramandate a voce. Cambiano solo quando cambia la stagione." },
+        { "titolo": "La cantina", "testo": "Vini abruzzesi, scelti per accompagnare quello che c'è nel piatto." }
+      ]
+    },
+    "fotoCucinaAlt": "La fontana di farina con le uova sulla spianatoia: la pasta fatta in casa comincia così.",
+    "fotoCucinaDida": "La pasta comincia così: farina, uova e un po' di pazienza.",
+    "team": {
+      "titolo": "Le persone della Casetta",
+      "intro": "Le facce che ti accolgono, ogni sera.",
+      "persone": [
+        { "nome": "Vincenzo Caterini", "ruolo": "Titolare e chef", "bio": "Ha fondato la Casetta e ne guida la cucina. Biografia da scrivere insieme. [dc]", "iniziali": "VC" },
+        { "nome": "Nome e cognome [dc]", "ruolo": "In sala", "bio": "Ti accoglie, ti consiglia il vino e conosce a memoria i fuori menu del giorno. [dc]", "iniziali": "S" },
+        { "nome": "Nome e cognome [dc]", "ruolo": "In cucina", "bio": "Pasta fresca e brace: le mani dietro la chitarra e gli arrosticini. [dc]", "iniziali": "C" }
+      ],
+      "fotoInArrivo": "Foto in arrivo"
+    },
+    "cta": {
+      "titolo": "Vieni a conoscerci a tavola",
+      "testo": "La sera, o la domenica a pranzo. Il tavolo lo teniamo per te."
+    }
+  },
+
+  "contattiPagina": {
+    "titolo": "Contatti e orari",
+    "intro": "Siamo in Via Salara 11, a Roseto degli Abruzzi. Chiamaci, scrivici o passa a trovarci.",
+    "indirizzo": "Indirizzo",
+    "indicazioni": "Indicazioni stradali",
+    "telefono": "Telefono",
+    "cellulare": "Cellulare e WhatsApp",
+    "email": "Email",
+    "orari": "Orari",
+    "arrivare": "Come arrivare",
+    "auto": "In auto",
+    "treno": "In treno",
+    "autobus": "In autobus",
+    "parcheggio": "Parcheggio",
+    "mappa": {
+      "titolo": "La mappa",
+      "consenso": "La mappa è fornita da Google: se la carichi, Google riceve il tuo indirizzo IP e può usare cookie.",
+      "carica": "Mostra la mappa",
+      "apri": "Apri in Google Maps",
+      "titoloIframe": "Mappa di Google con la posizione della Casetta di Paparill"
+    },
+    "recensioni": {
+      "titolo": "Ci hai già provato?",
+      "testo": "Raccontalo su TripAdvisor: ogni recensione aiuta chi cerca una tavola a Roseto.",
+      "link": "Le nostre recensioni su TripAdvisor"
+    }
+  },
+
+  "eventi": {
+    "titolo": "Feste ed eventi privati",
+    "lead": "Compleanni, comunioni, cene di lavoro, anniversari: la tavola della Casetta per i giorni da ricordare.",
+    "occasioni": {
+      "titolo": "Le occasioni",
+      "voci": [
+        { "titolo": "Compleanni e anniversari", "testo": "Dal pranzo in famiglia alla cena con gli amici di sempre. La torta? La facciamo noi, o porti la tua. [dc]" },
+        { "titolo": "Battesimi, comunioni e cresime", "testo": "Il pranzo della festa con i piatti della tradizione, pensato anche per i più piccoli." },
+        { "titolo": "Cene aziendali", "testo": "Fine anno, clienti, squadra: un menu fisso e un conto chiaro, senza sorprese." },
+        { "titolo": "Rimpatriate e gruppi", "testo": "Arrosticini a volontà e pasta fatta in casa: il menu giusto per stare insieme." }
+      ]
+    },
+    "passi": {
+      "titolo": "Come funziona",
+      "voci": [
+        { "titolo": "Ci racconti l'occasione", "testo": "Data, numero di ospiti e idea: con il modulo qui sotto o al telefono." },
+        { "titolo": "Componiamo il menu insieme", "testo": "Partiamo dai menu degustazione e li adattiamo a gusti, allergie e budget." },
+        { "titolo": "Prepariamo la sala", "testo": "Tavoli, posti e tempi del servizio: tu pensi agli ospiti, al resto pensiamo noi." }
+      ]
+    },
+    "dettagli": {
+      "titolo": "Da sapere",
+      "voci": [
+        "Sala riservata fino a [numero] ospiti. [dc]",
+        "Menu per gruppi da [prezzo] € a persona, bevande incluse. [dc]",
+        "Catering e rinfreschi a domicilio: chiedici se sono disponibili per la tua data. [dc]"
+      ]
+    },
+    "modulo": {
+      "titolo": "Raccontaci il tuo evento",
+      "intro": "Ti rispondiamo entro un giorno lavorativo con una proposta di menu. [dc]"
+    }
+  },
+
+  "lavora": {
+    "titolo": "Lavora con noi",
+    "lead": "Cerchiamo persone che amano la cucina di casa e l'accoglienza. Se ti riconosci, mandaci il tuo curriculum.",
+    "ruoli": {
+      "titolo": "Chi cerchiamo",
+      "voci": [
+        { "titolo": "Sala", "testo": "Camerieri e camerieri di sala, anche per la stagione estiva." },
+        { "titolo": "Cucina", "testo": "Aiuto cuoco per la pasta fresca e per la brace." },
+        { "titolo": "Lavaggio", "testo": "Lavapiatti e aiuto cucina, sere e fine settimana." }
+      ],
+      "nota": "Le posizioni aperte cambiano durante l'anno: la candidatura spontanea è sempre ben accetta. [dc]"
+    },
+    "modulo": {
+      "titolo": "Invia la tua candidatura",
+      "intro": "Bastano pochi dati e il curriculum. Ti contattiamo se c'è un posto adatto a te.",
+      "privacy": "Usiamo i tuoi dati solo per valutare la candidatura e li conserviamo per 12 mesi. [dc]"
+    }
+  },
+
+  "moduli": {
+    "nome": "Nome e cognome",
+    "email": "Email",
+    "telefono": "Telefono",
+    "facoltativo": "facoltativo",
+    "data": "Data dell'evento",
+    "ospiti": "Numero di ospiti",
+    "tipo": "Tipo di evento",
+    "tipi": ["Compleanno o anniversario", "Battesimo, comunione o cresima", "Cena aziendale", "Gruppo o rimpatriata", "Altro"],
+    "messaggio": "Messaggio",
+    "messaggioAiuto": "Orario, menu preferito, allergie, idee: tutto quello che ci aiuta.",
+    "ruolo": "Per quale ruolo?",
+    "ruoli": ["Sala", "Cucina", "Lavaggio", "Candidatura spontanea"],
+    "disponibilita": "Disponibilità",
+    "disponibilitaVoci": ["Tutto l'anno", "Solo stagione estiva", "Fine settimana"],
+    "cv": "Curriculum",
+    "cvAiuto": "PDF o Word, massimo 5 MB.",
+    "privacy": "Ho letto l'informativa privacy e acconsento al trattamento dei dati per rispondere alla mia richiesta.",
+    "privacyCandidatura": "Ho letto l'informativa privacy e acconsento al trattamento dei miei dati per la selezione del personale.",
+    "invia": "Invia la richiesta",
+    "inviaCandidatura": "Invia la candidatura",
+    "notaAnteprima": "Nell'anteprima il modulo non invia nulla.",
+    "errori": {
+      "nome": "Scrivi il tuo nome.",
+      "email": "Serve un indirizzo email valido.",
+      "telefono": "Serve un numero di telefono valido.",
+      "ospiti": "Indica quante persone sarete.",
+      "data": "Scegli una data a partire da oggi.",
+      "privacy": "Serve il consenso per poterti rispondere.",
+      "cv": "Allega un file PDF o Word di massimo 5 MB."
+    },
+    "grazie": "Grazie, {nome}!",
+    "grazieTesto": "Nel sito definitivo questa richiesta arriverebbe subito alla Casetta, con tutti i dettagli già compilati."
+  },
+
+  "recensioniWidget": {
+    "notaAnteprima": "Recensioni d'esempio: al lancio qui va il widget ufficiale di TripAdvisor, con le ultime recensioni vere.",
+    "su": "su 5",
+    "esempio": "Recensione d'esempio"
+  },
+
+  "dove": {
+    "orariTitolo": "Orari",
+    "contattiTitolo": "Contatti"
+  },
+
+  "piede": {
+    "motto": "Cucina abruzzese e teramana a Roseto degli Abruzzi, con la pasta fatta in casa ogni giorno.",
+    "orari": "Orari",
+    "contatti": "Contatti",
+    "sito": "Il sito",
+    "seguici": "Seguici",
+    "instagram": "Instagram",
+    "instagramPresto": "presto",
+    "facebook": "Facebook",
+    "privacy": "Privacy",
+    "cookie": "Cookie",
+    "piva": "P. IVA",
+    "credito": "Sito di",
+    "creditoAnteprima": "Demo di"
+  },
+
+  "barra": {
+    "etichetta": "Azioni rapide",
+    "chiama": "Chiama",
+    "whatsapp": "WhatsApp",
+    "prenota": "Prenota"
+  },
+
+  "uscita": {
+    "titolo": "Prima di andare…",
+    "testo": "Porta con te il menu: lo scarichi in PDF e lo ritrovi quando ti viene fame.",
+    "pdf": "Scarica il menu in PDF",
+    "prenota": "Prenota un tavolo",
+    "chiudi": "No, grazie"
+  },
+
+  "cookie": {
+    "testo": "Usiamo i cookie di analisi di Google solo se li accetti, per capire quali pagine sono utili. Niente pubblicità.",
+    "accetta": "Accetta",
+    "rifiuta": "Rifiuta",
+    "link": "Cookie policy"
+  },
+
+  "nonTrovata": {
+    "titolo": "Ti sei perso per strada?",
+    "testo": "La pagina che cerchi non c'è più, o forse non c'è mai stata. Torna alla Casetta: la tavola è ancora apparecchiata.",
+    "home": "Torna alla home",
+    "menu": "Guarda il menu",
+    "prenota": "Prenota un tavolo",
+    "contatti": "Contatti e orari"
+  },
+
+  "anteprima": {
+    "avviso": "Anteprima riservata",
+    "avvisoExtra": "immagini provvisorie",
+    "scaduta": "Anteprima scaduta, contatta Prisma Locale",
+    "nota": {
+      "etichetta": "Nota di Prisma Locale per La Casetta di Paparill",
+      "titolo": "Cosa manca per andare online",
+      "intro": "Il sito è pronto e si aggiorna da pochi file di testo: menu, orari e prezzi si cambiano senza toccare il codice. Le immagini sono illustrazioni provvisorie che tengono il posto alle vostre fotografie, e le voci segnate «da confermare» vanno verificate con voi. Spuntate quello che avete già.",
+      "voci": [
+        { "id": "foto", "titolo": "Fotografie", "testo": "Almeno 12 piatti, la sala, l'esterno e la cucina. Per i piatti, stessa luce e stessa inquadratura." },
+        { "id": "logo", "titolo": "Logo", "testo": "Il file originale, se c'è. Altrimenti lo disegniamo noi." },
+        { "id": "menu", "titolo": "Menu e prezzi", "testo": "Quello attuale, con gli allergeni: lo riscriviamo noi in pagina, niente PDF da scaricare per leggerlo." },
+        { "id": "orari", "titolo": "Orari e chiusura", "testo": "Pranzo e cena giorno per giorno, il giorno di riposo e le ferie." },
+        { "id": "whatsapp", "titolo": "Numero WhatsApp", "testo": "Quello su cui volete ricevere le prenotazioni." },
+        { "id": "piattaforme", "titolo": "TheFork e TripAdvisor", "testo": "Il codice del widget da TheFork Manager e l'accesso alla pagina TripAdvisor del ristorante." },
+        { "id": "storia", "titolo": "Storia e squadra", "testo": "L'anno di apertura, i nomi e i ruoli di chi lavora in sala e in cucina." },
+        { "id": "dominio", "titolo": "Dominio", "testo": "Gli accessi a ristorantepaparill.it: teniamo l'indirizzo che i clienti già conoscono." },
+        { "id": "legale", "titolo": "Dati per la privacy", "testo": "Ragione sociale e partita IVA per informativa e footer." }
+      ],
+      "conto": "pronti",
+      "di": "di",
+      "rispondi": "Rispondi a Prisma Locale",
+      "oppure": "oppure",
+      "messaggio": "Ciao Prisma Locale, sono della Casetta di Paparill. Ho visto l'anteprima del sito.",
+      "messaggioPronti": "Abbiamo già pronto:",
+      "firma": "Demo realizzata da Prisma Locale. Anteprima non commissionata, valida fino al {scadenza}. Il nome La Casetta di Paparill appartiene ai legittimi proprietari."
+    }
+  }
+}
