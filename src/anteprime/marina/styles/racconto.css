@@ -1,0 +1,192 @@
+/* Griglia: 12 colonne a tutta pagina, margini larghi. Le sezioni non la
+   seguono tutte allo stesso modo: ognuna sceglie dove cadere. */
+.intro, .storia, .piatti, .carta, .persona, .approdo, .galleria, .voci, .prenota, .approdo-finale {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(12px, 1.8vw, 28px);
+  padding-inline: var(--margine);
+}
+
+/* ---- Intro -------------------------------------------------------------- */
+.intro { padding-block: var(--respiro) calc(var(--respiro) * 0.8); row-gap: clamp(36px, 5vw, 72px); }
+.intro__etichetta { grid-column: 1 / -1; }
+.intro__titolo { grid-column: 1 / -1; font-size: var(--t-xxl); }
+.intro__titolo > span { display: block; }
+.intro__rientro { padding-left: calc(var(--colonna) * 2); }
+.intro__corpo { grid-column: 7 / 12; display: grid; gap: 22px; max-width: 34rem; }
+.intro__attacco { font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m); line-height: 1.32; letter-spacing: -0.01em; }
+.intro__corpo p:last-child { color: var(--pietra-testo); }
+.intro__dati { grid-column: 1 / 5; grid-row: 4; align-self: end; display: grid; }
+.intro__dati div { display: grid; grid-template-columns: 6.5em 1fr; padding: 12px 0; border-top: 1px solid var(--filo); font-size: var(--t-piccolo); }
+.intro__dati dt { font-stretch: 72%; font-weight: 560; letter-spacing: 0.22em; text-transform: uppercase; font-size: var(--t-etichetta); color: var(--pietra-testo); padding-top: 2px; }
+@media (max-width: 63.99em) {
+  .intro__corpo { grid-column: 2 / -1; }
+  .intro__dati { grid-column: 1 / -1; grid-row: auto; }
+}
+@media (max-width: 47.99em) {
+  .intro__rientro { padding-left: 12vw; }
+  .intro__corpo { grid-column: 1 / -1; }
+}
+
+/* ---- Bib Gourmand: una firma ------------------------------------------- */
+.bib {
+  display: grid; justify-items: center; align-content: center; gap: clamp(26px, 3vw, 44px);
+  min-height: 92svh;
+  padding: var(--respiro) var(--margine);
+  text-align: center;
+}
+.bib__titolo {
+  display: flex; flex-wrap: wrap; justify-content: center; column-gap: 0.18em;
+  font-size: var(--t-xxl); letter-spacing: -0.04em; line-height: 0.9;
+}
+.bib__parola { display: inline-block; }
+.bib__parola--corsiva { font-style: italic; }
+.bib__filo { width: min(220px, 40vw); height: 1px; background: var(--inchiostro); opacity: 0.35; }
+.bib__testo { max-width: 30rem; font-size: var(--t-piccolo); line-height: 1.7; color: var(--pietra-testo); }
+.bib__guida { letter-spacing: 0.42em; }
+
+/* ---- La storia: la lastra resta, la rotta scende ----------------------- */
+.storia { padding-block: calc(var(--respiro) * 0.5) var(--respiro); align-items: start; }
+.storia__lastra { grid-column: 1 / 7; position: sticky; top: calc(var(--testata-h) + 4vh); height: 84svh; }
+.storia__foto { position: absolute; inset: 0; overflow: clip; will-change: clip-path; }
+.storia__foto picture { height: 100%; }
+.storia__didascalia {
+  position: absolute; left: 0; bottom: -28px;
+  font-size: 0.625rem; font-stretch: 72%; font-weight: 560; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--pietra-testo);
+}
+.storia__testo { grid-column: 8 / 13; padding-top: 18vh; display: grid; gap: clamp(30px, 4vw, 56px); }
+.storia__titolo { font-size: var(--t-xl); }
+.rotta { position: relative; padding-left: 44px; }
+.rotta__traccia { position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; }
+.rotta__traccia::before {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(to bottom, var(--pietra) 0 4px, transparent 4px 9px);
+}
+.rotta__traccia span { position: absolute; inset: 0; background: var(--inchiostro); transform-origin: top; transform: scaleY(var(--avanzamento, 1)); }
+.rotta__punti { display: grid; gap: clamp(64px, 12vh, 140px); }
+.rotta__punto { position: relative; max-width: 26rem; }
+.rotta__segno {
+  position: absolute; left: -44px; top: 0.4em;
+  width: 13px; height: 13px; border: 1px solid var(--inchiostro); border-radius: 50%;
+  background: var(--carta);
+}
+.rotta__segno::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--inchiostro); transform: scale(0); transition: transform 0.6s var(--lento); }
+.rotta__punto.is-raggiunto .rotta__segno::after { transform: scale(1); }
+.rotta__punto h3 { font-size: var(--t-l); margin-bottom: 14px; }
+.rotta__punto p { color: var(--pietra-testo); }
+.rotta__anno {
+  position: absolute; right: 100%; top: -0.3em; margin-right: 64px;
+  font-family: var(--f-titolo); font-style: italic; font-weight: 200;
+  font-size: clamp(5rem, 11vw, 11rem); line-height: 0.8; letter-spacing: -0.05em;
+  color: transparent; -webkit-text-stroke: 1px var(--inchiostro);
+  opacity: 0.5; pointer-events: none;
+}
+@media (max-width: 63.99em) {
+  .storia__lastra { grid-column: 1 / -1; position: relative; top: 0; height: auto; aspect-ratio: 4 / 5; max-height: 80svh; margin-bottom: 64px; }
+  .storia__testo { grid-column: 1 / -1; padding-top: 0; }
+  .rotta__anno { position: static; display: block; margin: 0 0 12px; font-size: 5.5rem; }
+}
+
+/* ---- Il mare: la sequenza ---------------------------------------------- */
+.mare { position: relative; background: var(--carta); }
+.mare__palco { position: relative; display: grid; gap: clamp(28px, 6vw, 64px); padding: var(--respiro) var(--margine) calc(var(--respiro) * 0.6); }
+.mare__titolo { position: relative; z-index: 3; font-size: var(--t-xxl); line-height: 0.92; }
+.mare__riga { display: block; }
+.mare__riga--rientro { padding-left: calc(var(--colonna) * 1.4); }
+.mare__quadro { position: relative; overflow: clip; aspect-ratio: 16 / 10; background: var(--adriatico); color: var(--carta); }
+.mare__quadro picture { position: absolute; inset: 0; }
+.mare__frase {
+  position: absolute; left: var(--margine); right: var(--margine); bottom: clamp(24px, 6vh, 64px);
+  max-width: 34rem;
+  font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m); line-height: 1.3; letter-spacing: -0.01em;
+  text-shadow: 0 1px 24px rgb(var(--adriatico-rgb) / 0.5);
+}
+.mare__quadro--2 { color: var(--inchiostro); }
+.mare__quadro--2::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(20deg, rgb(var(--carta-rgb) / 0.75), transparent 45%);
+}
+.mare__quadro--2 .mare__frase { z-index: 1; }
+.mare__quadro--2 .mare__frase { text-shadow: 0 1px 24px rgb(var(--carta-rgb) / 0.6); }
+.mare__ora {
+  display: block; margin-bottom: 14px;
+  font-family: var(--f-testo); font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+}
+.mare__conto { display: none; }
+@media (max-width: 47.99em) {
+  .mare__quadro { aspect-ratio: 2 / 3; }
+  .mare__riga--rientro { padding-left: 10vw; }
+}
+
+/* Con il movimento, su schermi larghi: tutto in un palco fermo. */
+@media (min-width: 64em) {
+  .motion .mare__palco {
+    display: block; height: 100svh; padding: 0; overflow: clip;
+  }
+  /* il titolo resta fermo sopra l'immagine che cresce: in "differenza"
+     è inchiostro sulla carta e carta sul mare di notte */
+  .motion .mare__titolo {
+    position: absolute; left: var(--margine); right: var(--margine); top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: var(--carta);
+    mix-blend-mode: difference;
+    pointer-events: none;
+  }
+  .motion .mare__riga--rientro { padding-left: 0; }
+  .motion .mare__quadro { position: absolute; inset: 0; aspect-ratio: auto; }
+  .motion .mare__quadro--1 { clip-path: inset(24% 39% 24% 39%); }
+  .motion .mare__quadro--2 { clip-path: inset(100% 0 0 0); }
+  .motion .mare__frase { opacity: 0; }
+  .motion .mare__conto {
+    display: block; position: absolute; right: var(--margine); bottom: clamp(24px, 6vh, 64px); z-index: 4;
+    font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.28em;
+    color: var(--carta); mix-blend-mode: difference;
+  }
+}
+
+/* ---- Lo specchio: "In tavola" sull'orizzonte --------------------------- */
+.specchio {
+  --orizzonte: 40%;
+  position: relative;
+  height: 100svh; min-height: 560px;
+  overflow: clip;
+  background: #BFC2BE;
+  color: var(--inchiostro);
+}
+.specchio__acqua { position: absolute; inset: 0; }
+.specchio__fermo { width: 100%; height: 100%; }
+.specchio__tela { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s var(--lento); }
+.specchio__tela.is-viva { opacity: 1; }
+.specchio__tela canvas { width: 100%; height: 100%; }
+.specchio__testo { position: absolute; inset: 0; }
+.specchio__testo .etichetta { position: absolute; left: var(--margine); top: calc(var(--testata-h) + 6vh); color: var(--inchiostro); }
+.specchio__titolo, .specchio__riflesso {
+  position: absolute; left: 0; right: 0;
+  font-family: var(--f-titolo); font-weight: 200; font-style: italic;
+  font-size: var(--t-mare); line-height: 0.8; letter-spacing: -0.05em;
+  text-align: center; white-space: nowrap;
+}
+.specchio__titolo { bottom: calc(100% - var(--orizzonte)); }
+.specchio__riflesso {
+  top: var(--orizzonte); margin-top: 0.05em;
+  transform: scaleY(-1);
+  color: var(--carta); opacity: 0.32;
+  -webkit-mask-image: linear-gradient(to top, #000, transparent 85%);
+  mask-image: linear-gradient(to top, #000, transparent 85%);
+}
+.specchio__riflesso span, .specchio__titolo span { display: inline-block; }
+@media (min-width: 64em) and (hover: hover) {
+  .motion .specchio__riflesso { filter: url(#increspa); }
+}
+.motion .specchio__riflesso span { animation: specchio 6s ease-in-out infinite alternate; }
+.specchio__sotto {
+  position: absolute; left: var(--margine); right: var(--margine); bottom: clamp(32px, 8vh, 80px);
+  text-align: center;
+  font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m);
+  color: var(--carta);
+  text-shadow: 0 1px 2px rgb(var(--adriatico-rgb) / 0.35), 0 0 22px rgb(var(--adriatico-rgb) / 0.55);
+}
+@media (max-width: 47.99em) {
+  .specchio__titolo, .specchio__riflesso { font-size: 21vw; }
+  .specchio__sotto { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+}

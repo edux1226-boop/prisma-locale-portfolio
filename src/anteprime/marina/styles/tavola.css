@@ -1,0 +1,171 @@
+/* ---- I piatti: tre pagine di rivista, ognuna impaginata a modo suo ----- */
+.piatti { padding-block: var(--respiro) calc(var(--respiro) * 0.6); row-gap: clamp(48px, 7vw, 110px); }
+.piatti__testa { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.piatti__titolo { font-size: var(--t-xl); }
+.piatti__nota { display: none; }
+.piatti__lista { grid-column: 1 / -1; display: grid; gap: clamp(90px, 14vw, 220px); }
+
+.piatto { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(12px, 1.8vw, 28px); align-items: end; }
+.piatto__tavola {
+  position: relative; overflow: clip;
+  aspect-ratio: 4 / 5;
+  color: var(--carta);
+}
+.piatto__tavola picture { position: absolute; inset: 0; transition: transform 1.6s var(--lento); }
+.piatto__tavola img { mix-blend-mode: luminosity; opacity: 0.5; }
+.piatto__tavola--petrolio { background: var(--petrolio); }
+.piatto__tavola--sabbia { background: var(--sabbia-scura); color: var(--inchiostro); }
+.piatto__tavola--sabbia img { opacity: 0.38; }
+.piatto__tavola--pietra { background: #6F7572; }
+.piatto__lettera {
+  position: absolute; right: 6%; bottom: -0.16em;
+  font-family: var(--f-titolo); font-style: italic; font-weight: 200;
+  font-size: clamp(9rem, 26vw, 26rem); line-height: 1; letter-spacing: -0.06em;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.piatto__scatto {
+  position: absolute; left: 18px; top: 18px; right: 18px;
+  font-size: 0.5625rem; font-stretch: 72%; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+  opacity: 0.8;
+}
+.piatto__testo { position: relative; z-index: 2; display: grid; gap: 16px; }
+.piatto__num { font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.28em; color: var(--pietra-testo); }
+.piatto__nome { font-size: var(--t-xl); line-height: 0.9; transition: transform 1s var(--lento); }
+.piatto__nome em { display: block; }
+.piatto__testo p { max-width: 22rem; color: var(--pietra-testo); }
+@media (hover: hover) {
+  .piatto:hover .piatto__tavola picture { transform: scale(1.05); }
+  .piatto--a:hover .piatto__nome { transform: translateX(-14px); }
+  .piatto--b:hover .piatto__nome { transform: translateX(14px); }
+  .piatto--c:hover .piatto__nome { transform: translateY(-8px); }
+}
+
+@media (min-width: 48em) {
+  .piatto--a .piatto__tavola { grid-column: 1 / 6; grid-row: 1; }
+  .piatto--a .piatto__testo { grid-column: 6 / 13; grid-row: 1; padding-bottom: 8%; }
+  .piatto--a .piatto__nome { font-size: clamp(2.6rem, 0.6rem + 6.4vw, 8.4rem); margin-left: calc(var(--colonna) * -0.8); }
+  .piatto--b { align-items: start; }
+  .piatto--b .piatto__tavola { grid-column: 7 / 13; grid-row: 1; aspect-ratio: 5 / 4; }
+  .piatto--b .piatto__testo { grid-column: 2 / 7; grid-row: 1; padding-top: 10%; }
+  .piatto--b .piatto__nome em { padding-left: 1.2em; }
+  .piatto--a .piatto__lettera { right: auto; left: 7%; }
+  .piatto--c .piatto__tavola { grid-column: 4 / 8; grid-row: 1; aspect-ratio: 3 / 4; }
+  .piatto--c .piatto__testo { grid-column: 8 / 13; grid-row: 1; align-self: center; }
+  .piatto--c .piatto__nome { font-size: var(--t-xxl); margin-left: calc(var(--colonna) * -1.1); }
+}
+
+/* Telefono: i tre piatti scorrono di lato, uno per volta. */
+@media (max-width: 47.99em) {
+  .piatti__nota {
+    display: block;
+    font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--pietra-testo);
+  }
+  .piatti__lista {
+    grid-auto-flow: column; grid-auto-columns: 82%; gap: 16px;
+    margin-inline: calc(var(--margine) * -1); padding-inline: var(--margine);
+    overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--margine);
+    scrollbar-width: none;
+  }
+  .piatti__lista::-webkit-scrollbar { display: none; }
+  .piatto { display: flex; flex-direction: column; align-items: stretch; gap: 22px; scroll-snap-align: start; }
+  .piatto__tavola { aspect-ratio: 4 / 5; }
+}
+
+/* ---- La carta ----------------------------------------------------------- */
+.carta { padding-block: var(--respiro); background: var(--carta-2); align-items: start; row-gap: 48px; }
+.carta__lato { grid-column: 1 / 5; position: sticky; top: calc(var(--testata-h) + 32px); display: grid; gap: 26px; }
+.carta__titolo { font-size: var(--t-xxl); }
+.carta__intro { max-width: 22rem; color: var(--pietra-testo); font-size: var(--t-piccolo); line-height: 1.7; }
+.carta__indice ol { display: grid; border-top: 1px solid var(--filo); }
+.carta__indice a {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 0; border-bottom: 1px solid var(--filo);
+  font-size: var(--t-etichetta); font-stretch: 76%; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+  text-decoration: none;
+}
+.carta__indice a::after { content: ""; width: 14px; height: 1px; background: currentColor; transition: width 0.5s var(--lento); }
+.carta__indice a:hover::after, .carta__indice a[aria-current]::after { width: 40px; }
+
+.carta__foglio { grid-column: 6 / 13; display: grid; gap: clamp(56px, 7vw, 96px); }
+
+.pescato {
+  position: relative;
+  padding: clamp(26px, 3.4vw, 48px);
+  background: var(--adriatico); color: var(--carta);
+}
+.pescato__testa { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; margin-bottom: 28px; }
+.pescato__titolo { font-size: var(--t-l); font-style: italic; }
+.pescato__data { font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--spuma); }
+.pescato__lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0 32px; }
+.pescato__lista li { display: flex; align-items: baseline; gap: 10px; padding: 12px 0; border-top: 1px solid var(--filo-chiaro); }
+.pescato__nome { font-family: var(--f-titolo); font-weight: 300; font-size: 1.3rem; }
+.pescato__lista li::after { content: ""; flex: 1; border-bottom: 1px dotted rgb(var(--carta-rgb) / 0.3); order: 1; transform: translateY(-4px); }
+.pescato__provenienza { order: 2; font-size: 0.6875rem; font-stretch: 80%; letter-spacing: 0.08em; color: var(--spuma); }
+.pescato__nota { margin-top: 22px; font-size: var(--t-piccolo); color: var(--spuma); }
+
+.portata { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.portata__nome { display: flex; align-items: baseline; gap: 18px; font-size: var(--t-l); padding-bottom: 14px; border-bottom: 1px solid var(--inchiostro); }
+.portata__num { font-family: var(--f-testo); font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.2em; color: var(--pietra-testo); min-width: 2.2em; }
+.portata__voci { display: grid; }
+.voce { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 24px; padding: 16px 0; border-bottom: 1px solid var(--filo); }
+.voce__nome { font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m); line-height: 1.2; }
+.voce__nota { font-size: var(--t-piccolo); color: var(--pietra-testo); padding-top: 0.3em; }
+.voce__prezzo { font-family: var(--f-titolo); font-size: var(--t-m); text-align: right; }
+
+.carta__degustazione { display: grid; justify-items: start; gap: 18px; padding-top: 24px; border-top: 1px solid var(--inchiostro); }
+.carta__degustazione-nome { font-family: var(--f-titolo); font-weight: 200; font-style: italic; font-size: var(--t-xl); line-height: 0.95; letter-spacing: -0.03em; }
+
+@media (max-width: 63.99em) {
+  .carta { row-gap: 22px; }
+  /* il lato si scioglie nella griglia: così l'indice resta appiccicato
+     per tutta la carta, non solo per il suo blocco */
+  .carta__lato { display: contents; }
+  .carta__lato > * { grid-column: 1 / -1; }
+  .carta__foglio { grid-column: 1 / -1; margin-top: 26px; }
+  /* l'indice delle portate resta a portata di pollice */
+  .carta__indice {
+    position: sticky; top: calc(var(--banner-h) + var(--testata-compatta) - 1px); z-index: 5;
+    margin-inline: calc(var(--margine) * -1); padding: 0 var(--margine);
+    background: var(--carta-2);
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .carta__indice::-webkit-scrollbar { display: none; }
+  .carta__indice ol { display: flex; gap: 22px; border: 0; }
+  .carta__indice a { border: 0; padding: 14px 0; white-space: nowrap; }
+  .carta__indice a::after { display: none; }
+  .carta__indice a[aria-current] { text-decoration: underline; text-underline-offset: 6px; }
+}
+@media (max-width: 47.99em) {
+  .voce { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- La persona -------------------------------------------------------- */
+.persona { padding-block: var(--respiro); align-items: end; row-gap: 48px; }
+.persona__ritratto { grid-column: 1 / 6; position: relative; aspect-ratio: 4 / 5; overflow: clip; background: var(--adriatico); }
+.persona__ritratto picture { position: absolute; inset: 0; }
+.persona__ritratto figcaption {
+  position: absolute; left: 18px; bottom: 16px;
+  font-size: 0.5625rem; font-stretch: 72%; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--spuma);
+}
+.persona__testo { grid-column: 6 / 13; display: grid; gap: clamp(28px, 4vw, 56px); padding-left: clamp(0px, 3vw, 48px); }
+/* il nome sconfina sul ritratto: in "differenza" resta leggibile su entrambi */
+.persona__nome { font-size: var(--t-xxl); margin-left: calc(var(--colonna) * -1.6); position: relative; z-index: 2; color: var(--carta); mix-blend-mode: difference; }
+.persona__nome > span { display: block; }
+.persona__nome > span:last-child { padding-left: calc(var(--colonna) * 1.6); }
+.persona__fatti { display: grid; gap: 18px; max-width: 28rem; margin-left: auto; }
+.persona__fatti li { display: grid; grid-template-columns: 28px 1fr; color: var(--pietra-testo); }
+.persona__segno { color: var(--inchiostro); }
+@media (max-width: 63.99em) {
+  .persona__ritratto { grid-column: 1 / 10; }
+  .persona__testo { grid-column: 1 / -1; padding-left: 0; }
+  .persona__nome { margin-left: 0; margin-top: -0.6em; }
+  .persona__fatti { margin-left: 0; }
+}
+@media (max-width: 47.99em) {
+  .persona__ritratto { grid-column: 1 / -1; }
+  .persona__nome > span:last-child { padding-left: 10vw; }
+}

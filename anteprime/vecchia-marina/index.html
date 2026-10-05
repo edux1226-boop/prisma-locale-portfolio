@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vecchia Marina · Roseto degli Abruzzi · anteprima riservata</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Anteprima riservata del nuovo sito di Vecchia Marina, ristorante di pesce sul lungomare di Roseto degli Abruzzi. Proposta di Prisma Locale.">
+<meta name="theme-color" content="#0C1A22">
+<meta name="color-scheme" content="light">
+<!-- Unico punto da cambiare per la scadenza dell'anteprima (ora italiana). -->
+<meta name="anteprima-scadenza" content="2026-12-15T23:59:59+01:00">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Vecchia Marina, anteprima riservata">
+<meta property="og:description" content="La proposta di sito per Vecchia Marina, Roseto degli Abruzzi. Preparata da Prisma Locale.">
+<meta property="og:image" content="https://prismalocale.it/assets/img/marina-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C1A22'/%3E%3Cpath d='M6 17h20' stroke='%23F2EFE8' stroke-width='1.4'/%3E%3Cpath d='M9 21h14M12 24.5h8' stroke='%23F2EFE8' stroke-width='1' opacity='.5'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/spectral-200.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/avif" media="(min-aspect-ratio: 4/5)"
+      imagesrcset="/assets/img/marina/superficie-m.avif 1600w, /assets/img/marina/superficie-l.avif 2560w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/avif" media="(max-aspect-ratio: 4/5)"
+      imagesrcset="/assets/img/marina/superficie-s.avif 828w, /assets/img/marina/superficie-v.avif 1080w" imagesizes="100vw">
+
+<script>
+  (function (d) {
+    var r = d.documentElement;
+    var m = d.querySelector('meta[name="anteprima-scadenza"]');
+    var fine = m ? Date.parse(m.content) : NaN;
+    if (fine && Date.now() > fine) { r.classList.add('is-scaduta'); return; }
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      r.classList.add('motion');
+      // l'apertura completa solo su schermi larghi: sul telefono il nome
+      // c'è subito, e si muovono solo la linea, il riflesso e i dettagli
+      if (window.matchMedia('(min-width: 64em)').matches) {
+        r.classList.add('is-alba');
+        // rete di sicurezza: se lo script non arriva, la pagina si mostra comunque
+        setTimeout(function () { r.classList.remove('is-alba'); }, 6000);
+      }
+    }
+  })(document);
+</script>
+<script type="module" src="/src/anteprime/marina/main.js"></script>
+</head>
+
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-freccia" viewBox="0 0 24 24"><path d="M3 12h17M14.5 6.5 20 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></symbol>
+  <symbol id="i-obliqua" viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></symbol>
+  <symbol id="i-chiudi" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="i-prec" viewBox="0 0 24 24"><path d="M20 12H4M9.5 6.5 4 12l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="i-succ" viewBox="0 0 24 24"><path d="M4 12h16M14.5 6.5 20 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <!-- l'acqua che increspa i riflessi dei titoli (solo desktop) -->
+  <filter id="increspa" x="-5%" y="-20%" width="110%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.003 0.06" numOctaves="2" seed="4" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<!-- Mostrato solo dopo la data di scadenza (vedi lo script qui sopra). -->
+<div class="scaduta">
+  <p class="scaduta__marchio" aria-hidden="true">Vecchia Marina</p>
+  <h1 class="scaduta__titolo">Anteprima scaduta, contatta Prisma Locale</h1>
+  <p class="scaduta__link">
+    <a href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20l%27anteprima%20di%20Vecchia%20Marina%20%C3%A8%20scaduta." rel="noopener">WhatsApp</a>
+    <span aria-hidden="true">·</span>
+    <a href="mailto:info@prismalocale.it">info@prismalocale.it</a>
+  </p>
+</div>
+
+<p class="anteprima" role="note"><span class="anteprima__segno" aria-hidden="true"></span>Anteprima riservata<span class="anteprima__extra"> · immagini provvisorie</span> · <a href="#nota">Prisma Locale</a></p>
+<div class="filigrana" aria-hidden="true"></div>
+
+<!-- Lo scandaglio: la sagola con i nodi che scende con la lettura (desktop). -->
+<div class="scandaglio" aria-hidden="true" data-scandaglio>
+  <span class="scandaglio__sagola"><span class="scandaglio__piombo" data-scandaglio-piombo></span></span>
+  <span class="scandaglio__voce" data-scandaglio-voce>Vecchia Marina</span>
+</div>
+
+<header class="testata" data-testata>
+  <a class="marchio" href="#inizio" aria-label="Vecchia Marina, torna all'inizio"><span>Vecchia</span> <span>Marina</span></a>
+  <nav class="testata__nav" aria-label="Sezioni">
+    <ul role="list">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#storia">La storia</a></li>
+      <li><a href="#mare">Il mare</a></li>
+      <li><a href="#cucina">La cucina</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+  <a class="testata__prenota" href="#prenota">Prenota</a>
+  <button class="testata__menu" type="button" aria-haspopup="dialog" aria-controls="indice" aria-expanded="false" data-indice-apri>
+    <span class="testata__menu-testo">Indice</span>
+    <span class="testata__menu-onda" aria-hidden="true"></span>
+  </button>
+</header>
+
+<dialog class="indice" id="indice" aria-label="Indice del sito" data-indice>
+  <div class="indice__testa">
+    <p class="marchio" aria-hidden="true"><span>Vecchia</span> <span>Marina</span></p>
+    <button class="indice__chiudi" type="button" data-indice-chiudi>Chiudi <svg aria-hidden="true"><use href="#i-chiudi"/></svg></button>
+  </div>
+  <nav aria-label="Sezioni">
+    <ol class="indice__voci" role="list">
+      <li><a href="#menu"><span class="indice__num">01</span>Il menu</a></li>
+      <li><a href="#storia"><span class="indice__num">02</span>La storia</a></li>
+      <li><a href="#mare"><span class="indice__num">03</span>Il mare</a></li>
+      <li><a href="#cucina"><span class="indice__num">04</span>La cucina</a></li>
+      <li><a href="#gallery"><span class="indice__num">05</span>Gallery</a></li>
+      <li><a href="#contatti"><span class="indice__num">06</span>Contatti</a></li>
+    </ol>
+  </nav>
+  <span class="indice__orizzonte" aria-hidden="true"></span>
+  <div class="indice__piede">
+    <a class="bottone bottone--chiaro" href="#prenota">Prenota un tavolo</a>
+    <a class="indice__tel" href="tel:+390858931170">085 893 1170</a>
+    <p>Lungomare Trento 37 · Roseto degli Abruzzi</p>
+  </div>
+</dialog>
+
+<!-- Su telefono la prenotazione resta sempre a un dito di distanza. -->
+<div class="banchina" data-banchina>
+  <a class="banchina__prenota" href="#prenota">Prenota un tavolo</a>
+  <a class="banchina__chiama" href="tel:+390858931170" aria-label="Chiama Vecchia Marina, 085 893 1170">Chiama</a>
+</div>
+
+<main id="contenuto" tabindex="-1">
+
+<!-- ====================================================================
+     HERO — l'acqua prima del nome. FOTO: un video lento (8–12 s, in loop,
+     muto) o uno scatto della superficie del mare davanti al ristorante,
+     controluce. 16:9 e 9:16.
+     ==================================================================== -->
+<section class="hero" id="inizio" aria-labelledby="hero-titolo" data-hero>
+  <div class="hero__acqua" data-hero-acqua>
+    <picture>
+      <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/marina/superficie-s.avif 828w, /assets/img/marina/superficie-v.avif 1080w" sizes="100vw">
+      <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/marina/superficie-s.webp 828w, /assets/img/marina/superficie-v.webp 1080w" sizes="100vw">
+      <source type="image/avif" srcset="/assets/img/marina/superficie-m.avif 1600w, /assets/img/marina/superficie-l.avif 2560w" sizes="100vw">
+      <img src="/assets/img/marina/superficie-m.webp" srcset="/assets/img/marina/superficie-m.webp 1600w, /assets/img/marina/superficie-l.webp 2560w" sizes="100vw"
+           width="2560" height="1440" fetchpriority="high" decoding="async"
+           alt="Immagine provvisoria: la superficie dell'Adriatico controluce, scura, con il sole del mattino spezzato in scintille.">
+    </picture>
+    <div class="hero__velo" aria-hidden="true"></div>
+  </div>
+
+  <p class="hero__luogo" data-hero-entra>Ristorante di pesce<br>Roseto degli Abruzzi</p>
+  <p class="hero__coordinate" aria-hidden="true" data-hero-entra>42°41′ N — 14°01′ E</p>
+
+  <div class="hero__linea" aria-hidden="true" data-hero-linea></div>
+  <h1 class="hero__titolo" id="hero-titolo">
+    <span class="hero__nome" data-hero-nome><span>Vecchia</span> <span>Marina</span></span>
+  </h1>
+  <p class="hero__riflesso" aria-hidden="true" data-hero-riflesso><span>Vecchia</span> <span>Marina</span></p>
+
+  <div class="hero__piede" data-hero-entra>
+    <p class="hero__motto">Il menu,<br><em>lo scrive il mare.</em></p>
+    <a class="hero__scendi" href="#intro"><span class="hero__scendi-filo" aria-hidden="true"><span></span></span><span>Scendi</span></a>
+    <a class="hero__carta" href="#menu">Scopri il menu <svg aria-hidden="true"><use href="#i-freccia"/></svg></a>
+  </div>
+</section>
+
+<!-- ====================================================================
+     INTRO
+     ==================================================================== -->
+<section class="intro" id="intro" aria-labelledby="intro-titolo" data-sezione="Il ristorante">
+  <p class="etichetta intro__etichetta" data-sfuma>Roseto degli Abruzzi · Adriatico</p>
+  <h2 class="intro__titolo" id="intro-titolo">
+    <span data-righe>Una cucina</span>
+    <span class="intro__rientro" data-righe>che parte <em>dal mare.</em></span>
+  </h2>
+  <div class="intro__corpo">
+    <p class="intro__attacco" data-righe>Sul lungomare di Roseto, davanti alla spiaggia, c'è una sala dove il pesce arriva la mattina e la sera è già in tavola.</p>
+    <p data-sfuma>Una famiglia in cucina e in sala. Una carta che si piega al mercato: quello che l'Adriatico concede, quello si cucina. Il resto, qui, conta meno.</p>
+  </div>
+  <dl class="intro__dati" data-sfuma>
+    <div><dt>Dove</dt><dd>Lungomare Trento 37</dd></div>
+    <div><dt>Cosa</dt><dd>Cucina di mare</dd></div>
+    <div><dt>Chi</dt><dd>Le famiglie D'Ignazio e Parnanzone</dd></div>
+  </dl>
+</section>
+
+<!-- ====================================================================
+     BIB GOURMAND — una firma, non una medaglia. Niente logo MICHELIN
+     (marchio registrato): solo il nome del riconoscimento, in tipografia.
+     ==================================================================== -->
+<section class="bib" aria-labelledby="bib-titolo" data-sezione="Bib Gourmand">
+  <p class="etichetta bib__guida" data-sfuma>Guida MICHELIN</p>
+  <h2 class="bib__titolo" id="bib-titolo" data-bib>
+    <span class="bib__parola" data-bib-parola>Bib</span>
+    <span class="bib__parola bib__parola--corsiva" data-bib-parola>Gourmand</span>
+  </h2>
+  <span class="bib__filo" aria-hidden="true" data-bib-filo></span>
+  <p class="bib__testo" data-sfuma>Il riconoscimento con cui la Guida MICHELIN segnala i ristoranti dove si mangia bene a un prezzo giusto. Vecchia Marina è tra questi.</p>
+</section>
+
+<!-- ====================================================================
+     LA STORIA — la rotta, in quattro punti. Fonti: articolo de L'Espresso
+     (giugno 2026) e schede di guide gastronomiche. DA VERIFICARE con la
+     famiglia prima della pubblicazione: date, nomi e passaggi.
+     FOTO: foto storiche del locale o della famiglia, verticali 2:3.
+     ==================================================================== -->
+<section class="storia" id="storia" aria-labelledby="storia-titolo" data-sezione="La storia" data-storia>
+  <div class="storia__lastra" data-storia-lastra>
+    <figure class="storia__foto" data-storia-foto>
+      <picture>
+        <source type="image/avif" srcset="/assets/img/marina/piombo-v.avif">
+        <img src="/assets/img/marina/piombo-v.webp" width="1080" height="1620" loading="lazy" decoding="async"
+             alt="Immagine provvisoria: il mare grigio di mezzogiorno, calmo, con l'orizzonte nella foschia.">
+      </picture>
+    </figure>
+    <p class="storia__didascalia" aria-hidden="true">Qui: una fotografia d'archivio della famiglia</p>
+  </div>
+
+  <div class="storia__testo">
+    <p class="etichetta">La storia</p>
+    <h2 class="storia__titolo" id="storia-titolo" data-righe>Una storia<br><em>di mare.</em></h2>
+    <div class="rotta" data-rotta>
+     <span class="rotta__traccia" aria-hidden="true"><span data-rotta-traccia></span></span>
+     <ol class="rotta__punti" role="list">
+      <li class="rotta__punto" data-rotta-punto>
+        <span class="rotta__segno" aria-hidden="true"></span>
+        <h3>Lontano dal mare</h3>
+        <p>Gennaro D'Ignazio nasce lontano dalla costa e, per un po', pensa di fare il vino.</p>
+      </li>
+      <li class="rotta__punto" data-rotta-punto>
+        <span class="rotta__segno" aria-hidden="true"></span>
+        <h3>Una pizzeria a Roseto</h3>
+        <p>Poi la strada porta a Roseto: una pizzeria, rilevata e trasformata in ristorante.</p>
+      </li>
+      <li class="rotta__punto rotta__punto--anno" data-rotta-punto>
+        <span class="rotta__segno" aria-hidden="true"></span>
+        <p class="rotta__anno" aria-hidden="true">2000</p>
+        <h3>Davanti alla spiaggia</h3>
+        <p>Nel 2000 arriva la casa sul lungomare, di fronte al mare. È la Vecchia Marina.</p>
+      </li>
+      <li class="rotta__punto" data-rotta-punto>
+        <span class="rotta__segno" aria-hidden="true"></span>
+        <h3>In famiglia</h3>
+        <p>Con Gennaro ci sono Giovanni Parnanzone e Loredana D'Ignazio. E la generazione dopo: Antonio, sempre più dedicato ai dolci, e Lorenzo.</p>
+      </li>
+     </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     IL MARE — sequenza pinnata: la lastra verticale cresce fino a tutto
+     schermo, poi la notte del mercato, poi l'alba. Su telefono e con
+     movimento ridotto le tre immagini restano una sotto l'altra.
+     FOTO: le cassette al mercato del pesce, il pescato sul ghiaccio,
+     dettagli macro (scaglie, conchiglie, crostacei), 16:9 e 2:3.
+     ==================================================================== -->
+<section class="mare" id="mare" aria-labelledby="mare-titolo" data-sezione="Il mare" data-mare>
+  <div class="mare__palco" data-mare-palco>
+    <h2 class="mare__titolo" id="mare-titolo" data-mare-titolo>
+      <span class="mare__riga">Il mare</span>
+      <span class="mare__riga mare__riga--rientro">è il primo</span>
+      <span class="mare__riga"><em>ingrediente.</em></span>
+    </h2>
+
+    <figure class="mare__quadro mare__quadro--1" data-mare-quadro>
+      <picture>
+        <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/marina/notte-v.avif">
+        <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/marina/notte-v.webp">
+        <source type="image/avif" srcset="/assets/img/marina/notte-m.avif 1400w, /assets/img/marina/notte-l.avif 2400w" sizes="100vw">
+        <img src="/assets/img/marina/notte-m.webp" srcset="/assets/img/marina/notte-m.webp 1400w, /assets/img/marina/notte-l.webp 2400w" sizes="100vw"
+             width="2400" height="1350" loading="lazy" decoding="async"
+             alt="Immagine provvisoria: il mare di notte, nero, con le luci di alcune barche da pesca sull'orizzonte.">
+      </picture>
+      <figcaption class="mare__frase">
+        <span class="mare__ora">02:00</span>
+        Dal martedì al venerdì la sveglia suona alle due di notte. Si va al mercato del pesce, di preferenza a Civitanova Marche, a prendere il meglio della pesca notturna.
+      </figcaption>
+    </figure>
+
+    <figure class="mare__quadro mare__quadro--2" data-mare-quadro>
+      <picture>
+        <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/marina/alba-v.avif">
+        <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/marina/alba-v.webp">
+        <source type="image/avif" srcset="/assets/img/marina/alba-m.avif 1400w, /assets/img/marina/alba-l.avif 2400w" sizes="100vw">
+        <img src="/assets/img/marina/alba-m.webp" srcset="/assets/img/marina/alba-m.webp 1400w, /assets/img/marina/alba-l.webp 2400w" sizes="100vw"
+             width="2400" height="1350" loading="lazy" decoding="async"
+             alt="Immagine provvisoria: l'alba sull'Adriatico, il sole basso e velato sopra un mare calmo.">
+      </picture>
+      <figcaption class="mare__frase">
+        <span class="mare__ora">Alba</span>
+        Il sole sorge dal mare, qui. A quell'ora il pesce è già sul banco, e la carta del giorno comincia a scriversi.
+      </figcaption>
+    </figure>
+
+    <p class="mare__conto" aria-hidden="true"><span data-mare-conto>01</span> / 02</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     LA CUCINA — la transizione: un pelo d'acqua vivo (WebGL, solo desktop,
+     caricato quando serve) che riflette il titolo. Altrimenti l'immagine.
+     ==================================================================== -->
+<section class="specchio" id="cucina" aria-labelledby="specchio-titolo" data-sezione="La cucina" data-specchio>
+  <div class="specchio__acqua">
+    <picture class="specchio__fermo">
+      <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/marina/risacca-v.avif">
+      <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/marina/risacca-v.webp">
+      <source type="image/avif" srcset="/assets/img/marina/risacca-m.avif 1400w, /assets/img/marina/risacca-l.avif 2400w" sizes="100vw">
+      <img src="/assets/img/marina/risacca-m.webp" srcset="/assets/img/marina/risacca-m.webp 1400w, /assets/img/marina/risacca-l.webp 2400w" sizes="100vw"
+           width="2400" height="1350" loading="lazy" decoding="async" alt="">
+    </picture>
+    <div class="specchio__tela" data-specchio-tela></div>
+  </div>
+  <div class="specchio__testo">
+    <p class="etichetta etichetta--chiara">La cucina</p>
+    <h2 class="specchio__titolo" id="specchio-titolo"><span data-specchio-parola>In tavola</span></h2>
+    <p class="specchio__riflesso" aria-hidden="true"><span>In tavola</span></p>
+    <p class="specchio__sotto">Piatti di casa, fatti per il pesce di giornata.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     I PIATTI — tre piatti forniti dal locale. Nessun ingrediente o prezzo
+     inventato. FOTO: ogni piatto dall'alto o a 45°, luce naturale, 4:5.
+     Finché non ci sono le foto, ogni piatto ha una tavola tipografica.
+     ==================================================================== -->
+<section class="piatti" aria-labelledby="piatti-titolo" data-sezione="I piatti">
+  <header class="piatti__testa">
+    <h2 class="piatti__titolo" id="piatti-titolo" data-righe>Tre piatti<br><em>da cui partire.</em></h2>
+    <p class="piatti__nota" data-sfuma>Scorri <span aria-hidden="true">→</span></p>
+  </header>
+
+  <ol class="piatti__lista" role="list" data-piatti>
+    <li class="piatto piatto--a">
+      <figure class="piatto__tavola piatto__tavola--petrolio" data-marea>
+        <picture>
+          <source type="image/avif" srcset="/assets/img/marina/risacca-v.avif">
+          <img src="/assets/img/marina/risacca-v.webp" width="1080" height="1620" loading="lazy" decoding="async" alt="">
+        </picture>
+        <span class="piatto__lettera" aria-hidden="true">S</span>
+        <figcaption class="piatto__scatto">Fotografia del piatto da realizzare</figcaption>
+      </figure>
+      <div class="piatto__testo">
+        <span class="piatto__num">01</span>
+        <h3 class="piatto__nome">Scampi <em>all'arrabbiata</em></h3>
+        <p>Gli scampi dell'Adriatico, con il carattere del peperoncino.</p>
+      </div>
+    </li>
+    <li class="piatto piatto--b">
+      <figure class="piatto__tavola piatto__tavola--sabbia" data-marea>
+        <picture>
+          <source type="image/avif" srcset="/assets/img/marina/battigia-v.avif">
+          <img src="/assets/img/marina/battigia-v.webp" width="1080" height="1620" loading="lazy" decoding="async" alt="">
+        </picture>
+        <span class="piatto__lettera" aria-hidden="true">G</span>
+        <figcaption class="piatto__scatto">Fotografia del piatto da realizzare</figcaption>
+      </figure>
+      <div class="piatto__testo">
+        <span class="piatto__num">02</span>
+        <h3 class="piatto__nome">Guazzetto <em>di vongole</em></h3>
+        <p>Le vongole nel loro sugo. Il pane, in tavola, serve proprio a questo.</p>
+      </div>
+    </li>
+    <li class="piatto piatto--c">
+      <figure class="piatto__tavola piatto__tavola--pietra" data-marea>
+        <picture>
+          <source type="image/avif" srcset="/assets/img/marina/piombo-v.avif">
+          <img src="/assets/img/marina/piombo-v.webp" width="1080" height="1620" loading="lazy" decoding="async" alt="">
+        </picture>
+        <span class="piatto__lettera" aria-hidden="true">S</span>
+        <figcaption class="piatto__scatto">Fotografia del piatto da realizzare</figcaption>
+      </figure>
+      <div class="piatto__testo">
+        <span class="piatto__num">03</span>
+        <h3 class="piatto__nome"><em>Sogliole</em></h3>
+        <p>Quando il pesce è quello giusto, serve poco altro.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ====================================================================
+     IL MENU — HTML, leggibile dal telefono, niente PDF. I contenuti che
+     cambiano spesso (pescato del giorno, orari, recensioni) stanno in
+     src/anteprime/marina/dati.js. La carta qui sotto si modifica a mano:
+     ogni voce marcata DA CONFERMARE va verificata con il ristorante.
+     ==================================================================== -->
+<section class="carta" id="menu" aria-labelledby="carta-titolo" data-sezione="Il menu">
+  <div class="carta__lato">
+    <p class="etichetta">Il menu</p>
+    <h2 class="carta__titolo" id="carta-titolo" data-righe>La carta</h2>
+    <p class="carta__intro" data-sfuma>La carta segue il mercato: alcuni piatti cambiano ogni giorno, altri restano. Prezzi e disponibilità si trovano in sala.</p>
+    <nav class="carta__indice" aria-label="Portate">
+      <ol role="list">
+        <li><a href="#carta-antipasti">Antipasti</a></li>
+        <li><a href="#carta-primi">Primi</a></li>
+        <li><a href="#carta-secondi">Secondi</a></li>
+        <li><a href="#carta-dessert">Dessert</a></li>
+        <li><a href="#carta-vini">Vini</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="carta__foglio">
+    <!-- Il pescato del giorno: si compila da dati.js (PESCATO). -->
+    <aside class="pescato" aria-labelledby="pescato-titolo" data-pescato>
+      <div class="pescato__testa">
+        <h3 class="pescato__titolo" id="pescato-titolo">Il pescato del giorno</h3>
+        <p class="pescato__data" data-pescato-data></p>
+      </div>
+      <ul class="pescato__lista" role="list" data-pescato-lista></ul>
+      <p class="pescato__nota" data-pescato-nota></p>
+    </aside>
+
+    <section class="portata" id="carta-antipasti" aria-labelledby="h-antipasti">
+      <h3 class="portata__nome" id="h-antipasti"><span class="portata__num">01</span> Antipasti</h3>
+      <ul class="portata__voci" role="list">
+        <li class="voce"><p class="voce__nome">Crudo del giorno</p><p class="voce__nota">Il pesce crudo, secondo il mercato del mattino</p></li>
+        <li class="voce"><p class="voce__nome">Guazzetto di vongole</p><p class="voce__nota">Tra i piatti della casa</p><!-- DA CONFERMARE: portata --></li>
+        <!-- PLACEHOLDER: altri antipasti della carta reale -->
+        <li class="voce"><p class="voce__nome">Antipasti di mare</p><p class="voce__nota">Secondo il mercato</p></li>
+      </ul>
+    </section>
+
+    <section class="portata" id="carta-primi" aria-labelledby="h-primi">
+      <h3 class="portata__nome" id="h-primi"><span class="portata__num">02</span> Primi</h3>
+      <ul class="portata__voci" role="list">
+        <!-- Citata dalla Guida MICHELIN: linguine, scampi, aglio, olio, rosmarino. -->
+        <li class="voce"><p class="voce__nome">Linguine agli scampi</p><p class="voce__nota">Aglio, olio e rosmarino</p></li>
+        <!-- PLACEHOLDER: altri primi della carta reale -->
+        <li class="voce"><p class="voce__nome">Primi di mare del giorno</p><p class="voce__nota">Secondo il pescato</p></li>
+      </ul>
+    </section>
+
+    <section class="portata" id="carta-secondi" aria-labelledby="h-secondi">
+      <h3 class="portata__nome" id="h-secondi"><span class="portata__num">03</span> Secondi</h3>
+      <ul class="portata__voci" role="list">
+        <li class="voce"><p class="voce__nome">Scampi all'arrabbiata</p><p class="voce__nota">Tra i piatti della casa</p><!-- DA CONFERMARE: portata --></li>
+        <li class="voce"><p class="voce__nome">Sogliole</p><p class="voce__nota">Secondo disponibilità</p></li>
+        <!-- PLACEHOLDER: altri secondi della carta reale -->
+        <li class="voce"><p class="voce__nome">Il pesce del giorno</p><p class="voce__nota">Lo consiglia la sala</p></li>
+      </ul>
+    </section>
+
+    <section class="portata" id="carta-dessert" aria-labelledby="h-dessert">
+      <h3 class="portata__nome" id="h-dessert"><span class="portata__num">04</span> Dessert</h3>
+      <ul class="portata__voci" role="list">
+        <!-- PLACEHOLDER: i dolci reali (in casa se ne occupa Antonio) -->
+        <li class="voce"><p class="voce__nome">I dolci della casa</p><p class="voce__nota">Preparati in casa</p></li>
+      </ul>
+    </section>
+
+    <section class="portata" id="carta-vini" aria-labelledby="h-vini">
+      <h3 class="portata__nome" id="h-vini"><span class="portata__num">05</span> Vini</h3>
+      <ul class="portata__voci" role="list">
+        <!-- PLACEHOLDER: la carta dei vini reale -->
+        <li class="voce"><p class="voce__nome">La cantina</p><p class="voce__nota">Chiedete in sala il vino giusto per il pescato del giorno</p></li>
+      </ul>
+    </section>
+
+    <div class="carta__degustazione">
+      <!-- Il menu degustazione è citato dalle guide: DA CONFERMARE nome e prezzo. -->
+      <p class="etichetta">Per chi vuole lasciar fare alla cucina</p>
+      <p class="carta__degustazione-nome">Menu degustazione di mare</p>
+      <a class="bottone" href="#prenota">Prenota un tavolo <svg aria-hidden="true"><use href="#i-freccia"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     GENNARO — solo fatti riportati dalla stampa. Niente citazioni inventate.
+     FOTO: ritratto ambientato di Gennaro (al banco del pesce o in cucina,
+     luce naturale), verticale 4:5. Il ritratto è il protagonista.
+     ==================================================================== -->
+<section class="persona" aria-labelledby="persona-titolo" data-sezione="Gennaro">
+  <figure class="persona__ritratto" data-marea>
+    <picture>
+      <source type="image/avif" srcset="/assets/img/marina/notte-v.avif">
+      <img src="/assets/img/marina/notte-v.webp" width="1080" height="1620" loading="lazy" decoding="async"
+           alt="Immagine provvisoria al posto del ritratto: il mare di notte con le luci delle barche da pesca.">
+    </picture>
+    <figcaption>Qui: il ritratto di Gennaro</figcaption>
+  </figure>
+  <div class="persona__testo">
+    <p class="etichetta">In cucina</p>
+    <h2 class="persona__nome" id="persona-titolo"><span data-righe>Gennaro</span> <span data-righe><em>D'Ignazio</em></span></h2>
+    <ul class="persona__fatti" role="list">
+      <li data-sfuma><span class="persona__segno">—</span> È nato lontano dal mare. L'Adriatico l'ha scelto dopo.</li>
+      <li data-sfuma><span class="persona__segno">—</span> Quattro notti a settimana è al mercato prima dell'alba: il pesce lo sceglie lui.</li>
+      <li data-sfuma><span class="persona__segno">—</span> Accanto, in cucina e in sala, la sua famiglia.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================================================================
+     L'ESPERIENZA — quattro frammenti, ognuno con la sua forma.
+     ==================================================================== -->
+<section class="approdo" aria-labelledby="approdo-titolo" data-sezione="L'esperienza">
+  <h2 class="sr-only" id="approdo-titolo">Più del piatto</h2>
+  <article class="frammento frammento--mare">
+    <figure class="frammento__foto" data-marea>
+      <picture>
+        <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/marina/battigia-v.avif">
+        <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/marina/battigia-v.webp">
+        <source type="image/avif" srcset="/assets/img/marina/battigia-m.avif 1400w, /assets/img/marina/battigia-l.avif 2400w" sizes="(min-width: 64em) 62vw, 100vw">
+        <img src="/assets/img/marina/battigia-m.webp" srcset="/assets/img/marina/battigia-m.webp 1400w, /assets/img/marina/battigia-l.webp 2400w" sizes="(min-width: 64em) 62vw, 100vw"
+             width="2400" height="1350" loading="lazy" decoding="async"
+             alt="Immagine provvisoria: la battigia vista dall'alto, l'onda che si ritira sulla sabbia bagnata.">
+      </picture>
+    </figure>
+    <h3 class="frammento__nome"><span class="frammento__num">i.</span> Il mare</h3>
+    <p class="frammento__testo">A pochi passi dalla sabbia. Prima di sedersi, si guarda l'acqua.</p>
+  </article>
+
+  <article class="frammento frammento--tavola">
+    <h3 class="frammento__nome"><span class="frammento__num">ii.</span> La tavola</h3>
+    <p class="frammento__grande" data-righe>Una sala semplice e informale. L'attenzione va tutta al pesce.</p>
+  </article>
+
+  <article class="frammento frammento--territorio">
+    <figure class="frammento__foto" data-marea>
+      <picture>
+        <source type="image/avif" srcset="/assets/img/marina/sera-v.avif">
+        <img src="/assets/img/marina/sera-v.webp" width="1080" height="1620" loading="lazy" decoding="async"
+             alt="Immagine provvisoria: il mare la sera, rosa e grigio, senza vento.">
+      </picture>
+    </figure>
+    <h3 class="frammento__nome"><span class="frammento__num">iii.</span> Il territorio</h3>
+    <p class="frammento__testo">La costa teramana: alle spalle le colline, davanti l'Adriatico. Roseto sta nel mezzo.</p>
+  </article>
+
+  <article class="frammento frammento--ospitalita">
+    <h3 class="frammento__nome"><span class="frammento__num">iv.</span> L'ospitalità</h3>
+    <p class="frammento__testo">Una famiglia che accoglie. La sala si riempie in fretta: conviene prenotare.</p>
+    <a class="collegamento" href="#prenota">Prenota un tavolo <svg aria-hidden="true"><use href="#i-freccia"/></svg></a>
+  </article>
+</section>
+
+<!-- ====================================================================
+     GALLERY — provini: formati misti, rivelazione a marea, visore.
+     FOTO: 10–14 scatti reali alternando sala, piatti, cucina, dettagli,
+     il lungomare, la famiglia. Verticali, orizzontali e un panorama.
+     ==================================================================== -->
+<section class="galleria" id="gallery" aria-labelledby="galleria-titolo" data-sezione="Gallery">
+  <header class="galleria__testa">
+    <p class="etichetta">Gallery</p>
+    <h2 class="galleria__titolo" id="galleria-titolo" data-righe>Dal lungomare</h2>
+    <p class="galleria__nota" data-sfuma>Studi provvisori di mare. Qui andranno le fotografie della sala, dei piatti e della cucina.</p>
+  </header>
+  <ul class="provini" role="list">
+    <li class="provino provino--panorama" data-deriva=".06">
+      <button class="provino__apri" type="button" data-visore="0">
+        <img src="/assets/img/marina/alba-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="L'alba sull'Adriatico, il sole velato sopra il mare calmo.">
+      </button>
+      <p class="provino__dida"><span>01</span> Alba, dal lungomare</p>
+    </li>
+    <li class="provino provino--alto" data-deriva="-.05">
+      <button class="provino__apri" type="button" data-visore="1">
+        <img src="/assets/img/marina/battigia-v.webp" width="1080" height="1620" loading="lazy" decoding="async" alt="La battigia dall'alto, l'onda sulla sabbia.">
+      </button>
+      <p class="provino__dida"><span>02</span> La battigia</p>
+    </li>
+    <li class="provino provino--quadro" data-deriva=".03">
+      <button class="provino__apri" type="button" data-visore="2">
+        <img src="/assets/img/marina/sera-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Il mare la sera, rosa e grigio.">
+      </button>
+      <p class="provino__dida"><span>03</span> La sera</p>
+    </li>
+    <li class="provino provino--stretto" data-deriva="-.08">
+      <button class="provino__apri" type="button" data-visore="3">
+        <img src="/assets/img/marina/superficie-v.webp" width="1080" height="1920" loading="lazy" decoding="async" alt="La superficie dell'acqua controluce.">
+      </button>
+      <p class="provino__dida"><span>04</span> Controluce</p>
+    </li>
+    <li class="provino provino--largo" data-deriva=".05">
+      <button class="provino__apri" type="button" data-visore="4">
+        <img src="/assets/img/marina/notte-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Il mare di notte con le luci delle barche da pesca.">
+      </button>
+      <p class="provino__dida"><span>05</span> Le lampare</p>
+    </li>
+    <li class="provino provino--alto provino--basso" data-deriva="-.03">
+      <button class="provino__apri" type="button" data-visore="5">
+        <img src="/assets/img/marina/risacca-v.webp" width="1080" height="1620" loading="lazy" decoding="async" alt="La risacca a pelo d'acqua, controluce.">
+      </button>
+      <p class="provino__dida"><span>06</span> La risacca</p>
+    </li>
+    <li class="provino provino--quadro provino--fine" data-deriva=".04">
+      <button class="provino__apri" type="button" data-visore="6">
+        <img src="/assets/img/marina/piombo-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Il mare grigio di mezzogiorno.">
+      </button>
+      <p class="provino__dida"><span>07</span> Mezzogiorno</p>
+    </li>
+  </ul>
+</section>
+
+<dialog class="visore" aria-label="Gallery a tutto schermo" data-visore-finestra>
+  <figure class="visore__figura">
+    <img class="visore__img" src="" alt="" data-visore-img>
+    <figcaption class="visore__dida" data-visore-dida></figcaption>
+  </figure>
+  <p class="visore__conto" aria-live="polite" data-visore-conto></p>
+  <button class="visore__btn visore__btn--prec" type="button" data-visore-prec><span class="sr-only">Immagine precedente</span><svg aria-hidden="true"><use href="#i-prec"/></svg></button>
+  <button class="visore__btn visore__btn--succ" type="button" data-visore-succ><span class="sr-only">Immagine successiva</span><svg aria-hidden="true"><use href="#i-succ"/></svg></button>
+  <button class="visore__chiudi" type="button" data-visore-chiudi>Chiudi <svg aria-hidden="true"><use href="#i-chiudi"/></svg></button>
+</dialog>
+
+<!-- ====================================================================
+     RECENSIONI — numeri in dati.js (RECENSIONI). Nessuna recensione
+     inventata: solo i numeri e la stampa che ne ha scritto, con i link.
+     ==================================================================== -->
+<section class="voci" aria-labelledby="voci-titolo" data-sezione="Recensioni" data-voci>
+  <h2 class="voci__titolo" id="voci-titolo">
+    <span data-righe>Quasi mille storie</span>
+    <span class="voci__rientro" data-righe><em>passate da qui.</em></span>
+  </h2>
+  <div class="voci__numeri">
+    <p class="voci__voto"><span class="sr-only" data-voci-testo>Valutazione 4,3 su 5</span><span class="voci__cifra" aria-hidden="true" data-voci-voto>4,3</span><span class="voci__su" aria-hidden="true">/ 5</span></p>
+    <p class="voci__conto"><span data-voci-numero>996</span> recensioni su <a href="https://www.tripadvisor.it/Restaurant_Review-g194888-d2153818-Reviews-Vecchia_Marina-Roseto_Degli_Abruzzi_Province_of_Teramo_Abruzzo.html" target="_blank" rel="noopener" data-voci-link>TripAdvisor<span class="sr-only"> (si apre in una nuova scheda)</span></a></p>
+  </div>
+  <div class="rassegna">
+    <h3 class="etichetta">Ne hanno scritto</h3>
+    <ul class="rassegna__lista" role="list">
+      <li><a href="https://lespresso.it/c/magazine/2026/6/15/la-storia-di-gennaro-dignazio-e-della-vecchia-marina-simbolo-della-cucina-di-mare-in-abruzzo/62758" target="_blank" rel="noopener"><span class="rassegna__testata">L'Espresso</span><span class="rassegna__titolo">La storia di Gennaro D'Ignazio e della Vecchia Marina, simbolo della cucina di mare in Abruzzo</span><span class="rassegna__anno">2026</span></a></li>
+      <li><a href="https://passionegourmet.it/2024/08/16/vecchia-marina/" target="_blank" rel="noopener"><span class="rassegna__testata">Passione Gourmet</span><span class="rassegna__titolo">Vecchia Marina</span><span class="rassegna__anno">2024</span></a></li>
+      <li><a href="https://www.salaecucina.it/it-it/ladriatico-in-tavola-alla-vecchia-marina.aspx" target="_blank" rel="noopener"><span class="rassegna__testata">Sala&amp;Cucina</span><span class="rassegna__titolo">L'Adriatico in tavola alla Vecchia Marina</span><span class="rassegna__anno"></span></a></li>
+      <li><a href="https://www.gentedimareonline.it/ristoranti-mare-vecchia-marina-recensione/" target="_blank" rel="noopener"><span class="rassegna__testata">Gente di Mare</span><span class="rassegna__titolo">Ristoranti sul mare: Vecchia Marina, l'Adriatico nel piatto</span><span class="rassegna__anno"></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================================================================
+     PRENOTA — una richiesta, non una conferma: il ristorante richiama.
+     Nella demo il modulo non invia nulla.
+     ==================================================================== -->
+<section class="prenota" id="prenota" aria-labelledby="prenota-titolo" data-sezione="Prenota">
+  <div class="prenota__testa">
+    <p class="etichetta etichetta--chiara">Prenotazioni</p>
+    <h2 class="prenota__titolo" id="prenota-titolo" data-righe>Prenota<br><em>un tavolo.</em></h2>
+    <p class="prenota__intro">Lasciate la richiesta: vi richiamiamo per confermare. Il tavolo è vostro quando ve lo diciamo noi, non prima.</p>
+    <p class="prenota__tel">Oppure chiamate<br><a href="tel:+390858931170">085 893 1170</a></p>
+  </div>
+
+  <form class="modulo" novalidate data-modulo>
+    <div class="campo campo--largo">
+      <input id="f-nome" name="nome" type="text" autocomplete="name" required placeholder=" " aria-describedby="e-nome">
+      <label for="f-nome">Nome e cognome</label>
+      <p class="campo__errore" id="e-nome" data-errore>Scriveteci il vostro nome.</p>
+    </div>
+    <div class="campo">
+      <select id="f-persone" name="persone" required aria-describedby="e-persone">
+        <option value="" disabled>—</option>
+        <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option>
+        <option>6</option><option>7</option><option>8</option><option value="9+">9 o più</option>
+      </select>
+      <label for="f-persone" class="campo__fissa">Persone</label>
+      <p class="campo__errore" id="e-persone" data-errore>Quanti sarete?</p>
+    </div>
+    <div class="campo">
+      <input id="f-data" name="data" type="date" required aria-describedby="e-data" data-data>
+      <label for="f-data" class="campo__fissa">Data</label>
+      <p class="campo__errore" id="e-data" data-errore>Scegliete una data da oggi in poi.</p>
+    </div>
+    <div class="campo">
+      <!-- Gli orari si compilano da dati.js (ORARI.turni). DA CONFERMARE. -->
+      <select id="f-ora" name="orario" required aria-describedby="e-ora" data-orari></select>
+      <label for="f-ora" class="campo__fissa">Orario</label>
+      <p class="campo__errore" id="e-ora" data-errore>Scegliete un orario.</p>
+    </div>
+    <div class="campo">
+      <input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required placeholder=" " aria-describedby="e-tel">
+      <label for="f-tel">Telefono</label>
+      <p class="campo__errore" id="e-tel" data-errore>Serve un numero per richiamarvi.</p>
+    </div>
+    <div class="campo campo--largo">
+      <input id="f-email" name="email" type="email" autocomplete="email" placeholder=" " aria-describedby="e-email">
+      <label for="f-email">Email <small>(facoltativa)</small></label>
+      <p class="campo__errore" id="e-email" data-errore>L'indirizzo email non sembra corretto.</p>
+    </div>
+    <div class="campo campo--largo">
+      <textarea id="f-note" name="note" rows="2" placeholder=" "></textarea>
+      <label for="f-note">Note <small>(allergie, seggiolone, un'occasione)</small></label>
+    </div>
+    <div class="modulo__piede">
+      <button class="bottone bottone--chiaro bottone--grande" type="submit">Richiedi prenotazione <svg aria-hidden="true"><use href="#i-freccia"/></svg></button>
+      <p class="modulo__nota">Nella demo il modulo non invia nulla. <span class="dc">informativa privacy da collegare</span></p>
+    </div>
+    <div class="modulo__grazie" role="status" tabindex="-1" data-modulo-grazie>
+      <p class="modulo__grazie-titolo">Grazie, <span data-modulo-nome></span>.</p>
+      <p>Nel sito definitivo la richiesta arriverebbe subito al ristorante, che vi richiama per confermare il tavolo.</p>
+    </div>
+  </form>
+
+  <!-- Prima di venire: si compila da dati.js (ORARI). -->
+  <aside class="avvisi" aria-labelledby="avvisi-titolo">
+    <h3 class="avvisi__titolo" id="avvisi-titolo">Prima di venire</h3>
+    <dl class="avvisi__lista" data-avvisi></dl>
+  </aside>
+</section>
+
+<!-- ====================================================================
+     CONTATTI — la carta nautica è un disegno; la mappa vera di Google si
+     carica solo su richiesta (niente cookie di terze parti al primo
+     accesso, niente peso inutile).
+     ==================================================================== -->
+<section class="approdo-finale" id="contatti" aria-labelledby="contatti-titolo" data-sezione="Contatti">
+  <h2 class="approdo-finale__titolo" id="contatti-titolo">
+    <span data-righe>Ci vediamo</span>
+    <span class="approdo-finale__rientro" data-righe><em>sul mare.</em></span>
+  </h2>
+
+  <div class="recapiti">
+    <address class="recapiti__indirizzo">
+      Vecchia Marina<br>
+      Lungomare Trento 37<br>
+      64026 Roseto degli Abruzzi (TE)<br>
+      Abruzzo, Italia
+    </address>
+    <dl class="recapiti__lista">
+      <div><dt>Telefono</dt><dd><a href="tel:+390858931170">085 893 1170</a></dd></div>
+      <div><dt>Email</dt><dd><span class="dc">da confermare</span></dd></div>
+      <div><dt>Mappa</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Vecchia%20Marina%2C%20Lungomare%20Trento%2037%2C%20Roseto%20degli%20Abruzzi" target="_blank" rel="noopener">Google Maps<span class="sr-only"> (si apre in una nuova scheda)</span></a></dd></div>
+    </dl>
+    <a class="bottone" href="https://www.google.com/maps/dir/?api=1&amp;destination=Vecchia%20Marina%2C%20Lungomare%20Trento%2037%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener">
+      Come arrivare<span class="sr-only"> (si apre in una nuova scheda)</span> <svg aria-hidden="true"><use href="#i-obliqua"/></svg>
+    </a>
+  </div>
+
+  <figure class="carta-nautica" data-mappa>
+    <div class="carta-nautica__disegno">
+      <svg viewBox="0 0 720 520" role="img" aria-labelledby="mappa-desc">
+        <desc id="mappa-desc">Carta schematica: la costa di Roseto degli Abruzzi da nord a sud, la ferrovia e il lungomare paralleli alla spiaggia, il ristorante sul lungomare nord.</desc>
+        <!-- scandagli: le profondità, come su una carta nautica -->
+        <g class="carta-nautica__scandagli" aria-hidden="true">
+          <text x="520" y="70">3</text><text x="600" y="110">5</text><text x="660" y="60">7</text>
+          <text x="560" y="190">4</text><text x="640" y="230">6</text><text x="690" y="180">9</text>
+          <text x="590" y="320">4</text><text x="660" y="360">7</text><text x="610" y="440">5</text>
+          <text x="680" y="480">8</text><text x="540" y="470">3</text><text x="700" y="290">10</text>
+        </g>
+        <g class="carta-nautica__batimetriche" fill="none" stroke="currentColor" stroke-width=".7">
+          <path d="M515 0C505 120 500 240 512 360S540 480 532 520"/>
+          <path d="M575 0C566 130 560 250 575 370S600 470 596 520" stroke-dasharray="2 5"/>
+          <path d="M645 0C636 140 632 260 646 380S668 470 664 520" stroke-dasharray="8 6"/>
+        </g>
+        <path class="carta-nautica__costa" d="M470 0C462 120 458 240 468 360S492 470 486 520" fill="none" stroke="currentColor" stroke-width="1.4" data-traccia/>
+        <path class="carta-nautica__spiaggia" d="M470 0C462 120 458 240 468 360S492 470 486 520L452 520C456 470 436 360 428 240S432 60 438 0Z"/>
+        <!-- il lungomare e la ferrovia adriatica -->
+        <path d="M430 0C424 120 420 240 428 360S446 470 442 520" fill="none" stroke="currentColor" stroke-width="2.2" data-traccia/>
+        <path d="M380 0C374 120 372 240 380 360S396 470 392 520" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="10 4" data-traccia/>
+        <text class="carta-nautica__via" transform="translate(414 300) rotate(-87)">Lungomare</text>
+        <text class="carta-nautica__via" transform="translate(366 300) rotate(-87)">Ferrovia adriatica</text>
+        <text class="carta-nautica__mare" transform="translate(590 280) rotate(-90)">Mare Adriatico</text>
+        <g class="carta-nautica__punto" transform="translate(432 150)">
+          <circle class="carta-nautica__onda" r="22" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle r="5"/>
+        </g>
+        <g class="carta-nautica__etichetta" transform="translate(404 146)" text-anchor="end">
+          <text class="carta-nautica__nome" x="0" y="0">Vecchia Marina</text>
+          <text class="carta-nautica__dove" x="0" y="20">Lungomare Trento 37</text>
+        </g>
+        <text class="carta-nautica__paese" x="200" y="330" text-anchor="middle">Roseto degli Abruzzi</text>
+        <g class="carta-nautica__rosa" transform="translate(90 90)" fill="none" stroke="currentColor" stroke-width=".8">
+          <circle r="34"/><circle r="26" stroke-dasharray="1 3"/>
+          <path d="M0-44V44M-44 0H44"/><path d="M0-34 5 0 0 34-5 0Z" fill="currentColor" stroke="none" opacity=".8"/>
+          <text x="0" y="-50" text-anchor="middle" stroke="none" fill="currentColor">N</text>
+        </g>
+      </svg>
+      <button class="carta-nautica__carica" type="button" data-mappa-carica>Apri la mappa interattiva</button>
+      <p class="carta-nautica__avviso">Caricando la mappa si accettano i cookie di Google.</p>
+    </div>
+    <figcaption>Schema non in scala. Posizione da verificare sulla mappa.</figcaption>
+  </figure>
+</section>
+
+</main>
+
+<footer class="piede">
+  <p class="piede__marchio"><span>Vecchia</span> <span>Marina</span></p>
+  <p class="piede__luogo">Roseto degli Abruzzi</p>
+  <ul class="piede__social" role="list">
+    <li><span class="piede__spento" aria-disabled="true">Instagram <span class="dc">da collegare</span></span></li>
+    <li><a href="https://www.facebook.com/LaVecchiaMarina/" target="_blank" rel="noopener">Facebook<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+    <li><a href="https://www.tripadvisor.it/Restaurant_Review-g194888-d2153818-Reviews-Vecchia_Marina-Roseto_Degli_Abruzzi_Province_of_Teramo_Abruzzo.html" target="_blank" rel="noopener">TripAdvisor<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+    <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Vecchia%20Marina%20Roseto%20degli%20Abruzzi" target="_blank" rel="noopener">Google Maps<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+  </ul>
+  <ul class="piede__legale" role="list">
+    <li><span class="piede__spento" aria-disabled="true">Privacy</span></li>
+    <li><span class="piede__spento" aria-disabled="true">Cookie</span></li>
+    <li><span class="dc">P. IVA da inserire</span></li>
+  </ul>
+  <p class="piede__nota">Ristorante di pesce · Adriatico</p>
+</footer>
+
+<!-- ====================================================================
+     NOTA DI PRISMA LOCALE — fuori dal sito vero: è il biglietto che
+     accompagna la proposta. Da togliere alla pubblicazione.
+     ==================================================================== -->
+<aside class="nota" id="nota" aria-labelledby="nota-titolo">
+  <div class="nota__foglio">
+    <p class="nota__mittente">Prisma Locale · per la famiglia di Vecchia Marina</p>
+    <h2 class="nota__titolo" id="nota-titolo">Perché un sito vostro</h2>
+    <ol class="nota__punti" role="list">
+      <li><b>Le prenotazioni arrivano a voi.</b> Direttamente, senza commissioni e senza passare da un portale.</li>
+      <li><b>Il menu si legge dal telefono.</b> E il pescato del giorno si aggiorna in un minuto, ogni mattina.</li>
+      <li><b>La vostra storia, raccontata da voi.</b> Il Bib Gourmand, la famiglia, il mercato all'alba: oggi lo raccontano gli altri.</li>
+      <li><b>Pensato per farsi trovare.</b> Da chi cerca «ristorante di pesce a Roseto»: prima delle recensioni degli altri, la vostra casa.</li>
+    </ol>
+    <div class="nota__manca">
+      <p class="nota__sotto">Per pubblicarlo ci servono</p>
+      <ul role="list" class="nota__lista" data-lista>
+        <li><label><input type="checkbox" value="foto"><b>Fotografie</b> (sala, piatti, cucina, famiglia)</label></li>
+        <li><label><input type="checkbox" value="carta"><b>La carta e i vini</b></label></li>
+        <li><label><input type="checkbox" value="orari"><b>Orari e chiusure</b></label></li>
+        <li><label><input type="checkbox" value="storia"><b>Conferme sulla storia</b></label></li>
+        <li><label><input type="checkbox" value="contatti"><b>Email e Instagram</b></label></li>
+      </ul>
+      <a class="bottone" href="https://wa.me/393758350800" target="_blank" rel="noopener" data-invia>Scrivici su WhatsApp · <span data-conto>0</span> pronti<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+    </div>
+  </div>
+</aside>
+</body>
+</html>

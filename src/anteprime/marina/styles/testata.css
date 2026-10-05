@@ -1,0 +1,143 @@
+/* ---- Testata ------------------------------------------------------------ */
+.testata {
+  position: fixed; left: 0; right: 0; top: 0; z-index: 80;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px;
+  height: var(--testata-h);
+  padding: 0 var(--margine);
+  color: var(--carta);
+  transition: height 0.6s var(--lento), color 0.5s, background-color 0.5s, transform 0.7s var(--lento);
+}
+.testata::after {
+  content: ""; position: absolute; left: var(--margine); right: var(--margine); bottom: 0;
+  height: 1px; background: currentColor; opacity: 0;
+  transform: scaleX(0.2); transition: opacity 0.6s, transform 0.9s var(--lento);
+}
+.testata.is-compatta { height: var(--testata-compatta); color: var(--inchiostro); background: rgb(var(--carta-rgb) / 0.96); }
+.testata.is-compatta::after { opacity: 0.16; transform: none; }
+.testata.is-compatta.is-scura { color: var(--carta); background: rgb(var(--adriatico-rgb) / 0.96); }
+.testata.is-nascosta { transform: translateY(-100%); }
+
+.marchio {
+  justify-self: start;
+  display: inline-flex; gap: 0.5em;
+  font-family: var(--f-testo); font-size: 0.8125rem; font-stretch: 112%; font-weight: 500;
+  letter-spacing: 0.34em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap;
+}
+.marchio span:last-child { font-weight: 300; }
+
+.testata__nav ul { display: flex; gap: clamp(18px, 2.2vw, 40px); }
+.testata__nav a {
+  position: relative; display: block; padding: 10px 0;
+  font-size: 0.6875rem; font-stretch: 76%; font-weight: 560; letter-spacing: 0.24em; text-transform: uppercase;
+  text-decoration: none;
+}
+.testata__nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: right; transition: transform 0.6s var(--lento);
+}
+.testata__nav a:hover::after, .testata__nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
+
+.testata__prenota {
+  justify-self: end;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 10px 0;
+  font-size: 0.6875rem; font-stretch: 76%; font-weight: 650; letter-spacing: 0.26em; text-transform: uppercase;
+  text-decoration: none;
+}
+/* il segno della prenotazione: una piccola linea d'orizzonte che si allunga */
+.testata__prenota::before {
+  content: ""; width: 26px; height: 1px; background: currentColor;
+  transition: width 0.6s var(--lento);
+}
+.testata__prenota:hover::before { width: 44px; }
+
+.testata__menu {
+  display: none;
+  justify-self: end; align-items: center; gap: 12px;
+  min-height: 44px; padding: 0;
+  border: 0; background: none;
+  font-size: 0.6875rem; font-stretch: 76%; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase;
+}
+.testata__menu-onda {
+  width: 26px; height: 9px;
+  background:
+    linear-gradient(currentColor, currentColor) 0 0 / 100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) 100% 100% / 62% 1px no-repeat;
+}
+
+@media (max-width: 63.99em) {
+  :root { --testata-h: 64px; }
+  .testata { top: var(--banner-h); grid-template-columns: 1fr auto; }
+  .testata__nav, .testata__prenota { display: none; }
+  .testata__menu { display: inline-flex; }
+  .marchio { font-size: 0.75rem; letter-spacing: 0.28em; }
+}
+@media (max-width: 47.99em) {
+  :root { --testata-compatta: 54px; }
+}
+
+/* ---- L'indice a tutto schermo (telefono e tablet) ----------------------- */
+.indice {
+  position: fixed; inset: 0;
+  width: 100%; max-width: none; height: 100%; max-height: none;
+  margin: 0; padding: calc(18px + env(safe-area-inset-top, 0px)) var(--margine) calc(24px + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  background: var(--adriatico); color: var(--carta);
+  overflow-y: auto;
+}
+.indice[open] { display: grid; grid-template-rows: auto 1fr auto auto; gap: 20px; }
+.indice::backdrop { background: var(--adriatico); }
+.indice__testa { display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+.indice__chiudi {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0;
+  border: 0; background: none;
+  font-size: 0.6875rem; font-stretch: 76%; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase;
+}
+.indice__chiudi svg { width: 20px; height: 20px; }
+.indice__voci { align-self: center; display: grid; gap: 2px; }
+.indice__voci a {
+  display: flex; align-items: baseline; gap: 18px;
+  padding: 6px 0;
+  font-family: var(--f-titolo); font-weight: 200; font-size: clamp(2.3rem, 9.4vw, 4rem); line-height: 1.04; letter-spacing: -0.03em;
+  text-decoration: none;
+}
+.indice__voci li:nth-child(even) a { padding-left: 14vw; font-style: italic; }
+.indice__num { font-family: var(--f-testo); font-size: 0.625rem; font-stretch: 72%; font-weight: 600; letter-spacing: 0.2em; color: var(--spuma); }
+.indice__orizzonte { height: 1px; background: var(--peltro); opacity: 0.5; }
+.indice__piede { display: grid; gap: 10px; font-size: var(--t-piccolo); color: var(--spuma); }
+.indice__tel { font-family: var(--f-titolo); font-size: 1.5rem; font-weight: 300; text-decoration: none; color: var(--carta); }
+.motion .indice[open] .indice__voci li { animation: indice-voce 0.9s var(--lento) both; }
+.motion .indice[open] .indice__voci li:nth-child(2) { animation-delay: 0.05s; }
+.motion .indice[open] .indice__voci li:nth-child(3) { animation-delay: 0.1s; }
+.motion .indice[open] .indice__voci li:nth-child(4) { animation-delay: 0.15s; }
+.motion .indice[open] .indice__voci li:nth-child(5) { animation-delay: 0.2s; }
+.motion .indice[open] .indice__voci li:nth-child(6) { animation-delay: 0.25s; }
+.motion .indice[open] .indice__orizzonte { animation: indice-linea 1.2s 0.2s var(--lento) both; transform-origin: left; }
+@keyframes indice-voce { from { opacity: 0; transform: translateY(28px); } }
+@keyframes indice-linea { from { transform: scaleX(0); } }
+.menu-aperto .banchina { visibility: hidden; }
+
+/* ---- La banchina: prenota e chiama, sempre in basso sul telefono -------- */
+.banchina { display: none; }
+@media (max-width: 63.99em) {
+  .banchina {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 85;
+    display: grid; grid-template-columns: 1fr auto;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--adriatico); color: var(--carta);
+    transform: translateY(110%);
+    transition: transform 0.7s var(--lento);
+  }
+  .banchina.is-visibile { transform: none; }
+  .banchina a {
+    display: flex; align-items: center; min-height: 58px; padding: 0 22px;
+    font-size: 0.75rem; font-stretch: 78%; font-weight: 650; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none;
+  }
+  .banchina__prenota { gap: 14px; }
+  .banchina__prenota::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+  .banchina__chiama { border-left: 1px solid var(--filo-chiaro); }
+  body { padding-bottom: 58px; }
+}
+

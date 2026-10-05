@@ -18,6 +18,7 @@ export default defineConfig({
         notFound: resolve(root, '404.html'),
         nagoya: resolve(root, 'anteprime/nagoya-sushi/index.html'),
         borgo: resolve(root, 'anteprime/borgo-spoltino/index.html'),
+        marina: resolve(root, 'anteprime/vecchia-marina/index.html'),
       },
     },
   },

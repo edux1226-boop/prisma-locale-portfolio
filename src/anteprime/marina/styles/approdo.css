@@ -1,0 +1,136 @@
+/* ---- L'esperienza: quattro frammenti, nessuno uguale all'altro -------- */
+.approdo { padding-block: calc(var(--respiro) * 0.5) var(--respiro); row-gap: clamp(64px, 9vw, 150px); align-items: start; }
+.frammento { display: grid; gap: 16px; align-content: start; }
+.frammento__nome { display: flex; align-items: baseline; gap: 14px; font-size: var(--t-l); }
+.frammento__num { font-family: var(--f-titolo); font-style: italic; font-size: 1rem; color: var(--pietra-testo); }
+.frammento__testo { max-width: 24rem; color: var(--pietra-testo); }
+.frammento__foto { position: relative; overflow: clip; }
+.frammento__foto picture { width: 100%; height: 100%; }
+.frammento__grande { font-family: var(--f-titolo); font-weight: 200; font-style: italic; font-size: var(--t-xl); line-height: 1; letter-spacing: -0.035em; }
+
+.frammento--mare { grid-column: 1 / 9; grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: inherit; }
+.frammento--mare .frammento__foto { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.frammento--mare .frammento__nome { grid-column: 5 / -1; }
+.frammento--mare .frammento__testo { grid-column: 5 / -1; }
+.frammento--tavola { grid-column: 9 / 13; align-self: end; padding-bottom: 4vw; }
+.frammento--territorio { grid-column: 2 / 6; grid-template-columns: 1fr; }
+.frammento--territorio .frammento__foto { aspect-ratio: 2 / 3; margin-bottom: 8px; }
+.frammento--ospitalita { grid-column: 8 / 12; align-self: center; border-top: 1px solid var(--inchiostro); padding-top: 22px; }
+@media (max-width: 63.99em) {
+  .frammento--mare { grid-column: 1 / -1; }
+  .frammento--mare .frammento__nome, .frammento--mare .frammento__testo { grid-column: 2 / -1; }
+  .frammento--tavola { grid-column: 3 / -1; padding: 0; }
+  .frammento--territorio { grid-column: 1 / 8; }
+  .frammento--ospitalita { grid-column: 4 / -1; }
+}
+@media (max-width: 47.99em) {
+  .frammento--mare .frammento__nome, .frammento--mare .frammento__testo { grid-column: 1 / -1; }
+  .frammento--mare .frammento__foto { aspect-ratio: 4 / 5; }
+  .frammento--tavola { grid-column: 2 / -1; }
+  .frammento--territorio { grid-column: 1 / 10; }
+  .frammento--ospitalita { grid-column: 1 / -1; }
+}
+
+/* ---- Gallery: provini ------------------------------------------------- */
+.galleria { padding-block: var(--respiro); background: var(--adriatico); color: var(--carta); row-gap: clamp(48px, 6vw, 96px); }
+.galleria__testa { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: inherit; align-items: end; row-gap: 20px; }
+.galleria__testa .etichetta { grid-column: 1 / -1; color: var(--spuma); }
+.galleria__titolo { grid-column: 1 / 8; font-size: var(--t-xxl); }
+.galleria__nota { grid-column: 9 / 13; font-size: var(--t-piccolo); color: var(--spuma); max-width: 22rem; }
+.provini {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: row dense;
+  gap: clamp(28px, 4vw, 64px) clamp(12px, 1.8vw, 28px);
+  align-items: start;
+}
+.provino { display: grid; gap: 12px; }
+.provino__apri {
+  position: relative; display: block; width: 100%; padding: 0; border: 0;
+  background: var(--petrolio); overflow: clip; cursor: zoom-in;
+}
+.provino__apri img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--lento), opacity 0.6s; }
+.provino__apri:hover img { transform: scale(1.04); }
+.provino__apri:focus-visible { outline-offset: 6px; }
+.provino__dida { display: flex; gap: 14px; font-size: 0.6875rem; font-stretch: 76%; font-weight: 520; letter-spacing: 0.18em; text-transform: uppercase; color: var(--spuma); }
+.provino__dida span { color: var(--peltro); }
+.provino--panorama { grid-column: 1 / 9; }
+.provino--panorama .provino__apri { aspect-ratio: 21 / 9; }
+.provino--alto { grid-column: 10 / 13; margin-top: 12vw; }
+.provino--alto .provino__apri { aspect-ratio: 2 / 3; }
+.provino--quadro { grid-column: 2 / 6; }
+.provino--quadro .provino__apri { aspect-ratio: 1 / 1; }
+.provino--stretto { grid-column: 7 / 9; margin-top: -6vw; }
+.provino--stretto .provino__apri { aspect-ratio: 9 / 16; }
+.provino--largo { grid-column: 5 / 13; }
+.provino--largo .provino__apri { aspect-ratio: 16 / 9; }
+.provino--basso { grid-column: 1 / 4; margin-top: 0; }
+.provino--fine { grid-column: 6 / 11; }
+.provino--fine .provino__apri { aspect-ratio: 4 / 3; }
+@media (max-width: 47.99em) {
+  .galleria__titolo, .galleria__nota { grid-column: 1 / -1; }
+  .provini { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .provino--panorama, .provino--largo { grid-column: 1 / -1; }
+  .provino--alto { grid-column: 3 / -1; margin-top: 0; }
+  .provino--quadro { grid-column: 1 / 5; }
+  .provino--stretto { grid-column: 1 / 3; margin-top: 0; }
+  .provino--basso { grid-column: 1 / 4; }
+  .provino--fine { grid-column: 2 / -1; }
+}
+
+/* ---- Il visore a tutto schermo ---------------------------------------- */
+.visore {
+  position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none;
+  margin: 0; padding: 0; border: 0;
+  background: var(--nero); color: var(--carta);
+}
+.visore[open] { display: grid; place-items: center; }
+.visore::backdrop { background: var(--nero); }
+.visore__figura { display: grid; gap: 14px; justify-items: center; max-width: 88vw; }
+.visore__img { max-width: 88vw; max-height: 78svh; width: auto; height: auto; object-fit: contain; }
+.visore__dida { font-size: 0.6875rem; font-stretch: 76%; letter-spacing: 0.2em; text-transform: uppercase; color: var(--spuma); }
+.visore__conto { position: absolute; left: var(--margine); top: 24px; font-size: 0.6875rem; letter-spacing: 0.24em; color: var(--spuma); }
+.visore__btn, .visore__chiudi {
+  position: absolute; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-width: 48px; min-height: 48px; padding: 0; border: 0; background: none;
+  font-size: 0.6875rem; font-stretch: 76%; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+}
+.visore__btn svg { width: 28px; height: 28px; }
+.visore__chiudi svg { width: 20px; height: 20px; }
+.visore__btn--prec { left: var(--margine); top: 50%; transform: translateY(-50%); }
+.visore__btn--succ { right: var(--margine); top: 50%; transform: translateY(-50%); }
+.visore__chiudi { right: var(--margine); top: 12px; }
+@media (max-width: 47.99em) {
+  .visore__btn { top: auto; bottom: 18px; transform: none; }
+}
+
+/* ---- Recensioni e rassegna -------------------------------------------- */
+.voci { padding-block: var(--respiro); row-gap: clamp(48px, 6vw, 90px); align-items: end; }
+.voci__titolo { grid-column: 1 / -1; font-size: var(--t-xxl); }
+.voci__titolo > span { display: block; }
+.voci__rientro { padding-left: calc(var(--colonna) * 3); }
+.voci__numeri { grid-column: 1 / 6; display: grid; gap: 8px; }
+.voci__voto { display: flex; align-items: baseline; gap: 14px; font-family: var(--f-titolo); font-weight: 200; }
+.voci__cifra { font-size: var(--t-mare); line-height: 0.8; letter-spacing: -0.05em; font-variant-numeric: lining-nums; }
+.voci__su { font-size: var(--t-l); color: var(--pietra-testo); }
+.voci__conto { margin-top: 0.9em; font-size: var(--t-piccolo); color: var(--pietra-testo); }
+.voci__conto a { color: var(--inchiostro); text-underline-offset: 4px; }
+.rassegna { grid-column: 7 / 13; display: grid; gap: 18px; }
+.rassegna__lista { border-top: 1px solid var(--inchiostro); }
+.rassegna__lista a {
+  display: grid; grid-template-columns: 9.5rem 1fr auto; gap: 6px 20px; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--filo);
+  text-decoration: none;
+  transition: padding 0.6s var(--lento);
+}
+.rassegna__lista a:hover { padding-left: 12px; }
+.rassegna__testata { font-size: var(--t-etichetta); font-stretch: 76%; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+.rassegna__titolo { font-family: var(--f-titolo); font-style: italic; font-weight: 300; font-size: 1.15rem; line-height: 1.3; }
+.rassegna__anno { font-size: var(--t-piccolo); color: var(--pietra-testo); }
+@media (max-width: 63.99em) {
+  .voci__numeri, .rassegna { grid-column: 1 / -1; }
+  .voci__rientro { padding-left: 10vw; }
+}
+@media (max-width: 47.99em) {
+  .rassegna__lista a { grid-template-columns: 1fr auto; }
+  .rassegna__titolo { grid-column: 1 / -1; grid-row: 2; }
+}

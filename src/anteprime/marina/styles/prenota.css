@@ -1,0 +1,164 @@
+/* ---- Prenota ------------------------------------------------------------ */
+.prenota {
+  padding-block: var(--respiro);
+  background: var(--adriatico); color: var(--carta);
+  row-gap: 64px; align-items: start;
+}
+.prenota :focus-visible { outline-color: var(--carta); }
+.prenota__testa { grid-column: 1 / 6; display: grid; gap: 26px; }
+.prenota__titolo { font-size: var(--t-xxl); }
+.prenota__intro { max-width: 26rem; color: var(--spuma); }
+.prenota__tel { font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spuma); line-height: 2; }
+.prenota__tel a { font-family: var(--f-titolo); font-size: var(--t-l); font-weight: 200; letter-spacing: -0.01em; text-transform: none; color: var(--carta); text-decoration: none; }
+.prenota__tel a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+
+.modulo { grid-column: 7 / 13; grid-row: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; position: relative; }
+.campo { position: relative; padding-top: 22px; }
+.campo--largo { grid-column: 1 / -1; }
+.campo input, .campo select, .campo textarea {
+  display: block; width: 100%; min-height: 50px;
+  padding: 10px 0 8px;
+  border: 0; border-bottom: 1px solid rgb(var(--carta-rgb) / 0.36); border-radius: 0;
+  background: transparent; color: var(--carta);
+  font-family: var(--f-titolo); font-size: 1.25rem; font-weight: 300;
+  appearance: none; -webkit-appearance: none;
+  transition: border-color 0.4s;
+}
+.campo textarea { resize: vertical; min-height: 76px; line-height: 1.4; }
+.campo select { cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(-45deg, transparent 50%, currentColor 50%); background-position: right 6px top 55%, right 0 top 55%; background-size: 6px 6px; background-repeat: no-repeat; }
+.campo select option { color: var(--inchiostro); }
+.campo input[type="date"] { color-scheme: dark; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { outline: none; border-bottom-color: var(--carta); }
+.campo label {
+  position: absolute; left: 0; top: 36px;
+  font-size: var(--t-piccolo); color: var(--spuma);
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform 0.4s var(--lento), color 0.4s;
+}
+.campo label small { font-size: 0.85em; opacity: 0.8; }
+.campo input:focus + label, .campo input:not(:placeholder-shown) + label,
+.campo textarea:focus + label, .campo textarea:not(:placeholder-shown) + label, .campo__fissa {
+  transform: translateY(-30px) scale(0.84);
+}
+.campo__fissa { font-stretch: 76%; letter-spacing: 0.12em; text-transform: uppercase; }
+.campo__errore { display: none; padding-top: 6px; font-size: 0.75rem; color: #F0B9A8; }
+.campo.is-errato .campo__errore { display: block; }
+.campo.is-errato input, .campo.is-errato select { border-bottom-color: #F0B9A8; }
+.modulo__piede { grid-column: 1 / -1; display: grid; gap: 14px; margin-top: 28px; }
+.modulo__nota { font-size: 0.75rem; color: var(--spuma); }
+.modulo__nota .dc { color: var(--spuma); }
+.modulo__grazie {
+  position: absolute; inset: 0; z-index: 2;
+  display: none; align-content: center; gap: 16px;
+  background: var(--adriatico);
+}
+.modulo.is-inviato .modulo__grazie { display: grid; }
+.modulo__grazie-titolo { font-family: var(--f-titolo); font-weight: 200; font-style: italic; font-size: var(--t-xl); line-height: 1; }
+.modulo__grazie p:last-child { max-width: 28rem; color: var(--spuma); }
+
+.avvisi { grid-column: 1 / 6; display: grid; gap: 18px; padding-top: 26px; border-top: 1px solid var(--filo-chiaro); }
+.avvisi__titolo { font-size: var(--t-m); font-style: italic; font-weight: 300; }
+.avvisi__lista { display: grid; }
+.avvisi__lista div { display: grid; grid-template-columns: 10rem 1fr; gap: 4px 18px; padding: 12px 0; border-bottom: 1px solid var(--filo-chiaro); font-size: var(--t-piccolo); }
+.avvisi__lista dt { font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--spuma); padding-top: 2px; }
+.avvisi__lista .dc { color: var(--spuma); }
+@media (max-width: 63.99em) {
+  .prenota__testa, .modulo, .avvisi { grid-column: 1 / -1; }
+  .modulo { grid-row: auto; }
+}
+@media (max-width: 47.99em) {
+  .modulo { grid-template-columns: 1fr; }
+  .avvisi__lista div { grid-template-columns: 1fr; }
+}
+
+/* ---- Contatti ---------------------------------------------------------- */
+.approdo-finale { padding-block: var(--respiro) calc(var(--respiro) * 0.7); row-gap: clamp(48px, 6vw, 90px); align-items: start; }
+.approdo-finale__titolo { grid-column: 1 / -1; font-size: var(--t-mare); line-height: 0.82; letter-spacing: -0.05em; }
+.approdo-finale__titolo > span { display: block; }
+.approdo-finale__rientro { padding-left: calc(var(--colonna) * 2.4); }
+.recapiti { grid-column: 1 / 5; display: grid; gap: 30px; justify-items: start; }
+.recapiti__indirizzo { font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m); line-height: 1.35; }
+.recapiti__lista { display: grid; width: 100%; border-top: 1px solid var(--filo); }
+.recapiti__lista div { display: grid; grid-template-columns: 7rem 1fr; padding: 12px 0; border-bottom: 1px solid var(--filo); font-size: var(--t-piccolo); }
+.recapiti__lista dt { font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pietra-testo); padding-top: 2px; }
+.recapiti__lista a { text-underline-offset: 4px; }
+
+.carta-nautica { grid-column: 6 / 13; display: grid; gap: 12px; }
+.carta-nautica__disegno { position: relative; aspect-ratio: 720 / 520; background: var(--carta-2); color: var(--petrolio); overflow: clip; }
+.carta-nautica__disegno svg { width: 100%; height: 100%; }
+.carta-nautica__disegno iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(0.85) contrast(0.95); }
+.carta-nautica__scandagli text { font-family: var(--f-titolo); font-style: italic; font-size: 13px; fill: currentColor; opacity: 0.55; }
+.carta-nautica__batimetriche { opacity: 0.35; }
+.carta-nautica__spiaggia { fill: var(--sabbia); opacity: 0.6; }
+.carta-nautica__via { font-family: var(--f-testo); font-size: 10px; font-stretch: 72%; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; fill: currentColor; opacity: 0.75; }
+.carta-nautica__mare { font-family: var(--f-titolo); font-style: italic; font-size: 26px; fill: currentColor; opacity: 0.5; letter-spacing: 0.1em; }
+.carta-nautica__paese { font-family: var(--f-titolo); font-size: 30px; font-weight: 200; fill: var(--inchiostro); letter-spacing: -0.01em; }
+.carta-nautica__punto { color: var(--adriatico); fill: var(--adriatico); }
+.motion .carta-nautica.is-vista .carta-nautica__onda { animation: onda-punto 3.4s var(--lento) infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes onda-punto { from { transform: scale(0.3); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+.carta-nautica__nome { font-family: var(--f-titolo); font-size: 22px; font-weight: 300; font-style: italic; fill: var(--inchiostro); }
+.carta-nautica__dove { font-family: var(--f-testo); font-size: 10px; font-stretch: 72%; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; fill: var(--pietra-testo); }
+.carta-nautica__rosa { opacity: 0.5; }
+.carta-nautica__rosa text { font-family: var(--f-testo); font-size: 11px; }
+.carta-nautica__carica {
+  position: absolute; left: 18px; bottom: 18px;
+  min-height: 44px; padding: 0 18px;
+  border: 1px solid var(--inchiostro); background: var(--carta);
+  font-size: 0.6875rem; font-stretch: 76%; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--inchiostro);
+  transition: background-color 0.4s, color 0.4s;
+}
+.carta-nautica__carica:hover { background: var(--inchiostro); color: var(--carta); }
+.carta-nautica__avviso { position: absolute; left: 18px; bottom: 68px; font-size: 0.6875rem; color: var(--pietra-testo); }
+.carta-nautica.is-caricata .carta-nautica__carica, .carta-nautica.is-caricata .carta-nautica__avviso { display: none; }
+.carta-nautica figcaption { font-size: 0.75rem; color: var(--pietra-testo); }
+@media (max-width: 63.99em) {
+  .recapiti, .carta-nautica { grid-column: 1 / -1; }
+  .approdo-finale__rientro { padding-left: 12vw; }
+}
+@media (max-width: 47.99em) {
+  .approdo-finale__titolo { font-size: clamp(3.4rem, 18vw, 6rem); }
+  .carta-nautica__disegno { aspect-ratio: 4 / 5; }
+  .carta-nautica__disegno svg { width: 170%; max-width: none; height: 100%; margin-left: -62%; }
+  .carta-nautica__paese { display: none; }
+}
+
+/* ---- Piede ------------------------------------------------------------ */
+.piede {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(12px, 1.8vw, 28px); row-gap: 28px;
+  padding: clamp(56px, 7vw, 100px) var(--margine) clamp(32px, 4vw, 48px);
+  background: var(--adriatico); color: var(--carta);
+  font-size: var(--t-piccolo);
+}
+.piede a { text-decoration: none; }
+.piede a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.piede :focus-visible { outline-color: var(--carta); }
+.piede__marchio { grid-column: 1 / 6; display: flex; gap: 0.5em; font-size: 0.9375rem; font-stretch: 112%; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase; }
+.piede__marchio span:last-child { font-weight: 300; }
+.piede__luogo { grid-column: 6 / 9; color: var(--spuma); }
+.piede__social { grid-column: 9 / 13; display: grid; gap: 6px; justify-items: end; }
+.piede__legale { grid-column: 1 / 9; grid-row: 2; display: flex; flex-wrap: wrap; gap: 8px 24px; color: var(--spuma); align-self: end; }
+.piede__spento { color: var(--spuma); opacity: 0.75; }
+.piede .dc { color: var(--spuma); }
+.piede__nota { grid-column: 9 / 13; grid-row: 2; justify-self: end; align-self: end; font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--peltro); }
+@media (max-width: 47.99em) {
+  .piede__marchio, .piede__luogo, .piede__social, .piede__legale, .piede__nota { grid-column: 1 / -1; grid-row: auto; justify-self: start; justify-items: start; }
+}
+
+/* ---- La nota di Prisma Locale: un biglietto, fuori dal sito ---------- */
+.nota { padding: clamp(64px, 9vw, 140px) var(--margine); background: var(--sabbia); }
+.nota__foglio { max-width: 52rem; margin-inline: auto; display: grid; gap: 30px; }
+.nota__mittente { font-size: var(--t-etichetta); font-stretch: 72%; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--inchiostro); opacity: 0.7; }
+.nota__titolo { font-size: var(--t-xl); }
+.nota__punti { display: grid; gap: 14px; counter-reset: punto; }
+.nota__punti li { position: relative; padding-left: 2.6rem; counter-increment: punto; }
+.nota__punti li::before { content: counter(punto, decimal-leading-zero); position: absolute; left: 0; top: 0.35em; font-size: var(--t-etichetta); font-weight: 600; letter-spacing: 0.16em; }
+.nota__punti b { font-weight: 600; }
+.nota__manca { display: grid; gap: 16px; padding-top: 26px; border-top: 1px solid var(--filo); }
+.nota__sotto { font-family: var(--f-titolo); font-style: italic; font-size: var(--t-m); font-weight: 300; }
+.nota__lista { display: grid; gap: 4px; }
+.nota__lista label { display: flex; align-items: center; gap: 12px; min-height: 40px; cursor: pointer; }
+.nota__lista input { width: 18px; height: 18px; accent-color: var(--adriatico); }
+.nota__lista b { font-weight: 600; }
+.nota .bottone { justify-self: start; }
