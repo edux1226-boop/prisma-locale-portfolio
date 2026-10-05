@@ -89,8 +89,9 @@
 }
 .campo__aiuto { margin-top: 6px; font-size: 0.75rem; color: var(--tenue); }
 .campo__errore { display: none; margin-top: 8px; font-size: 0.8125rem; color: #8E3B2E; }
-.is-errore .campo__errore, .campo__errore.is-visibile { display: block; }
-.is-errore input { border-bottom-color: #8E3B2E; }
+.campo:has([aria-invalid="true"]) .campo__errore,
+.consenso:has([aria-invalid="true"]) + .campo__errore { display: block; }
+.campo [aria-invalid="true"] { border-bottom-color: #8E3B2E; }
 
 .scelte { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; padding: 0; border: 0; }
 .scelte legend { width: 100%; margin-bottom: 14px; font-size: 0.8125rem; color: var(--tenue); }
@@ -145,19 +146,19 @@
 .mappa { grid-column: 7 / span 6; color: var(--inchiostro); }
 .mappa svg { width: 100%; height: auto; }
 .mappa__livelli { opacity: 0.22; }
-.mappa text { font-family: var(--f-testo); font-size: 13px; fill: currentColor; }
-.mappa__mare { font-size: 11px !important; letter-spacing: 0.3em; text-transform: uppercase; fill: var(--tenue) !important; }
-.mappa__sigla { font-size: 11px !important; font-weight: 600; letter-spacing: 0.12em; fill: var(--tenue) !important; }
+.mappa :where(text) { font-family: var(--f-testo); font-size: 13px; fill: currentColor; }
+.mappa__mare { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; fill: var(--tenue); }
+.mappa__sigla { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; fill: var(--tenue); }
 .mappa__strada--fine { opacity: 0.5; }
 .mappa__luogo text { fill: var(--tenue); font-size: 12px; }
 .mappa__luogo circle { fill: var(--inchiostro); }
-.mappa__direzione { font-size: 11px !important; letter-spacing: 0.22em; text-transform: uppercase; fill: var(--tenue) !important; }
+.mappa__direzione { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; fill: var(--tenue); }
 .mappa__segno circle:last-child { fill: var(--ottone); }
 .mappa__onda { color: var(--ottone); transform-origin: center; transform-box: fill-box; }
 .motion .mappa__onda { animation: onda 3.2s var(--ease) infinite; }
 @keyframes onda { from { transform: scale(0.3); opacity: 1; } to { transform: scale(1.4); opacity: 0; } }
-.mappa__nome { font-family: var(--f-display) !important; font-size: 26px !important; }
-.mappa__paese { font-size: 11px !important; letter-spacing: 0.2em; text-transform: uppercase; fill: var(--tenue) !important; }
+.mappa__nome { font-family: var(--f-display); font-size: 26px; }
+.mappa__paese { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; fill: var(--tenue); }
 .mappa__nord text { font-size: 11px; fill: var(--tenue); }
 .mappa figcaption { margin-top: 12px; font-size: 0.75rem; color: var(--tenue); }
 

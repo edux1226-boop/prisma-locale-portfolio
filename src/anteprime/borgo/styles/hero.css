@@ -72,10 +72,9 @@
 
 @media (max-width: 47.99em) {
   .hero__testo { bottom: clamp(150px, 22vh, 190px); }
-  .hero__piede { bottom: 64px; }
   .hero__riga--rientro { padding-left: 0.5em; }
   .hero__motto { margin-left: 0; }
-  .hero__piede { left: var(--margine); justify-content: space-between; }
+  .hero__piede { left: var(--margine); bottom: 64px; justify-content: space-between; }
   .hero__cosa { text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -15,6 +15,7 @@ import {
   Fog,
   Group,
   HemisphereLight,
+  MathUtils,
   Mesh,
   MeshBasicMaterial,
   MeshStandardMaterial,
@@ -29,10 +30,9 @@ import {
   WebGLRenderer,
 } from 'three';
 
-const FONDO = '#DCD2C1'; // come .territorio in borgo.css
+// i colori della palette arrivano dai token CSS, non si ricopiano qui
+const token = (nome) => getComputedStyle(document.documentElement).getPropertyValue(nome).trim();
 const GESSO = '#F7F2E9';
-const INCHIOSTRO = new Color('#2A241D');
-const OTTONE = '#9A7D52';
 const BASE = -0.42;
 
 /* ---- Rumore deterministico ------------------------------------------------ */
@@ -57,8 +57,6 @@ function creste(x, z) {
   for (let i = 0; i < 5; i++) { s += a * (1 - Math.abs(rumore(x, z) * 2 - 1)); x = x * 2.1 + 1.7; z = z * 2.1 + 9.2; a *= 0.5; }
   return s;
 }
-const liscio = (t) => { const c = Math.min(Math.max(t, 0), 1); return c * c * (3 - 2 * c); };
-
 const COSTA = (z) => 3.75 + 0.18 * Math.sin(z * 1.6 + 0.4);
 const BORGO = new Vector3(2.0, 0, 0.05);
 
@@ -71,48 +69,51 @@ function altezza(x, z) {
   const picchi = cima(-3.7, 0.05, 0.34) + cima(-3.35, -0.75, 0.22) + cima(-3.95, 0.95, 0.18);
   let h = massiccio + picchi + creste(x * 1.6 + 3, z * 1.6) * 0.36 * massiccio;
   // le colline: più mosse a ovest, più dolci verso la costa
-  const est = liscio((x + 2.6) / 6.2);
+  const est = MathUtils.smoothstep(x, -2.6, 3.6);
   h += (fbm(x * 0.85 + 2, z * 0.85) * 0.5 + 0.08) * (1 - est * 0.7);
   // valli dei fiumi che scendono al mare
-  const valle = liscio((x + 3.2) / 2);
+  const valle = MathUtils.smoothstep(x, -3.2, -1.2);
   h -= 0.2 * Math.exp(-((z - 1.35 - 0.16 * Math.sin(x * 1.3)) ** 2) / 0.07) * valle;
   h -= 0.15 * Math.exp(-((z + 1.0 - 0.12 * Math.sin(x * 1.1 + 1)) ** 2) / 0.05) * valle;
   // il colle di Mosciano
   h += 0.2 * Math.exp(-(((x - BORGO.x) ** 2) + ((z - BORGO.z) ** 2)) / 0.14);
   // verso il mare tutto scende fino alla spiaggia
   const costa = COSTA(z);
-  h *= 1 - liscio((x - (costa - 1.1)) / 1.1);
+  h *= 1 - MathUtils.smoothstep(x, costa - 1.1, costa);
   return x > costa ? 0 : Math.max(h, 0.006);
 }
 
 /* ---- Geometrie ------------------------------------------------------------ */
+function inOmbra(mesh) {
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  return mesh;
+}
+
 function terreno(materiale) {
-  const geo = new PlaneGeometry(10, 6, 340, 204);
+  const geo = new PlaneGeometry(10, 6, 260, 156);
   geo.rotateX(-Math.PI / 2);
   const pos = geo.attributes.position;
   for (let i = 0; i < pos.count; i++) pos.setY(i, altezza(pos.getX(i), pos.getZ(i)));
   geo.computeVertexNormals();
-  const mesh = new Mesh(geo, materiale);
-  mesh.castShadow = true;
-  mesh.receiveShadow = true;
-  return mesh;
+  return inOmbra(new Mesh(geo, materiale));
 }
 
 /* I fianchi del plastico: il profilo del terreno tagliato e portato giù
    fino alla base, come un blocco di gesso segato. */
 function fianchi(materiale) {
   const lati = [
-    [(t) => [-5 + t * 10, -3]], [(t) => [5, -3 + t * 6]],
-    [(t) => [5 - t * 10, 3]], [(t) => [-5, 3 - t * 6]],
+    (t) => [-5 + t * 10, -3], (t) => [5, -3 + t * 6],
+    (t) => [5 - t * 10, 3], (t) => [-5, 3 - t * 6],
   ];
   const vertici = [];
   const N = 160;
-  for (const [punto] of lati) {
+  for (const punto of lati) {
     for (let i = 0; i < N; i++) {
       const [x0, z0] = punto(i / N);
       const [x1, z1] = punto((i + 1) / N);
-      const h0 = Math.max(altezza(x0, z0), 0);
-      const h1 = Math.max(altezza(x1, z1), 0);
+      const h0 = altezza(x0, z0);
+      const h1 = altezza(x1, z1);
       // senso antiorario visto da fuori: si vedono solo le facce esterne
       vertici.push(x0, h0, z0, x1, h1, z1, x0, BASE, z0, x1, h1, z1, x1, BASE, z1, x0, BASE, z0);
     }
@@ -120,10 +121,7 @@ function fianchi(materiale) {
   const geo = new BufferGeometry();
   geo.setAttribute('position', new BufferAttribute(new Float32Array(vertici), 3));
   geo.computeVertexNormals();
-  const mesh = new Mesh(geo, materiale);
-  mesh.castShadow = true;
-  mesh.receiveShadow = true;
-  return mesh;
+  return inOmbra(new Mesh(geo, materiale));
 }
 
 /* Gesso con le curve di livello incise: una ogni 6 cm di quota, più marcata
@@ -131,7 +129,7 @@ function fianchi(materiale) {
 function gesso() {
   const m = new MeshStandardMaterial({ color: GESSO, roughness: 0.95, metalness: 0 });
   m.onBeforeCompile = (shader) => {
-    shader.uniforms.uInchiostro = { value: INCHIOSTRO };
+    shader.uniforms.uInchiostro = { value: new Color(token('--inchiostro')) };
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', '#include <common>\nvarying vec3 vMondo;')
       .replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvMondo = (modelMatrix * vec4(transformed, 1.0)).xyz;');
@@ -153,7 +151,8 @@ function gesso() {
   return m;
 }
 
-/* Il borgo: cinque blocchetti di gesso, una spilla d'ottone e un'onda. */
+/* Il borgo: cinque blocchetti di gesso e un anello d'ottone sul colle.
+   (L'anello che pulsa è il punto dell'etichetta, in CSS: il 3D resta fermo.) */
 function borgo() {
   const g = new Group();
   const y = altezza(BORGO.x, BORGO.z);
@@ -165,38 +164,36 @@ function borgo() {
     b.castShadow = true;
     g.add(b);
   }
-  const onda = new Mesh(new RingGeometry(0.16, 0.175, 64), new MeshBasicMaterial({ color: OTTONE, transparent: true, opacity: 0.8 }));
-  onda.rotation.x = -Math.PI / 2;
-  onda.position.set(BORGO.x, y + 0.012, BORGO.z);
-  g.add(onda);
-  g.userData.onda = onda;
+  const anello = new Mesh(new RingGeometry(0.16, 0.172, 64), new MeshBasicMaterial({ color: token('--ottone'), transparent: true, opacity: 0.7 }));
+  anello.rotation.x = -Math.PI / 2;
+  anello.position.set(BORGO.x, y + 0.012, BORGO.z);
+  g.add(anello);
   return g;
 }
 
-/* ---- La regia della camera ------------------------------------------------ */
-const POSIZIONI = new CatmullRomCurve3([
-  new Vector3(2.6, 11.6, 14.8),  // il plastico intero
-  new Vector3(-0.6, 3.6, 5.2),   // verso il Gran Sasso
-  new Vector3(5.4, 3.4, 5.0),    // verso il mare
-  new Vector3(3.15, 1.25, 2.05), // il colle
-]);
-const MIRE = new CatmullRomCurve3([
-  new Vector3(1.0, 0, 0.2),
-  new Vector3(-3.3, 0.6, 0.2),
-  new Vector3(3.3, 0, -0.3),
-  new Vector3(BORGO.x - 0.05, 0.32, BORGO.z),
-]);
+/* ---- La regia della camera ------------------------------------------------
+   Quattro inquadrature, una per ogni passo del racconto in pagina più la vista
+   d'insieme iniziale: territorio.js ricava i passi da quante sono. */
+const INQUADRATURE = [
+  { posizione: [2.6, 11.6, 14.8], mira: [1.0, 0, 0.2] },             // il plastico intero
+  { posizione: [-0.6, 3.6, 5.2], mira: [-3.3, 0.6, 0.2] },           // verso il Gran Sasso
+  { posizione: [5.4, 3.4, 5.0], mira: [3.3, 0, -0.3] },              // verso il mare
+  { posizione: [3.15, 1.25, 2.05], mira: [BORGO.x - 0.05, 0.32, BORGO.z] }, // il colle
+];
+const POSIZIONI = new CatmullRomCurve3(INQUADRATURE.map((q) => new Vector3(...q.posizione)));
+const MIRE = new CatmullRomCurve3(INQUADRATURE.map((q) => new Vector3(...q.mira)));
 
 const ANCORE = {
-  sasso: new Vector3(-3.75, 0, 0.05),
+  sasso: new Vector3(-3.75, altezza(-3.75, 0.05) + 0.06, 0.05),
   mare: new Vector3(4.45, 0.02, -0.9),
-  borgo: new Vector3(BORGO.x, 0, BORGO.z),
+  borgo: new Vector3(BORGO.x, altezza(BORGO.x, BORGO.z) + 0.24, BORGO.z),
 };
-ANCORE.sasso.y = altezza(ANCORE.sasso.x, ANCORE.sasso.z) + 0.06;
-ANCORE.borgo.y = altezza(BORGO.x, BORGO.z) + 0.24;
 
-/* ---- La scena ------------------------------------------------------------- */
-export function createPlastico(contenitore, { etichette = null, still = null, spostamento = 0, margineTesto = 0 } = {}) {
+/* ---- La scena -------------------------------------------------------------
+   Si disegna solo quando serve: quando cambia lo scroll, quando si muove il
+   mouse (finché la camera non si è assestata) e quando cambia la misura. */
+export function createPlastico(contenitore, { etichette = {}, still = null, spostamento = 0, colonna = null } = {}) {
+  const fondo = token('--pietra-scura');
   const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: Boolean(still) });
   renderer.setPixelRatio(still ? 1 : Math.min(window.devicePixelRatio, 1.75));
   renderer.outputColorSpace = SRGBColorSpace;
@@ -204,11 +201,14 @@ export function createPlastico(contenitore, { etichette = null, still = null, sp
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = PCFShadowMap;
-  renderer.setClearColor(FONDO);
+  // luce e modello non si muovono: l'ombra si calcola una volta sola
+  renderer.shadowMap.autoUpdate = false;
+  renderer.shadowMap.needsUpdate = true;
+  renderer.setClearColor(fondo);
   contenitore.append(renderer.domElement);
 
   const scena = new Scene();
-  scena.fog = new Fog(FONDO, 15, 34);
+  scena.fog = new Fog(fondo, 15, 34);
   const camera = new PerspectiveCamera(30, 1, 0.1, 60);
 
   scena.add(new HemisphereLight('#FFF8EC', '#B8AB96', 1.5));
@@ -223,13 +223,10 @@ export function createPlastico(contenitore, { etichette = null, still = null, sp
   sole.shadow.normalBias = 0.02;
   scena.add(sole);
 
-  const materiale = gesso();
   const modello = new Group();
-  modello.add(terreno(materiale));
-  const lati = new MeshStandardMaterial({ color: '#E9E1D4', roughness: 1 });
-  modello.add(fianchi(lati));
-  const segno = borgo();
-  modello.add(segno);
+  modello.add(terreno(gesso()));
+  modello.add(fianchi(new MeshStandardMaterial({ color: '#E9E1D4', roughness: 1 })));
+  modello.add(borgo());
   scena.add(modello);
 
   const tavolo = new Mesh(new PlaneGeometry(60, 60), new ShadowMaterial({ opacity: 0.13 }));
@@ -239,13 +236,17 @@ export function createPlastico(contenitore, { etichette = null, still = null, sp
   scena.add(tavolo);
 
   let progresso = 0;
+  let w = 1, h = 1, limiteTesto = 0;
   const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
   const pos = new Vector3();
   const mira = new Vector3();
   const proiezione = new Vector3();
+  const voci = Object.entries(etichette).map(([nome, nodo]) => ({ ancora: ANCORE[nome], nodo }));
 
-  let inquadra = function inquadraScroll() {
-    const t = Math.min(Math.max(progresso, 0), 1);
+  // per i telefoni (solo immagine statica): dall'alto, la montagna in cima e il mare in fondo
+  const dallAlto = () => { camera.position.set(0.15, 14.4, 9.6); camera.lookAt(0.1, 0, 0.5); };
+  const daScroll = () => {
+    const t = MathUtils.clamp(progresso, 0, 1);
     POSIZIONI.getPoint(t, pos);
     MIRE.getPoint(t, mira);
     mouse.x += (mouse.tx - mouse.x) * 0.05;
@@ -253,21 +254,26 @@ export function createPlastico(contenitore, { etichette = null, still = null, sp
     camera.position.set(pos.x + mouse.x * 0.35, pos.y - mouse.y * 0.2, pos.z);
     camera.lookAt(mira);
   };
+  const inquadra = still?.verticale ? dallAlto : daScroll;
+  if (still?.verticale) {
+    modello.rotation.y = -Math.PI / 2;
+    modello.updateMatrixWorld();
+  }
 
   function posizionaEtichette() {
-    if (!etichette) return;
-    const w = contenitore.clientWidth, h = contenitore.clientHeight;
-    for (const [nome, nodo] of Object.entries(etichette)) {
-      proiezione.copy(ANCORE[nome]).applyMatrix4(modello.matrixWorld).project(camera);
+    for (const { ancora, nodo } of voci) {
+      proiezione.copy(ancora).applyMatrix4(modello.matrixWorld).project(camera);
       const x = ((proiezione.x + 1) / 2) * w;
       nodo.style.transform = `translate3d(${x}px, ${((1 - proiezione.y) / 2) * h}px, 0)`;
       // sotto la colonna del testo l'etichetta si fa da parte
-      nodo.classList.toggle('is-coperta', x < w * margineTesto);
+      nodo.classList.toggle('is-coperta', x < limiteTesto);
     }
   }
 
   function misura() {
-    const w = contenitore.clientWidth, h = contenitore.clientHeight;
+    w = contenitore.clientWidth;
+    h = contenitore.clientHeight;
+    limiteTesto = colonna ? colonna.getBoundingClientRect().right - contenitore.getBoundingClientRect().left : 0;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     // su schermi stretti la camera si allontana un po'
@@ -278,14 +284,8 @@ export function createPlastico(contenitore, { etichette = null, still = null, sp
     camera.updateProjectionMatrix();
   }
 
-  let tempo = 0;
-  function disegna(dt = 0) {
-    tempo += dt;
+  function disegna() {
     inquadra();
-    const onda = segno.userData.onda;
-    const fase = (tempo / 2.8) % 1;
-    onda.scale.setScalar(0.4 + fase * 1.6);
-    onda.material.opacity = 0.8 * (1 - fase);
     renderer.render(scena, camera);
     posizionaEtichette();
   }
@@ -293,61 +293,55 @@ export function createPlastico(contenitore, { etichette = null, still = null, sp
   misura();
   if (still) {
     progresso = still.progresso ?? 0;
-    if (still.verticale) {
-      // per i telefoni: dall'alto, la montagna in cima e il mare in fondo
-      modello.rotation.y = -Math.PI / 2;
-      modello.updateMatrixWorld();
-      inquadra = () => { camera.position.set(0.15, 14.4, 9.6); camera.lookAt(0.1, 0, 0.5); };
-    }
-    disegna(0.9);
-    return { canvas: renderer.domElement, camera };
+    disegna();
+    return null;
   }
 
   let raf = 0;
-  let attivo = false;
-  let ultimo = performance.now();
+  let inVista = false;
+  let ultimo = 0;
   let lenti = 0;
+  const assestata = () => Math.abs(mouse.tx - mouse.x) < 1e-3 && Math.abs(mouse.ty - mouse.y) < 1e-3;
   const ciclo = (ora) => {
-    const dt = Math.min((ora - ultimo) / 1000, 0.1);
-    ultimo = ora;
-    // se il frame è lento abbassa la risoluzione, una volta sola
-    if (dt > 1 / 40) lenti++; else lenti = Math.max(0, lenti - 1);
+    raf = 0;
+    // se i frame consecutivi sono lenti abbassa la risoluzione, una volta sola
+    if (ora - ultimo < 100) lenti = ora - ultimo > 1000 / 40 ? lenti + 1 : Math.max(0, lenti - 1);
     if (lenti > 40 && renderer.getPixelRatio() > 1) { renderer.setPixelRatio(1); misura(); lenti = 0; }
-    disegna(dt);
-    raf = attivo ? requestAnimationFrame(ciclo) : 0;
+    ultimo = ora;
+    disegna();
+    if (!assestata()) richiedi();
   };
-  const avvia = () => { if (attivo) return; attivo = true; ultimo = performance.now(); raf = requestAnimationFrame(ciclo); };
-  const ferma = () => { attivo = false; cancelAnimationFrame(raf); raf = 0; };
+  const richiedi = () => {
+    if (!raf && inVista && !document.hidden) raf = requestAnimationFrame(ciclo);
+  };
 
-  const io = new IntersectionObserver(([voce]) => (voce.isIntersecting && !document.hidden ? avvia() : ferma()));
-  io.observe(contenitore);
-  const visibilita = () => (document.hidden ? ferma() : avvia());
-  document.addEventListener('visibilitychange', visibilita);
-  const ro = new ResizeObserver(misura);
-  ro.observe(contenitore);
-  const muovi = (e) => {
+  new IntersectionObserver(([voce]) => {
+    inVista = voce.isIntersecting;
+    richiedi();
+  }).observe(contenitore);
+  document.addEventListener('visibilitychange', richiedi);
+  new ResizeObserver(() => { misura(); richiedi(); }).observe(contenitore);
+  window.addEventListener('pointermove', (e) => {
     mouse.tx = e.clientX / window.innerWidth - 0.5;
     mouse.ty = e.clientY / window.innerHeight - 0.5;
-  };
-  window.addEventListener('pointermove', muovi, { passive: true });
+    richiedi();
+  }, { passive: true });
 
-  renderer.domElement.addEventListener('webglcontextlost', (e) => { e.preventDefault(); ferma(); });
-  renderer.domElement.addEventListener('webglcontextrestored', () => avvia());
+  renderer.domElement.addEventListener('webglcontextlost', (e) => {
+    e.preventDefault();
+    cancelAnimationFrame(raf);
+    raf = 0;
+  });
+  renderer.domElement.addEventListener('webglcontextrestored', () => {
+    renderer.shadowMap.needsUpdate = true;
+    richiedi();
+  });
 
   return {
-    imposta(p) { progresso = p; },
-    distruggi() {
-      ferma();
-      io.disconnect();
-      ro.disconnect();
-      document.removeEventListener('visibilitychange', visibilita);
-      window.removeEventListener('pointermove', muovi);
-      scena.traverse((o) => {
-        o.geometry?.dispose();
-        if (o.material) [].concat(o.material).forEach((m) => m.dispose());
-      });
-      renderer.dispose();
-      renderer.domElement.remove();
+    imposta(p) {
+      if (p === progresso) return;
+      progresso = p;
+      richiedi();
     },
   };
 }

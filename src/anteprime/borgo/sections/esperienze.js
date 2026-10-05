@@ -10,10 +10,11 @@ export function initEsperienze() {
   let immagini = null;
   const prepara = () => {
     immagini ??= voci.map((voce) => {
-      const img = voce.querySelector('img').cloneNode();
-      img.className = '';
-      segui.append(img);
-      return img;
+      const foto = `/assets/img/borgo/${voce.dataset.foto}`;
+      const picture = document.createElement('picture');
+      picture.innerHTML = `<source type="image/avif" srcset="${foto}.avif"><img src="${foto}.webp" alt="">`;
+      segui.append(picture);
+      return picture.querySelector('img');
     });
   };
   const x = gsap.quickTo(segui, 'x', { duration: 0.9, ease: 'power3.out' });

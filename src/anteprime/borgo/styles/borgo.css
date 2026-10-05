@@ -42,7 +42,7 @@
 }
 
 /* ---- Il territorio: il plastico ----------------------------------------- */
-.territorio { --fondo: #DCD2C1; --tenue: #574E42; position: relative; background: var(--fondo); }
+.territorio { --tenue: #574E42; position: relative; background: var(--pietra-scura); }
 .territorio__palco { position: relative; }
 .territorio__tela { display: none; }
 .territorio__statico img { width: 100%; height: auto; }
@@ -59,18 +59,17 @@
 /* Desktop con 3D: palco sticky a tutto schermo, testo a sinistra. */
 .territorio.con-3d { height: 330vh; }
 .con-3d .territorio__palco { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-.con-3d .territorio__tela { display: block; position: absolute; inset: 0; }
+/* Con il 3D l'immagine statica non serve: la tela compare sul fondo. */
+.con-3d .territorio__tela { display: block; position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s var(--ease); }
+.con-3d.is-3d-pronto .territorio__tela { opacity: 1; }
+.con-3d .territorio__statico { display: none; }
 .con-3d .territorio__palco::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to right, var(--fondo) 0%, rgb(220 210 193 / 0.9) 30%, rgb(220 210 193 / 0) 50%);
+  background: linear-gradient(to right, var(--pietra-scura) 0%, color-mix(in srgb, var(--pietra-scura) 90%, transparent) 30%, transparent 50%);
 }
-.con-3d .territorio__testo { z-index: 1; }
 .con-3d .territorio__tela canvas { width: 100% !important; height: 100% !important; }
-.con-3d .territorio__statico { position: absolute; inset: 0; transition: opacity 1.2s var(--ease); }
-.con-3d .territorio__statico img { height: 100%; object-fit: cover; }
-.con-3d.is-3d-pronto .territorio__statico { opacity: 0; }
 .con-3d .territorio__testo {
-  position: absolute; left: var(--margine); top: 50%; transform: translateY(-46%);
+  position: absolute; z-index: 1; left: var(--margine); top: 50%; transform: translateY(-46%);
   width: min(31rem, 36vw); padding: 0;
 }
 .con-3d .territorio__passi li { opacity: 0.32; transition: opacity 0.8s var(--ease); }
@@ -95,7 +94,13 @@
 .territorio__etichette b { font-weight: 600; }
 .territorio__etichette span { color: var(--tenue); letter-spacing: 0.12em; }
 .territorio__etichette .is-borgo b { font-family: var(--f-display); font-size: 1.35rem; font-weight: 400; letter-spacing: 0; text-transform: none; }
-.territorio__etichette .is-borgo::before { width: 9px; height: 9px; top: 9px; left: -2px; box-shadow: 0 0 0 7px rgb(154 125 82 / 0.18); }
+.territorio__etichette .is-borgo::before { width: 9px; height: 9px; top: 9px; left: -2px; }
+.territorio__etichette .is-borgo::after {
+  content: ""; position: absolute; left: -2px; top: 9px; width: 9px; height: 9px; border-radius: 50%;
+  border: 1px solid var(--ottone);
+  animation: pulsa 2.8s var(--ease) infinite;
+}
+@keyframes pulsa { from { transform: scale(1); opacity: 0.9; } to { transform: scale(3.8); opacity: 0; } }
 
 @media (min-width: 64em) {
   .territorio:not(.con-3d) .territorio__palco { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
@@ -123,31 +128,31 @@
 .apertura__titolo { font-size: var(--t-xxl); line-height: 0.9; font-style: italic; }
 .apertura__didascalia p { font-size: var(--t-small); color: rgb(var(--avorio-rgb) / 0.88); }
 
-/* Con il movimento: palco sticky, l'immagine parte piccola tra due parole. */
-.motion .apertura { height: 260vh; }
+/* Con il movimento: palco sticky, l'immagine parte piccola tra due parole.
+   La geometria sta tutta qui: --fx e --fy sono i margini della finestra
+   chiusa, il JS anima solo --apri da 0 a 1. */
+.motion .apertura { --fx: 36.5%; --fy: 18%; --apri: 0; height: 260vh; }
 .motion .apertura__palco { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .motion .apertura__finestra {
   position: absolute; inset: 0; height: auto; min-height: 0;
-  clip-path: inset(18% 36.5% 18% 36.5%);
-  will-change: clip-path;
+  clip-path: inset(calc(var(--fy) * (1 - var(--apri))) calc(var(--fx) * (1 - var(--apri))));
 }
-.motion .apertura__finestra img { transform: scale(1.32); transform-origin: 50% 60%; will-change: transform; }
+.motion .apertura__finestra img { transform: scale(1.32); transform-origin: 50% 60%; }
 .motion .apertura__parola {
   display: block;
   position: absolute; top: 50%; z-index: 2;
   font-family: var(--f-display); font-size: var(--t-xxl); line-height: 1;
   transform: translateY(-50%);
-  will-change: transform;
 }
-.motion .apertura__parola--sx { right: 65.5%; }
-.motion .apertura__parola--dx { left: 65.5%; font-style: italic; }
+.motion .apertura__parola--sx { right: calc(100% - var(--fx) + 1vw); }
+.motion .apertura__parola--dx { left: calc(100% - var(--fx) + 1vw); font-style: italic; }
 .motion .apertura__didascalia { opacity: 0; }
 
 @media (max-width: 47.99em) {
-  .motion .apertura__finestra { clip-path: inset(24% 22% 24% 22%); }
+  .motion .apertura { --fx: 22%; --fy: 24%; }
   .motion .apertura__parola { top: auto; transform: none; font-size: var(--t-xl); }
-  .motion .apertura__parola--sx { right: auto; left: 22%; top: 13%; }
-  .motion .apertura__parola--dx { left: auto; right: 22%; bottom: 13%; }
+  .motion .apertura__parola--sx { right: auto; left: var(--fx); bottom: calc(100% - var(--fy) + 10px); }
+  .motion .apertura__parola--dx { left: auto; right: var(--fx); top: calc(100% - var(--fy) + 10px); }
   .apertura__didascalia { grid-template-columns: 1fr; }
 }
 
