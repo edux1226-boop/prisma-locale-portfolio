@@ -50,6 +50,7 @@
   margin: 0; padding: 0; border: 0;
   background: rgb(var(--terra-rgb) / 0.97); color: var(--avorio);
   overflow: hidden;
+  touch-action: pan-y; /* lo swipe orizzontale resta allo script */
 }
 .visore[open] { display: grid; place-items: center; }
 .visore::backdrop { background: transparent; }

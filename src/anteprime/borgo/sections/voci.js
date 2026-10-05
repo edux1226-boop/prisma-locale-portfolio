@@ -16,6 +16,7 @@ export function initVoci({ movimento }) {
   if (movimento && cifra) {
     const valore = { v: 0 };
     const fine = Number(cifra.dataset.conta);
+    cifra.textContent = '0,0';
     gsap.to(valore, {
       v: fine, duration: 2.2, ease: 'expo.out',
       onUpdate: () => { cifra.textContent = valore.v.toFixed(1).replace('.', ','); },
@@ -32,7 +33,8 @@ export function initVoci({ movimento }) {
   let timer = 0;
   let inVista = false;
   let ferma = false;
-  let sospesa = false;
+  let sopra = false;   // puntatore sulla sezione
+  let dentro = false;  // focus dentro la sezione
 
   const mostra = (i) => {
     voci[attiva].classList.remove('is-attiva');
@@ -44,7 +46,7 @@ export function initVoci({ movimento }) {
   };
   const programma = () => {
     clearTimeout(timer);
-    const gira = inVista && !ferma && !sospesa;
+    const gira = inVista && !ferma && !sopra && !dentro;
     sezione.classList.toggle('is-pausa', !gira);
     if (gira) timer = setTimeout(() => { mostra((attiva + 1) % voci.length); programma(); }, DURATA);
   };
@@ -54,10 +56,13 @@ export function initVoci({ movimento }) {
     trigger: sezione, start: 'top 70%', end: 'bottom 30%',
     onToggle: (self) => { inVista = self.isActive; programma(); },
   });
-  sezione.addEventListener('pointerenter', () => { sospesa = true; programma(); });
-  sezione.addEventListener('pointerleave', () => { sospesa = false; programma(); });
-  sezione.addEventListener('focusin', () => { sospesa = true; programma(); });
-  sezione.addEventListener('focusout', () => { sospesa = false; programma(); });
+  sezione.addEventListener('pointerenter', () => { sopra = true; programma(); });
+  sezione.addEventListener('pointerleave', () => { sopra = false; programma(); });
+  sezione.addEventListener('focusin', () => { dentro = true; programma(); });
+  sezione.addEventListener('focusout', (e) => {
+    dentro = sezione.contains(e.relatedTarget);
+    programma();
+  });
   pausa.addEventListener('click', () => {
     ferma = !ferma;
     pausa.setAttribute('aria-pressed', String(ferma));

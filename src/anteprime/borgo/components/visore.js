@@ -25,7 +25,7 @@ export function creaVisore(voci, { movimento }) {
     gsap.timeline()
       .to(img, { opacity: 0, x: -40 * verso, duration: 0.3, ease: 'power2.in' })
       .add(cambia)
-      .fromTo(img, { opacity: 0, x: 40 * verso }, { opacity: 1, x: 0, duration: 0.8, ease: 'expo.out' });
+      .fromTo(img, { opacity: 0, x: 40 * verso }, { opacity: 1, x: 0, duration: 0.8, ease: 'expo.out', immediateRender: false });
   };
 
   const apri = (i, da) => {
@@ -50,6 +50,7 @@ export function creaVisore(voci, { movimento }) {
   // swipe orizzontale
   let x0 = null;
   finestra.addEventListener('pointerdown', (e) => { x0 = e.clientX; });
+  finestra.addEventListener('pointercancel', () => { x0 = null; });
   finestra.addEventListener('pointerup', (e) => {
     if (x0 === null) return;
     const dx = e.clientX - x0;

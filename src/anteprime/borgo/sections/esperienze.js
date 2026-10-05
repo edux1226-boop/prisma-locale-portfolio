@@ -6,13 +6,16 @@ export function initEsperienze() {
   const elenco = document.querySelector('[data-occasioni]');
   const segui = document.querySelector('[data-occasioni-segui]');
   const voci = [...elenco.querySelectorAll('[data-occasione]')];
-  const immagini = voci.map((voce) => {
-    const img = voce.querySelector('img').cloneNode();
-    img.className = '';
-    img.loading = 'eager';
-    segui.append(img);
-    return img;
-  });
+  // le immagini si scaricano solo quando il mouse arriva davvero sull'elenco
+  let immagini = null;
+  const prepara = () => {
+    immagini ??= voci.map((voce) => {
+      const img = voce.querySelector('img').cloneNode();
+      img.className = '';
+      segui.append(img);
+      return img;
+    });
+  };
   const x = gsap.quickTo(segui, 'x', { duration: 0.9, ease: 'power3.out' });
   const y = gsap.quickTo(segui, 'y', { duration: 0.9, ease: 'power3.out' });
   const r = gsap.quickTo(segui, 'rotation', { duration: 1.2, ease: 'power3.out' });
@@ -27,6 +30,7 @@ export function initEsperienze() {
   });
   elenco.addEventListener('pointerenter', (e) => {
     if (e.pointerType !== 'mouse') return;
+    prepara();
     gsap.set(segui, { x: e.clientX, y: e.clientY });
     segui.classList.add('is-visibile');
   });
@@ -35,6 +39,9 @@ export function initEsperienze() {
     r(0);
   });
   voci.forEach((voce, i) => {
-    voce.addEventListener('pointerenter', () => immagini.forEach((img, j) => img.classList.toggle('is-attiva', i === j)));
+    voce.addEventListener('pointerenter', () => {
+      prepara();
+      immagini.forEach((img, j) => img.classList.toggle('is-attiva', i === j));
+    });
   });
 }

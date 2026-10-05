@@ -28,13 +28,15 @@ export function initTerritorio({ desktop, fine }) {
     plastico?.imposta(progresso);
     const passo = PASSI.findLastIndex((inizio) => progresso >= inizio);
     passi.forEach((li, i) => li.classList.toggle('is-attivo', i === passo));
+    // le etichette le posiziona il plastico: prima che esista restano nascoste
+    if (!plastico) return;
     const tutte = passo < 0;
     etichette.sasso.classList.toggle('is-visibile', tutte || passo === 0);
     etichette.mare.classList.toggle('is-visibile', tutte || passo === 1);
     etichette.borgo.classList.toggle('is-visibile', tutte || passo >= 1);
   };
 
-  ScrollTrigger.create({
+  const trigger = ScrollTrigger.create({
     trigger: sezione,
     start: 'top top',
     end: 'bottom bottom',
@@ -45,8 +47,16 @@ export function initTerritorio({ desktop, fine }) {
   const io = new IntersectionObserver(async ([voce]) => {
     if (!voce.isIntersecting) return;
     io.disconnect();
-    const { createPlastico } = await import('../three/plastico.js');
-    plastico = createPlastico(tela, { etichette, spostamento: 0.12, margineTesto: 0.4 });
+    try {
+      const { createPlastico } = await import('../three/plastico.js');
+      plastico = createPlastico(tela, { etichette, spostamento: 0.12, margineTesto: 0.4 });
+    } catch {
+      // three.js non è arrivato: si torna all'immagine statica, senza pin
+      trigger.kill();
+      sezione.classList.remove('con-3d');
+      ScrollTrigger.refresh();
+      return;
+    }
     aggiorna();
     requestAnimationFrame(() => sezione.classList.add('is-3d-pronto'));
   }, { rootMargin: '120% 0px' });

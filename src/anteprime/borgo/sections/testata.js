@@ -81,11 +81,16 @@ function initMenu() {
 function initAncore() {
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href^="#"]');
-    if (!link) return;
-    const target = document.querySelector(link.getAttribute('href'));
+    if (!link || event.defaultPrevented || event.button !== 0) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const id = decodeURIComponent(link.getAttribute('href').slice(1));
+    const target = id && document.getElementById(id);
     if (!target) return;
     event.preventDefault();
-    for (const aperta of document.querySelectorAll('dialog[open]')) aperta.close();
+    const aperte = document.querySelectorAll('dialog[open]');
+    aperte.forEach((d) => d.close());
+    // l'evento "close" arriva dopo: lo scroll va sbloccato subito
+    if (aperte.length) lockScroll(false);
     requestAnimationFrame(() => scrollToTarget(target, () => {
       if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });

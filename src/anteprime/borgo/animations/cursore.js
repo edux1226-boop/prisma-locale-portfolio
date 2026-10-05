@@ -26,7 +26,13 @@ export function initCursore() {
       gsap.to(cerchio, { scale: 0.08, duration: 0.5, ease: 'expo.out', overwrite: 'auto', onComplete: () => cerchio.classList.remove('is-visibile') });
     }
   }, { passive: true });
-  document.addEventListener('pointerleave', () => cerchio.classList.remove('is-visibile', 'is-grande'));
+  // pointerleave non arriva al document: l'uscita dalla finestra è un mouseout senza destinazione
+  window.addEventListener('mouseout', (e) => {
+    if (e.relatedTarget) return;
+    attivo = null;
+    cerchio.classList.remove('is-visibile', 'is-grande');
+    gsap.set(cerchio, { scale: 0.08 });
+  });
 }
 
 /* I pulsanti principali si lasciano attirare di qualche pixel. */

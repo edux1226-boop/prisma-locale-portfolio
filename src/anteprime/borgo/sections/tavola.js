@@ -29,7 +29,7 @@ function initPortate({ fine, movimento }) {
     gsap.timeline()
       .to(testo, { opacity: 0, y: -8, duration: 0.25, ease: 'power2.in', overwrite: true })
       .add(() => { testo.textContent = PORTATE[i]; })
-      .fromTo(testo, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' });
+      .fromTo(testo, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', immediateRender: false });
   };
 
   schede.forEach((s, i) => {

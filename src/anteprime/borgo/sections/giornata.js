@@ -34,7 +34,7 @@ export function initGiornata() {
     if (i < momenti.length - 1) {
       gsap.timeline({ scrollTrigger: { trigger: contenitore, start: da(i + 1, 'bottom'), end: da(i + 1, 'top'), scrub: true, invalidateOnRefresh: true } })
         .to(ombra, { opacity: 0.75, ease: 'none' }, 0)
-        .to(img, { scale: 1.08, ease: 'none', immediateRender: false }, 0);
+        .fromTo(img, { scale: 1 }, { scale: 1.08, ease: 'none', immediateRender: false }, 0);
     }
 
     ScrollTrigger.create({
