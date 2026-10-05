@@ -187,7 +187,7 @@
   html, body { background: #fff; font-size: 10.5pt; padding: 0; }
   .testata, .menu-mobile, .indice, .menu-pagina__strumenti, .intestazione__azioni, .briciole,
   .fascia-prenota, .piede, .barra, .anteprima, .filigrana, .scelta, .uscita, .lightbox,
-  .piatto__foto, .degustazione .btn, .menu-sezione__vuota, .dc, .avviso-demo, .cookie { display: none !important; }
+  .piatto__foto, .degustazione .btn, .menu-sezione__vuota, .dc, .avviso-demo, .cookie, .salta, .scaduta { display: none !important; }
   .intestazione { padding: 0 0 8mm; background: none; border-bottom: 2px solid #1a3a52; }
   .intestazione__titolo { font-size: 26pt; margin: 0; }
   .intestazione__titolo::after { content: " · La Casetta di Paparill"; font-size: 14pt; font-weight: 500; color: #85642c; }
@@ -195,7 +195,8 @@
   .contenitore { padding: 0; max-width: none; }
   .menu-pagina { padding: 0; }
   .menu-sezione { padding-top: 7mm; break-inside: auto; }
-  .menu-sezione__testa { break-after: avoid; padding-bottom: 2mm; margin-bottom: 0; }
+  .menu-sezione__testa { break-inside: avoid; break-after: avoid; padding-bottom: 2mm; margin-bottom: 0; }
+  .menu-sezione__titolo { break-after: avoid; }
   .menu-sezione__titolo { font-size: 16pt; }
   .piatti, .vini { grid-template-columns: 1fr 1fr; column-gap: 10mm; }
   .piatto, .vino { padding-block: 3mm; break-inside: avoid; grid-template-columns: 1fr; }
@@ -203,6 +204,7 @@
   .piatto__desc, .vino__desc { font-size: 9pt; }
   .tag, .allergene { padding: 0 4pt; font-size: 7.5pt; border-color: #ccc; background: none !important; }
   .degustazioni { grid-template-columns: 1fr 1fr; }
+  .menu-sezione--degustazione { break-before: page; }
   .degustazione { box-shadow: none; border: 1px solid #ddd; border-top: 3pt solid #c9a66b; break-inside: avoid; padding: 5mm; }
   .menu-note { break-inside: avoid; background: none; }
   .piatto:target { background: none; }

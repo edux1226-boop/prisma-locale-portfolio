@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="it" data-pagina="contatti">
+<head>
+<!-- @testa -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/contatti.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<main id="contenuto" tabindex="-1">
+
+<header class="intestazione">
+  <div class="contenitore">
+    <!-- @briciole -->
+    <h1 class="intestazione__titolo">{{md t.contattiPagina.titolo}}</h1>
+    <p class="intestazione__lead">{{md t.contattiPagina.intro}}</p>
+  </div>
+</header>
+
+<div class="contenitore pagina-corpo">
+  <!-- @contatti-schede -->
+
+  <div class="contatti-griglia">
+    <section class="contatti-blocco" aria-labelledby="orari-titolo">
+      <h2 class="blocco-titolo" id="orari-titolo">{{t.contattiPagina.orari}}<!-- @dc-orari --></h2>
+      <!-- @orari-tabella nascosta -->
+    </section>
+    <section class="contatti-blocco" aria-labelledby="arrivare-titolo">
+      <h2 class="blocco-titolo" id="arrivare-titolo">{{t.contattiPagina.arrivare}}</h2>
+      <!-- @arrivare -->
+    </section>
+  </div>
+
+  <!-- La mappa di Google si carica solo se la si chiede (niente cookie prima). -->
+  <section class="contatti-mappa" aria-labelledby="mappa-titolo">
+    <h2 class="blocco-titolo" id="mappa-titolo">{{t.contattiPagina.mappa.titolo}}</h2>
+    <!-- @mappa -->
+  </section>
+
+  <section class="contatti-voto" aria-label="{{t.contattiPagina.votoOcchiello}}">
+    <!-- @voto-finale -->
+  </section>
+</div>
+
+<!-- @prenota-fascia -->
+
+</main>
+
+<!-- @piede -->
+<!-- @fine -->
+</body>
+</html>

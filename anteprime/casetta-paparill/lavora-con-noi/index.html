@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it" data-pagina="lavora-con-noi">
+<head>
+<!-- @testa -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/lavora.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<main id="contenuto" tabindex="-1">
+
+<header class="intestazione">
+  <div class="contenitore">
+    <!-- @briciole -->
+    <h1 class="intestazione__titolo">{{md t.lavora.titolo}}</h1>
+    <p class="intestazione__lead">{{md t.lavora.lead}}</p>
+  </div>
+</header>
+
+<section class="sezione" aria-labelledby="ruoli-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa">
+      <p class="occhiello">{{t.lavora.ruoli.occhiello}}</p>
+      <h2 class="sezione__titolo" id="ruoli-titolo">{{md t.lavora.ruoli.titolo}}</h2>
+    </header>
+    <!-- @lavora-ruoli -->
+  </div>
+</section>
+
+<section class="sezione sezione--sabbia" id="candidatura" aria-labelledby="candidatura-titolo" tabindex="-1">
+  <div class="contenitore sezione-modulo">
+    <div class="sezione-modulo__testa">
+      <h2 class="sezione__titolo" id="candidatura-titolo">{{md t.lavora.modulo.titolo}}</h2>
+      <p class="sezione__intro">{{md t.lavora.modulo.intro}}</p>
+      <p class="nota-piccola">{{md t.lavora.modulo.privacy}}</p>
+    </div>
+    <!-- @modulo lavoro -->
+  </div>
+</section>
+
+</main>
+
+<!-- @piede -->
+<!-- @fine -->
+</body>
+</html>

@@ -391,7 +391,7 @@ html.dialogo-aperto { overflow: hidden; }
   max-width: 48rem; margin-inline: auto;
 }
 .scaduta__marchio { width: 64px; height: 64px; color: var(--blu); }
-.scaduta__titolo { font-size: var(--t-h2); }
+.scaduta__titolo { font-family: var(--f-titoli); font-size: var(--t-h2); font-weight: 600; line-height: 1.15; color: var(--blu); }
 .scaduta__link { display: flex; gap: 12px; color: var(--tenue); }
 
 .nota { padding-block: var(--spazio-sezione); background: var(--sabbia); border-top: 6px solid var(--oro); }

@@ -67,7 +67,7 @@ function scaduta(ctx) {
   return `<!-- Mostrato solo dopo la data di scadenza (vedi lo script nella testa). -->
 <div class="scaduta">
   ${ico('casetta', 'scaduta__marchio')}
-  <h1 class="scaduta__titolo">${esc(ctx.t.anteprima.scaduta)}</h1>
+  <p class="scaduta__titolo" role="heading" aria-level="1">${esc(ctx.t.anteprima.scaduta)}</p>
   <p class="scaduta__link">
     <a href="https://wa.me/${pl.whatsapp}?text=${testo}" rel="noopener">WhatsApp</a>
     <span aria-hidden="true">·</span>
@@ -150,8 +150,9 @@ export function orariBreve(ctx, classe = 'orari-breve') {
 }
 
 /* Tabella degli orari, giorno per giorno; lo script segna "oggi". */
-function orariTabella(ctx) {
+function orariTabella(ctx, arg) {
   const t = ctx.t.comuni;
+  const nascosta = arg === 'nascosta';
   const righe = ctx.r.orari.giorni.map((g, i) => {
     const pranzo = g.fasce.filter(ePranzo).map(fascia).join(', ');
     const cena = g.fasce.filter((f) => !ePranzo(f)).map(fascia).join(', ');
@@ -161,7 +162,7 @@ function orariTabella(ctx) {
     return `      <tr data-giorno="${(i + 1) % 7}"><th scope="row">${esc(maiuscola(g.nome))}</th>${celle}</tr>`;
   }).join('\n');
   return `<table class="orari">
-  <caption>${esc(ctx.t.prenotaPagina.info.orari)}${ctx.r.orari.daConfermare ? etichettaDc(ctx) : ''}</caption>
+  <caption${nascosta ? ' class="sr-only"' : ''}>${esc(ctx.t.prenotaPagina.info.orari)}${ctx.r.orari.daConfermare && !nascosta ? etichettaDc(ctx) : ''}</caption>
   <thead>
     <tr><th scope="col"><span class="sr-only">Giorno</span></th><th scope="col">${esc(t.pranzo)}</th><th scope="col">${esc(t.cena)}</th></tr>
   </thead>
@@ -186,11 +187,15 @@ export function widgetTheFork(ctx) {
   if (!ctx.anteprima) return link;
   // Solo nell'anteprima: un calendario finto mostra dove andrà il widget vero.
   const oggi = new Date();
-  const giorni = Array.from({ length: 5 }, (_, i) => {
+  const date = Array.from({ length: 5 }, (_, i) => {
     const d = new Date(oggi.getFullYear(), oggi.getMonth(), oggi.getDate() + i + 1);
-    const chiuso = ctx.r.orari.giorni[(d.getDay() + 6) % 7].fasce.length === 0;
+    return { d, chiuso: ctx.r.orari.giorni[(d.getDay() + 6) % 7].fasce.length === 0 };
+  });
+  const scelto = date.findIndex((x, i) => i > 0 && !x.chiuso);
+  const giorni = date.map(({ d, chiuso }, i) => {
     const nome = d.toLocaleDateString('it-IT', { weekday: 'short' }).replace('.', '');
-    return `<li class="${i === 1 ? 'is-scelto' : ''}${chiuso ? ' is-chiuso' : ''}"><span>${nome}</span><b>${d.getDate()}</b></li>`;
+    const classi = [i === scelto && 'is-scelto', chiuso && 'is-chiuso'].filter(Boolean).join(' ');
+    return `<li${classi ? ` class="${classi}"` : ''}><span>${nome}</span><b>${d.getDate()}</b></li>`;
   }).join('');
   const ore = ['19:30', '20:00', '20:30', '21:00', '21:30'].map((o, i) => `<li${i === 2 ? ' class="is-scelto"' : ''}>${o}</li>`).join('');
   return `<div class="thefork thefork--segnaposto" id="thefork">
@@ -216,9 +221,12 @@ function bottoneTheFork(ctx, posizione) {
 
 function prenotaFascia(ctx, arg) {
   const conWidget = arg === 'widget';
-  const testi = ctx.pagina === 'menu'
-    ? { titolo: ctx.t.menuPagina.prenotaTitolo, testo: ctx.t.menuPagina.prenotaTesto }
-    : ctx.t.home.prenota;
+  const t = ctx.t;
+  const testi = {
+    menu: { titolo: t.menuPagina.prenotaTitolo, testo: t.menuPagina.prenotaTesto },
+    galleria: { titolo: t.galleriaPagina.cta, testo: t.home.prenota.testo },
+    'chi-siamo': t.chiSiamo.cta,
+  }[ctx.pagina] ?? t.home.prenota;
   const c = ctx.t.comuni;
   return `<section class="fascia-prenota${conWidget ? ' fascia-prenota--widget' : ''}" aria-labelledby="fascia-prenota-titolo">
   <div class="contenitore fascia-prenota__griglia">
@@ -434,6 +442,7 @@ export const comuni = {
   'prenota-fascia': prenotaFascia,
   'orari-breve': (ctx) => orariBreve(ctx),
   'orari-tabella': orariTabella,
+  'dc-orari': (ctx) => (ctx.r.orari.daConfermare ? etichettaDc(ctx) : ''),
   piede,
   fine,
   nota,

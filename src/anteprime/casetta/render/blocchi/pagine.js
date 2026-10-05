@@ -4,6 +4,16 @@ import { esc, md, senzaDc, etichettaDc, virgola, foto, grande, slot } from '../u
 import { ico, nuovaScheda, ESTERNO, tel, wa, stelle, testoAlt } from '../parti.js';
 import { widgetTheFork } from './comuni.js';
 
+/* Una foto 4:3 dalla cartella delle immagini, con l'alt preso dai testi:
+   <!-- @immagine sala/casetta-sera chiSiamo.fotoStoriaAlt [subito] --> */
+const MISURE = '(min-width: 64em) 600px, (min-width: 40em) 80vw, 100vw';
+function immagine(ctx, arg = '') {
+  const [file, chiave, opzione] = arg.split(/\s+/);
+  const alt = chiave ? chiave.split('.').reduce((nodo, k) => nodo?.[k], ctx.t) : '';
+  if (chiave && typeof alt !== 'string') throw new Error(`[casetta] @immagine: testo "${chiave}" non trovato`);
+  return foto(file, { alt, sizes: MISURE, lazy: opzione !== 'subito', ctx });
+}
+
 /* Galleria ---------------------------------------------------------------- */
 function galleriaCategorie(ctx) {
   const t = ctx.t.galleriaPagina;
@@ -304,7 +314,8 @@ function modulo(ctx, tipo = 'eventi') {
       campo(`${p}-data`, `${esc(m.data)}${facoltativo}`, `<input id="${p}-data" name="data" type="date" data-regola="data">`, { errore: esc(e.data), classe: 'campo--meta' }),
     ];
 
-  const messaggio = campo(`${p}-messaggio`, `${esc(m.messaggio)}${facoltativo}`, `<textarea id="${p}-messaggio" name="messaggio" rows="4" aria-describedby="${p}-messaggio-aiuto"></textarea>`, { aiuto: esc(m.messaggioAiuto) });
+  const aiuto = lavoro ? m.messaggioAiutoLavoro : m.messaggioAiuto;
+  const messaggio = campo(`${p}-messaggio`, `${esc(m.messaggio)}${facoltativo}`, `<textarea id="${p}-messaggio" name="messaggio" rows="4" aria-describedby="${p}-messaggio-aiuto"></textarea>`, { aiuto: esc(aiuto) });
 
   return `<form class="modulo" data-modulo novalidate${attributi}>
     ${online ? `<input type="hidden" name="form-name" value="${nomeModulo}">\n    <p hidden><label>Non compilare: <input name="bot-field"></label></p>` : ''}
@@ -313,7 +324,7 @@ function modulo(ctx, tipo = 'eventi') {
     ${specifici.join('\n    ')}
     ${messaggio}
     <div class="consenso">
-      <label><input type="checkbox" name="privacy" required data-regola="privacy" aria-describedby="${p}-privacy-errore"><span>${esc(lavoro ? m.privacyCandidatura : m.privacy)}${etichettaDc(ctx, 'informativa da collegare')}</span></label>
+      <label><input id="${p}-privacy" type="checkbox" name="privacy" required data-regola="privacy"><span>${esc(lavoro ? m.privacyCandidatura : m.privacy)}${etichettaDc(ctx, 'informativa da collegare')}</span></label>
       <p class="campo__errore" id="${p}-privacy-errore" data-errore hidden>${esc(e.privacy)}</p>
     </div>
     <div class="modulo__piede">
@@ -328,6 +339,7 @@ function modulo(ctx, tipo = 'eventi') {
 }
 
 export const pagine = {
+  immagine,
   'galleria-categorie': galleriaCategorie,
   'prenota-canali': prenotaCanali,
   'contatti-schede': contattiSchede,

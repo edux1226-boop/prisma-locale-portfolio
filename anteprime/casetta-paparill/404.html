@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="it" data-pagina="404">
+<head>
+<!-- @testa -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/pagina.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<!-- Pagina d'errore: tutti i link sono assoluti, perché la si vede da
+     indirizzi qualunque (Netlify la serve per ogni pagina che non c'è). -->
+<main id="contenuto" tabindex="-1">
+<section class="non-trovata" aria-labelledby="titolo-404">
+  <div class="contenitore due-colonne">
+    <div>
+      <p class="occhiello">{{t.nonTrovata.occhiello}}</p>
+      <h1 class="intestazione__titolo" id="titolo-404">{{md t.nonTrovata.titolo}}</h1>
+      <p class="intestazione__lead">{{md t.nonTrovata.testo}}</p>
+      <ul class="non-trovata__link" role="list">
+        <li><a class="btn btn--primario" href="{{url home}}">{{t.nonTrovata.home}}</a></li>
+        <li><a class="btn btn--secondario" href="{{url menu}}">{{t.nonTrovata.menu}}</a></li>
+        <li><a class="btn btn--secondario" href="{{url prenota}}" data-prenota="404">{{t.nonTrovata.prenota}}</a></li>
+        <li><a class="btn btn--secondario" href="{{url contatti}}">{{t.nonTrovata.contatti}}</a></li>
+      </ul>
+    </div>
+    <figure class="foto-cornice foto-cornice--tonda">
+      <!-- @immagine piatto-vuoto nonTrovata.fotoAlt subito -->
+    </figure>
+  </div>
+</section>
+</main>
+
+<!-- @piede -->
+<!-- @fine -->
+</body>
+</html>

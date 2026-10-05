@@ -11,7 +11,7 @@
 
    Richiede Playwright con Chromium e ffmpeg (con libwebp e libaom). */
 
-import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -112,6 +112,8 @@ async function icone(browser) {
 }
 
 async function pdf(browser) {
+  const sito = JSON.parse(await readFile(join(radice, 'src/anteprime/casetta/contenuti/sito.json'), 'utf8'));
+  const prima = sito.anteprima ? 'Menu d\'esempio · anteprima di Prisma Locale · ' : '';
   const page = await browser.newPage();
   await page.goto(`${base}/anteprime/casetta-paparill/menu/`, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
@@ -123,7 +125,7 @@ async function pdf(browser) {
     preferCSSPageSize: true,
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
-    footerTemplate: '<div style="width:100%;font:8px Arial,sans-serif;color:#5b6467;text-align:center;">La Casetta di Paparill · Via Salara 11, Roseto degli Abruzzi · 085 899 8167 · pagina <span class="pageNumber"></span> di <span class="totalPages"></span></div>',
+    footerTemplate: `<div style="width:100%;font:8px Arial,sans-serif;color:#5b6467;text-align:center;">${prima}La Casetta di Paparill · Via Salara 11, Roseto degli Abruzzi · 085 899 8167 · pagina <span class="pageNumber"></span> di <span class="totalPages"></span></div>`,
   });
   console.log('✓ menu-casetta-paparill.pdf');
 }

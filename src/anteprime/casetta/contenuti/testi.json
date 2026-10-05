@@ -38,7 +38,6 @@
       "descrizione": "La pagina che cerchi non esiste. Torna alla home della Casetta di Paparill."
     }
   },
-
   "comuni": {
     "prenota": "Prenota un tavolo",
     "prenotaBreve": "Prenota",
@@ -53,14 +52,12 @@
     "oggi": "oggi",
     "illustrazione": "Illustrazione provvisoria"
   },
-
   "testata": {
     "salta": "Vai al contenuto",
     "apriMenu": "Menu",
     "chiudiMenu": "Chiudi",
     "home": "La Casetta di Paparill, torna alla home"
   },
-
   "sceltaPrenotazione": {
     "titolo": "Come vuoi prenotare?",
     "intro": "Scegli tu: ti rispondiamo noi.",
@@ -71,20 +68,41 @@
     "gruppi": "Siete più di 10? Scrivici",
     "tutte": "Tutti i modi per prenotare"
   },
-
   "home": {
     "hero": {
       "occhiello": "Roseto degli Abruzzi · Cucina teramana",
       "titoli": [
-        { "id": "a", "testo": "Pasta fatta in casa e tradizione abruzzese a Roseto" },
-        { "id": "b", "testo": "Pasta fatta in casa ogni giorno, tradizione abruzzese da sempre" },
-        { "id": "c", "testo": "580 recensioni eccellenti ti aspettano a Roseto" },
-        { "id": "d", "testo": "La tradizione nel piatto, l'Abruzzo nel cuore" }
+        {
+          "id": "a",
+          "testo": "Pasta fatta in casa e tradizione abruzzese a Roseto"
+        },
+        {
+          "id": "b",
+          "testo": "Pasta fatta in casa ogni giorno, tradizione abruzzese da sempre"
+        },
+        {
+          "id": "c",
+          "testo": "580 recensioni eccellenti ti aspettano a Roseto"
+        },
+        {
+          "id": "d",
+          "testo": "La tradizione nel piatto, l'Abruzzo nel cuore"
+        }
       ],
       "sottotitolo": "recensioni su TripAdvisor",
       "badge": [
-        { "marchio": "TripAdvisor", "testo": "Tra i ristoranti più votati di Roseto [dc]", "icona": "stella", "link": "tripadvisor" },
-        { "marchio": "TheFork", "testo": "Prenotazione online [dc]", "icona": "posate", "link": "thefork" }
+        {
+          "marchio": "TripAdvisor",
+          "testo": "Tra i ristoranti più votati di Roseto [dc]",
+          "icona": "stella",
+          "link": "tripadvisor"
+        },
+        {
+          "marchio": "TheFork",
+          "testo": "Prenotazione online [dc]",
+          "icona": "posate",
+          "link": "thefork"
+        }
       ],
       "fotoAlt": "Un piatto di chitarra con le pallottine sulla tavola apparecchiata, con il pane, un calice di Montepulciano e il pecorino."
     },
@@ -112,7 +130,12 @@
     "piatti": {
       "titolo": "I piatti della casa",
       "intro": "Quattro buoni motivi per sedersi a tavola. Gli altri sono nel menu.",
-      "scelti": ["chitarra-pallottine", "mugnaia", "arrosticini", "pizza-dolce"],
+      "scelti": [
+        "chitarra-pallottine",
+        "mugnaia",
+        "arrosticini",
+        "pizza-dolce"
+      ],
       "link": "Vedi tutto il menu"
     },
     "galleria": {
@@ -134,7 +157,6 @@
       "testo": "Chiamaci o scrivici su WhatsApp: rispondiamo noi, senza intermediari. Se preferisci, prenota online su TheFork."
     }
   },
-
   "menuPagina": {
     "titolo": "Il menu",
     "intro": "Pasta tirata a mano, carni d'Abruzzo e dolci fatti in casa. I piatti seguono le stagioni: chiedi sempre i fuori menu del giorno.",
@@ -158,7 +180,6 @@
     "prenotaTitolo": "Ti è venuta fame?",
     "prenotaTesto": "Prenota il tavolo: in sala ti aspettano anche i fuori menu del giorno."
   },
-
   "galleriaPagina": {
     "titolo": "Galleria",
     "intro": "I piatti, la sala, la cucina: la Casetta prima ancora di sedersi a tavola. Tocca una foto per ingrandirla.",
@@ -170,7 +191,6 @@
     "chiudi": "Chiudi",
     "cta": "Ti abbiamo fatto venire fame?"
   },
-
   "prenotaPagina": {
     "titolo": "Prenota un tavolo",
     "intro": "Scegli il modo che preferisci. Per gruppi oltre 10 persone ed eventi privati c'è il modulo in fondo alla pagina.",
@@ -206,14 +226,15 @@
     "info": {
       "orari": "Orari di apertura",
       "risposta": "Tempi di risposta",
-      "gruppi": "Gruppi"
+      "gruppi": "Gruppi",
+      "titolo": "Orari e informazioni"
     },
     "modulo": {
       "titolo": "Modulo per gruppi ed eventi privati",
-      "intro": "Compila i campi: ti ricontattiamo per definire menu e dettagli."
+      "intro": "Compila i campi: ti ricontattiamo per definire menu e dettagli.",
+      "telefono": "Preferisci telefonare?"
     }
   },
-
   "chiSiamo": {
     "titolo": "Chi siamo",
     "lead": "Una cucina di famiglia a Roseto degli Abruzzi.",
@@ -226,11 +247,24 @@
     "filosofia": {
       "titolo": "Come lavoriamo",
       "voci": [
-        { "titolo": "La farina", "testo": "Grani teramani macinati a pietra. La pasta si impasta e si tira a mano, ogni giorno." },
-        { "titolo": "La carne", "testo": "Agnello del Centro Italia IGP e pecora del territorio, per la brace e per i piatti della tradizione. [dc]" },
-        { "titolo": "Le ricette", "testo": "Quelle di casa, tramandate a voce. Cambiano solo quando cambia la stagione." },
-        { "titolo": "La cantina", "testo": "Vini abruzzesi, scelti per accompagnare quello che c'è nel piatto." }
-      ]
+        {
+          "titolo": "La farina",
+          "testo": "Grani teramani macinati a pietra. La pasta si impasta e si tira a mano, ogni giorno."
+        },
+        {
+          "titolo": "La carne",
+          "testo": "Agnello del Centro Italia IGP e pecora del territorio, per la brace e per i piatti della tradizione. [dc]"
+        },
+        {
+          "titolo": "Le ricette",
+          "testo": "Quelle di casa, tramandate a voce. Cambiano solo quando cambia la stagione."
+        },
+        {
+          "titolo": "La cantina",
+          "testo": "Vini abruzzesi, scelti per accompagnare quello che c'è nel piatto."
+        }
+      ],
+      "occhiello": "Il nostro modo"
     },
     "fotoCucinaAlt": "La fontana di farina con le uova sulla spianatoia: la pasta fatta in casa comincia così.",
     "fotoCucinaDida": "La pasta comincia così: farina, uova e un po' di pazienza.",
@@ -238,18 +272,35 @@
       "titolo": "Le persone della Casetta",
       "intro": "Le facce che ti accolgono, ogni sera.",
       "persone": [
-        { "nome": "Vincenzo Caterini", "ruolo": "Titolare e chef", "bio": "Ha fondato la Casetta e ne guida la cucina. Biografia da scrivere insieme. [dc]", "iniziali": "VC" },
-        { "nome": "Nome e cognome [dc]", "ruolo": "In sala", "bio": "Ti accoglie, ti consiglia il vino e conosce a memoria i fuori menu del giorno. [dc]", "iniziali": "S" },
-        { "nome": "Nome e cognome [dc]", "ruolo": "In cucina", "bio": "Pasta fresca e brace: le mani dietro la chitarra e gli arrosticini. [dc]", "iniziali": "C" }
+        {
+          "nome": "Vincenzo Caterini",
+          "ruolo": "Titolare e chef",
+          "bio": "Ha fondato la Casetta e ne guida la cucina. Biografia da scrivere insieme. [dc]",
+          "iniziali": "VC"
+        },
+        {
+          "nome": "Nome e cognome [dc]",
+          "ruolo": "In sala",
+          "bio": "Ti accoglie, ti consiglia il vino e conosce a memoria i fuori menu del giorno. [dc]",
+          "iniziali": "S"
+        },
+        {
+          "nome": "Nome e cognome [dc]",
+          "ruolo": "In cucina",
+          "bio": "Pasta fresca e brace: le mani dietro la chitarra e gli arrosticini. [dc]",
+          "iniziali": "C"
+        }
       ],
-      "fotoInArrivo": "Foto in arrivo"
+      "fotoInArrivo": "Foto in arrivo",
+      "occhiello": "La squadra"
     },
     "cta": {
       "titolo": "Vieni a conoscerci a tavola",
       "testo": "La sera, o la domenica a pranzo. Il tavolo lo teniamo per te."
-    }
+    },
+    "storiaOcchiello": "La nostra storia",
+    "storiaTitolo": "Dal mattarello alla tavola"
   },
-
   "contattiPagina": {
     "titolo": "Contatti e orari",
     "intro": "Siamo in Via Salara 11, a Roseto degli Abruzzi. Chiamaci, scrivici o passa a trovarci.",
@@ -275,54 +326,88 @@
       "titolo": "Ci hai già provato?",
       "testo": "Raccontalo su TripAdvisor: ogni recensione aiuta chi cerca una tavola a Roseto.",
       "link": "Le nostre recensioni su TripAdvisor"
-    }
+    },
+    "votoOcchiello": "TripAdvisor e TheFork"
   },
-
   "eventi": {
     "titolo": "Feste ed eventi privati",
     "lead": "Compleanni, comunioni, cene di lavoro, anniversari: la tavola della Casetta per i giorni da ricordare.",
     "occasioni": {
       "titolo": "Le occasioni",
       "voci": [
-        { "titolo": "Compleanni e anniversari", "testo": "Dal pranzo in famiglia alla cena con gli amici di sempre. La torta? La facciamo noi, o porti la tua. [dc]" },
-        { "titolo": "Battesimi, comunioni e cresime", "testo": "Il pranzo della festa con i piatti della tradizione, pensato anche per i più piccoli." },
-        { "titolo": "Cene aziendali", "testo": "Fine anno, clienti, squadra: un menu fisso e un conto chiaro, senza sorprese." },
-        { "titolo": "Rimpatriate e gruppi", "testo": "Arrosticini a volontà e pasta fatta in casa: il menu giusto per stare insieme." }
-      ]
+        {
+          "titolo": "Compleanni e anniversari",
+          "testo": "Dal pranzo in famiglia alla cena con gli amici di sempre. La torta? La facciamo noi, o porti la tua. [dc]"
+        },
+        {
+          "titolo": "Battesimi, comunioni e cresime",
+          "testo": "Il pranzo della festa con i piatti della tradizione, pensato anche per i più piccoli."
+        },
+        {
+          "titolo": "Cene aziendali",
+          "testo": "Fine anno, clienti, squadra: un menu fisso e un conto chiaro, senza sorprese."
+        },
+        {
+          "titolo": "Rimpatriate e gruppi",
+          "testo": "Arrosticini a volontà e pasta fatta in casa: il menu giusto per stare insieme."
+        }
+      ],
+      "occhiello": "Feste e ricorrenze"
     },
     "passi": {
       "titolo": "Come funziona",
       "voci": [
-        { "titolo": "Ci racconti l'occasione", "testo": "Data, numero di ospiti e idea: con il modulo qui sotto o al telefono." },
-        { "titolo": "Componiamo il menu insieme", "testo": "Partiamo dai menu degustazione e li adattiamo a gusti, allergie e budget." },
-        { "titolo": "Prepariamo la sala", "testo": "Tavoli, posti e tempi del servizio: tu pensi agli ospiti, al resto pensiamo noi." }
-      ]
+        {
+          "titolo": "Ci racconti l'occasione",
+          "testo": "Data, numero di ospiti e idea: con il modulo qui sotto o al telefono."
+        },
+        {
+          "titolo": "Componiamo il menu insieme",
+          "testo": "Partiamo dai menu degustazione e li adattiamo a gusti, allergie e budget."
+        },
+        {
+          "titolo": "Prepariamo la sala",
+          "testo": "Tavoli, posti e tempi del servizio: tu pensi agli ospiti, al resto pensiamo noi."
+        }
+      ],
+      "occhiello": "Tre passi"
     },
     "dettagli": {
       "titolo": "Da sapere",
       "voci": [
-        "Sala riservata fino a [numero] ospiti. [dc]",
-        "Menu per gruppi da [prezzo] € a persona, bevande incluse. [dc]",
+        "Sala riservata per gruppi e feste: capienza [dc]",
+        "Menu per gruppi a prezzo fisso, bevande incluse. [dc]",
         "Catering e rinfreschi a domicilio: chiedici se sono disponibili per la tua data. [dc]"
       ]
     },
     "modulo": {
       "titolo": "Raccontaci il tuo evento",
       "intro": "Ti rispondiamo entro un giorno lavorativo con una proposta di menu. [dc]"
-    }
+    },
+    "cta": "Raccontaci il tuo evento",
+    "fotoAlt": "La tavolata della domenica, con i piatti da condividere al centro e i calici pieni."
   },
-
   "lavora": {
     "titolo": "Lavora con noi",
     "lead": "Cerchiamo persone che amano la cucina di casa e l'accoglienza. Se ti riconosci, mandaci il tuo curriculum.",
     "ruoli": {
       "titolo": "Chi cerchiamo",
       "voci": [
-        { "titolo": "Sala", "testo": "Camerieri e camerieri di sala, anche per la stagione estiva." },
-        { "titolo": "Cucina", "testo": "Aiuto cuoco per la pasta fresca e per la brace." },
-        { "titolo": "Lavaggio", "testo": "Lavapiatti e aiuto cucina, sere e fine settimana." }
+        {
+          "titolo": "Sala",
+          "testo": "Camerieri e camerieri di sala, anche per la stagione estiva."
+        },
+        {
+          "titolo": "Cucina",
+          "testo": "Aiuto cuoco per la pasta fresca e per la brace."
+        },
+        {
+          "titolo": "Lavaggio",
+          "testo": "Lavapiatti e aiuto cucina, sere e fine settimana."
+        }
       ],
-      "nota": "Le posizioni aperte cambiano durante l'anno: la candidatura spontanea è sempre ben accetta. [dc]"
+      "nota": "Le posizioni aperte cambiano durante l'anno: la candidatura spontanea è sempre ben accetta. [dc]",
+      "occhiello": "Posizioni"
     },
     "modulo": {
       "titolo": "Invia la tua candidatura",
@@ -330,7 +415,6 @@
       "privacy": "Usiamo i tuoi dati solo per valutare la candidatura e li conserviamo per 12 mesi. [dc]"
     }
   },
-
   "moduli": {
     "nome": "Nome e cognome",
     "email": "Email",
@@ -339,13 +423,28 @@
     "data": "Data dell'evento",
     "ospiti": "Numero di ospiti",
     "tipo": "Tipo di evento",
-    "tipi": ["Compleanno o anniversario", "Battesimo, comunione o cresima", "Cena aziendale", "Gruppo o rimpatriata", "Altro"],
+    "tipi": [
+      "Compleanno o anniversario",
+      "Battesimo, comunione o cresima",
+      "Cena aziendale",
+      "Gruppo o rimpatriata",
+      "Altro"
+    ],
     "messaggio": "Messaggio",
     "messaggioAiuto": "Orario, menu preferito, allergie, idee: tutto quello che ci aiuta.",
     "ruolo": "Per quale ruolo?",
-    "ruoli": ["Sala", "Cucina", "Lavaggio", "Candidatura spontanea"],
+    "ruoli": [
+      "Sala",
+      "Cucina",
+      "Lavaggio",
+      "Candidatura spontanea"
+    ],
     "disponibilita": "Disponibilità",
-    "disponibilitaVoci": ["Tutto l'anno", "Solo stagione estiva", "Fine settimana"],
+    "disponibilitaVoci": [
+      "Tutto l'anno",
+      "Solo stagione estiva",
+      "Fine settimana"
+    ],
     "cv": "Curriculum",
     "cvAiuto": "PDF o Word, massimo 5 MB.",
     "privacy": "Ho letto l'informativa privacy e acconsento al trattamento dei dati per rispondere alla mia richiesta.",
@@ -363,20 +462,18 @@
       "cv": "Allega un file PDF o Word di massimo 5 MB."
     },
     "grazie": "Grazie, {nome}!",
-    "grazieTesto": "Nel sito definitivo questa richiesta arriverebbe subito alla Casetta, con tutti i dettagli già compilati."
+    "grazieTesto": "Nel sito definitivo questa richiesta arriverebbe subito alla Casetta, con tutti i dettagli già compilati.",
+    "messaggioAiutoLavoro": "Esperienze, da quando puoi iniziare, qualcosa su di te."
   },
-
   "recensioniWidget": {
     "notaAnteprima": "Recensioni d'esempio: al lancio qui va il widget ufficiale di TripAdvisor, con le ultime recensioni vere.",
     "su": "su 5",
     "esempio": "Recensione d'esempio"
   },
-
   "dove": {
     "orariTitolo": "Orari",
     "contattiTitolo": "Contatti"
   },
-
   "piede": {
     "motto": "Cucina abruzzese e teramana a Roseto degli Abruzzi, con la pasta fatta in casa ogni giorno.",
     "orari": "Orari",
@@ -392,14 +489,12 @@
     "credito": "Sito di",
     "creditoAnteprima": "Demo di"
   },
-
   "barra": {
     "etichetta": "Azioni rapide",
     "chiama": "Chiama",
     "whatsapp": "WhatsApp",
     "prenota": "Prenota"
   },
-
   "uscita": {
     "titolo": "Prima di andare…",
     "testo": "Porta con te il menu: lo scarichi in PDF e lo ritrovi quando ti viene fame.",
@@ -407,23 +502,22 @@
     "prenota": "Prenota un tavolo",
     "chiudi": "No, grazie"
   },
-
   "cookie": {
     "testo": "Usiamo i cookie di analisi di Google solo se li accetti, per capire quali pagine sono utili. Niente pubblicità.",
     "accetta": "Accetta",
     "rifiuta": "Rifiuta",
     "link": "Cookie policy"
   },
-
   "nonTrovata": {
     "titolo": "Ti sei perso per strada?",
     "testo": "La pagina che cerchi non c'è più, o forse non c'è mai stata. Torna alla Casetta: la tavola è ancora apparecchiata.",
     "home": "Torna alla home",
     "menu": "Guarda il menu",
     "prenota": "Prenota un tavolo",
-    "contatti": "Contatti e orari"
+    "contatti": "Contatti e orari",
+    "occhiello": "Errore 404",
+    "fotoAlt": "Un piatto vuoto sulla tovaglia, con forchetta e coltello e due gocce di sugo."
   },
-
   "anteprima": {
     "avviso": "Anteprima riservata",
     "avvisoExtra": "immagini provvisorie",
@@ -433,15 +527,51 @@
       "titolo": "Cosa manca per andare online",
       "intro": "Il sito è pronto e si aggiorna da pochi file di testo: menu, orari e prezzi si cambiano senza toccare il codice. Le immagini sono illustrazioni provvisorie che tengono il posto alle vostre fotografie, e le voci segnate «da confermare» vanno verificate con voi. Spuntate quello che avete già.",
       "voci": [
-        { "id": "foto", "titolo": "Fotografie", "testo": "Almeno 12 piatti, la sala, l'esterno e la cucina. Per i piatti, stessa luce e stessa inquadratura." },
-        { "id": "logo", "titolo": "Logo", "testo": "Il file originale, se c'è. Altrimenti lo disegniamo noi." },
-        { "id": "menu", "titolo": "Menu e prezzi", "testo": "Quello attuale, con gli allergeni: lo riscriviamo noi in pagina, niente PDF da scaricare per leggerlo." },
-        { "id": "orari", "titolo": "Orari e chiusura", "testo": "Pranzo e cena giorno per giorno, il giorno di riposo e le ferie." },
-        { "id": "whatsapp", "titolo": "Numero WhatsApp", "testo": "Quello su cui volete ricevere le prenotazioni." },
-        { "id": "piattaforme", "titolo": "TheFork e TripAdvisor", "testo": "Il codice del widget da TheFork Manager e l'accesso alla pagina TripAdvisor del ristorante." },
-        { "id": "storia", "titolo": "Storia e squadra", "testo": "L'anno di apertura, i nomi e i ruoli di chi lavora in sala e in cucina." },
-        { "id": "dominio", "titolo": "Dominio", "testo": "Gli accessi a ristorantepaparill.it: teniamo l'indirizzo che i clienti già conoscono." },
-        { "id": "legale", "titolo": "Dati per la privacy", "testo": "Ragione sociale e partita IVA per informativa e footer." }
+        {
+          "id": "foto",
+          "titolo": "Fotografie",
+          "testo": "Almeno 12 piatti, la sala, l'esterno e la cucina. Per i piatti, stessa luce e stessa inquadratura."
+        },
+        {
+          "id": "logo",
+          "titolo": "Logo",
+          "testo": "Il file originale, se c'è. Altrimenti lo disegniamo noi."
+        },
+        {
+          "id": "menu",
+          "titolo": "Menu e prezzi",
+          "testo": "Quello attuale, con gli allergeni: lo riscriviamo noi in pagina, niente PDF da scaricare per leggerlo."
+        },
+        {
+          "id": "orari",
+          "titolo": "Orari e chiusura",
+          "testo": "Pranzo e cena giorno per giorno, il giorno di riposo e le ferie."
+        },
+        {
+          "id": "whatsapp",
+          "titolo": "Numero WhatsApp",
+          "testo": "Quello su cui volete ricevere le prenotazioni."
+        },
+        {
+          "id": "piattaforme",
+          "titolo": "TheFork e TripAdvisor",
+          "testo": "Il codice del widget da TheFork Manager e l'accesso alla pagina TripAdvisor del ristorante."
+        },
+        {
+          "id": "storia",
+          "titolo": "Storia e squadra",
+          "testo": "L'anno di apertura, i nomi e i ruoli di chi lavora in sala e in cucina."
+        },
+        {
+          "id": "dominio",
+          "titolo": "Dominio",
+          "testo": "Gli accessi a ristorantepaparill.it: teniamo l'indirizzo che i clienti già conoscono."
+        },
+        {
+          "id": "legale",
+          "titolo": "Dati per la privacy",
+          "testo": "Ragione sociale e partita IVA per informativa e footer."
+        }
       ],
       "conto": "pronti",
       "di": "di",

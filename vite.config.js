@@ -6,11 +6,14 @@ const root = import.meta.dirname;
 
 // Anteprima "La Casetta di Paparill": un sito di più pagine, composto dai
 // contenuti JSON in src/anteprime/casetta/contenuti/.
-const CASETTA = ['', 'menu'];
-const casettaInput = Object.fromEntries(CASETTA.map((pagina) => [
-  `casetta${pagina ? `-${pagina}` : ''}`,
-  resolve(root, 'anteprime/casetta-paparill', pagina, 'index.html'),
-]));
+const CASETTA = ['', 'menu', 'galleria', 'prenota', 'chi-siamo', 'contatti', 'eventi-privati', 'lavora-con-noi'];
+const casettaInput = {
+  ...Object.fromEntries(CASETTA.map((pagina) => [
+    `casetta${pagina ? `-${pagina}` : ''}`,
+    resolve(root, 'anteprime/casetta-paparill', pagina, 'index.html'),
+  ])),
+  'casetta-404': resolve(root, 'anteprime/casetta-paparill/404.html'),
+};
 
 export default defineConfig({
   appType: 'mpa',

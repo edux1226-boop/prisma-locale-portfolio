@@ -25,3 +25,10 @@
   for = "/anteprime/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Anteprima "La Casetta di Paparill": la sua pagina 404 per gli indirizzi
+# che non esistono (le pagine vere hanno la precedenza: niente force).
+[[redirects]]
+  from = "/anteprime/casetta-paparill/*"
+  to = "/anteprime/casetta-paparill/404.html"
+  status = 404

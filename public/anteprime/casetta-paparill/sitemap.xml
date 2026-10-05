@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap del sito definitivo della Casetta di Paparill (dominio
+     ristorantepaparill.it, da confermare): va pubblicata alla radice.
+     Le pagine sono quelle di contenuti/sito.json → "sitemap". -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.ristorantepaparill.it/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <image:image><image:loc>https://www.ristorantepaparill.it/assets/img/casetta/hero-2048.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.ristorantepaparill.it/menu/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <image:image><image:loc>https://www.ristorantepaparill.it/assets/img/casetta/piatti/chitarra-pallottine-1200.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.ristorantepaparill.it/assets/img/casetta/piatti/arrosticini-1200.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.ristorantepaparill.it/galleria/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.ristorantepaparill.it/prenota/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.ristorantepaparill.it/chi-siamo/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.ristorantepaparill.it/contatti/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.ristorantepaparill.it/eventi-privati/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.ristorantepaparill.it/lavora-con-noi/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+</urlset>
