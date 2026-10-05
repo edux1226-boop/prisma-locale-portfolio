@@ -186,13 +186,24 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
     orari e chiusure (riempiono anche la tendina del modulo e bloccano i turni chiusi),
     numeri delle recensioni. La carta è HTML nella pagina, con i segnaposto marcati
     `PLACEHOLDER` / `DA CONFERMARE` nei commenti.
-  - **Immagini provvisorie**: nessuna foto vera e nessun piatto finto. Sono studi di mare
-    generati da uno shader (`dev/marina/lastre.js`: superficie controluce, alba, notte con le
-    lampare, mezzogiorno grigio, sera, risacca, battigia). Si rigenerano con
-    `node scripts/render-marina.mjs` (dev server attivo, Playwright e ffmpeg) in
-    `public/assets/img/marina/`, AVIF + WebP; l'immagine social è `marina-og.jpg`. Per le
-    foto vere basta sostituire i file con lo stesso nome: ogni immagine ha un commento `FOTO:`
-    con soggetto e proporzioni. I piatti hanno tavole tipografiche finché non c'è lo scatto.
+  - **Immagini provvisorie, di due tipi.**
+    - *Studi di mare generati* da uno shader (`dev/marina/lastre.js`: superficie controluce,
+      alba, notte con le lampare, mezzogiorno grigio, sera, risacca, battigia) per tutto ciò che
+      va a tutto schermo: hero, sequenza del mare, specchio, panorami della gallery. Si
+      rigenerano con `node scripts/render-marina.mjs` (dev server attivo, Playwright e ffmpeg)
+      in `public/assets/img/marina/`, AVIF + WebP; l'immagine social è `marina-og.jpg`.
+    - *Foto vere prese dal web* in `public/assets/img/marina/foto/`, ritagliate da screenshot
+      delle ricerche (circa 600 px di lato: per questo stanno solo in riquadri piccoli o medi,
+      mai a tutto schermo). Regola di trattamento: persone in bianco e nero, cibo e luoghi a
+      colori appena raffreddati, grana leggera. Fonti: Lido Vannucchi (la foto in riva al mare,
+      con la sua firma lasciata intatta), 50 Top Italy (Gennaro in cucina), TripAdvisor (la
+      veranda), foto di clienti su Google (vongole, crudo, scampi, pesce e vongole, sala,
+      servizio), una foto d'archivio di fonte da verificare. Ogni foto ha il credito visibile.
+      **Non sono nostre**: prima di pubblicare il sito vero servono gli originali dal ristorante
+      e, per la foto di Lido Vannucchi, il permesso del fotografo.
+    - Ogni immagine ha un commento `FOTO:` con soggetto e proporzioni dello scatto da fare. Il
+      primo e il terzo piatto (scampi all'arrabbiata, sogliole) restano tavole tipografiche:
+      nessuna foto trovata li mostra davvero.
   - **Fonti dei fatti** (da verificare con la famiglia prima di pubblicare): Guida MICHELIN
     (Bib Gourmand, Lungomare Trento 37, linguine agli scampi, crudo del giorno, sala
     informale a due passi dalla spiaggia), L'Espresso, giugno 2026 (la storia di Gennaro, il

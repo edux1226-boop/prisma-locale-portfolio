@@ -17,6 +17,10 @@
 .piatto__tavola--sabbia { background: var(--sabbia-scura); color: var(--inchiostro); }
 .piatto__tavola--sabbia img { opacity: 0.38; }
 .piatto__tavola--pietra { background: #6F7572; }
+/* quando c'è la foto vera, niente fusione e niente lettera */
+.piatto__tavola--foto { background: var(--adriatico); }
+.piatto__tavola--foto img { mix-blend-mode: normal; opacity: 1; }
+.piatto__tavola--foto .piatto__scatto { top: auto; bottom: 16px; color: var(--carta); text-shadow: 0 0 12px rgb(var(--adriatico-rgb) / 0.8); }
 .piatto__lettera {
   position: absolute; right: 6%; bottom: -0.16em;
   font-family: var(--f-titolo); font-style: italic; font-weight: 200;
@@ -47,6 +51,8 @@
   .piatto--a .piatto__nome { font-size: clamp(2.6rem, 0.6rem + 6.4vw, 8.4rem); margin-left: calc(var(--colonna) * -0.8); }
   .piatto--b { align-items: start; }
   .piatto--b .piatto__tavola { grid-column: 7 / 13; grid-row: 1; aspect-ratio: 5 / 4; }
+  /* la foto (verticale, piccola all'origine) si tiene stretta: 4 colonne */
+  .piatto--b .piatto__tavola--foto { grid-column: 8 / 12; aspect-ratio: 4 / 5; }
   .piatto--b .piatto__testo { grid-column: 2 / 7; grid-row: 1; padding-top: 10%; }
   .piatto--b .piatto__nome em { padding-left: 1.2em; }
   .piatto--a .piatto__lettera { right: auto; left: 7%; }
@@ -115,6 +121,11 @@
 .voce__nota { font-size: var(--t-piccolo); color: var(--pietra-testo); padding-top: 0.3em; }
 .voce__prezzo { font-family: var(--f-titolo); font-size: var(--t-m); text-align: right; }
 
+/* il crudo, una sola foto dentro la carta: a destra, come in una rivista */
+.carta__foto { justify-self: end; width: min(100%, 24rem); margin-top: 26px; }
+.carta__foto picture { display: block; }
+.carta__foto img { height: auto; }
+
 .carta__degustazione { display: grid; justify-items: start; gap: 18px; padding-top: 24px; border-top: 1px solid var(--inchiostro); }
 .carta__degustazione-nome { font-family: var(--f-titolo); font-weight: 200; font-style: italic; font-size: var(--t-xl); line-height: 0.95; letter-spacing: -0.03em; }
 
@@ -148,6 +159,7 @@
 /* ---- La persona -------------------------------------------------------- */
 .persona { padding-block: var(--respiro); align-items: end; row-gap: 48px; }
 .persona__ritratto { grid-column: 1 / 6; position: relative; aspect-ratio: 4 / 5; overflow: clip; background: var(--adriatico); }
+.persona__ritratto--foto { aspect-ratio: 5 / 4; align-self: center; }
 .persona__ritratto picture { position: absolute; inset: 0; }
 .persona__ritratto figcaption {
   position: absolute; left: 18px; bottom: 16px;

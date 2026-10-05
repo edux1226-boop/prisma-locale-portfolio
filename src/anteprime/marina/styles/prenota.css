@@ -78,6 +78,8 @@
 .approdo-finale__titolo > span { display: block; }
 .approdo-finale__rientro { padding-left: calc(var(--colonna) * 2.4); }
 .recapiti { grid-column: 1 / 5; display: grid; gap: 30px; justify-items: start; }
+.recapiti__foto { width: 100%; }
+.recapiti__foto picture { display: block; aspect-ratio: 614 / 384; }
 .recapiti__indirizzo { font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m); line-height: 1.35; }
 .recapiti__lista { display: grid; width: 100%; border-top: 1px solid var(--filo); }
 .recapiti__lista div { display: grid; grid-template-columns: 7rem 1fr; padding: 12px 0; border-bottom: 1px solid var(--filo); font-size: var(--t-piccolo); }

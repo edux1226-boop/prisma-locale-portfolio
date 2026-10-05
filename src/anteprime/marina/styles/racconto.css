@@ -73,6 +73,12 @@
 .rotta__punto.is-raggiunto .rotta__segno::after { transform: scale(1); }
 .rotta__punto h3 { font-size: var(--t-l); margin-bottom: 14px; }
 .rotta__punto p { color: var(--pietra-testo); }
+/* Le stampe d'archivio lungo la rotta: piccole, come foto appoggiate sul foglio. */
+.stampa { margin-top: 26px; }
+.stampa picture { display: block; background: var(--carta-2); }
+.stampa img { height: auto; }
+.stampa--verticale { width: min(100%, 14rem); }
+.stampa--orizzontale { width: min(100%, 23rem); margin-left: clamp(0px, 4vw, 56px); }
 .rotta__anno {
   position: absolute; right: 100%; top: -0.3em; margin-right: 64px;
   font-family: var(--f-titolo); font-style: italic; font-weight: 200;

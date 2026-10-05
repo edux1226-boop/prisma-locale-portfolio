@@ -95,6 +95,18 @@ body::after {
   vertical-align: 0.25em;
 }
 
+/* Il credito delle foto prese dal web: piccolo, ma sempre presente. */
+.credito {
+  margin-top: 10px;
+  font-size: 0.5625rem; font-stretch: 72%; font-weight: 600; line-height: 1.5;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--pietra-testo);
+}
+
+/* Le foto vere seguono una regola sola: le persone in bianco e nero, come
+   un reportage; il cibo e i luoghi a colori, raffreddati appena. Il
+   trattamento è già nei file (vedi README); qui solo come si posano. */
+
 /* Il bottone: una riga sottolineata che si allunga verso la freccia.
    Niente scatole, niente pillole: è un invito, non un'insegna. */
 .bottone, .collegamento {
