@@ -234,7 +234,11 @@ Messa online, sul dominio del ristorante e come progetto a sé:
 5. Scrivere le pagine `privacy/` e `cookie/`, già linkate nel piede.
 6. Rifare il menu in PDF (`node scripts/render-casetta.mjs pdf`) e controllare `sitemap.xml`.
 7. Redirect 301 dalle pagine del sito attuale (ristorantepaparill.it) alle nuove, poi
-   Search Console e scheda Google Business Profile con il nuovo indirizzo del sito.
+   Search Console e scheda Google Business Profile con il nuovo indirizzo del sito. Tra le
+   pagine indicizzate oggi: `/primi-piatti/`, `/secondi-piatti/`, `/dessert/` e
+   `/lista-dei-vini/` → `/menu/`; `/il-locale/` → `/galleria/`; `/chi-siamo/` e `/contatti/`
+   restano uguali. Le ricette (`/ricetta-la-gallotta/`, `/ricetta-agnello-allabruzzese/`)
+   portano visite da Google: meglio tenerle che reindirizzarle.
 
 ## Progetti mostrati
 
