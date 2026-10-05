@@ -54,7 +54,10 @@
 }
 .galleria__titolo { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; font-size: var(--t-h2); }
 .galleria__conto { font-family: var(--f-testo); font-size: var(--t-piccolo); font-weight: 500; color: var(--tenue); }
-.is-schede .galleria__titolo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Con lo script le schede ci sono già dal primo disegno: senza, tre sezioni. */
+html:not(.js) .schede { display: none; }
+.js .galleria:not(.is-schede) .galleria__pannello ~ .galleria__pannello { display: none; }
+.js .galleria__titolo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .galleria__pannello:focus-visible { outline-offset: 8px; }
 
 .griglia-foto { display: grid; gap: clamp(12px, 2vw, 24px); grid-template-columns: 1fr; }
@@ -137,7 +140,14 @@
 .orari__oggi {
   display: inline-block; margin-left: 6px; padding: 1px 8px;
   border-radius: 999px; background: var(--blu); color: #fff;
-  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; vertical-align: 0.1em;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; vertical-align: 0.1em;
+}
+/* sui telefoni più stretti la tabella deve stare nella carta: celle più
+   strette e l'etichetta "oggi" che può andare sotto il giorno */
+@media (max-width: 26em) {
+  .orari th, .orari td { padding-inline: 6px; }
+  .orari tbody th { white-space: normal; }
+  .orari__oggi { margin-left: 0; }
 }
 .orari__nota { margin-top: 12px; font-size: var(--t-piccolo); color: var(--tenue); }
 @media (max-width: 30em) { .orari th, .orari td { padding: 10px 6px; font-size: var(--t-piccolo); } }
@@ -293,7 +303,7 @@
 .persona__nota {
   position: absolute; bottom: -8px; left: 50%; translate: -50% 0;
   padding: 2px 10px; border-radius: 999px; background: var(--oro-chiaro); color: #6b4f1f;
-  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
 }
 .persona__nome { font-size: 1.375rem; }
 .persona__ruolo { font-size: var(--t-mini); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--oro-testo); }

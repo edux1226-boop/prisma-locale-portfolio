@@ -166,7 +166,7 @@ html.dialogo-aperto { overflow: hidden; }
 }
 .thefork__giorni b { font-size: 1.0625rem; }
 .thefork__giorni .is-scelto, .thefork__ore .is-scelto { background: #00665c; border-color: #00665c; color: #fff; }
-.thefork__giorni .is-chiuso { opacity: 0.4; text-decoration: line-through; }
+.thefork__giorni .is-chiuso { background: transparent; border-style: dashed; color: var(--tenue); text-decoration: line-through; }
 .thefork__ore li { padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid #dde5e3; font-size: var(--t-piccolo); font-variant-numeric: tabular-nums; }
 .thefork__nota { font-size: var(--t-mini); color: var(--tenue); }
 

@@ -11,7 +11,8 @@ function immagine(ctx, arg = '') {
   const [file, chiave, opzione] = arg.split(/\s+/);
   const alt = chiave ? chiave.split('.').reduce((nodo, k) => nodo?.[k], ctx.t) : '';
   if (chiave && typeof alt !== 'string') throw new Error(`[casetta] @immagine: testo "${chiave}" non trovato`);
-  return foto(file, { alt, sizes: MISURE, lazy: opzione !== 'subito', ctx });
+  const subito = opzione === 'subito';
+  return foto(file, { alt, sizes: MISURE, lazy: !subito, priorita: subito, ctx });
 }
 
 /* Galleria ---------------------------------------------------------------- */
@@ -22,7 +23,7 @@ function galleriaCategorie(ctx) {
   const pannelli = cat.map((c, ci) => {
     const voci = c.foto.map((f, i) => `      <li class="griglia-foto__voce">
         <button class="griglia-foto__apri" type="button" data-lightbox="${c.id}" data-grande="${grande(f.file)}" data-dida="${esc(f.dida)}" data-alt="${esc(testoAlt(ctx, f.alt))}">
-          ${foto(f.file, { alt: f.alt, sizes: '(min-width: 64em) 390px, (min-width: 40em) 48vw, 100vw', lazy: !(ci === 0 && i < 3), ctx })}
+          ${foto(f.file, { alt: f.alt, sizes: '(min-width: 64em) 390px, (min-width: 40em) 48vw, 100vw', lazy: !(ci === 0 && i < 3), priorita: ci === 0 && i === 0, ctx })}
           <span class="griglia-foto__zoom">${ico('ingrandisci')}</span>
         </button>
         <p class="griglia-foto__dida">${esc(f.dida)}</p>
@@ -35,7 +36,7 @@ ${voci}
   </section>`;
   }).join('\n');
   return `<div class="galleria" data-galleria>
-  <div class="schede" role="tablist" aria-label="${esc(t.schede)}" data-schede hidden>
+  <div class="schede" role="tablist" aria-label="${esc(t.schede)}" data-schede>
 ${schede}
   </div>
 ${pannelli}

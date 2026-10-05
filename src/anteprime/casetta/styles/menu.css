@@ -32,6 +32,7 @@
 
 /* ---- Strumenti: avviso, filtri, legenda ---------------------------------- */
 .menu-pagina__strumenti { display: grid; gap: 16px; margin-bottom: clamp(24px, 3vw, 40px); }
+html:not(.js) .filtri { display: none; }
 .filtri {
   display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
   padding: 16px 20px;

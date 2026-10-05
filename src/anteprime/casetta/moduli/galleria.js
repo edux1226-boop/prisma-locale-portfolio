@@ -1,5 +1,6 @@
 /* Le tre categorie della galleria diventano schede (ARIA tabs): frecce,
-   Home, Fine. Senza script restano tre sezioni una sotto l'altra.
+   Home, Fine. Senza script restano tre sezioni una sotto l'altra; con lo
+   script il CSS (html.js) prepara già le schede, così la pagina non salta.
    La scheda scelta finisce nell'indirizzo (#sala, #cucina). */
 export function initSchede() {
   const galleria = document.querySelector('[data-galleria]');
@@ -7,7 +8,6 @@ export function initSchede() {
   if (!lista) return;
   const schede = [...lista.querySelectorAll('[role="tab"]')];
   const pannelli = schede.map((s) => document.getElementById(s.getAttribute('aria-controls')));
-  lista.hidden = false;
   galleria.classList.add('is-schede');
   pannelli.forEach((p, i) => {
     p.setAttribute('role', 'tabpanel');

@@ -21,7 +21,7 @@ export function stelle(voto, { decorative = false, classe = 'stelle' } = {}) {
 
 export function logo(ctx, { chiaro = false, decorativo = false } = {}) {
   const classe = `logo${chiaro ? ' logo--chiaro' : ''}`;
-  const interno = `${ico('casetta', 'logo__casa')}<span class="logo__nome"><span class="logo__la">La Casetta</span><span class="logo__di">di Paparill</span></span>`;
+  const interno = `${ico('casetta', 'logo__casa')}<span class="logo__nome"><span class="logo__la">La Casetta</span> <span class="logo__di">di Paparill</span></span>`;
   if (decorativo) return `<p class="${classe}" aria-hidden="true">${interno}</p>`;
   const corrente = ctx.pagina === 'home' ? ' aria-current="page"' : '';
   return `<a class="${classe}" href="${ctx.url('home')}"${corrente} aria-label="${esc(ctx.t.testata.home)}">${interno}</a>`;

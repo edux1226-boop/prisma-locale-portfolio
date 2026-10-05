@@ -86,13 +86,13 @@ export function slot([da, a], passo = 30) {
 const LARGHEZZE = [600, 1200];
 
 /* <picture> AVIF + WebP per le immagini 4:3 in /assets/img/casetta/. */
-export function foto(file, { alt = '', sizes = '100vw', classe = '', lazy = true, ctx, w = 1200, h = 900 } = {}) {
+export function foto(file, { alt = '', sizes = '100vw', classe = '', lazy = true, priorita = false, ctx, w = 1200, h = 900 } = {}) {
   const radice = `/assets/img/casetta/${file}`;
   const set = (ext) => LARGHEZZE.map((l) => `${radice}-${l}.${ext} ${l}w`).join(', ');
   const testoAlt = alt && ctx?.anteprima ? `${ctx.t.comuni.illustrazione}: ${alt.charAt(0).toLowerCase()}${alt.slice(1)}` : alt;
   return `<picture${classe ? ` class="${classe}"` : ''}>
   <source type="image/avif" srcset="${set('avif')}" sizes="${sizes}">
-  <img src="${radice}-600.webp" srcset="${set('webp')}" sizes="${sizes}" width="${w}" height="${h}"${lazy ? ' loading="lazy"' : ''} decoding="async" alt="${esc(testoAlt)}">
+  <img src="${radice}-600.webp" srcset="${set('webp')}" sizes="${sizes}" width="${w}" height="${h}"${lazy ? ' loading="lazy"' : ''}${priorita ? ' fetchpriority="high"' : ''} decoding="async" alt="${esc(testoAlt)}">
 </picture>`;
 }
 

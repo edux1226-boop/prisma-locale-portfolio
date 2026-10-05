@@ -6,7 +6,6 @@ import { traccia } from './analisi.js';
 function initFiltri() {
   const box = document.querySelector('[data-filtri]');
   if (!box) return;
-  box.hidden = false;
   const caselle = [...box.querySelectorAll('[data-filtro]')];
   const conto = box.querySelector('[data-filtri-conto]');
   const piatti = [...document.querySelectorAll('.piatto')];

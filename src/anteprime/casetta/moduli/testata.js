@@ -16,7 +16,7 @@ export function initTestata() {
   window.addEventListener('scroll', () => {
     if (!atteso) { atteso = true; requestAnimationFrame(aggiorna); }
   }, { passive: true });
-  aggiorna();
+  requestAnimationFrame(aggiorna);
 
   if (!menu || !bottone) return;
   prepara(menu, { chiudiFuori: false });

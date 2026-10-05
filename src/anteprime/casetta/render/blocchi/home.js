@@ -8,14 +8,14 @@ import { orariBreve } from './comuni.js';
 const HERO = '/assets/img/casetta/hero';
 
 function precaricaHero() {
-  return `<link rel="preload" as="image" type="image/avif" media="(max-aspect-ratio: 4/5)" imagesrcset="${HERO}-v-720.avif 720w, ${HERO}-v-1080.avif 1080w" imagesizes="100vw" fetchpriority="high">
+  return `<link rel="preload" as="image" type="image/avif" media="(max-aspect-ratio: 4/5)" imagesrcset="${HERO}-v-750.avif 750w, ${HERO}-v-1080.avif 1080w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" type="image/avif" media="(min-aspect-ratio: 4/5)" imagesrcset="${HERO}-1280.avif 1280w, ${HERO}-2048.avif 2048w" imagesizes="100vw" fetchpriority="high">`;
 }
 
 function heroFoto(ctx) {
   return `<picture class="hero__foto">
-    <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="${HERO}-v-720.avif 720w, ${HERO}-v-1080.avif 1080w" sizes="100vw">
-    <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="${HERO}-v-720.webp 720w, ${HERO}-v-1080.webp 1080w" sizes="100vw">
+    <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="${HERO}-v-750.avif 750w, ${HERO}-v-1080.avif 1080w" sizes="100vw">
+    <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="${HERO}-v-750.webp 750w, ${HERO}-v-1080.webp 1080w" sizes="100vw">
     <source type="image/avif" srcset="${HERO}-1280.avif 1280w, ${HERO}-2048.avif 2048w" sizes="100vw">
     <img src="${HERO}-1280.webp" srcset="${HERO}-1280.webp 1280w, ${HERO}-2048.webp 2048w" sizes="100vw"
          width="2048" height="1152" fetchpriority="high" decoding="async"
@@ -112,6 +112,8 @@ function recensioni(ctx) {
   const ta = ctx.r.tripadvisor;
   const t = ctx.t.recensioniWidget;
   if (ta.widget) return `<div class="recensioni-widget">${ta.widget}</div>`;
+  // le recensioni d'esempio non vanno mai online: resta il voto con il link
+  const mostra = ctx.anteprima || !ctx.recensioni.esempio;
   const voci = ctx.recensioni.voci.map((v) => `  <li class="recensione" data-rivela>
     <figure>
       ${stelle(v.voto)}
@@ -129,9 +131,7 @@ function recensioni(ctx) {
   <a class="voto__link" href="${esc(ta.url)}" ${ESTERNO}>${esc(ctx.t.home.recensioni.link)} ${ico('esterno')}${nuovaScheda(ctx)}</a>
 </div>
 ${ctx.anteprima && ctx.recensioni.esempio ? `<p class="avviso-demo">${ico('info')}<span>${esc(t.notaAnteprima)}</span></p>` : ''}
-<ul class="recensioni" role="list">
-${voci}
-</ul>`;
+${mostra ? `<ul class="recensioni" role="list">\n${voci}\n</ul>` : ''}`;
 }
 
 function doveBreve(ctx) {

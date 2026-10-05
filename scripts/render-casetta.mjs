@@ -43,7 +43,7 @@ const TAVOLE = [
   ...cucina.map((n) => [`cucina/${n}`, n, 1200, 900, QUATTRO_TERZI]),
   ['piatto-vuoto', 'piatto-vuoto', 1200, 900, QUATTRO_TERZI],
   ['hero', 'hero', 2048, 1152, [2048, 1280]],
-  ['hero-v', 'hero', 1080, 1920, [1080, 720]],
+  ['hero-v', 'hero', 1080, 1920, [1080, 750]],
 ];
 
 const ff = (args) => execFileSync('ffmpeg', ['-v', 'error', '-y', ...args]);

@@ -16,10 +16,11 @@ ${voci}
 </nav>`;
 }
 
-/* Gli interruttori compaiono solo con lo script (senza, non servirebbero). */
+/* Gli interruttori compaiono solo con lo script (senza, non servirebbero):
+   li nasconde il CSS finché su <html> non c'è la classe "js". */
 function filtri(ctx) {
   const t = ctx.t.menuPagina;
-  return `<div class="filtri" data-filtri hidden>
+  return `<div class="filtri" data-filtri>
   <p class="filtri__titolo" id="filtri-titolo">${esc(t.filtri)}</p>
   <div class="filtri__voci" role="group" aria-labelledby="filtri-titolo">
     <label class="interruttore">
