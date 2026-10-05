@@ -1,0 +1,89 @@
+/* ---- Matrimoni: la giornata, un momento sopra l'altro -------------------- */
+.giornata {
+  position: relative;
+  background: var(--terra);
+  color: var(--avorio);
+}
+.giornata__testa {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 28px;
+  padding: var(--sezione) var(--margine) clamp(80px, 10vw, 160px);
+}
+.giornata__testa .etichetta { grid-column: 1 / -1; }
+.giornata__titolo { grid-column: 1 / span 10; font-size: var(--t-xxl); line-height: 0.94; }
+.giornata__titolo > span { display: block; }
+.giornata__titolo > span:last-child { padding-left: 1.4em; color: var(--ottone-chiaro); }
+.giornata__intro { grid-column: 8 / span 4; color: var(--tenue-chiaro); max-width: 24rem; }
+
+.momenti { position: relative; }
+.momento {
+  position: sticky; top: 0;
+  height: 100svh; min-height: 560px;
+  overflow: hidden;
+  background: var(--terra);
+}
+.momento__foto { position: absolute; inset: 0; }
+.momento__foto img { object-fit: cover; will-change: transform; }
+.momento::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at var(--luce-x, 20%) var(--luce-y, 85%), rgb(var(--terra-rgb) / 0.62), transparent 60%);
+}
+.momento__ombra { position: absolute; inset: 0; z-index: 1; background: var(--terra); opacity: 0; pointer-events: none; }
+.momento__testo {
+  position: absolute; z-index: 2;
+  width: min(30rem, calc(100% - 2 * var(--margine)));
+}
+.momento__ora {
+  margin-bottom: 16px;
+  font-size: var(--t-etichetta); font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--ottone-chiaro);
+}
+.momento__titolo { display: flex; align-items: baseline; gap: 0.5em; font-size: var(--t-xl); line-height: 1; margin-bottom: 20px; }
+.momento__num { font-family: var(--f-testo); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; color: var(--ottone-chiaro); }
+.momento__testo > p:last-child { font-size: var(--t-body); line-height: 1.6; color: rgb(var(--avorio-rgb) / 0.88); max-width: 25rem; }
+
+/* Ogni momento si siede in un punto diverso della scena. */
+.momento--1 { --luce-x: 15%; --luce-y: 90%; }
+.momento--1 .momento__testo { left: var(--margine); bottom: clamp(48px, 10vh, 110px); }
+.momento--2 { --luce-x: 85%; --luce-y: 12%; }
+.momento--2 .momento__testo { right: var(--margine); top: calc(var(--testata-h) + 6vh); text-align: right; }
+.momento--2 .momento__titolo { justify-content: flex-end; }
+.momento--2 .momento__testo > p:last-child { margin-left: auto; }
+.momento--3 { --luce-x: 50%; --luce-y: 95%; }
+.momento--3 .momento__testo { left: 50%; bottom: clamp(48px, 9vh, 100px); transform: translateX(-50%); text-align: center; }
+.momento--3 .momento__titolo { justify-content: center; }
+.momento--3 .momento__testo > p:last-child { margin-inline: auto; }
+.momento--4 { --luce-x: 12%; --luce-y: 10%; }
+.momento--4 .momento__testo { left: var(--margine); top: calc(var(--testata-h) + 8vh); }
+.momento--5 { --luce-x: 88%; --luce-y: 90%; }
+.momento--5 .momento__testo { right: var(--margine); bottom: clamp(48px, 10vh, 110px); text-align: right; }
+.momento--5 .momento__titolo { justify-content: flex-end; }
+.momento--5 .momento__testo > p:last-child { margin-left: auto; }
+
+/* L'orologio della giornata, a lato (desktop). */
+.orologio { display: none; }
+@media (min-width: 64em) {
+  .orologio {
+    display: grid; gap: 12px; justify-items: end;
+    position: fixed; right: var(--margine); top: 50%; z-index: 50;
+    transform: translate(10px, -50%);
+    font-size: 0.625rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgb(var(--avorio-rgb) / 0.42);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  }
+  .orologio.is-visibile { opacity: 1; transform: translate(0, -50%); }
+  .orologio li { display: flex; align-items: center; gap: 12px; transition: color 0.6s var(--ease); }
+  .orologio li::after { content: ""; width: 14px; height: 1px; background: currentColor; transition: width 0.6s var(--ease), background-color 0.6s; }
+  .orologio li.is-attivo { color: var(--avorio); }
+  .orologio li.is-attivo::after { width: 40px; background: var(--ottone-chiaro); }
+}
+
+@media (max-width: 63.99em) {
+  .giornata__titolo { grid-column: 1 / -1; }
+  .giornata__titolo > span:last-child { padding-left: 0.6em; }
+  .giornata__intro { grid-column: 1 / -1; }
+}
+@media (max-width: 47.99em) {
+  .momento--2 .momento__testo, .momento--4 .momento__testo { top: calc(var(--testata-h) + 4vh); }
+  .momento--3 .momento__testo { width: calc(100% - 2 * var(--margine)); }
+}

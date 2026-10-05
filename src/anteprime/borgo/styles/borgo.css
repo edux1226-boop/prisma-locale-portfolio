@@ -1,0 +1,190 @@
+/* ---- Intro: molto bianco, poche parole ---------------------------------- */
+.intro {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap);
+  padding: calc(var(--sezione) * 1.15) var(--margine) var(--sezione);
+}
+.intro__tre {
+  grid-column: 1 / span 4;
+  display: grid; align-content: start; gap: 4px;
+  padding-top: 0.6em;
+  font-family: var(--f-testo); font-size: var(--t-etichetta); font-weight: 600;
+  letter-spacing: 0.26em; text-transform: uppercase; line-height: 1.9;
+  color: var(--tenue);
+}
+.intro__tre span:last-child { color: var(--inchiostro); }
+.intro__testo {
+  grid-column: 5 / span 8;
+  font-family: var(--f-display); font-size: var(--t-l); line-height: 1.24;
+  letter-spacing: -0.01em;
+}
+.intro__testo em { color: var(--tenue); }
+.intro__numeri {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: var(--gap);
+  margin-top: clamp(80px, 11vw, 176px);
+}
+.intro__numeri > div { padding-top: 22px; border-top: 1px solid var(--filo); }
+.intro__numeri dt {
+  font-size: var(--t-etichetta); font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ottone-testo);
+}
+.intro__numeri dd { margin-top: 12px; font-size: var(--t-small); color: var(--tenue); max-width: 15em; }
+.intro__numeri > div:first-child dd { display: flex; flex-direction: column-reverse; }
+.intro__cifra {
+  font-family: var(--f-display); font-size: var(--t-xxl); line-height: 0.9;
+  color: var(--inchiostro); letter-spacing: -0.03em;
+}
+
+@media (max-width: 63.99em) {
+  .intro__tre { grid-column: 1 / -1; margin-bottom: 36px; }
+  .intro__testo { grid-column: 1 / -1; }
+  .intro__numeri { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+}
+
+/* ---- Il territorio: il plastico ----------------------------------------- */
+.territorio { --fondo: #DCD2C1; --tenue: #574E42; position: relative; background: var(--fondo); }
+.territorio__palco { position: relative; }
+.territorio__tela { display: none; }
+.territorio__statico img { width: 100%; height: auto; }
+.territorio__etichette { display: none; }
+.territorio__testo { padding: clamp(48px, 8vw, 96px) var(--margine) var(--sezione); }
+.territorio__titolo { margin-block: 22px clamp(32px, 4vw, 56px); font-size: var(--t-xl); line-height: 0.98; }
+.territorio__passi { display: grid; gap: 22px; max-width: 30rem; }
+.territorio__passi li { display: grid; grid-template-columns: 2.4em 1fr; gap: 12px; padding-top: 16px; border-top: 1px solid var(--filo); }
+.territorio__passi b { display: block; font-family: var(--f-display); font-size: var(--t-m); font-weight: 400; line-height: 1.15; margin-bottom: 6px; }
+.territorio__passi p { color: var(--tenue); font-size: var(--t-small); }
+.territorio__num { font-family: var(--f-display); font-style: italic; color: var(--ottone-testo); padding-top: 0.2em; }
+.territorio__nota { margin-top: 28px; font-size: 0.75rem; color: var(--tenue); }
+
+/* Desktop con 3D: palco sticky a tutto schermo, testo a sinistra. */
+.territorio.con-3d { height: 330vh; }
+.con-3d .territorio__palco { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.con-3d .territorio__tela { display: block; position: absolute; inset: 0; }
+.con-3d .territorio__palco::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, var(--fondo) 0%, rgb(220 210 193 / 0.9) 30%, rgb(220 210 193 / 0) 50%);
+}
+.con-3d .territorio__testo { z-index: 1; }
+.con-3d .territorio__tela canvas { width: 100% !important; height: 100% !important; }
+.con-3d .territorio__statico { position: absolute; inset: 0; transition: opacity 1.2s var(--ease); }
+.con-3d .territorio__statico img { height: 100%; object-fit: cover; }
+.con-3d.is-3d-pronto .territorio__statico { opacity: 0; }
+.con-3d .territorio__testo {
+  position: absolute; left: var(--margine); top: 50%; transform: translateY(-46%);
+  width: min(31rem, 36vw); padding: 0;
+}
+.con-3d .territorio__passi li { opacity: 0.32; transition: opacity 0.8s var(--ease); }
+.con-3d .territorio__passi li.is-attivo { opacity: 1; }
+.con-3d .territorio__etichette { display: block; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.territorio__etichette li {
+  position: absolute; left: 0; top: 0;
+  display: grid; gap: 2px;
+  padding-left: 14px;
+  font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--inchiostro);
+  opacity: 0;
+  transition: opacity 0.8s var(--ease);
+  white-space: nowrap;
+}
+.territorio__etichette li::before {
+  content: ""; position: absolute; left: 0; top: 4px; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--ottone);
+}
+.territorio__etichette li.is-visibile { opacity: 1; }
+.territorio__etichette li.is-coperta { opacity: 0; }
+.territorio__etichette b { font-weight: 600; }
+.territorio__etichette span { color: var(--tenue); letter-spacing: 0.12em; }
+.territorio__etichette .is-borgo b { font-family: var(--f-display); font-size: 1.35rem; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.territorio__etichette .is-borgo::before { width: 9px; height: 9px; top: 9px; left: -2px; box-shadow: 0 0 0 7px rgb(154 125 82 / 0.18); }
+
+@media (min-width: 64em) {
+  .territorio:not(.con-3d) .territorio__palco { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+  .territorio:not(.con-3d) .territorio__statico { order: 2; }
+}
+
+/* ---- La location: la finestra che si apre ------------------------------- */
+.location { background: var(--avorio); }
+.apertura { position: relative; }
+.apertura__palco { position: relative; }
+.apertura__parola { display: none; }
+.apertura__finestra { position: relative; overflow: hidden; height: 100svh; min-height: 520px; }
+.apertura__finestra picture { height: 100%; }
+.apertura__finestra img { object-fit: cover; }
+.apertura__didascalia {
+  position: absolute; left: var(--margine); right: var(--margine); bottom: clamp(36px, 7vh, 72px);
+  display: grid; grid-template-columns: auto minmax(0, 24rem); align-items: end; justify-content: space-between; gap: 24px;
+  color: var(--avorio);
+}
+.apertura__didascalia::before {
+  content: ""; position: absolute; inset: -60vh calc(var(--margine) * -1) calc(clamp(36px, 7vh, 72px) * -1);
+  z-index: -1;
+  background: linear-gradient(to top, rgb(var(--terra-rgb) / 0.6), transparent 70%);
+}
+.apertura__titolo { font-size: var(--t-xxl); line-height: 0.9; font-style: italic; }
+.apertura__didascalia p { font-size: var(--t-small); color: rgb(var(--avorio-rgb) / 0.88); }
+
+/* Con il movimento: palco sticky, l'immagine parte piccola tra due parole. */
+.motion .apertura { height: 260vh; }
+.motion .apertura__palco { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.motion .apertura__finestra {
+  position: absolute; inset: 0; height: auto; min-height: 0;
+  clip-path: inset(18% 36.5% 18% 36.5%);
+  will-change: clip-path;
+}
+.motion .apertura__finestra img { transform: scale(1.32); transform-origin: 50% 60%; will-change: transform; }
+.motion .apertura__parola {
+  display: block;
+  position: absolute; top: 50%; z-index: 2;
+  font-family: var(--f-display); font-size: var(--t-xxl); line-height: 1;
+  transform: translateY(-50%);
+  will-change: transform;
+}
+.motion .apertura__parola--sx { right: 65.5%; }
+.motion .apertura__parola--dx { left: 65.5%; font-style: italic; }
+.motion .apertura__didascalia { opacity: 0; }
+
+@media (max-width: 47.99em) {
+  .motion .apertura__finestra { clip-path: inset(24% 22% 24% 22%); }
+  .motion .apertura__parola { top: auto; transform: none; font-size: var(--t-xl); }
+  .motion .apertura__parola--sx { right: auto; left: 22%; top: 13%; }
+  .motion .apertura__parola--dx { left: auto; right: 22%; bottom: 13%; }
+  .apertura__didascalia { grid-template-columns: 1fr; }
+}
+
+/* ---- Gli spazi: binario orizzontale su desktop ------------------------- */
+.spazi { padding: var(--sezione) var(--margine); }
+.spazi__binario { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(56px, 8vw, 120px) var(--gap); }
+.spazi__testa { grid-column: 1 / -1; display: grid; gap: 22px; max-width: 34rem; }
+.spazi__intro { font-family: var(--f-display); font-size: var(--t-l); line-height: 1.18; }
+.spazio:nth-of-type(even) { margin-top: clamp(40px, 10vw, 160px); }
+.spazio__foto { overflow: hidden; background: var(--pietra); }
+.spazio__foto img { height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.spazio--largo .spazio__foto img { aspect-ratio: 4 / 3; }
+.spazio--medio .spazio__foto img { aspect-ratio: 16 / 11; }
+.spazio__testo { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; margin-top: 22px; max-width: 26rem; }
+.spazio__num { grid-row: span 2; font-size: var(--t-etichetta); font-weight: 600; letter-spacing: 0.2em; color: var(--ottone-testo); padding-top: 0.75em; }
+.spazio h3 { font-size: var(--t-l); line-height: 1.05; }
+.spazio p { font-size: var(--t-small); color: var(--tenue); }
+
+@media (max-width: 47.99em) {
+  .spazi__binario { grid-template-columns: 1fr; }
+  .spazio:nth-of-type(even) { margin-top: 0; }
+  .spazio:nth-of-type(odd) .spazio__foto { margin-right: 14vw; }
+  .spazio:nth-of-type(even) .spazio__foto { margin-left: 14vw; }
+}
+
+/* Binario orizzontale (desktop con movimento, attivato dal JS). */
+.spazi.is-orizzontale { height: var(--binario-h, 400vh); padding: 0; }
+.spazi.is-orizzontale .spazi__palco-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.spazi.is-orizzontale .spazi__binario {
+  display: flex; align-items: center; gap: clamp(64px, 7vw, 130px);
+  height: 100%; width: max-content;
+  padding-inline: var(--margine) 18vw;
+  will-change: transform;
+}
+.spazi.is-orizzontale .spazi__testa { flex: 0 0 26rem; align-self: center; }
+.spazi.is-orizzontale .spazio { flex: 0 0 auto; margin: 0; }
+.spazi.is-orizzontale .spazio--alto { width: min(27vw, 44vh); align-self: flex-start; margin-top: 12vh; }
+.spazi.is-orizzontale .spazio--alto.spazio--basso { align-self: flex-end; margin-bottom: 8vh; margin-top: 0; }
+.spazi.is-orizzontale .spazio--largo { width: min(42vw, 78vh); align-self: flex-end; margin-bottom: 9vh; }
+.spazi.is-orizzontale .spazio--medio { width: min(36vw, 66vh); }

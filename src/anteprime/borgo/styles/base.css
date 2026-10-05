@@ -1,0 +1,211 @@
+/* ---- Base --------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  background: var(--avorio);
+  color: var(--inchiostro);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--testata-h) + 12px);
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--f-testo);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.6;
+  background: var(--avorio);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg, canvas, picture { display: block; max-width: 100%; }
+picture img { width: 100%; height: 100%; }
+a { color: inherit; }
+h1, h2, h3, p, ul, ol, dl, dd, figure, blockquote, fieldset { margin: 0; }
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+address { font-style: normal; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+em, i { font-style: italic; }
+
+/* Il serif dei titoli: Bodoni a corpo grande, ottica automatica. */
+h1, h2, h3, .serif {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-wrap: balance;
+}
+h2 em, h3 em, h1 em { font-weight: 400; }
+p { text-wrap: pretty; }
+
+:focus-visible { outline: 1.5px solid var(--ottone); outline-offset: 4px; }
+.hero :focus-visible, .giornata :focus-visible,
+.voci :focus-visible, .piede :focus-visible, .menu :focus-visible, .visore :focus-visible {
+  outline-color: var(--ottone-chiaro);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+.salta {
+  position: fixed; left: 12px; top: 12px; z-index: 300;
+  padding: 12px 18px; background: var(--terra); color: var(--avorio);
+  font-size: var(--t-small); text-decoration: none;
+  transform: translateY(-200%);
+}
+.salta:focus { transform: none; }
+
+/* Carta: una grana appena percettibile su tutta la pagina. */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 400;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- Segni comuni ------------------------------------------------------- */
+.etichetta {
+  display: flex; align-items: center; gap: 14px;
+  font-size: var(--t-etichetta); font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--tenue);
+}
+.etichetta::before { content: ""; width: 28px; height: 1px; background: var(--ottone); }
+.etichetta--chiara { color: var(--tenue-chiaro); }
+.etichetta--chiara::before { background: var(--ottone-chiaro); }
+
+/* "da confermare": i dati che solo il locale può dare. */
+.dc {
+  display: inline-block;
+  margin-left: 0.4em;
+  font-family: var(--f-testo); font-style: normal;
+  font-size: 0.625rem; font-weight: 600; line-height: 1.2;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ottone-testo);
+  white-space: nowrap;
+  vertical-align: 0.2em;
+}
+
+/* Bottoni: un filo e una freccia, niente pillole. */
+.btn {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 14px;
+  min-height: 52px; padding: 0 26px;
+  border: 1px solid currentColor; border-radius: 0;
+  background: transparent;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.5s var(--ease), background-color 0.5s var(--ease), border-color 0.5s var(--ease);
+}
+.btn__freccia { width: 18px; height: 18px; transition: transform 0.6s var(--ease); }
+.btn:hover .btn__freccia { transform: translateX(5px); }
+.btn--pieno { background: var(--terra); border-color: var(--terra); color: var(--avorio); }
+.btn--pieno:hover { background: var(--oliva); border-color: var(--oliva); }
+.btn--linea:hover { background: var(--terra); border-color: var(--terra); color: var(--avorio); }
+.btn--grande { min-height: 60px; padding: 0 34px; }
+
+/* Righe dei titoli divise da SplitText (solo con il movimento). */
+.riga { display: block; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+
+/* ---- Anteprima: avviso fisso e filigrana -------------------------------- */
+.anteprima {
+  position: fixed; left: 16px; bottom: 16px; z-index: 90;
+  display: flex; align-items: center; gap: 8px;
+  max-width: calc(100vw - 32px);
+  padding: 7px 12px;
+  font-size: 0.625rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--avorio);
+  background: rgb(var(--terra-rgb) / 0.82);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.anteprima a { color: var(--ottone-chiaro); text-decoration: none; }
+.anteprima__punto { width: 5px; height: 5px; border-radius: 50%; background: var(--ottone-chiaro); }
+@media (max-width: 40em) {
+  .anteprima { left: 50%; transform: translateX(-50%); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); white-space: nowrap; }
+  .anteprima__extra { display: none; }
+}
+
+.filigrana {
+  position: fixed; inset: -40vmax; z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='160'%3E%3Cg fill='%232A241D' font-family='Arial,Helvetica,sans-serif' font-size='12' font-weight='700' letter-spacing='3'%3E%3Ctext x='12' y='46'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3Ctext x='272' y='126'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.022;
+  transform: rotate(-24deg);
+}
+
+.scaduta { display: none; }
+.is-scaduta body > :not(.scaduta) { display: none !important; }
+.is-scaduta .scaduta {
+  display: grid; place-content: center; justify-items: start; gap: 28px;
+  min-height: 100svh; padding: var(--margine);
+  max-width: 60rem; margin-inline: auto;
+}
+.scaduta__marchio { font-family: var(--f-display); font-style: italic; font-size: var(--t-xl); line-height: 1; color: var(--ottone); }
+.scaduta__titolo { font-size: var(--t-l); line-height: 1.15; }
+.scaduta__link { display: flex; gap: 12px; color: var(--tenue); }
+
+/* ---- Sipario d'apertura -------------------------------------------------- */
+.sipario { display: none; }
+.is-apertura .sipario {
+  display: block;
+  position: fixed; inset: 0; z-index: 200;
+  pointer-events: none;
+  /* rete di sicurezza: se lo script non arriva, il sipario se ne va da solo */
+  animation: sipario-via 0.6s 9s forwards;
+}
+@keyframes sipario-via { to { opacity: 0; visibility: hidden; } }
+.sipario__meta { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--terra); }
+.sipario__meta--su { top: 0; }
+.sipario__meta--giu { bottom: 0; }
+.sipario__nome {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex; gap: 0.32em;
+  font-family: var(--f-display); font-size: clamp(1.4rem, 1rem + 1.6vw, 2.4rem);
+  letter-spacing: 0.04em;
+  color: var(--avorio);
+  white-space: nowrap;
+}
+.sipario__nome span:last-child { font-style: italic; }
+.sipario__filo {
+  position: absolute; left: 50%; top: calc(50% + clamp(32px, 3vw, 46px));
+  width: clamp(120px, 14vw, 200px); height: 1px; margin-left: calc(clamp(120px, 14vw, 200px) / -2);
+  background: var(--ottone-chiaro);
+  transform: scaleX(0);
+}
+
+/* ---- Cursore: compare solo sopra ciò che si apre (puntatore fine) -------- */
+.cursore { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .motion .cursore {
+    display: grid; place-items: center;
+    position: fixed; left: 0; top: 0; z-index: 250;
+    width: 88px; height: 88px; margin: -44px 0 0 -44px;
+    border-radius: 50%;
+    background: rgb(var(--terra-rgb) / 0.88);
+    color: var(--avorio);
+    pointer-events: none;
+    transform: scale(0.08);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+  }
+  .motion .cursore.is-visibile { opacity: 1; }
+  .cursore__testo {
+    font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .cursore.is-grande .cursore__testo { opacity: 1; transition-delay: 0.15s; }
+}
