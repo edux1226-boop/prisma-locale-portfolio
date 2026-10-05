@@ -1,0 +1,74 @@
+/* ==========================================================================
+   BORGO SPOLTINO — anteprima di Prisma Locale
+   Concept "Una giornata sul colle": il sito segue la luce di un matrimonio,
+   dal pomeriggio alla notte, sempre sullo stesso colle davanti al Gran Sasso.
+   Carta avorio, pietra, verde d'ulivo, terra scura. L'ottone solo nei fili.
+   ========================================================================== */
+
+/* Bodoni Moda (tradizione tipografica italiana) con asse ottico: a corpo
+   grande diventa sottile ed elegante, a corpo piccolo resta leggibile. */
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/assets/fonts/bodoni-moda.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/assets/fonts/bodoni-moda-italic.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/assets/fonts/hanken-grotesk.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --avorio: #F3EEE5;
+  --avorio-rgb: 243 238 229;
+  --carta: #FAF7F1;
+  --pietra: #E5DDCF;
+  --pietra-2: #CDC1AD;
+  --terra: #1E1A15;
+  --terra-rgb: 30 26 21;
+  --inchiostro: #2A241D;
+  --tenue: #6A6052;          /* testo secondario su avorio, 5.4:1 */
+  --tenue-chiaro: #B9AE9D;   /* testo secondario su terra, 7.6:1 */
+  --oliva: #383D2E;
+  --oliva-rgb: 56 61 46;
+  --ottone: #9A7D52;         /* solo fili e segni, mai testo piccolo */
+  --ottone-testo: #6B5230;   /* l'ottone per il testo: 4.8:1 anche sulla pietra */
+  --ottone-chiaro: #CDB68C;
+
+  --filo: rgb(42 36 29 / 0.16);
+  --filo-chiaro: rgb(var(--avorio-rgb) / 0.2);
+
+  --f-display: "Bodoni Moda", "Bodoni 72", Didot, "Times New Roman", serif;
+  --f-testo: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+
+  --t-gigante: clamp(3.9rem, 0.6rem + 11.6vw, 13.5rem);
+  --t-xxl: clamp(2.9rem, 1.1rem + 6.6vw, 8.75rem);
+  --t-xl: clamp(2.3rem, 1.2rem + 4.2vw, 5.9rem);
+  --t-l: clamp(1.55rem, 1.08rem + 1.9vw, 2.85rem);
+  --t-m: clamp(1.28rem, 1.04rem + 0.95vw, 1.95rem);
+  --t-body: clamp(1rem, 0.96rem + 0.16vw, 1.1rem);
+  --t-small: 0.875rem;
+  --t-etichetta: 0.6875rem;
+
+  --margine: clamp(20px, 5.4vw, 104px);
+  --gap: clamp(14px, 1.7vw, 30px);
+  --sezione: clamp(112px, 15vw, 248px);
+  --testata-h: 84px;
+
+  --ease: cubic-bezier(0.2, 0.75, 0.15, 1);
+  --ease-lenta: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (max-width: 63.99em) {
+  :root { --testata-h: 64px; }
+}

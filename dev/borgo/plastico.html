@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Borgo Spoltino, plastico statico</title>
+<link rel="stylesheet" href="/src/anteprime/borgo/styles/tokens.css">
+<style>
+  html, body { margin: 0; background: #DCD2C1; }
+  #palco { position: fixed; left: 0; top: 0; overflow: hidden; }
+  #palco canvas { display: block; }
+  .et { position: absolute; left: 0; top: 0; display: grid; gap: 2px; padding-left: 14px; white-space: nowrap;
+        font: 600 11px/1.3 var(--f-testo); letter-spacing: .18em; text-transform: uppercase; color: #2A241D; }
+  .et::before { content: ""; position: absolute; left: 0; top: 4px; width: 5px; height: 5px; border-radius: 50%; background: #9A7D52; }
+  .et span { font-weight: 400; color: #6A6052; letter-spacing: .12em; }
+  .et.borgo b { font: 400 21px/1 var(--f-display); letter-spacing: 0; text-transform: none; }
+  .et.borgo::before { width: 9px; height: 9px; top: 6px; left: -2px; box-shadow: 0 0 0 7px rgb(154 125 82 / .18); }
+  /* nell'immagine verticale (mostrata a un terzo) le etichette sono più grandi */
+  .v .et { font-size: 24px; padding-left: 30px; }
+  .v .et::before { width: 11px; height: 11px; top: 9px; }
+  .v .et.borgo b { font-size: 46px; }
+  .v .et.borgo::before { width: 18px; height: 18px; top: 14px; left: -4px; box-shadow: 0 0 0 14px rgb(154 125 82 / .18); }
+</style>
+</head>
+<body>
+<!-- Pagina di servizio per scripts/render-borgo.mjs: il plastico dell'anteprima
+     fermo in un'inquadratura, con le etichette. ?w=1600&h=1000&p=0.12 -->
+<div id="palco">
+  <div class="et" data-et="sasso"><b>Gran Sasso d'Italia</b><span>2.912 m</span></div>
+  <div class="et" data-et="mare"><b>Mare Adriatico</b></div>
+  <div class="et borgo" data-et="borgo"><b>Borgo Spoltino</b><span>Mosciano Sant'Angelo</span></div>
+</div>
+<script type="module">
+  import { createPlastico } from '/src/anteprime/borgo/three/plastico.js';
+  const q = new URLSearchParams(location.search);
+  const palco = document.getElementById('palco');
+  palco.style.width = `${q.get('w') || 1600}px`;
+  palco.style.height = `${q.get('h') || 1000}px`;
+  if (q.has('v')) document.body.classList.add('v');
+  const etichette = Object.fromEntries([...document.querySelectorAll('[data-et]')].map((n) => [n.dataset.et, n]));
+  await document.fonts.ready;
+  createPlastico(palco, {
+    etichette,
+    spostamento: Number(q.get('s') ?? 0),
+    still: { progresso: Number(q.get('p') ?? 0), verticale: q.has('v') },
+  });
+  palco.prepend(palco.querySelector('canvas'));
+  window.__pronto = true;
+</script>
+</body>
+</html>

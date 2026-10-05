@@ -130,6 +130,29 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
   nella pagina: dopo quella data resta solo "Anteprima scaduta, contatta Prisma Locale".
   La scadenza è lato client, quindi è un deterrente, non una protezione.
   Immagini statiche e immagine social: `node scripts/render-nagoya.mjs` con il dev server attivo.
+- **Borgo Spoltino** (`/anteprime/borgo-spoltino/`): location per matrimoni a Mosciano
+  Sant'Angelo, concept "Una giornata sul colle". Il sito segue la luce di un matrimonio,
+  dal pomeriggio alla notte, sempre sullo stesso colle davanti al Gran Sasso.
+  Bodoni Moda e Hanken Grotesk, avorio, pietra, verde d'ulivo e terra; l'ottone solo nei fili.
+  - **Sezioni**: sipario d'apertura, hero a tre piani in parallasse, intro, plastico 3D del
+    territorio (Gran Sasso → Adriatico → il colle, pinnato), "Il … borgo" (la finestra che
+    si apre a tutto schermo), gli spazi su binario orizzontale, la giornata in cinque momenti
+    sovrapposti (sticky), la tavola a schede, le occasioni con l'immagine che segue il
+    mouse, gallery editoriale con visore, recensioni a rotazione, modulo, mappa disegnata.
+  - **Codice** in `src/anteprime/borgo/`: `sections/` (una per sezione), `animations/`
+    (rivelazioni, parallasse, cursore e magneti, apertura), `components/visore.js`,
+    `three/plastico.js` (scaricato solo su desktop con puntatore fine, quando la sezione
+    si avvicina), `styles/` (token, base e un foglio per gruppo di sezioni).
+  - **Immagini provvisorie**: non sono foto ma tavole dipinte da uno shader
+    (`dev/borgo/tavole.js`), più il plastico fotografato da `dev/borgo/plastico.html`.
+    Si rigenerano con `node scripts/render-borgo.mjs` (dev server attivo, Playwright e
+    ffmpeg) in `public/assets/img/borgo/`, AVIF + WebP. Per mettere le foto vere basta
+    sostituire i file con lo stesso nome: nell'HTML ogni immagine ha un commento `FOTO:`
+    con soggetto e proporzioni.
+  - Testi d'esempio, recensioni, menu e contatti sono marcati "da confermare"; il modulo
+    non invia nulla. Scadenza nel meta `anteprima-scadenza` (30 novembre 2026).
+  - Lighthouse (build, Chromium headless): mobile 90 / 100 / 100, desktop 98 / 100 / 100
+    (prestazioni, accessibilità, best practice; la SEO è bassa di proposito per il noindex).
 - **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
   autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con

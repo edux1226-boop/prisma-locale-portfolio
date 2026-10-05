@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Borgo Spoltino, tavole provvisorie</title>
+<style>html, body { margin: 0; background: #1E1A15; } canvas { display: block; }</style>
+</head>
+<body>
+<!-- Pagina di servizio per scripts/render-borgo.mjs: dipinge una tavola
+     provvisoria dell'anteprima Borgo Spoltino. ?t=cerimonia&w=2400&h=1500&strato=0&zoom=1&cx=.2&cy=.5 -->
+<script type="module">
+  import { dipingi } from './tavole.js';
+  const q = new URLSearchParams(location.search);
+  const num = (k, d) => (q.has(k) ? Number(q.get(k)) : d);
+  const tela = dipingi(q.get('t') || 'aperitivo', num('w', 1600), num('h', 1000), {
+    cx: num('cx', NaN), cy: num('cy', .5), zoom: num('zoom', 1), strato: num('strato', 0), vig: num('vig', 1),
+  });
+  document.body.append(tela);
+  window.__still = tela.toDataURL('image/png');
+</script>
+</body>
+</html>
