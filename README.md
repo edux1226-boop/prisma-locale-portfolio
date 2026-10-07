@@ -44,6 +44,7 @@ che a sua volta aggiorna ScrollTrigger.
 ├── index.html                 home
 ├── progetti/saporito.html     caso studio (demo non commissionata)
 ├── anteprime/                 demo riservate per potenziali clienti (noindex)
+├── flagship/                  app Next.js autonome, compilate dentro la build (vedi sotto)
 ├── privacy.html · grazie.html · 404.html
 ├── src/
 │   ├── styles/                tokens.css · base.css · home.css · page.css
@@ -57,7 +58,8 @@ che a sua volta aggiorna ScrollTrigger.
 │       └── ui/                nav, intro, titoli, banco ottico, modulo
 ├── public/                    font, immagini, favicon, robots, sitemap
 ├── dev/                       pagine di servizio per generare le immagini (non pubblicate)
-└── scripts/render-stills.mjs  rigenera immagini statiche, immagine social e icone
+├── scripts/render-stills.mjs  rigenera immagini statiche, immagine social e icone
+└── scripts/build-flagship.mjs compila i flagship e li copia in dist/ dopo `vite build`
 ```
 
 ## Sviluppo
@@ -65,9 +67,15 @@ che a sua volta aggiorna ScrollTrigger.
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # produzione in dist/
+npm run build      # produzione in dist/ (Vite, poi i flagship Next.js)
+npm run build:vite # solo il sito Vite
 npm run preview    # anteprima della build
 ```
+
+I flagship in `flagship/` hanno le proprie dipendenze e il proprio `package-lock.json`:
+`scripts/build-flagship.mjs` le installa se mancano (`npm ci`), li compila con il base path
+dell'anteprima e copia l'export statico in `dist/`. Per lavorarci:
+`cd flagship/trattoria-luciana && npm install && npm run dev`.
 
 Su Windows c'è anche `scripts/dev.cmd`.
 
@@ -157,6 +165,18 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
   autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con
   `node dev/destino/build.mjs`, che scrive `public/anteprime/destino/index.html`.
+- **Trattoria Luciana** (`/anteprime/trattoria-luciana/`): concept "Dal mare, alla tavola",
+  un digital flagship completo e non una semplice anteprima. App Next.js 16 + React 19 +
+  TypeScript in `flagship/trattoria-luciana/` (documentazione nel suo README), export statico.
+  - Homepage in undici scene (mare → Roseto → famiglia → pesca → cucina → tavola →
+    prenotazione), pagine storia, menu, il mare, prenota, contatti, in italiano, inglese e
+    tedesco con indirizzi tradotti.
+  - Mare in WebGL (React Three Fiber) solo su desktop capaci, con fermo immagine renderizzato
+    dallo stesso shader; tavole provvisorie dipinte da shader (`npm run tavole`), AVIF + WebP.
+  - Contenuti in un CMS su Git (Decap) con stato per ogni dato: ciò che è `needs_confirmation`
+    si vede segnato nell'anteprima e sparisce in produzione (`SITE_MODE=produzione`).
+  - Il modulo invia una richiesta, mai una conferma; nell'anteprima non invia nulla.
+    Scadenza in `lib/sito.ts` (15 dicembre 2026).
 
 ## Progetti mostrati
 
