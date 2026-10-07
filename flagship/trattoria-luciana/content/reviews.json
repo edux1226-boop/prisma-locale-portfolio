@@ -1,0 +1,42 @@
+{
+  "sintesi": {
+    "value": null,
+    "status": "needs_confirmation",
+    "nota": "Punteggio medio e numero di recensioni da Google o TripAdvisor, con la data della rilevazione."
+  },
+  "recensioni": [
+    {
+      "id": "esempio-1",
+      "lingua": "it",
+      "testo": "Pesce freschissimo e la sensazione di mangiare a casa di qualcuno. Torniamo ogni estate.",
+      "autore": null,
+      "fonte": "google",
+      "data": null,
+      "url": null,
+      "esempio": true,
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "esempio-2",
+      "lingua": "it",
+      "testo": "Spaghetti alle vongole come si deve, servizio veloce e il mare a due passi.",
+      "autore": null,
+      "fonte": "tripadvisor",
+      "data": null,
+      "url": null,
+      "esempio": true,
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "esempio-3",
+      "lingua": "it",
+      "testo": "Il pranzo sotto la pergola è diventato il nostro rito della domenica.",
+      "autore": null,
+      "fonte": "google",
+      "data": null,
+      "url": null,
+      "esempio": true,
+      "status": "needs_confirmation"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.palco { position: absolute; inset: 0; z-index: -1; }
+.mare { position: absolute; inset: 0; transform-origin: 50% 70%; }
+.still { position: absolute; inset: 0; width: 100%; height: 100%; }
+.still img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Movimento CSS sul fermo immagine (telefoni, hardware debole, niente WebGL):
+   la stessa composizione, appena viva. */
+:global(html.motion) .still img { animation: respiro 18s var(--ease-onda) infinite alternate; }
+@keyframes respiro { to { transform: scale(1.06) translate3d(0, -1%, 0); } }
+.luccichio {
+  position: absolute;
+  inset: 30% -20% -10%;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(1.2px 1.2px at 12% 30%, #FAF7F0 50%, transparent 52%) 0 0 / 140px 90px,
+    radial-gradient(1px 1px at 60% 70%, #F3EEE4 50%, transparent 52%) 0 0 / 110px 70px,
+    radial-gradient(1.4px 1px at 35% 55%, #FAF7F0 50%, transparent 52%) 0 0 / 190px 120px;
+  mix-blend-mode: screen;
+}
+:global(html.motion) .luccichio { animation: luccica 7s steps(14) infinite, deriva 26s linear infinite; }
+@keyframes luccica { 0%, 100% { opacity: 0.18; } 50% { opacity: 0.4; } }
+@keyframes deriva { to { transform: translate3d(-140px, 30px, 0); } }
+:global(html[data-webgl]) .luccichio { display: none; }
+
+.velo {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(var(--notte-rgb) / 0.55) 0%, transparent 28%, transparent 55%, rgb(var(--notte-rgb) / 0.7) 100%),
+    radial-gradient(60% 50% at 50% 48%, rgb(var(--notte-rgb) / 0.32), transparent 70%);
+}
+.immersione { position: absolute; inset: 0; background: var(--adriatico); opacity: 0; }
+
+.contenuto {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  padding: calc(var(--testata-h) + 2rem) var(--margine) 2rem;
+  text-align: center;
+}
+.luogo { color: var(--sabbia); }
+.luogo span { color: var(--ottone); margin-inline: 0.4em; }
+
+.logo { display: grid; justify-items: center; font-family: var(--f-serif); font-weight: 400; line-height: 0.86; color: var(--bianco); }
+.logoSopra {
+  font-size: calc(var(--t-logo) * 0.34);
+  letter-spacing: 0.34em;
+  margin-right: -0.34em;
+  text-transform: uppercase;
+  margin-bottom: 0.18em;
+}
+.logoNome { font-size: var(--t-logo); letter-spacing: 0.04em; margin-right: -0.04em; text-transform: uppercase; }
+.lettera { display: inline-block; }
+/* Il nome emerge dall'acqua: le lettere salgono una dopo l'altra (solo
+   opacità e posizione, sul compositor); la sfocatura è una sola, sulla riga. */
+:global(html.motion) .lettera {
+  opacity: 0;
+  transform: translate3d(0, 0.18em, 0) scaleY(1.08);
+  animation: emergi 2.4s var(--ease) forwards;
+  animation-delay: calc(0.5s + var(--i) * 0.075s);
+}
+@keyframes emergi { to { opacity: 1; transform: none; } }
+:global(html.motion) .logoSopra,
+:global(html.motion) .logoNome {
+  filter: blur(10px);
+  will-change: filter;
+  animation: schiarisce 2.6s var(--ease) 0.5s forwards;
+}
+@keyframes schiarisce { to { filter: blur(0); } }
+
+.tagline { font-family: var(--f-serif); font-size: var(--t-m); color: var(--sabbia); }
+:global(html.motion) .luogo,
+:global(html.motion) .tagline { opacity: 0; animation: affiora 1.6s var(--ease) forwards; }
+:global(html.motion) .luogo { animation-delay: 1.6s; }
+:global(html.motion) .tagline { animation-delay: 2.1s; }
+@keyframes affiora { from { opacity: 0; transform: translate3d(0, 10px, 0); } to { opacity: 1; transform: none; } }
+
+.piede {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 1rem;
+  padding: 0 var(--margine) max(clamp(1.5rem, 4vh, 3rem), 64px);
+}
+.scena { color: var(--ottone); }
+.sotto { justify-self: end; max-width: 22em; font-size: var(--t-small); color: var(--tenue-chiaro); text-align: right; }
+.scorri {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  color: var(--avorio);
+  text-decoration: none;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.filo { width: 1px; height: 56px; background: linear-gradient(var(--avorio), transparent); transform-origin: top; }
+:global(html.motion) .filo { animation: filo 2.6s var(--ease-onda) infinite; }
+@keyframes filo { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+:global(html.motion) .piede > * { opacity: 0; animation: affiora 1.4s 2.6s var(--ease) forwards; }
+
+@media (max-width: 47.99em) {
+  .piede { grid-template-columns: 1fr; justify-items: center; padding-bottom: calc(var(--barra-h) + 3.5rem); }
+  .scena, .sotto { display: none; }
+  .scorri { grid-column: 1; }
+}

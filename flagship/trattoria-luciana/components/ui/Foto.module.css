@@ -1,0 +1,47 @@
+.foto { display: block; position: relative; overflow: hidden; background: var(--adriatico); }
+.foto img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Tavola di regia: carta sabbia, i riflessi dell'acqua, un disegno a filo. */
+.tavola {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+  min-height: 12rem;
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgb(250 247 240 / 0.55), transparent 60%),
+    var(--sabbia);
+  color: var(--terracotta-scuro);
+  isolation: isolate;
+  container-type: inline-size;
+}
+.riflessi {
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  opacity: 0.4;
+  background:
+    radial-gradient(closest-side, rgb(250 247 240 / 0.7), transparent) 0 0 / 38% 22%,
+    radial-gradient(closest-side, rgb(250 247 240 / 0.5), transparent) 18% 40% / 30% 16%,
+    radial-gradient(closest-side, rgb(180 154 106 / 0.35), transparent) 60% 70% / 34% 20%;
+  filter: blur(6px);
+}
+:global(html.motion) .riflessi { animation: riflessi 14s var(--ease-onda) infinite alternate; }
+@keyframes riflessi {
+  to { transform: translate3d(6%, -4%, 0) scale(1.06); }
+}
+.disegno { place-self: center; width: min(38%, 9.5rem); max-height: 70%; height: auto; }
+.disegno :where(path, circle) { vector-effect: non-scaling-stroke; }
+
+.regia {
+  position: relative;
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem 1.1rem;
+  color: var(--adriatico);
+  border-top: 1px dashed rgb(var(--adriatico-rgb) / 0.25);
+  background: rgb(216 200 173 / 0.82);
+}
+.regiaEtichetta { color: var(--terracotta-scuro); }
+.regiaTesto { font-size: 0.8125rem; line-height: 1.45; color: var(--tenue); max-width: 34em; }
+@container (max-width: 18rem) { .regiaTesto { font-size: 0.75rem; } }

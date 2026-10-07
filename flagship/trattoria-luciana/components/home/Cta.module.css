@@ -1,0 +1,23 @@
+.cta { position: relative; overflow: hidden; isolation: isolate; }
+.sfondo { position: absolute; inset: -12% 0; z-index: -2; }
+.sfondo > * { width: 100%; height: 100%; }
+.sfondo img { width: 100%; height: 100%; object-fit: cover; }
+.velo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, var(--notte) 0%, rgb(var(--notte-rgb) / 0.35) 30%, rgb(var(--notte-rgb) / 0.55) 60%, var(--notte) 100%);
+}
+.contenuto {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  justify-items: center;
+  text-align: center;
+  padding: var(--sezione) var(--margine);
+}
+.scena { color: var(--ottone); }
+.titolo { color: var(--bianco); }
+.riga { display: block; }
+.riga em { color: var(--sabbia); }
+.testo { max-width: 30em; color: var(--avorio); }
+.percorsi { width: 100%; margin-top: clamp(1rem, 4vw, 3rem); text-align: left; --sfondo: rgb(var(--notte-rgb) / 0.72); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }

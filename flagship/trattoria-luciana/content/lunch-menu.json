@@ -1,0 +1,43 @@
+{
+  "status": "needs_confirmation",
+  "prezzo": { "value": 18, "status": "needs_confirmation", "nota": "Prezzo d'esempio." },
+  "giorni": {
+    "value": ["lun", "mar", "mer", "gio", "ven"],
+    "status": "needs_confirmation",
+    "nota": "Le guide parlano di un menu fisso nei giorni feriali."
+  },
+  "orari": { "value": { "dalle": "12:30", "alle": "14:30" }, "status": "needs_confirmation" },
+  "comprende": {
+    "value": [
+      { "it": "Un primo di mare", "en": "A seafood first course", "de": "Ein erster Gang mit Meeresfrüchten" },
+      { "it": "Un secondo con contorno", "en": "A main course with a side", "de": "Ein Hauptgang mit Beilage" },
+      { "it": "Acqua e caffè", "en": "Water and coffee", "de": "Wasser und Espresso" }
+    ],
+    "status": "needs_confirmation"
+  },
+  "piatti": [
+    {
+      "portata": "primo",
+      "nome": { "it": "Pasta e ceci con le vongole", "en": "Pasta and chickpeas with clams", "de": "Pasta mit Kichererbsen und Venusmuscheln" },
+      "status": "needs_confirmation"
+    },
+    {
+      "portata": "secondo",
+      "nome": { "it": "Alici fritte o seppie con i piselli", "en": "Fried anchovies or cuttlefish with peas", "de": "Frittierte Sardellen oder Tintenfisch mit Erbsen" },
+      "status": "needs_confirmation"
+    },
+    {
+      "portata": "contorno",
+      "nome": { "it": "Insalata di stagione", "en": "Seasonal salad", "de": "Salat der Saison" },
+      "status": "needs_confirmation"
+    }
+  ],
+  "nota": {
+    "value": {
+      "it": "Il sabato e la domenica si mangia alla carta.",
+      "en": "On Saturdays and Sundays we serve à la carte only.",
+      "de": "Samstags und sonntags servieren wir nur à la carte."
+    },
+    "status": "needs_confirmation"
+  }
+}

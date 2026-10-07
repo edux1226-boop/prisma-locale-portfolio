@@ -1,0 +1,29 @@
+.voci { padding: var(--sezione) var(--margine); }
+.testa { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.sintesi { display: grid; grid-template-columns: auto auto; column-gap: 0.75rem; align-items: baseline; justify-items: start; }
+.voto { font-family: var(--f-serif); font-size: var(--t-xxl); line-height: 0.9; color: var(--bianco); }
+.su { color: var(--tenue-chiaro); }
+.fonte { grid-column: 1 / -1; color: var(--sabbia); font-size: var(--t-small); margin-top: 0.5rem; }
+
+.citazioni {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 4rem) var(--gap);
+}
+.citazioni > li { grid-column: span 6; }
+.citazioni > li.prima { grid-column: 1 / -1; }
+.voce { display: grid; gap: 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--filo); }
+.frase { font-family: var(--f-serif); font-size: var(--t-l); line-height: 1.2; color: var(--bianco); text-wrap: pretty; }
+.prima .frase { font-size: var(--t-xl); line-height: 1.08; max-width: 22ch; }
+.frase p::before { content: "«"; color: var(--ottone); margin-right: 0.08em; }
+.frase p::after { content: "»"; color: var(--ottone); margin-left: 0.08em; }
+.frase:lang(en) p::before { content: "“"; }
+.frase:lang(en) p::after { content: "”"; }
+.frase:lang(de) p::before { content: "„"; }
+.frase:lang(de) p::after { content: "“"; }
+.firma { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-size: var(--t-small); color: var(--tenue-chiaro); }
+.autore { color: var(--avorio); }
+
+@media (max-width: 47.99em) {
+  .citazioni > li { grid-column: 1 / -1; }
+}

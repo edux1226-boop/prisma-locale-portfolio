@@ -1,0 +1,62 @@
+/* Senza regia (telefoni, movimento ridotto): immagine piena, titolo sopra,
+   le tre voci in colonna sotto. Con la regia su desktop (is-palco) la scena
+   diventa un palco fermo con le voci che si danno il cambio. */
+.territorio { position: relative; }
+.palco { position: relative; display: grid; }
+.finestra {
+  position: relative;
+  grid-area: 1 / 1;
+  height: min(100svh, 62rem);
+  min-height: 34rem;
+  overflow: hidden;
+}
+.immagine { position: absolute; inset: 0; }
+.immagine picture, .immagine img { width: 100%; height: 100%; object-fit: cover; }
+.velo {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(var(--notte-rgb) / 0.62) 0%, transparent 38%),
+    linear-gradient(0deg, rgb(var(--notte-rgb) / 0.66) 0%, transparent 46%);
+}
+.testa {
+  grid-area: 1 / 1;
+  align-self: start;
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  padding: calc(var(--testata-h) + clamp(1.5rem, 4vw, 3rem)) var(--margine) 0;
+  max-width: 64rem;
+}
+.scena { color: var(--ottone); }
+.titolo { color: var(--bianco); }
+
+.voci {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--margine) var(--sezione);
+}
+.voce { display: grid; gap: 0.75rem; align-content: start; border-top: 1px solid var(--filo); padding-top: 1.25rem; }
+.nome { font-family: var(--f-serif); font-size: var(--t-xl); line-height: 0.95; color: var(--bianco); }
+.numero { display: block; font-family: var(--f-sans); font-size: var(--t-etichetta); letter-spacing: 0.16em; color: var(--ottone); margin-bottom: 0.9rem; }
+.sotto { display: block; font-size: var(--t-m); color: var(--sabbia); }
+.testo { color: var(--tenue-chiaro); max-width: 26em; }
+
+@media (max-width: 63.99em) {
+  .voci { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* ---- palco (solo desktop con la regia) ---- */
+:global(.is-palco) .finestra { height: 100svh; }
+:global(.is-palco) .voci {
+  grid-area: 1 / 1;
+  align-self: end;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 0 var(--margine) clamp(2.5rem, 7vh, 5rem);
+  max-width: 40rem;
+  margin-left: auto;
+  pointer-events: none;
+}
+:global(.is-palco) .voce { grid-area: 1 / 1; border-top-color: rgb(var(--avorio-rgb) / 0.35); }
+:global(.is-palco) .testo { color: var(--avorio); }

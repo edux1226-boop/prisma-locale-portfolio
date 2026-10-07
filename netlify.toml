@@ -20,6 +20,12 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# I flagship Next.js: script e stili hanno l'hash nel nome.
+[[headers]]
+  for = "/anteprime/trattoria-luciana/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Anteprime per i potenziali clienti: mai in indice, nemmeno se il link gira.
 [[headers]]
   for = "/anteprime/*"

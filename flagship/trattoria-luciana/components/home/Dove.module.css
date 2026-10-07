@@ -1,0 +1,20 @@
+.dove {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 3rem;
+  align-items: center;
+  padding: var(--sezione) var(--margine);
+}
+.mappa { grid-column: 1 / span 6; }
+.dati { grid-column: 8 / -1; display: grid; gap: 1.25rem; justify-items: start; }
+.citta { color: var(--accento-testo, var(--terracotta-testo)); font-style: italic; }
+.testo { color: var(--tenue); }
+.orari { display: grid; gap: 0.75rem; padding-block: 1.25rem; border-block: 1px solid var(--filo); width: 100%; }
+.orari h3 { color: var(--accento-testo, var(--terracotta-testo)); }
+.azioni { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+@media (max-width: 63.99em) {
+  .mappa, .dati { grid-column: 1 / -1; }
+  .dati { order: -1; }
+}
