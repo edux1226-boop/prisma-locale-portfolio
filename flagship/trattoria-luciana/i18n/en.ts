@@ -46,7 +46,6 @@ export const en: Dizionario = {
     scorri: 'Scroll',
     scena: 'Scene',
     torna: 'Back to top',
-    marchio: 'Trattoria Luciana, home page',
   },
 
   nav: { home: 'Home', storia: 'Story', menu: 'Menu', mare: 'The sea', contatti: 'Contact', prenota: 'Book' },

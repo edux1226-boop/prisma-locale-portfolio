@@ -57,9 +57,10 @@ export function Testata({ lingua, voci }: { lingua: Lingua; voci: VociTestata })
   return (
     <>
       <header className={s.testata} data-sopra={sopra || undefined} data-nascosta={(nascosta && !aperto) || undefined} data-testata>
-        <Link className={s.marchio} href={voci.home} aria-label={voci.marchio}>
-          <span className={s.marchioSopra} aria-hidden="true">Trattoria</span>
-          <span className={s.marchioNome} aria-hidden="true">Luciana</span>
+        <Link className={s.marchio} href={voci.home}>
+          <span className={s.marchioSopra}>Trattoria</span>{' '}
+          <span className={s.marchioNome}>Luciana</span>
+          <span className="sr-only">, {voci.casa}</span>
         </Link>
 
         <nav className={s.nav} aria-label={voci.etichette.menu}>

@@ -19,7 +19,7 @@ export function Territorio({ lingua }: { lingua: Lingua }) {
           </div>
           <div className={s.velo} aria-hidden="true" />
         </div>
-        <div className={s.testa}>
+        <div className={s.testa} data-territorio-testa>
           <Scena numero={3} nome={d.scena} lingua={lingua} className={s.scena} />
           <h2 className={`${s.titolo} titolo-xl`} id="territorio-titolo" data-righe>{d.titolo}</h2>
         </div>

@@ -50,7 +50,6 @@ export const it = {
     scorri: 'Scorri',
     scena: 'Scena',
     torna: "Torna all'inizio",
-    marchio: 'Trattoria Luciana, pagina iniziale',
   },
 
   nav: { home: 'Home', storia: 'Storia', menu: 'Menu', mare: 'Il mare', contatti: 'Contatti', prenota: 'Prenota' },

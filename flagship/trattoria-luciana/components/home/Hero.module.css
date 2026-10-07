@@ -62,14 +62,22 @@
 }
 .logoNome { font-size: var(--t-logo); letter-spacing: 0.04em; margin-right: -0.04em; text-transform: uppercase; }
 .lettera { display: inline-block; }
+/* Il nome emerge dall'acqua: le lettere salgono una dopo l'altra (solo
+   opacità e posizione, sul compositor); la sfocatura è una sola, sulla riga. */
 :global(html.motion) .lettera {
   opacity: 0;
-  filter: blur(14px);
   transform: translate3d(0, 0.18em, 0) scaleY(1.08);
   animation: emergi 2.4s var(--ease) forwards;
   animation-delay: calc(0.5s + var(--i) * 0.075s);
 }
-@keyframes emergi { to { opacity: 1; filter: blur(0); transform: none; } }
+@keyframes emergi { to { opacity: 1; transform: none; } }
+:global(html.motion) .logoSopra,
+:global(html.motion) .logoNome {
+  filter: blur(10px);
+  will-change: filter;
+  animation: schiarisce 2.6s var(--ease) 0.5s forwards;
+}
+@keyframes schiarisce { to { filter: blur(0); } }
 
 .tagline { font-family: var(--f-serif); font-size: var(--t-m); color: var(--sabbia); }
 :global(html.motion) .luogo,

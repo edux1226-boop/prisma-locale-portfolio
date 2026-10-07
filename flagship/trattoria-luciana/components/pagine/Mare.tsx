@@ -23,7 +23,7 @@ export function Mare({ lingua }: { lingua: Lingua }) {
   return (
     <main id="contenuto" tabIndex={-1} data-pagina="mare">
       <header className={`${s.apertura} tono-notte`} data-tono="notte" data-hero>
-        <div className={heroStile.palco} data-hero-palco>
+        <div className={heroStile.palco}>
           <div className={heroStile.mare} data-hero-mare>
             <Foto id="mare-hero" lingua={lingua} sizes="100vw" verticaleQuando="(max-aspect-ratio: 4/5)" priorita decorativa className={heroStile.still} />
             <span className={heroStile.luccichio} aria-hidden="true" />

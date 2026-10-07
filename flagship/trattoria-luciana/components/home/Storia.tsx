@@ -37,12 +37,12 @@ export function Storia({ lingua }: { lingua: Lingua }) {
         <div className={s.oggi}>
           <Foto id="lungomare" lingua={lingua} sizes="(min-width: 64em) 50vw, 100vw" />
         </div>
-        <div className={s.allora} data-dissolvenza-allora aria-hidden="true">
+        <div className={s.allora} aria-hidden="true">
           <Foto id="lungomare" lingua={lingua} sizes="(min-width: 64em) 50vw, 100vw" decorativa />
         </div>
         <figcaption className={s.didascalie} aria-hidden="true">
-          <span className="etichetta" data-dissolvenza-allora-testo>{d.allora}</span>
-          <span className="etichetta" data-dissolvenza-oggi-testo>{d.oggi}</span>
+          <span className="etichetta">{d.allora}</span>
+          <span className="etichetta">{d.oggi}</span>
         </figcaption>
       </figure>
 

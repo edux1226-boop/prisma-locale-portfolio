@@ -10,7 +10,7 @@ export function vociTestata(lingua: Lingua) {
   const tel = telefono();
   return {
     home: percorso(lingua, 'home'),
-    marchio: d.comune.marchio,
+    casa: d.nav.home,
     nav: (['storia', 'menu', 'mare', 'contatti'] as const).map((p) => ({ pagina: p, href: percorso(lingua, p), testo: d.nav[p] })),
     prenota: { href: percorso(lingua, 'prenota'), testo: d.comune.prenota, breve: d.comune.prenotaBreve },
     etichette: { menu: d.comune.menu, chiudi: d.comune.chiudi, lingua: d.comune.lingua, chiama: d.comune.chiama, daConfermare: d.comune.daConfermare },

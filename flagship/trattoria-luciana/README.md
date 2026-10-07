@@ -44,7 +44,7 @@ con indirizzi tradotti (`/en/the-sea/`, `/de/das-meer/`, …).
 |---|---|
 | Framework | Next.js 16 (App Router) + React 19 + TypeScript, **export statico** |
 | Contenuti | JSON in `content/`, validati con zod (`content/schema.ts`), modificabili da Decap CMS |
-| Movimento | GSAP 3.15 (ScrollTrigger, SplitText) + Lenis |
+| Movimento | IntersectionObserver + transizioni CSS ovunque; GSAP 3.15 (ScrollTrigger, SplitText) + Lenis solo su desktop, caricati dinamicamente |
 | 3D | three.js + React Three Fiber, solo per il mare, caricati dinamicamente |
 | Caratteri | Instrument Serif (titoli, numerazioni, momenti) e Instrument Sans (navigazione, menu, prezzi, moduli), self-hosted con `next/font/local` |
 | Stili | CSS con token (`styles/tokens.css`) e CSS Modules per componente |
@@ -65,7 +65,7 @@ Se il WebGL non parte, resta il fermo immagine renderizzato dallo **stesso shade
 │   ├── home/                  le undici scene dell'homepage + nota per il ristorante
 │   ├── pagine/                storia, menu, il mare, prenota, contatti
 │   ├── struttura/             radice HTML, testata, piede, barra "Prenota", anteprima, JSON-LD
-│   ├── regia/                 tutto il movimento (GSAP, ScrollTrigger, SplitText, Lenis)
+│   ├── regia/                 il movimento: comparse leggere ovunque, il motore GSAP solo su desktop
 │   ├── mare/                  shader dell'acqua, scena R3F, rilevamento capacità
 │   ├── prenota/               modulo di richiesta di prenotazione
 │   └── ui/                    foto (art direction), disegni a filo, mappa, orari, prezzi…
@@ -163,6 +163,10 @@ confermato), la richiesta online porta lì.
 - **Accessibilità**: axe-core senza violazioni su tutte le pagine (it/en/de, desktop e mobile);
   skip link, menu mobile su `<dialog>`, riepilogo errori del modulo con fuoco gestito, contrasti
   AA misurati nei token (vedi `styles/tokens.css`).
+- **Movimento in due livelli**: su ogni dispositivo le comparse sono IntersectionObserver e
+  transizioni CSS, senza librerie; solo su desktop si scarica il motore (GSAP, ScrollTrigger,
+  SplitText, Lenis) per i pin, le maschere, le righe dei titoli e le transizioni cromatiche. Le
+  animazioni CSS si fermano quando la loro scena è fuori schermo.
 - **Movimento ridotto e senza JavaScript**: niente Lenis, niente pin, niente WebGL; tutto il
   contenuto resta visibile. Se la regia non parte entro 4 secondi, il movimento si spegne da solo.
 - **WebGL**: solo con schermo grande, puntatore fine, almeno 4 core e 4 GB, scheda grafica vera
@@ -171,6 +175,18 @@ confermato), la richiesta online porta lì.
   Per le verifiche: `?webgl=forza` o `?webgl=no`.
 - **SEO**: metadati per pagina e lingua, canonical, hreflang con `x-default`, sitemap con
   alternative, JSON-LD `Restaurant` con i soli dati confermati. L'anteprima è `noindex`.
+
+Lighthouse 12 sulla build dell'anteprima (throttling simulato; mobile = Moto G Power, 4× CPU):
+
+| | Prestazioni | Accessibilità | Best practice | SEO | LCP | TBT | CLS |
+|---|---|---|---|---|---|---|---|
+| Home, mobile | 94 | 100 | 100 | 69¹ | 3,0 s | 60 ms | 0 |
+| Menu, mobile | 94 | 100 | 100 | 66¹ | 3,1 s | 70 ms | 0 |
+| Home, desktop | 100 | 100 | 100 | 69¹ | 0,7 s | 10 ms | 0 |
+| Menu, desktop | 100 | 100 | 100 | 66¹ | 0,6 s | 0 ms | 0 |
+
+¹ L'unica voce SEO che manca è *is-crawlable*: l'anteprima è `noindex` di proposito. In
+produzione la pagina è indicizzabile.
 
 ## Prima di andare in produzione
 

@@ -25,7 +25,7 @@ export function Hero({ lingua }: { lingua: Lingua }) {
   const d = dizionario(lingua);
   return (
     <section className={`${s.hero} tono-notte`} id="inizio" aria-labelledby="hero-titolo" data-tono="adriatico" data-hero>
-      <div className={s.palco} data-hero-palco>
+      <div className={s.palco}>
         <div className={s.mare} data-hero-mare>
           <Foto id="mare-hero" lingua={lingua} sizes="100vw" verticaleQuando="(max-aspect-ratio: 4/5)" priorita className={s.still} />
           <span className={s.luccichio} aria-hidden="true" />

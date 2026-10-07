@@ -204,7 +204,7 @@ main:focus { outline: none; }
 /* La grana: una pellicola sopra a tutto, appena percettibile. */
 .grana {
   position: fixed;
-  inset: -50%;
+  inset: 0;
   z-index: 60;
   pointer-events: none;
   opacity: 0.05;
@@ -212,11 +212,20 @@ main:focus { outline: none; }
 }
 
 /* --------------------------------------------- stati iniziali del movimento */
-html.motion [data-rivela] { opacity: 0; transform: translate3d(0, 28px, 0); }
-html.motion [data-righe] { visibility: hidden; }
-html.motion [data-righe].is-diviso { visibility: visible; }
-.riga-maschera { display: block; overflow: clip; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+/* `translate` e non `transform`: si somma alle rotazioni dei cartoncini. */
+html.motion :is([data-rivela], [data-righe]) {
+  opacity: 0;
+  translate: 0 28px;
+  transition: opacity 1.1s var(--ease), translate 1.1s var(--ease);
+}
+html.motion [data-righe] { translate: 0 0.3em; }
+html.motion :is([data-rivela], [data-righe]).is-visto { opacity: 1; translate: none; }
+/* su desktop i titoli li divide il motore in righe che salgono da sole */
+html.motion [data-righe].is-diviso { transition: none; }
 .riga { display: block; will-change: transform; }
+
+/* Le animazioni CSS si fermano quando la loro scena è fuori schermo. */
+[data-fuori], [data-fuori] *, [data-fuori] *::before, [data-fuori] *::after { animation-play-state: paused !important; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -226,9 +235,3 @@ html.motion [data-righe].is-diviso { visibility: visible; }
   }
 }
 
-/* Transizioni cromatiche (desktop): un fondale fisso cambia colore tra le
-   scene; le sezioni diventano trasparenti e lasciano vedere il passaggio. */
-.fondale { position: fixed; inset: 0; z-index: -10; pointer-events: none; }
-html.tinte body { background: transparent; }
-html.tinte main [data-tono],
-html.tinte footer[data-tono] { background-color: transparent; }
