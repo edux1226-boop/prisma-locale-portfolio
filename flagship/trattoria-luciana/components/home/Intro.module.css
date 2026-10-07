@@ -1,0 +1,22 @@
+.intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: clamp(2rem, 4vw, 3.5rem);
+  padding: var(--sezione) var(--margine);
+}
+.intro > :first-child { grid-column: 1 / -1; }
+.titolo { grid-column: 1 / span 11; color: var(--bianco); }
+.riga { display: block; }
+.riga:nth-child(2) { padding-left: 1.2em; font-style: italic; color: var(--sabbia); }
+.riga:nth-child(3) { padding-left: 0.4em; }
+.onda { grid-column: 1 / -1; width: 100%; height: 28px; overflow: visible; }
+.onda path { fill: none; stroke: var(--ottone); stroke-width: 1; vector-effect: non-scaling-stroke; opacity: 0.7; }
+.testo { grid-column: 6 / span 6; color: var(--avorio); }
+
+@media (max-width: 63.99em) {
+  .titolo { grid-column: 1 / -1; }
+  .riga:nth-child(2) { padding-left: 0.6em; }
+  .testo { grid-column: 1 / -1; }
+}

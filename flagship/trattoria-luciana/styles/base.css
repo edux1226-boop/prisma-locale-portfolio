@@ -1,0 +1,234 @@
+/* ==========================================================================
+   Base: reset, tipografia editoriale, bottoni, segni dell'anteprima.
+   Gli stati iniziali del movimento valgono solo con html.motion, che lo
+   script in <head> mette prima del primo disegno e toglie da solo se la
+   regia non parte: senza JavaScript il sito è completo e fermo.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--testata-h) + 16px);
+  background: var(--notte);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.lenis) { scroll-behavior: smooth; }
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--avorio);
+  color: var(--adriatico);
+  font-family: var(--f-sans);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+:where(img, picture, svg, video, canvas) { display: block; max-width: 100%; }
+img { height: auto; }
+:where(h1, h2, h3, h4, p, figure, blockquote, dl, dd, ol, ul) { margin: 0; }
+:where(ol[role="list"], ul[role="list"]) { list-style: none; padding: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+address { font-style: normal; }
+[hidden] { display: none !important; }
+
+::selection { background: var(--ottone); color: var(--notte); }
+
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--focus, var(--ottone));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.tono-avorio, .tono-bianco { --focus: var(--terracotta-testo); }
+.tono-sabbia { --focus: var(--terracotta-scuro); }
+
+main { display: block; }
+main:focus { outline: none; }
+
+/* ------------------------------------------------------------- tipografia */
+.serif { font-family: var(--f-serif); font-weight: 400; letter-spacing: -0.005em; }
+.corsivo { font-family: var(--f-serif); font-style: italic; font-weight: 400; }
+
+.etichetta {
+  font-family: var(--f-sans);
+  font-size: var(--t-etichetta);
+  font-weight: 500;
+  font-variation-settings: "wdth" 88;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.titolo-xxl, .titolo-xl, .titolo-l, .titolo-gigante {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+.titolo-gigante { font-size: var(--t-gigante); line-height: 0.9; letter-spacing: -0.02em; }
+.titolo-xxl { font-size: var(--t-xxl); }
+.titolo-xl { font-size: var(--t-xl); line-height: 1.02; }
+.titolo-l { font-size: var(--t-l); line-height: 1.1; }
+.titolo-xxl em, .titolo-xl em, .titolo-l em, .titolo-gigante em { font-style: italic; }
+
+.testo-l { font-size: var(--t-m); line-height: 1.45; font-family: var(--f-serif); text-wrap: pretty; }
+.testo { max-width: 36em; text-wrap: pretty; }
+.tenue { color: var(--tenue-t, var(--tenue)); }
+.cifra { font-variant-numeric: tabular-nums lining-nums; }
+
+/* Scena 03 — Il territorio: la numerazione da rivista */
+.scena {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.9em;
+  color: var(--accento-testo, var(--terracotta-testo));
+}
+.scena__num {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 1.6em;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1;
+}
+.scena__filo { width: 2.75rem; height: 1px; background: currentColor; opacity: 0.6; align-self: center; }
+
+/* ----------------------------------------------------------------- link */
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: text-decoration-color 0.3s;
+}
+.link:hover { text-decoration-color: currentColor; }
+
+/* ---------------------------------------------------------------- bottoni */
+.btn {
+  --btn-sfondo: transparent;
+  --btn-testo: currentColor;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85em;
+  min-height: 52px;
+  padding: 0.95em 1.6em;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: var(--btn-sfondo);
+  color: var(--btn-testo);
+  font-family: var(--f-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variation-settings: "wdth" 92;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.btn svg { width: 1.15em; height: 1.15em; flex: none; transition: transform 0.45s var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+.btn--pieno { --btn-sfondo: var(--testo); --btn-testo: var(--sfondo); border-color: var(--testo); }
+.btn--pieno:hover { --btn-sfondo: var(--testo-forte); border-color: var(--testo-forte); }
+.btn--accento { --btn-sfondo: var(--terracotta-testo); --btn-testo: var(--bianco); border-color: var(--terracotta-testo); }
+.btn--accento:hover { --btn-sfondo: #7A4838; border-color: #7A4838; }
+.btn--linea:hover { --btn-sfondo: color-mix(in srgb, currentColor 8%, transparent); }
+.btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+.btn[aria-disabled="true"] svg { display: none; }
+
+/* -------------------------------------------------------------- utilità */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.salta {
+  position: fixed;
+  top: 12px; left: 12px;
+  z-index: 100;
+  padding: 0.8em 1.2em;
+  background: var(--avorio);
+  color: var(--adriatico);
+  border-radius: 999px;
+  transform: translateY(-160%);
+  transition: transform 0.3s var(--ease);
+}
+.salta:focus-visible { transform: none; }
+
+.contenitore { width: var(--colonna); margin-inline: auto; }
+
+/* Segno "da confermare" (solo nell'anteprima). */
+.dc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-inline-start: 0.5em;
+  padding: 0.2em 0.65em 0.22em;
+  border: 1px dashed currentColor;
+  border-radius: 999px;
+  color: var(--accento-testo, var(--terracotta-testo));
+  font-family: var(--f-sans);
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 600;
+  font-variation-settings: "wdth" 88;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  vertical-align: 0.2em;
+  white-space: nowrap;
+}
+.dc--solo { margin-inline-start: 0; }
+
+/* La grana: una pellicola sopra a tutto, appena percettibile. */
+.grana {
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------- stati iniziali del movimento */
+html.motion [data-rivela] { opacity: 0; transform: translate3d(0, 28px, 0); }
+html.motion [data-righe] { visibility: hidden; }
+html.motion [data-righe].is-diviso { visibility: visible; }
+.riga-maschera { display: block; overflow: clip; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.riga { display: block; will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Transizioni cromatiche (desktop): un fondale fisso cambia colore tra le
+   scene; le sezioni diventano trasparenti e lasciano vedere il passaggio. */
+.fondale { position: fixed; inset: 0; z-index: -10; pointer-events: none; }
+html.tinte body { background: transparent; }
+html.tinte main [data-tono],
+html.tinte footer[data-tono] { background-color: transparent; }

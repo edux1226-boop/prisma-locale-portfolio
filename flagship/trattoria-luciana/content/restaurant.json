@@ -1,0 +1,63 @@
+{
+  "nome": { "value": "Trattoria Luciana", "status": "confirmed" },
+  "famiglia": { "value": "Ruggieri", "status": "confirmed" },
+  "descrizione": {
+    "value": {
+      "it": "Trattoria di pesce sul lungomare di Roseto degli Abruzzi. Il pescato del giorno, le ricette di casa della famiglia Ruggieri, una tavola davanti all'Adriatico.",
+      "en": "A seafood trattoria on the seafront of Roseto degli Abruzzi. The day's catch, the Ruggieri family's home recipes, a table facing the Adriatic.",
+      "de": "Fischtrattoria an der Strandpromenade von Roseto degli Abruzzi. Der Fang des Tages, die Hausrezepte der Familie Ruggieri, ein Tisch mit Blick auf die Adria."
+    },
+    "status": "confirmed"
+  },
+  "fondazione": {
+    "value": null,
+    "status": "needs_confirmation",
+    "nota": "Le fonti pubbliche parlano dei primi anni Sessanta: serve l'anno esatto dalla famiglia."
+  },
+  "indirizzo": {
+    "value": {
+      "via": "Lungomare Trieste 60",
+      "cap": "64026",
+      "citta": "Roseto degli Abruzzi",
+      "provincia": "TE",
+      "regione": "Abruzzo",
+      "paese": "IT"
+    },
+    "status": "confirmed"
+  },
+  "telefono": { "value": null, "status": "needs_confirmation", "nota": "Numero fisso della trattoria, in formato +39…" },
+  "email": { "value": null, "status": "needs_confirmation" },
+  "whatsapp": {
+    "value": null,
+    "status": "needs_confirmation",
+    "nota": "Il canale WhatsApp compare sul sito solo dopo la conferma del numero."
+  },
+  "coordinate": {
+    "value": { "lat": 42.6762, "lng": 14.0318 },
+    "status": "needs_confirmation",
+    "nota": "Punto approssimato sul Lungomare Trieste: verificare la posizione esatta del civico 60."
+  },
+  "social": {
+    "instagram": { "value": null, "status": "needs_confirmation" },
+    "facebook": { "value": null, "status": "needs_confirmation" }
+  },
+  "dominio": { "value": null, "status": "needs_confirmation", "nota": "Es. https://www.trattorialuciana.it" },
+  "logo": { "value": null, "status": "needs_confirmation", "nota": "Senza logo resta il marchio tipografico." },
+  "cucina": { "value": ["Seafood", "Italian"], "status": "confirmed" },
+  "fasciaPrezzo": {
+    "value": "€€",
+    "status": "needs_confirmation",
+    "nota": "Le guide indicano una spesa media di 20-30 € a persona."
+  },
+  "prenotazione": {
+    "motore": {
+      "value": null,
+      "status": "needs_confirmation",
+      "nota": "Se il ristorante usa un sistema di prenotazione (TheFork, ecc.), la richiesta online porta lì."
+    }
+  },
+  "legale": {
+    "ragioneSociale": { "value": null, "status": "needs_confirmation" },
+    "partitaIva": { "value": null, "status": "needs_confirmation", "nota": "Obbligatoria nel sito di un'attività italiana." }
+  }
+}

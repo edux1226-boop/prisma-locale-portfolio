@@ -1,0 +1,25 @@
+{
+  "fermo": {
+    "value": {
+      "mesi": [8, 9],
+      "nota": {
+        "it": "Il fermo biologico della pesca a strascico in Adriatico cade di solito tra agosto e settembre: le date cambiano ogni anno.",
+        "en": "The seasonal trawling ban in the Adriatic usually falls between August and September; the dates change every year.",
+        "de": "Die Schonzeit für die Schleppnetzfischerei in der Adria liegt meist zwischen August und September; die Daten ändern sich jedes Jahr."
+      }
+    },
+    "status": "needs_confirmation"
+  },
+  "specie": [
+    { "id": "alici", "nome": { "it": "Alici", "en": "Anchovies", "de": "Sardellen" }, "latino": "Engraulis encrasicolus", "mesi": [4, 5, 6, 7, 8, 9], "status": "needs_confirmation" },
+    { "id": "sardine", "nome": { "it": "Sardine", "en": "Sardines", "de": "Sardinen" }, "latino": "Sardina pilchardus", "mesi": [5, 6, 7, 8, 9], "status": "needs_confirmation" },
+    { "id": "seppie", "nome": { "it": "Seppie", "en": "Cuttlefish", "de": "Tintenfische" }, "latino": "Sepia officinalis", "mesi": [3, 4, 5, 6], "status": "needs_confirmation" },
+    { "id": "cozze", "nome": { "it": "Cozze", "en": "Mussels", "de": "Miesmuscheln" }, "latino": "Mytilus galloprovincialis", "mesi": [5, 6, 7, 8, 9], "status": "needs_confirmation" },
+    { "id": "mazzancolle", "nome": { "it": "Mazzancolle", "en": "Caramote prawns", "de": "Furchengarnelen" }, "latino": "Penaeus kerathurus", "mesi": [6, 7, 8, 9, 10], "status": "needs_confirmation" },
+    { "id": "triglie", "nome": { "it": "Triglie", "en": "Red mullet", "de": "Rotbarben" }, "latino": "Mullus barbatus", "mesi": [8, 9, 10, 11], "status": "needs_confirmation" },
+    { "id": "canocchie", "nome": { "it": "Canocchie", "en": "Mantis shrimp", "de": "Heuschreckenkrebse" }, "latino": "Squilla mantis", "mesi": [10, 11, 12, 1, 2], "status": "needs_confirmation" },
+    { "id": "calamari", "nome": { "it": "Calamari", "en": "Squid", "de": "Kalmare" }, "latino": "Loligo vulgaris", "mesi": [10, 11, 12, 1, 2, 3], "status": "needs_confirmation" },
+    { "id": "sogliole", "nome": { "it": "Sogliole", "en": "Sole", "de": "Seezungen" }, "latino": "Solea solea", "mesi": [11, 12, 1, 2, 3], "status": "needs_confirmation" },
+    { "id": "rana-pescatrice", "nome": { "it": "Rana pescatrice", "en": "Monkfish", "de": "Seeteufel" }, "latino": "Lophius piscatorius", "mesi": [11, 12, 1, 2, 3], "status": "needs_confirmation" }
+  ]
+}

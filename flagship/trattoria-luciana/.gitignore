@@ -1,0 +1,8 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+# immagini intermedie del generatore di tavole
+scripts/tavole/.png/
+tsconfig.tsbuildinfo

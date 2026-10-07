@@ -1,0 +1,124 @@
+/* ==========================================================================
+   TRATTORIA LUCIANA — sistema visivo
+   Concept "Dal mare alla tavola": blu profondo dell'Adriatico e materiali
+   caldi (avorio, sabbia, terracotta, ottone). Nessun azzurro da cartolina.
+
+   Contrasti misurati (WCAG 2.2):
+     avorio su adriatico 12.7:1 · sabbia su adriatico 9:1
+     ottone su adriatico 5.5:1 (testo ok) · ottone su avorio 2.3:1 (solo fili)
+     terracotta su avorio 3.5:1 (solo titoli grandi) → terracotta-testo 5.2:1
+     sulla sabbia la terracotta-testo scende a 3.7:1 → terracotta-scuro 5.3:1
+     tenue su avorio 6.6:1, su sabbia 4.7:1 · tenue-chiaro su adriatico 7:1
+   ========================================================================== */
+
+:root {
+  /* palette del brief */
+  --adriatico: #102B35;
+  --notte: #071B22;
+  --avorio: #F3EEE4;
+  --sabbia: #D8C8AD;
+  --bianco: #FAF7F0;
+  --terracotta: #A96F59;
+  --salvia: #89927C;
+  --ottone: #B49A6A;
+
+  /* derivati per il testo */
+  --terracotta-testo: #8A5442;
+  --terracotta-scuro: #6E3F30;   /* la terracotta per il testo sulla sabbia: 5.3:1 */
+  --tenue: #46565C;
+  --tenue-chiaro: #A9B5B5;
+  --adriatico-rgb: 16 43 53;
+  --notte-rgb: 7 27 34;
+  --avorio-rgb: 243 238 228;
+  --ottone-rgb: 180 154 106;
+
+  /* tipografia: serif editoriale per i momenti, sans contemporanea per l'uso */
+  --f-serif: var(--font-serif), "Iowan Old Style", "Times New Roman", serif;
+  --f-sans: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+
+  --t-logo: clamp(3.6rem, 0.6rem + 13.2vw, 14.5rem);
+  --t-gigante: clamp(3.1rem, 0.9rem + 9vw, 10.5rem);
+  --t-xxl: clamp(2.6rem, 1.1rem + 5.6vw, 7.25rem);
+  --t-xl: clamp(2.15rem, 1.2rem + 3.7vw, 5rem);
+  --t-l: clamp(1.65rem, 1.15rem + 1.9vw, 2.9rem);
+  --t-m: clamp(1.3rem, 1.1rem + 0.75vw, 1.8rem);
+  --t-body: clamp(1rem, 0.97rem + 0.14vw, 1.0625rem);
+  --t-small: 0.875rem;
+  --t-etichetta: 0.71875rem;
+
+  --margine: clamp(20px, 5.2vw, 100px);
+  --gap: clamp(16px, 2vw, 32px);
+  --sezione: clamp(104px, 14vw, 224px);
+  --testata-h: 76px;
+  --barra-h: 0px;
+  --colonna: min(100% - 2 * var(--margine), 1440px);
+
+  --ease: cubic-bezier(0.22, 0.7, 0.12, 1);
+  --ease-onda: cubic-bezier(0.45, 0, 0.2, 1);
+  --durata: 0.7s;
+}
+
+@media (max-width: 63.99em) {
+  :root { --testata-h: 64px; --barra-h: 64px; }
+}
+
+/* Toni di sezione: ogni scena dichiara il suo, il colore di fondo
+   "scorre" dall'uno all'altro (transizioni cromatiche mare → terra → tavola). */
+.tono-notte,
+.tono-adriatico,
+.tono-avorio,
+.tono-sabbia,
+.tono-bianco {
+  background-color: var(--sfondo);
+  color: var(--testo);
+}
+.tono-notte {
+  --sfondo: var(--notte);
+  --testo: var(--avorio);
+  --testo-forte: var(--bianco);
+  --tenue-t: var(--tenue-chiaro);
+  --accento: var(--ottone);
+  --accento-testo: var(--ottone);
+  --filo: rgb(var(--avorio-rgb) / 0.16);
+  --carta: rgb(var(--avorio-rgb) / 0.05);
+}
+.tono-adriatico {
+  --sfondo: var(--adriatico);
+  --testo: var(--avorio);
+  --testo-forte: var(--bianco);
+  --tenue-t: var(--tenue-chiaro);
+  --accento: var(--ottone);
+  --accento-testo: var(--ottone);
+  --filo: rgb(var(--avorio-rgb) / 0.18);
+  --carta: rgb(var(--avorio-rgb) / 0.06);
+}
+.tono-avorio {
+  --sfondo: var(--avorio);
+  --testo: var(--adriatico);
+  --testo-forte: var(--notte);
+  --tenue-t: var(--tenue);
+  --accento: var(--terracotta);
+  --accento-testo: var(--terracotta-testo);
+  --filo: rgb(var(--adriatico-rgb) / 0.16);
+  --carta: var(--bianco);
+}
+.tono-sabbia {
+  --sfondo: var(--sabbia);
+  --testo: var(--adriatico);
+  --testo-forte: var(--notte);
+  --tenue-t: var(--tenue);
+  --accento: var(--terracotta-scuro);
+  --accento-testo: var(--terracotta-scuro);
+  --filo: rgb(var(--adriatico-rgb) / 0.2);
+  --carta: rgb(250 247 240 / 0.45);
+}
+.tono-bianco {
+  --sfondo: var(--bianco);
+  --testo: var(--adriatico);
+  --testo-forte: var(--notte);
+  --tenue-t: var(--tenue);
+  --accento: var(--terracotta);
+  --accento-testo: var(--terracotta-testo);
+  --filo: rgb(var(--adriatico-rgb) / 0.14);
+  --carta: var(--avorio);
+}

@@ -1,0 +1,52 @@
+{
+  "capitoli": [
+    {
+      "id": "inizi",
+      "anno": { "value": null, "status": "needs_confirmation", "nota": "Anno di apertura della trattoria." },
+      "titolo": { "it": "Una cucina sul lungomare", "en": "A kitchen on the seafront", "de": "Eine Küche an der Promenade" },
+      "testo": {
+        "it": "Tutto comincia da una cucina affacciata sul mare e da Luciana, che il pesce lo cucinava come si fa in casa. Pochi tavoli, il pescato della mattina, le ricette imparate da bambina.",
+        "en": "It all begins with a kitchen facing the sea, and with Luciana, who cooked fish the way it is cooked at home. A few tables, the morning's catch, recipes learned as a child.",
+        "de": "Alles beginnt mit einer Küche zum Meer hin und mit Luciana, die Fisch so zubereitete, wie man es zu Hause tut. Ein paar Tische, der Fang vom Morgen, Rezepte aus Kindertagen."
+      },
+      "fotografie": ["archivio"],
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "famiglia",
+      "anno": { "value": null, "status": "needs_confirmation" },
+      "titolo": { "it": "Di mano in mano", "en": "From hand to hand", "de": "Von Hand zu Hand" },
+      "testo": {
+        "it": "Poi arrivano i figli, e i figli dei figli. In cucina e in sala si cambia generazione, non si cambia idea: il pesce del giorno, cucinato bene, servito subito.",
+        "en": "Then came the children, and the children's children. Generations change in the kitchen and in the dining room; the idea does not: the day's fish, cooked well, served at once.",
+        "de": "Dann kamen die Kinder und die Enkel. In Küche und Gastraum wechseln die Generationen, die Idee bleibt: der Fisch des Tages, gut gekocht, sofort serviert."
+      },
+      "fotografie": ["famiglia"],
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "pergola",
+      "anno": { "value": null, "status": "needs_confirmation" },
+      "titolo": { "it": "La sala e la pergola", "en": "The dining room and the pergola", "de": "Gastraum und Pergola" },
+      "testo": {
+        "it": "Con gli anni la trattoria cresce senza cambiare carattere: una sala luminosa e una pergola dove, d'estate, il pranzo finisce quando finisce la brezza.",
+        "en": "Over the years the trattoria grew without changing its character: a bright dining room and a pergola where, in summer, lunch ends when the breeze does.",
+        "de": "Mit den Jahren wuchs die Trattoria, ohne ihren Charakter zu ändern: ein heller Gastraum und eine Pergola, unter der das Mittagessen im Sommer erst endet, wenn die Brise nachlässt."
+      },
+      "fotografie": ["pergola"],
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "oggi",
+      "anno": { "value": null, "status": "confirmed" },
+      "titolo": { "it": "Oggi", "en": "Today", "de": "Heute" },
+      "testo": {
+        "it": "Oggi è la famiglia Ruggieri a portare avanti la trattoria, con la stessa idea di allora. Chi viene a Roseto in vacanza torna ogni anno; chi è di Roseto non ha mai smesso di venire.",
+        "en": "Today the Ruggieri family carries the trattoria forward, with the same idea as back then. Those who holiday in Roseto come back every year; those from Roseto never stopped coming.",
+        "de": "Heute führt die Familie Ruggieri die Trattoria weiter, mit derselben Idee wie damals. Wer in Roseto Urlaub macht, kommt jedes Jahr wieder; wer aus Roseto stammt, ist nie weggeblieben."
+      },
+      "fotografie": ["lungomare"],
+      "status": "needs_confirmation"
+    }
+  ]
+}

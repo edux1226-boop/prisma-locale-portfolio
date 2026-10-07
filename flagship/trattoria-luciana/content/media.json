@@ -1,0 +1,232 @@
+{
+  "voci": [
+    {
+      "id": "mare-hero",
+      "categoria": "sea",
+      "tipo": "illustrazione",
+      "orizzontale": { "file": "mare-hero", "larghezze": [1280, 1920, 2560], "larghezza": 2560, "altezza": 1440 },
+      "verticale": { "file": "mare-hero-v", "larghezze": [720, 1080], "larghezza": 1080, "altezza": 1920 },
+      "alt": {
+        "it": "La superficie dell'Adriatico nella luce del mattino, blu profondo con riflessi chiari.",
+        "en": "The surface of the Adriatic in the morning light, deep blue with pale reflections.",
+        "de": "Die Oberfläche der Adria im Morgenlicht, tiefblau mit hellen Reflexen."
+      },
+      "regia": {
+        "it": "Fotogramma della scena WebGL del mare: è l'immagine che si vede quando il 3D non parte.",
+        "en": "Still frame of the WebGL sea scene, shown when 3D does not run.",
+        "de": "Standbild der WebGL-Meeresszene, sichtbar wenn 3D nicht läuft."
+      },
+      "status": "confirmed"
+    },
+    {
+      "id": "roseto",
+      "categoria": "sea",
+      "tipo": "illustrazione",
+      "orizzontale": { "file": "roseto", "larghezze": [1400, 2400], "larghezza": 2400, "altezza": 1350 },
+      "verticale": { "file": "roseto-v", "larghezze": [720, 1080], "larghezza": 1080, "altezza": 1920 },
+      "alt": {
+        "it": "Illustrazione provvisoria: la costa di Roseto all'alba vista dal mare, con la spiaggia, il paese, le colline e il Gran Sasso sullo sfondo.",
+        "en": "Provisional illustration: the coast of Roseto at dawn seen from the sea, with the beach, the town, the hills and the Gran Sasso behind.",
+        "de": "Vorläufige Illustration: die Küste von Roseto im Morgengrauen vom Meer aus, mit Strand, Ort, Hügeln und dem Gran Sasso im Hintergrund."
+      },
+      "regia": {
+        "it": "Roseto dal mare all'alba: spiaggia, lungomare, colline e Gran Sasso innevato. Da una barca o da un drone basso. 16:9 e 9:16.",
+        "en": "Roseto from the sea at dawn: beach, seafront, hills and the snowy Gran Sasso. From a boat or a low drone. 16:9 and 9:16.",
+        "de": "Roseto vom Meer aus bei Sonnenaufgang: Strand, Promenade, Hügel, verschneiter Gran Sasso. Vom Boot oder mit niedriger Drohne. 16:9 und 9:16."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "paranza",
+      "categoria": "sea",
+      "tipo": "illustrazione",
+      "orizzontale": { "file": "paranza", "larghezze": [1400, 2400], "larghezza": 2400, "altezza": 1350 },
+      "verticale": { "file": "paranza-v", "larghezze": [720, 1080], "larghezza": 1080, "altezza": 1350 },
+      "alt": {
+        "it": "Illustrazione provvisoria: un peschereccio controluce sull'Adriatico all'alba.",
+        "en": "Provisional illustration: a fishing boat against the light on the Adriatic at dawn.",
+        "de": "Vorläufige Illustration: ein Fischkutter im Gegenlicht auf der Adria im Morgengrauen."
+      },
+      "regia": {
+        "it": "Una barca da pesca che rientra all'alba, controluce. Orizzontale 16:9 e verticale 4:5.",
+        "en": "A fishing boat coming back at dawn, against the light. 16:9 and 4:5.",
+        "de": "Ein Fischerboot kehrt im Morgengrauen zurück, im Gegenlicht. 16:9 und 4:5."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "lungomare",
+      "categoria": "restaurant",
+      "tipo": "illustrazione",
+      "orizzontale": { "file": "lungomare", "larghezze": [1400, 2400], "larghezza": 2400, "altezza": 1350 },
+      "verticale": { "file": "lungomare-v", "larghezze": [720, 1080], "larghezza": 1080, "altezza": 1350 },
+      "alt": {
+        "it": "Illustrazione provvisoria: il lungomare di Roseto all'ora blu, palme e lampioni accesi davanti al mare.",
+        "en": "Provisional illustration: the Roseto seafront at blue hour, palm trees and lit street lamps by the sea.",
+        "de": "Vorläufige Illustration: die Promenade von Roseto zur blauen Stunde, Palmen und brennende Laternen am Meer."
+      },
+      "regia": {
+        "it": "La trattoria dal lungomare all'ora blu, con le luci della sala accese. 16:9 e 4:5.",
+        "en": "The trattoria from the seafront at blue hour, dining room lights on. 16:9 and 4:5.",
+        "de": "Die Trattoria von der Promenade aus zur blauen Stunde, mit erleuchtetem Gastraum. 16:9 und 4:5."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "pergola",
+      "categoria": "restaurant",
+      "tipo": "illustrazione",
+      "orizzontale": { "file": "pergola", "larghezze": [1200, 1800], "larghezza": 1800, "altezza": 1200 },
+      "verticale": { "file": "pergola-v", "larghezze": [800, 1200], "larghezza": 1200, "altezza": 1500 },
+      "alt": {
+        "it": "Illustrazione provvisoria: la luce filtrata dalla pergola su una tovaglia bianca, con un bicchiere d'acqua.",
+        "en": "Provisional illustration: light filtering through the pergola onto a white tablecloth, with a glass of water.",
+        "de": "Vorläufige Illustration: Licht fällt durch die Pergola auf ein weißes Tischtuch, daneben ein Glas Wasser."
+      },
+      "regia": {
+        "it": "La pergola a pranzo: luce filtrata sulle tovaglie, i bicchieri, il mare oltre. 3:2 e 4:5.",
+        "en": "The pergola at lunch: filtered light on the tablecloths, glasses, the sea beyond. 3:2 and 4:5.",
+        "de": "Die Pergola mittags: gefiltertes Licht auf den Tischdecken, Gläser, dahinter das Meer. 3:2 und 4:5."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "notte",
+      "categoria": "sea",
+      "tipo": "illustrazione",
+      "orizzontale": { "file": "notte", "larghezze": [1400, 2400], "larghezza": 2400, "altezza": 1350 },
+      "verticale": { "file": "notte-v", "larghezze": [720, 1080], "larghezza": 1080, "altezza": 1920 },
+      "alt": {
+        "it": "Il mare di notte, con il riflesso della luna sull'acqua.",
+        "en": "The sea at night, with the moon reflected on the water.",
+        "de": "Das Meer bei Nacht, der Mond spiegelt sich im Wasser."
+      },
+      "regia": {
+        "it": "Il mare di notte dalla terrazza, con la luna. 16:9 e 9:16.",
+        "en": "The sea at night from the terrace, with the moon. 16:9 and 9:16.",
+        "de": "Das Meer bei Nacht von der Terrasse aus, mit dem Mond. 16:9 und 9:16."
+      },
+      "status": "confirmed"
+    },
+    {
+      "id": "orizzonte",
+      "categoria": "sea",
+      "tipo": "illustrazione",
+      "orizzontale": { "file": "orizzonte", "larghezze": [1400, 2400], "larghezza": 2400, "altezza": 1350 },
+      "verticale": { "file": "orizzonte-v", "larghezze": [720, 1080], "larghezza": 1080, "altezza": 1920 },
+      "alt": {
+        "it": "L'Adriatico a mezzogiorno, calmo e chiaro fino all'orizzonte.",
+        "en": "The Adriatic at noon, calm and clear to the horizon.",
+        "de": "Die Adria am Mittag, ruhig und klar bis zum Horizont."
+      },
+      "regia": {
+        "it": "Il mare visto dalla tavola, a mezzogiorno. 16:9 e 9:16.",
+        "en": "The sea seen from the table, at noon. 16:9 and 9:16.",
+        "de": "Das Meer vom Tisch aus gesehen, am Mittag. 16:9 und 9:16."
+      },
+      "status": "confirmed"
+    },
+    {
+      "id": "archivio",
+      "categoria": "archive",
+      "tipo": "segnaposto",
+      "disegno": "ritratto",
+      "alt": {
+        "it": "Foto d'archivio della trattoria agli inizi.",
+        "en": "Archive photo of the trattoria in its early days.",
+        "de": "Archivfoto der Trattoria in ihren Anfängen."
+      },
+      "regia": {
+        "it": "Una foto d'archivio: la trattoria agli inizi, o Luciana in cucina. Va bene qualsiasi formato, anche rovinata: la restauriamo noi.",
+        "en": "An archive photo: the trattoria in its early days, or Luciana in the kitchen. Any format, even damaged: we will restore it.",
+        "de": "Ein Archivfoto: die Trattoria in den Anfängen oder Luciana in der Küche. Jedes Format, auch beschädigt: Wir restaurieren es."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "famiglia",
+      "categoria": "family",
+      "tipo": "segnaposto",
+      "disegno": "tavola",
+      "alt": {
+        "it": "La famiglia Ruggieri in sala.",
+        "en": "The Ruggieri family in the dining room.",
+        "de": "Die Familie Ruggieri im Gastraum."
+      },
+      "regia": {
+        "it": "La famiglia Ruggieri oggi, in sala o sulla porta, prima del servizio. Luce naturale, nessuna posa. 4:5.",
+        "en": "The Ruggieri family today, in the dining room or at the door, before service. Natural light, no posing. 4:5.",
+        "de": "Die Familie Ruggieri heute, im Gastraum oder an der Tür, vor dem Service. Natürliches Licht, keine Pose. 4:5."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "pescato",
+      "categoria": "kitchen",
+      "tipo": "segnaposto",
+      "disegno": "pesce",
+      "alt": {
+        "it": "Il pescato del giorno in cassetta.",
+        "en": "The day's catch in a crate.",
+        "de": "Der Fang des Tages in der Kiste."
+      },
+      "regia": {
+        "it": "Il pescato della mattina in cassetta, dall'alto, sul ghiaccio. Luce del mattino. 4:5.",
+        "en": "The morning's catch in a crate, from above, on ice. Morning light. 4:5.",
+        "de": "Der Morgenfang in der Kiste, von oben, auf Eis. Morgenlicht. 4:5."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "cucina",
+      "categoria": "kitchen",
+      "tipo": "segnaposto",
+      "disegno": "pentola",
+      "alt": {
+        "it": "Mani al lavoro nella cucina della trattoria.",
+        "en": "Hands at work in the trattoria's kitchen.",
+        "de": "Hände bei der Arbeit in der Küche der Trattoria."
+      },
+      "regia": {
+        "it": "Mani al lavoro: le vongole che si aprono in padella, il vapore, l'impiattamento. Luce di finestra. 4:5.",
+        "en": "Hands at work: clams opening in the pan, steam, plating. Window light. 4:5.",
+        "de": "Hände bei der Arbeit: Muscheln öffnen sich in der Pfanne, Dampf, Anrichten. Fensterlicht. 4:5."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "piatto-vongole",
+      "categoria": "dishes",
+      "tipo": "segnaposto",
+      "disegno": "vongola",
+      "alt": {
+        "it": "Spaghetti alle vongole su una tovaglia bianca.",
+        "en": "Spaghetti with clams on a white tablecloth.",
+        "de": "Spaghetti mit Venusmuscheln auf weißem Tischtuch."
+      },
+      "regia": {
+        "it": "Spaghetti alle vongole appena serviti, dall'alto, su tovaglia bianca, con la luce della pergola. 1:1 e 4:5.",
+        "en": "Spaghetti with clams just served, from above, on a white tablecloth, in the pergola light. 1:1 and 4:5.",
+        "de": "Frisch servierte Spaghetti mit Venusmuscheln, von oben, auf weißem Tischtuch, im Licht der Pergola. 1:1 und 4:5."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "id": "sala",
+      "categoria": "restaurant",
+      "tipo": "segnaposto",
+      "disegno": "calice",
+      "alt": {
+        "it": "La sala apparecchiata prima del servizio.",
+        "en": "The dining room laid before service.",
+        "de": "Der gedeckte Gastraum vor dem Service."
+      },
+      "regia": {
+        "it": "La sala apparecchiata a metà mattina, prima del servizio, con il mare nelle finestre. 3:2.",
+        "en": "The dining room laid mid-morning, before service, with the sea in the windows. 3:2.",
+        "de": "Der Gastraum am Vormittag gedeckt, vor dem Service, das Meer in den Fenstern. 3:2."
+      },
+      "status": "needs_confirmation"
+    }
+  ]
+}

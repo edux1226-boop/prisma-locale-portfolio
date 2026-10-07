@@ -1,0 +1,36 @@
+.menu { padding: var(--sezione) var(--margine); }
+.testa {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 1.5rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.testa > * { grid-column: 1 / span 7; }
+.intro { grid-column: 9 / -1; align-self: end; color: var(--tenue); }
+
+.piatti { border-top: 1px solid var(--filo); }
+.piatto {
+  display: grid;
+  grid-template-columns: minmax(8rem, 2fr) minmax(0, 5fr) minmax(0, 4fr) auto;
+  gap: 0.5rem var(--gap);
+  align-items: baseline;
+  padding-block: clamp(1.4rem, 2.6vw, 2.2rem);
+  border-bottom: 1px solid var(--filo);
+}
+.categoria { color: var(--terracotta-testo); }
+.nome { font-family: var(--f-serif); font-weight: 400; font-size: var(--t-l); line-height: 1.05; }
+.traduzione { display: block; font-family: var(--f-sans); font-size: var(--t-small); color: var(--tenue); margin-top: 0.35rem; }
+.descrizione { color: var(--tenue); max-width: 30em; }
+.prezzo { font-family: var(--f-serif); font-size: 1.5rem; white-space: nowrap; text-align: right; }
+
+.piede { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 2.5rem; }
+.nota { font-size: var(--t-small); color: var(--tenue); }
+
+@media (max-width: 63.99em) {
+  .testa > *, .intro { grid-column: 1 / -1; }
+  .piatto { grid-template-columns: 1fr auto; }
+  .categoria { grid-column: 1 / -1; }
+  .descrizione { grid-column: 1 / -1; grid-row: 3; }
+  .prezzo { grid-column: 2; grid-row: 2; }
+}
