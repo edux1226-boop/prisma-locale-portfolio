@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anima Concept Pizza · Pizzeria a Roseto degli Abruzzi · anteprima riservata</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Anteprima riservata del nuovo sito di Anima Concept Pizza a Roseto degli Abruzzi: pizza tonda, romana, padellino, pala, teglia e senza glutine su prenotazione. Proposta di Prisma Locale.">
+<meta name="theme-color" content="#26170F">
+<meta name="color-scheme" content="light">
+<!-- Unico punto da cambiare per la scadenza dell'anteprima (ora italiana). -->
+<meta name="anteprima-scadenza" content="2026-12-15T23:59:59+01:00">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Anima Concept Pizza, anteprima riservata">
+<meta property="og:description" content="La proposta di sito per Anima Concept Pizza, Roseto degli Abruzzi. Preparata da Prisma Locale.">
+<meta property="og:image" content="https://prismalocale.it/assets/img/anima-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%2326170F'/%3E%3Cellipse cx='16' cy='18' rx='9' ry='6.5' fill='%23EBDEC6'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/fraunces-soft.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 48em)"
+      imagesrcset="/assets/img/anima/panetto-m.avif 1600w, /assets/img/anima/panetto-l.avif 2400w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 47.99em)"
+      imagesrcset="/assets/img/anima/panetto-s.avif 720w, /assets/img/anima/panetto-v.avif 1080w" imagesizes="100vw">
+
+<script>
+  (function (d) {
+    var r = d.documentElement;
+    var m = d.querySelector('meta[name="anteprima-scadenza"]');
+    var fine = m ? Date.parse(m.content) : NaN;
+    if (fine && Date.now() > fine) { r.classList.add('is-scaduta'); return; }
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion');
+  })(document);
+</script>
+<!-- Solo dati verificati: niente orari finché il locale non li conferma. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Anima Concept Pizza",
+  "url": "https://www.animaconceptpizza.it/",
+  "telephone": "+39 348 799 2279",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Nazionale Nord 2/1",
+    "postalCode": "64026",
+    "addressLocality": "Roseto degli Abruzzi",
+    "addressRegion": "TE",
+    "addressCountry": "IT"
+  },
+  "servesCuisine": ["Pizza"],
+  "hasMenu": "https://www.animaconceptpizza.it/wp-content/uploads/2025/12/Anima-Menu-nuovi_161225.pdf",
+  "acceptsReservations": "https://www.thefork.it/ristorante/anima-concept-pizza-r710269",
+  "sameAs": [
+    "https://www.thefork.it/ristorante/anima-concept-pizza-r710269",
+    "https://www.tripadvisor.it/Restaurant_Review-g194888-d23526079-Reviews-Anima_Concept_Pizza-Roseto_Degli_Abruzzi_Province_of_Teramo_Abruzzo.html"
+  ]
+}
+</script>
+<script type="module" src="/src/anteprime/anima/main.js"></script>
+</head>
+
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.4 4-1.9 1.3a11 11 0 0 0 6.5 6.5l1.3-1.9 4 1.4v2.6a2 2 0 0 1-2.1 2A16.5 16.5 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mappa" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-tavolo" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-chiudi" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- Mostrato solo dopo la data di scadenza (vedi lo script qui sopra). -->
+<div class="scaduta">
+  <p class="scaduta__marchio" aria-hidden="true">Anima</p>
+  <h1 class="scaduta__titolo">Anteprima scaduta, contatta Prisma Locale</h1>
+  <p class="scaduta__link">
+    <a href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20l%27anteprima%20di%20Anima%20Concept%20Pizza%20%C3%A8%20scaduta." rel="noopener">WhatsApp</a>
+    <a href="mailto:info@prismalocale.it">info@prismalocale.it</a>
+  </p>
+</div>
+
+<aside class="anteprima" aria-label="Avviso di anteprima"><span class="anteprima__punto" aria-hidden="true"></span><span>Anteprima riservata<span class="anteprima__extra">, immagini 3D provvisorie</span>. <a href="#nota">Nota di Prisma Locale</a></span></aside>
+<div class="filigrana" aria-hidden="true"></div>
+
+<!-- Il forno: il canvas 3D, fisso dietro l'apertura e gli impasti (solo desktop). -->
+<div class="forno" aria-hidden="true" data-forno></div>
+
+<header class="testata" data-testata>
+  <a class="marchio" href="#inizio"><span class="marchio__nome">Anima</span> <span class="marchio__sotto">concept pizza</span></a>
+  <nav class="testata__nav" aria-label="Sezioni">
+    <ul role="list">
+      <li><a href="#impasti">Impasti</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#dolci">Dolci</a></li>
+      <li><a href="#dove">Dove siamo</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn--pomodoro testata__cta" href="https://www.thefork.it/ristorante/anima-concept-pizza-r710269" target="_blank" rel="noopener">Prenota un tavolo<span class="sr-only"> su TheFork (si apre in una nuova scheda)</span></a>
+  <button class="testata__apri" type="button" aria-haspopup="dialog" aria-controls="menu-mobile" aria-expanded="false" data-menu-apri>
+    <span>Menu</span>
+    <span class="testata__linee" aria-hidden="true"><span></span><span></span></span>
+  </button>
+</header>
+
+<dialog class="cassetto scuro" id="menu-mobile" aria-label="Navigazione" data-menu>
+  <div class="cassetto__testa">
+    <p class="marchio" aria-hidden="true"><span class="marchio__nome">Anima</span></p>
+    <button class="cassetto__chiudi" type="button" data-menu-chiudi>Chiudi <svg aria-hidden="true"><use href="#i-chiudi"/></svg></button>
+  </div>
+  <nav aria-label="Sezioni">
+    <ul class="cassetto__voci" role="list">
+      <li><a href="#impasti">Impasti</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#dolci">Dolci</a></li>
+      <li><a href="#dove">Dove siamo</a></li>
+    </ul>
+  </nav>
+  <div class="cassetto__piede">
+    <a class="btn btn--pomodoro" href="https://www.thefork.it/ristorante/anima-concept-pizza-r710269" target="_blank" rel="noopener">Prenota un tavolo<span class="sr-only"> su TheFork (si apre in una nuova scheda)</span></a>
+    <a class="btn btn--linea" href="tel:+393487992279">Chiama 348 799 2279</a>
+  </div>
+</dialog>
+
+<main id="contenuto" tabindex="-1">
+
+<!-- ====================================================================
+     APERTURA — il panetto. Su desktop è la scena 3D (dietro, fissa);
+     altrove un fotogramma della stessa scena.
+     ==================================================================== -->
+<section class="apertura scuro" id="inizio" aria-labelledby="apertura-titolo" data-apertura>
+  <figure class="apertura__foto">
+    <picture>
+      <source type="image/avif" media="(min-width: 48em)" srcset="/assets/img/anima/panetto-m.avif 1600w, /assets/img/anima/panetto-l.avif 2400w" sizes="100vw">
+      <source type="image/webp" media="(min-width: 48em)" srcset="/assets/img/anima/panetto-m.webp 1600w, /assets/img/anima/panetto-l.webp 2400w" sizes="100vw">
+      <source type="image/avif" srcset="/assets/img/anima/panetto-s.avif 720w, /assets/img/anima/panetto-v.avif 1080w" sizes="100vw">
+      <img src="/assets/img/anima/panetto-v.webp" srcset="/assets/img/anima/panetto-s.webp 720w, /assets/img/anima/panetto-v.webp 1080w" sizes="100vw"
+           width="1080" height="810" alt="Un panetto di pasta cruda infarinato, illuminato di taglio su un fondo scuro." fetchpriority="high">
+    </picture>
+  </figure>
+  <div class="apertura__testo">
+    <p class="apertura__luogo">Pizzeria a Roseto degli Abruzzi, dal 2019</p>
+    <h1 class="apertura__titolo" id="apertura-titolo" data-lievita>Ogni sera, più di una pizza.</h1>
+    <p class="apertura__sotto">Tonda, romana scrocchiarella, padellino, pala e teglia. E&nbsp;il senza glutine, se lo chiedi il giorno&nbsp;prima.</p>
+    <div class="apertura__azioni">
+      <a class="btn btn--pomodoro btn--grande" href="https://www.thefork.it/ristorante/anima-concept-pizza-r710269" target="_blank" rel="noopener">Prenota un tavolo<span class="sr-only"> su TheFork (si apre in una nuova scheda)</span></a>
+      <a class="btn btn--chiaro btn--grande" href="#menu">Leggi il menu</a>
+    </div>
+    <p class="apertura__info">
+      <a href="tel:+393487992279"><svg aria-hidden="true"><use href="#i-tel"/></svg>348 799 2279</a>
+      <span>A cena dalle 18:30<span class="dc">da confermare</span></span>
+    </p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     IL NOME
+     ==================================================================== -->
+<section class="nome" id="nome" aria-labelledby="nome-titolo">
+  <div class="nome__griglia">
+    <h2 class="nome__titolo" id="nome-titolo">Si dice che l'anima pesi ventuno grammi.</h2>
+    <div class="nome__testo">
+      <p class="nome__grande">Anima ha aperto un 21: il 21 novembre 2019, sulla Nazionale, a Roseto degli Abruzzi.<span class="dc">da confermare</span></p>
+      <p>L'hanno fondata Luca Valle e Alessandro Di Felice. Ogni giorno lavorano farine di tipo 1 macinate a pietra insieme a farine integrali: un impasto dal gusto diverso, pensato per essere più digeribile.</p>
+      <p>Da qui nascono più impasti, ognuno con la sua stesura e la sua cottura. Si sceglie prima la forma, poi il gusto.</p>
+    </div>
+    <dl class="nome__dati">
+      <div><dt>Aperta</dt><dd>21 novembre 2019</dd></div>
+      <div><dt>Fondatori</dt><dd>Luca Valle e Alessandro Di Felice</dd></div>
+      <div><dt>Farine</dt><dd>Tipo 1 macinate a pietra e integrali</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ====================================================================
+     GLI IMPASTI — su desktop il panetto 3D cambia forma mentre si scorre.
+     Le immagini sono fotogrammi della stessa scena (mobile, ripiego).
+     ==================================================================== -->
+<section class="impasti scuro" id="impasti" aria-labelledby="impasti-titolo" data-impasti>
+  <div class="impasti__colonna">
+    <header class="impasti__inizio" data-tappa="0">
+      <h2 class="impasti__titolo" id="impasti-titolo">Un panetto, sei forme.</h2>
+      <p>Non c'è una pizza della casa. C'è una pasta che diventa sei pizze diverse: scorri e guardala cambiare.</p>
+    </header>
+
+    <ul class="impasti__lista" role="list" aria-label="Le forme" tabindex="0" data-impasti-lista>
+      <li class="forma" data-tappa="1">
+        <figure class="forma__foto">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/anima/tonda-s.avif 720w, /assets/img/anima/tonda-m.avif 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw">
+            <img src="/assets/img/anima/tonda-m.webp" srcset="/assets/img/anima/tonda-s.webp 720w, /assets/img/anima/tonda-m.webp 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw" width="1200" height="900" loading="lazy" decoding="async" alt="Illustrazione 3D di una pizza tonda con cornicione alto, pomodoro, mozzarella e basilico.">
+          </picture>
+        </figure>
+        <div class="forma__testo">
+          <h3 class="forma__nome">Tonda</h3>
+          <p>Base sottile e cornicione alto, che in cottura si macchia. È la forma delle classiche e delle speciali.</p>
+          <p class="forma__vai"><a href="#menu-speciali">Le pizze speciali</a></p>
+        </div>
+      </li>
+      <li class="forma" data-tappa="2">
+        <figure class="forma__foto">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/anima/romana-s.avif 720w, /assets/img/anima/romana-m.avif 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw">
+            <img src="/assets/img/anima/romana-m.webp" srcset="/assets/img/anima/romana-s.webp 720w, /assets/img/anima/romana-m.webp 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw" width="1200" height="900" loading="lazy" decoding="async" alt="Illustrazione 3D di una pizza romana sottile e irregolare, condita fino al bordo.">
+          </picture>
+        </figure>
+        <div class="forma__testo">
+          <h3 class="forma__nome">Romana scrocchiarella</h3>
+          <p>Stesa con il mattarello, sottile, croccante fino al bordo. Secondo Luca Valle la scelgono sette ospiti su dieci.<span class="dc">da confermare</span></p>
+          <p class="forma__vai"><a href="#menu">Scegli il gusto nel menu</a></p>
+        </div>
+      </li>
+      <li class="forma" data-tappa="3">
+        <figure class="forma__foto">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/anima/padellino-s.avif 720w, /assets/img/anima/padellino-m.avif 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw">
+            <img src="/assets/img/anima/padellino-m.webp" srcset="/assets/img/anima/padellino-s.webp 720w, /assets/img/anima/padellino-m.webp 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw" width="1200" height="900" loading="lazy" decoding="async" alt="Illustrazione 3D di un padellino: una pizza piccola e alta nel suo tegamino d'acciaio.">
+          </picture>
+        </figure>
+        <div class="forma__testo">
+          <h3 class="forma__nome">Padellino moderno</h3>
+          <p>Più piccolo e più alto, soffice dentro, cotto nel suo tegamino. In carta ce ne sono quattordici, dal F.lli Valle all'Abruzzese Doc.</p>
+          <p class="forma__vai"><a href="#menu-padellino">I padellini</a></p>
+        </div>
+      </li>
+      <li class="forma" data-tappa="4">
+        <figure class="forma__foto">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/anima/pala-s.avif 720w, /assets/img/anima/pala-m.avif 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw">
+            <img src="/assets/img/anima/pala-m.webp" srcset="/assets/img/anima/pala-s.webp 720w, /assets/img/anima/pala-m.webp 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw" width="1200" height="900" loading="lazy" decoding="async" alt="Illustrazione 3D di una pizza in pala lunga su un tagliere di legno, metà rossa e metà bianca.">
+          </picture>
+        </figure>
+        <div class="forma__testo">
+          <h3 class="forma__nome">Pala romana</h3>
+          <p>Lunga, da dividere: è per due persone, con due gusti a scelta tra le classiche e le speciali.</p>
+          <p class="forma__vai"><a href="#menu-pala-teglia">Pala e teglia</a></p>
+        </div>
+      </li>
+      <li class="forma" data-tappa="5">
+        <figure class="forma__foto">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/anima/teglia-s.avif 720w, /assets/img/anima/teglia-m.avif 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw">
+            <img src="/assets/img/anima/teglia-m.webp" srcset="/assets/img/anima/teglia-s.webp 720w, /assets/img/anima/teglia-m.webp 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw" width="1200" height="900" loading="lazy" decoding="async" alt="Illustrazione 3D di una pizza in teglia rettangolare, dorata, nella sua teglia d'acciaio.">
+          </picture>
+        </figure>
+        <div class="forma__testo">
+          <h3 class="forma__nome">Teglia romana</h3>
+          <p>Rettangolare e super croccante. Si ordina come Super Crunch, ripiena di porchetta di Ariccia e bufala, in due o quattro tranci.</p>
+          <p class="forma__vai"><a href="#menu-antipasti-introvabili">Il Super Crunch</a></p>
+        </div>
+      </li>
+      <li class="forma" data-tappa="6">
+        <figure class="forma__foto">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/anima/senza-glutine-s.avif 720w, /assets/img/anima/senza-glutine-m.avif 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw">
+            <img src="/assets/img/anima/senza-glutine-m.webp" srcset="/assets/img/anima/senza-glutine-s.webp 720w, /assets/img/anima/senza-glutine-m.webp 1200w" sizes="(min-width: 64em) 50vw, (min-width: 48em) 45vw, 82vw" width="1200" height="900" loading="lazy" decoding="async" alt="Illustrazione 3D di un piccolo panetto di pasta cruda.">
+          </picture>
+        </figure>
+        <div class="forma__testo">
+          <h3 class="forma__nome">Senza glutine</h3>
+          <p>C'è anche l'impasto senza glutine, preparato apposta: va chiesto quando prenoti, il giorno prima.</p>
+          <p class="forma__vai"><a href="#dove">Come prenotare</a></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================================================================
+     L'ABRUZZO IN CARTA — solo ciò che il menu nomina.
+     ==================================================================== -->
+<section class="abruzzo" id="abruzzo" aria-labelledby="abruzzo-titolo">
+  <div class="abruzzo__griglia">
+    <h2 class="abruzzo__titolo" id="abruzzo-titolo">Quello che in carta viene dall'Abruzzo.</h2>
+    <ul class="abruzzo__lista" role="list">
+      <li>
+        <p class="abruzzo__cosa">Ventricina di maialino nero d'Abruzzo</p>
+        <p class="abruzzo__dove">Sulla <a href="#menu-introvabili">Fiamma d'Abruzzo</a> e sul padellino <a href="#menu-padellino">Abruzzese Doc</a>.</p>
+      </li>
+      <li>
+        <p class="abruzzo__cosa">Peperone dolce di Altino, Presidio Slow Food</p>
+        <p class="abruzzo__dove">In polvere, sull'<a href="#menu-padellino">Abruzzese Doc</a>, con cicoria saltata in padella.</p>
+      </li>
+      <li>
+        <p class="abruzzo__cosa">Aglio nero d'Abruzzo</p>
+        <p class="abruzzo__dove">A gocce sulla <a href="#menu-introvabili">Cervo</a>, con crema di zafferano e salame di cervo.</p>
+      </li>
+      <li>
+        <p class="abruzzo__cosa">Trebbiano, Cerasuolo, Montepulciano, Passerina</p>
+        <p class="abruzzo__dove">Tra i vini in bottiglia, con cantine come Faraone, Abbazia di Propezzano e Fattoria La Valentina. <a href="#menu-bere">Da bere</a></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================================================================
+     IL MENU — generato da src/anteprime/anima/dati/carta.js
+     ==================================================================== -->
+<section class="carta" id="menu" aria-labelledby="menu-titolo">
+  <header class="carta__inizio">
+    <h2 class="carta__h2" id="menu-titolo">Il menu</h2>
+    <p class="carta__lead">Antipasti, pizze nelle loro forme, dolci e da bere. Prezzi in euro, dal menu del <!-- @carta-data --><span class="dc">da riconfermare</span></p>
+    <div class="carta__avvisi">
+      <p><strong>Allergeni.</strong> I numeri sono i codici del menu del locale: la legenda completa è nel <a href="@carta-pdf" target="_blank" rel="noopener">menu in PDF<span class="sr-only"> (si apre in una nuova scheda)</span></a>. Per allergie e intolleranze chiedete sempre al personale.</p>
+      <p><strong>Senza glutine.</strong> Impasto disponibile su prenotazione, da chiedere il giorno prima.</p>
+    </div>
+  </header>
+
+  <div class="carta__corpo">
+    <nav class="carta__indice" aria-label="Sezioni del menu" data-carta-indice>
+      <ul role="list">
+        <!-- @carta-indice -->
+      </ul>
+    </nav>
+    <div class="carta__foglio">
+      <!-- @carta -->
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     I DOLCI — "Nulla è ciò che sembra" (dal menu del locale)
+     ==================================================================== -->
+<section class="dolci scuro" id="dolci" aria-labelledby="dolci-titolo">
+  <div class="dolci__testa">
+    <h2 class="dolci__titolo" id="dolci-titolo">Nulla è ciò che sembra.</h2>
+    <p>Forme salate, anima dolce: così il menu presenta i dolci illusionistici di Luca Rubicondo, il pasticcere che ha vinto la prima edizione della PastryBit Competition.</p>
+  </div>
+
+  <div class="dolci__coppia">
+    <article class="illusione" data-illusione aria-labelledby="dolce-hotdog">
+      <div class="illusione__disegno" aria-hidden="true">
+        <svg viewBox="0 0 320 200" class="disegno">
+          <ellipse class="d-ombra" cx="160" cy="168" rx="128" ry="12"/>
+          <path class="d-pane" d="M38 118c0-26 20-40 46-40h152c26 0 46 14 46 40 0 22-18 40-44 40H82c-26 0-44-18-44-40Z"/>
+          <rect class="d-wurstel" x="22" y="92" width="276" height="44" rx="22"/>
+          <path class="d-salsa1" d="M46 104c14-12 24 12 38 0s24 12 38 0 24 12 38 0 24 12 38 0 24 12 38 0 24 12 38 0" />
+          <path class="d-salsa2" d="M56 122c14-10 24 10 38 0s24 10 38 0 24 10 38 0 24 10 38 0 24 10 38 0" />
+          <path class="d-pane2" d="M50 132c8 18 22 26 40 26h140c18 0 32-8 40-26"/>
+        </svg>
+      </div>
+      <div class="illusione__testo">
+        <h3 class="illusione__nome" id="dolce-hotdog">Hot Dog <span class="illusione__prezzo"><data value="8.00">8,00</data></span></h3>
+        <p class="illusione__sembra">Sembra un panino con würstel, ketchup e maionese.</p>
+        <p class="illusione__e" id="dolce-hotdog-e" data-illusione-e>È una brioche con crema pasticcera. Il würstel è un cremoso al pistacchio ricoperto di cioccolato ruby, il ketchup una gelée ai lamponi, la maionese crema pasticcera.</p>
+        <button class="btn btn--linea btn--piccolo" type="button" aria-expanded="false" aria-controls="dolce-hotdog-e" data-illusione-bottone>
+          <span data-testo-chiuso>Scopri cos'è</span><span data-testo-aperto hidden>Torna all'illusione</span>
+        </button>
+      </div>
+    </article>
+
+    <article class="illusione" data-illusione aria-labelledby="dolce-forno">
+      <div class="illusione__disegno" aria-hidden="true">
+        <svg viewBox="0 0 320 200" class="disegno">
+          <ellipse class="d-ombra" cx="160" cy="170" rx="118" ry="14"/>
+          <ellipse class="d-pane" cx="160" cy="112" rx="124" ry="58"/>
+          <ellipse class="d-pomodoro" cx="160" cy="108" rx="98" ry="42"/>
+          <path class="d-mozz" d="M110 96c10-10 30-8 32 4s-18 18-30 12-10-8-2-16Z"/>
+          <path class="d-mozz" d="M178 116c12-8 30-4 30 8s-20 14-30 8-8-10 0-16Z"/>
+          <path class="d-mozz" d="M168 80c8-6 22-4 22 4s-12 12-20 8-8-6-2-12Z"/>
+          <path class="d-foglia" d="M140 118c10-10 26-10 34-2-10 8-24 10-34 2Z"/>
+          <path class="d-foglia" d="M198 92c6-12 20-16 30-10-6 10-20 14-30 10Z"/>
+        </svg>
+      </div>
+      <div class="illusione__testo">
+        <h3 class="illusione__nome" id="dolce-forno">Pizza del Forno <span class="illusione__prezzo"><data value="7.00">7,00</data></span></h3>
+        <p class="illusione__sembra">Sembra una margherita appena sfornata.</p>
+        <p class="illusione__e" id="dolce-forno-e" data-illusione-e>È una brioche artigianale soffice. Il pomodoro è una gelée di fragole, la mozzarella una panna cotta, il basilico menta fresca.</p>
+        <button class="btn btn--linea btn--piccolo" type="button" aria-expanded="false" aria-controls="dolce-forno-e" data-illusione-bottone>
+          <span data-testo-chiuso>Scopri cos'è</span><span data-testo-aperto hidden>Torna all'illusione</span>
+        </button>
+      </div>
+    </article>
+  </div>
+
+  <p class="dolci__altri">E poi Creomisù, Snickers a modo mio, Tiramisù Bueno, cheesecake, O'Babà e la pizza Nutella &amp; Galak. <a href="#menu-dolci">Tutti i dolci nel menu</a></p>
+</section>
+
+<!-- ====================================================================
+     COSA NE DICONO — riconoscimenti dalla stampa, voti delle piattaforme.
+     Nessuna recensione citata finché il locale non sceglie quali.
+     ==================================================================== -->
+<section class="voci" id="voci" aria-labelledby="voci-titolo">
+  <div class="voci__griglia">
+    <h2 class="voci__titolo" id="voci-titolo">Cosa ne dicono le guide.</h2>
+    <ul class="voci__lista" role="list">
+      <li>
+        <p class="voci__chi">50 Top Pizza Italia 2026</p>
+        <p class="voci__cosa">Tra le Pizzerie Eccellenti, alla prima entrata.<span class="dc">da confermare</span></p>
+        <a class="voci__fonte" href="https://www.iltrafiletto.it/2026/07/24/anima-concept-pizza-entra-tra-le-pizzerie-eccellenti-di-50-top-pizza/9-20753.html" target="_blank" rel="noopener">Il Trafiletto, 24 luglio 2026<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+      </li>
+      <li>
+        <p class="voci__chi">Gambero Rosso, Pizzerie d'Italia</p>
+        <p class="voci__cosa">Due Spicchi.<span class="dc">da confermare</span></p>
+        <a class="voci__fonte" href="https://www.gamberorosso.it/luoghi/locali/pizzeria/anima-concept-pizza/" target="_blank" rel="noopener">La scheda della guida<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+      </li>
+      <li>
+        <p class="voci__chi">Pizza Bit Competition 2023</p>
+        <p class="voci__cosa">Vinta da Luca Valle, poi Dallagiovanna Pizza Ambassador 2024.<span class="dc">da confermare</span></p>
+        <a class="voci__fonte" href="https://abruzzoweb.it/e-abruzzese-il-miglior-pizzaiolo-ditalia-luca-valle-vince-pizza-bit-competition/" target="_blank" rel="noopener">AbruzzoWeb<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+      </li>
+    </ul>
+    <p class="voci__piattaforme">E chi c'è stato: 9,5 su 10 su <a href="https://www.thefork.it/ristorante/anima-concept-pizza-r710269" target="_blank" rel="noopener">TheFork<span class="sr-only"> (si apre in una nuova scheda)</span></a> con 186 recensioni, 4,6 su 5 su <a href="https://www.tripadvisor.it/Restaurant_Review-g194888-d23526079-Reviews-Anima_Concept_Pizza-Roseto_Degli_Abruzzi_Province_of_Teramo_Abruzzo.html" target="_blank" rel="noopener">Tripadvisor<span class="sr-only"> (si apre in una nuova scheda)</span></a> con 161. Voti rilevati il 14 ottobre 2026.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     DOVE SIAMO — prenotare, chiamare, arrivare.
+     ==================================================================== -->
+<section class="dove" id="dove" aria-labelledby="dove-titolo">
+  <div class="dove__griglia">
+    <div class="dove__testa">
+      <h2 class="dove__titolo" id="dove-titolo">Ci vediamo a cena.</h2>
+      <p>Il modo più rapido per avere un tavolo è prenotarlo online. Per il senza glutine o per un gruppo, meglio chiamare.</p>
+    </div>
+
+    <ul class="dove__azioni" role="list">
+      <li>
+        <a class="azione azione--pomodoro" href="https://www.thefork.it/ristorante/anima-concept-pizza-r710269" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-tavolo"/></svg>
+          <span class="azione__titolo">Prenota un tavolo</span>
+          <span class="azione__dettaglio">Su TheFork<span class="sr-only">, si apre in una nuova scheda</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="azione" href="tel:+393487992279">
+          <svg aria-hidden="true"><use href="#i-tel"/></svg>
+          <span class="azione__titolo">Chiama</span>
+          <span class="azione__dettaglio">348 799 2279</span>
+        </a>
+      </li>
+      <li>
+        <a class="azione" href="https://www.google.com/maps/search/?api=1&amp;query=Anima%20Concept%20Pizza%2C%20Via%20Nazionale%20Nord%202%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-mappa"/></svg>
+          <span class="azione__titolo">Indicazioni</span>
+          <span class="azione__dettaglio">Apri Google Maps<span class="sr-only">, si apre in una nuova scheda</span></span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="dove__info">
+      <div class="dove__blocco">
+        <h3>Indirizzo</h3>
+        <address>Via Nazionale Nord 2/1<br>64026 Roseto degli Abruzzi (TE)</address>
+        <p>C'è parcheggio, anche in strada.<span class="dc">da confermare</span></p>
+      </div>
+      <div class="dove__blocco">
+        <h3>Orari<span class="dc">da confermare</span></h3>
+        <dl class="orari">
+          <div><dt>Domenica – venerdì</dt><dd>18:30 – 22:30</dd></div>
+          <div><dt>Sabato</dt><dd>18:30 – 23:00</dd></div>
+        </dl>
+        <p class="dove__nota">Solo a cena. Orari della scheda Tripadvisor: alcune schede indicano il lunedì chiuso.</p>
+      </div>
+      <div class="dove__blocco">
+        <h3>Seguici</h3>
+        <ul class="dove__social" role="list">
+          <li><a href="https://www.instagram.com/animaconceptpizza/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a><span class="dc">da confermare</span></li>
+          <li><a href="https://www.facebook.com/100044370987081/" target="_blank" rel="noopener">Facebook<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="mappa">
+      <svg viewBox="0 0 400 420" role="img" aria-labelledby="mappa-titolo mappa-desc">
+        <title id="mappa-titolo">Schema della posizione</title>
+        <desc id="mappa-desc">Anima è sulla statale 16, via Nazionale Nord, nella parte nord di Roseto degli Abruzzi, verso Cologna Spiaggia. Il mare è a est.</desc>
+        <path class="mappa__mare" d="M300 0h100v420H300c-14-60 10-120-2-210S286 50 300 0Z"/>
+        <text class="mappa__mare-nome" x="352" y="214" transform="rotate(90 352 214)">Mare Adriatico</text>
+        <path class="mappa__strada" d="M214 0c-6 80 6 150 2 230s-14 130-10 190"/>
+        <text class="mappa__strada-nome" x="196" y="300" transform="rotate(-88 196 300)">SS16, via Nazionale</text>
+        <text class="mappa__verso" x="226" y="34">Cologna Spiaggia, Giulianova</text>
+        <text class="mappa__verso" x="226" y="404">Roseto centro, Pescara</text>
+        <g class="mappa__punto" transform="translate(212 150)">
+          <circle r="22"/>
+          <circle r="7"/>
+        </g>
+        <text class="mappa__nome" x="58" y="146">Anima</text>
+        <text class="mappa__via" x="58" y="166">Via Nazionale Nord 2/1</text>
+      </svg>
+      <figcaption>Schema non in scala. Per arrivare usa <a href="https://www.google.com/maps/search/?api=1&amp;query=Anima%20Concept%20Pizza%2C%20Via%20Nazionale%20Nord%202%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener">Google Maps<span class="sr-only"> (si apre in una nuova scheda)</span></a>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+</main>
+
+<footer class="piede scuro">
+  <div class="piede__griglia">
+    <p class="marchio marchio--piede"><span class="marchio__nome">Anima</span> <span class="marchio__sotto">concept pizza</span></p>
+    <div class="piede__colonna">
+      <address>Via Nazionale Nord 2/1<br>64026 Roseto degli Abruzzi (TE)</address>
+      <p><a href="tel:+393487992279">348 799 2279</a></p>
+    </div>
+    <ul class="piede__link" role="list">
+      <li><a href="https://www.animaconceptpizza.it/wp-content/uploads/2025/12/Anima-Menu-nuovi_161225.pdf" target="_blank" rel="noopener">Menu in PDF<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+      <li><a href="https://www.thefork.it/ristorante/anima-concept-pizza-r710269" target="_blank" rel="noopener">TheFork<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+      <li><a href="https://www.tripadvisor.it/Restaurant_Review-g194888-d23526079-Reviews-Anima_Concept_Pizza-Roseto_Degli_Abruzzi_Province_of_Teramo_Abruzzo.html" target="_blank" rel="noopener">Tripadvisor<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+      <li><a href="https://www.instagram.com/animaconceptpizza/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+      <li><a href="https://www.facebook.com/100044370987081/" target="_blank" rel="noopener">Facebook<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+    </ul>
+    <p class="piede__legale">Partita IVA: da inserire<span class="dc">da confermare</span></p>
+  </div>
+</footer>
+
+<!-- Barra fissa su telefono e tablet: le tre azioni, sempre a portata di pollice. -->
+<nav class="barra" aria-label="Azioni rapide">
+  <a href="https://www.thefork.it/ristorante/anima-concept-pizza-r710269" target="_blank" rel="noopener" class="barra__voce barra__voce--pomodoro"><svg aria-hidden="true"><use href="#i-tavolo"/></svg>Prenota<span class="sr-only"> su TheFork (si apre in una nuova scheda)</span></a>
+  <a href="tel:+393487992279" class="barra__voce"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Anima%20Concept%20Pizza%2C%20Via%20Nazionale%20Nord%202%2C%2064026%20Roseto%20degli%20Abruzzi%20TE" target="_blank" rel="noopener" class="barra__voce"><svg aria-hidden="true"><use href="#i-mappa"/></svg>Indicazioni<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+</nav>
+
+<!-- ====================================================================
+     NOTA PER IL LOCALE — fa parte dell'anteprima, non del sito.
+     ==================================================================== -->
+<aside class="nota" id="nota" aria-labelledby="nota-titolo">
+  <div class="nota__foglio">
+    <p class="nota__da">Nota di Prisma Locale per Anima Concept Pizza</p>
+    <h2 class="nota__titolo" id="nota-titolo">Cosa manca per andare online</h2>
+    <p class="nota__intro">La struttura è pronta. Menu, prezzi e contatti vengono dal vostro menu di dicembre 2025, da TheFork e da Tripadvisor; gli articoli di stampa da Identità Golose, Il Trafiletto, AbruzzoWeb e Gambero Rosso. Ciò che porta il segno <span class="dc dc--inline">da confermare</span> aspetta la vostra conferma. Le immagini sono illustrazioni 3D provvisorie, al posto delle vostre fotografie. Spuntate quello che avete già.</p>
+    <ul class="lista" role="list" data-lista>
+      <li><label><input type="checkbox" value="foto"><span class="lista__voce"><b>Fotografie</b><span>Pizze nelle diverse forme, impasti, forno, sala, dolci. Anche dal telefono, purché con buona luce.</span></span></label></li>
+      <li><label><input type="checkbox" value="logo"><span class="lista__voce"><b>Logo</b><span>Il file originale: il marchio in pagina è provvisorio.</span></span></label></li>
+      <li><label><input type="checkbox" value="orari"><span class="lista__voce"><b>Orari e giorno di chiusura</b><span>Le schede online non sono d'accordo sul lunedì. Anche ferie e orari estivi.</span></span></label></li>
+      <li><label><input type="checkbox" value="prenotazioni"><span class="lista__voce"><b>Come preferite le prenotazioni</b><span>TheFork, telefono, WhatsApp? Il bottone principale porterà lì.</span></span></label></li>
+      <li><label><input type="checkbox" value="menu"><span class="lista__voce"><b>Menu aggiornato e legenda allergeni</b><span>Prezzi correnti, la legenda dei codici, le voci vegetariane e vegane.</span></span></label></li>
+      <li><label><input type="checkbox" value="storia"><span class="lista__voce"><b>La vostra storia</b><span>Data di apertura, il nome, i 21 grammi, la quota della romana: confermate o correggete.</span></span></label></li>
+      <li><label><input type="checkbox" value="contatti"><span class="lista__voce"><b>Social, email, asporto</b><span>Instagram e Facebook giusti, un'email, se fate asporto o consegna (c'è una scheda Deliveroo: è attiva?).</span></span></label></li>
+      <li><label><input type="checkbox" value="premi"><span class="lista__voce"><b>Riconoscimenti e recensioni</b><span>Quali premi citare e due o tre recensioni vere da mettere in pagina.</span></span></label></li>
+      <li><label><input type="checkbox" value="legale"><span class="lista__voce"><b>Dati per la privacy</b><span>Ragione sociale e partita IVA per informativa e piede della pagina.</span></span></label></li>
+    </ul>
+    <div class="nota__piede">
+      <p class="nota__conto" aria-live="polite"><span data-conto>0</span> di 9 pronti</p>
+      <a class="btn btn--pomodoro" href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20sono%20di%20Anima%20Concept%20Pizza.%20Ho%20visto%20l%27anteprima%20del%20sito." target="_blank" rel="noopener" data-invia>Rispondi a Prisma Locale<span class="sr-only"> su WhatsApp (si apre in una nuova scheda)</span></a>
+      <p class="nota__mail">oppure <a href="mailto:info@prismalocale.it?subject=Anima%20Concept%20Pizza%2C%20materiale%20per%20il%20sito">info@prismalocale.it</a></p>
+    </div>
+    <p class="nota__firma">Demo realizzata da <a href="https://prismalocale.it/">Prisma Locale</a>. Anteprima non commissionata, valida fino al 15 dicembre 2026. Il nome Anima Concept Pizza appartiene ai legittimi proprietari.</p>
+  </div>
+</aside>
+</body>
+</html>

@@ -53,7 +53,7 @@ function voce(v) {
 
 function sezione(s) {
   const classi = ['carta__sezione'];
-  if (s.scura) classi.push('carta__sezione--scura');
+  if (s.scura) classi.push('carta__sezione--scura', 'scuro');
   if (s.voci.every((v) => !v.desc)) classi.push('carta__sezione--fitta');
   return `
   <section class="${classi.join(' ')}" id="menu-${s.id}" aria-labelledby="menu-${s.id}-titolo" data-carta-sezione>

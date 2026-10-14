@@ -1,0 +1,51 @@
+/* Anima — i materiali del banco della pizzeria.
+   Semola sul piano, il bruno delle macchie del cornicione, il pomodoro solo
+   per agire, il basilico per ciò che è vegetariano. */
+
+@font-face {
+  font-family: 'Fraunces Anima';
+  src: url('/assets/fonts/fraunces-soft.woff2') format('woff2-variations'), url('/assets/fonts/fraunces-soft.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/assets/fonts/manrope.woff2') format('woff2-variations'), url('/assets/fonts/manrope.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --semola: #F1E7C8;
+  --semola-scura: #E6D7AC;
+  --mozzarella: #FBF8F0;
+  --bruciatura: #26170F;
+  --bruciatura-chiara: #3A2518;
+  --crosta: #C0843A;
+  --pomodoro: #C42A1C;
+  --pomodoro-scuro: #9E2015;
+  --basilico: #2E5B35;
+  --tenue: #6A5644;
+  --tenue-chiaro: #C9B79A;
+  --linea: rgb(38 23 15 / 0.14);
+  --linea-chiara: rgb(251 248 240 / 0.16);
+
+  --f-titolo: 'Fraunces Anima', 'Iowan Old Style', Georgia, serif;
+  --f-testo: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* scala classica: 14 · 17 · 21 · 24–30 · 36–60 · 48–120 */
+  --t-piccolo: 0.875rem;
+  --t-corpo: 1.0625rem;
+  --t-m: 1.3125rem;
+  --t-l: clamp(1.5rem, 1.25rem + 0.9vw, 1.875rem);
+  --t-xl: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
+  --t-xxl: clamp(3rem, 1.1rem + 7.2vw, 7.5rem);
+
+  --margine: clamp(16px, 4vw, 56px);
+  --largo: 82rem;
+  --testata-h: 68px;
+  --raggio: 22px;
+  --ease: cubic-bezier(0.22, 0.8, 0.2, 1);
+}

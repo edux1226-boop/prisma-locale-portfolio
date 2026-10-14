@@ -1,0 +1,130 @@
+/* ---- Testata ------------------------------------------------------------- */
+.testata {
+  position: fixed; inset: 0 0 auto; z-index: 100;
+  height: var(--testata-h);
+  display: flex; align-items: center; gap: 28px;
+  padding: 0 var(--margine);
+  color: var(--mozzarella);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.testata.is-chiara {
+  background: rgb(241 231 200 / 0.94);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--bruciatura);
+  box-shadow: 0 1px 0 var(--linea);
+}
+.testata:not(.is-chiara) :focus-visible { outline-color: var(--crosta); }
+.testata .marchio { margin-right: auto; }
+.testata__nav ul { display: flex; gap: 26px; }
+.testata__nav a { font-size: 0.9375rem; font-weight: 600; text-decoration: none; padding: 6px 0; }
+.testata__nav a:hover { text-decoration: underline; }
+.testata__cta { min-height: 42px; padding: 0 20px; font-size: 0.9375rem; }
+.testata__apri {
+  display: none; align-items: center; gap: 10px;
+  min-height: 44px; padding: 0 4px 0 12px;
+  border: 0; background: none;
+  font-size: 0.9375rem; font-weight: 650;
+}
+.testata__linee { display: grid; gap: 6px; width: 22px; }
+.testata__linee span { height: 2px; border-radius: 2px; background: currentColor; }
+@media (max-width: 63.99em) {
+  .testata { gap: 12px; }
+  .testata__nav, .testata__cta { display: none; }
+  .testata__apri { display: inline-flex; }
+}
+
+/* ---- Cassetto (menu su telefono) ----------------------------------------- */
+.cassetto {
+  width: 100%; max-width: none; height: 100%; max-height: none;
+  margin: 0; padding: 0 var(--margine) calc(24px + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  background: var(--bruciatura); color: var(--mozzarella);
+  flex-direction: column;
+}
+.cassetto[open] { display: flex; }
+.cassetto::backdrop { background: rgb(38 23 15 / 0.6); }
+.cassetto :focus-visible { outline-color: var(--crosta); }
+.cassetto__testa { display: flex; align-items: center; justify-content: space-between; height: var(--testata-h); }
+.cassetto__chiudi {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 4px 0 12px;
+  border: 0; background: none;
+  font-size: 0.9375rem; font-weight: 650;
+}
+.cassetto__chiudi svg { width: 22px; height: 22px; }
+.cassetto__voci { margin-top: 6vh; }
+.cassetto__voci a {
+  display: block; padding: 10px 0;
+  font-family: var(--f-titolo); font-variation-settings: "SOFT" 100;
+  font-size: clamp(2.25rem, 9vw, 3.25rem); font-weight: 700; line-height: 1.1;
+  text-decoration: none;
+}
+.cassetto__piede { margin-top: auto; display: grid; gap: 12px; }
+
+/* ---- Apertura ------------------------------------------------------------ */
+.apertura {
+  position: relative;
+  min-height: 100svh;
+  display: grid; align-content: start;
+  padding: var(--testata-h) var(--margine) calc(96px + env(safe-area-inset-bottom, 0px));
+  background: #140B06;
+  color: var(--mozzarella);
+  overflow: hidden;
+}
+@media (min-width: 48em) {
+  .apertura { background: radial-gradient(ellipse 70% 80% at 68% 44%, #5B341A 0%, #2A170D 45%, #140B06 100%); }
+}
+/* telefono: il panetto in alto, il testo sotto, mai sovrapposti */
+.apertura__foto { position: relative; margin: 0 calc(var(--margine) * -1) 8px; height: clamp(200px, 36svh, 340px); }
+.apertura__foto img { object-fit: cover; object-position: 50% 50%; }
+.apertura__foto::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, #140B06 0%, rgb(20 11 6 / 0) 34%), linear-gradient(to bottom, #140B06 0%, rgb(20 11 6 / 0) 18%);
+}
+.apertura__testo { position: relative; max-width: 44rem; }
+.apertura__luogo { font-size: var(--t-piccolo); font-weight: 600; color: var(--tenue-chiaro); margin-bottom: 18px; }
+.apertura__titolo {
+  font-size: var(--t-xxl);
+  font-weight: 760;
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  max-width: 9.5em;
+}
+/* il titolo che lievita: ogni lettera passa da sottile e spigolosa a piena e morbida */
+@property --soft { syntax: '<number>'; inherits: true; initial-value: 100; }
+.apertura__titolo, .apertura__titolo .lettera { font-variation-settings: "SOFT" var(--soft); }
+.apertura__titolo .parola { white-space: nowrap; }
+.apertura__titolo .lettera { display: inline-block; }
+.motion .apertura__titolo:not(.is-diviso) { animation: si-vede 0.01s 1.8s both; }
+.motion .apertura__titolo .lettera { animation: lievita 1.5s var(--ease) calc(var(--i) * 32ms + 120ms) both; transform-origin: 50% 100%; }
+@keyframes si-vede { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lievita {
+  from { --soft: 0; font-weight: 320; opacity: 0; transform: translateY(0.18em) scaleY(0.86); }
+  45% { opacity: 1; }
+  to { --soft: 100; font-weight: 760; opacity: 1; transform: none; }
+}
+.apertura__sotto { max-width: 34rem; margin-top: 22px; font-size: var(--t-m); line-height: 1.45; color: #EADFCB; }
+.apertura__azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.apertura__info {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px;
+  margin-top: 26px;
+  font-size: 0.9375rem; color: var(--tenue-chiaro);
+}
+.apertura__info a { display: inline-flex; align-items: center; gap: 8px; color: var(--mozzarella); font-weight: 650; text-decoration: none; min-height: 44px; }
+.apertura__info a:hover { text-decoration: underline; }
+.apertura__info svg { width: 18px; height: 18px; }
+
+@media (min-width: 48em) {
+  .apertura { align-content: center; padding: calc(var(--testata-h) + 24px) var(--margine) clamp(48px, 10vh, 120px); }
+  .apertura__foto { position: absolute; inset: 0; margin: 0; height: auto; }
+  .apertura__foto img { object-position: 100% 50%; }
+  .apertura__foto::after { background: linear-gradient(to right, rgb(20 11 6 / 0.9) 0%, rgb(20 11 6 / 0.55) 42%, rgb(20 11 6 / 0) 66%); }
+}
+/* con il 3D l'apertura è trasparente: il forno è dietro */
+.con-3d .apertura { background: transparent; }
+.con-3d .apertura__foto { opacity: 0; transition: opacity 1.2s var(--ease); }
+.con-3d .apertura::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, rgb(20 11 6 / 0.7) 0%, rgb(20 11 6 / 0.25) 40%, rgb(20 11 6 / 0) 60%);
+}
