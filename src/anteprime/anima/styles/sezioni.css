@@ -1,0 +1,185 @@
+/* ---- I dolci: nulla è ciò che sembra ------------------------------------ */
+.dolci {
+  padding: clamp(80px, 13vh, 150px) var(--margine);
+  background: var(--bruciatura);
+  color: var(--mozzarella);
+}
+.dolci > * { max-width: var(--largo); margin-inline: auto; }
+.dolci__testa { display: grid; gap: 18px 56px; }
+.dolci__titolo { font-size: var(--t-xxl); line-height: 0.92; max-width: 8em; }
+.dolci__testa p { max-width: 32rem; font-size: var(--t-m); line-height: 1.45; color: #EADFCB; align-self: end; }
+@media (min-width: 64em) { .dolci__testa { grid-template-columns: 6fr 6fr; } }
+
+.dolci__coppia { display: grid; gap: 20px; margin-top: clamp(40px, 6vw, 72px); }
+@media (min-width: 64em) { .dolci__coppia { grid-template-columns: 1fr 1fr; gap: 28px; } }
+
+.illusione {
+  display: grid; gap: 18px;
+  padding: clamp(18px, 2.5vw, 28px);
+  border-radius: calc(var(--raggio) + 4px);
+  background: var(--bruciatura-chiara);
+}
+@media (min-width: 40em) { .illusione { grid-template-columns: 1fr 1fr; align-items: center; } }
+.illusione__disegno { border-radius: var(--raggio); background: #2F1E14; padding: 12px; }
+.illusione__nome { font-size: var(--t-l); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.illusione__prezzo { font-family: var(--f-testo); font-size: 1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.illusione__sembra { margin-top: 8px; color: #EADFCB; }
+.illusione__e { margin-top: 8px; color: #F6DCC6; }
+.illusione .btn { margin-top: 16px; }
+.js .illusione__e { display: none; }
+.js .illusione.is-aperta .illusione__e { display: block; }
+.js .illusione.is-aperta .illusione__sembra { text-decoration: line-through; text-decoration-thickness: 1px; color: var(--tenue-chiaro); }
+
+/* il disegno: colori del salato, che diventano quelli del dolce */
+.disegno { width: 100%; height: auto; }
+.disegno * { transition: fill 0.7s var(--ease), stroke 0.7s var(--ease); }
+.d-ombra { fill: rgb(0 0 0 / 0.3); }
+.d-pane { fill: #D9A05B; }
+.d-pane2 { fill: none; stroke: #B7783A; stroke-width: 3; stroke-linecap: round; }
+.d-wurstel { fill: #B5502D; }
+.d-salsa1 { fill: none; stroke: #C42A1C; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.d-salsa2 { fill: none; stroke: #F2E6B8; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.d-pomodoro { fill: #C42A1C; }
+.d-mozz { fill: #F7F2E6; }
+.d-foglia { fill: #3E7A2E; }
+.is-aperta .d-pane { fill: #ECCB92; }
+.is-aperta .d-pane2 { stroke: #D3A867; }
+.is-aperta .d-wurstel { fill: #D4567A; }
+.is-aperta .d-salsa1 { stroke: #E2405F; }
+.is-aperta .d-salsa2 { stroke: #F6D77E; }
+.is-aperta .d-pomodoro { fill: #E2405F; }
+.is-aperta .d-mozz { fill: #FFF9EE; }
+.is-aperta .d-foglia { fill: #6FB46A; }
+.motion .illusione .disegno { transition: transform 0.7s var(--ease); }
+.motion .illusione.is-aperta .disegno { transform: rotate(-3deg) scale(1.02); }
+
+.dolci__altri { margin-top: 36px; color: #EADFCB; }
+.dolci__altri a { color: var(--mozzarella); font-weight: 650; }
+
+/* ---- Cosa ne dicono ------------------------------------------------------- */
+.voci { padding: clamp(80px, 13vh, 150px) var(--margine); background: var(--semola); }
+.voci__griglia { max-width: var(--largo); margin-inline: auto; }
+.voci__titolo { font-size: var(--t-xl); max-width: 12em; }
+.voci__lista { display: grid; gap: 0 40px; margin-top: 40px; border-top: 1px solid var(--linea); }
+@media (min-width: 64em) { .voci__lista { grid-template-columns: repeat(3, 1fr); border-top: 0; } }
+.voci__lista li { padding: 22px 0 24px; border-bottom: 1px solid var(--linea); display: grid; gap: 6px; align-content: start; }
+@media (min-width: 64em) { .voci__lista li { border-top: 1px solid var(--linea); border-bottom: 0; } }
+.voci__chi { font-size: var(--t-piccolo); font-weight: 650; color: var(--tenue); }
+.voci__cosa { font-family: var(--f-titolo); font-variation-settings: "SOFT" 90; font-size: var(--t-l); font-weight: 650; line-height: 1.15; }
+.voci__fonte { font-size: var(--t-piccolo); font-weight: 600; justify-self: start; min-height: 32px; display: inline-flex; align-items: center; }
+.voci__piattaforme { margin-top: 36px; max-width: 46rem; font-size: var(--t-m); line-height: 1.5; }
+.voci__piattaforme a { font-weight: 650; }
+
+/* ---- Dove siamo ----------------------------------------------------------- */
+.dove { padding: clamp(80px, 13vh, 150px) var(--margine) clamp(96px, 14vh, 160px); background: var(--mozzarella); }
+.dove__griglia { max-width: var(--largo); margin-inline: auto; display: grid; gap: 40px 56px; }
+.dove__titolo { font-size: var(--t-xxl); line-height: 0.92; }
+.dove__testa p { margin-top: 20px; max-width: 30rem; font-size: var(--t-m); line-height: 1.45; }
+.dove__azioni { display: grid; gap: 10px; }
+.azione {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 16px;
+  align-items: center;
+  min-height: 76px; padding: 14px 24px;
+  border: 1.5px solid var(--bruciatura); border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.2s var(--ease);
+}
+.azione:hover { background: var(--bruciatura); color: var(--mozzarella); }
+.azione:active { transform: scale(0.98); }
+.azione svg { grid-row: span 2; width: 26px; height: 26px; }
+.azione__titolo { font-family: var(--f-titolo); font-variation-settings: "SOFT" 100; font-size: 1.375rem; font-weight: 700; line-height: 1.1; }
+.azione__dettaglio { font-size: 0.9375rem; color: inherit; opacity: 0.8; }
+.azione--pomodoro { background: var(--pomodoro); border-color: var(--pomodoro); color: var(--mozzarella); }
+.azione--pomodoro .azione__dettaglio { opacity: 1; }
+.azione--pomodoro:hover { background: var(--pomodoro-scuro); border-color: var(--pomodoro-scuro); }
+
+.dove__info { display: grid; gap: 28px; }
+@media (min-width: 40em) { .dove__info { grid-template-columns: 1fr 1fr; } }
+.dove__blocco h3 { font-size: var(--t-m); margin-bottom: 10px; }
+.dove__blocco p { margin-top: 8px; }
+.dove__nota { font-size: var(--t-piccolo); color: var(--tenue); }
+.orari div { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--linea); }
+.orari dt { font-weight: 550; }
+.orari dd { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dove__social { display: grid; gap: 4px; }
+.dove__social a { font-weight: 650; min-height: 36px; display: inline-flex; align-items: center; }
+
+.mappa { align-self: start; }
+.mappa svg { width: 100%; height: auto; border-radius: var(--raggio); background: var(--semola); }
+.mappa__mare { fill: #CBD6CF; }
+.mappa__mare-nome { fill: #4E655A; font-family: var(--f-testo); font-size: 13px; font-weight: 600; text-anchor: middle; letter-spacing: 0.04em; }
+.mappa__strada { fill: none; stroke: var(--bruciatura); stroke-width: 9; stroke-linecap: round; opacity: 0.85; }
+.mappa__strada-nome { fill: var(--tenue); font-family: var(--f-testo); font-size: 13px; font-weight: 600; text-anchor: middle; }
+.mappa__verso { fill: var(--tenue); font-family: var(--f-testo); font-size: 12px; font-weight: 600; }
+.mappa__punto circle:first-child { fill: rgb(196 42 28 / 0.18); }
+.mappa__punto circle:last-child { fill: var(--pomodoro); stroke: var(--mozzarella); stroke-width: 3; }
+.mappa__nome { fill: var(--bruciatura); font-family: var(--f-titolo); font-size: 26px; font-weight: 750; font-variation-settings: "SOFT" 100; }
+.mappa__via { fill: var(--tenue); font-family: var(--f-testo); font-size: 13px; font-weight: 600; }
+.mappa figcaption { margin-top: 10px; font-size: var(--t-piccolo); color: var(--tenue); }
+.mappa figcaption a { color: var(--bruciatura); font-weight: 600; }
+
+@media (min-width: 64em) {
+  .dove__griglia { grid-template-columns: 7fr 5fr; }
+  .dove__testa, .dove__azioni, .dove__info { grid-column: 1; }
+  .mappa { grid-column: 2; grid-row: 1 / span 3; position: sticky; top: calc(var(--testata-h) + 32px); }
+  .dove__azioni { grid-template-columns: repeat(3, 1fr); }
+  .azione { border-radius: var(--raggio); grid-template-columns: 1fr; padding: 18px 20px; min-height: 132px; align-content: space-between; }
+  .azione svg { grid-row: auto; margin-bottom: 18px; }
+}
+
+/* ---- Piede ---------------------------------------------------------------- */
+.piede { padding: clamp(56px, 9vh, 96px) var(--margine) calc(clamp(56px, 9vh, 96px) + 64px); background: var(--bruciatura); color: var(--mozzarella); }
+.piede :focus-visible { outline-color: var(--crosta); }
+.piede__griglia { max-width: var(--largo); margin-inline: auto; display: grid; gap: 28px 48px; }
+.marchio--piede .marchio__nome { font-size: clamp(3rem, 2rem + 4vw, 5.5rem); }
+.piede__colonna { display: grid; gap: 8px; color: #EADFCB; }
+.piede__colonna a { color: var(--mozzarella); font-weight: 650; }
+.piede__link { display: grid; gap: 6px; }
+.piede__link a { font-weight: 600; min-height: 32px; display: inline-flex; align-items: center; }
+.piede__legale { font-size: var(--t-piccolo); color: var(--tenue-chiaro); }
+@media (min-width: 64em) {
+  .piede__griglia { grid-template-columns: 6fr 3fr 3fr; }
+  .piede__legale { grid-column: 1 / -1; }
+}
+
+/* ---- Barra fissa del telefono --------------------------------------------- */
+.barra { display: none; }
+@media (max-width: 63.99em) {
+  .barra {
+    position: fixed; inset: auto 0 0; z-index: 95;
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 6px;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px));
+    background: rgb(38 23 15 / 0.96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .barra :focus-visible { outline-color: var(--crosta); }
+  .barra__voce {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 50px; border-radius: 999px;
+    color: var(--mozzarella); text-decoration: none;
+    font-size: 0.9375rem; font-weight: 700;
+    background: rgb(251 248 240 / 0.08);
+  }
+  .barra__voce svg { width: 19px; height: 19px; }
+  .barra__voce--pomodoro { background: var(--pomodoro); }
+}
+
+/* ---- La nota per il locale ------------------------------------------------ */
+.nota { padding: clamp(56px, 9vh, 96px) var(--margine) calc(clamp(56px, 9vh, 96px) + 72px); background: var(--semola-scura); }
+.nota__foglio { max-width: 52rem; margin-inline: auto; padding: clamp(24px, 4vw, 48px); border-radius: calc(var(--raggio) + 6px); background: var(--mozzarella); }
+.nota__da { font-size: var(--t-piccolo); font-weight: 650; color: var(--tenue); }
+.nota__titolo { margin-top: 8px; font-size: var(--t-xl); }
+.nota__intro { margin-top: 16px; color: var(--tenue); }
+.lista { margin-top: 24px; border-top: 1px solid var(--linea); }
+.lista li { border-bottom: 1px solid var(--linea); }
+.lista label { display: flex; gap: 14px; padding: 14px 0; cursor: pointer; }
+.lista input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--basilico); flex: none; }
+.lista__voce { display: grid; gap: 2px; }
+.lista__voce b { font-weight: 700; }
+.lista__voce span { font-size: 0.9375rem; color: var(--tenue); }
+.nota__piede { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 24px; }
+.nota__conto { font-weight: 700; margin-right: auto; }
+.nota__mail { font-size: var(--t-piccolo); color: var(--tenue); }
+.nota__mail a { color: var(--bruciatura); font-weight: 600; }
+.nota__firma { margin-top: 24px; font-size: 0.8125rem; color: var(--tenue); }
