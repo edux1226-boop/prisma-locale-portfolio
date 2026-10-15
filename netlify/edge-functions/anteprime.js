@@ -3,12 +3,16 @@
  * Gira prima che la pagina arrivi al browser, su ogni richiesta sotto /anteprime/.
  * Fa tre cose, nell'ordine:
  *
+ * 0. INDIRIZZO CANONICO. /anteprime/anima%2Dconcept/, //anteprime/... o una cartella
+ *    senza barra finale si riportano alla forma canonica prima di ogni controllo.
+ *
  * 1. CODICE NEL LINK (facoltativo). Se nella variabile d'ambiente ANTEPRIMA_CODICI
  *    c'è un codice per l'anteprima, la pagina si apre solo con ?k=<codice> nel link.
  *    Il codice giusto lascia un cookie (solo un'impronta SHA-256, mai il codice) e
  *    reindirizza all'indirizzo pulito; senza codice o cookie si vede un avviso (403).
  *    Esempio di valore: {"anima-concept":"un-codice-lungo-e-casuale"}
- *    Senza variabile, o senza codice per quell'anteprima, non si chiede nulla.
+ *    Senza variabile, o senza codice per quell'anteprima, non si chiede nulla; una
+ *    variabile scritta male chiude invece di aprire (503).
  *
  * 2. SCADENZA. Legge il meta "anteprima-scadenza" della pagina: dopo quella data
  *    risponde 410 con l'avviso "anteprima scaduta", e la pagina non parte più.
@@ -40,18 +44,34 @@ function leggiEnv(nome) {
   }
 }
 
-/* {"anima-concept": "codice"} → Map. Un valore malformato non apre nulla:
-   si considera "nessun codice" ma lo si segnala nei log. */
+/* {"anima-concept": "codice"} → { mappa, guasto, corti }.
+   Senza variabile non si chiede nessun codice. Ma una variabile scritta male non deve
+   lasciare aperto per sbaglio ciò che si voleva chiudere: JSON non valido → tutte le
+   anteprime "non disponibili"; un codice troppo corto → quell'anteprima non disponibile. */
+const MINIMO = 12;
 function codici() {
   const grezzo = leggiEnv('ANTEPRIMA_CODICI');
-  if (!grezzo) return new Map();
+  const esito = { mappa: new Map(), guasto: false, corti: new Set() };
+  if (!grezzo) return esito;
+  let dati;
   try {
-    const dati = JSON.parse(grezzo);
-    return new Map(Object.entries(dati).filter(([, v]) => typeof v === 'string' && v.length >= 12));
+    dati = JSON.parse(grezzo);
   } catch {
-    console.error('ANTEPRIMA_CODICI non è un JSON valido: nessun codice applicato');
-    return new Map();
+    dati = null;
   }
+  if (!dati || typeof dati !== 'object' || Array.isArray(dati)) {
+    console.error('ANTEPRIMA_CODICI non è un oggetto JSON valido: anteprime chiuse finché non si corregge');
+    esito.guasto = true;
+    return esito;
+  }
+  for (const [nome, valore] of Object.entries(dati)) {
+    if (typeof valore === 'string' && valore.length >= MINIMO) esito.mappa.set(nome, valore);
+    else {
+      console.error(`ANTEPRIMA_CODICI: il codice di "${nome}" manca o è più corto di ${MINIMO} caratteri: anteprima chiusa`);
+      esito.corti.add(nome);
+    }
+  }
+  return esito;
 }
 
 async function impronta(testo) {
@@ -155,19 +175,63 @@ function scadenza(html) {
   return Number.isFinite(t) ? t : null;
 }
 
-/* L'anteprima della richiesta: /anteprime/<nome>/... → <nome>. */
-function nomeAnteprima(url) {
-  const parti = url.pathname.split('/');
-  return parti[1] === 'anteprime' && /^[a-z0-9-]+$/.test(parti[2] || '') ? parti[2] : null;
+/* Il percorso com'è davvero: decodificato e senza barre doppie. Netlify trova il file
+   anche da /anteprime/anima%2Dconcept/ o da //: tutti questi indirizzi devono passare
+   dagli stessi controlli, mai saltarli. */
+function percorsoCanonico(url) {
+  let p;
+  try {
+    p = decodeURIComponent(url.pathname);
+  } catch {
+    return null;
+  }
+  return p.replace(/\/{2,}/g, '/');
+}
+
+function vaiA(location, stato = 308) {
+  return new Response(null, { status: stato, headers: sicurezza(new Headers({ Location: location })) });
+}
+
+/* La pagina dall'origine, sempre intera: senza Range né richieste condizionali, e in GET
+   anche per un HEAD, così la scadenza si legge sempre. */
+async function paginaIntera(request, context, url) {
+  const headers = new Headers(request.headers);
+  for (const h of ['range', 'if-range', 'if-none-match', 'if-modified-since']) headers.delete(h);
+  try {
+    return await context.next(new Request(url.toString(), { method: 'GET', headers }));
+  } catch {
+    return context.next();
+  }
 }
 
 export default async function anteprime(request, context) {
   const url = new URL(request.url);
-  const nome = nomeAnteprima(url);
-  if (!nome || (request.method !== 'GET' && request.method !== 'HEAD')) return context.next();
+  const percorso = percorsoCanonico(url);
+  if (percorso === null) return avviso(400, 'Indirizzo non valido', 'Controlla il link: contiene caratteri non validi.');
+  if (!percorso.startsWith('/anteprime/')) return context.next();
+
+  // un indirizzo scritto in un altro modo si riporta alla forma canonica
+  const canonico = new URL(url);
+  canonico.pathname = percorso;
+  if (canonico.pathname !== url.pathname) return vaiA(canonico.pathname + url.search);
+
+  const parti = percorso.split('/');
+  const nome = parti[2] || '';
+  if (!/^[a-z0-9-]+$/.test(nome)) return avviso(404, 'Pagina non trovata', 'Questa anteprima non esiste.');
+  // la cartella ha sempre la barra finale: il cookie del codice vale da lì in giù
+  if (percorso === `/anteprime/${nome}`) return vaiA(`/anteprime/${nome}/${url.search}`);
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    const r = avviso(405, 'Metodo non consentito', 'Le anteprime si possono solo leggere.');
+    r.headers.set('Allow', 'GET, HEAD');
+    return r;
+  }
 
   /* 1. codice nel link */
-  const codice = codici().get(nome);
+  const conf = codici();
+  if (conf.guasto || conf.corti.has(nome)) {
+    return avviso(503, 'Anteprima non disponibile', 'Questa anteprima è momentaneamente chiusa. Scrivi a Prisma Locale.');
+  }
+  const codice = conf.mappa.get(nome);
   const nomeCookie = `anteprima-${nome}`;
   if (codice) {
     const atteso = await impronta(`${nome}:${codice}`);
@@ -178,20 +242,24 @@ export default async function anteprime(request, context) {
       }
       // codice giusto: cookie e indirizzo pulito, il codice non resta nella barra né nella cronologia
       url.searchParams.delete('k');
-      const headers = sicurezza(new Headers({ Location: url.pathname + url.search + url.hash }));
-      headers.append('Set-Cookie', `${nomeCookie}=${atteso}; Path=/anteprime/${nome}/; Max-Age=${COOKIE_GIORNI * 86400}; HttpOnly; Secure; SameSite=Lax`);
-      return new Response(null, { status: 303, headers });
+      const r = vaiA(url.pathname + url.search, 303);
+      r.headers.append('Set-Cookie', `${nomeCookie}=${atteso}; Path=/anteprime/${nome}; Max-Age=${COOKIE_GIORNI * 86400}; HttpOnly; Secure; SameSite=Lax`);
+      return r;
     }
     if (!uguali(leggiCookie(request, nomeCookie), atteso)) {
       return avviso(403, 'Anteprima riservata', 'Questa pagina è un\'anteprima privata. Aprila dal link che ti abbiamo mandato.');
     }
   }
 
-  const risposta = await context.next();
+  const risposta = await paginaIntera(request, context, url);
   const tipo = risposta.headers.get('content-type') || '';
+  if (tipo.includes('text/html') && risposta.status === 206) {
+    // l'origine ha risposto con un pezzo di pagina: senza la testa la scadenza non si legge
+    return avviso(416, 'Richiesta non valida', 'Ricarica la pagina.');
+  }
   if (!risposta.ok || !tipo.includes('text/html')) {
     const headers = sicurezza(new Headers(risposta.headers));
-    return new Response(risposta.body, { status: risposta.status, statusText: risposta.statusText, headers });
+    return new Response(request.method === 'HEAD' ? null : risposta.body, { status: risposta.status, statusText: risposta.statusText, headers });
   }
 
   let html = await risposta.text();
@@ -206,6 +274,7 @@ export default async function anteprime(request, context) {
   const headers = sicurezza(new Headers(risposta.headers));
   headers.delete('content-length');
   headers.delete('etag');
+  headers.delete('last-modified');
   if (CSP.has(nome)) {
     const n = nonce();
     html = html.replace(/<script\b(?![^>]*\bnonce=)/gi, `<script nonce="${n}"`);

@@ -145,8 +145,16 @@ sotto `/anteprime/`. Usa solo API web standard e si prova con `npm test`
    Al titolare si manda `…/anteprime/anima-concept/?k=<codice>`: il codice giusto lascia
    un cookie `HttpOnly` con la sua impronta SHA-256 (mai il codice) per 60 giorni e
    reindirizza all'indirizzo pulito; senza codice o cookie si vede "Anteprima riservata"
-   (`403`). Cambiando il codice, i cookie vecchi smettono di valere. Senza variabile, o
-   senza voce per quell'anteprima, la pagina resta aperta a chi ha il link.
+   (`403`). Senza variabile, o senza voce per quell'anteprima, la pagina resta aperta a
+   chi ha il link. Una variabile scritta male invece chiude: JSON non valido → tutte le
+   anteprime `503`, codice più corto di 12 caratteri → quell'anteprima `503`.
+   - La variabile va impostata per **tutti i contesti** (Production, Deploy Previews,
+     Branch deploys): un contesto senza variabile non chiede il codice.
+   - Dopo averla cambiata serve un nuovo deploy (*Deploys → Trigger deploy*): fino ad
+     allora vale il codice vecchio. Cambiando il codice, i cookie vecchi smettono di valere.
+   - Ogni deploy resta raggiungibile al suo indirizzo permanente
+     (`<id>--prismalocale.netlify.app`) con la funzione di quel momento: i deploy fatti
+     prima della protezione vanno cancellati da Netlify se l'anteprima deve restare chiusa.
 3. **Header di sicurezza** su tutte le anteprime: niente cache condivisa
    (`private, no-store`), HSTS, `Cross-Origin-Opener-Policy`, niente inclusione in altri
    siti. Sulle anteprime elencate nella costante `CSP` (oggi solo `anima-concept`) anche
@@ -154,8 +162,17 @@ sotto `/anteprime/`. Usa solo API web standard e si prova con `npm test`
    in linea: niente risorse esterne, niente stili in linea. Prima di aggiungere
    un'anteprima alla lista va provata con la policy attiva.
 
-Le immagini e gli script stanno in `/assets/` e restano pubblici a chi ne conosce
-l'indirizzo: la protezione riguarda le pagine (testi, menu, contatti).
+Prima di ogni controllo l'indirizzo si riporta alla forma canonica (`anima%2Dconcept`,
+barre doppie, cartella senza barra finale → `308`); un nome non valido è `404`, un
+metodo diverso da GET/HEAD è `405`. L'origine si legge sempre per intero (niente Range
+né richieste condizionali), così la scadenza vale anche per HEAD e richieste parziali.
+
+**Limiti.** Le immagini e gli script stanno in `/assets/` e restano pubblici a chi ne
+conosce l'indirizzo. Soprattutto, **il repository è pubblico**: il sorgente di ogni
+anteprima (testi, menu, contatti) si legge su GitHub senza codice e senza scadenza.
+La funzione ferma chi passa dal sito, non chi va a leggere il codice. Per una
+riservatezza vera il repository va reso privato (Netlify continua a pubblicare
+attraverso la sua app GitHub) o le anteprime vanno spostate in un repository privato.
 
 - **Nagoya Sushi** (`/anteprime/nagoya-sushi/`): concept "Il taglio", scena Three.js
   pinnata (`src/anteprime/nagoya/`). La scadenza è il meta `anteprima-scadenza`

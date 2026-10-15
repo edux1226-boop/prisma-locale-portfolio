@@ -21,13 +21,21 @@ ${scadenza ? `<meta name="anteprima-scadenza" content="${scadenza}">` : ''}
 const FUTURO = '2999-12-31T23:59:59+01:00';
 const PASSATO = '2000-01-01T00:00:00+01:00';
 
-function contesto(html, { tipo = 'text/html; charset=UTF-8', stato = 200 } = {}) {
+/* L'origine finta: come Netlify, risponde a un Range con un pezzo (206) e a un HEAD
+   senza corpo. Ricorda la richiesta che ha ricevuto. */
+function contesto(html, { tipo = 'text/html; charset=UTF-8', stato = 200, ignoraRichiesta = false } = {}) {
   let chiamate = 0;
+  let ultima = null;
   return {
     get chiamate() { return chiamate; },
-    next: async () => {
+    get ultima() { return ultima; },
+    next: async (richiesta) => {
       chiamate += 1;
-      return new Response(html, { status: stato, headers: { 'content-type': tipo, 'x-robots-tag': 'noindex, nofollow', etag: '"abc"' } });
+      ultima = ignoraRichiesta ? null : richiesta || null;
+      const headers = { 'content-type': tipo, 'x-robots-tag': 'noindex, nofollow', etag: '"abc"' };
+      const range = ultima?.headers.get('range') ?? (ignoraRichiesta ? 'bytes=0-40' : null);
+      if (range && stato === 200) return new Response(html.slice(0, 40), { status: 206, headers });
+      return new Response(ultima?.method === 'HEAD' ? null : html, { status: stato, headers });
     },
   };
 }
@@ -106,7 +114,7 @@ test('codice giusto: cookie con l\'impronta (non il codice) e redirect all\'indi
   assert.match(cookie, /^anteprima-anima-concept=[0-9a-f]{64};/);
   assert.match(cookie, /HttpOnly/);
   assert.match(cookie, /Secure/);
-  assert.match(cookie, /Path=\/anteprime\/anima-concept\//);
+  assert.match(cookie, /Path=\/anteprime\/anima-concept;/);
   assert.doesNotMatch(cookie, /codice-di-prova-lungo/);
 });
 
@@ -135,11 +143,20 @@ test('la scadenza vale anche con il codice giusto', async () => {
   assert.equal(r2.status, 410);
 });
 
-test('un valore di ANTEPRIMA_CODICI malformato o troppo corto non blocca e non apre per sbaglio', async () => {
+test('ANTEPRIMA_CODICI scritto male chiude invece di aprire', async () => {
   env.set('ANTEPRIMA_CODICI', '{non json');
-  assert.equal((await anteprime(req('/anteprime/anima-concept/'), contesto(PAGINA(FUTURO)))).status, 200);
+  const ctx = contesto(PAGINA(FUTURO));
+  assert.equal((await anteprime(req('/anteprime/anima-concept/'), ctx)).status, 503);
+  assert.equal((await anteprime(req('/anteprime/borgo-spoltino/'), ctx)).status, 503);
+  assert.equal(ctx.chiamate, 0);
+  env.set('ANTEPRIMA_CODICI', '["anima-concept"]');
+  assert.equal((await anteprime(req('/anteprime/anima-concept/'), contesto(PAGINA(FUTURO)))).status, 503);
+});
+
+test('un codice troppo corto chiude solo la sua anteprima', async () => {
   env.set('ANTEPRIMA_CODICI', JSON.stringify({ 'anima-concept': 'corto' }));
-  assert.equal((await anteprime(req('/anteprime/anima-concept/'), contesto(PAGINA(FUTURO)))).status, 200);
+  assert.equal((await anteprime(req('/anteprime/anima-concept/?k=corto'), contesto(PAGINA(FUTURO)))).status, 503);
+  assert.equal((await anteprime(req('/anteprime/borgo-spoltino/'), contesto(PAGINA(FUTURO)))).status, 200);
 });
 
 test('le risorse non HTML passano con gli header ma senza essere toccate', async () => {
@@ -161,9 +178,68 @@ test('fuori da /anteprime/ o con un nome strano non fa nulla', async () => {
   assert.equal(r.headers.get('cache-control'), null);
 });
 
-test('POST non viene toccato', async () => {
-  const ctx = contesto(PAGINA(PASSATO));
+test('le anteprime si possono solo leggere: POST → 405', async () => {
+  const ctx = contesto(PAGINA(FUTURO));
   const r = await anteprime(req('/anteprime/anima-concept/', { method: 'POST' }), ctx);
-  assert.equal(r.status, 200);
-  assert.equal(r.headers.get('content-security-policy'), null);
+  assert.equal(r.status, 405);
+  assert.equal(r.headers.get('allow'), 'GET, HEAD');
+  assert.equal(ctx.chiamate, 0);
+});
+
+test('indirizzi scritti in altro modo tornano alla forma canonica, senza saltare i controlli', async () => {
+  env.set('ANTEPRIMA_CODICI', JSON.stringify({ 'anima-concept': 'codice-di-prova-lungo' }));
+  for (const [da, a] of [
+    ['/anteprime/anima%2Dconcept/', '/anteprime/anima-concept/'],
+    ['/anteprime/%61nima-concept/?x=1', '/anteprime/anima-concept/?x=1'],
+    ['/anteprime//anima-concept/', '/anteprime/anima-concept/'],
+    ['/anteprime/anima-concept//index.html', '/anteprime/anima-concept/index.html'],
+  ]) {
+    const ctx = contesto(PAGINA(FUTURO));
+    const r = await anteprime(req(da), ctx);
+    assert.equal(r.status, 308, da);
+    assert.equal(r.headers.get('location'), a, da);
+    assert.equal(ctx.chiamate, 0, da);
+  }
+  // e all'indirizzo canonico il codice si chiede ancora
+  assert.equal((await anteprime(req('/anteprime/anima-concept/index.html'), contesto(PAGINA(FUTURO)))).status, 403);
+});
+
+test('un nome di anteprima non valido è 404, senza giri di redirect', async () => {
+  for (const da of ['/anteprime/x%20y/', '/anteprime/Anima-Concept/', '/anteprime/']) {
+    const ctx = contesto(PAGINA(FUTURO));
+    const r = await anteprime(req(da), ctx);
+    assert.equal(r.status, 404, da);
+    assert.equal(ctx.chiamate, 0, da);
+  }
+  assert.equal((await anteprime(req('/anteprime/%E0%A4%A/'), contesto(PAGINA(FUTURO)))).status, 400);
+});
+
+test('la cartella senza barra finale si apre con la barra, codice compreso', async () => {
+  env.set('ANTEPRIMA_CODICI', JSON.stringify({ 'anima-concept': 'codice-di-prova-lungo' }));
+  const r = await anteprime(req('/anteprime/anima-concept?k=codice-di-prova-lungo'), contesto(PAGINA(FUTURO)));
+  assert.equal(r.status, 308);
+  assert.equal(r.headers.get('location'), '/anteprime/anima-concept/?k=codice-di-prova-lungo');
+});
+
+test('Range e richieste condizionali non arrivano all\'origine: la scadenza si legge sempre', async () => {
+  const ctx = contesto(PAGINA(PASSATO));
+  const r = await anteprime(req('/anteprime/anima-concept/', { headers: { range: 'bytes=0-40', 'if-none-match': '"abc"' } }), ctx);
+  assert.equal(r.status, 410);
+  assert.equal(ctx.ultima.headers.get('range'), null);
+  assert.equal(ctx.ultima.headers.get('if-none-match'), null);
+});
+
+test('se l\'origine risponde comunque con un pezzo di pagina, non lo inoltra', async () => {
+  const r = await anteprime(req('/anteprime/anima-concept/', { headers: { range: 'bytes=0-40' } }), contesto(PAGINA(FUTURO), { ignoraRichiesta: true }));
+  assert.equal(r.status, 416);
+});
+
+test('anche un HEAD rispetta la scadenza', async () => {
+  const ctx = contesto(PAGINA(PASSATO));
+  const r = await anteprime(req('/anteprime/anima-concept/', { method: 'HEAD' }), ctx);
+  assert.equal(r.status, 410);
+  assert.equal(ctx.ultima.method, 'GET');
+  const ok = await anteprime(req('/anteprime/anima-concept/', { method: 'HEAD' }), contesto(PAGINA(FUTURO)));
+  assert.equal(ok.status, 200);
+  assert.equal(await ok.text(), '');
 });
