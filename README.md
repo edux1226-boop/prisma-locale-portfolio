@@ -56,6 +56,8 @@ che a sua volta aggiorna ScrollTrigger.
 │       ├── story.js           la vetrina grigia (timeline pinnata)
 │       └── ui/                nav, intro, titoli, banco ottico, modulo
 ├── public/                    font, immagini, favicon, robots, sitemap
+├── netlify/edge-functions/    protezione delle anteprime lato server (scadenza, codice, header)
+├── test/                      test dell'Edge Function (npm test)
 ├── dev/                       pagine di servizio per generare le immagini (non pubblicate)
 └── scripts/render-stills.mjs  rigenera immagini statiche, immagine social e icone
 ```
@@ -125,10 +127,40 @@ la scena si regola da sola (vedi sotto).
 Non sono linkate dal sito, hanno `noindex, nofollow` (meta e header Netlify) e una
 filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
 
+### Protezione lato server
+
+Netlify non esegue PHP: i controlli sul server li fa una **Edge Function**,
+`netlify/edge-functions/anteprime.js`, che gira prima della pagina su ogni richiesta
+sotto `/anteprime/`. Usa solo API web standard e si prova con `npm test`
+(`test/anteprime.test.mjs`, Netlify simulato).
+
+1. **Scadenza.** Legge il meta `anteprima-scadenza` della pagina: dopo quella data
+   risponde `410` con "Anteprima scaduta" e la pagina non viene più inviata. Lo script
+   nella pagina resta, ma non è più l'unica difesa. Una pagina senza meta non scade.
+2. **Codice nel link** (facoltativo, per anteprima). Si attiva con la variabile
+   d'ambiente `ANTEPRIMA_CODICI` su Netlify (*Project configuration → Environment
+   variables*, con l'ambito delle funzioni), un JSON come
+   `{"anima-concept": "un-codice-lungo-e-casuale"}` (almeno 12 caratteri; per
+   generarne uno: `node -e "console.log(crypto.randomBytes(18).toString('base64url'))"`).
+   Al titolare si manda `…/anteprime/anima-concept/?k=<codice>`: il codice giusto lascia
+   un cookie `HttpOnly` con la sua impronta SHA-256 (mai il codice) per 60 giorni e
+   reindirizza all'indirizzo pulito; senza codice o cookie si vede "Anteprima riservata"
+   (`403`). Cambiando il codice, i cookie vecchi smettono di valere. Senza variabile, o
+   senza voce per quell'anteprima, la pagina resta aperta a chi ha il link.
+3. **Header di sicurezza** su tutte le anteprime: niente cache condivisa
+   (`private, no-store`), HSTS, `Cross-Origin-Opener-Policy`, niente inclusione in altri
+   siti. Sulle anteprime elencate nella costante `CSP` (oggi solo `anima-concept`) anche
+   una Content-Security-Policy stretta, con un nonce nuovo a ogni richiesta per gli script
+   in linea: niente risorse esterne, niente stili in linea. Prima di aggiungere
+   un'anteprima alla lista va provata con la policy attiva.
+
+Le immagini e gli script stanno in `/assets/` e restano pubblici a chi ne conosce
+l'indirizzo: la protezione riguarda le pagine (testi, menu, contatti).
+
 - **Nagoya Sushi** (`/anteprime/nagoya-sushi/`): concept "Il taglio", scena Three.js
   pinnata (`src/anteprime/nagoya/`). La scadenza è il meta `anteprima-scadenza`
   nella pagina: dopo quella data resta solo "Anteprima scaduta, contatta Prisma Locale".
-  La scadenza è lato client, quindi è un deterrente, non una protezione.
+  La fa rispettare anche il server (vedi "Protezione lato server").
   Immagini statiche e immagine social: `node scripts/render-nagoya.mjs` con il dev server attivo.
 - **Borgo Spoltino** (`/anteprime/borgo-spoltino/`): location per matrimoni a Mosciano
   Sant'Angelo, concept "Una giornata sul colle". Il sito segue la luce di un matrimonio,

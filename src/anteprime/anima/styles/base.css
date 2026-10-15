@@ -49,6 +49,7 @@ p { text-wrap: pretty; }
 :focus-visible { outline: 2px solid var(--bruciatura); outline-offset: 3px; border-radius: 4px; }
 .scuro :focus-visible { outline-color: var(--crosta); }
 
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 .sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
