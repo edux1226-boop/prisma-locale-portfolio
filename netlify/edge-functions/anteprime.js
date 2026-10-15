@@ -177,15 +177,19 @@ function scadenza(html) {
 
 /* Il percorso com'è davvero: decodificato e senza barre doppie. Netlify trova il file
    anche da /anteprime/anima%2Dconcept/ o da //: tutti questi indirizzi devono passare
-   dagli stessi controlli, mai saltarli. */
-function percorsoCanonico(url) {
+   dagli stessi controlli, mai saltarli. Barre rovesciate e segmenti . o .. non hanno
+   motivo di esserci: si rifiutano (null), così nessun redirect può uscire dalle anteprime. */
+function percorsoCanonico(pathname) {
   let p;
   try {
-    p = decodeURIComponent(url.pathname);
+    p = decodeURIComponent(pathname);
   } catch {
     return null;
   }
-  return p.replace(/\/{2,}/g, '/');
+  if (p.includes('\\')) return null;
+  p = p.replace(/\/{2,}/g, '/');
+  if (p.split('/').some((s) => s === '.' || s === '..')) return null;
+  return p;
 }
 
 function vaiA(location, stato = 308) {
@@ -199,21 +203,30 @@ async function paginaIntera(request, context, url) {
   for (const h of ['range', 'if-range', 'if-none-match', 'if-modified-since']) headers.delete(h);
   try {
     return await context.next(new Request(url.toString(), { method: 'GET', headers }));
-  } catch {
+  } catch (errore) {
+    // se Netlify non accetta la richiesta modificata, la pagina si serve lo stesso,
+    // ma HEAD e Range non sono più garantiti: lo si scrive nei log del deploy
+    console.warn('anteprime: context.next(request) non riuscito, uso la richiesta originale', errore);
     return context.next();
   }
 }
 
 export default async function anteprime(request, context) {
   const url = new URL(request.url);
-  const percorso = percorsoCanonico(url);
-  if (percorso === null) return avviso(400, 'Indirizzo non valido', 'Controlla il link: contiene caratteri non validi.');
+  const nonValido = () => avviso(400, 'Indirizzo non valido', 'Controlla il link: contiene caratteri non validi.');
+  const percorso = percorsoCanonico(url.pathname);
+  if (percorso === null) return nonValido();
   if (!percorso.startsWith('/anteprime/')) return context.next();
 
-  // un indirizzo scritto in un altro modo si riporta alla forma canonica
+  // un indirizzo scritto in un altro modo si riporta alla forma canonica, con un solo
+  // redirect e solo verso le anteprime: se la destinazione non è già canonica, 400
   const canonico = new URL(url);
   canonico.pathname = percorso;
-  if (canonico.pathname !== url.pathname) return vaiA(canonico.pathname + url.search);
+  const destinazione = canonico.pathname;
+  if (destinazione !== url.pathname) {
+    if (!destinazione.startsWith('/anteprime/') || percorsoCanonico(destinazione) !== percorso) return nonValido();
+    return vaiA(destinazione + url.search);
+  }
 
   const parti = percorso.split('/');
   const nome = parti[2] || '';

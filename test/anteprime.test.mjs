@@ -214,6 +214,41 @@ test('un nome di anteprima non valido è 404, senza giri di redirect', async () 
   assert.equal((await anteprime(req('/anteprime/%E0%A4%A/'), contesto(PAGINA(FUTURO)))).status, 400);
 });
 
+test('nessun redirect esce dalle anteprime (niente open redirect)', async () => {
+  for (const da of [
+    '/anteprime/%2e%2e%2f%5cevil.com',
+    '/anteprime/%2E%2E%2F%5Cevil.com/x?y=1',
+    '/anteprime/..%2f%5cevil.com',
+    '/anteprime/..%5c/evil.com/%3fx',
+    '/anteprime/x%2f..%2f..%2f%5cevil.com',
+    '/anteprime/%2e%2e%2f%5c%5cevil.com',
+    '/anteprime/%5c%5cevil.com',
+    '/anteprime/%2e%2e%2findex.html',
+    '/anteprime/anima-concept/%2e%2e%2f%2e%2e%2f',
+    '/anteprime/%2f%2fevil.com',
+  ]) {
+    const ctx = contesto(PAGINA(FUTURO));
+    const r = await anteprime(req(da), ctx);
+    const dove = r.headers.get('location');
+    assert.ok(!dove || (dove.startsWith('/anteprime/') && !dove.startsWith('//')), `${da} → ${dove}`);
+    assert.ok([400, 404, 308].includes(r.status), `${da} → ${r.status}`);
+    assert.equal(ctx.chiamate, 0, da);
+  }
+});
+
+test('il redirect canonico arriva in un passo, mai a un indirizzo da correggere ancora', async () => {
+  for (const da of ['/anteprime/anima-concept/%25', '/anteprime/anima-concept/%2525', '/anteprime/anima-concept/%2525%2532']) {
+    const r = await anteprime(req(da), contesto(PAGINA(FUTURO)));
+    if (r.status === 308) {
+      const dopo = await anteprime(req(r.headers.get('location')), contesto(PAGINA(FUTURO)));
+      assert.notEqual(dopo.status, 308, `${da} → ${r.headers.get('location')}`);
+      assert.notEqual(dopo.status, 400, `${da} → ${r.headers.get('location')}`);
+    } else {
+      assert.equal(r.status, 400, da);
+    }
+  }
+});
+
 test('la cartella senza barra finale si apre con la barra, codice compreso', async () => {
   env.set('ANTEPRIMA_CODICI', JSON.stringify({ 'anima-concept': 'codice-di-prova-lungo' }));
   const r = await anteprime(req('/anteprime/anima-concept?k=codice-di-prova-lungo'), contesto(PAGINA(FUTURO)));
