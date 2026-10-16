@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>L'Antica Ricetta, immagine social</title>
+<style>
+  @font-face { font-family: "Young Serif"; src: url("/assets/fonts/young-serif.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Hanken Grotesk"; src: url("/assets/fonts/hanken-grotesk.woff2") format("woff2"); font-weight: 100 900; }
+  html, body { margin: 0; background: #16110D; }
+  .og {
+    position: relative; width: 1200px; height: 630px; overflow: hidden; color: #F3ECDF;
+    background:
+      radial-gradient(55% 60% at 74% 82%, rgb(214 98 38 / 0.4), transparent 70%),
+      radial-gradient(40% 30% at 70% 96%, rgb(255 160 70 / 0.25), transparent 70%),
+      #16110D;
+  }
+  .og canvas { position: absolute; left: 500px; top: 112px; width: 1150px; height: auto; transform: rotate(-8deg); transform-origin: 0 50%; filter: drop-shadow(0 40px 50px rgb(0 0 0 / 0.55)); }
+  .og p { position: absolute; left: 60px; top: 52px; margin: 0; font: 700 15px/1.6 "Hanken Grotesk", sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: #BFAF9C; }
+  .og h1 { position: absolute; left: 56px; bottom: 54px; margin: 0; font: 400 150px/0.86 "Young Serif", serif; letter-spacing: -0.035em; text-shadow: 0 2px 40px rgb(22 17 13 / 0.6); }
+  .og h1 span { display: block; padding-left: 0.62em; }
+  .og h1 b { font-weight: 400; color: #C23B25; }
+</style>
+</head>
+<body>
+<!-- Pagina di servizio per scripts/render-ricetta.mjs: immagine Open Graph 1200×630. -->
+<div class="og">
+  <canvas></canvas>
+  <p>L'Antica Ricetta · Roseto degli Abruzzi<br>Anteprima riservata · Prisma Locale</p>
+  <h1>Pizza<span>in pala<b>.</b></span></h1>
+</div>
+<script type="module">
+  import { disegnaPala } from '/src/anteprime/ricetta/pala.js';
+  disegnaPala(document.querySelector('canvas'), { larghezza: 2300, conTavola: true, seme: 7 });
+  window.__pronta = true;
+</script>
+</body>
+</html>
