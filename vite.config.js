@@ -17,6 +17,7 @@ export default defineConfig({
         notFound: resolve(root, '404.html'),
         nagoya: resolve(root, 'anteprime/nagoya-sushi/index.html'),
         borgo: resolve(root, 'anteprime/borgo-spoltino/index.html'),
+        ricetta: resolve(root, 'anteprime/lantica-ricetta/index.html'),
       },
     },
   },
