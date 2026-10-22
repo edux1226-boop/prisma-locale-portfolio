@@ -1,0 +1,57 @@
+.atmosfera { padding: var(--sezione) var(--margine); overflow: clip; }
+.testa { display: grid; gap: 1.5rem; margin-bottom: clamp(3rem, 6vw, 5rem); max-width: 50rem; }
+
+.luoghi {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: clamp(3rem, 6vw, 5rem);
+}
+.luogo { display: grid; gap: 1.1rem; align-content: start; }
+.pergola { grid-column: 1 / span 5; grid-row: 1 / span 2; }
+.sala { grid-column: 7 / -1; grid-row: 1; }
+.mare { grid-column: 6 / -1; grid-row: 2; align-self: end; }
+
+.cornice { position: relative; overflow: hidden; }
+.cornice :global(picture), .cornice img { width: 100%; height: 100%; object-fit: cover; }
+.pergola .cornice { aspect-ratio: 4 / 5; }
+.sala .cornice { aspect-ratio: 3 / 2; }
+.mare .cornice { aspect-ratio: 16 / 9; }
+.brezza { position: absolute; inset: -3%; }
+.brezza > * { width: 100%; height: 100%; }
+
+/* La brezza: un respiro lento, sfasato tra le tre immagini. */
+:global(html.motion) .brezza { animation: brezza 11s var(--ease-onda) infinite alternate; }
+:global(html.motion) .sala .brezza { animation-duration: 13s; animation-delay: -4s; }
+:global(html.motion) .mare .brezza { animation-duration: 15s; animation-delay: -7s; }
+@keyframes brezza {
+  from { transform: translate3d(-0.6%, 0.3%, 0) rotate(-0.25deg) scale(1.01); }
+  to { transform: translate3d(0.6%, -0.3%, 0) rotate(0.25deg) scale(1.03); }
+}
+
+/* L'ombra delle foglie della pergola che scorre sulla tovaglia. */
+.foglie {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+  background:
+    radial-gradient(18% 12% at 20% 30%, rgb(16 43 53 / 0.55), transparent 70%),
+    radial-gradient(14% 10% at 55% 20%, rgb(16 43 53 / 0.45), transparent 70%),
+    radial-gradient(20% 14% at 75% 55%, rgb(16 43 53 / 0.5), transparent 70%),
+    radial-gradient(16% 11% at 35% 70%, rgb(16 43 53 / 0.4), transparent 70%),
+    radial-gradient(12% 9% at 85% 85%, rgb(16 43 53 / 0.45), transparent 70%);
+  filter: blur(10px);
+}
+:global(html.motion) .foglie { animation: foglie 9s var(--ease-onda) infinite alternate; }
+@keyframes foglie { to { transform: translate3d(4%, 2.5%, 0) rotate(2deg); } }
+
+.didascalia { display: grid; grid-template-columns: auto 1fr; gap: 0.4rem 1.25rem; align-items: baseline; }
+.nome { font-family: var(--f-serif); font-weight: 400; font-style: italic; font-size: var(--t-l); line-height: 1; }
+.testo { color: var(--tenue); max-width: 26em; }
+
+@media (max-width: 63.99em) {
+  .pergola, .sala, .mare { grid-column: 1 / -1; grid-row: auto; }
+  .didascalia { grid-template-columns: 1fr; }
+}

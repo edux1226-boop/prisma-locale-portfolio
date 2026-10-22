@@ -1,0 +1,17 @@
+.nota { padding: var(--sezione) var(--margine); border-top: 1px dashed var(--filo); }
+.foglio { max-width: 52rem; margin-inline: auto; display: grid; gap: 1.5rem; }
+.sopra { color: var(--terracotta-testo); }
+.intro { color: var(--tenue); }
+.intro strong { color: var(--adriatico); font-weight: 600; }
+.lista { display: grid; border-top: 1px solid var(--filo); }
+.lista li { border-bottom: 1px solid var(--filo); }
+.lista label { display: grid; grid-template-columns: auto 1fr; gap: 1rem; padding-block: 1rem; cursor: pointer; }
+.lista input { width: 22px; height: 22px; margin: 0.15rem 0 0; accent-color: var(--terracotta-testo); }
+.voce { display: grid; gap: 0.2rem; }
+.voce b { font-family: var(--f-serif); font-weight: 400; font-size: 1.35rem; line-height: 1.2; }
+.voce span { color: var(--tenue); font-size: var(--t-small); }
+.piede { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.conto { font-family: var(--f-serif); font-size: 1.5rem; margin-right: auto; }
+.conto span { color: var(--terracotta-testo); }
+.mail { font-size: var(--t-small); color: var(--tenue); }
+.firma { font-size: 0.8125rem; color: var(--tenue); border-top: 1px solid var(--filo); padding-top: 1.25rem; }

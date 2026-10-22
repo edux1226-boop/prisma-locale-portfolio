@@ -1,0 +1,39 @@
+.barra { display: none; }
+
+@media (max-width: 63.99em) {
+  .barra {
+    position: fixed;
+    z-index: 55;
+    left: 10px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgb(var(--notte-rgb) / 0.86);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.45);
+    transition: transform 0.6s var(--ease), opacity 0.4s;
+  }
+  :global(html[data-barra-via]) .barra { transform: translate3d(0, 140%, 0); opacity: 0; }
+}
+
+.chiama, .prenota {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.chiama { flex: none; padding-inline: 1.1rem; color: var(--avorio); border: 1px solid rgb(var(--avorio-rgb) / 0.25); }
+.chiama[aria-disabled="true"] { opacity: 0.45; }
+.prenota { flex: 1; color: var(--bianco); background: var(--terracotta-testo); }
+.chiama svg, .prenota svg { width: 18px; height: 18px; }

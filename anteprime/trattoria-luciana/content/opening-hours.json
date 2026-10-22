@@ -1,0 +1,19 @@
+{
+  "pranzo": {
+    "value": { "dalle": "12:30", "alle": "15:00" },
+    "status": "needs_confirmation",
+    "nota": "Orari d'esempio."
+  },
+  "cena": {
+    "value": { "dalle": "19:30", "alle": "23:00" },
+    "status": "needs_confirmation",
+    "nota": "Orari d'esempio."
+  },
+  "giornoChiusura": { "value": null, "status": "needs_confirmation" },
+  "stagionalita": {
+    "value": null,
+    "status": "needs_confirmation",
+    "nota": "Aperti tutto l'anno o solo in alcuni mesi? Eventuali ferie."
+  },
+  "eccezioni": []
+}

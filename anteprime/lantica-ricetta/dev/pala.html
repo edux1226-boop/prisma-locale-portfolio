@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><title>Pala · banco di prova</title>
+<style>body{margin:0;background:#17120E;display:grid;gap:30px;padding:30px}canvas{width:100%;height:auto}</style></head>
+<body>
+<canvas id="a"></canvas><canvas id="b"></canvas><canvas id="c"></canvas>
+<script type="module">
+import { disegnaPala } from '/anteprime/lantica-ricetta/src/pala.js';
+const t0 = performance.now();
+disegnaPala(document.getElementById('a'), { larghezza: 2400, conTavola: true });
+const t1 = performance.now();
+disegnaPala(document.getElementById('b'), { larghezza: 2400 });
+disegnaPala(document.getElementById('c'), { larghezza: 1600, gusti: ['rossa'] , seme: 3});
+document.title = `ok ${(t1 - t0).toFixed(0)}ms`;
+</script>
+</body></html>

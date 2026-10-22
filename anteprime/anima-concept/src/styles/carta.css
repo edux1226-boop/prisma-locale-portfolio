@@ -1,0 +1,105 @@
+/* ---- Il menu: un foglio stampato sul banco di semola -------------------- */
+.carta {
+  padding: clamp(40px, 6vh, 72px) var(--margine) clamp(80px, 12vh, 140px);
+  background: var(--semola);
+}
+.carta__inizio { max-width: var(--largo); margin: 0 auto 36px; display: grid; gap: 18px 56px; }
+.carta__h2 { font-size: var(--t-xxl); line-height: 0.92; }
+.carta__lead { font-size: var(--t-m); line-height: 1.45; max-width: 30rem; }
+.carta__avvisi { display: grid; gap: 10px; max-width: 34rem; font-size: 0.9375rem; color: var(--tenue); }
+.carta__avvisi strong { color: var(--bruciatura); }
+.carta__avvisi a { color: var(--bruciatura); font-weight: 600; }
+@media (min-width: 64em) {
+  .carta__inizio { grid-template-columns: 5fr 7fr; align-items: end; }
+  .carta__h2 { grid-row: span 2; }
+}
+
+.carta__corpo { max-width: var(--largo); margin-inline: auto; display: grid; gap: 24px; }
+
+/* indice: su telefono una fila che scorre sotto la testata, su desktop una colonna */
+.carta__indice ul { display: flex; gap: 6px; }
+.carta__indice a {
+  display: inline-flex; align-items: center;
+  min-height: 40px; padding: 0 14px;
+  border-radius: 999px;
+  font-size: 0.875rem; font-weight: 650; text-decoration: none; white-space: nowrap;
+  color: var(--tenue);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.carta__indice a:hover { color: var(--bruciatura); background: rgb(38 23 15 / 0.06); }
+.carta__indice a[aria-current="true"] { background: var(--bruciatura); color: var(--mozzarella); }
+@media (max-width: 63.99em) {
+  .carta__indice {
+    position: sticky; top: var(--testata-h); z-index: 20;
+    margin: 0 calc(var(--margine) * -1);
+    padding: 8px var(--margine);
+    background: rgb(241 231 200 / 0.96);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .carta__indice::-webkit-scrollbar { display: none; }
+}
+@media (min-width: 64em) {
+  .carta__corpo { grid-template-columns: 13rem 1fr; gap: 40px; align-items: start; }
+  .carta__indice { position: sticky; top: calc(var(--testata-h) + 24px); }
+  .carta__indice ul { flex-direction: column; align-items: flex-start; gap: 2px; }
+}
+
+.carta__foglio {
+  display: grid; gap: clamp(40px, 6vw, 64px);
+  padding: clamp(24px, 4vw, 56px);
+  border-radius: calc(var(--raggio) + 6px);
+  background: var(--mozzarella);
+}
+.carta__sezione { scroll-margin-top: calc(var(--testata-h) + 72px); }
+@media (min-width: 64em) { .carta__sezione { scroll-margin-top: calc(var(--testata-h) + 24px); } }
+
+.carta__testa { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline; margin-bottom: 22px; }
+.carta__titolo { font-size: var(--t-l); }
+.carta__intro { grid-column: 1; color: var(--tenue); font-size: 0.9375rem; }
+.carta__conta { grid-column: 2; grid-row: 1; font-size: 0.8125rem; font-weight: 600; color: var(--tenue); white-space: nowrap; }
+
+.carta__voci { display: grid; gap: 0 40px; }
+@media (min-width: 48em) { .carta__voci { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 48em) { .carta__sezione--fitta .carta__voci { grid-template-columns: repeat(3, 1fr); } }
+
+.piatto {
+  display: grid; grid-template-columns: 1fr auto; gap: 2px 14px;
+  padding: 14px 0 16px;
+  border-top: 1px solid var(--linea);
+}
+.piatto--breve { padding: 10px 0 12px; }
+.piatto__nome {
+  font-size: 1.1875rem; font-weight: 650; line-height: 1.2; letter-spacing: -0.005em;
+  font-variation-settings: "SOFT" 70;
+}
+.piatto__prezzo { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.piatto__prezzo--varianti { display: grid; justify-items: end; gap: 0; font-size: 0.9375rem; }
+.piatto__variante { font-weight: 700; }
+.piatto__desc { grid-column: 1 / -1; font-size: 0.9375rem; line-height: 1.5; color: var(--tenue); max-width: 34em; }
+.piatto__meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 6px; font-size: 0.75rem; }
+.piatto__all { color: var(--tenue); font-weight: 600; font-variant-numeric: tabular-nums; }
+.piatto__all abbr { text-decoration: none; }
+.tag { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; }
+.tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.tag--veg { color: var(--basilico); }
+.tag--abruzzo { color: #7A4A1C; }
+.tag--illusione { color: var(--pomodoro-scuro); }
+
+/* le introvabili: in negativo, perché sono l'insolito della carta */
+.carta__sezione--scura {
+  margin-inline: calc(clamp(24px, 4vw, 56px) * -0.5);
+  padding: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 36px);
+  border-radius: var(--raggio);
+  background: var(--bruciatura);
+  color: var(--mozzarella);
+}
+.carta__sezione--scura .piatto { border-top-color: var(--linea-chiara); }
+.carta__sezione--scura .carta__intro,
+.carta__sezione--scura .carta__conta,
+.carta__sezione--scura .piatto__desc,
+.carta__sezione--scura .piatto__all { color: var(--tenue-chiaro); }
+.carta__sezione--scura .tag--veg { color: #9FCC8E; }
+.carta__sezione--scura .tag--abruzzo { color: #E8B77A; }
+.carta__sezione--scura :focus-visible { outline-color: var(--crosta); }

@@ -1,0 +1,93 @@
+.indice {
+  position: sticky;
+  top: var(--testata-h);
+  z-index: 10;
+  border-bottom: 1px solid var(--filo);
+  background: rgb(250 247 240 / 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: top 0.6s var(--ease);
+}
+:global(html[data-testata-via]) .indice { top: 0; }
+.indice ul {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.65rem var(--margine);
+}
+.indice a {
+  display: inline-block;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--filo);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+}
+.indice a:hover, .indice a[aria-current="true"] { background: var(--adriatico); color: var(--avorio); border-color: var(--adriatico); }
+
+.carta { padding: clamp(3rem, 6vw, 5rem) var(--margine) var(--sezione); }
+.categoria {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  scroll-margin-top: calc(var(--testata-h) + 4.5rem);
+  border-top: 1px solid var(--filo);
+}
+.categoria:first-child { border-top: 0; }
+.testaCategoria { grid-column: 1 / span 4; display: grid; gap: 0.75rem; align-content: start; position: sticky; top: calc(var(--testata-h) + 6rem); }
+.notaCategoria { color: var(--tenue); font-style: italic; font-family: var(--f-serif); font-size: 1.2rem; }
+.piatti { grid-column: 6 / -1; }
+.piatto {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding-block: 1.4rem;
+  border-bottom: 1px dotted rgb(var(--adriatico-rgb) / 0.25);
+}
+.piatto:first-child { padding-top: 0; }
+.nomi { display: grid; gap: 0.35rem; }
+.nome { font-family: var(--f-serif); font-weight: 400; font-size: 1.7rem; line-height: 1.1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
+.giorno { color: var(--bianco); background: var(--terracotta-testo); border-radius: 999px; padding: 0.3em 0.75em; font-size: 0.625rem; }
+.traduzione { font-size: var(--t-small); color: var(--tenue); }
+.descrizione { color: var(--tenue); max-width: 34em; }
+.dettagli { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin-top: 0.3rem; }
+.disponibilita { color: var(--terracotta-testo); font-size: 0.625rem; }
+.allergeni { display: inline-flex; gap: 0.25rem; align-items: center; }
+.allergene {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  padding-inline: 0.2rem;
+  border: 1px solid rgb(var(--adriatico-rgb) / 0.35);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  color: var(--tenue);
+}
+.prezzo { font-family: var(--f-serif); font-size: 1.5rem; white-space: nowrap; text-align: right; }
+.prezzo :global(.tenue) { font-family: var(--f-sans); font-size: 0.75rem; }
+
+.note { display: grid; gap: 0.5rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--filo); font-size: var(--t-small); color: var(--tenue); max-width: 60rem; }
+.coperto { font-family: var(--f-serif); font-size: 1.35rem; color: var(--adriatico); }
+
+.vuoto { display: grid; gap: 1.5rem; justify-items: start; padding: var(--sezione) var(--margine); }
+
+.legenda { padding: clamp(3rem, 6vw, 5rem) var(--margine); display: grid; gap: 1.25rem; }
+.legendaNota { max-width: 48em; color: var(--tenue); }
+.legendaLista { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 0.6rem 1.5rem; }
+.legendaLista li { display: flex; align-items: center; gap: 0.6rem; }
+
+@media (max-width: 63.99em) {
+  .testaCategoria, .piatti { grid-column: 1 / -1; position: static; }
+  .testaCategoria { margin-bottom: 1.5rem; }
+}

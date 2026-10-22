@@ -1,0 +1,75 @@
+{
+  "_leggimi": "Dati del ristorante, usati in tutte le pagine e nei dati strutturati. [dc] in un testo = da confermare (si vede solo nell'anteprima).",
+  "_fonti": "Nome, indirizzo, telefoni, email e titolare: PagineGialle, PagineBianche e il sito attuale ristorantepaparill.it (ottobre 2026). Voto e recensioni: TripAdvisor. Gli orari pubblicati online non coincidono tra le fonti: da confermare.",
+  "nome": "La Casetta di Paparill",
+  "nomeCompleto": "Ristorante La Casetta di Paparill",
+  "descrizione": "Ristorante di cucina abruzzese e teramana a Roseto degli Abruzzi: pasta fatta in casa, agnello, arrosticini e dolci della casa.",
+  "titolare": "Vincenzo Caterini",
+  "cucina": ["Abruzzese", "Teramana", "Italiana"],
+  "fasciaPrezzo": "€€",
+  "prezzoMedio": "25–35 € a persona [dc]",
+  "indirizzo": {
+    "via": "Via Salara 11",
+    "cap": "64026",
+    "citta": "Roseto degli Abruzzi",
+    "provincia": "TE",
+    "regione": "Abruzzo",
+    "paese": "IT"
+  },
+  "coordinate": null,
+  "_coordinate": "Da copiare da Google Maps quando il titolare conferma la posizione: { \"lat\": 42.xxx, \"lng\": 14.xxx }",
+  "telefono": { "numero": "+390858998167", "visibile": "085 899 8167" },
+  "cellulare": { "numero": "+393385807188", "visibile": "338 580 7188" },
+  "whatsapp": { "numero": "393385807188", "visibile": "338 580 7188", "daConfermare": true },
+  "email": "info@ristorantepaparill.it",
+  "orari": {
+    "daConfermare": true,
+    "giorni": [
+      { "nome": "lunedì", "breve": "lun", "schema": "Monday", "fasce": [["19:00", "23:00"]] },
+      { "nome": "martedì", "breve": "mar", "schema": "Tuesday", "fasce": [["19:00", "23:00"]] },
+      { "nome": "mercoledì", "breve": "mer", "schema": "Wednesday", "fasce": [] },
+      { "nome": "giovedì", "breve": "gio", "schema": "Thursday", "fasce": [["19:00", "23:00"]] },
+      { "nome": "venerdì", "breve": "ven", "schema": "Friday", "fasce": [["19:00", "23:00"]] },
+      { "nome": "sabato", "breve": "sab", "schema": "Saturday", "fasce": [["19:00", "23:00"]] },
+      { "nome": "domenica", "breve": "dom", "schema": "Sunday", "fasce": [["12:00", "15:00"], ["19:00", "23:00"]] }
+    ],
+    "chiusura": "mercoledì",
+    "nota": "Ferie e aperture straordinarie sono indicate qui e su Google. [dc]"
+  },
+  "prenotazioni": {
+    "tempoRisposta": "Rispondiamo entro 2 ore, negli orari di apertura. [dc]",
+    "gruppi": 10,
+    "notaGruppi": "Per gruppi oltre 10 persone chiamaci direttamente: prepariamo la sala e il menu insieme a te."
+  },
+  "arrivare": {
+    "auto": "A14, uscita Roseto degli Abruzzi.",
+    "treno": "Stazione di Roseto degli Abruzzi, linea adriatica. [dc]",
+    "autobus": "Fermata più vicina e linee: [dc]",
+    "parcheggio": "Parcheggio pubblico nelle vicinanze. [dc]"
+  },
+  "tripadvisor": {
+    "url": "https://www.tripadvisor.it/Restaurant_Review-g194888-d2168965-Reviews-Ristorante_La_Casetta_di_Paparill-Roseto_Degli_Abruzzi_Province_of_Teramo_Abruzzo.html",
+    "voto": 4.5,
+    "recensioni": 580,
+    "widget": null
+  },
+  "thefork": {
+    "url": null,
+    "widget": null,
+    "voto": null,
+    "_leggimi": "url = pagina del ristorante su TheFork; widget = indirizzo dell'iframe di prenotazione da TheFork Manager (Impostazioni → Widget)."
+  },
+  "google": {
+    "mappe": "https://www.google.com/maps/search/?api=1&query=Ristorante%20La%20Casetta%20di%20Paparill%2C%20Via%20Salara%2011%2C%2064026%20Roseto%20degli%20Abruzzi%20TE",
+    "indicazioni": "https://www.google.com/maps/dir/?api=1&destination=Ristorante%20La%20Casetta%20di%20Paparill%2C%20Via%20Salara%2011%2C%2064026%20Roseto%20degli%20Abruzzi%20TE",
+    "embed": "https://www.google.com/maps?q=Ristorante%20La%20Casetta%20di%20Paparill%2C%20Via%20Salara%2011%2C%20Roseto%20degli%20Abruzzi&output=embed"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/ristorantelacasettadipaparill/",
+    "instagram": null
+  },
+  "legale": {
+    "ragioneSociale": "[dc]",
+    "partitaIva": "[dc]"
+  }
+}

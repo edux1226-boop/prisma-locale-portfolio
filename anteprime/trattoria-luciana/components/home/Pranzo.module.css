@@ -1,0 +1,46 @@
+.pranzo {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 3rem;
+  align-items: center;
+  padding: var(--sezione) var(--margine);
+}
+.testo { grid-column: 1 / span 6; display: grid; gap: 1.75rem; justify-items: start; }
+.titolo { font-style: italic; color: var(--terracotta); max-width: 9ch; }
+.corpo { color: var(--adriatico); max-width: 30em; }
+
+/* Il cartoncino del menu del giorno: carta bianca, filo ottone, ombra leggera. */
+.cartoncino {
+  grid-column: 8 / -1;
+  position: relative;
+  display: grid;
+  gap: 1.75rem;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  background: var(--bianco);
+  border: 1px solid rgb(var(--ottone-rgb) / 0.55);
+  outline: 1px solid rgb(var(--ottone-rgb) / 0.35);
+  outline-offset: -8px;
+  box-shadow: 0 40px 60px -40px rgb(var(--notte-rgb) / 0.4);
+  transform: rotate(1.2deg);
+}
+.disegno { position: absolute; top: 1.25rem; right: 1.25rem; width: 64px; color: var(--ottone); }
+.dati { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.dati dt { color: var(--accento-testo, var(--terracotta-testo)); margin-bottom: 0.3rem; }
+.dati dd { font-family: var(--f-serif); font-size: 1.5rem; line-height: 1.15; }
+.prezzo { grid-column: 1 / -1; padding-top: 1rem; border-top: 1px dashed var(--filo); }
+.cifra { font-size: var(--t-xl); line-height: 1; }
+.blocco { display: grid; gap: 0.75rem; }
+.blocco h3 { color: var(--accento-testo, var(--terracotta-testo)); }
+.lista { display: grid; gap: 0.35rem; }
+.lista li::before { content: "— "; color: var(--ottone); }
+.oggi { display: grid; gap: 0.6rem; }
+.oggi li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; align-items: baseline; }
+.portata { color: var(--tenue); }
+.piatto { font-family: var(--f-serif); font-size: 1.3rem; line-height: 1.2; }
+.nota { font-size: var(--t-small); color: var(--tenue); font-style: italic; }
+
+@media (max-width: 63.99em) {
+  .testo, .cartoncino { grid-column: 1 / -1; }
+  .cartoncino { transform: none; }
+}

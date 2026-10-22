@@ -1,0 +1,21 @@
+{
+  "_leggimi": "Le recensioni in homepage. Nell'anteprima sono d'esempio: al lancio si usa il widget ufficiale di TripAdvisor (ristorante.json → tripadvisor.widget) oppure frasi di ospiti veri, con il loro permesso.",
+  "esempio": true,
+  "voci": [
+    {
+      "voto": 5,
+      "titolo": "Come a casa della nonna",
+      "testo": "La chitarra con le pallottine è proprio quella di una volta, e gli arrosticini sono perfetti. Accoglienza calorosa, torneremo."
+    },
+    {
+      "voto": 5,
+      "titolo": "Pasta fatta in casa vera",
+      "testo": "Si sente che la pasta è tirata a mano. Porzioni generose, prezzi onesti e un servizio cordiale dall'inizio alla fine."
+    },
+    {
+      "voto": 4,
+      "titolo": "Tappa fissa delle vacanze",
+      "testo": "In vacanza a Roseto ci siamo tornati due volte in una settimana. L'agnello alla diavola da solo vale il viaggio."
+    }
+  ]
+}

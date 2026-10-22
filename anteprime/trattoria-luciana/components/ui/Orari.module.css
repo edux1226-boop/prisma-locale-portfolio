@@ -1,0 +1,11 @@
+.orari { display: grid; gap: 0.6rem; }
+.riga { display: grid; grid-template-columns: minmax(7.5rem, auto) 1fr; gap: 0.25rem 1rem; align-items: baseline; }
+.riga dt { color: var(--tenue-t); font-size: var(--t-small); }
+.riga dd { font-variant-numeric: tabular-nums; }
+
+.settimana { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-variant-numeric: tabular-nums; }
+.settimana th, .settimana td { padding: 0.8rem 0.5rem 0.8rem 0; text-align: left; border-bottom: 1px solid var(--filo); font-weight: 400; }
+.settimana thead th { color: var(--tenue-t); padding-top: 0; }
+.settimana tbody th { font-family: var(--f-serif); font-size: 1.25rem; }
+.chiuso td, .chiuso th { color: var(--tenue-t); }
+.chiuso td { font-style: italic; font-family: var(--f-serif); font-size: 1.125rem; }

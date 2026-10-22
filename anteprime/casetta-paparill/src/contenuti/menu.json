@@ -1,0 +1,332 @@
+{
+  "_leggimi": "Il menu: sezioni, piatti, prezzi in euro, allergeni (chiavi dell'elenco qui sotto). foto = nome del file in /assets/img/casetta/piatti/ (senza misura). consigliato = tag 'Consigliato dallo chef'.",
+  "daConfermare": true,
+  "allergeni": {
+    "glutine": "Glutine",
+    "crostacei": "Crostacei",
+    "uova": "Uova",
+    "pesce": "Pesce",
+    "arachidi": "Arachidi",
+    "soia": "Soia",
+    "latte": "Latte e lattosio",
+    "frutta-a-guscio": "Frutta a guscio",
+    "sedano": "Sedano",
+    "senape": "Senape",
+    "sesamo": "Sesamo",
+    "solfiti": "Anidride solforosa e solfiti",
+    "lupini": "Lupini",
+    "molluschi": "Molluschi"
+  },
+  "sezioni": [
+    {
+      "id": "antipasti",
+      "titolo": "Antipasti della tradizione",
+      "breve": "Antipasti",
+      "intro": "Per cominciare come si fa a casa: qualcosa da condividere al centro del tavolo.",
+      "piatti": [
+        {
+          "id": "tagliere",
+          "nome": "Tagliere della Casetta",
+          "descrizione": "Ventricina, salsicciotto e lonza di maiale, pecorino e caciocavallo, bruschetta all'olio extravergine.",
+          "prezzo": 14,
+          "allergeni": ["glutine", "latte"],
+          "foto": "tagliere",
+          "fotoAlt": "Tagliere di legno con salumi abruzzesi affettati, spicchi di pecorino, caciocavallo e fette di pane abbrustolito, visto dall'alto."
+        },
+        {
+          "id": "pallotte",
+          "nome": "Pallotte cace e ove",
+          "descrizione": "Polpette di formaggio e uova, senza carne, cotte piano nel sugo di pomodoro. Come le faceva la nonna.",
+          "prezzo": 9,
+          "allergeni": ["glutine", "uova", "latte"],
+          "vegetariano": true,
+          "foto": "pallotte",
+          "fotoAlt": "Tegame di coccio con polpette dorate di formaggio e uova immerse nel sugo di pomodoro, con foglie di basilico."
+        },
+        {
+          "id": "pizza-e-foje",
+          "nome": "Pizza e foje",
+          "descrizione": "Pizza di granturco sbriciolata con le verdure di campo ripassate in padella, aglio e peperoncino.",
+          "prezzo": 9,
+          "allergeni": [],
+          "vegetariano": true,
+          "senzaGlutine": true,
+          "foto": "pizza-e-foje",
+          "fotoAlt": "Piatto di verdure di campo ripassate con pezzi di pizza di granturco dorata, aglio e peperoncino rosso."
+        },
+        {
+          "id": "formaggi",
+          "nome": "Formaggi d'Abruzzo",
+          "descrizione": "Pecorino stagionato, caciotta e ricotta fresca, con miele millefiori, noci e confetture della casa.",
+          "prezzo": 12,
+          "allergeni": ["latte", "frutta-a-guscio"],
+          "vegetariano": true,
+          "senzaGlutine": true,
+          "foto": "formaggi",
+          "fotoAlt": "Tagliere con spicchi di pecorino stagionato, caciotta, ricotta fresca, una ciotola di miele e gherigli di noce."
+        },
+        {
+          "id": "bruschetta",
+          "nome": "Bruschetta all'olio nuovo",
+          "descrizione": "Pane casereccio abbrustolito, aglio e olio extravergine d'oliva abruzzese, nei mesi della raccolta.",
+          "prezzo": 4,
+          "allergeni": ["glutine"],
+          "vegetariano": true,
+          "stagionale": true
+        }
+      ]
+    },
+    {
+      "id": "primi",
+      "titolo": "Primi: la pasta fatta in casa",
+      "breve": "Primi",
+      "intro": "Impastata e tirata a mano ogni giorno, con farine di grani teramani macinati a pietra.",
+      "piatti": [
+        {
+          "id": "chitarra-pallottine",
+          "nome": "Chitarra con le pallottine",
+          "descrizione": "Spaghetti alla chitarra con polpettine di carne piccolissime nel sugo di pomodoro e una grattata di pecorino.",
+          "prezzo": 12,
+          "allergeni": ["glutine", "uova", "latte", "sedano"],
+          "consigliato": true,
+          "foto": "chitarra-pallottine",
+          "fotoAlt": "Piatto di spaghetti alla chitarra al sugo di pomodoro con tante piccole polpette, pecorino grattugiato e una foglia di basilico."
+        },
+        {
+          "id": "mugnaia",
+          "nome": "Pasta alla mugnaia al sugo abruzzese",
+          "descrizione": "Un solo lungo filo di pasta tirato a mano, spesso e irregolare, con il ragù di agnello, maiale e manzo.",
+          "prezzo": 13,
+          "allergeni": ["glutine", "latte", "sedano"],
+          "consigliato": true,
+          "foto": "mugnaia",
+          "fotoAlt": "Pasta alla mugnaia spessa e irregolare, avvolta nel piatto e condita con un ragù rosso scuro di carne."
+        },
+        {
+          "id": "scrippelle",
+          "nome": "Scrippelle 'mbusse",
+          "descrizione": "Crespelle sottili al pecorino, arrotolate e servite nel brodo di gallina. Il piatto della festa a Teramo.",
+          "prezzo": 10,
+          "allergeni": ["glutine", "uova", "latte", "sedano"],
+          "foto": "scrippelle",
+          "fotoAlt": "Scodella di coccio con crespelle arrotolate che galleggiano nel brodo dorato, con pecorino grattugiato."
+        },
+        {
+          "id": "timballo",
+          "nome": "Timballo teramano",
+          "descrizione": "Strati di scrippelle con ragù, polpettine, scamorza e pecorino, gratinati al forno.",
+          "prezzo": 13,
+          "allergeni": ["glutine", "uova", "latte", "sedano"],
+          "foto": "timballo",
+          "fotoAlt": "Porzione quadrata di timballo gratinato, con il ragù che scende sui bordi del piatto."
+        },
+        {
+          "id": "chitarra-tartufo",
+          "nome": "Chitarra al tartufo nero",
+          "descrizione": "Spaghetti alla chitarra mantecati al burro, con tartufo nero abruzzese grattugiato al tavolo. Quando c'è.",
+          "prezzo": 18,
+          "allergeni": ["glutine", "uova", "latte"],
+          "vegetariano": true,
+          "stagionale": true,
+          "foto": "chitarra-tartufo",
+          "fotoAlt": "Nido di spaghetti alla chitarra chiari e lucidi coperti di lamelle di tartufo nero, con un tartufo intero accanto al piatto."
+        },
+        {
+          "id": "ravioli",
+          "nome": "Ravioli di ricotta al pomodoro",
+          "descrizione": "Ravioli fatti a mano ripieni di ricotta di pecora, con sugo di pomodoro fresco e basilico.",
+          "prezzo": 11,
+          "allergeni": ["glutine", "uova", "latte"],
+          "vegetariano": true,
+          "foto": "ravioli",
+          "fotoAlt": "Ravioli quadrati con il bordo pizzicato, nel sugo di pomodoro, con foglie di basilico."
+        },
+        {
+          "id": "sagne-e-ceci",
+          "nome": "Sagne e ceci",
+          "descrizione": "Pasta di acqua e farina tagliata a losanghe, con ceci, rosmarino e un filo d'olio nuovo.",
+          "prezzo": 10,
+          "allergeni": ["glutine", "sedano"],
+          "vegetariano": true,
+          "foto": "sagne-e-ceci",
+          "fotoAlt": "Scodella di sagne a losanghe con ceci, un rametto di rosmarino e un filo d'olio verde."
+        }
+      ]
+    },
+    {
+      "id": "carne",
+      "titolo": "Carne e specialità abruzzesi",
+      "breve": "Carne",
+      "intro": "Agnello e pecora del territorio, la brace accesa ogni sera.",
+      "piatti": [
+        {
+          "id": "arrosticini",
+          "nome": "Arrosticini",
+          "descrizione": "Spiedini di carne di pecora tagliata a mano, cotti sulla brace della canala. Porzione da 10.",
+          "prezzo": 13,
+          "allergeni": [],
+          "senzaGlutine": true,
+          "consigliato": true,
+          "foto": "arrosticini",
+          "fotoAlt": "Dieci arrosticini affiancati, con i cubetti di carne dorati dalla brace, una fetta di pane e una ciotolina di sale."
+        },
+        {
+          "id": "agnello-diavola",
+          "nome": "Agnello alla diavola",
+          "descrizione": "Agnello del Centro Italia IGP alla brace, con pepe, peperoncino ed erbe, servito con patate al forno.",
+          "prezzo": 18,
+          "allergeni": [],
+          "senzaGlutine": true,
+          "consigliato": true,
+          "foto": "agnello-diavola",
+          "fotoAlt": "Costolette d'agnello alla brace con i segni della griglia, peperoncino, rosmarino e patate al forno."
+        },
+        {
+          "id": "agnello-cacio-ova",
+          "nome": "Agnello cacio e ova",
+          "descrizione": "Spezzatino d'agnello cotto lentamente e legato con uova e pecorino. La ricetta di Pasqua, tutto l'anno.",
+          "prezzo": 16,
+          "allergeni": ["uova", "latte"],
+          "senzaGlutine": true
+        },
+        {
+          "id": "mazzarelle",
+          "nome": "Mazzarelle teramane",
+          "descrizione": "Involtini di interiora d'agnello avvolti nelle foglie di indivia, cotti piano nel vino bianco.",
+          "prezzo": 14,
+          "allergeni": ["solfiti"],
+          "senzaGlutine": true
+        },
+        {
+          "id": "grigliata",
+          "nome": "Grigliata mista della casa",
+          "descrizione": "Salsiccia, costolette d'agnello, pancetta e arrosticini, con verdure grigliate.",
+          "prezzo": 20,
+          "allergeni": [],
+          "senzaGlutine": true,
+          "foto": "grigliata",
+          "fotoAlt": "Tagliere con salsiccia, costolette, fette di pancetta e arrosticini alla brace, con verdure grigliate."
+        },
+        {
+          "id": "tagliata",
+          "nome": "Tagliata di manzo",
+          "descrizione": "Controfiletto alla brace tagliato al momento, con rucola e scaglie di pecorino.",
+          "prezzo": 19,
+          "allergeni": ["latte"],
+          "senzaGlutine": true
+        }
+      ]
+    },
+    {
+      "id": "contorni",
+      "titolo": "Contorni",
+      "breve": "Contorni",
+      "intro": "Verdure dell'orto e della campagna, secondo stagione.",
+      "piatti": [
+        { "id": "patate", "nome": "Patate al forno", "descrizione": "Con rosmarino, aglio in camicia e olio extravergine.", "prezzo": 5, "allergeni": [], "vegetariano": true, "senzaGlutine": true },
+        { "id": "verdure", "nome": "Verdure di campo ripassate", "descrizione": "Cicoria e bieta in padella con aglio, olio e peperoncino.", "prezzo": 5, "allergeni": [], "vegetariano": true, "senzaGlutine": true },
+        { "id": "peperoni", "nome": "Peperoni arrostiti", "descrizione": "Spellati a mano e conditi con olio, aglio e prezzemolo.", "prezzo": 5, "allergeni": [], "vegetariano": true, "senzaGlutine": true },
+        { "id": "insalata", "nome": "Insalata di stagione", "descrizione": "Verdure dell'orto, secondo il mercato del giorno.", "prezzo": 4, "allergeni": [], "vegetariano": true, "senzaGlutine": true }
+      ]
+    },
+    {
+      "id": "dolci",
+      "titolo": "Dolci fatti in casa",
+      "breve": "Dolci",
+      "intro": "Tutti nostri, spesso preparati in giornata con quello che offre la stagione.",
+      "piatti": [
+        {
+          "id": "pizza-dolce",
+          "nome": "Pizza dolce teramana",
+          "descrizione": "Pan di Spagna bagnato al liquore, con crema alla vaniglia e al cioccolato e mandorle tostate.",
+          "prezzo": 6,
+          "allergeni": ["glutine", "uova", "latte", "frutta-a-guscio"],
+          "vegetariano": true,
+          "foto": "pizza-dolce",
+          "fotoAlt": "Fetta di pizza dolce teramana con crema chiara, scaglie di cioccolato e mandorle tostate, nel piattino da dessert."
+        },
+        {
+          "id": "bocconotti",
+          "nome": "Bocconotti",
+          "descrizione": "Cestini di pasta frolla ripieni di cioccolato e mandorle, spolverati di zucchero a velo.",
+          "prezzo": 5,
+          "allergeni": ["glutine", "uova", "latte", "frutta-a-guscio"],
+          "vegetariano": true,
+          "foto": "bocconotti",
+          "fotoAlt": "Tre bocconotti di pasta frolla dal bordo ondulato, spolverati di zucchero a velo."
+        },
+        {
+          "id": "ferratelle",
+          "nome": "Ferratelle con crema e amarene",
+          "descrizione": "Le cialde cotte sul ferro, come una volta, con crema pasticcera e amarene sciroppate.",
+          "prezzo": 5,
+          "allergeni": ["glutine", "uova", "latte"],
+          "vegetariano": true
+        },
+        {
+          "id": "tiramisu",
+          "nome": "Tiramisù della casa",
+          "descrizione": "Savoiardi, caffè della moka e crema al mascarpone, preparato ogni mattina.",
+          "prezzo": 6,
+          "allergeni": ["glutine", "uova", "latte"],
+          "vegetariano": true
+        },
+        {
+          "id": "panna-cotta",
+          "nome": "Panna cotta al mosto cotto",
+          "descrizione": "Con la riduzione di mosto d'uva: il dolce della vendemmia.",
+          "prezzo": 5,
+          "allergeni": ["latte"],
+          "senzaGlutine": true
+        }
+      ]
+    }
+  ],
+  "degustazioni": {
+    "id": "degustazione",
+    "titolo": "I menu degustazione",
+    "breve": "Degustazione",
+    "intro": "Per tutto il tavolo, da prenotare insieme al tavolo. Bevande escluse.",
+    "menu": [
+      {
+        "id": "tradizione",
+        "nome": "Menu della Tradizione",
+        "portate": 5,
+        "prezzo": 35,
+        "descrizione": "I classici della Casetta, dall'antipasto al dolce.",
+        "piatti": ["Tagliere della Casetta", "Scrippelle 'mbusse", "Chitarra con le pallottine", "Arrosticini con verdure ripassate", "Pizza dolce teramana"]
+      },
+      {
+        "id": "teramano",
+        "nome": "Menu Teramano",
+        "portate": 7,
+        "prezzo": 45,
+        "descrizione": "Un giro completo della cucina teramana, piatto dopo piatto.",
+        "piatti": ["Pallotte cace e ove", "Pizza e foje", "Timballo teramano", "Pasta alla mugnaia al sugo abruzzese", "Agnello alla diavola con patate al forno", "Formaggi d'Abruzzo con miele", "Bocconotti e ferratelle"]
+      }
+    ]
+  },
+  "vini": {
+    "id": "vini",
+    "titolo": "La cantina: vini d'Abruzzo",
+    "breve": "Vini",
+    "intro": "Una selezione di vini abruzzesi. Chiedi al tavolo le etichette del momento.",
+    "nota": "Tutti i vini contengono solfiti.",
+    "voci": [
+      { "nome": "Montepulciano d'Abruzzo Colline Teramane DOCG", "descrizione": "Il rosso importante delle nostre colline.", "prezzo": "30" },
+      { "nome": "Montepulciano d'Abruzzo DOC", "descrizione": "Morbido e fruttato, perfetto con agnello e arrosticini.", "prezzo": "18" },
+      { "nome": "Cerasuolo d'Abruzzo DOC", "descrizione": "Rosato color ciliegia, fresco e sapido.", "prezzo": "18" },
+      { "nome": "Trebbiano d'Abruzzo DOC", "descrizione": "Bianco delicato, per antipasti e primi.", "prezzo": "16" },
+      { "nome": "Pecorino", "descrizione": "Bianco aromatico e minerale, da vitigno autoctono.", "prezzo": "20" },
+      { "nome": "Passerina", "descrizione": "Bianco fresco e floreale.", "prezzo": "16" },
+      { "nome": "Vino della casa", "descrizione": "Rosso o bianco, al calice o in caraffa da mezzo litro.", "prezzo": "4 / 7" }
+    ]
+  },
+  "note": [
+    "Coperto, pane e grissini fatti in casa: 2 € a persona. [dc]",
+    "Ogni giorno c'è qualche piatto fuori menu: chiedilo al tavolo.",
+    "Hai allergie o intolleranze? Dillo a chi ti serve: ti indichiamo ingredienti e alternative. Le icone segnalano i 14 allergeni del Reg. UE 1169/2011.",
+    "Senza glutine significa senza ingredienti che lo contengono: in cucina si lavora anche la farina, quindi non possiamo escludere tracce. Se sei celiaco, parlane con noi prima di ordinare.",
+    "In mancanza del prodotto fresco alcuni ingredienti possono essere surgelati o abbattuti in casa: chiedi al personale. [dc]"
+  ]
+}

@@ -1,0 +1,61 @@
+.cucina { position: relative; padding: var(--sezione) var(--margine); }
+.testa {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 1.5rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.testa > * { grid-column: 1 / span 8; }
+.intro { grid-column: 8 / -1; align-self: end; color: var(--tenue); }
+
+/* Senza regia: quattro schede in fila (due per riga su tablet). */
+.passi {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+.passo { display: grid; gap: 1.25rem; align-content: start; }
+.foto { aspect-ratio: 4 / 5; overflow: hidden; background: var(--sabbia); }
+.foto :global(picture), .foto img, .foto > :global(div) { width: 100%; height: 100%; object-fit: cover; }
+.didascalia { display: grid; gap: 0.5rem; }
+.num { font-family: var(--f-serif); font-style: italic; font-size: 1.5rem; color: var(--terracotta-testo); line-height: 1; }
+.titolo { font-family: var(--f-serif); font-weight: 400; font-size: var(--t-l); line-height: 1.05; }
+.testo { color: var(--tenue); max-width: 24em; }
+.progresso { display: none; }
+
+@media (max-width: 63.99em) {
+  .testa > *, .intro { grid-column: 1 / -1; }
+  .passi { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; }
+}
+@media (max-width: 39.99em) {
+  .passi { grid-template-columns: 1fr; }
+}
+
+/* ---- palco (desktop con la regia): immagini sovrapposte a sinistra,
+   testi che si danno il cambio a destra, una barra di avanzamento. ---- */
+:global(.is-palco) .palco {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+  height: calc(100svh - var(--testata-h) - 4rem);
+}
+:global(.is-palco) .passi { display: contents; }
+:global(.is-palco) .passo { display: contents; }
+:global(.is-palco) .foto { grid-area: 1 / 1; height: 100%; max-height: 46rem; aspect-ratio: auto; will-change: clip-path; }
+:global(.is-palco) .didascalia { grid-area: 1 / 2; align-self: center; gap: 1rem; }
+:global(.is-palco) .titolo { font-size: var(--t-xxl); line-height: 0.95; }
+:global(.is-palco) .testo { font-size: var(--t-m); font-family: var(--f-serif); color: var(--adriatico); max-width: 20em; }
+:global(.is-palco) .num { font-size: 2.5rem; }
+:global(.is-palco) .progresso {
+  display: block;
+  position: absolute;
+  left: calc(45% + 2rem);
+  right: 0;
+  bottom: 1rem;
+  height: 1px;
+  background: var(--filo);
+}
+:global(.is-palco) .progresso span { display: block; height: 100%; background: var(--terracotta); transform: scaleX(0); transform-origin: left; }

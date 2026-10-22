@@ -42,22 +42,25 @@ che a sua volta aggiorna ScrollTrigger.
 ```
 .
 ├── index.html                 home
-├── progetti/saporito.html     caso studio (demo non commissionata)
-├── anteprime/                 demo riservate per potenziali clienti (noindex)
 ├── privacy.html · grazie.html · 404.html
+├── progetti/saporito.html     caso studio (demo non commissionata)
+├── anteprime/                 demo riservate per potenziali clienti: una cartella per demo
+│                              (vedi anteprime/README.md)
 ├── src/
 │   ├── styles/                tokens.css · base.css · home.css · page.css
 │   └── js/
 │       ├── main.js            ingresso della home
 │       ├── page.js            ingresso delle pagine interne
-│       ├── core/motion.js     GSAP, ScrollTrigger, SplitText, Lenis
+│       ├── core/motion.js     GSAP, ScrollTrigger, SplitText, Lenis (condiviso con le demo)
 │       ├── hero.js            regia dell'hero: 3D o immagine statica
 │       ├── prism/             scena Three.js e shader
 │       ├── story.js           la vetrina grigia (timeline pinnata)
 │       └── ui/                nav, intro, titoli, banco ottico, modulo
 ├── public/                    font, immagini, favicon, robots, sitemap
-├── dev/                       pagine di servizio per generare le immagini (non pubblicate)
-└── scripts/render-stills.mjs  rigenera immagini statiche, immagine social e icone
+├── netlify/edge-functions/    protezione delle anteprime lato server (scadenza, codice, header)
+├── test/                      test dell'Edge Function (npm test)
+├── dev/                       pagine di servizio per le immagini della home (non pubblicate)
+└── scripts/                   render-stills.mjs · build-flagship.mjs · dev.cmd
 ```
 
 ## Sviluppo
@@ -65,9 +68,16 @@ che a sua volta aggiorna ScrollTrigger.
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # produzione in dist/
+npm run build      # produzione in dist/ (Vite, poi l'app Next.js di Trattoria Luciana)
+npm run build:vite # solo il sito Vite
 npm run preview    # anteprima della build
+npm test           # test dell'Edge Function delle anteprime
 ```
+
+`anteprime/trattoria-luciana/` è un'app Next.js con le proprie dipendenze e il proprio
+`package-lock.json`: `scripts/build-flagship.mjs` le installa se mancano (`npm ci`), la
+compila con il base path dell'anteprima e copia l'export statico in `dist/`. Per lavorarci:
+`cd anteprime/trattoria-luciana && npm install && npm run dev`.
 
 Su Windows c'è anche `scripts/dev.cmd`.
 
@@ -119,44 +129,14 @@ la scena si regola da sola (vedi sotto).
 - **Privacy**: il testo è aggiornato al modulo e ai caratteri self-hosted, ma va fatto
   rivedere a un consulente.
 
+
 ## Anteprime per i clienti
 
-`anteprime/` contiene demo riservate da mostrare ai titolari prima di un incarico.
-Non sono linkate dal sito, hanno `noindex, nofollow` (meta e header Netlify) e una
-filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
-
-- **Nagoya Sushi** (`/anteprime/nagoya-sushi/`): concept "Il taglio", scena Three.js
-  pinnata (`src/anteprime/nagoya/`). La scadenza è il meta `anteprima-scadenza`
-  nella pagina: dopo quella data resta solo "Anteprima scaduta, contatta Prisma Locale".
-  La scadenza è lato client, quindi è un deterrente, non una protezione.
-  Immagini statiche e immagine social: `node scripts/render-nagoya.mjs` con il dev server attivo.
-- **Borgo Spoltino** (`/anteprime/borgo-spoltino/`): location per matrimoni a Mosciano
-  Sant'Angelo, concept "Una giornata sul colle". Il sito segue la luce di un matrimonio,
-  dal pomeriggio alla notte, sempre sullo stesso colle davanti al Gran Sasso.
-  Bodoni Moda e Hanken Grotesk, avorio, pietra, verde d'ulivo e terra; l'ottone solo nei fili.
-  - **Sezioni**: sipario d'apertura, hero a tre piani in parallasse, intro, plastico 3D del
-    territorio (Gran Sasso → Adriatico → il colle, pinnato), "Il … borgo" (la finestra che
-    si apre a tutto schermo), gli spazi su binario orizzontale, la giornata in cinque momenti
-    sovrapposti (sticky), la tavola a schede, le occasioni con l'immagine che segue il
-    mouse, gallery editoriale con visore, recensioni a rotazione, modulo, mappa disegnata.
-  - **Codice** in `src/anteprime/borgo/`: `sections/` (una per sezione), `animations/`
-    (rivelazioni, parallasse, cursore e magneti, apertura), `components/visore.js`,
-    `three/plastico.js` (scaricato solo su desktop con puntatore fine, quando la sezione
-    si avvicina), `styles/` (token, base e un foglio per gruppo di sezioni).
-  - **Immagini provvisorie**: non sono foto ma tavole dipinte da uno shader
-    (`dev/borgo/tavole.js`), più il plastico fotografato da `dev/borgo/plastico.html`.
-    Si rigenerano con `node scripts/render-borgo.mjs` (dev server attivo, Playwright e
-    ffmpeg) in `public/assets/img/borgo/`, AVIF + WebP. Per mettere le foto vere basta
-    sostituire i file con lo stesso nome: nell'HTML ogni immagine ha un commento `FOTO:`
-    con soggetto e proporzioni.
-  - Testi d'esempio, recensioni, menu e contatti sono marcati "da confermare"; il modulo
-    non invia nulla. Scadenza nel meta `anteprima-scadenza` (30 novembre 2026).
-  - Lighthouse (build, Chromium headless): mobile 90 / 100 / 100, desktop 98 / 100 / 100
-    (prestazioni, accessibilità, best practice; la SEO è bassa di proposito per il noindex).
-- **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
-  autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
-  Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con
-  `node dev/destino/build.mjs`, che scrive `public/anteprime/destino/index.html`.
+Le demo riservate stanno in [`anteprime/`](anteprime/README.md): una cartella
+autosufficiente per ciascuna (pagina, sorgenti, script di rendering, README), tutte con
+`noindex`, una scadenza e la protezione lato server di `netlify/edge-functions/anteprime.js`.
+Il README di quella cartella elenca le demo, spiega come si lavora e come funzionano
+scadenza, codice nel link e header di sicurezza.
 
 ## Progetti mostrati
 

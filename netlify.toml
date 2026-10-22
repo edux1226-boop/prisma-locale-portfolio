@@ -20,8 +20,21 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# I flagship Next.js: script e stili hanno l'hash nel nome.
+[[headers]]
+  for = "/anteprime/trattoria-luciana/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Anteprime per i potenziali clienti: mai in indice, nemmeno se il link gira.
 [[headers]]
   for = "/anteprime/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Anteprima "La Casetta di Paparill": la sua pagina 404 per gli indirizzi
+# che non esistono (le pagine vere hanno la precedenza: niente force).
+[[redirects]]
+  from = "/anteprime/casetta-paparill/*"
+  to = "/anteprime/casetta-paparill/404.html"
+  status = 404

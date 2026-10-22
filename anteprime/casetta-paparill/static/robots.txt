@@ -1,0 +1,9 @@
+# robots.txt per il sito definitivo della Casetta di Paparill
+# (dominio ristorantepaparill.it, da confermare). Va pubblicato alla radice.
+# Nell'anteprima non ha effetto: le pagine sono noindex (meta e header).
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://www.ristorantepaparill.it/sitemap.xml
