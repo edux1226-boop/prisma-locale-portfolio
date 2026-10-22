@@ -23,7 +23,7 @@ const PASSATO = '2000-01-01T00:00:00+01:00';
 
 /* L'origine finta: come Netlify, risponde a un Range con un pezzo (206) e a un HEAD
    senza corpo. Ricorda la richiesta che ha ricevuto. */
-function contesto(html, { tipo = 'text/html; charset=UTF-8', stato = 200, ignoraRichiesta = false } = {}) {
+function contesto(html, { tipo = 'text/html; charset=UTF-8', stato = 200, ignoraRichiesta = false, cache = null } = {}) {
   let chiamate = 0;
   let ultima = null;
   return {
@@ -33,6 +33,7 @@ function contesto(html, { tipo = 'text/html; charset=UTF-8', stato = 200, ignora
       chiamate += 1;
       ultima = ignoraRichiesta ? null : richiesta || null;
       const headers = { 'content-type': tipo, 'x-robots-tag': 'noindex, nofollow', etag: '"abc"' };
+      if (cache) headers['cache-control'] = cache;
       const range = ultima?.headers.get('range') ?? (ignoraRichiesta ? 'bytes=0-40' : null);
       if (range && stato === 200) return new Response(html.slice(0, 40), { status: 206, headers });
       return new Response(ultima?.method === 'HEAD' ? null : html, { status: stato, headers });
@@ -164,6 +165,21 @@ test('le risorse non HTML passano con gli header ma senza essere toccate', async
   assert.equal(r.status, 200);
   assert.equal(await r.text(), 'BINARIO');
   assert.equal(r.headers.get('content-security-policy'), null);
+});
+
+test('una risorsa di un\'anteprima aperta tiene la cache dell\'origine; con il codice resta private', async () => {
+  const lunga = 'public, max-age=31536000, immutable';
+  const aperta = await anteprime(req('/anteprime/trattoria-luciana/_next/static/a.js'), contesto('JS', { tipo: 'text/javascript', cache: lunga }));
+  assert.equal(aperta.headers.get('cache-control'), lunga);
+  env.set('ANTEPRIMA_CODICI', JSON.stringify({ 'trattoria-luciana': 'codice-lungo-abc123' }));
+  const r1 = await anteprime(req('/anteprime/trattoria-luciana/?k=codice-lungo-abc123'), contesto(PAGINA(FUTURO)));
+  const valore = r1.headers.get('set-cookie').split(';')[0];
+  const chiusa = await anteprime(
+    req('/anteprime/trattoria-luciana/_next/static/a.js', { headers: { cookie: valore } }),
+    contesto('JS', { tipo: 'text/javascript', cache: lunga }),
+  );
+  assert.equal(chiusa.status, 200);
+  assert.equal(chiusa.headers.get('cache-control'), 'private, no-store');
 });
 
 test('una pagina inesistente resta 404', async () => {

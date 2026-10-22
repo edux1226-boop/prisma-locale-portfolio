@@ -272,6 +272,10 @@ export default async function anteprime(request, context) {
   }
   if (!risposta.ok || !tipo.includes('text/html')) {
     const headers = sicurezza(new Headers(risposta.headers));
+    // script, font e immagini di un'anteprima aperta tengono la cache lunga che l'origine dichiara
+    // (_next/static); con il codice o in caso d'errore resta private, no-store
+    const cache = risposta.headers.get('cache-control');
+    if (cache && risposta.ok && !codice) headers.set('Cache-Control', cache);
     return new Response(request.method === 'HEAD' ? null : risposta.body, { status: risposta.status, statusText: risposta.statusText, headers });
   }
 
