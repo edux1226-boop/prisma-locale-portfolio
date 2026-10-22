@@ -19,6 +19,8 @@ const casettaInput = {
 export default defineConfig({
   appType: 'mpa',
   plugins: [cartaAnima(), casetta({ root })],
+  // flagship/ contiene app Next.js autonome, con la loro build (scripts/build-flagship.mjs)
+  server: { watch: { ignored: ['**/flagship/**'] } },
   build: {
     target: 'es2022',
     // three.js (~146 kB gzip) vive in un chunk a parte, caricato solo su desktop.

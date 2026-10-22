@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-flagship.mjs",
     "preview": "vite preview",
+    "build:vite": "vite build",
     "test": "node --test \"test/*.test.mjs\""
   },
   "engines": {

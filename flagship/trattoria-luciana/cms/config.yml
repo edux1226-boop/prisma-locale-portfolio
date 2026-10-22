@@ -1,0 +1,415 @@
+# ============================================================================
+# CMS di Trattoria Luciana (Decap CMS, su Git).
+#
+# Il ristorante modifica menu, prezzi, orari, fotografie e testi da
+# /admin/ senza toccare il codice. Ogni salvataggio è un commit sui file in
+# content/: la build li valida (content/schema.ts) e ripubblica il sito.
+#
+# Ogni dato ha uno "Stato": finché resta "Da confermare" il sito pubblico
+# non lo mostra. È il modo per lavorare sui contenuti senza che un dato
+# dubbio finisca online per sbaglio.
+#
+# Attivazione (al passaggio in produzione, su Netlify):
+#   1. Site configuration → Identity → Enable; Registration: Invite only
+#   2. Identity → Services → Git Gateway → Enable
+#   3. invitare il titolare via email; l'accesso è su https://<dominio>/admin/
+# I percorsi qui sotto sono relativi alla radice del repository.
+# ============================================================================
+
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    update: "CMS: aggiorna {{collection}} «{{slug}}»"
+
+publish_mode: editorial_workflow
+locale: it
+site_url: /
+display_url: /
+logo_url: /icona.svg
+
+media_folder: flagship/trattoria-luciana/public/media/caricate
+public_folder: /media/caricate
+
+collections:
+  - name: ristorante
+    label: Ristorante
+    editor: { preview: false }
+    files:
+      # ------------------------------------------------------------ Restaurant
+      - name: restaurant
+        label: Dati del ristorante
+        file: flagship/trattoria-luciana/content/restaurant.json
+        format: json
+        fields:
+          - label: Nome
+            name: nome
+            widget: object
+            fields:
+              - { label: Valore, name: value, widget: string }
+              - &stato
+                label: Stato
+                name: status
+                widget: select
+                default: needs_confirmation
+                options:
+                  - { label: "Da confermare (non pubblicato)", value: needs_confirmation }
+                  - { label: "Confermato (pubblicato)", value: confirmed }
+              - &nota { label: "Nota interna (non va sul sito)", name: nota, widget: string, required: false }
+          - label: Famiglia
+            name: famiglia
+            widget: object
+            fields: [{ label: Cognome, name: value, widget: string }, *stato, *nota]
+          - label: Descrizione
+            name: descrizione
+            widget: object
+            fields:
+              - label: Testo
+                name: value
+                widget: object
+                fields: &lingue
+                  - { label: Italiano, name: it, widget: text }
+                  - { label: English, name: en, widget: text }
+                  - { label: Deutsch, name: de, widget: text }
+              - *stato
+              - *nota
+          - label: Anno di apertura
+            name: fondazione
+            widget: object
+            fields: [{ label: Anno, name: value, widget: number, value_type: int, required: false }, *stato, *nota]
+          - label: Indirizzo
+            name: indirizzo
+            widget: object
+            fields:
+              - label: Indirizzo
+                name: value
+                widget: object
+                fields:
+                  - { label: Via e numero, name: via, widget: string }
+                  - { label: CAP, name: cap, widget: string }
+                  - { label: Città, name: citta, widget: string }
+                  - { label: Provincia, name: provincia, widget: string }
+                  - { label: Regione, name: regione, widget: string }
+                  - { label: Paese (2 lettere), name: paese, widget: string }
+              - *stato
+              - *nota
+          - label: Telefono
+            name: telefono
+            widget: object
+            hint: "Formato internazionale, senza spazi: +390851234567"
+            fields: [{ label: Numero, name: value, widget: string, required: false, pattern: ['^\+\d{8,15}$', "Formato +39 seguito dalle cifre"] }, *stato, *nota]
+          - label: Email
+            name: email
+            widget: object
+            fields: [{ label: Indirizzo email, name: value, widget: string, required: false }, *stato, *nota]
+          - label: WhatsApp
+            name: whatsapp
+            widget: object
+            hint: "Il canale WhatsApp compare sul sito solo quando lo stato è Confermato."
+            fields: [{ label: Numero, name: value, widget: string, required: false, pattern: ['^\+\d{8,15}$', "Formato +39 seguito dalle cifre"] }, *stato, *nota]
+          - label: Coordinate
+            name: coordinate
+            widget: object
+            fields:
+              - label: Posizione
+                name: value
+                widget: object
+                required: false
+                fields:
+                  - { label: Latitudine, name: lat, widget: number, value_type: float }
+                  - { label: Longitudine, name: lng, widget: number, value_type: float }
+              - *stato
+              - *nota
+          - label: Social
+            name: social
+            widget: object
+            fields:
+              - { label: Instagram, name: instagram, widget: object, fields: [{ label: Indirizzo del profilo, name: value, widget: string, required: false }, *stato, *nota] }
+              - { label: Facebook, name: facebook, widget: object, fields: [{ label: Indirizzo della pagina, name: value, widget: string, required: false }, *stato, *nota] }
+          - label: Dominio del sito
+            name: dominio
+            widget: object
+            fields: [{ label: "Indirizzo (https://…)", name: value, widget: string, required: false }, *stato, *nota]
+          - label: Logo
+            name: logo
+            widget: object
+            fields: [{ label: File, name: value, widget: image, required: false }, *stato, *nota]
+          - label: Cucina (schema.org)
+            name: cucina
+            widget: object
+            fields: [{ label: Tipi di cucina, name: value, widget: list, field: { label: Tipo, name: tipo, widget: string } }, *stato, *nota]
+          - label: Fascia di prezzo
+            name: fasciaPrezzo
+            widget: object
+            fields: [{ label: "Fascia (€, €€, €€€)", name: value, widget: string, required: false }, *stato, *nota]
+          - label: Prenotazioni
+            name: prenotazione
+            widget: object
+            fields:
+              - label: Sistema di prenotazione esterno
+                name: motore
+                widget: object
+                fields:
+                  - label: Sistema
+                    name: value
+                    widget: object
+                    required: false
+                    fields:
+                      - { label: Nome, name: nome, widget: string }
+                      - { label: Indirizzo, name: url, widget: string }
+                  - *stato
+                  - *nota
+          - label: Dati legali
+            name: legale
+            widget: object
+            fields:
+              - { label: Ragione sociale, name: ragioneSociale, widget: object, fields: [{ label: Valore, name: value, widget: string, required: false }, *stato, *nota] }
+              - { label: Partita IVA, name: partitaIva, widget: object, fields: [{ label: Valore, name: value, widget: string, required: false }, *stato, *nota] }
+
+      # ---------------------------------------------------------- OpeningHours
+      - name: orari
+        label: Orari
+        file: flagship/trattoria-luciana/content/opening-hours.json
+        format: json
+        fields:
+          - label: Pranzo
+            name: pranzo
+            widget: object
+            fields:
+              - &servizio
+                label: Orario
+                name: value
+                widget: object
+                required: false
+                fields:
+                  - { label: "Dalle (HH:MM)", name: dalle, widget: string, pattern: ['^([01]\d|2[0-3]):[0-5]\d$', "Formato HH:MM"] }
+                  - { label: "Alle (HH:MM)", name: alle, widget: string, pattern: ['^([01]\d|2[0-3]):[0-5]\d$', "Formato HH:MM"] }
+              - *stato
+              - *nota
+          - { label: Cena, name: cena, widget: object, fields: [*servizio, *stato, *nota] }
+          - label: Chiusura settimanale
+            name: giornoChiusura
+            widget: object
+            fields:
+              - &giorni
+                label: Giorni
+                name: value
+                widget: select
+                multiple: true
+                required: false
+                options:
+                  - { label: Lunedì, value: lun }
+                  - { label: Martedì, value: mar }
+                  - { label: Mercoledì, value: mer }
+                  - { label: Giovedì, value: gio }
+                  - { label: Venerdì, value: ven }
+                  - { label: Sabato, value: sab }
+                  - { label: Domenica, value: dom }
+              - *stato
+              - *nota
+          - label: Periodo di apertura
+            name: stagionalita
+            widget: object
+            fields: [{ label: Testo, name: value, widget: object, required: false, fields: *lingue }, *stato, *nota]
+          - label: Eccezioni (ferie, festività)
+            name: eccezioni
+            widget: list
+            required: false
+            fields:
+              - { label: Data, name: data, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: Chiuso, name: chiuso, widget: boolean, default: true }
+              - { label: Nota, name: nota, widget: object, fields: *lingue }
+              - *stato
+
+      # ------------------------------------------------------------------ Menu
+      - name: menu
+        label: Menu
+        file: flagship/trattoria-luciana/content/menu.json
+        format: json
+        fields:
+          - label: Coperto
+            name: coperto
+            widget: object
+            fields: [{ label: Euro, name: value, widget: number, value_type: float, required: false }, *stato, *nota]
+          - label: Note in fondo al menu
+            name: note
+            widget: list
+            fields: [{ label: Testo, name: testo, widget: object, fields: *lingue }, *stato]
+          - label: Categorie
+            name: categorie
+            widget: list
+            allow_add: false
+            summary: "{{fields.nome.it}}"
+            fields:
+              - { label: Categoria, name: id, widget: select, options: [antipasti, primi, secondi, contorni, dolci, vini] }
+              - { label: Nome, name: nome, widget: object, fields: *lingue }
+              - { label: Nota, name: nota, widget: object, required: false, fields: *lingue }
+              - label: Piatti
+                name: piatti
+                widget: list
+                summary: "{{fields.nome.it}}"
+                fields:
+                  - { label: "Identificativo (minuscole e trattini)", name: id, widget: string, pattern: ['^[a-z0-9-]+$', "Solo minuscole, cifre e trattini"] }
+                  - { label: Nome, name: nome, widget: object, fields: *lingue }
+                  - { label: Descrizione, name: descrizione, widget: object, required: false, fields: *lingue }
+                  - { label: Prezzo, name: prezzo, widget: object, fields: [{ label: Euro, name: value, widget: number, value_type: float, required: false }, *stato, *nota] }
+                  - { label: Unità, name: unita, widget: select, default: porzione, options: [{ label: A porzione, value: porzione }, { label: All'etto, value: etto }, { label: Bottiglia, value: bottiglia }, { label: Al calice, value: calice }] }
+                  - label: Allergeni (Reg. UE 1169/2011)
+                    name: allergeni
+                    widget: object
+                    fields:
+                      - label: Contiene
+                        name: value
+                        widget: select
+                        multiple: true
+                        required: false
+                        options:
+                          - { label: "1 · Glutine", value: glutine }
+                          - { label: "2 · Crostacei", value: crostacei }
+                          - { label: "3 · Uova", value: uova }
+                          - { label: "4 · Pesce", value: pesce }
+                          - { label: "5 · Arachidi", value: arachidi }
+                          - { label: "6 · Soia", value: soia }
+                          - { label: "7 · Latte", value: latte }
+                          - { label: "8 · Frutta a guscio", value: frutta-a-guscio }
+                          - { label: "9 · Sedano", value: sedano }
+                          - { label: "10 · Senape", value: senape }
+                          - { label: "11 · Sesamo", value: sesamo }
+                          - { label: "12 · Solfiti", value: solfiti }
+                          - { label: "13 · Lupini", value: lupini }
+                          - { label: "14 · Molluschi", value: molluschi }
+                      - *stato
+                      - *nota
+                  - { label: "Fotografia (id in Fotografie)", name: fotografia, widget: string, required: false }
+                  - { label: Disponibilità, name: disponibilita, widget: select, default: sempre, options: [{ label: Sempre, value: sempre }, { label: Secondo il pescato, value: pescato }, { label: Di stagione, value: stagione }, { label: Esaurito oggi, value: esaurito }] }
+                  - { label: Piatto del giorno, name: piattoDelGiorno, widget: boolean, default: false }
+                  - { label: In evidenza in homepage, name: inEvidenza, widget: boolean, default: false }
+                  - *stato
+
+      # ------------------------------------------------------------- LunchMenu
+      - name: pranzo
+        label: Il pranzo di Luciana
+        file: flagship/trattoria-luciana/content/lunch-menu.json
+        format: json
+        fields:
+          - { label: "Stato della sezione", name: status, widget: select, default: needs_confirmation, options: [{ label: "Da confermare (non pubblicata)", value: needs_confirmation }, { label: "Confermata (pubblicata)", value: confirmed }] }
+          - { label: Prezzo, name: prezzo, widget: object, fields: [{ label: Euro, name: value, widget: number, value_type: float, required: false }, *stato, *nota] }
+          - { label: Giorni, name: giorni, widget: object, fields: [*giorni, *stato, *nota] }
+          - { label: Orario, name: orari, widget: object, fields: [*servizio, *stato, *nota] }
+          - label: Comprende
+            name: comprende
+            widget: object
+            fields: [{ label: Voci, name: value, widget: list, required: false, fields: *lingue }, *stato, *nota]
+          - label: Oggi in tavola
+            name: piatti
+            widget: list
+            fields:
+              - { label: Portata, name: portata, widget: select, options: [primo, secondo, contorno, dolce] }
+              - { label: Piatto, name: nome, widget: object, fields: *lingue }
+              - *stato
+          - { label: Nota, name: nota, widget: object, fields: [{ label: Testo, name: value, widget: object, required: false, fields: *lingue }, *stato, *nota] }
+
+      # ----------------------------------------------------------------- Story
+      - name: storia
+        label: La storia
+        file: flagship/trattoria-luciana/content/story.json
+        format: json
+        fields:
+          - label: Capitoli
+            name: capitoli
+            widget: list
+            summary: "{{fields.titolo.it}}"
+            fields:
+              - { label: Identificativo, name: id, widget: string }
+              - { label: Anno o periodo, name: anno, widget: object, fields: [{ label: Valore, name: value, widget: string, required: false }, *stato, *nota] }
+              - { label: Titolo, name: titolo, widget: object, fields: *lingue }
+              - { label: Testo, name: testo, widget: object, fields: *lingue }
+              - { label: "Fotografie (id in Fotografie)", name: fotografie, widget: list, field: { label: Id, name: id, widget: string } }
+              - { label: Didascalia, name: didascalia, widget: object, required: false, fields: *lingue }
+              - *stato
+
+      # --------------------------------------------------------------- Reviews
+      - name: recensioni
+        label: Recensioni
+        file: flagship/trattoria-luciana/content/reviews.json
+        format: json
+        fields:
+          - label: Sintesi
+            name: sintesi
+            widget: object
+            fields:
+              - label: Valori
+                name: value
+                widget: object
+                required: false
+                fields:
+                  - { label: Punteggio, name: punteggio, widget: number, value_type: float }
+                  - { label: Su, name: su, widget: number, value_type: int, default: 5 }
+                  - { label: Numero di recensioni, name: numero, widget: number, value_type: int }
+                  - { label: Fonte, name: fonte, widget: string }
+              - *stato
+              - *nota
+          - label: Recensioni
+            name: recensioni
+            widget: list
+            summary: "{{fields.testo}}"
+            fields:
+              - { label: Identificativo, name: id, widget: string }
+              - { label: Lingua, name: lingua, widget: select, options: [it, en, de] }
+              - { label: "Testo (così com'è stato scritto)", name: testo, widget: text }
+              - { label: Autore, name: autore, widget: string, required: false }
+              - { label: Fonte, name: fonte, widget: select, options: [google, tripadvisor, thefork, altro] }
+              - { label: Data, name: data, widget: string, required: false }
+              - { label: Collegamento, name: url, widget: string, required: false }
+              - { label: "Frase d'esempio (mai pubblicata)", name: esempio, widget: boolean, default: false }
+              - *stato
+
+      # ----------------------------------------------------------------- Media
+      - name: fotografie
+        label: Fotografie
+        file: flagship/trattoria-luciana/content/media.json
+        format: json
+        fields:
+          - label: Immagini
+            name: voci
+            widget: list
+            allow_add: false
+            summary: "{{fields.id}} · {{fields.tipo}}"
+            fields:
+              - { label: Identificativo, name: id, widget: string }
+              - { label: Categoria, name: categoria, widget: select, options: [restaurant, family, kitchen, dishes, sea, archive] }
+              - { label: Tipo, name: tipo, widget: select, options: [{ label: Fotografia, value: foto }, { label: Illustrazione, value: illustrazione }, { label: "Segnaposto (nessun file)", value: segnaposto }] }
+              - { label: "Fotografia caricata", name: originale, widget: image, required: false, hint: "Carica qui la foto vera e imposta Tipo: Fotografia. Le misure per ogni schermo si generano da sole." }
+              - { label: Testo alternativo, name: alt, widget: object, fields: *lingue }
+              - { label: "Indicazioni per lo scatto", name: regia, widget: object, fields: *lingue }
+              - *stato
+
+      # --------------------------------------------------------------- Pescato
+      - name: pescato
+        label: Calendario del mare
+        file: flagship/trattoria-luciana/content/pescato.json
+        format: json
+        fields:
+          - label: Fermo pesca
+            name: fermo
+            widget: object
+            fields:
+              - label: Periodo
+                name: value
+                widget: object
+                required: false
+                fields:
+                  - { label: "Mesi (1-12)", name: mesi, widget: list, field: { label: Mese, name: mese, widget: number, value_type: int, min: 1, max: 12 } }
+                  - { label: Nota, name: nota, widget: object, fields: *lingue }
+              - *stato
+              - *nota
+          - label: Specie
+            name: specie
+            widget: list
+            summary: "{{fields.nome.it}}"
+            fields:
+              - { label: Identificativo, name: id, widget: string }
+              - { label: Nome, name: nome, widget: object, fields: *lingue }
+              - { label: Nome latino, name: latino, widget: string }
+              - { label: "Mesi migliori (1-12)", name: mesi, widget: list, field: { label: Mese, name: mese, widget: number, value_type: int, min: 1, max: 12 } }
+              - *stato

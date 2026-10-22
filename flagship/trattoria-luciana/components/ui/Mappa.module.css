@@ -1,0 +1,23 @@
+.mappa { position: relative; }
+.mappa svg { width: 100%; height: auto; overflow: visible; }
+.strada, .mare, .spiaggia, .citta, .nord {
+  font-family: var(--f-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+.strada { fill: var(--adriatico); letter-spacing: 2.5px; }
+.mare { fill: var(--sabbia); letter-spacing: 5px; }
+.spiaggia { fill: var(--tenue); font-size: 11px; }
+.citta { fill: var(--tenue); }
+.nord { fill: var(--adriatico); font-size: 14px; }
+.nome { font-family: var(--f-serif); font-size: 34px; fill: var(--adriatico); }
+.nome, .via { paint-order: stroke; stroke: var(--sfondo, var(--sabbia)); stroke-width: 8px; stroke-linejoin: round; }
+.via { font-family: var(--f-sans); font-size: 14px; fill: var(--tenue); }
+.alone { fill: none; stroke: #A96F59; stroke-opacity: 0.55; stroke-width: 1.4; transform-box: fill-box; transform-origin: center; }
+:global(html.motion) .alone { animation: alone 2.8s var(--ease) infinite; }
+@keyframes alone {
+  0% { transform: scale(0.4); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.nota { margin-top: 0.5rem; font-size: 0.75rem; color: var(--tenue-t); }

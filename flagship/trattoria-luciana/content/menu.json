@@ -1,0 +1,429 @@
+{
+  "coperto": { "value": 2.5, "status": "needs_confirmation", "nota": "Valore d'esempio." },
+  "note": [
+    {
+      "testo": {
+        "it": "Il pesce servito crudo o marinato è sottoposto ad abbattimento termico, come previsto dal Reg. CE 853/2004.",
+        "en": "Fish served raw or marinated has been blast-chilled, as required by EC Regulation 853/2004.",
+        "de": "Roh oder mariniert servierter Fisch wird gemäß Verordnung (EG) Nr. 853/2004 schockgefroren."
+      },
+      "status": "needs_confirmation"
+    },
+    {
+      "testo": {
+        "it": "In mancanza di prodotto fresco, alcuni piatti possono essere preparati con prodotti surgelati: chiedi al personale.",
+        "en": "When fresh produce is unavailable, some dishes may be prepared with frozen ingredients: please ask our staff.",
+        "de": "Wenn keine frische Ware verfügbar ist, können einige Gerichte mit tiefgekühlten Zutaten zubereitet werden. Fragen Sie bitte unser Personal."
+      },
+      "status": "needs_confirmation"
+    }
+  ],
+  "categorie": [
+    {
+      "id": "antipasti",
+      "nome": { "it": "Antipasti", "en": "Starters", "de": "Vorspeisen" },
+      "nota": {
+        "it": "Cambiano secondo il pescato del giorno.",
+        "en": "They change with the day's catch.",
+        "de": "Sie wechseln je nach Fang des Tages."
+      },
+      "piatti": [
+        {
+          "id": "antipasto-di-mare",
+          "nome": { "it": "Antipasto di mare", "en": "Seafood antipasto", "de": "Antipasto vom Meer" },
+          "descrizione": {
+            "it": "Assaggi caldi e freddi secondo il pescato: alici marinate, insalata di mare, cozze e vongole.",
+            "en": "Hot and cold tastings depending on the catch: marinated anchovies, seafood salad, mussels and clams.",
+            "de": "Warme und kalte Kostproben je nach Fang: marinierte Sardellen, Meeresfrüchtesalat, Mies- und Venusmuscheln."
+          },
+          "prezzo": { "value": 16, "status": "needs_confirmation" },
+          "allergeni": { "value": ["pesce", "molluschi", "crostacei", "sedano"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "pescato",
+          "piattoDelGiorno": false,
+          "inEvidenza": true,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "alici-marinate",
+          "nome": { "it": "Alici marinate", "en": "Marinated anchovies", "de": "Marinierte Sardellen" },
+          "descrizione": {
+            "it": "Al limone, con olio extravergine e prezzemolo.",
+            "en": "With lemon, extra virgin olive oil and parsley.",
+            "de": "Mit Zitrone, nativem Olivenöl extra und Petersilie."
+          },
+          "prezzo": { "value": 9, "status": "needs_confirmation" },
+          "allergeni": { "value": ["pesce"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "guazzetto",
+          "nome": { "it": "Guazzetto di cozze e vongole", "en": "Mussels and clams in guazzetto", "de": "Mies- und Venusmuscheln im Sud" },
+          "descrizione": {
+            "it": "Con pomodorini, aglio e crostini di pane.",
+            "en": "With cherry tomatoes, garlic and toasted bread.",
+            "de": "Mit Kirschtomaten, Knoblauch und geröstetem Brot."
+          },
+          "prezzo": { "value": 12, "status": "needs_confirmation" },
+          "allergeni": { "value": ["molluschi", "glutine"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "polpo-e-patate",
+          "nome": { "it": "Polpo e patate", "en": "Octopus and potatoes", "de": "Oktopus mit Kartoffeln" },
+          "descrizione": {
+            "it": "Tiepido, con olio, limone e prezzemolo.",
+            "en": "Served warm, with olive oil, lemon and parsley.",
+            "de": "Lauwarm, mit Olivenöl, Zitrone und Petersilie."
+          },
+          "prezzo": { "value": 13, "status": "needs_confirmation" },
+          "allergeni": { "value": ["molluschi"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        }
+      ]
+    },
+    {
+      "id": "primi",
+      "nome": { "it": "Primi", "en": "First courses", "de": "Erste Gänge" },
+      "piatti": [
+        {
+          "id": "spaghetti-alle-vongole",
+          "nome": { "it": "Spaghetti alle vongole", "en": "Spaghetti with clams", "de": "Spaghetti mit Venusmuscheln" },
+          "descrizione": {
+            "it": "Vongole dell'Adriatico, aglio, olio e prezzemolo.",
+            "en": "Adriatic clams, garlic, olive oil and parsley.",
+            "de": "Venusmuscheln aus der Adria, Knoblauch, Olivenöl und Petersilie."
+          },
+          "prezzo": { "value": 14, "status": "needs_confirmation" },
+          "allergeni": { "value": ["glutine", "molluschi"], "status": "needs_confirmation" },
+          "fotografia": "piatto-vongole",
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": true,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "chitarra-allo-scoglio",
+          "nome": { "it": "Chitarra allo scoglio", "en": "Chitarra pasta with shellfish", "de": "Chitarra mit Meeresfrüchten" },
+          "descrizione": {
+            "it": "La pasta alla chitarra abruzzese con cozze, vongole, gamberi e calamari.",
+            "en": "Abruzzo's square-cut chitarra pasta with mussels, clams, prawns and squid.",
+            "de": "Die eckigen Chitarra-Nudeln der Abruzzen mit Mies- und Venusmuscheln, Garnelen und Kalmaren."
+          },
+          "prezzo": { "value": 16, "status": "needs_confirmation" },
+          "allergeni": { "value": ["glutine", "uova", "molluschi", "crostacei"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": true,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "risotto-alla-pescatora",
+          "nome": { "it": "Risotto alla pescatora", "en": "Fisherman's risotto", "de": "Risotto nach Fischerart" },
+          "descrizione": {
+            "it": "Mantecato con il fumetto di pesce e i frutti di mare del giorno.",
+            "en": "Finished with fish stock and the day's shellfish.",
+            "de": "Mit Fischfond und den Meeresfrüchten des Tages."
+          },
+          "prezzo": { "value": 15, "status": "needs_confirmation" },
+          "allergeni": { "value": ["molluschi", "crostacei", "pesce", "sedano"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "tagliolini-alle-canocchie",
+          "nome": { "it": "Tagliolini alle canocchie", "en": "Tagliolini with mantis shrimp", "de": "Tagliolini mit Heuschreckenkrebsen" },
+          "descrizione": {
+            "it": "Quando è stagione: canocchie, pomodorino e un filo di peperoncino.",
+            "en": "When in season: mantis shrimp, cherry tomatoes and a hint of chilli.",
+            "de": "Wenn Saison ist: Heuschreckenkrebse, Kirschtomaten und ein Hauch Chili."
+          },
+          "prezzo": { "value": 15, "status": "needs_confirmation" },
+          "allergeni": { "value": ["glutine", "uova", "crostacei"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "stagione",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        }
+      ]
+    },
+    {
+      "id": "secondi",
+      "nome": { "it": "Secondi", "en": "Main courses", "de": "Hauptgänge" },
+      "piatti": [
+        {
+          "id": "brodetto",
+          "nome": { "it": "Brodetto di pesce", "en": "Brodetto, Adriatic fish stew", "de": "Brodetto, Fischeintopf der Adria" },
+          "descrizione": {
+            "it": "Il piatto della costa: pesci di scoglio e di fondale cotti nel loro sugo, con il pane per la scarpetta.",
+            "en": "The dish of the coast: rock and seabed fish cooked in their own sauce, with bread to mop it up.",
+            "de": "Das Gericht der Küste: Felsen- und Grundfische im eigenen Sud gegart, mit Brot zum Auftunken."
+          },
+          "prezzo": { "value": 24, "status": "needs_confirmation" },
+          "allergeni": { "value": ["pesce", "molluschi", "crostacei", "glutine", "sedano"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "pescato",
+          "piattoDelGiorno": false,
+          "inEvidenza": true,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "frittura-di-paranza",
+          "nome": { "it": "Frittura di paranza", "en": "Fried small catch", "de": "Frittierter kleiner Fang" },
+          "descrizione": {
+            "it": "Il pesce piccolo della paranza, fritto leggero: alici, calamaretti, gamberi, triglie.",
+            "en": "The small fish from the trawl, lightly fried: anchovies, baby squid, prawns, red mullet.",
+            "de": "Der kleine Fang aus dem Netz, leicht frittiert: Sardellen, kleine Kalmare, Garnelen, Rotbarben."
+          },
+          "prezzo": { "value": 18, "status": "needs_confirmation" },
+          "allergeni": { "value": ["pesce", "molluschi", "crostacei", "glutine"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "pescato",
+          "piattoDelGiorno": false,
+          "inEvidenza": true,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "grigliata",
+          "nome": { "it": "Grigliata dell'Adriatico", "en": "Adriatic mixed grill", "de": "Gemischter Grill von der Adria" },
+          "descrizione": {
+            "it": "Pesce del giorno, calamari e gamberoni alla brace.",
+            "en": "Catch of the day, squid and king prawns, chargrilled.",
+            "de": "Fang des Tages, Kalmare und Riesengarnelen vom Holzkohlegrill."
+          },
+          "prezzo": { "value": 22, "status": "needs_confirmation" },
+          "allergeni": { "value": ["pesce", "molluschi", "crostacei"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "pescato",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "pescato-al-forno",
+          "nome": { "it": "Pescato del giorno al forno", "en": "Catch of the day, oven-baked", "de": "Fang des Tages aus dem Ofen" },
+          "descrizione": {
+            "it": "Con patate, pomodorini e olive. Il prezzo è all'etto e dipende dal pesce.",
+            "en": "With potatoes, cherry tomatoes and olives. Priced per 100 g, depending on the fish.",
+            "de": "Mit Kartoffeln, Kirschtomaten und Oliven. Preis pro 100 g, je nach Fisch."
+          },
+          "prezzo": { "value": 6, "status": "needs_confirmation" },
+          "unita": "etto",
+          "allergeni": { "value": ["pesce"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "pescato",
+          "piattoDelGiorno": true,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "arrosticini",
+          "nome": { "it": "Arrosticini", "en": "Arrosticini, mutton skewers", "de": "Arrosticini, Schafsspießchen" },
+          "descrizione": {
+            "it": "Per chi resta a terra: gli spiedini di pecora della tradizione abruzzese, alla brace. Dieci pezzi.",
+            "en": "For those who stay on land: Abruzzo's traditional mutton skewers, chargrilled. Ten pieces.",
+            "de": "Für alle, die an Land bleiben: die traditionellen Schafsspießchen der Abruzzen vom Grill. Zehn Stück."
+          },
+          "prezzo": { "value": 15, "status": "needs_confirmation" },
+          "allergeni": { "value": [], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        }
+      ]
+    },
+    {
+      "id": "contorni",
+      "nome": { "it": "Contorni", "en": "Side dishes", "de": "Beilagen" },
+      "piatti": [
+        {
+          "id": "patate-al-forno",
+          "nome": { "it": "Patate al forno", "en": "Roast potatoes", "de": "Ofenkartoffeln" },
+          "prezzo": { "value": 5, "status": "needs_confirmation" },
+          "allergeni": { "value": [], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "insalata-di-stagione",
+          "nome": { "it": "Insalata di stagione", "en": "Seasonal salad", "de": "Salat der Saison" },
+          "prezzo": { "value": 5, "status": "needs_confirmation" },
+          "allergeni": { "value": [], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "stagione",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "verdure-grigliate",
+          "nome": { "it": "Verdure grigliate", "en": "Grilled vegetables", "de": "Gegrilltes Gemüse" },
+          "prezzo": { "value": 6, "status": "needs_confirmation" },
+          "allergeni": { "value": [], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        }
+      ]
+    },
+    {
+      "id": "dolci",
+      "nome": { "it": "Dolci", "en": "Desserts", "de": "Desserts" },
+      "piatti": [
+        {
+          "id": "tiramisu",
+          "nome": { "it": "Tiramisù della casa", "en": "House tiramisù", "de": "Tiramisù des Hauses" },
+          "prezzo": { "value": 6, "status": "needs_confirmation" },
+          "allergeni": { "value": ["uova", "latte", "glutine"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "sorbetto-al-limone",
+          "nome": { "it": "Sorbetto al limone", "en": "Lemon sorbet", "de": "Zitronensorbet" },
+          "prezzo": { "value": 4, "status": "needs_confirmation" },
+          "allergeni": { "value": [], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "frutta-di-stagione",
+          "nome": { "it": "Frutta di stagione", "en": "Seasonal fruit", "de": "Obst der Saison" },
+          "prezzo": { "value": 5, "status": "needs_confirmation" },
+          "allergeni": { "value": [], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "stagione",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        }
+      ]
+    },
+    {
+      "id": "vini",
+      "nome": { "it": "Vini", "en": "Wines", "de": "Weine" },
+      "nota": {
+        "it": "Una selezione: la carta completa è in sala.",
+        "en": "A selection: the full wine list is available at the table.",
+        "de": "Eine Auswahl: Die vollständige Weinkarte erhalten Sie am Tisch."
+      },
+      "piatti": [
+        {
+          "id": "trebbiano",
+          "nome": { "it": "Trebbiano d'Abruzzo DOC", "en": "Trebbiano d'Abruzzo DOC", "de": "Trebbiano d'Abruzzo DOC" },
+          "descrizione": {
+            "it": "Bianco fresco e sapido, per tutto il pasto.",
+            "en": "Fresh, savoury white, for the whole meal.",
+            "de": "Frischer, mineralischer Weißwein für das ganze Essen."
+          },
+          "prezzo": { "value": 18, "status": "needs_confirmation" },
+          "unita": "bottiglia",
+          "allergeni": { "value": ["solfiti"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "pecorino",
+          "nome": { "it": "Abruzzo Pecorino DOC", "en": "Abruzzo Pecorino DOC", "de": "Abruzzo Pecorino DOC" },
+          "descrizione": {
+            "it": "Bianco profumato, il compagno del crudo e della frittura.",
+            "en": "Aromatic white, made for raw fish and fritto.",
+            "de": "Duftender Weißwein, wie geschaffen für Rohes und Frittiertes."
+          },
+          "prezzo": { "value": 22, "status": "needs_confirmation" },
+          "unita": "bottiglia",
+          "allergeni": { "value": ["solfiti"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "cerasuolo",
+          "nome": { "it": "Cerasuolo d'Abruzzo DOC", "en": "Cerasuolo d'Abruzzo DOC", "de": "Cerasuolo d'Abruzzo DOC" },
+          "descrizione": {
+            "it": "Il rosato abruzzese: con il brodetto, da provare.",
+            "en": "Abruzzo's rosé: try it with the brodetto.",
+            "de": "Der Rosé der Abruzzen: unbedingt zum Brodetto probieren."
+          },
+          "prezzo": { "value": 20, "status": "needs_confirmation" },
+          "unita": "bottiglia",
+          "allergeni": { "value": ["solfiti"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "montepulciano",
+          "nome": { "it": "Montepulciano d'Abruzzo DOC", "en": "Montepulciano d'Abruzzo DOC", "de": "Montepulciano d'Abruzzo DOC" },
+          "descrizione": {
+            "it": "Il rosso della regione, per gli arrosticini.",
+            "en": "The region's red, for the arrosticini.",
+            "de": "Der Rotwein der Region, zu den Arrosticini."
+          },
+          "prezzo": { "value": 20, "status": "needs_confirmation" },
+          "unita": "bottiglia",
+          "allergeni": { "value": ["solfiti"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        },
+        {
+          "id": "vino-della-casa",
+          "nome": { "it": "Vino della casa", "en": "House wine", "de": "Hauswein" },
+          "descrizione": {
+            "it": "Bianco o rosso, al calice.",
+            "en": "White or red, by the glass.",
+            "de": "Weiß oder rot, im Glas."
+          },
+          "prezzo": { "value": 4, "status": "needs_confirmation" },
+          "unita": "calice",
+          "allergeni": { "value": ["solfiti"], "status": "needs_confirmation" },
+          "fotografia": null,
+          "disponibilita": "sempre",
+          "piattoDelGiorno": false,
+          "inEvidenza": false,
+          "status": "needs_confirmation"
+        }
+      ]
+    }
+  ]
+}

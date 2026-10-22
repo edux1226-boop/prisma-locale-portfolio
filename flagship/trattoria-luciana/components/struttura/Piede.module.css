@@ -1,0 +1,56 @@
+.piede {
+  position: relative;
+  padding-top: var(--sezione);
+  padding-bottom: calc(2rem + var(--barra-h) + env(safe-area-inset-bottom));
+  overflow: hidden;
+}
+.alto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--filo);
+}
+.motto { max-width: 12ch; font-style: italic; }
+
+.griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 2.5rem var(--gap);
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+.griglia h2 { color: var(--ottone); margin-bottom: 1.1rem; }
+.indirizzo { font-family: var(--f-serif); font-size: 1.5rem; line-height: 1.2; margin-bottom: 0.75rem; }
+.lista { display: grid; gap: 0.55rem; }
+.lista a { text-decoration-color: transparent; }
+.lista a:hover { text-decoration-color: currentColor; }
+
+.firma::before { content: attr(data-firma); }
+.firma {
+  font-family: var(--f-serif);
+  font-size: clamp(3.5rem, 15.5vw, 17rem);
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  text-align: center;
+  color: rgb(var(--avorio-rgb) / 0.08);
+  margin-block: 1rem 2rem;
+  user-select: none;
+}
+
+.base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--filo);
+  font-size: 0.8125rem;
+  color: var(--tenue-chiaro);
+}
+.lingue { display: flex; gap: 1rem; }
+.lingue a { text-decoration: none; padding-block: 0.4rem; }
+.lingue a[aria-current="true"] { color: var(--avorio); text-decoration: underline; text-underline-offset: 0.3em; }
