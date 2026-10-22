@@ -104,9 +104,9 @@
           <a class="bottone" href="#prenota">Richiedi un appuntamento</a>
           <a class="bottone bottone--secondario" href="#trattamenti">Vedi i trattamenti</a>
         </div>
-        <!-- I link puntano alle schede della sezione Trattamenti (id aggiunti nel passo 3). -->
+        <!-- Le pillole con link puntano alle schede della sezione Trattamenti. -->
         <ul class="pillole" aria-label="Trattamenti principali">
-          <li><a href="#trattamenti">Ricostruzione unghie</a></li>
+          <li><a href="#t-ricostruzione">Ricostruzione unghie</a></li>
           <li><span class="segnaposto">[trattamento da inserire]</span></li>
           <li><span class="segnaposto">[trattamento da inserire]</span></li>
         </ul>
@@ -123,35 +123,89 @@
     </div>
   </section>
 
-  <!-- Passo 3: trattamenti. -->
   <section id="trattamenti" class="sezione" aria-labelledby="titolo-trattamenti">
     <div class="contenuto">
       <div class="sezione__testa">
         <p class="numero"><span class="campione" aria-hidden="true"></span>01</p>
         <h2 id="titolo-trattamenti">Trattamenti</h2>
+        <p>I servizi di Chris Beauty, tutti su appuntamento. Scegli quello che ti interessa e richiedi un appuntamento.</p>
       </div>
+
+      <!-- DA COMPLETARE: trattamenti, descrizioni, durate e prezzi forniti dalla titolare. Prezzi solo se vuole mostrarli.
+           Per aggiungere un trattamento: duplicare un <article class="scheda">, cambiare id, titolo e data-trattamento,
+           e aggiungere la stessa voce (value uguale a data-trattamento) al <select name="trattamento"> del modulo #prenota. -->
+      <ul class="schede">
+        <li>
+          <article class="scheda" id="t-ricostruzione">
+            <h3>Ricostruzione unghie</h3>
+            <p><span class="segnaposto">[Descrizione da inserire: una o due frasi]</span></p>
+            <p class="scheda__dati"><span class="segnaposto">[Durata · Prezzo, se si vogliono mostrare]</span></p>
+            <a class="link" href="#prenota" data-trattamento="ricostruzione-unghie">Richiedi questo trattamento<span class="visually-hidden">: Ricostruzione unghie</span></a>
+          </article>
+        </li>
+        <li>
+          <article class="scheda scheda--vuota" id="t-2">
+            <h3><span class="segnaposto">[Nome del trattamento]</span></h3>
+            <p><span class="segnaposto">[Descrizione in una o due frasi]</span></p>
+            <p class="scheda__dati"><span class="segnaposto">[Durata · Prezzo, se si vogliono mostrare]</span></p>
+            <a class="link" href="#prenota" data-trattamento="da-completare-1">Richiedi questo trattamento<span class="visually-hidden">: trattamento da completare</span></a>
+          </article>
+        </li>
+        <li>
+          <article class="scheda scheda--vuota" id="t-3">
+            <h3><span class="segnaposto">[Nome del trattamento]</span></h3>
+            <p><span class="segnaposto">[Descrizione in una o due frasi]</span></p>
+            <p class="scheda__dati"><span class="segnaposto">[Durata · Prezzo, se si vogliono mostrare]</span></p>
+            <a class="link" href="#prenota" data-trattamento="da-completare-2">Richiedi questo trattamento<span class="visually-hidden">: trattamento da completare</span></a>
+          </article>
+        </li>
+      </ul>
+
+      <!-- DA COMPLETARE: specialità del centro. -->
+      <p class="nota-sezione">Specialità del centro: <span class="segnaposto">[da indicare]</span></p>
     </div>
   </section>
 
-  <!-- Passo 3: galleria. -->
   <section id="galleria" class="sezione sezione--alt" aria-labelledby="titolo-galleria">
     <div class="contenuto">
       <div class="sezione__testa">
         <p class="numero"><span class="campione" aria-hidden="true"></span>02</p>
         <h2 id="titolo-galleria">Galleria</h2>
+        <p>I lavori e gli ambienti di Chris Beauty. <span class="segnaposto">[Testo da completare]</span></p>
       </div>
+
+      <!-- DA COMPLETARE: foto vere della titolare. Per ogni cornice sostituire il <div class="foto-segnaposto"> con:
+           <img src="/assets/img/chris/nome.webp" width="800" height="1000" alt="[descrizione]" loading="lazy">
+           (le cornici hanno già le proporzioni 4:5 e 1:1: non servono ritagli). Foto del centro e dei lavori reali, mai immagini stock. -->
+      <ul class="galleria">
+        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Ricostruzione unghie, dettaglio delle mani</span></div></figure></li>
+        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>La sala</span></div></figure></li>
+        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Ricostruzione unghie, risultato finito</span></div></figure></li>
+        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>L'ingresso</span></div></figure></li>
+        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>La postazione di lavoro</span></div></figure></li>
+        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Un dettaglio del centro</span></div></figure></li>
+      </ul>
+
+      <p class="nota-sezione"><a class="link is-segnaposto" href="#instagram">Altri lavori su Instagram</a></p>
     </div>
   </section>
 
-  <!-- Passo 3: recensioni (segnaposto; eliminare sezione e voce di menu se non ce ne sono). -->
+  <!-- RECENSIONI: inizio. Se la titolare non ha testimonianze reali e autorizzate, eliminare tutta la sezione
+       (fino a "RECENSIONI: fine") e le voci "Recensioni" nel menu della testata e nel menu mobile. -->
   <section id="recensioni" class="sezione" aria-labelledby="titolo-recensioni">
     <div class="contenuto">
       <div class="sezione__testa">
         <p class="numero"><span class="campione" aria-hidden="true"></span>03</p>
         <h2 id="titolo-recensioni">Recensioni</h2>
       </div>
+      <!-- DA COMPLETARE: solo testimonianze reali, con il permesso delle clienti. Nessuna stella, nessun nome inventato. -->
+      <div class="foto-segnaposto recensioni-segnaposto">
+        <strong>Recensioni da aggiungere</strong>
+        <span>Solo testimonianze reali, con il permesso delle clienti.</span>
+      </div>
     </div>
   </section>
+  <!-- RECENSIONI: fine. -->
 
   <!-- Passo 4: modulo di richiesta appuntamento. -->
   <section id="prenota" class="sezione sezione--alt" aria-labelledby="titolo-prenota">

@@ -40,3 +40,43 @@
   .hero__griglia { grid-template-columns: 7fr 5fr; }
   .hero__foto { max-height: none; }
 }
+
+/* Trattamenti */
+.schede { display: grid; gap: 16px; }
+.scheda {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  height: 100%;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid var(--filo);
+  border-radius: var(--raggio);
+  background: var(--bianco);
+  box-shadow: var(--ombra);
+  transition: border-color 0.3s var(--ease);
+}
+.scheda:hover { border-color: var(--sabbia); }
+.scheda .link { margin-top: auto; padding-block: 10px; }
+.scheda__dati { color: var(--tenue); font-size: var(--t-small); }
+.nota-sezione { margin-top: clamp(32px, 4vw, 56px); }
+
+@media (min-width: 40em) { .schede { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64em) { .schede { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+
+/* Galleria: cornici con proporzioni fisse, così le foto vere non si ritagliano. */
+.galleria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.galleria li:nth-child(odd) .foto { aspect-ratio: 4 / 5; }
+.galleria li:nth-child(even) .foto { aspect-ratio: 1; }
+.foto { margin: 0; }
+.foto > .foto-segnaposto, .foto > img { width: 100%; height: 100%; }
+.foto > img { object-fit: cover; border-radius: var(--raggio); }
+@media (min-width: 48em) { .galleria { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+/* Recensioni */
+.recensioni-segnaposto { min-height: 160px; }
