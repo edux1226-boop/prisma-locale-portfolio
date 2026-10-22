@@ -156,6 +156,13 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con
   `node dev/destino/build.mjs`, che scrive `public/anteprime/destino/index.html`.
 
+## Modulo contatti → Google Fogli
+
+1. Crea un foglio Google, poi **Estensioni → Apps Script** e incolla `scripts/google-sheets-modulo.gs`.
+2. **Distribuisci → Nuova distribuzione → App web**: esegui come *te*, accesso *Chiunque*. Autorizza e copia l'URL `.../exec`.
+3. Incolla l'URL in `data-endpoint` del `<form>` in `index.html` e pubblica.
+4. Con `data-endpoint` vuoto il modulo usa Netlify Forms. Il foglio si scarica in Excel da File → Scarica.
+
 ## Progetti mostrati
 
 Per ora nessun caso studio: quello di Saporito (demo non commissionata) è stato tolto dal sito.
