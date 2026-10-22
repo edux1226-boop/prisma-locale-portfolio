@@ -21,6 +21,7 @@ export default defineConfig({
         nagoya: resolve(root, 'anteprime/nagoya-sushi/index.html'),
         borgo: resolve(root, 'anteprime/borgo-spoltino/index.html'),
         anima: resolve(root, 'anteprime/anima-concept/index.html'),
+        marina: resolve(root, 'anteprime/vecchia-marina/index.html'),
       },
     },
   },

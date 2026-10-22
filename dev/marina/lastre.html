@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Vecchia Marina, lastre provvisorie</title>
+<style>html, body { margin: 0; background: #0E1B24; } canvas { display: block; }</style>
+</head>
+<body>
+<!-- Pagina di servizio per scripts/render-marina.mjs: dipinge una lastra
+     provvisoria dell'anteprima Vecchia Marina. ?t=alba&w=2400&h=1350 -->
+<script type="module">
+  import { dipingi } from './lastre.js';
+  const q = new URLSearchParams(location.search);
+  const extra = {};
+  for (const [k, v] of q) if (k.startsWith('u')) extra[k] = v.includes(',') ? v.split(',').map(Number) : Number(v);
+  const tela = dipingi(q.get('t') || 'alba', Number(q.get('w') || 1600), Number(q.get('h') || 1000), extra);
+  document.body.append(tela);
+  window.__still = tela.toDataURL('image/png');
+</script>
+</body>
+</html>

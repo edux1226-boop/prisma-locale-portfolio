@@ -1,0 +1,88 @@
+/* ==========================================================================
+   VECCHIA MARINA — anteprima di Prisma Locale
+   Concept "La linea di galleggiamento": l'orizzonte dell'Adriatico taglia
+   il sito. Sopra la linea il nome, sotto il suo riflesso. Carta da
+   giornale di bordo, inchiostro blu notte, petrolio, sabbia, pietra.
+   Il metallo è peltro, mai oro: solo nei fili, sul blu.
+   ========================================================================== */
+
+/* Spectral (Production Type): un serif da lettura nato per lo schermo,
+   sottilissimo a corpo grande. Archivo: un grottesco ottocentesco con
+   l'asse della larghezza, stretto per le etichette, normale per il testo. */
+@font-face {
+  font-family: "Spectral";
+  src: url("/assets/fonts/spectral-200.woff2") format("woff2");
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("/assets/fonts/spectral-200-italic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("/assets/fonts/spectral-300.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("/assets/fonts/spectral-300-italic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+/* Archivo ridotto con fontTools: latino, pesi 300–700, larghezze 70–112,5%. */
+@font-face {
+  font-family: "Archivo";
+  src: url("/assets/fonts/archivo-var.woff2") format("woff2");
+  font-weight: 300 700;
+  font-stretch: 70% 112.5%;
+  font-display: swap;
+}
+
+:root {
+  --carta: #F2EFE8;          /* il foglio: avorio freddo, non crema */
+  --carta-rgb: 242 239 232;
+  --carta-2: #E7E2D7;
+  --sabbia: #D5C9B1;
+  --sabbia-scura: #B8A887;
+  --pietra: #8D918D;
+  --pietra-testo: #575D5C;   /* secondario su carta, 6.3:1 */
+  --inchiostro: #13202A;     /* testo su carta, 15:1 */
+  --adriatico: #0C1A22;      /* il blu notte */
+  --adriatico-rgb: 12 26 34;
+  --petrolio: #173B45;
+  --petrolio-2: #24525C;
+  --nero: #0E1214;
+  --peltro: #A9AEA8;         /* il metallo: solo fili e segni sul blu */
+  --spuma: #C9D0CC;          /* secondario su blu, 10:1 */
+
+  --filo: rgb(19 32 42 / 0.18);
+  --filo-chiaro: rgb(var(--carta-rgb) / 0.22);
+
+  --f-titolo: "Spectral", "Iowan Old Style", Georgia, serif;
+  --f-testo: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  --t-mare: clamp(3.6rem, 0.4rem + 13.2vw, 15.5rem);
+  --t-xxl: clamp(2.8rem, 0.9rem + 7.4vw, 9.6rem);
+  --t-xl: clamp(2.2rem, 1.1rem + 4.4vw, 6rem);
+  --t-l: clamp(1.55rem, 1.1rem + 1.9vw, 2.9rem);
+  --t-m: clamp(1.2rem, 1.04rem + 0.7vw, 1.65rem);
+  --t-testo: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --t-piccolo: 0.8125rem;
+  --t-etichetta: 0.6875rem;
+
+  --margine: clamp(18px, 4.4vw, 76px);
+  --colonna: calc((100vw - 2 * var(--margine)) / 12);
+  --respiro: clamp(120px, 17vw, 300px);   /* lo spazio tra le sezioni: tanto */
+  --testata-h: 76px;
+  --testata-compatta: 58px;
+  --banner-h: 28px;
+
+  --lento: cubic-bezier(0.22, 1, 0.36, 1);
+  --marea: cubic-bezier(0.65, 0, 0.35, 1);
+}
