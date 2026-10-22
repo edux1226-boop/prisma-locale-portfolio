@@ -1056,3 +1056,57 @@
   .contatti__intro { grid-column: 1 / span 5; }
   .form { grid-column: 7 / span 6; }
 }
+
+/* ---- PREZZI ---------------------------------------------------------------- */
+.prezzi__intro { margin-top: clamp(28px, 4vw, 56px); color: var(--testo-2); }
+.prezzi__list { margin-top: clamp(40px, 5vw, 72px); row-gap: 20px; align-items: stretch; }
+.pacchetto {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(24px, 2.6vw, 38px);
+  border: 1px solid var(--filo);
+}
+.pacchetto--forte { border-color: var(--arancio); box-shadow: inset 0 0 0 1px var(--arancio); }
+.pacchetto__badge {
+  position: absolute;
+  top: 0; right: clamp(24px, 2.6vw, 38px);
+  transform: translateY(-50%);
+  padding: 4px 10px;
+  background: var(--arancio);
+  color: var(--notte);
+}
+.pacchetto__name { font-size: var(--t-l); }
+.pacchetto__for { color: var(--testo-2); text-wrap: pretty; }
+.pacchetto__price { display: flex; align-items: baseline; gap: 12px; padding-block: 6px; }
+.pacchetto__price .display { font-size: var(--t-xl); }
+.pacchetto__price small { font-size: var(--t-small); color: var(--testo-2); }
+.pacchetto__voci { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid var(--filo); }
+.pacchetto__voci li { position: relative; padding-left: 1.3em; text-wrap: pretty; }
+.pacchetto__voci li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 0.6em; height: 1px;
+  background: var(--arancio);
+}
+.prezzi__note {
+  margin-top: clamp(32px, 4vw, 56px);
+  row-gap: 28px;
+  padding-top: clamp(24px, 3vw, 40px);
+  border-top: 1px solid var(--filo);
+}
+.prezzi__note .label { display: block; margin-bottom: 8px; color: var(--testo-2); }
+.prezzi__note p { max-width: 44ch; text-wrap: pretty; }
+.prezzi__cta { align-self: end; }
+@media (min-width: 48em) {
+  .prezzi__list .pacchetto { grid-column: span 6; }
+}
+@media (min-width: 64em) {
+  .prezzi__intro { max-width: 40ch; }
+  .prezzi__list .pacchetto { grid-column: span 4; }
+  .prezzi__hosting { grid-column: 1 / span 4; }
+  .prezzi__come { grid-column: 5 / span 5; }
+  .prezzi__cta { grid-column: 10 / -1; justify-self: end; }
+}
