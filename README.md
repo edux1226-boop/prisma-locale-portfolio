@@ -158,7 +158,7 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
 
 ## Modulo contatti → Google Fogli
 
-1. Crea un foglio Google, poi **Estensioni → Apps Script** e incolla `scripts/google-sheets-modulo.gs`.
+1. Crea un foglio Google, poi **Estensioni → Apps Script** (oppure un progetto indipendente: in quel caso scrivi l'ID del foglio in `ID_FOGLIO`) e incolla `scripts/google-sheets-modulo.gs`.
 2. **Distribuisci → Nuova distribuzione → App web**: esegui come *te*, accesso *Chiunque*. Autorizza e copia l'URL `.../exec`.
 3. Incolla l'URL in `data-endpoint` del `<form>` in `index.html` e pubblica.
 4. Con `data-endpoint` vuoto il modulo usa Netlify Forms. Il foglio si scarica in Excel da File → Scarica.
