@@ -38,15 +38,88 @@
 <body>
 <a class="salta" href="#contenuto">Vai al contenuto</a>
 
-<!-- Passo 2: testata con navigazione, Instagram, "Prenota" e menu mobile. -->
-<header class="testata" data-testata></header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></symbol>
+</svg>
+
+<!-- DA COMPLETARE: sostituire il testo "Chris Beauty" con il logo quando la titolare lo fornisce.
+     DA COMPLETARE: Instagram. Finché manca il link, i collegamenti Instagram puntano a #instagram.
+     Da sostituire con l'URL vero in: testata, menu mobile, galleria, fascia Instagram, footer, JSON-LD (sameAs). -->
+<header class="testata" data-testata>
+  <div class="contenuto testata__dentro">
+    <a class="marchio" href="#inizio">Chris Beauty</a>
+    <nav class="navigazione" aria-label="Principale">
+      <ul>
+        <li><a href="#trattamenti">Trattamenti</a></li>
+        <li><a href="#galleria">Galleria</a></li>
+        <li><a href="#recensioni">Recensioni</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+    <div class="testata__azioni">
+      <a class="icona-instagram is-segnaposto" href="#instagram" aria-label="Instagram di Chris Beauty">
+        <svg aria-hidden="true"><use href="#i-instagram"/></svg>
+      </a>
+      <a class="bottone" href="#prenota">Prenota</a>
+      <button class="menu-apri" type="button" data-menu-apri aria-haspopup="dialog" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+
+<dialog class="menu" data-menu aria-label="Menu">
+  <div class="menu__pannello">
+    <div class="menu__testa">
+      <span class="marchio">Chris Beauty</span>
+      <button class="menu__chiudi" type="button" data-menu-chiudi>Chiudi</button>
+    </div>
+    <ul class="menu__elenco">
+      <li><a href="#trattamenti">Trattamenti</a></li>
+      <li><a href="#galleria">Galleria</a></li>
+      <li><a href="#recensioni">Recensioni</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+      <li><a class="is-segnaposto" href="#instagram">Instagram</a></li>
+    </ul>
+    <a class="bottone" href="#prenota">Richiedi un appuntamento</a>
+  </div>
+</dialog>
+
+<div class="barra" data-barra>
+  <a class="bottone" href="#prenota">Richiedi un appuntamento</a>
+</div>
 
 <main id="contenuto">
 
-  <!-- Passo 2: sezione iniziale. -->
   <section id="inizio" class="hero" aria-labelledby="titolo-hero">
-    <div class="contenuto">
-      <h1 id="titolo-hero">Chris Beauty</h1>
+    <div class="contenuto hero__griglia">
+      <div class="hero__testo">
+        <div class="campioni" aria-hidden="true">
+          <span class="campione"></span><span class="campione"></span><span class="campione"></span><span class="campione"></span><span class="campione"></span>
+        </div>
+        <!-- DA COMPLETARE: città. -->
+        <p class="hero__occhiello">Centro estetico · <span class="segnaposto">[città]</span></p>
+        <h1 id="titolo-hero">Chris Beauty</h1>
+        <!-- DA COMPLETARE: trattamenti principali. L'unico servizio noto è la ricostruzione unghie. -->
+        <p class="hero__lead">Ricostruzione unghie e <span class="segnaposto">[altri trattamenti principali da inserire]</span>, su appuntamento.</p>
+        <div class="hero__azioni">
+          <a class="bottone" href="#prenota">Richiedi un appuntamento</a>
+          <a class="bottone bottone--secondario" href="#trattamenti">Vedi i trattamenti</a>
+        </div>
+        <!-- I link puntano alle schede della sezione Trattamenti (id aggiunti nel passo 3). -->
+        <ul class="pillole" aria-label="Trattamenti principali">
+          <li><a href="#trattamenti">Ricostruzione unghie</a></li>
+          <li><span class="segnaposto">[trattamento da inserire]</span></li>
+          <li><span class="segnaposto">[trattamento da inserire]</span></li>
+        </ul>
+      </div>
+      <div class="hero__foto">
+        <!-- DA COMPLETARE: foto vera della postazione. Sostituire il div con:
+             <picture><source type="image/avif" srcset="/assets/img/chris/hero.avif">
+             <img src="/assets/img/chris/hero.webp" width="1200" height="1500" alt="[descrizione]" fetchpriority="high"></picture> -->
+        <div class="foto-segnaposto" role="img" aria-label="Segnaposto: foto della postazione di lavoro">
+          <strong>Foto da inserire</strong>
+          <span>La postazione di lavoro, luce naturale</span>
+        </div>
+      </div>
     </div>
   </section>
 

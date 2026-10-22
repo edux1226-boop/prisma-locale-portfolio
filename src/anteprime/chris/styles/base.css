@@ -136,7 +136,9 @@ p { max-width: var(--testo); text-wrap: pretty; }
 
 /* Segnaposto: stesso aspetto ovunque, si trovano cercando DA COMPLETARE. */
 .segnaposto {
-  display: inline-block;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   padding: 2px 8px;
   border: 1px dashed var(--cipria-testo);
   border-radius: 4px;

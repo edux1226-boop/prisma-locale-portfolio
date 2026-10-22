@@ -1,0 +1,145 @@
+/* Testata, menu mobile e barra "Prenota" per smartphone. */
+
+.testata {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--testata-h);
+  background: var(--latte);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease);
+}
+.testata.is-solida { border-bottom-color: var(--filo); }
+
+.testata__dentro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
+}
+
+.marchio {
+  font-family: var(--f-titoli);
+  font-size: 1.75rem;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navigazione { display: none; }
+.navigazione ul { display: flex; gap: clamp(20px, 3vw, 44px); }
+.navigazione a {
+  display: inline-block;
+  padding: 10px 0;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.3s var(--ease);
+}
+.navigazione a:hover { background-size: 100% 1px; }
+
+.testata__azioni { display: flex; align-items: center; gap: 8px; }
+
+.icona-instagram {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--inchiostro);
+}
+.icona-instagram:hover { background: var(--porcellana); }
+.icona-instagram svg { width: 22px; height: 22px; }
+
+.testata .bottone { min-height: 44px; padding: 0 20px; }
+
+.menu-apri {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  background: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+@media (max-width: 29.99em) {
+  .marchio { font-size: 1.5rem; }
+  .testata__azioni { gap: 0; }
+  .testata .bottone { padding: 0 16px; }
+  .menu-apri { padding: 0 8px; }
+}
+
+@media (min-width: 64em) {
+  .navigazione { display: block; }
+  .menu-apri { display: none; }
+}
+
+/* Menu mobile */
+.menu {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--latte);
+  color: var(--inchiostro);
+}
+.menu::backdrop { background: rgb(42 38 35 / 0.4); }
+.menu__pannello {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 100%;
+  padding: 0 var(--margine) 32px;
+}
+.menu__testa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--testata-h);
+}
+.menu__chiudi {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  background: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+.menu__elenco a {
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--filo);
+  font-family: var(--f-titoli);
+  font-size: var(--t-l);
+  text-decoration: none;
+}
+.menu__pannello .bottone { margin-top: auto; }
+
+/* Barra fissa su smartphone */
+.barra {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 15;
+  padding: 12px var(--margine) calc(12px + env(safe-area-inset-bottom));
+  background: var(--latte);
+  border-top: 1px solid var(--filo);
+  transform: translateY(100%);
+  visibility: hidden;
+  transition: transform 0.4s var(--ease), visibility 0s linear 0.4s;
+}
+.barra.is-visibile {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.4s var(--ease);
+}
+.barra .bottone { width: 100%; }
+
+@media (min-width: 48em) {
+  .barra { display: none; }
+}
