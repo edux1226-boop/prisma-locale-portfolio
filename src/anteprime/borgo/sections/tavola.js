@@ -1,35 +1,29 @@
-import { gsap, lockScroll } from '../../../js/core/motion.js';
+import { gsap } from '../../../js/core/motion.js';
 
-const PORTATE = [
-  'Il benvenuto: piccoli assaggi da gustare in piedi, tra un brindisi e l\'altro.',
-  'La pasta, fatta come si deve: il momento in cui la tavola si fa silenziosa.',
-  'Carne o pesce, secondo il menu scelto insieme alla cucina.',
-  'La torta, ma non solo: il finale merita la stessa cura dell\'inizio.',
-  'Abbinamenti scelti portata per portata, per brindare fino a tardi.',
-];
-
-/* Le portate sono schede: clic, frecce della tastiera, e su desktop anche
-   il passaggio del mouse. Il testo cambia con una dissolvenza breve. */
+/* Le portate sono schede con i loro pannelli nel markup: clic, frecce della
+   tastiera, e su desktop anche il passaggio del mouse. Il pannello nuovo
+   arriva con una dissolvenza breve. */
 function initPortate({ fine, movimento }) {
   const schede = [...document.querySelectorAll('[data-portata]')];
-  const pannello = document.querySelector('[data-portate-pannello]');
-  const testo = pannello.querySelector('[data-portate-testo]');
+  const pannelli = [...document.querySelectorAll('[data-pannello]')];
   let attiva = 0;
 
   const scegli = (i, focus = false) => {
     if (i === attiva) return;
+    const prima = pannelli[attiva];
     attiva = i;
     schede.forEach((s, j) => {
       s.setAttribute('aria-selected', String(j === i));
       s.tabIndex = j === i ? 0 : -1;
     });
-    pannello.setAttribute('aria-labelledby', schede[i].id);
     if (focus) schede[i].focus();
-    if (!movimento) { testo.textContent = PORTATE[i]; return; }
-    gsap.timeline()
-      .to(testo, { opacity: 0, y: -8, duration: 0.25, ease: 'power2.in', overwrite: true })
-      .add(() => { testo.textContent = PORTATE[i]; })
-      .fromTo(testo, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', immediateRender: false });
+    gsap.killTweensOf(pannelli);
+    const mostra = () => {
+      pannelli.forEach((p, j) => { p.hidden = j !== i; });
+      if (movimento) gsap.fromTo(pannelli[i], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' });
+    };
+    if (!movimento || prima.hidden) { mostra(); return; }
+    gsap.to(prima, { opacity: 0, y: -8, duration: 0.25, ease: 'power2.in', onComplete: () => { gsap.set(prima, { clearProps: 'opacity,transform' }); mostra(); } });
   };
 
   schede.forEach((s, i) => {
@@ -48,10 +42,9 @@ function initPortate({ fine, movimento }) {
 function initCarta() {
   const carta = document.querySelector('[data-carta]');
   const apri = document.querySelector('[data-menu-portate-apri]');
-  apri.addEventListener('click', () => { carta.showModal(); lockScroll(true); });
+  apri.addEventListener('click', () => carta.showModal());
   carta.querySelector('[data-carta-chiudi]').addEventListener('click', () => carta.close());
   carta.addEventListener('click', (e) => { if (e.target === carta) carta.close(); });
-  carta.addEventListener('close', () => lockScroll(false));
   // chi chiede i menu arriva al modulo con il messaggio già scritto
   carta.querySelector('[data-carta-contatti]').addEventListener('click', () => {
     const messaggio = document.querySelector('#f-messaggio');

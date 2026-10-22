@@ -17,15 +17,13 @@
 .testata.is-solida {
   --testata-h: 68px;
   color: var(--inchiostro);
-  background: rgb(var(--avorio-rgb) / 0.86);
-  -webkit-backdrop-filter: blur(14px) saturate(1.1);
-  backdrop-filter: blur(14px) saturate(1.1);
+  background: rgb(var(--avorio-rgb) / 0.95);
 }
 .testata.is-solida::after { opacity: 0.12; }
 /* Sopra le sezioni scure. */
-.testata.is-solida.is-scura { color: var(--avorio); background: rgb(var(--terra-rgb) / 0.72); }
+.testata.is-solida.is-scura { color: var(--avorio); background: rgb(var(--terra-rgb) / 0.9); }
 .testata.is-nascosta { transform: translateY(-100%); }
-.menu-aperto .testata { transform: none; }
+:root:has(.menu:modal) .testata { transform: none; }
 
 .marchio {
   justify-self: start;
@@ -89,12 +87,6 @@
 .menu[open] { display: flex; flex-direction: column; }
 .menu::backdrop { background: var(--terra); }
 .menu__testa { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.menu__chiudi {
-  display: inline-flex; align-items: center; gap: 10px;
-  min-height: 44px; padding: 0; border: 0; background: none;
-  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-}
-.menu__chiudi svg { width: 22px; height: 22px; }
 .menu nav { flex: 1; display: flex; align-items: center; padding-block: 32px; }
 .menu__voci { display: grid; gap: clamp(6px, 1.5vh, 14px); width: 100%; }
 .menu__voci a {

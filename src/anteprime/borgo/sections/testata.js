@@ -1,14 +1,16 @@
-import { ScrollTrigger, lockScroll, scrollToTarget } from '../../../js/core/motion.js';
+import { ScrollTrigger, scrollToTarget } from '../../../js/core/motion.js';
+import { initScrollSpy } from '../../../js/ui/nav.js';
 
 /* La testata: trasparente sull'hero, poi carta velata con un filo.
    Scendendo si ritira, risalendo torna. Sopra le sezioni scure si scurisce. */
 function initComportamento() {
   const testata = document.querySelector('[data-testata]');
   const hero = document.querySelector('[data-hero]');
+  const sottoTestata = (bordo) => () => `${bordo} top+=${testata.offsetHeight}`;
 
   ScrollTrigger.create({
     trigger: hero,
-    start: 'bottom top+=90',
+    start: sottoTestata('bottom'),
     onEnter: () => testata.classList.add('is-solida'),
     onLeaveBack: () => testata.classList.remove('is-solida', 'is-nascosta'),
   });
@@ -20,8 +22,7 @@ function initComportamento() {
     onUpdate(self) {
       const y = self.scroll();
       if (Math.abs(y - ultimo) < 6) return;
-      const giu = y > ultimo;
-      testata.classList.toggle('is-nascosta', giu && y > window.innerHeight * 0.9);
+      testata.classList.toggle('is-nascosta', y > ultimo && y > window.innerHeight * 0.9);
       ultimo = y;
     },
   });
@@ -29,51 +30,27 @@ function initComportamento() {
   for (const scura of document.querySelectorAll('.giornata, .voci, .piede')) {
     ScrollTrigger.create({
       trigger: scura,
-      start: 'top top+=40',
-      end: 'bottom top+=40',
+      start: sottoTestata('top'),
+      end: sottoTestata('bottom'),
       onToggle: (self) => testata.classList.toggle('is-scura', self.isActive),
     });
   }
 
-  // La voce del menu corrispondente alla sezione in vista.
-  const voci = [...testata.querySelectorAll('.testata__nav a')];
-  for (const voce of voci) {
-    const sezione = document.querySelector(voce.getAttribute('href'));
-    if (!sezione) continue;
-    ScrollTrigger.create({
-      trigger: sezione,
-      start: 'top center',
-      end: 'bottom center',
-      onToggle(self) {
-        if (self.isActive) {
-          voci.forEach((v) => v.removeAttribute('aria-current'));
-          voce.setAttribute('aria-current', 'true');
-        } else {
-          voce.removeAttribute('aria-current');
-        }
-      },
-    });
-  }
+  initScrollSpy();
 }
 
-/* Il menu a tutto schermo su mobile, con <dialog> nativo. */
+/* Il menu a tutto schermo su mobile, con <dialog> nativo. Il blocco dello
+   scroll sotto le finestre è uno solo, in CSS (html:has(dialog:modal)). */
 function initMenu() {
   const menu = document.querySelector('[data-menu]');
   const apri = document.querySelector('[data-menu-apri]');
-  const chiudi = menu.querySelector('[data-menu-chiudi]');
 
   apri.addEventListener('click', () => {
     menu.showModal();
     apri.setAttribute('aria-expanded', 'true');
-    document.documentElement.classList.add('menu-aperto');
-    lockScroll(true);
   });
-  chiudi.addEventListener('click', () => menu.close());
-  menu.addEventListener('close', () => {
-    apri.setAttribute('aria-expanded', 'false');
-    document.documentElement.classList.remove('menu-aperto');
-    lockScroll(false);
-  });
+  menu.querySelector('[data-menu-chiudi]').addEventListener('click', () => menu.close());
+  menu.addEventListener('close', () => apri.setAttribute('aria-expanded', 'false'));
 }
 
 /* Link interni: chiudono le finestre aperte, scorrono con Lenis e portano
@@ -87,10 +64,7 @@ function initAncore() {
     const target = id && document.getElementById(id);
     if (!target) return;
     event.preventDefault();
-    const aperte = document.querySelectorAll('dialog[open]');
-    aperte.forEach((d) => d.close());
-    // l'evento "close" arriva dopo: lo scroll va sbloccato subito
-    if (aperte.length) lockScroll(false);
+    document.querySelectorAll('dialog[open]').forEach((d) => d.close());
     requestAnimationFrame(() => scrollToTarget(target, () => {
       if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });

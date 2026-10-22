@@ -8,8 +8,13 @@
 const comune = /* glsl */ `#version 300 es
 precision highp float;
 uniform vec2 uRes;
-uniform float uCx, uVig;
+uniform float uCx, uCy, uZoom, uVig, uGrain;
 out vec4 o;
+
+// Coordinate della tavola: altezza 1, inquadratura centrata in (uCx, uCy).
+vec2 coordinate(vec2 q) {
+  return vec2(uCx + (gl_FragCoord.x - uRes.x * .5) / uRes.y * uZoom, uCy + (q.y - .5) * uZoom);
+}
 
 float h1(float n) { return fract(sin(n * 127.1) * 43758.5453); }
 float h2(vec2 p) { vec3 q = fract(vec3(p.xyx) * .1031); q += dot(q, q.yzx + 33.33); return fract((q.x + q.y) * q.z); }
@@ -41,7 +46,7 @@ vec3 finitura(vec3 c, vec2 q, float grana) {
 const colle = comune + /* glsl */ `
 uniform vec3 uSkyTop, uSkyHor, uSunCol, uFog, uFar, uNear, uLit;
 uniform vec3 uSun;          // x, y, raggio
-uniform float uBloom, uStars, uMoon, uWindows, uStrings, uHaze, uDay, uClouds, uGrain, uRamo, uStrato, uZoom, uCy;
+uniform float uBloom, uStars, uMoon, uWindows, uStrings, uHaze, uDay, uClouds, uRamo, uStrato;
 
 const float BX = .36; // il borgo
 
@@ -185,7 +190,6 @@ vec3 strato(int i, vec2 p, float r) {
 
 vec3 borgo(vec2 p, vec3 base, float px, inout float glow, out float copertura) {
   float suolo = cresta(2, BX) - .006;
-  vec3 c = base;
   float edifici[18] = float[18](
     -.052, .026, .016,
     -.03, .024, .026,
@@ -249,19 +253,11 @@ vec3 luminarie(vec2 p, vec3 c, float px) {
       if (tk < 0. || tk > 1.) continue;
       float rk = raggio * (.75 + .5 * h1(kk * 2.7 + fs * 11.));
       vec2 q = vec2(mix(a.x, b.x, tk), mix(a.y, b.y, tk) - sag * 4. * tk * (1. - tk) - rk * .7);
-      float d = length((p - q) * vec2(1., s == 0 ? 1. : 1.));
+      float d = length(p - q);
       vec3 lc = mix(vec3(1., .74, .44), vec3(1., .86, .66), h1(kk * 91. + fs));
       float forza = uStrings * (.55 + .45 * h1(kk * 13. + fs * 3.));
-      if (s == 2) {
-        // bokeh: disco morbido con il bordo appena più luminoso
-        float disco = smoothstep(rk, rk * .82, d);
-        float bordo = smoothstep(rk * .6, rk * .9, d) * disco;
-        c = mix(c, c + lc * forza * .5, disco * .35);
-        c += lc * forza * (bordo * .03 + exp(-d / (rk * 1.3)) * .1);
-      } else {
-        float nucleo = smoothstep(rk, rk * .2, d);
-        c += lc * forza * (nucleo * .9 + exp(-d / (rk * 2.5)) * .45 + exp(-d / (rk * 9.)) * .12);
-      }
+      float nucleo = smoothstep(rk, rk * .2, d);
+      c += lc * forza * (nucleo * .9 + exp(-d / (rk * 2.5)) * .45 + exp(-d / (rk * 9.)) * .12);
     }
   }
   return c;
@@ -308,7 +304,7 @@ void stendi(inout vec3 c, inout float a, vec3 col, float cov, bool vivo) {
 void main() {
   vec2 q = gl_FragCoord.xy / uRes;
   float px = 1.2 / uRes.y * uZoom;
-  vec2 p = vec2(uCx + (gl_FragCoord.x - uRes.x * .5) / uRes.y * uZoom, uCy + (q.y - .5) * uZoom);
+  vec2 p = coordinate(q);
   int S = int(uStrato);
   bool dietro = S == 0 || S == 1, mezzo = S == 0 || S == 2, avanti = S == 0 || S == 3;
 
@@ -380,7 +376,6 @@ void main() {
    IL VIALE: due file di cipressi, ghiaia, ombre lunghe del tardo pomeriggio.
    ------------------------------------------------------------------ */
 const viale = comune + /* glsl */ `
-uniform float uZoom, uCy, uStrato, uGrain;
 
 const float HZ = .56;      // orizzonte sullo schermo
 const float F = 1.15;      // focale
@@ -417,7 +412,7 @@ float cipresso(vec2 p, float X, float Z, float H, float R, float seme, out float
 
 void main() {
   vec2 q = gl_FragCoord.xy / uRes;
-  vec2 p = vec2((gl_FragCoord.x - uRes.x * .5) / uRes.y * uZoom + uCx, uCy + (q.y - .5) * uZoom);
+  vec2 p = coordinate(q);
   vec3 c = cieloV(p);
   vec3 nebbia = vec3(.86, .8, .68);
 
@@ -483,10 +478,9 @@ void main() {
    LUCI: lampadine sfocate nel buio, per la festa e per la sala.
    ------------------------------------------------------------------ */
 const luci = comune + /* glsl */ `
-uniform float uZoom, uCy, uGrain;
 void main() {
   vec2 q = gl_FragCoord.xy / uRes;
-  vec2 p = vec2((gl_FragCoord.x - uRes.x * .5) / uRes.y * uZoom + uCx, uCy + (q.y - .5) * uZoom);
+  vec2 p = coordinate(q);
   vec3 c = mix(vec3(.035, .03, .03), vec3(.1, .075, .055), smoothstep(1., .2, p.y));
   // tre piani di lampadine, sempre più sfocate verso l'occhio
   for (int piano = 0; piano < 3; piano++) {
@@ -522,7 +516,6 @@ void main() {
    della finestra. Per la suite.
    ------------------------------------------------------------------ */
 const lino = comune + /* glsl */ `
-uniform float uZoom, uCy, uGrain;
 float pieghe(vec2 p) {
   float h = 0.;
   h += .5 * sin(p.x * 3.1 + 1.5 * f2(p * .8)) * .5;
@@ -532,7 +525,7 @@ float pieghe(vec2 p) {
 }
 void main() {
   vec2 q = gl_FragCoord.xy / uRes;
-  vec2 p = vec2((gl_FragCoord.x - uRes.x * .5) / uRes.y * uZoom + uCx, uCy + (q.y - .5) * uZoom) * 2.2;
+  vec2 p = coordinate(q) * 2.2;
   float e = .004;
   float h = pieghe(p);
   vec2 g = vec2(pieghe(p + vec2(e, 0.)) - h, pieghe(p + vec2(0., e)) - h) / e;

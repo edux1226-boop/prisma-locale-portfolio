@@ -62,7 +62,6 @@
 </div>
 
 <p class="anteprima" role="note"><span class="anteprima__punto" aria-hidden="true"></span>Anteprima riservata<span class="anteprima__extra"> · immagini provvisorie</span> · <a href="#nota">Prisma Locale</a></p>
-<div class="filigrana" aria-hidden="true"></div>
 
 <!-- Apertura: un sipario che si apre sul colle. Solo con il movimento attivo. -->
 <div class="sipario" aria-hidden="true" data-sipario>
@@ -78,21 +77,21 @@
   <a class="marchio" href="#inizio" aria-label="Borgo Spoltino, torna all'inizio">Borgo <i>Spoltino</i></a>
   <nav class="testata__nav" aria-label="Sezioni">
     <ul role="list">
-      <li><a href="#location">Location</a></li>
-      <li><a href="#matrimoni">Matrimoni</a></li>
-      <li><a href="#esperienze">Esperienze</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#dove">Contatti</a></li>
+      <li><a href="#location" data-spy>Location</a></li>
+      <li><a href="#matrimoni" data-spy>Matrimoni</a></li>
+      <li><a href="#esperienze" data-spy>Esperienze</a></li>
+      <li><a href="#gallery" data-spy>Gallery</a></li>
+      <li><a href="#dove" data-spy>Contatti</a></li>
     </ul>
   </nav>
   <a class="testata__cta" href="#contatti" data-magnete>Richiedi informazioni</a>
   <button class="testata__menu" type="button" aria-haspopup="dialog" aria-controls="menu" data-menu-apri>
-    <span class="testata__menu-testo">Menu</span>
+    <span>Menu</span>
     <span class="testata__menu-linee" aria-hidden="true"><span></span><span></span></span>
   </button>
 </header>
 
-<dialog class="menu" id="menu" aria-label="Menu" data-menu>
+<dialog class="menu" id="menu" aria-label="Menu" data-menu data-lenis-prevent>
   <div class="menu__testa">
     <p class="marchio" aria-hidden="true">Borgo <i>Spoltino</i></p>
     <button class="menu__chiudi" type="button" data-menu-chiudi>
@@ -121,8 +120,8 @@
      schermo della location (16:9 e 9:16). I piani 2 e 3 hanno la trasparenza.
      ==================================================================== -->
 <section class="hero" id="inizio" aria-labelledby="hero-titolo" data-hero>
-  <div class="hero__scena" data-hero-scena>
-    <picture class="hero__piano hero__piano--1" data-piano="1">
+  <div class="hero__scena">
+    <picture class="hero__piano" data-piano="1">
       <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/borgo/hero-1-s.avif 720w, /assets/img/borgo/hero-1-v.avif 1080w" sizes="110vw">
       <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/borgo/hero-1-s.webp 720w, /assets/img/borgo/hero-1-v.webp 1080w" sizes="110vw">
       <source type="image/avif" srcset="/assets/img/borgo/hero-1-m.avif 1600w, /assets/img/borgo/hero-1-l.avif 2560w" sizes="110vw">
@@ -130,13 +129,17 @@
            width="2560" height="1440" fetchpriority="high" decoding="async"
            alt="Illustrazione provvisoria: le colline di Mosciano all'ora dorata, con il Gran Sasso controluce e un borgo sul colle.">
     </picture>
-    <picture class="hero__piano hero__piano--2" data-piano="2">
-      <source media="(max-aspect-ratio: 4/5)" srcset="/assets/img/borgo/hero-2-s.webp 720w, /assets/img/borgo/hero-2-v.webp 1080w" sizes="110vw">
+    <picture class="hero__piano" data-piano="2">
+      <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/borgo/hero-2-s.avif 720w, /assets/img/borgo/hero-2-v.avif 1080w" sizes="110vw">
+      <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/borgo/hero-2-s.webp 720w, /assets/img/borgo/hero-2-v.webp 1080w" sizes="110vw">
+      <source type="image/avif" srcset="/assets/img/borgo/hero-2-m.avif 1600w, /assets/img/borgo/hero-2-l.avif 2560w" sizes="110vw">
       <img src="/assets/img/borgo/hero-2-m.webp" srcset="/assets/img/borgo/hero-2-m.webp 1600w, /assets/img/borgo/hero-2-l.webp 2560w" sizes="110vw"
            width="2560" height="1440" decoding="async" alt="">
     </picture>
     <picture class="hero__piano hero__piano--3" data-piano="3">
-      <source media="(max-aspect-ratio: 4/5)" srcset="/assets/img/borgo/hero-3-s.webp 720w, /assets/img/borgo/hero-3-v.webp 1080w" sizes="110vw">
+      <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/borgo/hero-3-s.avif 720w, /assets/img/borgo/hero-3-v.avif 1080w" sizes="110vw">
+      <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/borgo/hero-3-s.webp 720w, /assets/img/borgo/hero-3-v.webp 1080w" sizes="110vw">
+      <source type="image/avif" srcset="/assets/img/borgo/hero-3-m.avif 1600w, /assets/img/borgo/hero-3-l.avif 2560w" sizes="110vw">
       <img src="/assets/img/borgo/hero-3-m.webp" srcset="/assets/img/borgo/hero-3-m.webp 1600w, /assets/img/borgo/hero-3-l.webp 2560w" sizes="110vw"
            width="2560" height="1440" decoding="async" alt="">
     </picture>
@@ -185,7 +188,7 @@
      movimento ridotto resta l'immagine statica dello stesso plastico.
      ==================================================================== -->
 <section class="territorio" id="territorio" aria-labelledby="territorio-titolo" data-territorio>
-  <div class="territorio__palco" data-territorio-palco>
+  <div class="territorio__palco">
     <div class="territorio__tela" data-territorio-tela></div>
     <picture class="territorio__statico">
       <source media="(min-aspect-ratio: 1/1)" type="image/avif" srcset="/assets/img/borgo/plastico-l.avif">
@@ -194,7 +197,7 @@
       <img src="/assets/img/borgo/plastico-v.webp" width="900" height="1200" loading="lazy" decoding="async"
            alt="Plastico in gesso del territorio: il massiccio del Gran Sasso a ovest, le colline che scendono verso il mare a est e, in mezzo, il colle di Mosciano Sant'Angelo.">
     </picture>
-    <ul class="territorio__etichette" role="list" aria-hidden="true" data-etichette>
+    <ul class="territorio__etichette" role="list" aria-hidden="true">
       <li data-etichetta="sasso"><b>Gran Sasso d'Italia</b><span>2.912 m</span></li>
       <li data-etichetta="mare"><b>Mare Adriatico</b></li>
       <li data-etichetta="borgo" class="is-borgo"><b>Borgo Spoltino</b><span>Mosciano Sant'Angelo</span></li>
@@ -203,16 +206,16 @@
     <div class="territorio__testo">
       <p class="etichetta">Il territorio</p>
       <h2 class="territorio__titolo" id="territorio-titolo" data-righe>Tra la montagna<br>e il mare.</h2>
-      <ol class="territorio__passi" role="list" data-passi>
-        <li data-passo>
+      <ol class="territorio__passi" role="list">
+        <li data-passo data-etichette="sasso">
           <span class="territorio__num">I</span>
           <p><b>Alle spalle, il Gran Sasso.</b> La vetta più alta dell'Appennino chiude l'orizzonte a ovest.</p>
         </li>
-        <li data-passo>
+        <li data-passo data-etichette="mare borgo">
           <span class="territorio__num">II</span>
           <p><b>Davanti, l'Adriatico.</b> A est le colline scendono piano verso la costa.</p>
         </li>
-        <li data-passo>
+        <li data-passo data-etichette="borgo">
           <span class="territorio__num">III</span>
           <p><b>In mezzo, il colle.</b> Mosciano Sant'Angelo, sulle colline teramane. Qui c'è Borgo Spoltino.</p>
         </li>
@@ -228,10 +231,10 @@
      ==================================================================== -->
 <section class="location" id="location" aria-labelledby="location-titolo">
   <div class="apertura" data-apertura>
-    <div class="apertura__palco" data-apertura-palco>
+    <div class="apertura__palco">
       <p class="apertura__parola apertura__parola--sx" aria-hidden="true" data-apertura-parola="sx">Il</p>
       <p class="apertura__parola apertura__parola--dx" aria-hidden="true" data-apertura-parola="dx">borgo</p>
-      <figure class="apertura__finestra" data-apertura-finestra>
+      <figure class="apertura__finestra">
         <picture>
           <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/img/borgo/viale-v.avif">
           <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/img/borgo/viale-v.webp">
@@ -436,7 +439,7 @@
 <!-- ====================================================================
      LA TAVOLA — FOTO: piatti e tavola apparecchiata, 4:5.
      ==================================================================== -->
-<section class="tavola" id="tavola" aria-labelledby="tavola-titolo" data-tavola>
+<section class="tavola" id="tavola" aria-labelledby="tavola-titolo">
   <div class="tavola__foto" data-maschera>
     <picture>
       <source type="image/avif" srcset="/assets/img/borgo/borgo-notte-v.avif">
@@ -449,16 +452,20 @@
     <h2 class="tavola__titolo" id="tavola-titolo" data-righe>La tavola</h2>
     <p class="tavola__intro" data-sfuma>A tavola si resta a lungo. Le proposte si costruiscono con la cucina, sul gusto degli sposi e sulla stagione.</p>
 
-    <div class="portate" data-portate>
+    <div class="portate">
       <div class="portate__nomi" role="tablist" aria-label="Le portate">
-        <button role="tab" id="tab-antipasti" aria-controls="pan-portate" aria-selected="true" data-portata="0">Antipasti</button>
-        <button role="tab" id="tab-primi" aria-controls="pan-portate" aria-selected="false" tabindex="-1" data-portata="1">Primi</button>
-        <button role="tab" id="tab-secondi" aria-controls="pan-portate" aria-selected="false" tabindex="-1" data-portata="2">Secondi</button>
-        <button role="tab" id="tab-dolci" aria-controls="pan-portate" aria-selected="false" tabindex="-1" data-portata="3">Dolci</button>
-        <button role="tab" id="tab-vini" aria-controls="pan-portate" aria-selected="false" tabindex="-1" data-portata="4">Vini</button>
+        <button role="tab" id="tab-antipasti" aria-controls="pan-antipasti" aria-selected="true" data-portata>Antipasti</button>
+        <button role="tab" id="tab-primi" aria-controls="pan-primi" aria-selected="false" tabindex="-1" data-portata>Primi</button>
+        <button role="tab" id="tab-secondi" aria-controls="pan-secondi" aria-selected="false" tabindex="-1" data-portata>Secondi</button>
+        <button role="tab" id="tab-dolci" aria-controls="pan-dolci" aria-selected="false" tabindex="-1" data-portata>Dolci</button>
+        <button role="tab" id="tab-vini" aria-controls="pan-vini" aria-selected="false" tabindex="-1" data-portata>Vini</button>
       </div>
-      <div class="portate__pannello" id="pan-portate" role="tabpanel" aria-labelledby="tab-antipasti" aria-live="polite" data-portate-pannello>
-        <p data-portate-testo>Il benvenuto: piccoli assaggi da gustare in piedi, tra un brindisi e l'altro.</p>
+      <div class="portate__pannelli">
+        <p class="portate__pannello" id="pan-antipasti" role="tabpanel" aria-labelledby="tab-antipasti" data-pannello>Il benvenuto: piccoli assaggi da gustare in piedi, tra un brindisi e l'altro.</p>
+        <p class="portate__pannello" id="pan-primi" role="tabpanel" aria-labelledby="tab-primi" data-pannello hidden>La pasta, fatta come si deve: il momento in cui la tavola si fa silenziosa.</p>
+        <p class="portate__pannello" id="pan-secondi" role="tabpanel" aria-labelledby="tab-secondi" data-pannello hidden>Carne o pesce, secondo il menu scelto insieme alla cucina.</p>
+        <p class="portate__pannello" id="pan-dolci" role="tabpanel" aria-labelledby="tab-dolci" data-pannello hidden>La torta, ma non solo: il finale merita la stessa cura dell'inizio.</p>
+        <p class="portate__pannello" id="pan-vini" role="tabpanel" aria-labelledby="tab-vini" data-pannello hidden>Abbinamenti scelti portata per portata, per brindare fino a tardi.</p>
       </div>
     </div>
 
@@ -469,7 +476,7 @@
   </div>
 </section>
 
-<dialog class="carta" id="carta" aria-labelledby="carta-titolo" data-carta>
+<dialog class="carta" id="carta" aria-labelledby="carta-titolo" data-carta data-lenis-prevent>
   <div class="carta__foglio">
     <button class="carta__chiudi" type="button" data-carta-chiudi><span class="sr-only">Chiudi</span><svg aria-hidden="true"><use href="#i-chiudi"/></svg></button>
     <p class="etichetta">Menu d'esempio</p>
@@ -489,41 +496,36 @@
 <!-- ====================================================================
      ESPERIENZE / SERVIZI — un elenco tipografico, l'immagine segue il mouse.
      ==================================================================== -->
-<section class="esperienze" id="esperienze" aria-labelledby="esperienze-titolo" data-esperienze>
+<section class="esperienze" id="esperienze" aria-labelledby="esperienze-titolo">
   <header class="esperienze__testa">
     <p class="etichetta">Cosa si festeggia</p>
     <h2 class="esperienze__titolo" id="esperienze-titolo" data-righe>Ogni occasione,<br><em>la sua misura.</em></h2>
   </header>
   <ul class="occasioni" role="list" data-occasioni>
-    <li class="occasione" data-occasione="0">
+    <li class="occasione" data-foto="giorno-cerimonia-v" data-occasione>
       <span class="occasione__num">01</span>
       <h3 class="occasione__nome">Cerimonie</h3>
       <p class="occasione__testo">Il momento del sì, nello stesso luogo della festa.</p>
-      <img class="occasione__img" src="/assets/img/borgo/giorno-cerimonia-v.webp" width="900" height="1600" loading="lazy" decoding="async" alt="">
     </li>
-    <li class="occasione" data-occasione="1">
+    <li class="occasione" data-foto="giorno-aperitivo-v" data-occasione>
       <span class="occasione__num">02</span>
       <h3 class="occasione__nome">Matrimoni</h3>
       <p class="occasione__testo">Dal primo sopralluogo all'ultimo ballo, una giornata costruita su misura.</p>
-      <img class="occasione__img" src="/assets/img/borgo/giorno-aperitivo-v.webp" width="900" height="1600" loading="lazy" decoding="async" alt="">
     </li>
-    <li class="occasione" data-occasione="2">
+    <li class="occasione" data-foto="luci-v" data-occasione>
       <span class="occasione__num">03</span>
       <h3 class="occasione__nome">Ricevimenti</h3>
       <p class="occasione__testo">Fino a circa 250 ospiti, con la cucina del borgo.</p>
-      <img class="occasione__img" src="/assets/img/borgo/luci-v.webp" width="900" height="1200" loading="lazy" decoding="async" alt="">
     </li>
-    <li class="occasione" data-occasione="3">
+    <li class="occasione" data-foto="lino-v" data-occasione>
       <span class="occasione__num">04</span>
       <h3 class="occasione__nome">Ospitalità</h3>
       <p class="occasione__testo">La suite nuziale e un'accoglienza pensata anche per chi arriva da lontano.</p>
-      <img class="occasione__img" src="/assets/img/borgo/lino-v.webp" width="1200" height="1500" loading="lazy" decoding="async" alt="">
     </li>
-    <li class="occasione" data-occasione="4">
+    <li class="occasione" data-foto="borgo-notte-v" data-occasione>
       <span class="occasione__num">05</span>
       <h3 class="occasione__nome">Eventi</h3>
       <p class="occasione__testo">Comunioni, anniversari, compleanni e occasioni private.</p>
-      <img class="occasione__img" src="/assets/img/borgo/borgo-notte-v.webp" width="960" height="1200" loading="lazy" decoding="async" alt="">
     </li>
   </ul>
   <div class="occasioni__ombra" aria-hidden="true" data-occasioni-segui></div>
@@ -533,7 +535,7 @@
      GALLERY — composizione editoriale; clic per il visore a tutto schermo.
      FOTO: 10–14 scatti reali, alternando verticali e orizzontali.
      ==================================================================== -->
-<section class="galleria" id="gallery" aria-labelledby="galleria-titolo" data-galleria>
+<section class="galleria" id="gallery" aria-labelledby="galleria-titolo">
   <header class="galleria__testa">
     <h2 class="galleria__titolo" id="galleria-titolo" data-righe>Da vedere,<br><em>prima di venire.</em></h2>
     <p class="galleria__nota" data-sfuma>Tavole illustrate provvisorie. Qui andranno le fotografie del borgo.</p>
@@ -541,50 +543,50 @@
   <ul class="galleria__griglia" role="list">
     <li class="tavoletta tavoletta--a" data-velocita="-.06">
       <button class="tavoletta__apri" type="button" data-visore="0" data-cursore-etichetta="Apri">
-        <img src="/assets/img/borgo/giorno-aperitivo-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Le colline all'ora dorata, il sole dietro il Gran Sasso.">
+        <picture><source type="image/avif" srcset="/assets/img/borgo/giorno-aperitivo-m.avif"><img src="/assets/img/borgo/giorno-aperitivo-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Le colline all'ora dorata, il sole dietro il Gran Sasso."></picture>
       </button>
       <p class="tavoletta__dida"><span>01</span> Ora dorata</p>
     </li>
     <li class="tavoletta tavoletta--b" data-velocita=".08">
       <button class="tavoletta__apri" type="button" data-visore="1" data-cursore-etichetta="Apri">
-        <img src="/assets/img/borgo/viale-v.webp" width="1080" height="1620" loading="lazy" decoding="async" alt="Il viale tra i cipressi.">
+        <picture><source type="image/avif" srcset="/assets/img/borgo/viale-v.avif"><img src="/assets/img/borgo/viale-v.webp" width="1080" height="1620" loading="lazy" decoding="async" alt="Il viale tra i cipressi."></picture>
       </button>
       <p class="tavoletta__dida"><span>02</span> Il viale</p>
     </li>
     <li class="tavoletta tavoletta--c" data-velocita="-.03">
       <button class="tavoletta__apri" type="button" data-visore="2" data-cursore-etichetta="Apri">
-        <img src="/assets/img/borgo/luna-v.webp" width="960" height="1200" loading="lazy" decoding="async" alt="La luna sopra le montagne, a notte fonda.">
+        <picture><source type="image/avif" srcset="/assets/img/borgo/luna-v.avif"><img src="/assets/img/borgo/luna-v.webp" width="960" height="1200" loading="lazy" decoding="async" alt="La luna sopra le montagne, a notte fonda."></picture>
       </button>
       <p class="tavoletta__dida"><span>03</span> A notte fonda</p>
     </li>
     <li class="tavoletta tavoletta--d" data-velocita=".04">
       <button class="tavoletta__apri" type="button" data-visore="3" data-cursore-etichetta="Apri">
-        <img src="/assets/img/borgo/luci-l.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="Luci calde e sfocate nel buio.">
+        <picture><source type="image/avif" srcset="/assets/img/borgo/luci-l.avif"><img src="/assets/img/borgo/luci-l.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="Luci calde e sfocate nel buio."></picture>
       </button>
       <p class="tavoletta__dida"><span>04</span> Le luci</p>
     </li>
     <li class="tavoletta tavoletta--e" data-velocita="-.08">
       <button class="tavoletta__apri" type="button" data-visore="4" data-cursore-etichetta="Apri">
-        <img src="/assets/img/borgo/lino-v.webp" width="1200" height="1500" loading="lazy" decoding="async" alt="La luce del mattino sulla parete della suite.">
+        <picture><source type="image/avif" srcset="/assets/img/borgo/lino-v.avif"><img src="/assets/img/borgo/lino-v.webp" width="1200" height="1500" loading="lazy" decoding="async" alt="La luce del mattino sulla parete della suite."></picture>
       </button>
       <p class="tavoletta__dida"><span>05</span> Il mattino dopo</p>
     </li>
     <li class="tavoletta tavoletta--f" data-velocita=".05">
       <button class="tavoletta__apri" type="button" data-visore="5" data-cursore-etichetta="Apri">
-        <img src="/assets/img/borgo/giorno-festa-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Fili di lampadine sopra le colline, di sera.">
+        <picture><source type="image/avif" srcset="/assets/img/borgo/giorno-festa-m.avif"><img src="/assets/img/borgo/giorno-festa-m.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Fili di lampadine sopra le colline, di sera."></picture>
       </button>
       <p class="tavoletta__dida"><span>06</span> La festa</p>
     </li>
     <li class="tavoletta tavoletta--g" data-velocita="-.04">
       <button class="tavoletta__apri" type="button" data-visore="6" data-cursore-etichetta="Apri">
-        <img src="/assets/img/borgo/monte-l.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Il Gran Sasso nella foschia dorata.">
+        <picture><source type="image/avif" srcset="/assets/img/borgo/monte-l.avif"><img src="/assets/img/borgo/monte-l.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Il Gran Sasso nella foschia dorata."></picture>
       </button>
       <p class="tavoletta__dida"><span>07</span> Il Gran Sasso</p>
     </li>
   </ul>
 </section>
 
-<dialog class="visore" aria-label="Galleria a tutto schermo" data-visore-finestra>
+<dialog class="visore" aria-label="Galleria a tutto schermo" data-visore-finestra data-lenis-prevent>
   <figure class="visore__figura">
     <img class="visore__img" src="" alt="" data-visore-img>
     <figcaption class="visore__dida" data-visore-dida></figcaption>
@@ -682,7 +684,7 @@
       <label for="f-messaggio">Messaggio</label>
     </div>
     <label class="consenso">
-      <input type="checkbox" name="privacy" required aria-describedby="e-privacy">
+      <input type="checkbox" name="privacy" required>
       <span>Ho letto l'informativa privacy e acconsento a essere ricontattato. <span class="dc">informativa da collegare</span></span>
     </label>
     <p class="campo__errore" id="e-privacy" data-errore>Serve il consenso per potervi rispondere.</p>
@@ -724,7 +726,7 @@
     </div>
   </div>
 
-  <figure class="mappa" data-mappa>
+  <figure class="mappa">
     <svg viewBox="0 0 640 720" role="img" aria-labelledby="mappa-desc">
       <desc id="mappa-desc">Mappa schematica: Mosciano Sant'Angelo sulle colline, tra Teramo a ovest e Giulianova sulla costa adriatica a est. L'autostrada A14 corre parallela alla costa.</desc>
       <defs>
@@ -733,7 +735,7 @@
         </pattern>
       </defs>
       <!-- curve di livello delle colline -->
-      <g class="mappa__livelli" fill="none" stroke="currentColor" stroke-width=".8" data-livelli>
+      <g class="mappa__livelli" fill="none" stroke="currentColor" stroke-width=".8">
         <path d="M60 420c40-60 110-90 170-80s90 60 150 50 90-60 120-40"/>
         <path d="M40 470c60-70 140-100 210-88s100 70 160 58 80-50 110-34"/>
         <path d="M30 530c70-60 160-90 240-80s110 62 170 52 70-40 100-28"/>
@@ -744,22 +746,22 @@
       </g>
       <!-- costa e mare -->
       <path d="M560 0C552 120 548 240 560 360S586 600 582 720H640V0Z" fill="url(#mappa-mare)"/>
-      <path class="mappa__costa" d="M560 0C552 120 548 240 560 360S586 600 582 720" fill="none" stroke="currentColor" stroke-width="1.2" data-traccia/>
+      <path d="M560 0C552 120 548 240 560 360S586 600 582 720" fill="none" stroke="currentColor" stroke-width="1.2"/>
       <text class="mappa__mare" transform="translate(612 420) rotate(90)">Mare Adriatico</text>
       <!-- A14 -->
-      <path class="mappa__strada" d="M520 0C512 140 506 260 516 380S536 600 534 720" fill="none" stroke="currentColor" stroke-width="2.4" data-traccia/>
+      <path class="mappa__strada" d="M520 0C512 140 506 260 516 380S536 600 534 720" fill="none" stroke="currentColor" stroke-width="2.4"/>
       <text class="mappa__sigla" x="492" y="120">A14</text>
       <!-- raccordo verso Teramo -->
-      <path class="mappa__strada mappa__strada--fine" d="M516 470C440 486 360 500 280 520S120 556 0 566" fill="none" stroke="currentColor" stroke-width="1.4" data-traccia/>
+      <path class="mappa__strada mappa__strada--fine" d="M516 470C440 486 360 500 280 520S120 556 0 566" fill="none" stroke="currentColor" stroke-width="1.4"/>
       <!-- luoghi -->
       <g class="mappa__luogo"><circle cx="548" cy="300" r="3.5"/><text x="500" y="296" text-anchor="end">Giulianova</text></g>
       <g class="mappa__luogo"><circle cx="70" cy="580" r="3.5"/><text x="82" y="602">verso Teramo</text></g>
       <text class="mappa__direzione" x="30" y="56">← Gran Sasso</text>
-      <g class="mappa__segno" transform="translate(318 344)" data-segno>
+      <g class="mappa__segno" transform="translate(318 344)">
         <circle class="mappa__onda" r="26" fill="none" stroke="currentColor" stroke-width="1"/>
         <circle r="6"/>
       </g>
-      <g class="mappa__etichetta" transform="translate(294 338)" text-anchor="end">
+      <g transform="translate(294 338)" text-anchor="end">
         <text class="mappa__nome" x="0" y="0">Borgo Spoltino</text>
         <text class="mappa__paese" x="0" y="22">Mosciano Sant'Angelo</text>
       </g>

@@ -22,7 +22,7 @@
   background: var(--terra);
 }
 .momento__foto { position: absolute; inset: 0; }
-.momento__foto img { object-fit: cover; will-change: transform; }
+.momento__foto img { object-fit: cover; }
 .momento::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(120% 90% at var(--luce-x, 20%) var(--luce-y, 85%), rgb(var(--terra-rgb) / 0.62), transparent 60%);
@@ -45,9 +45,10 @@
 .momento--1 { --luce-x: 15%; --luce-y: 90%; }
 .momento--1 .momento__testo { left: var(--margine); bottom: clamp(48px, 10vh, 110px); }
 .momento--2 { --luce-x: 85%; --luce-y: 12%; }
-.momento--2 .momento__testo { right: var(--margine); top: calc(var(--testata-h) + 6vh); text-align: right; }
-.momento--2 .momento__titolo { justify-content: flex-end; }
-.momento--2 .momento__testo > p:last-child { margin-left: auto; }
+.momento--2 .momento__testo { right: var(--margine); top: calc(var(--testata-h) + 6vh); }
+:is(.momento--2, .momento--5) .momento__testo { text-align: right; }
+:is(.momento--2, .momento--5) .momento__titolo { justify-content: flex-end; }
+:is(.momento--2, .momento--5) .momento__testo > p:last-child { margin-left: auto; }
 .momento--3 { --luce-x: 50%; --luce-y: 95%; }
 .momento--3 .momento__testo { left: 50%; bottom: clamp(48px, 9vh, 100px); transform: translateX(-50%); text-align: center; }
 .momento--3 .momento__titolo { justify-content: center; }
@@ -55,9 +56,7 @@
 .momento--4 { --luce-x: 12%; --luce-y: 10%; }
 .momento--4 .momento__testo { left: var(--margine); top: calc(var(--testata-h) + 8vh); }
 .momento--5 { --luce-x: 88%; --luce-y: 90%; }
-.momento--5 .momento__testo { right: var(--margine); bottom: clamp(48px, 10vh, 110px); text-align: right; }
-.momento--5 .momento__titolo { justify-content: flex-end; }
-.momento--5 .momento__testo > p:last-child { margin-left: auto; }
+.momento--5 .momento__testo { right: var(--margine); bottom: clamp(48px, 10vh, 110px); }
 
 /* L'orologio della giornata, a lato (desktop). */
 .orologio { display: none; }

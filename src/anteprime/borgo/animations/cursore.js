@@ -12,9 +12,11 @@ export function initCursore() {
 
   window.addEventListener('pointermove', (e) => {
     if (e.pointerType !== 'mouse') return;
-    x(e.clientX);
-    y(e.clientY);
     const bersaglio = e.target.closest?.('[data-cursore-etichetta]') ?? null;
+    // la posizione si insegue solo mentre il cerchio è in scena; quando
+    // compare parte già dal puntatore
+    if (bersaglio && !attivo) gsap.set(cerchio, { x: e.clientX, y: e.clientY });
+    if (bersaglio || attivo) { x(e.clientX); y(e.clientY); }
     if (bersaglio === attivo) return;
     attivo = bersaglio;
     if (bersaglio) {

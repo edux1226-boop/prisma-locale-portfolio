@@ -10,13 +10,13 @@ import './styles/contatti.css';
 
 import {
   gsap,
-  ScrollTrigger,
   MQ,
   startSmoothScroll,
   lockScroll,
   refreshWhenAssetsLoad,
   whenIdle,
 } from '../../js/core/motion.js';
+import { fontsReady } from '../../js/ui/intro.js';
 import { initRivelazioni } from './animations/rivela.js';
 import { initParallasse } from './animations/parallasse.js';
 import { initCursore, initMagneti } from './animations/cursore.js';
@@ -34,11 +34,6 @@ import { initRichiesta } from './sections/richiesta.js';
 import { initNota } from './sections/nota.js';
 
 const root = document.documentElement;
-
-function caratteriPronti() {
-  const attesa = new Promise((resolve) => { setTimeout(resolve, 1500); });
-  return Promise.race([document.fonts?.ready ?? Promise.resolve(), attesa]);
-}
 
 function avvia() {
   const movimento = root.classList.contains('motion');
@@ -77,11 +72,10 @@ function avvia() {
   });
   refreshWhenAssetsLoad();
 
-  caratteriPronti().then(() => {
+  fontsReady(1500).then(() => {
     playApertura(() => {
       lockScroll(false);
       initHero(opzioni);
-      ScrollTrigger.refresh();
     });
   });
 }

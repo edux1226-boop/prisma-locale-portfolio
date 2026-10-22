@@ -8,6 +8,9 @@ html {
   scroll-padding-top: calc(var(--testata-h) + 12px);
 }
 html.lenis, html.lenis body { height: auto; }
+/* Un solo blocco per tutte le finestre modali: la pagina sotto non scorre.
+   Le finestre hanno data-lenis-prevent, così dentro si scorre normalmente. */
+html:has(dialog:modal) { overflow: hidden; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: clip; }
 
@@ -34,7 +37,7 @@ button { cursor: pointer; }
 em, i { font-style: italic; }
 
 /* Il serif dei titoli: Bodoni a corpo grande, ottica automatica. */
-h1, h2, h3, .serif {
+h1, h2, h3 {
   font-family: var(--f-display);
   font-weight: 400;
   font-optical-sizing: auto;
@@ -66,13 +69,17 @@ p { text-wrap: pretty; }
 }
 .salta:focus { transform: none; }
 
-/* Carta: una grana appena percettibile su tutta la pagina. */
+/* Un solo strato fisso sopra la pagina: la grana della carta e la filigrana
+   "DEMO · PRISMA LOCALE" dell'anteprima, ognuna con la sua opacità nel
+   proprio SVG. Niente rotazioni né strati giganti: il testo è già inclinato
+   dentro la piastrella. */
 body::after {
   content: "";
   position: fixed; inset: 0; z-index: 400;
   pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='420'%3E%3Cg fill='%232A241D' fill-opacity='.022' font-family='Arial,Helvetica,sans-serif' font-size='12' font-weight='700' letter-spacing='3' transform='rotate(-24 230 210)'%3E%3Ctext x='40' y='170'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3Ctext x='240' y='300'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ---- Segni comuni ------------------------------------------------------- */
@@ -119,7 +126,7 @@ body::after {
 /* Righe dei titoli divise da SplitText (solo con il movimento). */
 .riga { display: block; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 
-/* ---- Anteprima: avviso fisso e filigrana -------------------------------- */
+/* ---- Anteprima: avviso fisso -------------------------------------------- */
 .anteprima {
   position: fixed; left: 16px; bottom: 16px; z-index: 90;
   display: flex; align-items: center; gap: 8px;
@@ -127,9 +134,7 @@ body::after {
   padding: 7px 12px;
   font-size: 0.625rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--avorio);
-  background: rgb(var(--terra-rgb) / 0.82);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: rgb(var(--terra-rgb) / 0.92);
 }
 .anteprima a { color: var(--ottone-chiaro); text-decoration: none; }
 .anteprima__punto { width: 5px; height: 5px; border-radius: 50%; background: var(--ottone-chiaro); }
@@ -138,13 +143,6 @@ body::after {
   .anteprima__extra { display: none; }
 }
 
-.filigrana {
-  position: fixed; inset: -40vmax; z-index: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='160'%3E%3Cg fill='%232A241D' font-family='Arial,Helvetica,sans-serif' font-size='12' font-weight='700' letter-spacing='3'%3E%3Ctext x='12' y='46'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3Ctext x='272' y='126'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.022;
-  transform: rotate(-24deg);
-}
 
 .scaduta { display: none; }
 .is-scaduta body > :not(.scaduta) { display: none !important; }
@@ -185,6 +183,14 @@ body::after {
   width: clamp(120px, 14vw, 200px); height: 1px; margin-left: calc(clamp(120px, 14vw, 200px) / -2);
   background: var(--ottone-chiaro);
   transform: scaleX(0);
+}
+
+/* Il segno di chiusura delle finestre (menu, carta, visore). */
+.menu__chiudi svg, .carta__chiudi svg, .visore__chiudi svg { width: 22px; height: 22px; }
+.menu__chiudi, .visore__chiudi {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 0; border: 0; background: none;
+  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
 }
 
 /* ---- Cursore: compare solo sopra ciò che si apre (puntatore fine) -------- */
