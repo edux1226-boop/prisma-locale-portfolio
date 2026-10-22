@@ -1,0 +1,107 @@
+/* ==========================================================================
+   LA CASETTA DI PAPARILL — anteprima di Prisma Locale
+   Cucina abruzzese e teramana a Roseto degli Abruzzi. Design system:
+   blu profondo (fiducia), oro sabbia (calore), corallo per le azioni,
+   bianco caldo come carta. Playfair Display per i titoli, Inter per il testo.
+   ========================================================================== */
+
+/* Font self-hosted (OFL). Playfair: sottoinsieme latino di Google Fonts,
+   non modificato; Inter: latino, pesi 400–700. Le versioni "Ripiego"
+   hanno le metriche dei caratteri di sistema allineate: niente salti
+   quando arriva il font vero. */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/playfair-display.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/playfair-display-italic.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Ripiego";
+  src: local("Georgia");
+  size-adjust: 101.39%;
+  ascent-override: 106.72%;
+  descent-override: 24.76%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Inter Ripiego";
+  src: local("Arial"), local("Helvetica");
+  size-adjust: 107.12%;
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+}
+
+:root {
+  /* Colori del brief. Il corallo #e63946 con testo bianco fa 4,2:1 (sotto
+     AA): per i pulsanti si usa lo stesso tono un po' più scuro, 5:1. */
+  --blu: #1a3a52;
+  --blu-scuro: #11283a;
+  --blu-chiaro: #e8eef3;
+  --blu-rgb: 26 58 82;
+  --oro: #c9a66b;              /* solo segni, o testo su blu (5,2:1) */
+  --oro-testo: #85642c;        /* l'oro per il testo su chiaro: 5,2:1 */
+  --oro-chiaro: #efe3c8;
+  --corallo: #e63946;          /* solo segni e decorazioni */
+  --corallo-cta: #d62839;      /* fondo dei pulsanti con testo bianco */
+  --corallo-cta-scuro: #b81f2f;
+  --sfondo: #faf9f7;
+  --carta: #ffffff;
+  --sabbia: #f4efe6;
+  --testo: #2d3436;
+  --tenue: #5b6467;            /* testo secondario: 5,8:1 sul fondo */
+  --linea: #e4ded3;
+  --linea-forte: #cfc6b6;
+  --verde: #2f6b3a;
+  --verde-chiaro: #eef5ef;
+  --wa: #146c43;               /* verde WhatsApp scurito: 6,5:1 col bianco */
+  --chiaro-su-blu: #c3ccd3;    /* testo secondario su blu: 7,3:1 */
+
+  --ombra: 0 2px 8px rgb(0 0 0 / 0.08);
+  --ombra-alta: 0 12px 32px rgb(17 40 58 / 0.16);
+  --raggio: 8px;
+  --raggio-btn: 6px;
+
+  --f-titoli: "Playfair Display", "Playfair Ripiego", Georgia, "Times New Roman", serif;
+  --f-testo: "Inter", "Inter Ripiego", Arial, Helvetica, sans-serif;
+
+  /* Corpo 17–18 px: il pubblico va dai 35 ai 65 anni. */
+  --t-corpo: clamp(1.0625rem, 1.02rem + 0.2vw, 1.125rem);
+  --t-piccolo: 0.9375rem;
+  --t-mini: 0.8125rem;
+  --t-h1: clamp(2.25rem, 1.5rem + 3.4vw, 4rem);
+  --t-h2: clamp(1.85rem, 1.4rem + 2vw, 2.75rem);
+  --t-h3: clamp(1.2rem, 1.12rem + 0.35vw, 1.375rem);
+  --t-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+
+  --margine: clamp(16px, 4vw, 40px);
+  --larghezza: 75rem;
+  --spazio-sezione: clamp(64px, 6rem + 2vw, 128px);
+  --gap: clamp(16px, 2vw, 28px);
+  --testata-h: 72px;
+  --barra-h: 0px;
+
+  --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+@media (max-width: 63.99em) {
+  :root { --testata-h: 64px; --barra-h: 64px; }
+}
+
+/* Schermi molto grandi (4K a scala 1:1): tutto cresce con la radice. */
+@media (min-width: 2200px) { html { font-size: 125%; } :root { --testata-h: 88px; } }
+@media (min-width: 3000px) { html { font-size: 150%; } :root { --testata-h: 104px; } }

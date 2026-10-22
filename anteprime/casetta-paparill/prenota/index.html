@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="it" data-pagina="prenota">
+<head>
+<!-- @testa -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/prenota.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<main id="contenuto" tabindex="-1">
+
+<header class="intestazione">
+  <div class="contenitore">
+    <!-- @briciole -->
+    <h1 class="intestazione__titolo">{{md t.prenotaPagina.titolo}}</h1>
+    <p class="intestazione__lead">{{md t.prenotaPagina.intro}}</p>
+  </div>
+</header>
+
+<div class="contenitore pagina-corpo">
+  <!-- I canali: telefono, WhatsApp con il messaggio già scritto, TheFork, gruppi. -->
+  <!-- @prenota-canali -->
+
+  <section class="info-prenota" aria-labelledby="info-titolo">
+    <h2 class="blocco-titolo" id="info-titolo">{{t.prenotaPagina.info.titolo}}<!-- @dc-orari --></h2>
+    <div class="info-prenota__griglia">
+      <div class="info-blocco">
+        <!-- @orari-tabella nascosta -->
+      </div>
+      <div class="info-blocco info-blocco--note">
+        <h3>{{t.prenotaPagina.info.risposta}}</h3>
+        <p>{{md r.prenotazioni.tempoRisposta}}</p>
+        <h3>{{t.prenotaPagina.info.gruppi}}</h3>
+        <p>{{md r.prenotazioni.notaGruppi}}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione-modulo" id="gruppi" aria-labelledby="gruppi-titolo" tabindex="-1">
+    <div class="sezione-modulo__testa">
+      <h2 class="sezione__titolo" id="gruppi-titolo">{{md t.prenotaPagina.modulo.titolo}}</h2>
+      <p class="sezione__intro">{{md t.prenotaPagina.modulo.intro}}</p>
+      <p class="sezione-modulo__tel">{{t.prenotaPagina.modulo.telefono}} <a class="link-forte" href="tel:{{r.telefono.numero}}" data-posizione="modulo-gruppi">{{r.telefono.visibile}}</a></p>
+    </div>
+    <!-- @modulo eventi -->
+  </section>
+</div>
+
+</main>
+
+<!-- @piede -->
+<!-- @fine -->
+</body>
+</html>

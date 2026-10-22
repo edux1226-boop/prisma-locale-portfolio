@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="it" data-pagina="eventi-privati">
+<head>
+<!-- @testa -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/eventi.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<main id="contenuto" tabindex="-1">
+
+<header class="intestazione">
+  <div class="contenitore">
+    <!-- @briciole -->
+    <h1 class="intestazione__titolo">{{md t.eventi.titolo}}</h1>
+    <p class="intestazione__lead">{{md t.eventi.lead}}</p>
+    <div class="intestazione__azioni">
+      <a class="btn btn--accento" href="#richiesta">{{t.eventi.cta}}</a>
+      <a class="btn btn--secondario" href="tel:{{r.telefono.numero}}" data-posizione="eventi-testa">{{t.comuni.chiama}} {{r.telefono.visibile}}</a>
+    </div>
+  </div>
+</header>
+
+<section class="sezione" aria-labelledby="occasioni-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa">
+      <p class="occhiello">{{t.eventi.occasioni.occhiello}}</p>
+      <h2 class="sezione__titolo" id="occasioni-titolo">{{md t.eventi.occasioni.titolo}}</h2>
+    </header>
+    <!-- @eventi-occasioni -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     COME FUNZIONA — FOTO: una tavolata apparecchiata per una festa (4:3).
+     ==================================================================== -->
+<section class="sezione sezione--sabbia" aria-labelledby="passi-titolo">
+  <div class="contenitore due-colonne">
+    <div>
+      <p class="occhiello">{{t.eventi.passi.occhiello}}</p>
+      <h2 class="sezione__titolo" id="passi-titolo">{{md t.eventi.passi.titolo}}</h2>
+      <!-- @eventi-passi -->
+    </div>
+    <div class="colonna-foto">
+      <figure class="foto-cornice">
+        <!-- @immagine sala/tavolata eventi.fotoAlt -->
+      </figure>
+      <div class="riquadro">
+        <h3 class="riquadro__titolo">{{t.eventi.dettagli.titolo}}</h3>
+        <!-- @eventi-dettagli -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sezione" id="richiesta" aria-labelledby="richiesta-titolo" tabindex="-1">
+  <div class="contenitore sezione-modulo">
+    <div class="sezione-modulo__testa">
+      <h2 class="sezione__titolo" id="richiesta-titolo">{{md t.eventi.modulo.titolo}}</h2>
+      <p class="sezione__intro">{{md t.eventi.modulo.intro}}</p>
+      <p class="sezione-modulo__tel">{{t.prenotaPagina.modulo.telefono}} <a class="link-forte" href="tel:{{r.telefono.numero}}" data-posizione="modulo-eventi">{{r.telefono.visibile}}</a></p>
+    </div>
+    <!-- @modulo eventi -->
+  </div>
+</section>
+
+</main>
+
+<!-- @piede -->
+<!-- @fine -->
+</body>
+</html>

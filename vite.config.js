@@ -1,12 +1,24 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import { cartaAnima } from './src/anteprime/anima/build/carta.js';
+import { casetta } from './src/anteprime/casetta/render/plugin.js';
 
 const root = import.meta.dirname;
 
+// Anteprima "La Casetta di Paparill": un sito di più pagine, composto dai
+// contenuti JSON in src/anteprime/casetta/contenuti/.
+const CASETTA = ['', 'menu', 'galleria', 'prenota', 'chi-siamo', 'contatti', 'eventi-privati', 'lavora-con-noi'];
+const casettaInput = {
+  ...Object.fromEntries(CASETTA.map((pagina) => [
+    `casetta${pagina ? `-${pagina}` : ''}`,
+    resolve(root, 'anteprime/casetta-paparill', pagina, 'index.html'),
+  ])),
+  'casetta-404': resolve(root, 'anteprime/casetta-paparill/404.html'),
+};
+
 export default defineConfig({
   appType: 'mpa',
-  plugins: [cartaAnima()],
+  plugins: [cartaAnima(), casetta({ root })],
   build: {
     target: 'es2022',
     // three.js (~146 kB gzip) vive in un chunk a parte, caricato solo su desktop.
@@ -23,6 +35,7 @@ export default defineConfig({
         anima: resolve(root, 'anteprime/anima-concept/index.html'),
         marina: resolve(root, 'anteprime/vecchia-marina/index.html'),
         ricetta: resolve(root, 'anteprime/lantica-ricetta/index.html'),
+        ...casettaInput,
       },
     },
   },

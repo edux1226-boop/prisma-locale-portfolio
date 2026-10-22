@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="it" data-pagina="chi-siamo">
+<head>
+<!-- @testa -->
+<!-- @jsonld -->
+<script type="module" src="/src/anteprime/casetta/pagine/chi-siamo.js"></script>
+</head>
+
+<body>
+<!-- @inizio -->
+<!-- @testata -->
+
+<main id="contenuto" tabindex="-1">
+
+<header class="intestazione">
+  <div class="contenitore">
+    <!-- @briciole -->
+    <h1 class="intestazione__titolo">{{md t.chiSiamo.titolo}}</h1>
+    <p class="intestazione__lead">{{md t.chiSiamo.lead}}</p>
+  </div>
+</header>
+
+<!-- ====================================================================
+     LA STORIA — FOTO: il titolare in cucina o davanti al locale (4:3);
+     nell'anteprima, la Casetta di sera.
+     ==================================================================== -->
+<section class="sezione" aria-labelledby="storia-titolo">
+  <div class="contenitore due-colonne">
+    <figure class="foto-cornice">
+      <!-- @immagine sala/casetta-sera chiSiamo.fotoStoriaAlt subito -->
+    </figure>
+    <div class="testo-lungo">
+      <p class="occhiello">{{t.chiSiamo.storiaOcchiello}}</p>
+      <h2 class="sezione__titolo" id="storia-titolo">{{md t.chiSiamo.storiaTitolo}}</h2>
+      {{p t.chiSiamo.storia}}
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     COME LAVORIAMO — FOTO: la pasta fatta a mano, la farina, le uova.
+     ==================================================================== -->
+<section class="sezione sezione--sabbia" aria-labelledby="filosofia-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa">
+      <p class="occhiello">{{t.chiSiamo.filosofia.occhiello}}</p>
+      <h2 class="sezione__titolo" id="filosofia-titolo">{{md t.chiSiamo.filosofia.titolo}}</h2>
+    </header>
+    <div class="due-colonne due-colonne--inverso">
+      <!-- @filosofia -->
+      <figure class="foto-cornice">
+        <!-- @immagine cucina/farina-uova chiSiamo.fotoCucinaAlt -->
+        <figcaption>{{md t.chiSiamo.fotoCucinaDida}}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     LA SQUADRA — FOTO: ritratti 1:1 di titolare, sala e cucina.
+     ==================================================================== -->
+<section class="sezione" aria-labelledby="team-titolo">
+  <div class="contenitore">
+    <header class="sezione__testa sezione__testa--centro">
+      <p class="occhiello">{{t.chiSiamo.team.occhiello}}</p>
+      <h2 class="sezione__titolo" id="team-titolo">{{md t.chiSiamo.team.titolo}}</h2>
+      <p class="sezione__intro">{{md t.chiSiamo.team.intro}}</p>
+    </header>
+    <!-- @team -->
+  </div>
+</section>
+
+<!-- @prenota-fascia -->
+
+</main>
+
+<!-- @piede -->
+<!-- @fine -->
+</body>
+</html>

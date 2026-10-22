@@ -1,0 +1,32 @@
+{
+  "_leggimi": "Impostazioni tecniche del sito. Per andare online: anteprima=false, base=\"/\" e il dominio definitivo. Vedi LEGGIMI.md.",
+  "anteprima": true,
+  "scadenza": "2026-11-30T23:59:59+01:00",
+  "scadenzaLeggibile": "30 novembre 2026",
+  "base": "/anteprime/casetta-paparill/",
+  "dominio": "https://www.ristorantepaparill.it",
+  "dominioAnteprima": "https://prismalocale.it",
+  "immagineSocial": "/assets/img/casetta-og.jpg",
+  "coloreTema": "#1a3a52",
+  "ga4": "",
+  "pagine": {
+    "home": { "percorso": "", "voce": "Home" },
+    "menu": { "percorso": "menu/", "voce": "Menu" },
+    "galleria": { "percorso": "galleria/", "voce": "Galleria" },
+    "chi-siamo": { "percorso": "chi-siamo/", "voce": "Chi siamo" },
+    "eventi-privati": { "percorso": "eventi-privati/", "voce": "Eventi privati" },
+    "contatti": { "percorso": "contatti/", "voce": "Contatti" },
+    "prenota": { "percorso": "prenota/", "voce": "Prenota" },
+    "lavora-con-noi": { "percorso": "lavora-con-noi/", "voce": "Lavora con noi" },
+    "404": { "percorso": "404.html", "voce": "Pagina non trovata" }
+  },
+  "navigazione": ["menu", "galleria", "chi-siamo", "eventi-privati", "contatti"],
+  "piede": ["menu", "galleria", "chi-siamo", "eventi-privati", "contatti", "prenota", "lavora-con-noi"],
+  "sitemap": ["home", "menu", "galleria", "chi-siamo", "eventi-privati", "contatti", "prenota", "lavora-con-noi"],
+  "prismaLocale": {
+    "nome": "Prisma Locale",
+    "sito": "https://prismalocale.it/",
+    "whatsapp": "393758350800",
+    "email": "info@prismalocale.it"
+  }
+}
