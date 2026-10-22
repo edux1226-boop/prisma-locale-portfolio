@@ -30,6 +30,7 @@
   border-radius: var(--raggio);
   background: var(--bianco);
 }
+.campo input:focus-within, .campo select:focus-within { outline: 2px solid var(--inchiostro); outline-offset: 3px; }
 .campo [aria-invalid="true"] { border-color: var(--errore); }
 .aiuto { color: var(--tenue); font-size: var(--t-small); }
 .errore { color: var(--errore); font-size: var(--t-small); font-weight: 600; }

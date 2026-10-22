@@ -151,10 +151,47 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
     non invia nulla. Scadenza nel meta `anteprima-scadenza` (30 novembre 2026).
   - Lighthouse (build, Chromium headless): mobile 90 / 100 / 100, desktop 98 / 100 / 100
     (prestazioni, accessibilità, best practice; la SEO è bassa di proposito per il noindex).
+- **Chris Beauty** (`/anteprime/chris-beauty/`): sito a pagina unica per un centro estetico,
+  concept "Il banco" (bianco, neutri, cinque campioni di colore come unico segno). Solo CSS e
+  ~3 KB di JavaScript, nessuna libreria di movimento. Piano e scelte in
+  `src/anteprime/chris/ARCHITETTURA.md`; codice in `src/anteprime/chris/`.
+  - **Niente è inventato**: l'unico servizio noto è la ricostruzione unghie. Tutto il resto è
+    segnaposto (classe `.segnaposto` / `.foto-segnaposto`), si trova cercando `DA COMPLETARE`
+    in `anteprime/chris-beauty/index.html`. Le foto vere vanno in `public/assets/img/chris/`.
+  - Ha `noindex`: va tolto (meta robots) quando i segnaposto sono stati sostituiti.
+  - Lighthouse (build, Chromium headless): 100 / 100 / 100 su mobile e desktop
+    (prestazioni, accessibilità, best practice); la SEO è a 63 solo per il `noindex`.
 - **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
   autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con
   `node dev/destino/build.mjs`, che scrive `public/anteprime/destino/index.html`.
+
+## Chris Beauty → prenotazioni su Google Fogli
+
+Il modulo è una **richiesta**, mai una conferma: il messaggio "richiesta ricevuta" compare solo
+se lo script risponde `{ "ok": true }`. Il form ha due attributi in `anteprime/chris-beauty/index.html`:
+
+- `data-endpoint`: URL dell'Apps Script (foglio Google della titolare). Priorità massima.
+- `data-whatsapp`: numero con prefisso, solo cifre (es. `39XXXXXXXXXX`). Modalità provvisoria:
+  apre WhatsApp con la richiesta già scritta e dice alla cliente di inviarla da lì.
+- Entrambi vuoti: il sito dice che le richieste online non sono ancora attive.
+
+Collegare il foglio:
+
+1. Crea un foglio Google, poi **Estensioni → Apps Script** e incolla `scripts/chris-beauty-prenotazioni.gs`.
+   Compila `ID_FOGLIO` (facoltativo se lo script è legato al foglio) ed `EMAIL_NOTIFICA` **nel progetto
+   Apps Script**, non nel repository.
+2. **Distribuisci → Nuova distribuzione → App web**: esegui come *te*, accesso *Chiunque*. Autorizza e
+   copia l'URL che finisce con `/exec`.
+3. Incollalo in `data-endpoint` del `<form data-prenota>` e pubblica.
+4. **Prova un invio vero dal sito pubblicato** e controlla che la riga compaia nel foglio e che il sito
+   mostri "Richiesta ricevuta". Se la riga arriva ma il sito mostra l'errore, il browser non riesce a leggere
+   la risposta di Google: va rivisto il collegamento.
+5. Se modifichi lo script: **Gestisci distribuzioni → Modifica → Nuova versione** (l'URL non cambia).
+
+L'URL `/exec` è pubblico per natura (lo vede chiunque apra il sito) e non dà accesso al foglio.
+Colonne: Ricevuta il, Nome, Recapito, Trattamento, Data preferita, Fascia oraria, Stato ("Da confermare":
+la titolare lo aggiorna a mano).
 
 ## Modulo contatti → Google Fogli
 

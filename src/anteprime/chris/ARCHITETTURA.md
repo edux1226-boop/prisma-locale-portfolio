@@ -334,21 +334,21 @@ Istruzioni per la titolare (vanno nel README):
 Ogni passo è pensato per un solo messaggio a Sonnet con impegno *medium*. Alla fine di
 ogni passo: `npm run build` senza errori, controllo visivo a 375 px e 1440 px, commit.
 
-- [ ] **Passo 1 — Fondamenta.** Font Instrument Serif in `public/assets/fonts/` con
+- [x] **Passo 1 — Fondamenta.** Font Instrument Serif in `public/assets/fonts/` con
   licenza; `tokens.css`, `base.css` (reset, tipografia, bottoni, focus, `.segnaposto`,
   `.foto-segnaposto`, `.salta`, `.visually-hidden`); `index.html` con `<head>` completo
   (§5) e lo scheletro di tutte le sezioni con i loro `id`; `main.js` che importa i CSS;
   ingresso `chris` in `vite.config.js`.
-- [ ] **Passo 2 — Testata e hero.** Header, menu mobile `<dialog>`, barra Prenota su
+- [x] **Passo 2 — Testata e hero.** Header, menu mobile `<dialog>`, barra Prenota su
   smartphone (`testata.js`, `testata.css`); hero completo con campioni e cornice.
-- [ ] **Passo 3 — Trattamenti, galleria, recensioni.** Contenuti e stili (`sezioni.css`),
+- [x] **Passo 3 — Trattamenti, galleria, recensioni.** Contenuti e stili (`sezioni.css`),
   tutti i segnaposto con i commenti `DA COMPLETARE`.
-- [ ] **Passo 4 — Prenota, contatti, Instagram, footer.** Markup e stili (`prenota.css`),
+- [x] **Passo 4 — Prenota, contatti, Instagram, footer.** Markup e stili (`prenota.css`),
   `prenota.js` con validazione, i tre comportamenti dell'invio e la precompilazione;
   `scripts/chris-beauty-prenotazioni.gs`.
-- [ ] **Passo 5 — Movimento.** `rivela.js`, campioni nell'hero, hover delle schede,
+- [x] **Passo 5 — Movimento.** `rivela.js`, campioni nell'hero, hover delle schede,
   `prefers-reduced-motion`. Controllo che senza JavaScript tutto sia visibile.
-- [ ] **Passo 6 — Verifiche e consegna.**
+- [x] **Passo 6 — Verifiche e consegna.**
   - Playwright (Chromium in `/opt/pw-browsers`): screenshot a 375, 768 e 1440 px;
     navigazione completa da tastiera (Tab dall'inizio alla fine, menu mobile con Esc);
     modulo: errori, precompilazione, stato "non attivo" con endpoint vuoto, riuscita ed
