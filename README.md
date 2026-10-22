@@ -42,7 +42,6 @@ che a sua volta aggiorna ScrollTrigger.
 ```
 .
 ├── index.html                 home
-├── progetti/saporito.html     caso studio (demo non commissionata)
 ├── anteprime/                 demo riservate per potenziali clienti (noindex)
 ├── privacy.html · grazie.html · 404.html
 ├── src/
@@ -90,7 +89,6 @@ Misurato con Lighthouse 13 sulla build di produzione:
 |---|---|---|---|---|
 | Home — mobile | 99 | 100 | 100 | 100 |
 | Home — desktop | 100 | 100 | 100 | 100 |
-| Caso Saporito — mobile | 99 | 100 | 100 | 100 |
 
 Home mobile: FCP 1,4 s · LCP 2,1 s · TBT 30 ms · CLS 0.
 Lighthouse gira senza GPU, quindi il punteggio desktop non misura il costo del 3D: per quello
@@ -158,11 +156,17 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con
   `node dev/destino/build.mjs`, che scrive `public/anteprime/destino/index.html`.
 
+## Modulo contatti → Google Fogli
+
+1. Crea un foglio Google, poi **Estensioni → Apps Script** (oppure un progetto indipendente: in quel caso scrivi l'ID del foglio in `ID_FOGLIO`) e incolla `scripts/google-sheets-modulo.gs`.
+2. **Distribuisci → Nuova distribuzione → App web**: esegui come *te*, accesso *Chiunque*. Autorizza e copia l'URL `.../exec`.
+3. Incolla l'URL in `data-endpoint` del `<form>` in `index.html` e pubblica.
+4. Con `data-endpoint` vuoto il modulo usa Netlify Forms. Il foglio si scarica in Excel da File → Scarica.
+
 ## Progetti mostrati
 
-Saporito è una **demo non commissionata**: non è affiliata né approvata dall'attività,
-il cui marchio appartiene ai legittimi proprietari. Il sito lo dichiara nella card dei
-lavori, nel caso studio e nella privacy.
+Per ora nessun caso studio: quello di Saporito (demo non commissionata) è stato tolto dal sito.
+Il primo caso studio vero si aggiunge quando il primo lavoro commissionato è chiuso.
 
 ---
 

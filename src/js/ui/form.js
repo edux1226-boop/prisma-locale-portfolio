@@ -1,6 +1,8 @@
-/* Modulo contatti su Netlify Forms. Senza JavaScript funziona come un
-   normale POST verso /grazie.html; con JavaScript invia in background e
-   risponde nella pagina, senza cambiare schermata. */
+/* Modulo contatti. Con data-endpoint (indirizzo dello script Google Fogli,
+   vedi scripts/google-sheets-modulo.gs) i messaggi finiscono nel foglio;
+   altrimenti si usa Netlify Forms. Senza JavaScript funziona come un normale
+   POST verso /grazie.html; con JavaScript invia in background e risponde
+   nella pagina, senza cambiare schermata. */
 export function initForm() {
   const form = document.querySelector('[data-form]');
   if (!form) return;
@@ -21,16 +23,26 @@ export function initForm() {
 
     try {
       const body = new URLSearchParams(new FormData(form)).toString();
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const endpoint = form.dataset.endpoint;
+      if (endpoint) {
+        // Apps Script non risponde con gli header CORS: la risposta è opaca,
+        // ma se la richiesta parte senza errori di rete il messaggio è arrivato.
+        // Con un URLSearchParams il tipo è application/x-www-form-urlencoded:
+        // una stringa andrebbe come text/plain e Apps Script non leggerebbe i campi.
+        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) });
+      } else {
+        const response = await fetch(form.getAttribute('action') || '/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      }
       form.reset();
       status.classList.add('is-ok');
       status.textContent = 'Grazie! Il messaggio è arrivato: ti rispondiamo presto, di persona.';
-    } catch {
+    } catch (error) {
+      console.error('Invio modulo non riuscito:', error);
       status.classList.add('is-error');
       status.innerHTML =
         'Non siamo riusciti a inviarlo. Scrivici su <a href="https://wa.me/393758350800">WhatsApp</a> ' +

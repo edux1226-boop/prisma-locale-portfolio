@@ -12,7 +12,6 @@ export default defineConfig({
     rolldownOptions: {
       input: {
         home: resolve(root, 'index.html'),
-        saporito: resolve(root, 'progetti/saporito.html'),
         privacy: resolve(root, 'privacy.html'),
         grazie: resolve(root, 'grazie.html'),
         notFound: resolve(root, '404.html'),
