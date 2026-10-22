@@ -27,7 +27,9 @@ export function initForm() {
       if (endpoint) {
         // Apps Script non risponde con gli header CORS: la risposta è opaca,
         // ma se la richiesta parte senza errori di rete il messaggio è arrivato.
-        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body });
+        // Con un URLSearchParams il tipo è application/x-www-form-urlencoded:
+        // una stringa andrebbe come text/plain e Apps Script non leggerebbe i campi.
+        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) });
       } else {
         const response = await fetch(form.getAttribute('action') || '/', {
           method: 'POST',
