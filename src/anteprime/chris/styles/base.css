@@ -1,0 +1,179 @@
+/* Reset, tipografia, bottoni, focus, segnaposto e utilità. */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--testata-h) + 16px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  background: var(--latte);
+  color: var(--inchiostro);
+  font-family: var(--f-testo);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, picture { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: inherit; text-underline-offset: 0.2em; }
+ul, ol { padding: 0; list-style: none; }
+address { font-style: normal; }
+
+h1, h2, h3 {
+  font-family: var(--f-titoli);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1 { font-size: var(--t-xxl); }
+h2 { font-size: var(--t-xl); }
+h3 { font-size: var(--t-m); line-height: 1.15; }
+p { max-width: var(--testo); text-wrap: pretty; }
+
+/* Focus sempre visibile, sia su fondo chiaro sia scuro. */
+:focus-visible {
+  outline: 2px solid var(--inchiostro);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.su-scuro :focus-visible { outline-color: var(--bianco); }
+
+.salta {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--inchiostro);
+  color: var(--bianco);
+  transform: translateY(-200%);
+}
+.salta:focus { transform: none; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Contenitori */
+.contenuto {
+  width: min(100% - 2 * var(--margine), var(--larghezza));
+  margin-inline: auto;
+}
+.sezione { padding-block: var(--sezione); }
+.sezione--alt { background: var(--porcellana); }
+.sezione + .sezione:not(.sezione--alt) { border-top: 1px solid var(--filo); }
+
+/* Intestazione di sezione: numero + campione + titolo */
+.sezione__testa { display: grid; gap: 16px; margin-bottom: clamp(36px, 5vw, 72px); }
+.sezione__testa p { color: var(--tenue); }
+.numero {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cipria-testo);
+  font-size: var(--t-etichetta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.campione {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--campione-3);
+  flex: none;
+}
+.campioni { display: flex; gap: 10px; }
+.campioni .campione { width: 18px; height: 18px; }
+.campioni .campione:nth-child(1) { background: var(--campione-1); }
+.campioni .campione:nth-child(2) { background: var(--campione-2); }
+.campioni .campione:nth-child(3) { background: var(--campione-3); }
+.campioni .campione:nth-child(4) { background: var(--campione-4); }
+.campioni .campione:nth-child(5) { background: var(--campione-5); }
+
+/* Bottoni: area di tocco ≥ 44px */
+.bottone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 28px;
+  border: 1px solid var(--inchiostro);
+  border-radius: var(--raggio);
+  background: var(--inchiostro);
+  color: var(--bianco);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+.bottone:hover { background: var(--cipria-testo); border-color: var(--cipria-testo); }
+.bottone:disabled { opacity: 0.6; cursor: progress; }
+.bottone--secondario { background: transparent; color: var(--inchiostro); }
+.bottone--secondario:hover { background: var(--inchiostro); border-color: var(--inchiostro); color: var(--bianco); }
+
+.link {
+  color: var(--cipria-testo);
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+}
+.link:hover { color: var(--inchiostro); }
+
+/* Segnaposto: stesso aspetto ovunque, si trovano cercando DA COMPLETARE. */
+.segnaposto {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 2px 8px;
+  border: 1px dashed var(--cipria-testo);
+  border-radius: 4px;
+  background: var(--porcellana);
+  color: var(--cipria-testo);
+  font-size: 0.95em;
+}
+.sezione--alt .segnaposto, .scheda .segnaposto { background: var(--latte); }
+
+.foto-segnaposto {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  padding: 24px;
+  border: 1px dashed var(--cipria-testo);
+  border-radius: var(--raggio);
+  background: var(--porcellana);
+  color: var(--cipria-testo);
+  text-align: center;
+  font-size: var(--t-small);
+}
+.foto-segnaposto strong {
+  font-size: var(--t-etichetta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.sezione--alt .foto-segnaposto { background: var(--latte); }
+
+.noscript { padding: 12px var(--margine); background: var(--porcellana); text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

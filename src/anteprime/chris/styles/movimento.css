@@ -1,0 +1,39 @@
+/* Movimento: solo transform e opacità. Tutto sotto html.motion / html.rivela,
+   quindi con "riduci movimento" o senza JavaScript non succede nulla. */
+
+html.rivela [data-rivela] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+html.rivela [data-rivela].is-visibile { opacity: 1; transform: none; }
+
+/* I campioni dell'hero si posano uno dopo l'altro. */
+@keyframes posa {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+html.motion .hero .campioni .campione {
+  animation: posa 0.6s var(--ease) both;
+}
+html.motion .hero .campioni .campione:nth-child(2) { animation-delay: 60ms; }
+html.motion .hero .campioni .campione:nth-child(3) { animation-delay: 120ms; }
+html.motion .hero .campioni .campione:nth-child(4) { animation-delay: 180ms; }
+html.motion .hero .campioni .campione:nth-child(5) { animation-delay: 240ms; }
+
+/* Scheda: un piccolo campione che si accende al passaggio. */
+.scheda::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--campione-4);
+  opacity: 0.4;
+  transition: opacity 0.3s var(--ease);
+}
+.scheda:hover::before, .scheda:focus-within::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.rivela [data-rivela] { opacity: 1; transform: none; transition: none; }
+}
