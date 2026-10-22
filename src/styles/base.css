@@ -118,7 +118,7 @@ html:has(dialog[open]) { overflow: clip; }
   letter-spacing: -0.035em;
   text-wrap: balance;
 }
-.display em, .serif-i {
+.display em {
   font-family: var(--f-display);
   font-style: italic;
   letter-spacing: -0.02em;
@@ -138,13 +138,6 @@ html:has(dialog[open]) { overflow: clip; }
   letter-spacing: -0.01em;
   text-wrap: pretty;
   max-width: 34ch;
-}
-.muted { color: var(--testo-2); }
-.spettro-text {
-  background: var(--spettro);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 /* ---- Layout ---------------------------------------------------------------- */
@@ -189,7 +182,6 @@ html:has(dialog[open]) { overflow: clip; }
 
 @media (min-width: 64em) {
   .section-head__title { grid-column: 1 / span 10; }
-  .section-head__aside { grid-column: 9 / -1; }
   /* Variante spostata a destra: rompe l'allineamento ripetuto delle teste. */
   .section-head--right .section-head__title { grid-column: 4 / -1; }
 }
@@ -218,7 +210,6 @@ html:has(dialog[open]) { overflow: clip; }
 }
 .btn--primary { background: var(--arancio); color: var(--notte); }
 .btn--ghost { color: var(--testo); box-shadow: inset 0 0 0 1px var(--filo-forte); }
-.btn--dark { background: var(--notte); color: var(--calce); }
 
 /* Un filo di spettro che attraversa il bottone al passaggio */
 .btn::after {
@@ -467,7 +458,6 @@ html:has(dialog[open]) { overflow: clip; }
 /* Righe con maschera (titoli spezzati a mano o da SplitText) */
 .line { display: block; overflow: clip; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 .line__in { display: block; will-change: transform; }
-.split-mask { padding-bottom: 0.1em; margin-bottom: -0.1em; }
 
 /* ---- Lenis (scroll fluido solo con movimento consentito) ------------------- */
 html.lenis, html.lenis body { height: auto; }

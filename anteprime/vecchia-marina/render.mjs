@@ -32,10 +32,12 @@ const alto = [[1080, 1620, 'v']];
 const jobs = [
   ['superficie', 'superficie', {}, [[2560, 1440, 'l'], [1600, 900, 'm']]],
   ['superficie', 'superficie', { uPitch: 0.62 }, [[1080, 1920, 'v'], [828, 1472, 's']]],
-  ...['alba', 'notte', 'piombo', 'sera', 'risacca', 'battigia'].flatMap((n) => [
+  ...['alba', 'notte', 'risacca', 'battigia'].flatMap((n) => [
     [n, n, {}, largo],
     [n, n, {}, alto],
   ]),
+  // piombo e sera servono solo in verticale
+  ...['piombo', 'sera'].map((n) => [n, n, {}, alto]),
   ['og', 'og', {}, [[1200, 630, '']]],
 ];
 

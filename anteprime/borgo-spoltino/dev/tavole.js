@@ -621,5 +621,3 @@ export function dipingi(nome, w, h, { cx, cy = .5, zoom = 1, strato = 0, vig = 1
   gl.drawArrays(gl.TRIANGLES, 0, 3);
   return tela;
 }
-
-export const nomi = Object.keys(scene);

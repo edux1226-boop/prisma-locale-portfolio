@@ -14,8 +14,6 @@
 .piatto__tavola picture { position: absolute; inset: 0; transition: transform 1.6s var(--lento); }
 .piatto__tavola img { mix-blend-mode: luminosity; opacity: 0.5; }
 .piatto__tavola--petrolio { background: var(--petrolio); }
-.piatto__tavola--sabbia { background: var(--sabbia-scura); color: var(--inchiostro); }
-.piatto__tavola--sabbia img { opacity: 0.38; }
 .piatto__tavola--pietra { background: #6F7572; }
 /* quando c'è la foto vera, niente fusione e niente lettera */
 .piatto__tavola--foto { background: var(--adriatico); }
@@ -119,7 +117,6 @@
 .voce { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 24px; padding: 16px 0; border-bottom: 1px solid var(--filo); }
 .voce__nome { font-family: var(--f-titolo); font-weight: 300; font-size: var(--t-m); line-height: 1.2; }
 .voce__nota { font-size: var(--t-piccolo); color: var(--pietra-testo); padding-top: 0.3em; }
-.voce__prezzo { font-family: var(--f-titolo); font-size: var(--t-m); text-align: right; }
 
 /* il crudo, una sola foto dentro la carta: a destra, come in una rivista */
 .carta__foto { justify-self: end; width: min(100%, 24rem); margin-top: 26px; }

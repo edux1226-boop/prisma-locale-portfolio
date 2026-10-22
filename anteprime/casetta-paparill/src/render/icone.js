@@ -42,7 +42,6 @@ const ICONE = {
   colomba: ['0 0 24 24', `<path ${T} d="M3.5 13c3 .4 5.3-.4 7-2.4L13 7.6c1-1.2 2.6-1.6 4-1l3.5 1.4-2.8 1.3c.3 4.6-3.2 8.2-8 8.2H6.5l2-2.3C6.4 15.2 4.6 14.4 3.5 13Z"/>`],
   spunta: ['0 0 24 24', `<path ${T} d="m5 12.5 4.5 4.5L19 7.5"/>`],
   info: ['0 0 24 24', `<circle ${T} cx="12" cy="12" r="8.5"/><path ${T} d="M12 11v5.5M12 7.8v.2"/>`],
-  stampa: ['0 0 24 24', `<path ${T} d="M7 9V4h10v5M7 17H5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2M7 14h10v6H7Z"/>`],
   piatto: ['0 0 24 24', `<circle ${T} cx="12" cy="12" r="8.5"/><circle ${T} cx="12" cy="12" r="5"/>`],
 };
 
@@ -70,5 +69,3 @@ export function sprite(allergeniUsati = []) {
   }
   return `<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">\n${simboli.join('\n')}\n</svg>`;
 }
-
-export const ICONE_DISPONIBILI = Object.keys(ICONE);

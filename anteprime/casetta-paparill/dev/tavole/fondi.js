@@ -55,22 +55,6 @@ export function lino(ctx, w, h, S, caso, { base = [238, 229, 213], fili = [140, 
   }
 }
 
-/* Una riga blu sul bordo della tovaglia (il blu della Casetta). */
-export function rigaTovaglia(ctx, w, h, S, { y = 0.9, spessore = 18, colore = [26, 58, 82], verticale = false, pos = null } = {}) {
-  ctx.save();
-  ctx.globalAlpha = 0.85;
-  ctx.fillStyle = rgb(colore);
-  const p = pos ?? (verticale ? w * y : h * y);
-  if (verticale) {
-    ctx.fillRect(p, 0, spessore * S, h);
-    ctx.fillRect(p + spessore * S + 7 * S, 0, 4 * S, h);
-  } else {
-    ctx.fillRect(0, p, w, spessore * S);
-    ctx.fillRect(0, p + spessore * S + 7 * S, w, 4 * S);
-  }
-  ctx.restore();
-}
-
 /* Legno: anelli deformati dal rumore e fibre sottili. dir = verso delle fibre. */
 export function coloreLegno(rum, { base = [176, 124, 78], scala = 1, dir = 0, contrasto = 1 } = {}) {
   const c = Math.cos(dir); const s = Math.sin(dir);

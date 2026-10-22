@@ -34,7 +34,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 
 /* I titoli: Spectral ExtraLight, stretto di interlinea, mai in grassetto. */
-h1, h2, h3, .serif {
+h1, h2, h3 {
   font-family: var(--f-titolo);
   font-weight: 200;
   letter-spacing: -0.025em;
@@ -140,7 +140,6 @@ body::after {
 
 /* Righe dei titoli divise da SplitText (solo con il movimento). */
 .riga { display: block; padding-bottom: 0.1em; margin-bottom: -0.1em; }
-.riga-maschera { display: block; overflow: clip; padding-bottom: 0.12em; margin-bottom: -0.12em; }
 
 /* ---- Anteprima: avviso fisso e filigrana -------------------------------- */
 .anteprima {
