@@ -1,4 +1,4 @@
-/* Compila i flagship (app Next.js autonome in flagship/) e li copia nella
+/* Compila i flagship (app Next.js autonome dentro anteprime/) e li copia nella
    build del sito, dopo `vite build`. Ognuno ha le sue dipendenze e il suo
    package-lock: qui si installano se mancano.
 
@@ -13,7 +13,7 @@ const radice = fileURLToPath(new URL('../', import.meta.url));
 
 const FLAGSHIP = [
   {
-    cartella: 'flagship/trattoria-luciana',
+    cartella: 'anteprime/trattoria-luciana',
     percorso: '/anteprime/trattoria-luciana',
     ambiente: { SITE_MODE: 'anteprima', SITE_URL: 'https://prismalocale.it/anteprime/trattoria-luciana' },
   },

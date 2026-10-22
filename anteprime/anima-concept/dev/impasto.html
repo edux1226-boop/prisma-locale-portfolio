@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Anima, render statico dell'impasto</title>
+<style>html, body { margin: 0; background: #140B06; } #tela { position: fixed; left: 0; top: 0; }</style>
+</head>
+<body>
+<!-- Pagina di servizio per anteprime/anima-concept/render.mjs: renderizza una tappa
+     dell'impasto con la stessa scena dell'anteprima.
+     ?w=1600&h=1000&tappa=0&cx=0.5&cy=0.5&zoom=1&aria=0.25&q=0.82&t=4 -->
+<div id="tela"></div>
+<script type="module">
+  import { createImpasto } from '/anteprime/anima-concept/src/three/impasto.js';
+  const q = new URLSearchParams(location.search);
+  const tela = document.getElementById('tela');
+  tela.style.width = `${q.get('w') || 1600}px`;
+  tela.style.height = `${q.get('h') || 1000}px`;
+  const scena = await createImpasto(tela, {
+    granelli: Number(q.get('granelli') || 700),
+    still: {
+      tappa: Number(q.get('tappa') || 0),
+      tempo: Number(q.get('t') || 4),
+      centroX: Number(q.get('cx') || 0.5),
+      centroY: Number(q.get('cy') || 0.5),
+      zoom: Number(q.get('zoom') || 1),
+      aria: Number(q.get("aria") ?? 0.25),
+    },
+  });
+  window.__still = scena.canvas.toDataURL(q.get('fmt') || 'image/webp', Number(q.get('q') || 0.82));
+</script>
+</body>
+</html>
