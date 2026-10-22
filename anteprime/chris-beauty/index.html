@@ -207,37 +207,149 @@
   </section>
   <!-- RECENSIONI: fine. -->
 
-  <!-- Passo 4: modulo di richiesta appuntamento. -->
   <section id="prenota" class="sezione sezione--alt" aria-labelledby="titolo-prenota">
-    <div class="contenuto">
-      <div class="sezione__testa">
-        <p class="numero"><span class="campione" aria-hidden="true"></span>04</p>
-        <h2 id="titolo-prenota">Richiedi un appuntamento</h2>
+    <div class="contenuto prenota__griglia">
+      <div class="prenota__testo">
+        <div class="sezione__testa">
+          <p class="numero"><span class="campione" aria-hidden="true"></span>04</p>
+          <h2 id="titolo-prenota">Richiedi un appuntamento</h2>
+          <p>Compila il modulo: è una <strong>richiesta</strong>, non una prenotazione confermata. Chris Beauty ti ricontatta per confermare giorno e orario.</p>
+        </div>
+        <!-- DA COMPLETARE: telefono e WhatsApp (gli stessi della sezione Contatti). -->
+        <p class="prenota__alt">Preferisci scrivere o chiamare? Trovi i recapiti nella sezione <a class="link" href="#contatti">Informazioni pratiche</a>.</p>
       </div>
+
+      <!-- INTEGRAZIONE PRENOTAZIONI (vedi README, sezione Chris Beauty):
+           data-endpoint  = URL "/exec" dell'Apps Script collegato al foglio Google (scripts/chris-beauty-prenotazioni.gs).
+           data-whatsapp  = numero con prefisso, solo cifre (es. 39XXXXXXXXXX): modalità provvisoria, apre WhatsApp con la richiesta già scritta.
+           Entrambi vuoti: il modulo dice chiaramente che le richieste online non sono ancora attive. -->
+      <form class="modulo" data-prenota data-endpoint="" data-whatsapp="" novalidate>
+        <div class="campo">
+          <label for="f-nome">Nome</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required maxlength="100">
+          <p class="errore" id="e-nome" hidden>Scrivi il tuo nome.</p>
+        </div>
+        <div class="campo">
+          <label for="f-recapito">Telefono o email</label>
+          <input id="f-recapito" name="recapito" type="text" autocomplete="tel" required maxlength="100" aria-describedby="h-recapito">
+          <p class="aiuto" id="h-recapito">Il recapito su cui vuoi essere ricontattata.</p>
+          <p class="errore" id="e-recapito" hidden>Inserisci un numero di telefono o un indirizzo email valido.</p>
+        </div>
+        <div class="campo">
+          <label for="f-trattamento">Trattamento desiderato</label>
+          <select id="f-trattamento" name="trattamento" required>
+            <option value="" selected disabled>Scegli un trattamento</option>
+            <option value="ricostruzione-unghie">Ricostruzione unghie</option>
+            <!-- DA COMPLETARE: una voce per ogni scheda della sezione Trattamenti (value uguale a data-trattamento). Eliminare le due voci seguenti se non servono. -->
+            <option value="da-completare-1">[Trattamento da completare 1]</option>
+            <option value="da-completare-2">[Trattamento da completare 2]</option>
+            <option value="da-decidere">Altro / da decidere insieme</option>
+          </select>
+          <p class="errore" id="e-trattamento" hidden>Scegli un trattamento.</p>
+        </div>
+        <div class="campo-coppia">
+          <div class="campo">
+            <label for="f-data">Data preferita</label>
+            <input id="f-data" name="data" type="date" required>
+            <p class="errore" id="e-data" hidden>Scegli una data a partire da oggi.</p>
+          </div>
+          <div class="campo">
+            <label for="f-fascia">Fascia oraria</label>
+            <!-- DA COMPLETARE: allineare le fasce agli orari reali del centro. -->
+            <select id="f-fascia" name="fascia" required>
+              <option value="" selected disabled>Scegli</option>
+              <option value="mattina">Mattina</option>
+              <option value="pomeriggio">Pomeriggio</option>
+              <option value="indifferente">Indifferente</option>
+            </select>
+            <p class="errore" id="e-fascia" hidden>Scegli una fascia oraria.</p>
+          </div>
+        </div>
+        <div class="campo campo--spunta">
+          <input id="f-privacy" name="privacy" type="checkbox" required>
+          <label for="f-privacy">Ho letto l'<a href="#privacy">informativa privacy</a></label>
+          <p class="errore" id="e-privacy" hidden>Per inviare la richiesta serve confermare di aver letto l'informativa.</p>
+        </div>
+        <!-- Campo trappola per i bot: nascosto, le persone non lo compilano. -->
+        <div class="trappola" aria-hidden="true">
+          <label for="f-sito">Non compilare questo campo</label>
+          <input id="f-sito" name="sito-web" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="bottone" type="submit">Invia la richiesta</button>
+        <p class="stato" data-stato role="status" aria-live="polite" tabindex="-1"></p>
+        <noscript><p class="noscript">Per inviare la richiesta serve JavaScript. Puoi contattare il centro usando i recapiti nella sezione Informazioni pratiche.</p></noscript>
+      </form>
     </div>
   </section>
 
-  <!-- Passo 4: indirizzo, orari, contatti. -->
   <section id="contatti" class="sezione" aria-labelledby="titolo-contatti">
     <div class="contenuto">
       <div class="sezione__testa">
         <p class="numero"><span class="campione" aria-hidden="true"></span>05</p>
         <h2 id="titolo-contatti">Informazioni pratiche</h2>
       </div>
+      <!-- DA COMPLETARE: indirizzo, orari e contatti forniti dalla titolare. Quando un recapito è vero: togliere .segnaposto/.is-segnaposto
+           e mettere href reali (tel:, https://wa.me/39…, mailto:). Il modulo cita nei messaggi solo i recapiti reali. -->
+      <div class="info">
+        <div class="info__blocco">
+          <h3>Dove siamo</h3>
+          <address><span class="segnaposto">[Indirizzo da inserire]</span></address>
+          <!-- DA COMPLETARE: quando c'è l'indirizzo, aggiungere il link "Apri in Maps". Nessuna mappa incorporata. -->
+        </div>
+        <div class="info__blocco">
+          <h3>Orari</h3>
+          <dl class="orari">
+            <div><dt>Lunedì</dt><dd><span class="segnaposto">[orario]</span></dd></div>
+            <div><dt>Martedì</dt><dd><span class="segnaposto">[orario]</span></dd></div>
+            <div><dt>Mercoledì</dt><dd><span class="segnaposto">[orario]</span></dd></div>
+            <div><dt>Giovedì</dt><dd><span class="segnaposto">[orario]</span></dd></div>
+            <div><dt>Venerdì</dt><dd><span class="segnaposto">[orario]</span></dd></div>
+            <div><dt>Sabato</dt><dd><span class="segnaposto">[orario]</span></dd></div>
+            <div><dt>Domenica</dt><dd><span class="segnaposto">[orario]</span></dd></div>
+          </dl>
+        </div>
+        <div class="info__blocco">
+          <h3>Contatti</h3>
+          <ul class="recapiti">
+            <li>Telefono: <span class="segnaposto" data-recapito="telefono">[numero da inserire]</span></li>
+            <li>WhatsApp: <span class="segnaposto" data-recapito="whatsapp">[numero da inserire]</span></li>
+            <li>Email: <span class="segnaposto" data-recapito="email">[indirizzo da inserire]</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Passo 4: fascia Instagram. -->
-  <section id="instagram" class="sezione sezione--alt" aria-labelledby="titolo-instagram">
-    <div class="contenuto">
-      <h2 id="titolo-instagram">Instagram</h2>
+  <section id="instagram" class="sezione sezione--alt instagram" aria-labelledby="titolo-instagram">
+    <div class="contenuto instagram__dentro">
+      <svg class="instagram__icona" aria-hidden="true"><use href="#i-instagram"/></svg>
+      <h2 id="titolo-instagram">Segui Chris Beauty su Instagram</h2>
+      <!-- DA COMPLETARE: account Instagram. Sostituire il testo e l'href (e togliere .is-segnaposto). -->
+      <p><span class="segnaposto">[account Instagram da inserire]</span></p>
+      <a class="bottone is-segnaposto" href="#instagram">Vai su Instagram</a>
     </div>
   </section>
 
 </main>
 
-<!-- Passo 4: footer con #privacy. -->
-<footer class="footer" id="privacy"></footer>
+<footer class="footer" id="privacy">
+  <div class="contenuto footer__griglia">
+    <div>
+      <p class="marchio">Chris Beauty</p>
+      <p class="footer__nota"><a class="link is-segnaposto" href="#instagram">Instagram</a> · <a class="link" href="#contatti">Contatti</a></p>
+    </div>
+    <div>
+      <h2 class="footer__titolo">Informativa privacy</h2>
+      <!-- DA COMPLETARE: testo dell'informativa fornito dalla titolare (titolare del trattamento, finalità, tempi di conservazione, diritti). -->
+      <p><span class="segnaposto">[Informativa privacy da fornire dalla titolare]</span></p>
+      <!-- DA COMPLETARE: partita IVA. -->
+      <p class="footer__nota">P. IVA <span class="segnaposto">[da inserire]</span></p>
+    </div>
+  </div>
+  <div class="contenuto footer__fine">
+    <p>Sito realizzato da <a href="https://prismalocale.it">Prisma Locale</a></p>
+  </div>
+</footer>
 
 </body>
 </html>

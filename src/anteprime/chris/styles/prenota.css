@@ -1,0 +1,77 @@
+/* Modulo di richiesta, informazioni pratiche, Instagram e footer. */
+
+.prenota__griglia { display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.prenota__testo .sezione__testa { margin-bottom: 24px; }
+.prenota__alt { color: var(--tenue); }
+@media (min-width: 64em) {
+  .prenota__griglia { grid-template-columns: 5fr 6fr; }
+  .prenota__testo { position: sticky; top: calc(var(--testata-h) + 24px); }
+}
+
+.modulo {
+  display: grid;
+  gap: 22px;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--filo);
+  border-radius: var(--raggio);
+  background: var(--bianco);
+  box-shadow: var(--ombra);
+}
+.campo { display: grid; gap: 6px; }
+.campo-coppia { display: grid; gap: 22px; }
+@media (min-width: 40em) { .campo-coppia { grid-template-columns: 1fr 1fr; } }
+
+.campo label { font-weight: 600; font-size: 0.9375rem; }
+.campo input:not([type="checkbox"]), .campo select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid var(--bordo-campo);
+  border-radius: var(--raggio);
+  background: var(--bianco);
+}
+.campo [aria-invalid="true"] { border-color: var(--errore); }
+.aiuto { color: var(--tenue); font-size: var(--t-small); }
+.errore { color: var(--errore); font-size: var(--t-small); font-weight: 600; }
+
+.campo--spunta { grid-template-columns: auto 1fr; align-items: center; column-gap: 12px; }
+.campo--spunta input { width: 22px; height: 22px; accent-color: var(--inchiostro); }
+.campo--spunta label { font-weight: 400; }
+.campo--spunta .errore { grid-column: 1 / -1; }
+.campo--spunta a { color: var(--cipria-testo); }
+
+/* Nascosto agli occhi ma non con display:none, che alcuni bot riconoscono. */
+.trappola { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.modulo .bottone { justify-self: start; }
+.stato { font-size: 0.9375rem; padding: 14px 16px; border-left: 3px solid var(--cipria-testo); background: var(--porcellana); max-width: none; }
+.stato:empty { display: none; }
+.stato.is-errore { border-color: var(--errore); }
+.stato.is-ok { border-color: #2F6B4A; }
+.stato:focus { outline-offset: 2px; }
+
+/* Informazioni pratiche */
+.info { display: grid; gap: clamp(32px, 4vw, 56px); }
+.info__blocco { display: grid; gap: 14px; align-content: start; }
+.info__blocco h3 { padding-bottom: 12px; border-bottom: 1px solid var(--filo); }
+.recapiti { display: grid; gap: 10px; }
+.orari { display: grid; gap: 8px; }
+.orari div { display: flex; justify-content: space-between; gap: 16px; }
+.orari dt { color: var(--tenue); }
+@media (min-width: 48em) { .info { grid-template-columns: repeat(3, 1fr); } }
+
+/* Instagram */
+.instagram__dentro { display: grid; justify-items: center; gap: 16px; text-align: center; }
+.instagram__dentro p { margin-inline: auto; }
+.instagram__icona { width: 40px; height: 40px; color: var(--cipria-testo); }
+
+/* Footer */
+.footer { padding-block: 56px 32px; border-top: 1px solid var(--filo); }
+.footer__griglia { display: grid; gap: 32px; }
+.footer__titolo { font-size: var(--t-m); margin-bottom: 8px; }
+.footer__nota { margin-top: 12px; color: var(--tenue); font-size: var(--t-small); }
+.footer__fine { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--filo); color: var(--tenue); font-size: var(--t-small); }
+.footer__fine p { max-width: none; }
+@media (min-width: 48em) { .footer__griglia { grid-template-columns: 1fr 2fr; } }
+/* spazio per la barra fissa "Prenota" su smartphone */
+@media (max-width: 47.99em) { .footer { padding-bottom: 104px; } }
