@@ -1,0 +1,449 @@
+/* ---- Hero: la bocca del forno ------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 1fr auto auto;
+  padding: calc(var(--testata-h) + clamp(20px, 4vh, 56px)) var(--margine) clamp(20px, 3vh, 36px);
+  background: var(--forno);
+  color: var(--farina);
+  overflow: clip;
+  isolation: isolate;
+}
+.hero__forno {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(60% 55% at 72% 78%, rgb(214 98 38 / 0.38), transparent 70%),
+    radial-gradient(40% 30% at 70% 92%, rgb(255 160 70 / 0.25), transparent 70%),
+    radial-gradient(90% 70% at 20% 0%, rgb(255 240 220 / 0.05), transparent 60%);
+}
+.motion .hero__forno { animation: brace 6s ease-in-out infinite alternate; }
+@keyframes brace { to { opacity: 0.75; } }
+
+.hero__testo { position: relative; z-index: 2; align-self: start; max-width: 40rem; }
+.hero__luogo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: var(--t-small); font-weight: 600; color: var(--tenue-chiaro);
+}
+.punto-vivo { width: 8px; height: 8px; border-radius: 50%; background: var(--crosta); box-shadow: 0 0 0 4px rgb(224 163 90 / 0.18); }
+.hero__titolo {
+  margin: clamp(14px, 2vh, 26px) 0 clamp(18px, 3vh, 30px);
+  font-size: var(--t-gigante);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+  text-shadow: 0 2px 40px rgb(var(--forno-rgb) / 0.5);
+}
+/* Su desktop il titolo resta nella metà sinistra: la destra è della pala. */
+@media (min-width: 64em) {
+  .hero__titolo { font-size: clamp(4.4rem, 9vw, 12rem); }
+  .hero .hero__sotto { max-width: min(31rem, 36vw); }
+}
+.hero__riga { display: block; width: max-content; overflow: clip; padding-bottom: 0.06em; white-space: nowrap; }
+.hero__riga > span { display: inline-block; }
+.hero__riga--rientro { padding-left: 0.62em; }
+.hero__punto { color: var(--brace); }
+.hero__sotto { max-width: 31rem; font-size: var(--t-m); line-height: 1.45; color: rgb(var(--farina-rgb) / 0.86); }
+.hero__sotto strong { color: var(--crosta); font-weight: 600; }
+.hero__azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(22px, 4vh, 40px); }
+
+.hero__pala {
+  position: absolute; z-index: 1;
+  left: 46%; top: 52%;
+  width: max(92vw, 1100px);
+  transform: translateY(-40%) rotate(-8deg);
+  transform-origin: 30% 50%;
+  pointer-events: none;
+}
+.hero__muovi { position: relative; }
+.hero__pala canvas { aspect-ratio: 2.7; filter: drop-shadow(0 50px 60px rgb(0 0 0 / 0.55)); will-change: transform; }
+.pala canvas, .componi canvas { aspect-ratio: 3.05; }
+
+/* L'ingresso: titolo e pala aspettano lo script, ma non per sempre. */
+.is-intro [data-hero-riga] > span { transform: translateY(110%); animation: intro-sicura 0.01s 3.5s forwards; }
+.is-intro [data-hero-entra] { opacity: 0; animation: intro-sicura 0.01s 3.5s forwards; }
+.is-intro [data-hero-muovi] { opacity: 0; animation: intro-sicura 0.01s 3.5s forwards; }
+@keyframes intro-sicura { to { transform: none; opacity: 1; } }
+.hero__vapore {
+  position: absolute; left: 22%; top: -12%;
+  width: 34%; height: auto;
+  fill: none; stroke: rgb(255 245 230 / 0.16); stroke-width: 3; stroke-linecap: round;
+  filter: blur(3px);
+  opacity: 0;
+}
+.motion .hero__vapore { animation: vapore-entra 1s 1.6s forwards; }
+.motion .hero__vapore path {
+  stroke-dasharray: 60 260;
+  animation: vapore 4.5s linear infinite;
+}
+.motion .hero__vapore path:nth-child(2) { animation-delay: -1.5s; }
+.motion .hero__vapore path:nth-child(3) { animation-delay: -3s; }
+.hero.is-fuori .hero__forno, .hero.is-fuori .hero__vapore path { animation-play-state: paused; }
+@keyframes vapore { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
+@keyframes vapore-entra { to { opacity: 1; } }
+
+.hero__striscia {
+  position: relative; z-index: 2;
+  display: flex; flex-wrap: wrap; gap: 10px 40px;
+  margin-top: clamp(24px, 4vh, 48px);
+  padding-top: 18px;
+  border-top: 1px solid var(--filo-chiaro);
+}
+.hero__striscia div { display: grid; gap: 2px; }
+.hero__striscia dt { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tenue-chiaro); }
+.hero__striscia dd { font-weight: 600; }
+.hero__striscia dd.is-aperto::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px;
+  border-radius: 50%; background: #7CC56B; vertical-align: 0.05em;
+}
+
+@media (max-width: 63.99em) {
+  .hero { grid-template-rows: auto 1fr auto; }
+  .hero__pala {
+    position: relative; left: auto; top: auto;
+    width: 190vw; margin: 6vh 0 0 -12vw;
+    transform: rotate(-12deg);
+  }
+  .hero__titolo { font-size: clamp(4.2rem, 1rem + 18vw, 8rem); }
+  .hero__striscia { gap: 10px 24px; }
+}
+@media (max-width: 40em) {
+  .hero__azioni .btn { flex: 1 1 100%; }
+}
+
+/* ---- Manifesto ---------------------------------------------------------- */
+.manifesto {
+  padding: var(--sezione) var(--margine) calc(var(--sezione) * 0.8);
+  max-width: 92rem; margin-inline: auto;
+}
+.manifesto__titolo { margin: 28px 0 clamp(36px, 5vw, 72px); font-size: var(--t-xl); max-width: 18ch; }
+.manifesto__colonne { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--gap) calc(var(--gap) * 2.5); max-width: 62rem; margin-left: auto; color: var(--tenue); }
+.manifesto__colonne p:first-child { color: var(--inchiostro); font-size: var(--t-m); line-height: 1.45; }
+
+/* ---- 48 ore ------------------------------------------------------------- */
+.ore {
+  position: relative;
+  background: var(--forno-2);
+  color: var(--farina);
+}
+.ore__palco {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "testa  passi"
+    "orologio passi"
+    "impasto passi"
+    "nota nota";
+  gap: 24px var(--gap);
+  padding: var(--sezione) var(--margine);
+  max-width: 96rem; margin-inline: auto;
+}
+.ore__testa { grid-area: testa; }
+.ore__titolo { margin-top: 22px; font-size: var(--t-xl); }
+.ore__orologio { grid-area: orologio; display: flex; align-items: baseline; gap: 14px; color: var(--crosta); }
+.ore__cifra { font-family: var(--f-display); font-size: clamp(5rem, 2rem + 12vw, 13rem); line-height: 0.8; font-variant-numeric: tabular-nums; letter-spacing: -0.04em; }
+.ore__unita { font-size: var(--t-m); font-weight: 600; }
+.impasto { grid-area: impasto; width: 100%; max-width: 34rem; }
+.impasto svg { width: 100%; height: auto; overflow: visible; }
+.impasto__ombra { fill: rgb(0 0 0 / 0.35); }
+.impasto__massa--cotta { opacity: 0; }
+.impasto__bolla { fill: rgb(150 110 60 / 0.35); stroke: rgb(255 248 235 / 0.55); stroke-width: 1; }
+
+.ore__passi { grid-area: passi; align-self: center; display: grid; gap: clamp(20px, 3vh, 40px); counter-reset: passo; }
+.ore__passo {
+  position: relative;
+  padding: 0 0 clamp(18px, 2.4vh, 30px) 22px;
+  border-bottom: 1px solid var(--filo-chiaro);
+  transition: opacity 0.6s var(--ease);
+}
+.ore__passo::before {
+  content: ""; position: absolute; left: 0; top: 0.35em; bottom: clamp(18px, 2.4vh, 30px);
+  width: 3px; border-radius: 2px;
+  background: var(--crosta);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.6s var(--ease);
+}
+.ore__quando { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--crosta); }
+.ore__passo h3 { margin: 6px 0 8px; font-size: var(--t-l); }
+.ore__passo p { max-width: 30rem; color: var(--tenue-chiaro); }
+.ore__nota { grid-area: nota; }
+/* Il passaggio in corso ha il suo segno; gli altri si abbassano ma restano
+   leggibili (contrasto AA anche così). */
+.ore.is-pinnato .ore__passo { opacity: 0.7; }
+.ore.is-pinnato .ore__passo.is-attivo { opacity: 1; }
+.ore.is-pinnato .ore__passo.is-attivo::before { transform: scaleY(1); }
+
+@media (min-width: 64em) and (min-height: 40em) {
+  .motion .ore { height: 360vh; }
+  .motion .ore__palco {
+    position: sticky; top: 0;
+    height: 100svh;
+    padding-top: calc(var(--testata-h) + 3vh); padding-bottom: 5vh;
+    grid-template-rows: auto auto 1fr auto;
+    align-content: center;
+  }
+  .motion .impasto { align-self: center; max-width: min(36rem, 62vh); margin-top: -4vh; }
+}
+@media (max-width: 63.99em) {
+  .ore__palco { grid-template-columns: 1fr; grid-template-areas: "testa" "orologio" "impasto" "passi" "nota"; }
+  .impasto { max-width: 22rem; }
+}
+
+/* ---- La pala: una camera che la percorre ------------------------------- */
+.pala { position: relative; background: var(--farina); }
+.pala__palco {
+  display: grid; align-content: center; gap: clamp(20px, 4vh, 44px);
+  padding: var(--sezione) var(--margine);
+  max-width: 110rem; margin-inline: auto;
+}
+.pala__titolo { margin-top: 22px; font-size: var(--t-xxl); }
+.pala__finestra {
+  display: grid; align-items: center;
+  border-radius: clamp(16px, 2vw, 28px);
+}
+.pala__binario { transform-origin: 0% 50%; }
+.pala__binario canvas { filter: drop-shadow(0 26px 30px rgb(60 30 10 / 0.26)); }
+.pala__didascalie {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--gap) calc(var(--gap) * 2);
+}
+.pala__didascalie li { display: flex; gap: 16px; align-items: baseline; }
+.pala__num {
+  flex: none; display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1.5px solid var(--crosta-testo); color: var(--crosta-testo);
+  font-size: 0.875rem; font-weight: 700;
+}
+.pala__didascalie p { color: var(--tenue); max-width: 26rem; }
+.pala__didascalie b { color: var(--inchiostro); font-weight: 700; }
+
+/* Con il movimento: pinnata. La camera parte stretta sul primo gusto,
+   scorre lungo la pala e alla fine si allarga sulla pala intera. */
+.motion .pala.is-binario { height: 360vh; }
+.motion .pala.is-binario .pala__palco {
+  position: sticky; top: 0;
+  height: 100svh;
+  padding-top: calc(var(--testata-h) + 2vh);
+  padding-bottom: 5vh;
+  grid-template-rows: auto auto auto;
+  align-content: center;
+}
+.motion .pala.is-binario .pala__finestra { overflow: clip; height: min(54vh, 640px); }
+.motion .pala.is-binario .pala__binario { will-change: transform; }
+.motion .pala.is-binario .pala__didascalie { display: block; position: relative; font-size: var(--t-m); min-height: 2.8em; }
+.motion .pala.is-binario .pala__didascalie li {
+  position: absolute; inset: 0 0 auto;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.motion .pala.is-binario .pala__didascalie li.is-attiva { opacity: 1; transform: none; }
+.motion .pala.is-binario .pala__didascalie p { font-size: inherit; line-height: 1.35; max-width: 40rem; }
+.motion .pala.is-binario .pala__num { font-size: 0.875rem; transform: translateY(-0.2em); }
+@media (max-width: 63.99em) {
+  /* sopra la barra delle azioni e l'avviso dell'anteprima */
+  .motion .pala.is-binario .pala__palco { padding-bottom: calc(var(--barra-h) + 52px + env(safe-area-inset-bottom, 0px)); }
+  .motion .pala.is-binario .pala__finestra { height: 36vh; }
+  .motion .pala.is-binario .pala__didascalie { min-height: 4.1em; }
+}
+
+/* ---- Menu: componi e listino -------------------------------------------- */
+.menu {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-areas: "testa testa" "componi listino";
+  gap: clamp(36px, 5vw, 80px) clamp(28px, 5vw, 96px);
+  padding: var(--sezione) var(--margine);
+  max-width: 96rem; margin-inline: auto;
+  border-top: 1px solid var(--filo);
+}
+.menu__testa { grid-area: testa; display: grid; grid-template-columns: 1fr 1fr; gap: 20px var(--gap); align-items: end; }
+.menu__testa .etichetta { grid-column: 1 / -1; }
+.menu__titolo { font-size: var(--t-xxl); }
+.menu__intro { color: var(--tenue); max-width: 28rem; }
+@media (max-width: 63.99em) {
+  .menu { grid-template-columns: 1fr; grid-template-areas: "testa" "componi" "listino"; }
+  .menu__testa { grid-template-columns: 1fr; }
+}
+
+.componi { grid-area: componi; display: grid; gap: 24px; align-content: start; }
+.componi__scelta { display: flex; gap: 8px; padding: 6px; border: 0; border-radius: 999px; background: var(--banco); justify-self: start; }
+.componi__scelta label { position: relative; }
+.componi__scelta input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.componi__scelta span {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  min-height: 44px; padding: 10px 20px; border-radius: 999px;
+  font-size: 0.9375rem; font-weight: 600;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+.componi__scelta b { font-family: var(--f-display); font-weight: 400; font-size: 1.25rem; }
+.componi__scelta input:checked + span { background: var(--forno); color: var(--farina); }
+.componi__scelta input:focus-visible + span { outline: 2px solid var(--brace); outline-offset: 2px; }
+.componi__tela { position: relative; }
+.componi__tela canvas { filter: drop-shadow(0 24px 30px rgb(60 30 10 / 0.25)); transition: opacity 0.35s var(--ease); }
+.componi__tela canvas.is-cambio { opacity: 0.25; }
+.componi__esito { font-family: var(--f-display); font-size: var(--t-m); line-height: 1.3; }
+
+.listino { grid-area: listino; align-self: start; display: grid; gap: 18px; justify-items: start; }
+.listino__titolo { font-size: var(--t-l); }
+.listino__titolo .dc { font-size: 0.625rem; vertical-align: 0.4em; }
+.listino__titolo--piccolo { font-size: var(--t-m); margin-top: 12px; }
+.listino__voci { width: 100%; display: grid; }
+.listino__voci li {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--filo);
+}
+.listino__nome { font-weight: 600; }
+.listino__nome small { font-size: var(--t-small); font-weight: 400; color: var(--tenue); margin-left: 6px; }
+.listino__punti { border-bottom: 1.5px dotted rgb(36 28 22 / 0.3); transform: translateY(-4px); }
+.listino__prezzo { font-family: var(--f-display); font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.listino__nota { font-size: var(--t-small); color: var(--tenue); max-width: 30rem; }
+
+/* ---- Senza glutine ------------------------------------------------------ */
+.glutine {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center;
+  gap: var(--gap) clamp(32px, 6vw, 120px);
+  padding: var(--sezione) var(--margine);
+  background: var(--basilico);
+  color: var(--farina);
+}
+.glutine__segno { color: var(--crosta); max-width: 22rem; justify-self: center; width: 100%; }
+.glutine__segno svg { width: 100%; height: auto; }
+.glutine__testo { display: grid; gap: 22px; max-width: 40rem; }
+.glutine__titolo { font-size: var(--t-xl); }
+.glutine__testo > p:not(.etichetta) { font-size: var(--t-m); line-height: 1.45; color: rgb(var(--farina-rgb) / 0.88); }
+.glutine__testo > p.glutine__nota { font-size: var(--t-small); color: var(--tenue-chiaro); }
+@media (max-width: 63.99em) {
+  .glutine { grid-template-columns: 1fr; }
+  .glutine__segno { max-width: 9rem; justify-self: start; }
+}
+
+/* ---- Cosa dicono -------------------------------------------------------- */
+.voci { padding: var(--sezione) var(--margine); max-width: 96rem; margin-inline: auto; }
+.voci__testa { display: grid; gap: 22px; max-width: 52rem; }
+.voci__titolo { font-size: var(--t-xl); }
+.voci__fonte { color: var(--tenue); font-size: var(--t-small); }
+.voci__temi {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--gap);
+  margin: clamp(40px, 6vw, 80px) 0;
+}
+.voci__temi li {
+  display: grid; align-content: start; gap: 12px;
+  padding: clamp(22px, 2.4vw, 34px);
+  border-radius: 20px;
+  background: var(--carta);
+  box-shadow: inset 0 0 0 1px var(--filo);
+}
+.voci__num { font-size: 0.75rem; font-weight: 700; color: var(--crosta-testo); letter-spacing: 0.1em; }
+.voci__temi h3 { font-size: var(--t-m); line-height: 1.15; }
+.voci__temi p { color: var(--tenue); }
+.voci__piede { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--gap) calc(var(--gap) * 3); align-items: end; }
+.voci__numero { color: var(--tenue); }
+.voci__grande { display: block; font-family: var(--f-display); font-size: var(--t-xxl); line-height: 1; color: var(--inchiostro); margin-bottom: 8px; }
+.voci__consiglio { font-family: var(--f-display); font-size: var(--t-m); line-height: 1.3; }
+.voci__consiglio a { color: var(--brace); text-underline-offset: 0.18em; }
+
+/* ---- Ordina ------------------------------------------------------------- */
+.ordina { padding: var(--sezione) var(--margine); background: var(--forno); color: var(--farina); }
+.ordina__testa { max-width: 96rem; margin: 0 auto clamp(40px, 6vw, 80px); display: grid; gap: 22px; }
+.ordina__titolo { font-size: var(--t-xl); }
+.ordina__strade {
+  max-width: 96rem; margin-inline: auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: var(--gap);
+}
+.strada {
+  display: grid; align-content: start; justify-items: start; gap: 14px;
+  padding: clamp(24px, 2.6vw, 40px);
+  border-radius: 24px;
+  background: var(--forno-2);
+  box-shadow: inset 0 0 0 1px var(--filo-chiaro);
+}
+.strada__num { font-family: var(--f-display); font-size: 1.25rem; color: var(--crosta); }
+.strada h3 { font-size: var(--t-l); }
+.strada p { color: var(--tenue-chiaro); flex: 1; margin-bottom: 10px; }
+.strada__app { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ---- Dove siamo --------------------------------------------------------- */
+.dove {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 96px);
+  padding: var(--sezione) var(--margine);
+  max-width: 96rem; margin-inline: auto;
+}
+.dove__testo { display: grid; gap: 24px; align-content: start; justify-items: start; }
+.dove__titolo { font-size: var(--t-xl); }
+.dove__indirizzo { font-size: var(--t-m); line-height: 1.45; }
+.dove__indirizzo a { color: var(--brace); font-weight: 600; text-underline-offset: 0.18em; }
+.dove__servizi { display: grid; gap: 8px; color: var(--tenue); }
+.dove__servizi li { display: flex; gap: 10px; align-items: baseline; }
+.dove__servizi li::before { content: ""; flex: none; width: 10px; height: 4px; border-radius: 2px; background: var(--crosta-testo); transform: translateY(-3px); }
+.dove__azioni { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.orari {
+  align-self: start;
+  padding: clamp(24px, 3vw, 44px);
+  border-radius: 24px;
+  background: var(--carta);
+  box-shadow: inset 0 0 0 1px var(--filo);
+}
+.orari__stato {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 18px; margin-bottom: 18px;
+  border-bottom: 1px solid var(--filo);
+  font-family: var(--f-display); font-size: var(--t-m); line-height: 1.25;
+}
+.orari__stato::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--crosta-testo); }
+.orari__stato.is-aperto::before { background: #3F8A33; box-shadow: 0 0 0 5px rgb(63 138 51 / 0.16); }
+.orari__titolo { font-size: 0.75rem; font-family: var(--f-testo); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tenue); margin-bottom: 8px; }
+.orari__tabella { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.orari__tabella th, .orari__tabella td { padding: 9px 0; border-bottom: 1px solid var(--filo); text-align: left; font-weight: 400; }
+.orari__tabella td { text-align: right; }
+.orari__tabella tr.is-oggi th, .orari__tabella tr.is-oggi td { font-weight: 700; }
+.orari__tabella tr.is-oggi th::after { content: " · oggi"; font-weight: 400; color: var(--crosta-testo); }
+.orari__nota { margin-top: 16px; font-size: var(--t-small); color: var(--tenue); }
+@media (max-width: 63.99em) { .dove { grid-template-columns: 1fr; } }
+
+/* ---- Piede -------------------------------------------------------------- */
+.piede { background: var(--forno); color: var(--farina); padding: var(--sezione) var(--margine) calc(40px + 4vh); }
+.piede__invito { display: grid; gap: 8px; text-decoration: none; max-width: 96rem; margin: 0 auto; }
+.piede__piccolo { font-size: var(--t-l); font-family: var(--f-display); color: var(--crosta); }
+.piede__numero {
+  font-family: var(--f-display); font-size: clamp(3rem, 0.5rem + 11vw, 12rem); line-height: 0.95;
+  letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+  transition: color 0.4s var(--ease);
+}
+.piede__invito:hover .piede__numero { color: var(--crosta); }
+.piede__base {
+  max-width: 96rem; margin: clamp(48px, 8vw, 120px) auto 0;
+  padding-top: 28px; border-top: 1px solid var(--filo-chiaro);
+  display: grid; grid-template-columns: auto 1fr; gap: 12px 40px;
+  font-size: var(--t-small); color: var(--tenue-chiaro);
+}
+.piede__marchio { font-family: var(--f-display); font-size: 1.5rem; color: var(--farina); grid-row: span 3; }
+.piede__link { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.piede__link a { text-underline-offset: 0.2em; }
+@media (max-width: 47.99em) { .piede__base { grid-template-columns: 1fr; } .piede__marchio { grid-row: auto; } }
+
+/* ---- Nota di Prisma Locale ---------------------------------------------- */
+.nota { padding: var(--sezione) var(--margine); background: var(--banco); }
+.nota__foglio {
+  max-width: 54rem; margin-inline: auto;
+  padding: clamp(28px, 5vw, 72px);
+  border-radius: 24px;
+  background: var(--carta);
+  box-shadow: 0 30px 60px -30px rgb(60 30 10 / 0.35);
+  display: grid; gap: 24px;
+}
+.nota__titolo { font-size: var(--t-l); }
+.nota__intro { color: var(--tenue); }
+.lista { display: grid; gap: 4px; }
+.lista label { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--filo); cursor: pointer; }
+.lista input { flex: none; width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--brace); }
+.lista__voce { display: grid; gap: 2px; }
+.lista__voce span { font-size: var(--t-small); color: var(--tenue); }
+.nota__piede { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.nota__conto { font-family: var(--f-display); font-size: var(--t-m); }
+.nota__mail { font-size: var(--t-small); color: var(--tenue); }
+.nota__firma { font-size: 0.8125rem; color: var(--tenue); }

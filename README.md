@@ -206,6 +206,25 @@ attraverso la sua app GitHub) o le anteprime vanno spostate in un repository pri
     non invia nulla. Scadenza nel meta `anteprima-scadenza` (30 novembre 2026).
   - Lighthouse (build, Chromium headless): mobile 93 / 100 / 100, desktop 98 / 100 / 100
     (prestazioni, accessibilità, best practice; la SEO è bassa di proposito per il noindex).
+- **L'Antica Ricetta** (`/anteprime/lantica-ricetta/`): pizza in pala ad alta idratazione a
+  Roseto degli Abruzzi, concept "48 ore, una pala". Scuro come il forno, chiaro come la farina;
+  il rosso brace solo per le azioni. Young Serif e Hanken Grotesk.
+  - **Sezioni**: hero con la pala che esce dal forno, manifesto, le 48 ore dell'impasto
+    (panetto in SVG che lievita mentre si scorre, pinnato su desktop), la pala percorsa da una
+    camera gusto per gusto fino alla vista intera, menu con configuratore 1/2/3 gusti e
+    listino, senza glutine, temi ricorrenti delle recensioni (nessuna citazione inventata),
+    tre modi di ordinare (tavolo, asporto, Glovo/Deliveroo), orari con "aperto ora" all'ora
+    di Roseto, barra fissa Chiama/Ordina/Indicazioni su mobile.
+  - **La pala è disegnata dal codice** (`src/anteprime/ricetta/pala.js`, canvas 2D con seme
+    fisso), in un worker quando il browser lo consente. Banco di prova in `dev/ricetta/pala.html`;
+    immagine social con `node scripts/render-ricetta.mjs` (dev server attivo, Playwright).
+    Quando arrivano le foto vere, le tele `[data-hero-tela]`, `[data-pala-tela]` e
+    `[data-componi-tela]` si sostituiscono con immagini.
+  - Dati da fonti pubbliche (sito del locale, schede online); quelli incerti sono marcati
+    "da confermare" e raccolti nella nota finale. Scadenza nel meta `anteprima-scadenza`
+    (15 dicembre 2026).
+  - Lighthouse (build, Chromium headless): mobile e desktop 100 / 100 / 100 (prestazioni,
+    accessibilità, best practice).
 - **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
   autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con

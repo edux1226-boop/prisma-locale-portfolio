@@ -22,6 +22,7 @@ export default defineConfig({
         borgo: resolve(root, 'anteprime/borgo-spoltino/index.html'),
         anima: resolve(root, 'anteprime/anima-concept/index.html'),
         marina: resolve(root, 'anteprime/vecchia-marina/index.html'),
+        ricetta: resolve(root, 'anteprime/lantica-ricetta/index.html'),
       },
     },
   },
