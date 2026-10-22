@@ -21,7 +21,7 @@ export function initForm() {
 
     try {
       const body = new URLSearchParams(new FormData(form)).toString();
-      const response = await fetch('/', {
+      const response = await fetch(form.getAttribute('action') || '/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body,
@@ -30,7 +30,8 @@ export function initForm() {
       form.reset();
       status.classList.add('is-ok');
       status.textContent = 'Grazie! Il messaggio è arrivato: ti rispondiamo presto, di persona.';
-    } catch {
+    } catch (error) {
+      console.error('Invio modulo non riuscito:', error);
       status.classList.add('is-error');
       status.innerHTML =
         'Non siamo riusciti a inviarlo. Scrivici su <a href="https://wa.me/393758350800">WhatsApp</a> ' +
