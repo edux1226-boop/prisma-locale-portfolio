@@ -125,18 +125,18 @@
 
   <section id="trattamenti" class="sezione" aria-labelledby="titolo-trattamenti">
     <div class="contenuto">
-      <div class="sezione__testa">
+      <div class="sezione__testa" data-rivela>
         <p class="numero"><span class="campione" aria-hidden="true"></span>01</p>
         <h2 id="titolo-trattamenti">Trattamenti</h2>
         <p>I servizi di Chris Beauty, tutti su appuntamento. Scegli quello che ti interessa e richiedi un appuntamento.</p>
       </div>
 
       <!-- DA COMPLETARE: trattamenti, descrizioni, durate e prezzi forniti dalla titolare. Prezzi solo se vuole mostrarli.
-           Per aggiungere un trattamento: duplicare un <article class="scheda">, cambiare id, titolo e data-trattamento,
+           Per aggiungere un trattamento: duplicare un <article data-rivela class="scheda">, cambiare id, titolo e data-trattamento,
            e aggiungere la stessa voce (value uguale a data-trattamento) al <select name="trattamento"> del modulo #prenota. -->
       <ul class="schede">
         <li>
-          <article class="scheda" id="t-ricostruzione">
+          <article data-rivela class="scheda" id="t-ricostruzione">
             <h3>Ricostruzione unghie</h3>
             <p><span class="segnaposto">[Descrizione da inserire: una o due frasi]</span></p>
             <p class="scheda__dati"><span class="segnaposto">[Durata · Prezzo, se si vogliono mostrare]</span></p>
@@ -144,7 +144,7 @@
           </article>
         </li>
         <li>
-          <article class="scheda scheda--vuota" id="t-2">
+          <article data-rivela class="scheda scheda--vuota" id="t-2">
             <h3><span class="segnaposto">[Nome del trattamento]</span></h3>
             <p><span class="segnaposto">[Descrizione in una o due frasi]</span></p>
             <p class="scheda__dati"><span class="segnaposto">[Durata · Prezzo, se si vogliono mostrare]</span></p>
@@ -152,7 +152,7 @@
           </article>
         </li>
         <li>
-          <article class="scheda scheda--vuota" id="t-3">
+          <article data-rivela class="scheda scheda--vuota" id="t-3">
             <h3><span class="segnaposto">[Nome del trattamento]</span></h3>
             <p><span class="segnaposto">[Descrizione in una o due frasi]</span></p>
             <p class="scheda__dati"><span class="segnaposto">[Durata · Prezzo, se si vogliono mostrare]</span></p>
@@ -168,7 +168,7 @@
 
   <section id="galleria" class="sezione sezione--alt" aria-labelledby="titolo-galleria">
     <div class="contenuto">
-      <div class="sezione__testa">
+      <div class="sezione__testa" data-rivela>
         <p class="numero"><span class="campione" aria-hidden="true"></span>02</p>
         <h2 id="titolo-galleria">Galleria</h2>
         <p>I lavori e gli ambienti di Chris Beauty. <span class="segnaposto">[Testo da completare]</span></p>
@@ -178,12 +178,12 @@
            <img src="/assets/img/chris/nome.webp" width="800" height="1000" alt="[descrizione]" loading="lazy">
            (le cornici hanno già le proporzioni 4:5 e 1:1: non servono ritagli). Foto del centro e dei lavori reali, mai immagini stock. -->
       <ul class="galleria">
-        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Ricostruzione unghie, dettaglio delle mani</span></div></figure></li>
-        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>La sala</span></div></figure></li>
-        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Ricostruzione unghie, risultato finito</span></div></figure></li>
-        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>L'ingresso</span></div></figure></li>
-        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>La postazione di lavoro</span></div></figure></li>
-        <li><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Un dettaglio del centro</span></div></figure></li>
+        <li data-rivela><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Ricostruzione unghie, dettaglio delle mani</span></div></figure></li>
+        <li data-rivela><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>La sala</span></div></figure></li>
+        <li data-rivela><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Ricostruzione unghie, risultato finito</span></div></figure></li>
+        <li data-rivela><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>L'ingresso</span></div></figure></li>
+        <li data-rivela><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>La postazione di lavoro</span></div></figure></li>
+        <li data-rivela><figure class="foto"><div class="foto-segnaposto" role="img" aria-label="Segnaposto foto"><strong>Foto da inserire</strong><span>Un dettaglio del centro</span></div></figure></li>
       </ul>
 
       <p class="nota-sezione"><a class="link is-segnaposto" href="#instagram">Altri lavori su Instagram</a></p>
@@ -194,12 +194,12 @@
        (fino a "RECENSIONI: fine") e le voci "Recensioni" nel menu della testata e nel menu mobile. -->
   <section id="recensioni" class="sezione" aria-labelledby="titolo-recensioni">
     <div class="contenuto">
-      <div class="sezione__testa">
+      <div class="sezione__testa" data-rivela>
         <p class="numero"><span class="campione" aria-hidden="true"></span>03</p>
         <h2 id="titolo-recensioni">Recensioni</h2>
       </div>
       <!-- DA COMPLETARE: solo testimonianze reali, con il permesso delle clienti. Nessuna stella, nessun nome inventato. -->
-      <div class="foto-segnaposto recensioni-segnaposto">
+      <div class="foto-segnaposto recensioni-segnaposto" data-rivela>
         <strong>Recensioni da aggiungere</strong>
         <span>Solo testimonianze reali, con il permesso delle clienti.</span>
       </div>
@@ -210,7 +210,7 @@
   <section id="prenota" class="sezione sezione--alt" aria-labelledby="titolo-prenota">
     <div class="contenuto prenota__griglia">
       <div class="prenota__testo">
-        <div class="sezione__testa">
+        <div class="sezione__testa" data-rivela>
           <p class="numero"><span class="campione" aria-hidden="true"></span>04</p>
           <h2 id="titolo-prenota">Richiedi un appuntamento</h2>
           <p>Compila il modulo: è una <strong>richiesta</strong>, non una prenotazione confermata. Chris Beauty ti ricontatta per confermare giorno e orario.</p>
@@ -223,7 +223,7 @@
            data-endpoint  = URL "/exec" dell'Apps Script collegato al foglio Google (scripts/chris-beauty-prenotazioni.gs).
            data-whatsapp  = numero con prefisso, solo cifre (es. 39XXXXXXXXXX): modalità provvisoria, apre WhatsApp con la richiesta già scritta.
            Entrambi vuoti: il modulo dice chiaramente che le richieste online non sono ancora attive. -->
-      <form class="modulo" data-prenota data-endpoint="" data-whatsapp="" novalidate>
+      <form class="modulo" data-rivela data-prenota data-endpoint="" data-whatsapp="" novalidate>
         <div class="campo">
           <label for="f-nome">Nome</label>
           <input id="f-nome" name="nome" type="text" autocomplete="name" required maxlength="100">
@@ -284,19 +284,19 @@
 
   <section id="contatti" class="sezione" aria-labelledby="titolo-contatti">
     <div class="contenuto">
-      <div class="sezione__testa">
+      <div class="sezione__testa" data-rivela>
         <p class="numero"><span class="campione" aria-hidden="true"></span>05</p>
         <h2 id="titolo-contatti">Informazioni pratiche</h2>
       </div>
       <!-- DA COMPLETARE: indirizzo, orari e contatti forniti dalla titolare. Quando un recapito è vero: togliere .segnaposto/.is-segnaposto
            e mettere href reali (tel:, https://wa.me/39…, mailto:). Il modulo cita nei messaggi solo i recapiti reali. -->
       <div class="info">
-        <div class="info__blocco">
+        <div class="info__blocco" data-rivela>
           <h3>Dove siamo</h3>
           <address><span class="segnaposto">[Indirizzo da inserire]</span></address>
           <!-- DA COMPLETARE: quando c'è l'indirizzo, aggiungere il link "Apri in Maps". Nessuna mappa incorporata. -->
         </div>
-        <div class="info__blocco">
+        <div class="info__blocco" data-rivela>
           <h3>Orari</h3>
           <dl class="orari">
             <div><dt>Lunedì</dt><dd><span class="segnaposto">[orario]</span></dd></div>
@@ -308,7 +308,7 @@
             <div><dt>Domenica</dt><dd><span class="segnaposto">[orario]</span></dd></div>
           </dl>
         </div>
-        <div class="info__blocco">
+        <div class="info__blocco" data-rivela>
           <h3>Contatti</h3>
           <ul class="recapiti">
             <li>Telefono: <span class="segnaposto" data-recapito="telefono">[numero da inserire]</span></li>
@@ -321,7 +321,7 @@
   </section>
 
   <section id="instagram" class="sezione sezione--alt instagram" aria-labelledby="titolo-instagram">
-    <div class="contenuto instagram__dentro">
+    <div class="contenuto instagram__dentro" data-rivela>
       <svg class="instagram__icona" aria-hidden="true"><use href="#i-instagram"/></svg>
       <h2 id="titolo-instagram">Segui Chris Beauty su Instagram</h2>
       <!-- DA COMPLETARE: account Instagram. Sostituire il testo e l'href (e togliere .is-segnaposto). -->
