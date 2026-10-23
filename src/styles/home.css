@@ -1110,3 +1110,17 @@
   .prezzi__come { grid-column: 5 / span 5; }
   .prezzi__cta { grid-column: 10 / -1; justify-self: end; }
 }
+
+/* Schede in prospettiva (solo desktop con mouse, vedi ui/profondita.js) */
+.tilt { position: relative; transform-style: preserve-3d; will-change: transform; }
+.tilt__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(520px circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / .22), transparent 60%);
+  mix-blend-mode: soft-light;
+  transition: opacity .4s;
+}
+.tilt:hover .tilt__glare { opacity: 1; }

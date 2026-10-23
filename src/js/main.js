@@ -16,6 +16,7 @@ import { initTitleReveals, initFades, showEverything } from './ui/reveal.js';
 import { fontsReady, playIntro, skipIntro } from './ui/intro.js';
 import { initBench } from './ui/beams.js';
 import { initForm } from './ui/form.js';
+import { initProfondita } from './ui/profondita.js';
 import { initStory } from './story.js';
 import { initHero } from './hero.js';
 
@@ -63,10 +64,15 @@ gsap.matchMedia().add(
        che sposta. */
     let active = true;
     let disposeStory = null;
+    let disposeDepth = null;
     let stopTitles = null;
     const later = (job) => whenIdle(() => active && context.add(job));
     later(() => { disposeStory = initStory({ vertical: !row }); });
-    later(() => { initFades(); initBench(); });
+    later(() => {
+      initFades();
+      initBench();
+      if (wants3D) disposeDepth = initProfondita();
+    });
     later(() => {
       stopTitles = initTitleReveals(document, context);
       initScrollSpy();
@@ -78,6 +84,7 @@ gsap.matchMedia().add(
       active = false;
       disposeHero();
       disposeStory?.();
+      disposeDepth?.();
       stopTitles?.();
       stopSmoothScroll();
     };
