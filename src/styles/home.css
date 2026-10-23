@@ -1091,19 +1091,11 @@
   width: 0.6em; height: 1px;
   background: var(--arancio);
 }
-.pacchetto__canone {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 20px;
-  border-top: 1px dashed var(--filo);
-}
-.pacchetto__canone-head { color: var(--testo-2); }
-.pacchetto__price--canone .display { font-size: var(--t-l); }
-.pacchetto__canone-nome { color: var(--testo-2); text-wrap: pretty; }
-.pacchetto__canone-nome strong { color: var(--testo); }
-.pacchetto__voci--canone { padding-top: 12px; font-size: var(--t-small); }
+.canoni { margin-top: clamp(56px, 7vw, 104px); }
+.canoni__title { font-size: var(--t-xl); }
+.canoni__title em { font-style: italic; }
+.canoni__intro { margin-top: 16px; max-width: 52ch; color: var(--testo-2); text-wrap: pretty; }
+.canoni__list { margin-top: clamp(28px, 3.5vw, 48px); }
 .prezzi__note {
   margin-top: clamp(32px, 4vw, 56px);
   row-gap: 28px;
