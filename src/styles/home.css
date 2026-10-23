@@ -1091,6 +1091,19 @@
   width: 0.6em; height: 1px;
   background: var(--arancio);
 }
+.pacchetto__canone {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--filo);
+}
+.pacchetto__canone-head { color: var(--testo-2); }
+.pacchetto__price--canone .display { font-size: var(--t-l); }
+.pacchetto__canone-nome { color: var(--testo-2); text-wrap: pretty; }
+.pacchetto__canone-nome strong { color: var(--testo); }
+.pacchetto__voci--canone { padding-top: 12px; font-size: var(--t-small); }
 .prezzi__note {
   margin-top: clamp(32px, 4vw, 56px);
   row-gap: 28px;
@@ -1110,3 +1123,17 @@
   .prezzi__come { grid-column: 5 / span 5; }
   .prezzi__cta { grid-column: 10 / -1; justify-self: end; }
 }
+
+/* Schede in prospettiva (solo desktop con mouse, vedi ui/profondita.js) */
+.tilt { position: relative; transform-style: preserve-3d; will-change: transform; }
+.tilt__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(520px circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / .22), transparent 60%);
+  mix-blend-mode: soft-light;
+  transition: opacity .4s;
+}
+.tilt:hover .tilt__glare { opacity: 1; }

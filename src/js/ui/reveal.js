@@ -56,7 +56,7 @@ export function initFades(scope = document) {
     start: 'top 90%',
     once: true,
     onEnter: (batch) =>
-      gsap.to(batch, { opacity: 1, y: 0, duration: 1.15, stagger: 0.08, overwrite: true }),
+      gsap.to(batch, { opacity: 1, y: 0, duration: 1.15, stagger: 0.08, overwrite: 'auto' }),
   });
 }
 
