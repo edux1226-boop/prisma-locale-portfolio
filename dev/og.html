@@ -18,16 +18,35 @@
   h1 { position: absolute; left: 60px; bottom: 120px; margin: 0; font: 440 104px/0.92 "Newsreader Display", serif; letter-spacing: -.035em; }
   em { font-style: italic; background: linear-gradient(90deg,#FF5A48,#FF9F43 17%,#FFE066 33%,#6EE7A8 50%,#5CC8FF 66%,#6F7BFF 83%,#B07CFF); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: .06em; }
   .foot { position: absolute; left: 64px; right: 64px; bottom: 52px; display: flex; justify-content: space-between; font-size: 22px; }
-  .brand { font: 440 30px/1 "Newsreader Display", serif; letter-spacing: -.02em; }
+  .brand { display: inline-flex; align-items: center; gap: 16px; font: 440 34px/1 "Newsreader Display", serif; letter-spacing: -.02em; }
+  .brand svg { width: 34px; height: 48px; }
   .brand i { font-style: italic; }
   .foot span:last-child { color: #9AA0B4; }
 </style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="glifo" viewBox="0 0 208 298">
+    <defs>
+      <clipPath id="glifo-p"><path d="M76 0h48a84 84 0 0 1 0 168H76Z"/></clipPath>
+    </defs>
+    <rect width="67" height="298" rx="9" fill="#EDEAE2"/>
+    <g clip-path="url(#glifo-p)">
+      <g transform="translate(76 84) rotate(-21)">
+        <rect x="-120" y="-130" width="360" height="58" fill="#FF5A49"/>
+        <rect x="-120" y="-72" width="360" height="30" fill="#FF9F42"/>
+        <rect x="-120" y="-42" width="360" height="30" fill="#FFE167"/>
+        <rect x="-120" y="-12" width="360" height="30" fill="#6EE8A8"/>
+        <rect x="-120" y="18" width="360" height="30" fill="#5DC8FF"/>
+        <rect x="-120" y="48" width="360" height="30" fill="#6F7CFF"/>
+        <rect x="-120" y="78" width="360" height="72" fill="#B07CFF"/>
+      </g>
+    </g>
+    <circle cx="124" cy="273" r="25" fill="#FE5C23"/>
+  </symbol></svg>
   <div class="og" id="og">
     <div class="kicker">Studio digitale · Roseto degli Abruzzi</div>
     <h1>La tua attività<br>ha già un <em>colore.</em></h1>
-    <div class="foot"><span class="brand">Prisma <i>Locale</i></span><span>prismalocale.it</span></div>
+    <div class="foot"><span class="brand"><svg aria-hidden="true"><use href="#glifo"/></svg><span>Prisma <i>Locale</i></span></span><span>prismalocale.it</span></div>
   </div>
 </body>
 </html>
