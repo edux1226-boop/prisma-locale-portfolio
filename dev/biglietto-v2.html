@@ -1,0 +1,103 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><title>Biglietto da visita v2 (solo sviluppo)</title><style>
+  @font-face { font-family: "Newsreader Display"; src: url("/assets/fonts/newsreader-display.woff2") format("woff2"); }
+  @font-face { font-family: "Newsreader Display"; font-style: italic; src: url("/assets/fonts/newsreader-display-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Schibsted Grotesk"; src: url("/assets/fonts/schibsted-grotesk.woff2") format("woff2"); font-weight: 400 700; }
+  html, body { margin: 0; background: #777; }
+  :root { --notte:#0A0F24; --crema:#EEEAE2; --grigio:#9AA0B4; --arancio:#FF5A28; }
+  .card { position: relative; width: 1004px; height: 650px; overflow: hidden; background: var(--notte); color: var(--crema); font-family: "Schibsted Grotesk", sans-serif; }
+  .lockup { display: flex; align-items: center; gap: 22px; }
+  .lockup svg { width: 52px; height: 74px; }
+  .lockup span { font: 440 56px/1 "Newsreader Display", serif; letter-spacing: -.02em; }
+  .lockup i { font-style: italic; }
+  .ic { width: 34px; height: 34px; flex: none; }
+  .rule { height: 1px; background: rgb(238 234 226 / .22); }
+  .label { font-size: 17px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--grigio); }
+
+  /* FRONTE */
+  .front .lockup { position: absolute; left: 60px; top: 52px; }
+  .front .beam { position: absolute; right: 0; top: 0; width: 470px; height: 330px; }
+  .front .cta { position: absolute; left: 60px; top: 262px; }
+  .front .cta .label { font-size: 20px; }
+  .front .pill { margin-top: 20px; display: inline-flex; align-items: center; gap: 28px; padding: 18px 44px 20px 46px; border: 1.5px solid var(--crema); border-radius: 999px; font: italic 440 74px/1 "Newsreader Display", serif; letter-spacing: -.02em; }
+  .front .pill svg { width: 40px; height: 40px; }
+  .front .servizi { position: absolute; left: 60px; right: 60px; bottom: 50px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgb(238 234 226 / .22); padding-top: 30px; }
+  .front .servizi div { display: flex; align-items: center; gap: 18px; padding-left: 28px; border-left: 1px solid rgb(238 234 226 / .22); }
+  .front .servizi div:first-child { padding-left: 0; border-left: 0; }
+  .front .servizi b { display: block; font-size: 20px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .front .servizi small { display: block; margin-top: 6px; font-size: 16px; letter-spacing: .08em; color: var(--grigio); text-transform: uppercase; }
+
+  /* RETRO */
+  .back .side { position: absolute; left: 0; top: 0; bottom: 0; width: 340px; padding: 56px 44px 52px 60px; box-sizing: border-box; background: #0F1530; display: flex; flex-direction: column; }
+  .back .side::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 8px; background: linear-gradient(180deg,#FF5A48,#FF9F43 17%,#FFE066 33%,#6EE7A8 50%,#5CC8FF 66%,#6F7BFF 83%,#B07CFF); }
+  .back .side .mark { width: 96px; height: 138px; }
+  .back .side .motto { margin-top: 26px; font: 440 40px/1.05 "Newsreader Display", serif; letter-spacing: -.025em; }
+  .back .side .motto i { font-style: italic; color: var(--arancio); }
+  .back .qrbox { margin-top: auto; }
+  .back .qrtile { width: 138px; height: 138px; padding: 11px; box-sizing: border-box; background: var(--crema); border-radius: 12px; }
+  .back .qr { width: 100%; height: 100%; display: block; }
+  .back .qrbox p { margin: 12px 0 0; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--grigio); }
+  .back .main { position: absolute; left: 340px; right: 0; top: 0; bottom: 0; padding: 56px 60px 52px 62px; display: flex; flex-direction: column; }
+  .back .who { font: 440 46px/1 "Newsreader Display", serif; letter-spacing: -.02em; }
+  .back .who i { font-style: italic; }
+  .back .role { margin-top: 10px; font-size: 20px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grigio); }
+  .back .rows { margin-top: 30px; display: grid; }
+  .back .row { display: flex; align-items: center; gap: 26px; padding: 15px 0; border-top: 1px solid rgb(238 234 226 / .18); font-size: 29px; font-weight: 500; }
+  .back .row .ic { color: var(--arancio); }
+  .back .row small { display: block; font-size: 15px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--grigio); margin-bottom: 3px; }
+  .back .foot { white-space: nowrap; margin-top: auto; padding-top: 18px; border-top: 1px solid rgb(238 234 226 / .18); display: flex; justify-content: space-between; gap: 20px; font-size: 16px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--crema); }
+  .back .foot span:last-child { color: var(--grigio); }
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="glifo" viewBox="0 0 208 298">
+    <defs>
+      <clipPath id="glifo-p"><path d="M76 0h48a84 84 0 0 1 0 168H76Z"/></clipPath>
+    </defs>
+    <rect width="67" height="298" rx="9" fill="#EDEAE2"/>
+    <g clip-path="url(#glifo-p)">
+      <g transform="translate(76 84) rotate(-21)">
+        <rect x="-120" y="-130" width="360" height="58" fill="#FF5A49"/>
+        <rect x="-120" y="-72" width="360" height="30" fill="#FF9F42"/>
+        <rect x="-120" y="-42" width="360" height="30" fill="#FFE167"/>
+        <rect x="-120" y="-12" width="360" height="30" fill="#6EE8A8"/>
+        <rect x="-120" y="18" width="360" height="30" fill="#5DC8FF"/>
+        <rect x="-120" y="48" width="360" height="30" fill="#6F7CFF"/>
+        <rect x="-120" y="78" width="360" height="72" fill="#B07CFF"/>
+      </g>
+    </g>
+    <circle cx="124" cy="273" r="25" fill="#FE5C23"/>
+  </symbol></svg>
+<div class="card front" id="fronte">
+  <div class="lockup"><svg aria-hidden="true"><use href="#glifo"/></svg><span>Prisma <i>Locale</i></span></div>
+  <svg class="beam" viewBox="0 0 470 330" aria-hidden="true">
+    <defs><linearGradient id="b" x1="0" x2="1"><stop offset="0" stop-color="#EEEAE2" stop-opacity=".0"/><stop offset="1" stop-color="#EEEAE2" stop-opacity=".9"/></linearGradient></defs>
+    <path d="M0 232 L292 150" stroke="url(#b)" stroke-width="3" fill="none"/>
+    <g transform="translate(292 150)">
+      <path d="M0 0 L190 -150 L190 -122Z" fill="#FF5A48"/><path d="M0 0 L190 -122 L190 -92Z" fill="#FF9F43"/>
+      <path d="M0 0 L190 -92 L190 -62Z" fill="#FFE066"/><path d="M0 0 L190 -62 L190 -30Z" fill="#6EE7A8"/>
+      <path d="M0 0 L190 -30 L190 2Z" fill="#5CC8FF"/><path d="M0 0 L190 2 L190 34Z" fill="#6F7BFF"/><path d="M0 0 L190 34 L190 68Z" fill="#B07CFF"/>
+    </g></svg>
+  <div class="cta"><div class="label">Scopri di più su</div><div class="pill">prismalocale.it<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h17M14 6l6 6-6 6"/></svg></div></div>
+  <div class="servizi">
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="10" rx="1.2"/><path d="M2.5 19h19l-2-4h-15z"/></svg><span><b>Siti web</b><small>per la tua attività</small></span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><b>Visibilità</b><small>nella tua zona</small></span></div>
+    <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><rect x="5.5" y="13" width="3" height="7"/><rect x="10.5" y="9.5" width="3" height="10.5"/><rect x="15.5" y="6" width="3" height="14"/></svg><span><b>Crescita</b><small>del tuo business</small></span></div>
+  </div>
+</div>
+<div class="card back" id="retro">
+  <div class="side">
+    <svg class="mark" aria-hidden="true"><use href="#glifo"/></svg>
+    <div class="motto">La tua attività<br>ha già un <i>colore.</i></div>
+    <div class="qrbox"><div class="qrtile"><svg class="qr" viewBox="0 0 33 33" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" class="segno"><path class="qrline" stroke="#0a0f24" d="M0 0.5h7m2 0h6m2 0h5m1 0h1m2 0h7m-33 1h1m5 0h1m1 0h2m1 0h3m1 0h1m2 0h1m1 0h2m1 0h2m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m4 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h3m6 0h2m2 0h3m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m4 0h2m1 0h3m2 0h1m4 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m3 0h1m3 0h1m4 0h1m2 0h1m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-23 1h1m1 0h1m4 0h2m3 0h3m-24 1h3m1 0h2m2 0h2m1 0h2m1 0h1m1 0h3m1 0h1m1 0h1m6 0h2m-32 1h1m3 0h1m2 0h1m2 0h3m2 0h2m2 0h1m3 0h1m2 0h2m1 0h4m-33 1h1m3 0h3m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m5 0h3m1 0h3m1 0h2m-32 1h3m3 0h3m2 0h3m4 0h2m2 0h1m2 0h2m1 0h1m2 0h1m-31 1h2m2 0h1m1 0h3m1 0h1m5 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h2m-30 1h1m1 0h1m2 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m3 0h1m-31 1h2m3 0h2m2 0h1m2 0h2m1 0h1m2 0h1m4 0h1m1 0h2m1 0h1m-28 1h1m1 0h1m6 0h2m5 0h1m1 0h2m3 0h3m1 0h2m-31 1h2m3 0h4m2 0h1m2 0h2m1 0h1m2 0h7m1 0h1m1 0h1m-29 1h1m1 0h1m3 0h5m1 0h1m3 0h1m1 0h1m1 0h3m1 0h1m1 0h2m2 0h1m-33 1h2m1 0h2m1 0h1m3 0h2m3 0h1m2 0h1m3 0h1m2 0h1m1 0h2m1 0h1m-30 1h2m4 0h1m4 0h1m1 0h1m1 0h3m3 0h2m1 0h2m1 0h1m2 0h1m-30 1h2m1 0h4m2 0h4m5 0h2m1 0h1m3 0h1m1 0h2m1 0h1m-33 1h2m1 0h2m4 0h2m3 0h1m2 0h4m2 0h1m1 0h2m2 0h2m1 0h1m-28 1h2m2 0h4m5 0h1m2 0h4m1 0h4m1 0h2m-32 1h2m1 0h2m1 0h1m1 0h2m1 0h2m3 0h1m1 0h2m2 0h1m1 0h1m1 0h1m1 0h1m-30 1h1m1 0h1m1 0h1m1 0h2m1 0h2m2 0h1m4 0h1m3 0h1m1 0h5m2 0h2m-25 1h3m1 0h1m2 0h1m3 0h1m1 0h1m1 0h2m3 0h2m-30 1h7m2 0h1m1 0h2m1 0h7m2 0h2m1 0h1m1 0h1m2 0h1m-32 1h1m5 0h1m1 0h5m1 0h2m5 0h1m1 0h2m3 0h3m-31 1h1m1 0h3m1 0h1m2 0h1m1 0h3m3 0h2m1 0h9m1 0h3m-33 1h1m1 0h3m1 0h1m1 0h4m1 0h1m4 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h4m-33 1h1m1 0h3m1 0h1m1 0h4m1 0h1m6 0h1m3 0h4m1 0h2m-31 1h1m5 0h1m1 0h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h3m1 0h3m3 0h1m-33 1h7m2 0h1m4 0h1m2 0h2m2 0h1m1 0h1m1 0h2m1 0h2"/></svg></div><p>Inquadra e scopri</p></div>
+  </div>
+  <div class="main">
+    <div class="who">Prisma <i>Locale</i></div>
+    <div class="role">Studio digitale · Siti web e branding</div>
+    <div class="rows">
+      <div class="row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3.5l1.6 4.2-2.2 1.5a11 11 0 0 0 5.4 5.4l1.5-2.2L19 14.5V18a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><small>WhatsApp</small>+39 375 835 0800</span></div>
+      <div class="row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg><span><small>Email</small>info@prismalocale.it</span></div>
+      <div class="row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span><small>Sito</small>prismalocale.it</span></div>
+      <div class="row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><small>Studio</small>Roseto degli Abruzzi (TE)</span></div>
+    </div>
+    <div class="foot"><span>Siti · Branding · Google</span><span>Preventivo gratuito</span></div>
+  </div>
+</div>
+</body></html>
