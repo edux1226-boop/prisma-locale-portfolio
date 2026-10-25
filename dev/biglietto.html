@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><title>Biglietto da visita (solo sviluppo)</title>
+<style>
+  @font-face { font-family: "Newsreader Display"; src: url("/assets/fonts/newsreader-display.woff2") format("woff2"); }
+  @font-face { font-family: "Newsreader Display"; font-style: italic; src: url("/assets/fonts/newsreader-display-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Schibsted Grotesk"; src: url("/assets/fonts/schibsted-grotesk.woff2") format("woff2"); font-weight: 400 700; }
+  html, body { margin: 0; background: #888; }
+  /* 85 x 55 mm a 300 dpi */
+  .card { position: relative; width: 1004px; height: 650px; overflow: hidden; font-family: "Schibsted Grotesk", sans-serif; }
+  .front { background: radial-gradient(900px 600px at 70% 30%, #1A2150, #0A0F24 70%); color: #EEEAE2; display: grid; place-items: center; }
+  .lockup { display: flex; align-items: center; gap: 44px; }
+  .lockup svg { width: 150px; height: 215px; }
+  .lockup .name { font: 440 118px/1 "Newsreader Display", serif; letter-spacing: -.025em; }
+  .lockup .name i { font-style: italic; }
+  .front .tag { position: absolute; left: 0; right: 0; bottom: 52px; text-align: center; font-size: 22px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #9AA0B4; }
+  .back { background: #EEEAE2; color: #0A0F24; }
+  .back .band { position: absolute; left: 0; top: 0; bottom: 0; width: 26px; background: linear-gradient(180deg,#FF5A48,#FF9F43 17%,#FFE066 33%,#6EE7A8 50%,#5CC8FF 66%,#6F7BFF 83%,#B07CFF); }
+  .back .claim { position: absolute; left: 90px; top: 78px; font: 440 66px/1.02 "Newsreader Display", serif; letter-spacing: -.03em; }
+  .back .claim i { font-style: italic; color: #E8470F; }
+  .back dl { position: absolute; left: 90px; bottom: 70px; margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 14px 26px; font-size: 29px; }
+  .back dt { font-size: 18px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #5A607A; align-self: center; }
+  .back dd { margin: 0; font-weight: 500; }
+  .back .tile { position: absolute; right: 64px; bottom: 64px; width: 104px; height: 136px; border-radius: 18px; background: #0A0F24; display: grid; place-items: center; }
+  .back .tile svg { width: 50px; height: 72px; }
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="glifo" viewBox="0 0 208 298">
+    <defs>
+      <clipPath id="glifo-p"><path d="M76 0h48a84 84 0 0 1 0 168H76Z"/></clipPath>
+    </defs>
+    <rect width="67" height="298" rx="9" fill="#EDEAE2"/>
+    <g clip-path="url(#glifo-p)">
+      <g transform="translate(76 84) rotate(-21)">
+        <rect x="-120" y="-130" width="360" height="58" fill="#FF5A49"/>
+        <rect x="-120" y="-72" width="360" height="30" fill="#FF9F42"/>
+        <rect x="-120" y="-42" width="360" height="30" fill="#FFE167"/>
+        <rect x="-120" y="-12" width="360" height="30" fill="#6EE8A8"/>
+        <rect x="-120" y="18" width="360" height="30" fill="#5DC8FF"/>
+        <rect x="-120" y="48" width="360" height="30" fill="#6F7CFF"/>
+        <rect x="-120" y="78" width="360" height="72" fill="#B07CFF"/>
+      </g>
+    </g>
+    <circle cx="124" cy="273" r="25" fill="#FE5C23"/>
+  </symbol></svg>
+<div class="card front" id="fronte">
+  <div class="lockup"><svg aria-hidden="true"><use href="#glifo"/></svg><span class="name">Prisma <i>Locale</i></span></div>
+  <div class="tag">Studio digitale · Roseto degli Abruzzi</div>
+</div>
+<div class="card back" id="retro">
+  <div class="band"></div>
+  <div class="claim">La tua attività<br>ha già un <i>colore.</i></div>
+  <dl>
+    <dt>WhatsApp</dt><dd>+39 375 835 0800</dd>
+    <dt>Email</dt><dd>info@prismalocale.it</dd>
+    <dt>Sito</dt><dd>prismalocale.it</dd>
+    <dt>Studio</dt><dd>Roseto degli Abruzzi (TE)</dd>
+  </dl>
+  <div class="tile"><svg aria-hidden="true"><use href="#glifo"/></svg></div>
+</div>
+</body></html>
