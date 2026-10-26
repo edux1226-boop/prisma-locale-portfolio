@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Morsi · Smash burger a Pineto e Roseto · anteprima riservata</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Anteprima riservata del sito di Morsi, smash burger, fried chicken e melt sandwich a Pineto e Roseto degli Abruzzi. Proposta di Prisma Locale.">
+<meta name="theme-color" content="#0504FF">
+<meta name="color-scheme" content="light">
+<!-- Unico punto da cambiare per la scadenza dell'anteprima (ora italiana). -->
+<meta name="anteprima-scadenza" content="2026-12-31T23:59:59+01:00">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Morsi, anteprima riservata">
+<meta property="og:description" content="No fast food ma quality food: la proposta di sito per Morsi, Pineto e Roseto degli Abruzzi. Preparata da Prisma Locale.">
+<meta property="og:image" content="https://prismalocale.it/assets/img/morsi-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230504FF'/%3E%3Ccircle cx='16' cy='17' r='8.5' fill='none' stroke='%23fff' stroke-width='2.2'/%3E%3Cpath d='M11.6 14.6q4.4-5 8.8 0z' fill='%23fff'/%3E%3Cpath d='M12.6 19.4q3.4 3.2 6.8 0' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/archivo-expanded.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/familjen-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/avif" imagesrcset="/assets/img/morsi/melt-m.avif 498w, /assets/img/morsi/melt-l.avif 996w" imagesizes="(min-width: 900px) 460px, 78vw">
+
+<script>
+  /* Scadenza e movimento: decisi prima del primo disegno, così non c'è nessun lampo di contenuto. */
+  (function (d) {
+    var r = d.documentElement;
+    var m = d.querySelector('meta[name="anteprima-scadenza"]');
+    var fine = m ? Date.parse(m.content) : NaN;
+    if (fine && Date.now() > fine) { r.classList.add('is-scaduta'); return; }
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion');
+  })(document);
+</script>
+<script type="module" src="/src/anteprime/morsi/main.js"></script>
+
+<!--@json-ld-->
+</head>
+
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<!-- Mostrato solo dopo la data di scadenza (vedi lo script nell'head). -->
+<div class="scaduta">
+  <!--@mascotte-vuota-->
+  <h1 class="scaduta__titolo">Anteprima scaduta, contatta Prisma Locale</h1>
+  <p class="scaduta__link">
+    <a href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20l%27anteprima%20di%20Morsi%20%C3%A8%20scaduta." rel="noopener">WhatsApp</a>
+    <span aria-hidden="true">·</span>
+    <a href="mailto:info@prismalocale.it">info@prismalocale.it</a>
+  </p>
+</div>
+
+<div class="filigrana" aria-hidden="true"></div>
+<p class="demo" role="note">DEMO · PRISMA LOCALE</p>
+<p class="sr-only" role="status" aria-live="polite" data-annuncio></p>
+
+<header class="testata" data-testata>
+  <a class="marchio" href="#inizio" aria-label="Morsi, torna all'inizio"><!--@logo-piccolo--></a>
+  <nav class="testata__nav" aria-label="Sezioni">
+    <ul role="list">
+      <li><a href="#smash">Smash</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#melt">Il Melt</a></li>
+      <li><a href="#sala">La sala</a></li>
+      <li><a href="#dove">Dove</a></li>
+    </ul>
+  </nav>
+  <!--@selettore-sede-->
+  <button class="testata__menu" type="button" aria-haspopup="dialog" aria-controls="navmob" data-menu-apri>
+    <span class="sr-only">Apri il </span>Menu
+  </button>
+</header>
+
+<dialog class="navmob" id="navmob" aria-label="Sezioni del sito" data-navmob>
+  <button class="navmob__chiudi" type="button" data-menu-chiudi>Chiudi</button>
+  <nav aria-label="Sezioni">
+    <ol class="navmob__voci" role="list">
+      <li><a href="#smash">Smash</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#melt">Il Melt</a></li>
+      <li><a href="#sala">La sala</a></li>
+      <li><a href="#dove">Dove siamo</a></li>
+    </ol>
+  </nav>
+  <p class="navmob__claim">No fast food ma quality food</p>
+</dialog>
+
+<main id="contenuto" tabindex="-1">
+
+<!-- ====================================================================
+     1. HERO — il neon si accende. Foto: Morsi Melt (dev/morsi/foto/morsi-melt.webp).
+     La foto ha ~500 px: sta in un riquadro piccolo con il morso, e dietro c'è la
+     stessa foto in duotono blu con la grana, che nasconde la risoluzione.
+     ==================================================================== -->
+<section class="hero" id="inizio" aria-labelledby="hero-titolo" data-hero>
+  <div class="hero__fondo" aria-hidden="true">
+    <picture>
+      <source type="image/avif" srcset="/assets/img/morsi/melt-duo-m.avif 498w, /assets/img/morsi/melt-duo-l.avif 996w" sizes="100vw">
+      <img src="/assets/img/morsi/melt-duo-m.webp" srcset="/assets/img/morsi/melt-duo-m.webp 498w, /assets/img/morsi/melt-duo-l.webp 996w" sizes="100vw" width="498" height="510" alt="" decoding="async">
+    </picture>
+  </div>
+
+  <div class="hero__testo">
+    <p class="hero__eyebrow" data-hero-entra style="--i:0">Smash burger · Fried chicken · Melt sandwich</p>
+    <h1 class="neon" id="hero-titolo" data-neon>
+      <span class="sr-only">Morsi</span>
+      <span class="neon__strato neon__strato--alone" aria-hidden="true"><!--@logo--></span>
+      <span class="neon__strato neon__strato--tubo" aria-hidden="true"><!--@logo--></span>
+    </h1>
+    <p class="slogan" data-slogan>
+      <span class="slogan__alone" aria-hidden="true">NO FAST FOOD MA QUALITY FOOD</span>
+      <span class="slogan__tubo">NO FAST FOOD MA QUALITY FOOD</span>
+    </p>
+    <div class="hero__azioni" data-hero-entra style="--i:3">
+      <!--@azioni-sede-->
+    </div>
+    <div class="hero__sede" data-hero-entra style="--i:4"><!--@strip-sede--></div>
+  </div>
+
+  <figure class="hero__foto morso" data-hero-entra style="--i:1">
+    <picture>
+      <source type="image/avif" srcset="/assets/img/morsi/melt-m.avif 498w, /assets/img/morsi/melt-l.avif 996w" sizes="(min-width: 900px) 460px, 78vw">
+      <img src="/assets/img/morsi/melt-m.webp" srcset="/assets/img/morsi/melt-m.webp 498w, /assets/img/morsi/melt-l.webp 996w" sizes="(min-width: 900px) 460px, 78vw" width="498" height="510" fetchpriority="high" decoding="async" alt="Il Morsi Melt: doppio smash, uovo fritto con il tuorlo che cola, bacon e cheddar fuso tra due fette di pane tostato, su carta con le faccine blu.">
+    </picture>
+    <figcaption class="hero__didascalia">Morsi Melt</figcaption>
+  </figure>
+</section>
+
+<!-- ====================================================================
+     3. IL NOSTRO SMASH — sezione pinnata. La polpetta si schiaccia sulla piastra,
+     poi gli strati si impilano. Senza movimento: illustrazione statica con x2.
+     ==================================================================== -->
+<section class="smash" id="smash" aria-labelledby="smash-titolo" data-smash>
+  <div class="smash__pin" data-smash-pin>
+    <header class="smash__testa">
+      <p class="etichetta">Il nostro smash</p>
+      <h2 class="smash__titolo" id="smash-titolo">Prima si schiaccia.<br>Poi si costruisce.</h2>
+      <p class="smash__intro">Una pallina di carne, una piastra rovente, una spatola. Lo smash vero si fa così: la crosta si forma in pochi secondi.</p>
+    </header>
+
+    <div class="smash__scena"><!--@smash-palco--></div>
+
+    <div class="smash__corpo">
+      <ol class="punti" role="list" data-punti>
+        <li class="punto is-attivo" data-punto="0">
+          <span class="punto__num" aria-hidden="true">1</span>
+          <div><h3>Smash vero, con la crosta</h3><p>La polpetta si schiaccia sulla piastra bollente: fuori croccante e caramellata, dentro succosa.</p></div>
+        </li>
+        <li class="punto" data-punto="1">
+          <span class="punto__num" aria-hidden="true">2</span>
+          <div><h3>Potato roll</h3><p>Un pane morbido e appena dolce, tostato al momento. Abbraccia tutto e non ruba la scena.</p></div>
+        </li>
+        <li class="punto" data-punto="2">
+          <span class="punto__num" aria-hidden="true">3</span>
+          <div><h3>Salsa Morsi</h3><p>Ricetta segreta, solo da Morsi. Non vi diciamo cosa c’è dentro.</p></div>
+        </li>
+      </ol>
+
+      <div class="smash-sel">
+        <p class="smash-sel__titolo" id="smash-sel-titolo">Quanti smash?</p>
+        <div class="smash-sel__gruppo" role="radiogroup" aria-labelledby="smash-sel-titolo" data-smash-sel>
+          <button type="button" role="radio" aria-checked="false" tabindex="-1" data-x="1">x1</button>
+          <button type="button" role="radio" aria-checked="true" tabindex="0" data-x="2">x2</button>
+          <button type="button" role="radio" aria-checked="false" tabindex="-1" data-x="3">x3</button>
+          <button type="button" role="radio" aria-checked="false" tabindex="-1" data-x="4">x4</button>
+        </div>
+        <p class="smash-sel__stato" aria-live="polite" data-smash-stato>Panino con 2 smash</p>
+        <p class="smash-sel__invito">Fame extralarge? Aggiungi smash burger extra</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     4. MENU — il menu cartaceo in HTML vero. Generato da data/menu.js.
+     Prezzi indicativi (Deliveroo): da confermare.
+     ==================================================================== -->
+<section class="menu quadretti" id="menu" aria-labelledby="menu-titolo" data-menu>
+  <header class="menu__testa">
+    <p class="etichetta etichetta--ink">Il menu</p>
+    <h2 class="menu__titolo" id="menu-titolo">Smash burgers<br>&amp; compagnia</h2>
+    <p class="menu__avviso" role="note">Prezzi indicativi, da confermare con i titolari.</p>
+  </header>
+  <!--@menu-->
+</section>
+
+<!-- ====================================================================
+     5. PIATTO FIRMA — il Morsi Melt. Foto: dev/morsi/foto/morsi-melt.webp
+     ==================================================================== -->
+<section class="firma" id="melt" aria-labelledby="firma-titolo" data-firma>
+  <figure class="firma__foto morso morso--grande">
+    <picture>
+      <source type="image/avif" srcset="/assets/img/morsi/melt-m.avif 498w, /assets/img/morsi/melt-l.avif 996w" sizes="(min-width: 900px) 440px, 82vw">
+      <img src="/assets/img/morsi/melt-m.webp" srcset="/assets/img/morsi/melt-m.webp 498w, /assets/img/morsi/melt-l.webp 996w" sizes="(min-width: 900px) 440px, 82vw" width="498" height="510" loading="lazy" decoding="async" alt="Il Morsi Melt visto di lato: pane tostato, uovo fritto con il tuorlo che cola, bacon, doppio smash e cheddar che scende.">
+    </picture>
+  </figure>
+  <div class="firma__testo">
+    <p class="etichetta">Piatto firma</p>
+    <h2 class="firma__titolo" id="firma-titolo">Il Morsi&nbsp;Melt</h2>
+    <p class="firma__tag"><span>il più fotografato</span></p>
+    <p class="firma__intro">Doppio smash, uovo fritto che cola, cheddar fuso. Si fotografa prima di mangiarlo, poi si mangia in fretta.</p>
+    <ul class="firma__ingredienti" role="list">
+      <li>doppio smash</li><li>cipolla</li><li>bacon</li><li>uovo fritto</li><li>doppio cheddar</li><li>cetriolo</li><li>salsa Morsi</li>
+    </ul>
+    <p class="firma__prezzo">Circa 15&nbsp;€ · in menu circa 21&nbsp;€ <span class="dc">prezzi da confermare</span></p>
+    <a class="btn btn--pieno" href="https://deliveroo.it/it/menu/roseto-degli-abruzzi/roseto-degli-abruzzi/morsi-roseto" target="_blank" rel="noopener" data-sede-href="deliveroo">Ordina su Deliveroo<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+  </div>
+</section>
+
+<!-- ====================================================================
+     6. LA SALA — foto: interno-sala.webp e insegna-neon.webp
+     ==================================================================== -->
+<section class="sala" id="sala" aria-labelledby="sala-titolo" data-sala>
+  <div class="sala__testo">
+    <p class="etichetta">La sala</p>
+    <h2 class="sala__titolo" id="sala-titolo">Luce blu,<br>neon acceso.</h2>
+    <p>Pareti bianche, una luce blu che avvolge tutto e un neon con il nostro claim. Sedie Tolix arancioni e blu, tavolini piccoli, rete metallica nera a parete e lampade industriali: ci si siede, si ordina, si mangia con le mani.</p>
+    <p>In vetrina, a parete, le camicie hawaiane con il logo: un piccolo assaggio di merch.</p>
+    <p class="sala__storia"><strong>[STORIA DA RACCOGLIERE CON I TITOLARI]</strong> Pineto è la sede storica e Roseto la nuova: anno di apertura, titolari e come è nato Morsi vanno raccontati da loro.</p>
+  </div>
+  <div class="sala__foto">
+    <figure class="morso morso--sala">
+      <picture>
+        <source type="image/avif" srcset="/assets/img/morsi/sala-m.avif 382w, /assets/img/morsi/sala-l.avif 764w" sizes="(min-width: 900px) 300px, 60vw">
+        <img src="/assets/img/morsi/sala-m.webp" srcset="/assets/img/morsi/sala-m.webp 382w, /assets/img/morsi/sala-l.webp 764w" sizes="(min-width: 900px) 300px, 60vw" width="382" height="510" loading="lazy" decoding="async" alt="La sala di Morsi: luce blu, parete con rete metallica, insegna al neon, sedie Tolix arancioni e blu e tavolini bianchi.">
+      </picture>
+    </figure>
+    <figure class="morso morso--neon">
+      <picture>
+        <source type="image/avif" srcset="/assets/img/morsi/neon-m.avif 287w, /assets/img/morsi/neon-l.avif 574w" sizes="(min-width: 900px) 230px, 46vw">
+        <img src="/assets/img/morsi/neon-m.webp" srcset="/assets/img/morsi/neon-m.webp 287w, /assets/img/morsi/neon-l.webp 574w" sizes="(min-width: 900px) 230px, 46vw" width="287" height="510" loading="lazy" decoding="async" alt="L'insegna al neon blu di Morsi con lo slogan No fast food ma quality food, sopra una parete con rete metallica.">
+      </picture>
+    </figure>
+    <p class="sala__nota">Foto provvisorie da telefono, da sostituire con scatti in alta risoluzione.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     7. DICONO DI NOI — recensioni d'esempio (data/recensioni.js)
+     ==================================================================== -->
+<section class="voci quadretti" id="voci" aria-labelledby="voci-titolo" data-voci>
+  <header class="voci__testa">
+    <p class="etichetta etichetta--ink">Dicono di noi</p>
+    <h2 class="voci__titolo" id="voci-titolo">Si mangia, si ride,<br>si torna.</h2>
+  </header>
+  <!--@recensioni-->
+</section>
+
+<!-- ====================================================================
+     8. DOVE SIAMO — mappa disegnata e due schede (data/sedi.js)
+     ==================================================================== -->
+<section class="dove" id="dove" aria-labelledby="dove-titolo" data-dove>
+  <header class="dove__testa">
+    <p class="etichetta">Dove siamo</p>
+    <h2 class="dove__titolo" id="dove-titolo">Due sedi sulla<br>costa teramana.</h2>
+    <p class="dove__avviso">Il martedì siamo chiusi.</p>
+  </header>
+  <!--@dove-->
+</section>
+
+<!-- Solo per l'anteprima: la nota di Prisma Locale ai titolari. -->
+<section class="confermare" id="nota" aria-labelledby="confermare-titolo">
+  <p class="etichetta etichetta--ink">Nota di Prisma Locale per Morsi</p>
+  <h2 class="confermare__titolo" id="confermare-titolo">Cosa va confermato<br>prima di andare online</h2>
+  <p class="confermare__intro">La struttura è pronta. Ciò che abbiamo ricavato da fonti pubbliche è segnato <span class="dc">da confermare</span> nella pagina. Ecco l’elenco.</p>
+  <!--@da-confermare-->
+</section>
+
+</main>
+
+<footer class="piede">
+  <div class="piede__alto">
+    <!--@mascotte-->
+    <p class="piede__claim">No fast food<br>ma quality food</p>
+  </div>
+  <ul class="piede__link" role="list">
+    <li><a href="https://www.instagram.com/morsi_burger/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+    <li><a href="https://www.facebook.com/p/Morsi-Burger-61552469562181/" target="_blank" rel="noopener">Facebook<span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
+    <li><a href="#dove">Dove siamo</a></li>
+    <li><a href="#menu">Menu</a></li>
+  </ul>
+  <p class="piede__legale">Morsi · Pineto e Roseto degli Abruzzi · P.IVA <strong>[DA INSERIRE]</strong></p>
+  <p class="piede__firma">Demo realizzata da <a href="https://prismalocale.it/">Prisma Locale</a>. Anteprima non commissionata, valida fino al 31 dicembre 2026. Il nome e il logo Morsi appartengono ai legittimi proprietari; il logo qui è una ricostruzione provvisoria.</p>
+</footer>
+</body>
+</html>

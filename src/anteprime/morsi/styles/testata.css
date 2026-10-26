@@ -1,0 +1,43 @@
+.testata {
+  position: fixed; inset: 0 0 auto; z-index: 50; height: var(--testata);
+  display: flex; align-items: center; gap: 10px; padding: 0 var(--gutter);
+  padding-top: env(safe-area-inset-top);
+  background: var(--morsi-blu); color: #fff;
+}
+.marchio { display: block; flex: none; width: 74px; color: #fff; line-height: 0; }
+.logo { width: 100%; height: auto; overflow: visible; }
+.logo--piccolo { --logo-fondo: var(--morsi-blu); }
+.testata__nav { display: none; margin-left: 12px; }
+.testata__nav ul { display: flex; gap: 4px; }
+.testata__nav a {
+  display: block; padding: 10px 14px; border-radius: 999px; text-decoration: none;
+  font: 800 0.74rem / 1 var(--f-display); text-transform: uppercase; letter-spacing: 0.03em;
+}
+.testata__nav a:hover { background: rgb(255 255 255 / 0.16); }
+
+/* selettore sede: sempre raggiungibile, anche da telefono */
+.sede-sel { display: flex; margin-left: auto; padding: 3px; border-radius: 999px; background: rgb(0 0 60 / 0.4); box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.55); }
+.sede-sel__voce {
+  min-height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; color: #fff;
+  font: 800 0.74rem / 1 var(--f-display); text-transform: uppercase; letter-spacing: 0.02em;
+  transition: background-color 0.2s, color 0.2s;
+}
+.sede-sel__voce[aria-checked="true"] { background: #fff; color: var(--morsi-blu); }
+.testata__menu {
+  flex: none; min-height: 40px; padding: 0 14px; border-radius: 12px; border: 1.5px solid rgb(255 255 255 / 0.7); background: transparent; color: #fff;
+  font: 800 0.74rem / 1 var(--f-display); text-transform: uppercase;
+}
+
+.navmob { position: fixed; inset: 0; z-index: 70; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 24px var(--gutter); border: 0; background: var(--morsi-blu); color: #fff; }
+.navmob::backdrop { background: rgb(0 0 40 / 0.6); }
+.navmob__chiudi { margin-left: auto; display: block; min-height: 44px; padding: 0 18px; border: 1.5px solid #fff; border-radius: 12px; background: none; font: 800 0.8rem / 1 var(--f-display); text-transform: uppercase; }
+.navmob__voci { display: grid; gap: 4px; margin-top: 28px; }
+.navmob__voci a { display: block; padding: 10px 0; text-decoration: none; font: 900 clamp(2rem, 10vw, 3.2rem) / 1 var(--f-display); text-transform: uppercase; }
+.navmob__claim { margin-top: 28px; font: 700 0.8rem var(--f-testo); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }
+
+@media (min-width: 900px) {
+  :root { --testata: 66px; }
+  .marchio { width: 90px; }
+  .testata__nav { display: block; }
+  .testata__menu { display: none; }
+}

@@ -1,0 +1,39 @@
+<!-- Mascotte di Morsi: omino a linea con la testa-faccina del logo e il cappellino, che saluta col
+     pollice e tiene un panino. Ridisegnata come SVG a linea dal menu cartaceo: da sostituire con
+     l'illustrazione originale se i titolari la forniscono. Colore del tratto: currentColor. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 300" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="mas">
+  <style>
+    .mas .mas-p{fill:var(--carta,#fff)}
+    .mas .mas-t{stroke-width:17}
+    .mas .mas-ti{stroke:var(--carta,#fff);stroke-width:9}
+    .mas .mas-b{fill:#FFD98A}
+    .mas .mas-c{fill:var(--blu-notte,#1B1F5C)}
+  </style>
+  <!-- gambe -->
+  <path class="mas-t" d="M92 196l-4 62"/><path class="mas-ti" d="M92 196l-4 62"/>
+  <path class="mas-t" d="M130 196l4 62"/><path class="mas-ti" d="M130 196l4 62"/>
+  <path class="mas-p" d="M68 262h30q10 0 10 10v4H66q-4-10 2-14Z"/>
+  <path class="mas-p" d="M122 262h30q10 0 14 10l2 4h-46Z"/>
+  <!-- braccio che regge il panino -->
+  <path class="mas-t" d="M76 118L48 152l-6 20"/><path class="mas-ti" d="M76 118L48 152l-6 20"/>
+  <!-- busto: maglietta con la faccina -->
+  <path class="mas-p" d="M76 110q36 12 72 0l12 84q-48 10-96 0Z"/>
+  <circle cx="112" cy="150" r="13"/><path d="M106 148v1M118 148v1M105 155q7 7 14 0" stroke-width="3"/>
+  <!-- braccio col pollice in su -->
+  <path class="mas-t" d="M150 118l32 14 8-34"/><path class="mas-ti" d="M150 118l32 14 8-34"/>
+  <rect class="mas-p" x="178" y="72" width="26" height="26" rx="10"/>
+  <path class="mas-p" d="M184 74v-18q0-8 8-6t2 12v12Z"/>
+  <path class="mas-sc" d="M208 56l10-8M212 68l12 0M206 44l4-10" stroke-width="3"/>
+  <!-- panino -->
+  <path class="mas-b" d="M12 172Q40 140 68 172Z"/>
+  <path class="mas-c" d="M11 174H69V184H11Z"/>
+  <path class="mas-p" d="M14 186H66q0 12-12 12H26q-12 0-12-12Z" style="fill:#FFD98A"/>
+  <path d="M26 164q3-6 8-6M44 164q3-6 8-6" stroke-width="2.5"/>
+  <!-- testa-faccina con cappellino -->
+  <circle class="mas-p" cx="112" cy="62" r="42"/>
+  <path class="mas-p" d="M72 52Q76 14 112 14T152 52Z" style="fill:var(--morsi-blu,#0504FF)"/>
+  <path class="mas-p" d="M150 48l30-12q8-2 8 4t-8 9l-30 6Z" style="fill:var(--morsi-blu,#0504FF)"/>
+  <path d="M94 74q5-7 10 0M122 74q5-7 10 0" stroke-width="3.5"/>
+  <path class="mas-p" d="M88 86q24 22 48 0Z" stroke-width="3.5"/>
+  <path d="M96 93h32" stroke-width="2.5"/>
+</svg>

@@ -1,0 +1,79 @@
+/* ---------- HERO: il neon che si accende ---------- */
+.hero {
+  position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; text-align: center;
+  min-height: 100svh; padding: calc(var(--testata) + 26px) var(--gutter) 56px; overflow: hidden;
+  background: radial-gradient(120% 75% at 50% 20%, #1c1bff 0%, var(--morsi-blu) 40%, #05055e 100%);
+  color: #fff;
+}
+.hero::after { /* grana fine: nasconde la risoluzione della foto */
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.8;
+  background: url("/assets/img/morsi/grana.webp") 0 0 / 220px 220px;
+}
+.hero__fondo { position: absolute; inset: 0; z-index: -2; opacity: 0.26; }
+.hero__fondo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+
+.hero__testo { display: contents; }
+.hero__eyebrow { order: 1; font: 700 0.72rem / 1.3 var(--f-testo); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.92; margin-bottom: 16px; }
+.neon { order: 2; position: relative; width: min(86vw, 500px); margin: 0 auto; line-height: 0; --logo-fondo: #1412ff; }
+.neon .logo { width: 100%; }
+.neon__strato { display: block; color: #fff; }
+.neon__strato--alone { position: absolute; inset: 0; color: #a9a9ff; filter: blur(11px) brightness(1.3); will-change: opacity; }
+.neon__strato--tubo { position: relative; filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 9px #8686ff); will-change: opacity; }
+
+.slogan {
+  order: 3; position: relative; display: inline-block; margin: 14px auto 0; max-width: 100%;
+  font: 800 clamp(0.9rem, 4vw, 1.35rem) / 1.2 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; text-wrap: balance;
+}
+.slogan__tubo { position: relative; display: block; color: #fff; text-shadow: 0 0 3px #fff, 0 0 10px #7e7eff; will-change: opacity; }
+.slogan__alone { position: absolute; inset: 0; color: #9a9aff; filter: blur(7px); will-change: opacity; }
+
+.hero__foto { order: 4; position: relative; width: min(78vw, 380px); margin: 26px auto 6px; transform: rotate(-2deg); --m1: 38px; --m2: 24px; }
+.hero__foto img { width: 100%; height: auto; border-radius: 20px; background: var(--blu-notte); }
+.hero__didascalia {
+  position: absolute; left: -6px; bottom: 16px; padding: 7px 14px 6px; border-radius: 10px; transform: rotate(-4deg);
+  background: var(--tuorlo); color: var(--blu-notte); font: 900 0.8rem / 1 var(--f-display); text-transform: uppercase;
+}
+
+.hero .btn { white-space: nowrap; }
+.hero__azioni { order: 5; width: 100%; max-width: 420px; margin-top: 24px; }
+.hero .azioni { display: grid; gap: 10px; }
+.azioni__nota { margin-top: 10px; font-size: 0.82rem; line-height: 1.4; opacity: 0.92; }
+.hero__sede { order: 6; width: 100%; max-width: 420px; margin-top: 22px; }
+
+.strip { padding: 14px 16px; border: 1.5px dashed rgb(255 255 255 / 0.65); border-radius: 16px; text-align: left; background: rgb(0 0 50 / 0.28); }
+.strip__riga { font-size: 0.92rem; line-height: 1.45; }
+.strip__riga + .strip__riga { margin-top: 2px; }
+.strip__etichetta { display: inline-block; margin-right: 4px; padding: 1px 8px; border-radius: 999px; background: var(--tuorlo); color: var(--blu-notte); font: 800 0.66rem / 1.5 var(--f-testo); letter-spacing: 0.08em; text-transform: uppercase; }
+.strip__riga--dettaglio { opacity: 0.95; }
+.strip__link { margin-top: 8px !important; font-weight: 700; }
+.strip__link a { text-underline-offset: 4px; }
+.strip__link a[aria-disabled="true"] { opacity: 0.8; text-decoration: none; pointer-events: none; }
+
+/* Movimento dell'hero in CSS puro (solo opacity e translate): parte subito, senza aspettare il JavaScript.
+   Mossa firma 1: il neon si accende con un flicker breve, poi ogni tanto ha un micro-sfarfallio. */
+@keyframes neon-on {
+  0% { opacity: 0.1; } 7% { opacity: 0.95; } 11% { opacity: 0.1; } 16% { opacity: 1; } 22% { opacity: 0.16; }
+  27% { opacity: 0.8; } 32% { opacity: 0.08; } 52% { opacity: 1; } 58% { opacity: 0.45; } 64%, 100% { opacity: 1; }
+}
+@keyframes neon-ronzio {
+  0%, 88%, 100% { opacity: 1; } 90% { opacity: 0.7; } 91% { opacity: 1; } 93% { opacity: 0.74; } 94% { opacity: 1; }
+}
+@keyframes hero-entra { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+html.motion .neon__strato--tubo, html.motion .neon__strato--alone {
+  animation: neon-on 1.7s linear 0.25s both, neon-ronzio 11s linear 4s infinite;
+}
+html.motion .slogan__tubo, html.motion .slogan__alone {
+  animation: neon-on 1.7s linear 1s both, neon-ronzio 13s linear 6s infinite;
+}
+html.motion [data-hero-entra] { animation: hero-entra 0.8s var(--ease) calc(0.5s + var(--i, 0) * 0.12s) both; }
+
+@media (min-width: 900px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); align-items: center; gap: 24px 56px; text-align: left; padding: calc(var(--testata) + 40px) max(var(--gutter), calc((100vw - var(--larghezza)) / 2)) 64px; }
+  .hero__testo { display: block; }
+  .neon { margin: 6px 0 0; width: min(100%, 560px); }
+  .slogan { margin-top: 20px; font-size: 1.5rem; }
+  .hero__foto { width: min(100%, 460px); margin: 0 auto; --m1: 52px; --m2: 34px; }
+  .hero__azioni { margin-top: 30px; }
+  .hero .azioni { grid-template-columns: auto auto; justify-content: start; }
+  .hero__eyebrow { margin-bottom: 20px; }
+}

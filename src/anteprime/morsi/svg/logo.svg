@@ -1,0 +1,25 @@
+<!-- LOGO: sostituire con il vettoriale ufficiale. Ricostruzione a tratto del wordmark dalla foto
+     logo-su-blu.webp: non è il file originale del locale. Il bianco è currentColor; i dettagli
+     "scavati" della faccina usano la variabile CSS logo-fondo (il colore dello sfondo). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 454 150" fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+  <!-- M: le gambe finiscono in un ricciolo -->
+  <path d="M28 112V56q0-8 8-8t12 8l18 30 18-30q4-8 12-8t8 8v56"/>
+  <path d="M28 112q0 12 10 12M102 112q0 12 10 12" stroke-width="14"/>
+  <!-- O: anello con faccina e cappellino -->
+  <circle cx="192" cy="82" r="50" stroke-width="15"/>
+  <g stroke="none" fill="currentColor">
+    <path d="M154 70q4-22 38-22t38 22q-38-8-76 0z"/>
+    <path d="M222 58l26-12q7-2 8 3t-7 9l-24 6z"/>
+  </g>
+  <g stroke-width="4.5" fill="none">
+    <path d="M171 81q4-6 8 0M203 81q4-6 8 0"/>
+  </g>
+  <path d="M166 93q26 24 52 0z" fill="currentColor" stroke-width="6"/>
+  <path d="M174 98h36" stroke="var(--logo-fondo, #0504ff)" stroke-width="3.5"/>
+  <!-- R -->
+  <path d="M272 116V50h26a20 20 0 0 1 0 40h-26M298 90l22 26"/>
+  <!-- S -->
+  <g transform="translate(20 0)"><path d="M388 66C382 44 342 46 342 64c0 22 52 14 52 36 0 22-42 22-54 0"/></g>
+  <!-- I ondulata -->
+  <path d="M430 48c-12 14 12 26 0 42-8 10 6 18-2 34" stroke-width="14"/>
+</svg>
