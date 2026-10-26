@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: la facciata del locale di Roseto degli Abruzzi">
+<!-- FOTO: esterno della sede di Roseto degli Abruzzi, 4:5, di giorno e di sera. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<path class="s p" d="M40 150H360V440H40Z"/>
+<path class="s bl" d="M30 120H370V160H30Z"/>
+<rect class="s ca" x="70" y="200" width="260" height="70" rx="10"/><path class="s n" d="M96 246q8-18 16 0t16 0M168 226v28M204 226v28M204 226h20M236 226v28" style="stroke:#fff"/>
+<rect class="s p" x="70" y="310" width="110" height="130"/><path class="s n" d="M70 360H180M125 310V440"/>
+<rect class="s ca" x="230" y="310" width="100" height="130"/><circle class="s n" cx="250" cy="376" r="5" style="stroke:#fff"/>
+<path class="s n" d="M20 440H380"/>
+</svg>

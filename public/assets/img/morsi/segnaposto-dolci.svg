@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: un sandwich con crema alla nocciola">
+<!-- FOTO: nutella sandwich, 4:5. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<path class="s pa" d="M84 190Q84 150 140 150H260Q316 150 316 190V230H84Z"/>
+<path class="s m" d="M78 236H322V262q-30 24-60 6t-60 6-60-8-64 6Z"/>
+<path class="s pa" d="M84 270H316V306Q316 332 284 332H116Q84 332 84 306Z"/>
+<path class="s n" d="M130 186h60M232 186h30"/><path class="s n" d="M312 126l14-14M332 148h18M300 108l4-18"/>
+</svg>

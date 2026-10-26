@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: un burger vegetariano con insalata">
+<!-- FOTO: veggy burger, 4:5. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<path class="s pa" d="M78 238Q78 118 200 118T322 238Z"/><path class="s n" d="M118 196Q128 152 170 142"/><path class="s ve" d="M74 252q18-16 36 0t36 0 36 0 36 0 36 0 36 0v14q-18 16-36 0t-36 0-36 0-36 0-36 0-36 0Z"/>
+<path class="s m" d="M92 280H308V310Q308 322 296 322H104Q92 322 92 310Z"/>
+<path class="s ch" d="M84 276H316V286H284q0 18-10 26-10-8-10-26H84Z"/>
+<path class="s pa" d="M84 332H316V348Q316 376 284 376H116Q84 376 84 348Z"/>
+<path class="s n" d="M312 120q36-30 62-8-8 36-52 28M326 130q16-8 30-8"/>
+</svg>

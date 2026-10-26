@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: crocchette e pop corn di pollo in un cestino">
+<!-- FOTO: sides (tequeños, jalapeño pops, chicken pops), 4:5. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<rect class="s or" x="118" y="164" width="38" height="120" rx="19" transform="rotate(-14 137 224)"/>
+<rect class="s or" x="168" y="150" width="38" height="130" rx="19"/>
+<circle class="s or" cx="248" cy="232" r="30"/><circle class="s or" cx="290" cy="210" r="24"/><circle class="s or" cx="226" cy="186" r="22"/>
+<path class="s p" d="M80 270L100 420H300L320 270Z"/><path class="s n" d="M100 300h200M104 360h192M112 400h176"/>
+</svg>
