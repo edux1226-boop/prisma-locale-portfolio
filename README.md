@@ -204,6 +204,52 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
     TITOLARI]`), logo vettoriale e font ufficiali, foto in alta risoluzione, recensioni vere
     al posto degli esempi, la media 4,5/5 di Pineto (una sola fonte), se il Morsi Melt è
     davvero "il più fotografato", partita IVA e ragione sociale.
+- **Lord Nelson** (`/anteprime/lord-nelson/`): birreria e paninoteca in via Volturno 107 a
+  Scerne di Pineto, concept "Il bancone dell'ammiraglio": una serata al bancone, si entra nel
+  buio del locale e la luce ambra si accende. I colori vengono solo dal logo e dalle foto del
+  locale (carbone `#0B0A0C`, legno bruciato `#2A1711`, ambra `#E2AC3E`, oro `#B99A4F`, schiuma
+  `#F4EDDE`); le pagine del menu cartaceo (crema, verde acido, rosso dei prezzi) servono solo
+  come fonte dei contenuti e non sono riprese. Abril Fatface per i titoli (didone nero e
+  fitto, il più vicino al lettering da insegna del logo), Oswald maiuscolo spaziato per le
+  etichette, Hanken Grotesk per i testi; ornamenti a linea oro (ancora, bussola, corda).
+  - **Tre mosse firma**: il bancone che si accende nell'hero (nove pannelli ambra ricostruiti
+    in CSS, da sinistra a destra, solo `opacity`); la spillatura (sezione pinnata: il boccale
+    SVG si riempie e la schiuma sale, i cinque livelli sono l'indice del menu); i Big come
+    flotta (binario orizzontale pinnato, ogni panino con il suo gonfalone a linea oro).
+  - **Sezioni**: hero, il locale (le tre foto), alla spina (cinque spine segnaposto), la
+    spillatura, menu ("Al piatto" vero, Panini/Fritti/Bevande segnaposto), I Big, serate ed
+    eventi (segnaposto), dove siamo con mappa SVG schematica e pulsanti Chiama / WhatsApp /
+    Indicazioni, nota "cosa va confermato", footer.
+  - **Contenuto guidato dai dati**: `src/anteprime/lord-nelson/data/` (`menu.js` con piatti,
+    prezzi e contatti, `birre.js`, `serate.js`, `daConfermare.js`) è l'unica fonte. Il plugin
+    Vite `scripts/vite-lordnelson.mjs` genera da lì l'HTML e il JSON-LD `BarOrPub`.
+  - **Codice** in `src/anteprime/lord-nelson/`: `core/` (movimento), `sections/` (nav mobile),
+    `animations/` (spillatura, flotta, rivelazioni), `render/` (HTML e SVG dai dati),
+    `styles/`.
+  - **Movimento ridotto**: niente Lenis né pin, bancone acceso e fermo, boccale pieno, i Big
+    in una fila scorrevole con snap; contenuti completi e statici. GSAP e Lenis si scaricano
+    solo se il movimento è attivo e partono a pagina caricata (idle), l'hero è solo HTML e CSS.
+  - **Immagini**: le foto (piccole, 200–260 px) sono in `dev/lord-nelson/foto/`;
+    `node scripts/render-lord-nelson.mjs` (con `npm i --no-save sharp`) ricava AVIF + WebP in
+    `public/assets/img/lord-nelson/` (versione nativa `-m`, ingrandita con grana `-l`) e la
+    texture del legno bruciato (generata). Il logo è una foto con fondo bianco: sta su una
+    targa color schiuma con `mix-blend-mode: multiply`, con commento
+    `LOGO: sostituire con il vettoriale ufficiale`. Dove manca una foto c'è un commento
+    `FOTO:` con soggetto e proporzioni. Immagine social:
+    `node scripts/render-lord-nelson-og.mjs` (Playwright + sharp) da `dev/lord-nelson-og.html`.
+    Logo e foto sono materiale del locale: non vanno riusati fuori dall'anteprima.
+  - Scadenza nel meta `anteprima-scadenza` (31 dicembre 2026), `noindex, nofollow` in meta e
+    header Netlify, filigrana "DEMO · PRISMA LOCALE" sempre visibile.
+  - Lighthouse (build di produzione, Chromium headless): mobile 99 / 100 / 100, desktop
+    100 / 100 / 100 (prestazioni, accessibilità, best practice; la SEO è bassa di proposito
+    per il noindex). LCP mobile 1,7 s, TBT 80 ms, CLS 0,02.
+  - **Da confermare con i titolari** (nella pagina compare il chip "da confermare"): orari e
+    giorno di chiusura; birre alla spina e in bottiglia (marche, stili, prezzi, quante spine);
+    menu completo (panini, fritti, bevande, dolci); ingredienti dei sei Big e del piatto
+    "Lord Nelson"; storia (`[STORIA DA RACCOGLIERE CON I TITOLARI]`); serate ed eventi;
+    servizi (asporto, consegna, prenotazione online); sito e social ufficiali; logo
+    vettoriale; foto in alta risoluzione (locale, esterno, spine, piatti); CAP (64025 da
+    verificare), partita IVA e ragione sociale.
 - **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
   autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con

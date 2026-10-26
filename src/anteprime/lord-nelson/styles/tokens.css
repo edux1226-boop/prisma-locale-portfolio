@@ -1,0 +1,59 @@
+/* ==========================================================================
+   LORD NELSON — anteprima di Prisma Locale
+   Concept "Il bancone dell'ammiraglio": una serata al bancone. Si entra nel buio del locale
+   e la luce ambra del bancone si accende. I colori vengono solo dal logo e dalle foto del
+   locale (carbone, legno bruciato, ambra, oro, schiuma); le pagine del menu cartaceo
+   (crema, verde acido, rosso dei prezzi) non c'entrano con l'ambiente e non sono riprese.
+
+   Font: Abril Fatface per i titoli (didone nero e fitto, il più vicino al lettering da insegna
+   ottocentesca del logo, e ha le grazie marcate di L e N), Oswald condensato maiuscolo spaziato
+   per le etichette come "BIRRERIA · PANINOTECA", Hanken Grotesk per i testi.
+   Tutti self-hosted, solo latino.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Abril Fatface";
+  src: url("/assets/fonts/abril-fatface.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("/assets/fonts/oswald.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/assets/fonts/hanken-grotesk.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* palette: stimata con il contagocce su logo e foto, da ricampionare sugli originali */
+  --carbone: #0b0a0c;        /* nero del logo, pareti e soffitto */
+  --legno: #2a1711;          /* bruno scuro del bancone */
+  --legno-alto: #3b271e;
+  --oro: #b99a4f;            /* bordi del bicorno, spalline, alamari */
+  --oro-chiaro: #d9c07a;
+  --ambra: #e2ac3e;          /* birra e pannelli retroilluminati */
+  --caramello: #b56325;      /* legno bruciato in luce */
+  --schiuma: #f4edde;        /* schiuma, carta, testo */
+  --cromo: #b2a997;          /* spine e acciaio: solo dettagli */
+  --muto: rgb(244 237 222 / 0.76);
+  --linea: rgb(185 154 79 / 0.34);
+
+  --f-display: "Abril Fatface", "Playfair Display", Georgia, "Times New Roman", serif;
+  --f-etichetta: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-testo: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --gutter: clamp(16px, 5vw, 64px);
+  --larghezza: 1180px;
+  --testata: 58px;
+  --ease: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --legno-tex: url("/assets/img/lord-nelson/legno-bruciato.webp");
+}

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lord Nelson · Birreria e paninoteca a Scerne di Pineto · anteprima riservata</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Anteprima riservata del sito del Lord Nelson, birreria e paninoteca in via Volturno 107 a Scerne di Pineto. Proposta di Prisma Locale.">
+<meta name="theme-color" content="#0B0A0C">
+<meta name="color-scheme" content="dark">
+<!-- Unico punto da cambiare per la scadenza dell'anteprima (ora italiana). -->
+<meta name="anteprima-scadenza" content="2026-12-31T23:59:59+01:00">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Lord Nelson, anteprima riservata">
+<meta property="og:description" content="Birra alla spina, panino grande, serata con gli amici: la proposta di sito per il Lord Nelson di Scerne di Pineto. Preparata da Prisma Locale.">
+<meta property="og:image" content="https://prismalocale.it/assets/img/lord-nelson-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B0A0C'/%3E%3Cg fill='none' stroke='%23E2AC3E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='16' cy='7' r='2.4'/%3E%3Cpath d='M16 9.5V25M10 13.5h12M7 20c1 4.4 4.4 6 9 6s8-1.600 9-6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/abril-fatface.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+
+<script>
+  /* Scadenza e movimento: decisi prima del primo disegno, così non c'è nessun lampo di contenuto. */
+  (function (d) {
+    var r = d.documentElement;
+    var m = d.querySelector('meta[name="anteprima-scadenza"]');
+    var fine = m ? Date.parse(m.content) : NaN;
+    if (fine && Date.now() > fine) { r.classList.add('is-scaduta'); return; }
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion');
+  })(document);
+</script>
+<script type="module" src="/src/anteprime/lord-nelson/main.js"></script>
+
+<!--@json-ld-->
+</head>
+
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<!-- Mostrato solo dopo la data di scadenza (vedi lo script nell'head). -->
+<div class="scaduta">
+  <!--@ancora-->
+  <h1 class="scaduta__titolo">Anteprima scaduta, contatta Prisma Locale</h1>
+  <p class="scaduta__link">
+    <a href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20l%27anteprima%20del%20Lord%20Nelson%20%C3%A8%20scaduta." rel="noopener">WhatsApp</a>
+    <span aria-hidden="true">·</span>
+    <a href="mailto:info@prismalocale.it">info@prismalocale.it</a>
+  </p>
+</div>
+
+<div class="filigrana" aria-hidden="true"></div>
+<p class="demo" role="note">DEMO · PRISMA LOCALE</p>
+
+<header class="testata" data-testata>
+  <a class="marchio" href="#inizio" aria-label="Lord Nelson, torna all'inizio"><!--@ancora--><span>Lord Nelson</span></a>
+  <nav class="testata__nav" aria-label="Sezioni">
+    <ul role="list">
+      <li><a href="#locale">Il locale</a></li>
+      <li><a href="#spine">Alla spina</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#big">I Big</a></li>
+      <li><a href="#dove">Dove</a></li>
+    </ul>
+  </nav>
+  <a class="testata__prenota" href="https://wa.me/393488226928?text=Ciao%20Lord%20Nelson%2C%20vorrei%20prenotare%20un%20tavolo%20per" rel="noopener">Prenota</a>
+  <button class="testata__menu" type="button" aria-haspopup="dialog" aria-controls="navmob" data-menu-apri>
+    <span class="sr-only">Apri il </span>Menu
+  </button>
+</header>
+
+<dialog class="navmob" id="navmob" aria-label="Sezioni del sito" data-navmob>
+  <button class="navmob__chiudi" type="button" data-menu-chiudi>Chiudi</button>
+  <nav aria-label="Sezioni">
+    <ol class="navmob__voci" role="list">
+      <li><a href="#locale">Il locale</a></li>
+      <li><a href="#spine">Alla spina</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#big">I Big</a></li>
+      <li><a href="#serate">Serate</a></li>
+      <li><a href="#dove">Dove siamo</a></li>
+    </ol>
+  </nav>
+  <p class="navmob__claim">Birreria · Paninoteca</p>
+</dialog>
+
+<main id="contenuto" tabindex="-1">
+
+<!-- ====================================================================
+     1. HERO — il bancone si accende. I pannelli retroilluminati sono ricostruiti in CSS
+     (le foto sono troppo piccole per un hero): si accendono da sinistra a destra, solo con opacity.
+     LOGO: sostituire con il vettoriale ufficiale (oggi è la foto logo.jpg, 225 px, su una targa
+     color schiuma con mix-blend-mode: multiply per far sparire il fondo bianco).
+     ==================================================================== -->
+<section class="hero" id="inizio" aria-labelledby="hero-titolo" data-hero>
+  <div class="hero__fondo" aria-hidden="true"></div>
+
+  <div class="hero__testo">
+    <figure class="targa" data-entra style="--i:0">
+      <picture>
+        <source type="image/avif" srcset="/assets/img/lord-nelson/logo-m.avif 225w, /assets/img/lord-nelson/logo-l.avif 450w" sizes="(min-width: 700px) 220px, 170px">
+        <img src="/assets/img/lord-nelson/logo-m.webp" srcset="/assets/img/lord-nelson/logo-m.webp 225w, /assets/img/lord-nelson/logo-l.webp 450w" sizes="(min-width: 700px) 220px, 170px" width="225" height="225" fetchpriority="high" decoding="async" alt="Lord Nelson, birreria e paninoteca: l'ammiraglio Nelson con un boccale di birra, un hamburger e le patatine.">
+      </picture>
+    </figure>
+    <p class="eyebrow" data-entra style="--i:1">Birreria · Paninoteca · Scerne di Pineto</p>
+    <h1 class="hero__titolo" id="hero-titolo" data-entra style="--i:2">
+      <span class="sr-only">Lord Nelson, birreria e paninoteca a Scerne di Pineto. </span>Birra alla spina,<br>panino grande,<br><em>serata con gli amici.</em>
+    </h1>
+    <div class="azioni" data-entra style="--i:3">
+      <a class="btn btn--pieno" href="https://wa.me/393488226928?text=Ciao%20Lord%20Nelson%2C%20vorrei%20prenotare%20un%20tavolo%20per" rel="noopener">Prenota un tavolo</a>
+      <a class="btn btn--linea" href="#menu">Guarda il menu</a>
+    </div>
+  </div>
+
+  <!-- Il bancone: pannelli retroilluminati color ambra, ripiano con i bicchieri, riflesso sul pavimento. -->
+  <div class="bancone" aria-hidden="true">
+    <div class="bancone__ripiano"></div>
+    <div class="bancone__pannelli" data-pannelli>
+      <span class="pannello" style="--i:0"></span><span class="pannello" style="--i:1"></span><span class="pannello" style="--i:2"></span>
+      <span class="pannello" style="--i:3"></span><span class="pannello" style="--i:4"></span><span class="pannello" style="--i:5"></span>
+      <span class="pannello" style="--i:6"></span><span class="pannello" style="--i:7"></span><span class="pannello" style="--i:8"></span>
+    </div>
+    <div class="bancone__piano"></div>
+    <div class="bancone__riflesso"></div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     2. IL LOCALE — le tre foto del bancone. Foto: dev/lord-nelson/foto/bancone-*.jpg
+     (circa 200–260 px: stanno in cornici piccole, con grana sull'ingrandimento).
+     ==================================================================== -->
+<section class="locale" id="locale" aria-labelledby="locale-titolo" data-locale>
+  <div class="locale__testo">
+    <p class="etichetta">Il locale</p>
+    <h2 id="locale-titolo">Un bancone<br>che si accende.</h2>
+    <p>Legno bruciato scuro come carbone, un piano spesso e caldo, pannelli che si illuminano di ambra dall'interno. Dietro, le spine cromate in fila e i bicchieri capovolti sulle mensole di vetro, sotto le strisce di luce.</p>
+    <p>Si entra, ci si siede su uno sgabello alto e il resto della sera lo decide il boccale.</p>
+    <p class="locale__storia"><strong>[STORIA DA RACCOGLIERE CON I TITOLARI]</strong> Come nasce il Lord Nelson, chi lo gestisce, perché proprio l'ammiraglio: vanno raccontati da loro.</p>
+  </div>
+  <div class="locale__foto">
+    <!-- FOTO: bancone a isola, orizzontale 4:3 (oggi 259×194), da sostituire con scatto in alta risoluzione. -->
+    <figure class="cornice cornice--isola">
+      <picture>
+        <source type="image/avif" srcset="/assets/img/lord-nelson/isola-m.avif 259w, /assets/img/lord-nelson/isola-l.avif 518w" sizes="(min-width: 900px) 330px, 62vw">
+        <img src="/assets/img/lord-nelson/isola-m.webp" srcset="/assets/img/lord-nelson/isola-m.webp 259w, /assets/img/lord-nelson/isola-l.webp 518w" sizes="(min-width: 900px) 330px, 62vw" width="259" height="194" loading="lazy" decoding="async" alt="Il bancone a isola del Lord Nelson: rivestito di legno bruciato, con i pannelli frontali illuminati d'ambra, sgabelli alti e pavimento lucido.">
+      </picture>
+      <figcaption>Il bancone a isola</figcaption>
+    </figure>
+    <!-- FOTO: legno bruciato in luce, verticale 3:4 (oggi 194×259). -->
+    <figure class="cornice cornice--legno">
+      <picture>
+        <source type="image/avif" srcset="/assets/img/lord-nelson/legno-m.avif 194w, /assets/img/lord-nelson/legno-l.avif 388w" sizes="(min-width: 900px) 220px, 42vw">
+        <img src="/assets/img/lord-nelson/legno-m.webp" srcset="/assets/img/lord-nelson/legno-m.webp 194w, /assets/img/lord-nelson/legno-l.webp 388w" sizes="(min-width: 900px) 220px, 42vw" width="194" height="259" loading="lazy" decoding="async" alt="Il legno bruciato del bancone visto da vicino, con le venature scure e la luce calda dei pannelli.">
+      </picture>
+      <figcaption>Legno bruciato</figcaption>
+    </figure>
+    <p class="locale__nota">Foto provvisorie da telefono, da sostituire con scatti in alta risoluzione.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     3. ALLA SPINA — spine e birre. Le marche non si leggono dalle foto: segnaposto.
+     Foto: dev/lord-nelson/foto/bancone-spine.jpg
+     ==================================================================== -->
+<section class="spine-sez" id="spine" aria-labelledby="spine-titolo" data-spine>
+  <header class="spine-sez__testa">
+    <div>
+      <p class="etichetta">Alla spina</p>
+      <h2 id="spine-titolo">Alla spina,<br>comandante.</h2>
+      <p>Cinque spine cromate in fila, con le placchette dei marchi. Ecco i posti in plancia, da riempire con le birre vere.</p>
+    </div>
+    <!-- FOTO: le spine cromate, orizzontale 4:3 (oggi 259×194). Sulla sagoma di cartone c'è il logo. -->
+    <figure class="cornice cornice--spine">
+      <picture>
+        <source type="image/avif" srcset="/assets/img/lord-nelson/spine-m.avif 259w, /assets/img/lord-nelson/spine-l.avif 518w" sizes="(min-width: 900px) 330px, 70vw">
+        <img src="/assets/img/lord-nelson/spine-m.webp" srcset="/assets/img/lord-nelson/spine-m.webp 259w, /assets/img/lord-nelson/spine-l.webp 518w" sizes="(min-width: 900px) 330px, 70vw" width="259" height="194" loading="lazy" decoding="async" alt="Le spine cromate del Lord Nelson con le placchette colorate, i bicchieri capovolti sulle mensole e la sagoma di cartone con il logo appoggiata sul bancone.">
+      </picture>
+      <figcaption>Le spine del Lord Nelson</figcaption>
+    </figure>
+  </header>
+  <!--@spine-->
+  <p class="spine-sez__avviso" role="note">Marche, stili e prezzi: <span class="dc">da confermare con i titolari</span></p>
+</section>
+
+<!-- ====================================================================
+     4. LA SPILLATURA — sezione pinnata. Scorrendo il boccale si riempie e la schiuma sale.
+     I livelli fanno da indice alle sezioni del menu. Senza movimento: boccale pieno e indice fermo.
+     ==================================================================== -->
+<section class="spilla" id="spillatura" aria-labelledby="spilla-titolo" data-spilla>
+  <div class="spilla__pin" data-spilla-pin>
+    <header class="spilla__testa">
+      <p class="etichetta">La spillatura</p>
+      <h2 id="spilla-titolo">Si riempie<br>un livello alla volta.</h2>
+      <p class="spilla__intro">Il menu è un boccale: ogni livello è una sezione. Si parte dal piatto e si sale fino alla schiuma.</p>
+    </header>
+    <div class="spilla__boccale"><!--@boccale--></div>
+    <!--@indice-boccale-->
+  </div>
+</section>
+
+<!-- ====================================================================
+     5. MENU — dati in src/anteprime/lord-nelson/data/menu.js. "Al piatto" è dal menu cartaceo;
+     Panini, Fritti e Bevande sono segnaposto (menu completo non fornito).
+     ==================================================================== -->
+<section class="menu" id="menu" aria-labelledby="menu-titolo" data-menu>
+  <header class="menu__testa">
+    <p class="etichetta">Il menu</p>
+    <h2 id="menu-titolo">Ordini<br>dall'ammiraglio.</h2>
+    <div class="corda" aria-hidden="true"></div>
+  </header>
+  <div class="menu__corpo">
+    <section class="menu__cat" aria-labelledby="al-piatto-titolo">
+      <h3 class="menu__cat-titolo" id="al-piatto-titolo">Al piatto</h3>
+      <p class="menu__cat-nota">Il piatto con contorno, come si deve.</p>
+      <!--@al-piatto-->
+    </section>
+    <div class="menu__altre">
+      <p class="menu__rimando">I sei panini regionali sono qui sotto, sul ponte: <a href="#big">I Big, 13&nbsp;€ ciascuno</a>.</p>
+      <ul class="segnaposti" role="list">
+        <!--@segnaposto-menu-->
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     6. I BIG — la flotta. Binario orizzontale: con il movimento attivo la sezione si pinna e
+     scorre di lato; senza movimento (o senza JavaScript) è una fila scorrevole con snap.
+     Gli ingredienti non sono nel menu fornito. Le bandiere sono idee grafiche, da confermare.
+     ==================================================================== -->
+<section class="big" id="big" aria-labelledby="big-titolo" data-big>
+  <div class="big__pin" data-big-pin>
+    <header class="big__testa">
+      <p class="etichetta">I Big</p>
+      <h2 id="big-titolo">La flotta<br>dei sei Big.</h2>
+      <p>Sei panini, sei regioni, un solo prezzo: <strong>13&nbsp;€</strong>. Ognuno batte la sua bandiera.</p>
+    </header>
+    <div class="big__pista" tabindex="0" role="region" aria-label="I sei Big: scorri di lato per vederli tutti" data-big-pista>
+      <!--@big-->
+    </div>
+    <p class="big__nota" role="note">Ingredienti e bandiere <span class="dc">da confermare</span></p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     7. SERATE ED EVENTI — segnaposto: nessun evento inventato come reale.
+     ==================================================================== -->
+<section class="serate-sez" id="serate" aria-labelledby="serate-titolo" data-serate>
+  <header class="serate-sez__testa">
+    <!--@bussola-->
+    <p class="etichetta">Serate ed eventi</p>
+    <h2 id="serate-titolo">Equipaggio<br>al completo.</h2>
+    <p>Qui andranno le serate in programma. Per ora sono solo idee di cosa raccontare, da confermare con i titolari.</p>
+  </header>
+  <!--@serate-->
+</section>
+
+<!-- ====================================================================
+     8. DOVE SIAMO E PRENOTA — mappa disegnata (SVG, niente iframe pesante).
+     ==================================================================== -->
+<section class="dove" id="dove" aria-labelledby="dove-titolo" data-dove>
+  <header class="dove__testa">
+    <p class="etichetta">Dove siamo</p>
+    <h2 id="dove-titolo">Via Volturno 107,<br>Scerne di Pineto.</h2>
+  </header>
+  <!--@dove-->
+</section>
+
+<!-- Solo per l'anteprima: la nota di Prisma Locale ai titolari. -->
+<section class="confermare" id="nota" aria-labelledby="confermare-titolo">
+  <p class="etichetta">Nota di Prisma Locale per il Lord Nelson</p>
+  <h2 id="confermare-titolo">Cosa va confermato<br>prima di andare online</h2>
+  <p class="confermare__intro">La struttura è pronta. Ciò che non si vede nelle foto e nel menu fornito è segnato <span class="dc">da confermare</span> nella pagina. Ecco l'elenco.</p>
+  <!--@da-confermare-->
+</section>
+
+</main>
+
+<footer class="piede">
+  <div class="piede__alto">
+    <!--@bussola-grande-->
+    <p class="piede__claim">Birreria<br>Paninoteca</p>
+  </div>
+  <ul class="piede__link" role="list">
+    <li><a href="tel:+393488226928">348 822 6928</a></li>
+    <li><a href="https://wa.me/393488226928" rel="noopener">WhatsApp</a></li>
+    <li><a href="#dove">Dove siamo</a></li>
+    <li><a href="#menu">Menu</a></li>
+  </ul>
+  <p class="piede__legale">Lord Nelson · via Volturno 107, Scerne di Pineto (TE) · Instagram e Facebook <span class="dc">da confermare</span> · P.IVA <strong>[DA INSERIRE]</strong></p>
+  <p class="piede__firma">Demo realizzata da <a href="https://prismalocale.it/">Prisma Locale</a>. Anteprima non commissionata, valida fino al 31 dicembre 2026. Il nome, il logo e le foto del Lord Nelson appartengono ai legittimi proprietari e sono usati solo in questa anteprima.</p>
+</footer>
+</body>
+</html>

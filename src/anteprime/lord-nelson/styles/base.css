@@ -1,0 +1,114 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--testata) + 12px); background: var(--carbone); }
+html.motion { scroll-behavior: auto; }
+body {
+  margin: 0;
+  background: var(--carbone);
+  color: var(--schiuma);
+  font: 400 1.0625rem/1.55 var(--f-testo);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+address { font-style: normal; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 3px solid var(--ambra); outline-offset: 3px; border-radius: 4px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+.salta {
+  position: fixed; left: 12px; top: 8px; z-index: 100; padding: 10px 16px; border-radius: 8px;
+  background: var(--schiuma); color: var(--carbone); font-weight: 700; text-decoration: none;
+  transform: translateY(-200%);
+}
+.salta:focus { transform: none; }
+
+/* ---------- titoli: didone nero, come l'insegna ---------- */
+h2 {
+  font: 400 clamp(2rem, 8.4vw, 4.2rem) / 1.02 var(--f-display);
+  letter-spacing: 0.005em;
+  overflow-wrap: break-word;
+  hyphens: manual;
+  text-wrap: balance;
+}
+h3 { font: 400 1.4rem / 1.15 var(--f-display); }
+
+/* etichetta: maiuscolo spaziato con filetti oro, come "BIRRERIA · PANINOTECA" */
+.etichetta {
+  display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  font: 500 0.8rem / 1.1 var(--f-etichetta); letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ambra);
+}
+.etichetta::before, .etichetta::after { content: ""; width: 24px; height: 1px; background: var(--oro); flex: none; }
+
+/* chip "da confermare": sempre riconoscibile, mai nascosto */
+.dc {
+  display: inline-block; vertical-align: 0.1em; padding: 2px 8px 1px;
+  font: 500 0.68rem / 1.35 var(--f-etichetta); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--oro-chiaro); background: rgb(226 172 62 / 0.1);
+  border: 1px dashed var(--oro); border-radius: 4px; white-space: normal;
+}
+
+/* ---------- filigrana: sempre visibile, discreta ---------- */
+.filigrana {
+  position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='170'%3E%3Cg fill='%23F4EDDE' fill-opacity='.07' font-family='Arial,Helvetica,sans-serif' font-size='13' font-weight='700' letter-spacing='3'%3E%3Ctext x='12' y='46'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3Ctext x='272' y='130'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
+.demo {
+  position: fixed; z-index: 61; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); pointer-events: none;
+  padding: 6px 11px 5px; border-radius: 999px;
+  font: 500 0.68rem / 1 var(--f-etichetta); letter-spacing: 0.16em;
+  color: var(--carbone); background: rgb(244 237 222 / 0.9); box-shadow: 0 0 0 1px var(--oro);
+}
+
+/* ---------- bottoni ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  min-height: 48px; padding: 12px 24px; border: 1.5px solid var(--ambra); border-radius: 4px;
+  font: 500 0.9rem / 1.1 var(--f-etichetta); text-transform: uppercase; letter-spacing: 0.16em; text-decoration: none;
+  text-align: center; transition: transform 0.25s var(--ease), background-color 0.25s, color 0.25s;
+}
+.btn--pieno { background: var(--ambra); color: var(--carbone); }
+.btn--linea { background: transparent; color: var(--schiuma); border-color: var(--oro); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-2px); }
+  .btn--pieno:hover { background: #f0be52; }
+  .btn--linea:hover { border-color: var(--ambra); color: var(--ambra); }
+}
+.azioni { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- ornamenti a linea ---------- */
+.orn { color: var(--oro); }
+.corda {
+  height: 12px; margin-top: 22px; opacity: 0.85;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cg fill='none' stroke='%23B99A4F' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M0 2.5H20M0 9.500H20'/%3E%3Cpath d='M3 10.500L8.500 1.500M13 10.500L18.500 1.500' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") repeat-x left center / 20px 12px;
+}
+
+/* ---------- apparizione dell'hero (solo opacity e transform) ---------- */
+@keyframes entra { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.motion [data-entra] { animation: entra 0.8s var(--ease) both; animation-delay: calc(0.1s + var(--i, 0) * 0.12s); }
+
+/* ---------- anteprima scaduta ---------- */
+.scaduta { display: none; }
+html.is-scaduta body > :not(.scaduta) { display: none !important; }
+html.is-scaduta .scaduta {
+  display: grid; place-content: center; justify-items: center; gap: 18px; min-height: 100svh; padding: 32px var(--gutter);
+  text-align: center; background: radial-gradient(60% 50% at 50% 100%, rgb(226 172 62 / 0.2), transparent), var(--carbone);
+  color: var(--schiuma);
+}
+.scaduta .orn { width: 56px; height: auto; }
+.scaduta__titolo { font: 400 clamp(1.6rem, 6vw, 2.6rem) / 1.1 var(--f-display); max-width: 18ch; }
+.scaduta__link { font-weight: 600; }
+.scaduta__link a { text-underline-offset: 4px; color: var(--ambra); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
