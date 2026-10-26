@@ -1,0 +1,75 @@
+/* ---------- IL NOSTRO SMASH ---------- */
+.smash { position: relative; background: var(--carta); }
+.smash__pin {
+  position: relative; display: flex; flex-direction: column; gap: 12px; min-height: 100svh;
+  padding: calc(var(--testata) + 16px) var(--gutter) 24px;
+}
+.smash__titolo { color: var(--morsi-blu); font-size: clamp(1.4rem, 6.2vw, 2.5rem); }
+.smash__intro { margin-top: 10px; max-width: 46ch; }
+.smash__scena { position: relative; flex: 1 1 0; min-height: 190px; }
+html:not(.motion) .smash__scena { min-height: 360px; }
+.palco { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
+.smash__corpo { display: grid; gap: 12px; align-content: start; }
+
+/* illustrazione a linea, come il menu cartaceo */
+.palco, .ill-svg { color: var(--inchiostro); }
+.palco path, .palco rect, .palco circle, .palco ellipse { stroke: var(--inchiostro); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ill-linea { fill: none; }
+.ill-linea--fine { stroke-width: 1.8 !important; }
+.ill-linea--chiara { stroke: #fff !important; opacity: 0.4; stroke-width: 2 !important; }
+.ill-linea--vapore { stroke: var(--morsi-blu) !important; opacity: 0.55; }
+.ill-pane { fill: #ffd98a; }
+.ill-salsa { fill: var(--arancio-sedia); }
+.ill-carne { fill: var(--blu-notte); }
+.ill-crosta { fill: none; stroke: #8f93e0 !important; stroke-width: 2 !important; }
+.ill-cheddar { fill: var(--tuorlo); }
+.ill-bacon { fill: var(--arancio-sedia); }
+.ill-albume { fill: #fff; }
+.ill-tuorlo { fill: var(--tuorlo); }
+.ill-riflesso { fill: none; stroke: #fff !important; stroke-width: 2 !important; }
+.ill-piastra { fill: var(--blu-notte); }
+.ill-metallo { fill: #dfe4ff; }
+.ill-manico { fill: var(--morsi-blu); }
+
+.punti { display: grid; gap: 8px; }
+.punto { display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 6px 12px 6px 6px; border: 1.5px dashed var(--linea-forte); border-radius: 14px; transition: border-color 0.3s, background-color 0.3s; }
+.punto.is-attivo { opacity: 1; border-color: var(--morsi-blu); background: #fff; }
+.punto:not(.is-attivo) .punto__num { background: var(--inchiostro); }
+.punto__num { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--morsi-blu); color: #fff; font: 900 0.9rem / 1 var(--f-display); }
+.punto h3 { font: 900 0.9rem / 1.2 var(--f-display); text-transform: uppercase; color: var(--inchiostro); }
+.punto.is-attivo h3 { color: var(--morsi-blu); }
+.punto p { margin-top: 2px; font-size: 0.95rem; line-height: 1.35; }
+
+.smash-sel { display: grid; gap: 6px; }
+.smash-sel__titolo { font: 800 0.74rem / 1 var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; }
+.smash-sel__gruppo { display: flex; gap: 8px; }
+.smash-sel__gruppo button {
+  flex: 1; min-height: 44px; max-width: 84px; border: 2px solid var(--morsi-blu); border-radius: 14px; background: #fff; color: var(--morsi-blu);
+  font: 900 1rem / 1 var(--f-display); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--arancio-sedia);
+  transition: transform 0.2s var(--ease);
+}
+.smash-sel__gruppo button[aria-checked="true"] { background: var(--morsi-blu); color: #fff; }
+.smash-sel__gruppo button[aria-disabled="true"] { opacity: 0.45; }
+.smash-sel__stato { font-size: 0.9rem; font-weight: 600; }
+.smash-sel__invito { font: italic 600 1.1rem / 1.2 var(--f-testo); color: var(--morsi-blu); transform: rotate(-1.5deg); transform-origin: left; }
+
+/* con il movimento la sezione è pinnata: tutto sta in uno schermo */
+/* con il movimento la sezione è pinnata: tutto sta in uno schermo */
+html.motion .smash__pin { height: 100svh; min-height: 0; overflow: hidden; }
+html.motion .smash__intro { display: none; }
+html.motion .punto:not(.is-attivo) p { display: none; }
+html.motion .smash-sel__invito { display: none; }
+@media (hover: hover) and (pointer: fine) { .smash-sel__gruppo button:hover { transform: translateY(-2px) rotate(-1deg); } }
+
+@media (min-width: 900px) {
+  .smash__pin {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 64px; align-content: center; align-items: start;
+    padding: calc(var(--testata) + 28px) max(var(--gutter), calc((100vw - var(--larghezza)) / 2)) 40px;
+  }
+  .smash__testa { grid-column: 1; }
+  .smash__corpo { grid-column: 1; grid-row: 2; gap: 20px; }
+  .smash__scena { grid-column: 2; grid-row: 1 / span 2; align-self: stretch; min-height: 420px; }
+  html.motion .smash__intro { display: block; }
+  html.motion .punto:not(.is-attivo) p { display: block; }
+  html.motion .smash-sel__invito { display: block; }
+}

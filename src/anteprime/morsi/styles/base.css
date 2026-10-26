@@ -1,0 +1,133 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--testata) + 12px); }
+html.motion { scroll-behavior: auto; }
+body {
+  margin: 0;
+  background: var(--carta-calda);
+  color: var(--inchiostro);
+  font: 400 1.0625rem/1.5 var(--f-testo);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+address { font-style: normal; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 3px solid var(--morsi-blu); outline-offset: 3px; border-radius: 4px; }
+.sul-blu :focus-visible, .testata :focus-visible, .hero :focus-visible, .piede :focus-visible { outline-color: #fff; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+.salta {
+  position: fixed; left: 12px; top: 8px; z-index: 100; padding: 10px 16px; border-radius: 10px;
+  background: #fff; color: var(--morsi-blu); font-weight: 700; text-decoration: none;
+  transform: translateY(-200%);
+}
+.salta:focus { transform: none; }
+
+/* ---------- titoli: grottesco nero, maiuscolo, largo (come il menu cartaceo) ---------- */
+h2 {
+  font: 900 clamp(1.7rem, 7.4vw, 3.9rem) / 0.98 var(--f-display);
+  text-transform: uppercase;
+  letter-spacing: -0.012em;
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+.etichetta {
+  display: inline-block; margin-bottom: 14px; padding: 5px 12px 4px;
+  font: 700 0.75rem / 1.1 var(--f-testo); letter-spacing: 0.16em; text-transform: uppercase;
+  border: 1.5px dashed currentColor; border-radius: 999px;
+}
+
+/* chip "da confermare": sempre riconoscibile, mai nascosto */
+.dc {
+  display: inline-block; vertical-align: 0.1em; padding: 2px 8px 1px;
+  font: 700 0.66rem / 1.35 var(--f-testo); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--inchiostro); background: var(--tuorlo-chiaro);
+  border: 1px dashed var(--inchiostro); border-radius: 6px; white-space: normal;
+}
+.sul-blu .dc, .hero .dc, .piede .dc { border-color: var(--tuorlo-chiaro); background: rgb(255 241 194 / 0.16); color: var(--tuorlo-chiaro); }
+
+/* ---------- filigrana: sempre visibile, discreta ---------- */
+.filigrana {
+  position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='170'%3E%3Cg fill='%2300408A' fill-opacity='.075' font-family='Arial,Helvetica,sans-serif' font-size='13' font-weight='700' letter-spacing='3'%3E%3Ctext x='12' y='46'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3Ctext x='272' y='130'%3EDEMO %C2%B7 PRISMA LOCALE%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
+.demo {
+  position: fixed; z-index: 61; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); pointer-events: none;
+  padding: 6px 11px 5px; border-radius: 999px;
+  font: 800 0.66rem / 1 var(--f-testo); letter-spacing: 0.14em;
+  color: #fff; background: rgb(27 31 92 / 0.86); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.5);
+}
+
+/* ---------- bottoni: il morso sull'angolo ---------- */
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  min-height: 48px; padding: 12px 22px; border: 2px solid var(--morsi-blu); border-radius: 14px;
+  font: 800 0.82rem / 1.1 var(--f-display); text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none;
+  text-align: center; transition: transform 0.25s var(--ease);
+  -webkit-mask-image: radial-gradient(circle 9px at 100% 0, #0000 98%, #000 100%);
+  mask-image: radial-gradient(circle 9px at 100% 0, #0000 98%, #000 100%);
+}
+.btn--pieno { background: var(--morsi-blu); color: #fff; }
+.btn--linea { background: transparent; color: var(--morsi-blu); }
+.hero .btn--pieno, .piede .btn--pieno { background: #fff; color: var(--morsi-blu); border-color: #fff; }
+.hero .btn--linea, .piede .btn--linea { color: #fff; border-color: #fff; }
+.btn--spento, .btn[aria-disabled="true"] { opacity: 0.62; border-style: dashed; pointer-events: none; }
+.btn__nota { font: 700 0.62rem / 1.1 var(--f-testo); text-transform: none; letter-spacing: 0.02em; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-2px) rotate(-0.6deg); }
+}
+
+/* ---------- carta a quadretti ---------- */
+.quadretti {
+  background-color: var(--carta);
+  background-image:
+    linear-gradient(var(--linea) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+
+/* ---------- il morso: semicerchi tagliati sugli angoli (statici, nessuna animazione) ---------- */
+.morso {
+  --m1: 30px; --m2: 20px;
+  -webkit-mask-image: radial-gradient(circle var(--m1) at 100% 14%, #0000 98%, #000 100%), radial-gradient(circle var(--m2) at 100% 38%, #0000 98%, #000 100%);
+  mask-image: radial-gradient(circle var(--m1) at 100% 14%, #0000 98%, #000 100%), radial-gradient(circle var(--m2) at 100% 38%, #0000 98%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.morso--grande { --m1: 52px; --m2: 34px; }
+.morso--sala {
+  -webkit-mask-image: radial-gradient(circle 34px at 0 86%, #0000 98%, #000 100%), radial-gradient(circle 22px at 0 62%, #0000 98%, #000 100%);
+  mask-image: radial-gradient(circle 34px at 0 86%, #0000 98%, #000 100%), radial-gradient(circle 22px at 0 62%, #0000 98%, #000 100%);
+}
+.morso--neon {
+  -webkit-mask-image: radial-gradient(circle 28px at 100% 100%, #0000 98%, #000 100%), radial-gradient(circle 18px at 74% 100%, #0000 98%, #000 100%);
+  mask-image: radial-gradient(circle 28px at 100% 100%, #0000 98%, #000 100%), radial-gradient(circle 18px at 74% 100%, #0000 98%, #000 100%);
+}
+
+/* ---------- anteprima scaduta ---------- */
+.scaduta { display: none; }
+html.is-scaduta body > :not(.scaduta) { display: none !important; }
+html.is-scaduta .scaduta {
+  display: grid; place-content: center; justify-items: center; gap: 18px; min-height: 100svh; padding: 32px var(--gutter);
+  text-align: center; background-color: var(--carta);
+  background-image: linear-gradient(var(--linea) 1px, transparent 1px), linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+  background-size: 28px 28px; color: var(--morsi-blu);
+}
+.scaduta .mascotte { width: min(46vw, 190px); height: auto; color: var(--morsi-blu); }
+.scaduta__titolo { font: 900 clamp(1.5rem, 6vw, 2.4rem) / 1.05 var(--f-display); text-transform: uppercase; max-width: 18ch; }
+.scaduta__link { font-weight: 700; }
+.scaduta__link a { text-underline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

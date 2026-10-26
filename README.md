@@ -151,6 +151,59 @@ filigrana "DEMO · PRISMA LOCALE" anche dentro il canvas 3D.
     non invia nulla. Scadenza nel meta `anteprima-scadenza` (30 novembre 2026).
   - Lighthouse (build, Chromium headless): mobile 90 / 100 / 100, desktop 98 / 100 / 100
     (prestazioni, accessibilità, best practice; la SEO è bassa di proposito per il noindex).
+- **Morsi** (`/anteprime/morsi/`): smash burger, fried chicken e melt sandwich a Pineto e
+  Roseto degli Abruzzi, concept "No fast food, ma quality food": il menu a quadretti che
+  prende vita, acceso dal neon blu della sala. Il locale non ha un sito (vive su Instagram
+  e Deliveroo). Archivo Expanded (titoli, il più vicino al grottesco largo del menu cartaceo)
+  e Familjen Grotesk; blu `#0504FF` dal logo, inchiostro `#00408A` dal menu, arancio e
+  giallo solo come accenti.
+  - **Tre mosse firma**: il neon che si accende nell'hero (flicker in CSS, solo `opacity`);
+    lo smash pinnato (la polpetta cade, la spatola la schiaccia, si forma la crosta, poi
+    si impilano potato roll, salsa, smash, cheddar, bacon, uovo; a panino finito il
+    selettore x1–x4 aggiunge smash); il morso, cioè semicerchi tagliati su foto e bottoni,
+    e sulle card del menu un secondo morso più grande al passaggio del mouse.
+  - **Sezioni**: hero con selettore sede sempre nell'header, il nostro smash, menu cartaceo
+    in HTML con filtri a schede, piatto firma (Morsi Melt), la sala, recensioni d'esempio,
+    "Dove siamo" con mappa SVG della costa e due schede, nota "cosa va confermato", footer.
+  - **Sede**: Pineto / Roseto cambiano indirizzo, orari, telefono, link Deliveroo, schede e
+    mappa in tutto il sito; la scelta resta in `localStorage` (con `try/catch`). Il numero
+    di Roseto non ricade mai su quello di Pineto.
+  - **Contenuto guidato dai dati**: `src/anteprime/morsi/data/` (`menu.js`, `sedi.js`,
+    `recensioni.js`, `daConfermare.js`, `panino.js`) è l'unica fonte. Il plugin Vite
+    `scripts/vite-morsi.mjs` genera da lì l'HTML (menu, sedi, recensioni, JSON-LD
+    `Restaurant` con le due sedi, scena dello smash): la pagina esce completa, il JS aggiunge
+    solo comportamento. I prezzi sono quelli indicativi di Deliveroo; dove manca il prezzo
+    compare "—". Per aggiornare il menu basta modificare `data/menu.js`.
+  - **Codice** in `src/anteprime/morsi/`: `core/` (sede, movimento), `sections/` (menu,
+    nav mobile, selettore smash), `animations/` (smash, rivelazioni), `render/` (HTML dai
+    dati), `svg/` (logo e mascotte), `styles/`.
+  - **Movimento ridotto**: niente Lenis né pin, neon acceso e fermo, contenuti completi e
+    statici; il selettore x1–x4 funziona comunque. Con JavaScript disattivato il menu mostra
+    tutte le sezioni. Il JS di GSAP e Lenis si scarica solo se il movimento è attivo.
+  - **Immagini**: le foto di riferimento (piccole, da telefono) sono in `dev/morsi/foto/`;
+    `node scripts/render-morsi.mjs` (con `npm i --no-save sharp`) ricava AVIF + WebP in
+    `public/assets/img/morsi/`: versione nativa `-m`, ingrandita con grana `-l`, e
+    il duotono blu per il fondo dell'hero. Dove manca una foto (singoli panini, patatine,
+    pollo, esterni) c'è un'illustrazione a linea `segnaposto-*.svg`, con commento `FOTO:`
+    (soggetto e proporzioni); si sostituisce mettendo la foto con lo stesso nome e
+    aggiornando il riferimento. Immagine social: `node scripts/render-morsi-og.mjs`
+    (Playwright + sharp) da `dev/morsi/og.html`.
+  - **Logo e mascotte**: ricostruiti come SVG da logo e menu cartaceo (`svg/logo.svg` ha il
+    commento `LOGO: sostituire con il vettoriale ufficiale`). Il menu cartaceo e il logo sono
+    materiale del locale: non vanno riusati fuori dall'anteprima.
+  - Scadenza nel meta `anteprima-scadenza` (31 dicembre 2026), `noindex, nofollow` in meta e
+    header Netlify, filigrana "DEMO · PRISMA LOCALE" sempre visibile.
+  - Lighthouse (build di produzione, Chromium headless): mobile 95–97 / 100 / 100, desktop
+    100 / 100 / 100 (prestazioni, accessibilità, best practice; la SEO è bassa di proposito
+    per il noindex). LCP mobile 2,5–2,9 s, TBT 60 ms, CLS 0.
+  - **Da confermare con i titolari** (nella pagina compare il chip "da confermare"):
+    civico di Pineto (117 o 115), orari (sera 19:00–24:00, sabato fino all'1:00; anche il
+    pranzo?), telefono di Roseto, quale scheda Deliveroo di Roseto è attiva e se c'è delivery
+    da Pineto, prezzi (mancano quasi tutti), quantità "pz" di jalapeño pops, chicken pops e
+    fried chicken, storia (anno di apertura, titolari: `[STORIA DA RACCOGLIERE CON I
+    TITOLARI]`), logo vettoriale e font ufficiali, foto in alta risoluzione, recensioni vere
+    al posto degli esempi, la media 4,5/5 di Pineto (una sola fonte), se il Morsi Melt è
+    davvero "il più fotografato", partita IVA e ragione sociale.
 - **Destino** (`/anteprime/destino/`): concept "Dalle 17 alle 3", un unico `index.html`
   autonomo (font e foto in base64, script da CDN: Three.js r128, GSAP 3.13, Lenis 1.1.13).
   Si modifica in `dev/destino/` (`index.src.html`, `destino.js`, `assets/`) e si rigenera con

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: patatine fritte con salsa cheddar">
+<!-- FOTO: patatine cheddar e bacon, 4:5. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<path class="s ch" d="M110 190l6-60 14 4-4 56zM150 180l8-90 14 2-6 90zM190 176l2-100 14 0 2 100zM232 178l-6-92 14-4 8 96zM268 188l-12-70 14-6 18 76z"/>
+<path class="s p" d="M104 250L124 430H276L296 250Z"/>
+<path class="s n" d="M118 300H282M124 360H276"/>
+<path class="s ch" d="M104 246q20-30 46-10t46-10 46 10 46-4 8 18H104Z"/>
+<path class="s n" d="M150 232q10-10 22 0M232 226q10-10 22 0" style="stroke:#F26B21"/>
+</svg>

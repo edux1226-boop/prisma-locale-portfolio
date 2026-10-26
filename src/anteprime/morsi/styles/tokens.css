@@ -1,0 +1,47 @@
+/* ==========================================================================
+   MORSI — anteprima di Prisma Locale
+   Concept "No fast food, ma quality food": il menu a quadretti che prende vita,
+   acceso dal neon blu della sala. Blu elettrico dominante; arancio e giallo sono
+   accenti piccoli (badge, sottolineature, hover).
+
+   Font: Archivo (asse larghezza fissato a Expanded, peso 700–900) è il più vicino ai
+   titoli del menu cartaceo, grottesco nero, maiuscolo, largo. Il testo è Familjen
+   Grotesk, sans pulita e un po' ironica. Entrambi self-hosted, solo latino.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Archivo Expanded";
+  src: url("/assets/fonts/archivo-expanded.woff2") format("woff2");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("/assets/fonts/familjen-grotesk.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --morsi-blu: #0504ff;      /* campionato dal logo */
+  --inchiostro: #00408a;     /* testi e linee del menu cartaceo */
+  --carta: #ffffff;
+  --carta-calda: #fbfaf5;
+  --arancio-sedia: #f26b21;  /* sedie Tolix: solo accento, mai testo su bianco */
+  --blu-notte: #1b1f5c;      /* sedie blu scure, tavoli */
+  --tuorlo: #ffb81c;         /* tuorlo e cheddar: accento caldo */
+  --tuorlo-chiaro: #fff1c2;
+  --linea: rgb(5 4 255 / 0.13);
+  --linea-forte: rgb(5 4 255 / 0.28);
+
+  --f-display: "Archivo Expanded", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --f-testo: "Familjen Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --gutter: clamp(16px, 5vw, 64px);
+  --larghezza: 1180px;
+  --raggio: 16px;
+  --testata: 58px;
+  --ease: cubic-bezier(0.22, 0.8, 0.24, 1);
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: uno smash burger con cheddar">
+<!-- FOTO: smash burger singolo, 4:5, su carta con faccine. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<path class="s pa" d="M78 238Q78 118 200 118T322 238Z"/><path class="s n" d="M118 196Q128 152 170 142"/><path class="s ca" d="M70 252l16-8 18 6 20-8 24 6 24-6 24 6 24-6 24 6 20-6 18 8 16-2-6 14 4 14-14 6-18-6-22 6-24-6-24 6-24-6-24 6-18-6-14 6-6-14z"/>
+<path class="s ch" d="M80 262H320V274H284q0 22-12 32-12-10-12-32H168q0 14-9 22-9-8-9-22H80Z"/><path class="s pa" d="M84 322H316V338Q316 366 284 366H116Q84 366 84 338Z"/>
+<path class="s n" d="M110 346h180"/><circle class="s n" cx="332" cy="150" r="3"/><circle class="s n" cx="352" cy="176" r="3"/>
+</svg>

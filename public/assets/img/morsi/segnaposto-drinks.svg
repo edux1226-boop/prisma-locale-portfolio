@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: una bottiglia, una lattina e un boccale di birra">
+<!-- FOTO: bevande in vetro e birre, 4:5. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<path class="s p" d="M96 196V150H128V196Q144 214 144 240V400Q144 416 128 416H96Q80 416 80 400V240Q80 214 96 196Z"/><path class="s or" d="M80 270H144V360H80Z"/>
+<path class="s p" d="M176 220H252V420H176Z"/><path class="s bl" d="M176 280H252V360H176Z"/><path class="s n" d="M176 236H252M176 404H252"/>
+<path class="s ch" d="M280 240H350V404Q350 420 334 420H296Q280 420 280 404Z"/><path class="s n" d="M350 270q36 0 36 40t-36 40"/>
+<path class="s p" d="M276 240q0-28 24-20 8-18 30-8 20 0 22 28Z"/>
+</svg>

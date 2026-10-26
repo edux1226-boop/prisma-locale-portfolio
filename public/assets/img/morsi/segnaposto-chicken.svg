@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Illustrazione: un sandwich di pollo fritto">
+<!-- FOTO: chicken sandwich con pollo fritto, 4:5. Illustrazione provvisoria a linea: sostituire con la foto vera (stesso nome file, estensione .webp/.avif) e aggiornare il riferimento in data/menu.js o nella sezione. -->
+<style>.s{stroke:#00408A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.n{fill:none}.p{fill:#fff}.pa{fill:#FFD98A}.ca{fill:#1B1F5C}.ch{fill:#FFB81C}.or{fill:#F26B21}.bl{fill:#0504FF}.ve{fill:#fff}.m{fill:#8a5a2b}</style>
+<path class="s pa" d="M78 238Q78 118 200 118T322 238Z"/><path class="s n" d="M118 196Q128 152 170 142"/><path class="s ve" d="M72 252q18-14 36 0t36 0 36 0 36 0 36 0 36 0v12q-18 14-36 0t-36 0-36 0-36 0-36 0-36 0Z"/>
+<path class="s or" d="M64 290Q60 266 96 262T200 258 304 262 340 290Q344 322 310 326L96 328Q62 324 64 290Z"/>
+<path class="s n" d="M96 280l6 0M130 296l6 0M168 276l6 0M214 300l6 0M252 280l6 0M290 296l6 0M112 312l6 0M236 316l6 0"/>
+<path class="s pa" d="M84 338H316V352Q316 380 284 380H116Q84 380 84 352Z"/>
+</svg>
