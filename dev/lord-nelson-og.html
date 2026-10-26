@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Immagine social Lord Nelson (solo sviluppo)</title>
+<style>
+  @font-face { font-family: "Abril Fatface"; src: url("@PUBLIC@/assets/fonts/abril-fatface.woff2") format("woff2"); }
+  @font-face { font-family: "Oswald"; src: url("@PUBLIC@/assets/fonts/oswald.woff2") format("woff2"); font-weight: 200 700; }
+  html, body { margin: 0; }
+  .og {
+    position: relative; width: 1200px; height: 630px; overflow: hidden; color: #F4EDDE;
+    background: radial-gradient(60% 70% at 50% 100%, rgb(226 172 62 / .34), transparent 70%), #0B0A0C;
+  }
+  .targa { position: absolute; left: 90px; top: 110px; width: 290px; padding: 14px; border-radius: 14px; background: #F4EDDE; box-shadow: 0 0 0 3px #0B0A0C, 0 0 0 6px #B99A4F, 0 20px 70px rgb(226 172 62 / .35); }
+  .targa img { width: 100%; display: block; mix-blend-mode: multiply; }
+  .testo { position: absolute; left: 470px; top: 120px; right: 70px; }
+  .eyebrow { font: 500 22px/1 "Oswald", sans-serif; letter-spacing: .28em; text-transform: uppercase; color: #D9C07A; }
+  h1 { margin: 26px 0 0; font: 400 62px/1.06 "Abril Fatface", serif; }
+  h1 em { font-style: normal; color: #E2AC3E; }
+  .badge { position: absolute; left: 470px; top: 410px; font: 500 20px/1 "Oswald", sans-serif; letter-spacing: .22em; text-transform: uppercase; padding: 12px 18px; border: 1.5px dashed #B99A4F; border-radius: 6px; color: #D9C07A; }
+  .pannelli { position: absolute; left: 60px; right: 60px; bottom: 0; height: 74px; display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; }
+  .pannelli span { background: linear-gradient(180deg, #f6d27a, #E2AC3E 48%, #B56325); box-shadow: 0 0 40px rgb(226 172 62 / .5); }
+  .piano { position: absolute; left: 40px; right: 40px; bottom: 74px; height: 16px; background: linear-gradient(180deg, #946d44, #b56325 60%, #6b3a1c); }
+</style>
+</head>
+<body>
+  <div class="og">
+    <figure class="targa" style="margin:0"><img src="@PUBLIC@/assets/img/lord-nelson/logo-l.webp" alt=""></figure>
+    <div class="testo">
+      <div class="eyebrow">Birreria · Paninoteca · Scerne di Pineto</div>
+      <h1>Birra alla spina,<br>panino grande,<br><em>serata con gli amici.</em></h1>
+    </div>
+    <div class="badge">Anteprima riservata · Prisma Locale</div>
+    <div class="piano"></div>
+    <div class="pannelli"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+</body>
+</html>
