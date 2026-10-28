@@ -22,6 +22,7 @@ export default defineConfig({
         borgo: resolve(root, 'anteprime/borgo-spoltino/index.html'),
         morsi: resolve(root, 'anteprime/morsi/index.html'),
         lordNelson: resolve(root, 'anteprime/lord-nelson/index.html'),
+        retroscena: resolve(root, 'anteprime/retroscena/index.html'),
       },
     },
   },

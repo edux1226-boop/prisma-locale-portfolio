@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retroscena – Ristorante di pesce a Roseto degli Abruzzi</title>
+  <meta name="description" content="RETROSCENA – Fish Restaurant a Roseto degli Abruzzi: cucina di mare a vista, Chef Table, pranzo business e aperitivo di pesce. Prenotazione obbligatoria: +39 329 092 6979.">
+  <meta name="theme-color" content="#0a1f12">
+  <!-- Anteprima: l'header /anteprime/* in netlify.toml aggiunge già noindex. Togliere quando il sito va online sul dominio del locale. -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Dati strutturati schema.org: solo dati verificati (nome, indirizzo, telefono, Instagram, prenotazione). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "RETROSCENA – Fish Restaurant",
+    "description": "Ristorante di pesce con cucina a vista e Chef Table a Roseto degli Abruzzi.",
+    "slogan": "a new dimension of Fish restaurant",
+    "servesCuisine": "Pesce",
+    "telephone": "+393290926979",
+    "acceptsReservations": true,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Nazionale 469",
+      "postalCode": "64026",
+      "addressLocality": "Roseto degli Abruzzi",
+      "addressRegion": "TE",
+      "addressCountry": "IT"
+    },
+    "sameAs": ["https://www.instagram.com/retroscena_roseto/"]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <!-- ============ HEADER FISSO ============ -->
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <!-- LOGO: sostituire il testo con <img src="logo-retroscena.svg" alt="RETROSCENA – Fish Restaurant"> appena disponibile il file. -->
+      <!-- [DA CONFERMARE: file del logo (cornice ovale con filetti)] -->
+      <a class="logo" href="#top" aria-label="RETROSCENA – torna in cima">
+        <span class="logo-text">Retroscena</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principale">
+        <span class="sr-only">Apri il menu di navigazione</span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav id="nav-principale" class="nav" aria-label="Navigazione principale">
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#chef-table">Chef Table</a></li>
+          <li><a href="#locale">Il locale</a></li>
+          <li><a href="#eventi">Eventi</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-small header-call" href="tel:+393290926979">Chiama</a>
+    </div>
+  </header>
+
+  <main id="contenuto">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-titolo">
+      <!-- Segnaposto foto cucina a vista: sostituire con <img> reale (formato 16:9 desktop, 4:5 mobile) -->
+      <div class="hero-photo placeholder" role="img" aria-label="Segnaposto: foto reale della cucina a vista da inserire">
+        <span>Foto reale da inserire<br><small>cucina a vista</small></span>
+      </div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow">Roseto degli Abruzzi</p>
+        <h1 id="hero-titolo" class="hero-title">Retroscena</h1>
+        <p class="claim">a new dimension of Fish restaurant</p>
+        <div class="sep" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="brand-line">Sapori autentici, ingredienti genuini, emozioni da assaporare, esperienza da condividere.</p>
+        <div class="hero-actions">
+          <a class="btn" href="tel:+393290926979">Prenota</a>
+          <a class="btn btn-ghost" href="#chef-table">Scopri lo Chef Table</a>
+        </div>
+        <p class="hero-note">Prenotazione obbligatoria.</p>
+      </div>
+    </section>
+
+    <!-- ============ TRE BLOCCHI IN EVIDENZA ============ -->
+    <section class="section highlights" aria-labelledby="evidenza-titolo">
+      <div class="wrap">
+        <h2 id="evidenza-titolo" class="sr-only">In evidenza</h2>
+        <div class="grid-3">
+          <article class="card reveal">
+            <p class="label">Da martedì a venerdì</p>
+            <h3>Pranzo Business</h3>
+            <p class="price">€20</p>
+            <p>3 antipasti e 1 primo del giorno. Festivi esclusi.</p>
+            <a class="card-link" href="#menu">Vedi il menu</a>
+          </article>
+          <article class="card reveal">
+            <p class="label">Tutti i giorni · 18:00–19:30</p>
+            <h3>Aperitivo</h3>
+            <p class="price">€20</p>
+            <p>Un calice di vino o prosecco e l'aperitivo di pesce.</p>
+            <a class="card-link" href="#menu">Vedi il menu</a>
+          </article>
+          <article class="card reveal">
+            <p class="label">Si cena tutti insieme</p>
+            <h3>Chef Table</h3>
+            <p class="price price-text">Su prenotazione</p>
+            <p>Una tavolata unica davanti alla cucina. Si prenota, poi si sale in scena.</p>
+            <a class="card-link" href="#chef-table">Scopri lo Chef Table</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MENU ============ -->
+    <section class="section" id="menu" aria-labelledby="menu-titolo">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Il copione</p>
+          <h2 id="menu-titolo">Menu</h2>
+          <div class="sep" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="note-prezzi">Prezzi da confermare. <span class="da-confermare">[DA CONFERMARE: prezzi aggiornati]</span></p>
+        </header>
+
+        <div class="grid-menu">
+          <article class="card menu-card reveal">
+            <h3>Menu Pranzo Business</h3>
+            <p class="price-pill">€20</p>
+            <p class="menu-desc">Da martedì a venerdì, festivi esclusi.<br>3 antipasti e 1 primo del giorno.</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Aperitivo</h3>
+            <p class="price-pill">€20</p>
+            <p class="menu-desc">Tutti i giorni dalle 18:00 alle 19:30.<br>Calice di vino o prosecco e aperitivo di pesce.</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Antipasti crudi</h3>
+            <p class="price-pill">€18</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Antipasti freddi e caldi</h3>
+            <p class="price-pill">€32</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Percorso antipasti</h3>
+            <p class="price-pill">€40</p>
+            <p class="menu-desc">Crudi, freddi e caldi.</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Primo del giorno</h3>
+            <p class="price-pill">€12/€15</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Secondo del giorno</h3>
+            <p class="price-pill">€20/€25</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Pesce al forno o al sale</h3>
+            <p class="price-pill">€40/€60 al kg</p>
+          </article>
+
+          <article class="card menu-card reveal">
+            <h3>Padellino di crostacei</h3>
+            <p class="price-pill">€25/€30</p>
+          </article>
+        </div>
+
+        <div class="info-box reveal">
+          <h3>Pescato e allergeni</h3>
+          <p>Il pesce fresco nostrano viene acquistato al mercato ittico della costa adriatica e da commercianti. A seconda della disponibilità del pescato, alcuni prodotti possono essere sostituiti dall'abbattuto a bordo: chiedete pure al personale.</p>
+          <p>Per allergeni e intolleranze rivolgetevi al personale di servizio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHEF TABLE ============ -->
+    <section class="section section-alt" id="chef-table" aria-labelledby="chef-titolo">
+      <div class="wrap split">
+        <div class="split-text">
+          <p class="eyebrow">Sipario aperto</p>
+          <h2 id="chef-titolo">Chef Table</h2>
+          <div class="sep sep-left" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="lead">Un nuovo modo di vivere la cena: niente tavoli isolati, niente formalità.</p>
+          <p>Una tavolata unica davanti alla cucina vi accoglierà per un'esperienza gastronomica unica da condividere. Piatti sorprendenti dello chef, in un percorso di sapori di mare abbinati ai migliori vini e bollicine.</p>
+          <p>Cucina a vista, ambiente intimo ma informale. Qui lo spettacolo è nel piatto, e voi siete in prima fila.</p>
+
+          <ul class="facts">
+            <li><strong>Prenotazione obbligatoria</strong> <a href="tel:+393290926979">+39 329 092 6979</a></li>
+            <li><strong>Posti</strong> <span class="da-confermare">[DA CONFERMARE: numero di posti]</span></li>
+            <li><strong>Prezzo</strong> <span class="da-confermare">[DA CONFERMARE: prezzo a persona]</span></li>
+            <li><strong>Durata</strong> <span class="da-confermare">[DA CONFERMARE: durata della serata]</span></li>
+          </ul>
+          <a class="btn" href="tel:+393290926979">Prenota il tuo posto</a>
+        </div>
+        <div class="placeholder ratio-4-5 reveal" role="img" aria-label="Segnaposto: foto reale della tavolata dello Chef Table da inserire">
+          <span>Foto reale da inserire<br><small>tavolata davanti alla cucina</small></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IL LOCALE ============ -->
+    <section class="section" id="locale" aria-labelledby="locale-titolo">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Dietro le quinte</p>
+          <h2 id="locale-titolo">Il locale</h2>
+          <div class="sep" aria-hidden="true"><i></i><i></i><i></i></div>
+        </header>
+
+        <div class="split split-reverse">
+          <div class="split-text">
+            <p class="lead">Da noi il retroscena non si nasconde: si guarda.</p>
+            <p>La cucina è a vista, così potete vedere come nasce quello che arriva in tavola. Niente sipario chiuso: il dietro le quinte diventa parte dello spettacolo.</p>
+            <p>E se qualcuno vi dice che in cucina si sta meglio che in sala, noi un po' gli diamo ragione.</p>
+
+            <div class="info-box info-box-flat">
+              <h3>La nostra storia</h3>
+              <p class="da-confermare">[DA CONFERMARE: storia del locale]</p>
+              <h3>Lo chef</h3>
+              <p class="da-confermare">[DA CONFERMARE: nome e presentazione dello chef]</p>
+              <h3>Il team</h3>
+              <p class="da-confermare">[DA CONFERMARE: sala e cucina, presentazione del team]</p>
+            </div>
+          </div>
+          <div class="photo-pair">
+            <div class="placeholder ratio-4-3 reveal" role="img" aria-label="Segnaposto: foto reale della sala da inserire">
+              <span>Foto reale da inserire<br><small>la sala</small></span>
+            </div>
+            <div class="placeholder ratio-4-3 reveal" role="img" aria-label="Segnaposto: foto reale della cucina a vista da inserire">
+              <span>Foto reale da inserire<br><small>la cucina a vista</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVENTI ============ -->
+    <section class="section section-alt" id="eventi" aria-labelledby="eventi-titolo">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">In cartellone</p>
+          <h2 id="eventi-titolo">Eventi</h2>
+          <div class="sep" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p>Esempi di serate a tema. Date e programma si decidono di volta in volta: <span class="da-confermare">[DA CONFERMARE: calendario eventi]</span></p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card reveal">
+            <p class="label">Serata a tema</p>
+            <h3>La serata del baccalà</h3>
+            <p>Una serata dedicata a un grande protagonista della tavola di mare.</p>
+            <p class="date"><span class="da-confermare">[DA CONFERMARE: data e programma]</span></p>
+          </article>
+          <article class="card reveal">
+            <p class="label">Serata a tema</p>
+            <h3>Capodanno con Chef Table</h3>
+            <p>Il brindisi di fine anno, tutti insieme alla tavolata davanti alla cucina.</p>
+            <p class="date"><span class="da-confermare">[DA CONFERMARE: data, menu e prezzo]</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSTAGRAM ============ -->
+    <section class="section" id="instagram" aria-labelledby="ig-titolo">
+      <div class="wrap narrow center">
+        <p class="eyebrow">Fuori scena</p>
+        <h2 id="ig-titolo">Seguiteci su Instagram</h2>
+        <div class="sep" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p>Piatti, cucina e serate in programma: il dietro le quinte lo raccontiamo anche lì.</p>
+        <a class="btn" href="https://www.instagram.com/retroscena_roseto/" target="_blank" rel="noopener">@retroscena_roseto</a>
+      </div>
+    </section>
+
+    <!-- ============ CONTATTI ============ -->
+    <section class="section section-alt" id="contatti" aria-labelledby="contatti-titolo">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Come arrivare</p>
+          <h2 id="contatti-titolo">Contatti</h2>
+          <div class="sep" aria-hidden="true"><i></i><i></i><i></i></div>
+        </header>
+
+        <div class="split">
+          <div class="split-text">
+            <address class="contact-list">
+              <p><strong>Indirizzo</strong><br>Via Nazionale 469<br>64026 Roseto degli Abruzzi (TE)</p>
+              <p><strong>Telefono e prenotazioni</strong><br><a href="tel:+393290926979">+39 329 092 6979</a><br>Prenotazione obbligatoria.</p>
+              <p><strong>Instagram</strong><br><a href="https://www.instagram.com/retroscena_roseto/" target="_blank" rel="noopener">@retroscena_roseto</a></p>
+            </address>
+
+            <!-- WhatsApp opzionale, nascosto finché non si conferma che il numero lo usa.
+            [DA CONFERMARE: WhatsApp attivo?]
+            Per attivarlo, togliere i marcatori di commento:
+            <a class="btn btn-ghost" href="https://wa.me/393290926979" target="_blank" rel="noopener">Scrivi su WhatsApp</a>
+            -->
+
+            <h3>Orari</h3>
+            <ul class="facts">
+              <li><strong>Pranzo Business</strong> martedì–venerdì, festivi esclusi</li>
+              <li><strong>Aperitivo</strong> tutti i giorni, 18:00–19:30</li>
+            </ul>
+            <p class="da-confermare">[DA CONFERMARE: orari completi di apertura, cena e giorno di chiusura]</p>
+
+            <h3>Parcheggio</h3>
+            <p class="da-confermare">[DA CONFERMARE: parcheggio disponibile e indicazioni]</p>
+          </div>
+
+          <div class="map-wrap reveal">
+            <iframe
+              title="Mappa: RETROSCENA, Via Nazionale 469, Roseto degli Abruzzi"
+              src="https://www.google.com/maps?q=Via+Nazionale+469,+64026+Roseto+degli+Abruzzi+TE&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="logo-text">Retroscena</p>
+      <p class="footer-claim">Fish Restaurant</p>
+      <p>Via Nazionale 469, 64026 Roseto degli Abruzzi (TE)</p>
+      <p><a href="tel:+393290926979">+39 329 092 6979</a> · <a href="https://www.instagram.com/retroscena_roseto/" target="_blank" rel="noopener">@retroscena_roseto</a></p>
+      <p class="footer-allergeni">Allergeni: chiedere al personale.</p>
+      <p class="footer-dialetto">Statte bbone, e ce vedéme a tavola!</p>
+      <!-- [DA CONFERMARE: frase dialettale da far rivedere a un abruzzese doc] -->
+    </div>
+
+    <!-- Note interne: visibili solo aggiungendo ?note=1 all'indirizzo della pagina. Non fanno parte del sito pubblico. -->
+    <aside id="note-interne" class="note-interne" hidden aria-label="Note interne">
+      <div class="wrap">
+        <h2>Note interne (non pubblicare)</h2>
+        <ul>
+          <li class="da-confermare">[DA CONFERMARE: sushi in menu?]</li>
+          <li>Esiste un omonimo "Retroscena" a Porto San Giorgio (Marche): non c'entra, non attribuire al locale premi o stelle Michelin.</li>
+          <li>Cercare nel codice la stringa "DA CONFERMARE" per trovare tutti i segnaposto.</li>
+        </ul>
+      </div>
+    </aside>
+  </footer>
+
+  <!-- Barra "Chiama" fissa, solo mobile -->
+  <a class="call-bar" href="tel:+393290926979" aria-label="Chiama per prenotare: +39 329 092 6979">
+    <span>Chiama e prenota</span>
+  </a>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
