@@ -58,6 +58,7 @@
         <ul>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#chef-table">Chef Table</a></li>
+          <li><a href="#chef">Lo chef</a></li>
           <li><a href="#locale">Il locale</a></li>
           <li><a href="#eventi">Eventi</a></li>
           <li><a href="#contatti">Contatti</a></li>
@@ -76,6 +77,8 @@
       <div class="hero-photo placeholder" role="img" aria-label="Segnaposto: foto reale della cucina a vista da inserire">
         <span>Foto reale da inserire<br><small>cucina a vista</small></span>
       </div>
+      <!-- Sipario 3D: due pannelli che si aprono all'ingresso (solo CSS, disattivato con prefers-reduced-motion) -->
+      <div class="curtain" aria-hidden="true"><div class="curtain-panel curtain-l"></div><div class="curtain-panel curtain-r"></div></div>
       <div class="wrap hero-inner">
         <p class="eyebrow">Roseto degli Abruzzi</p>
         <h1 id="hero-titolo" class="hero-title">Retroscena</h1>
@@ -95,21 +98,21 @@
       <div class="wrap">
         <h2 id="evidenza-titolo" class="sr-only">In evidenza</h2>
         <div class="grid-3">
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <p class="label">Da martedì a venerdì</p>
             <h3>Pranzo Business</h3>
             <p class="price">€20</p>
             <p>3 antipasti e 1 primo del giorno. Festivi esclusi.</p>
             <a class="card-link" href="#menu">Vedi il menu</a>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <p class="label">Tutti i giorni · 18:00–19:30</p>
             <h3>Aperitivo</h3>
             <p class="price">€20</p>
             <p>Un calice di vino o prosecco e l'aperitivo di pesce.</p>
             <a class="card-link" href="#menu">Vedi il menu</a>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <p class="label">Si cena tutti insieme</p>
             <h3>Chef Table</h3>
             <p class="price price-text">Su prenotazione</p>
@@ -131,50 +134,50 @@
         </header>
 
         <div class="grid-menu">
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Menu Pranzo Business</h3>
             <p class="price-pill">€20</p>
             <p class="menu-desc">Da martedì a venerdì, festivi esclusi.<br>3 antipasti e 1 primo del giorno.</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Aperitivo</h3>
             <p class="price-pill">€20</p>
             <p class="menu-desc">Tutti i giorni dalle 18:00 alle 19:30.<br>Calice di vino o prosecco e aperitivo di pesce.</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Antipasti crudi</h3>
             <p class="price-pill">€18</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Antipasti freddi e caldi</h3>
             <p class="price-pill">€32</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Percorso antipasti</h3>
             <p class="price-pill">€40</p>
             <p class="menu-desc">Crudi, freddi e caldi.</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Primo del giorno</h3>
             <p class="price-pill">€12/€15</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Secondo del giorno</h3>
             <p class="price-pill">€20/€25</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Pesce al forno o al sale</h3>
             <p class="price-pill">€40/€60 al kg</p>
           </article>
 
-          <article class="card menu-card reveal">
+          <article class="card menu-card tilt reveal">
             <h3>Padellino di crostacei</h3>
             <p class="price-pill">€25/€30</p>
           </article>
@@ -207,8 +210,33 @@
           </ul>
           <a class="btn" href="tel:+393290926979">Prenota il tuo posto</a>
         </div>
-        <div class="placeholder ratio-4-5 reveal" role="img" aria-label="Segnaposto: foto reale della tavolata dello Chef Table da inserire">
+        <div class="placeholder ratio-4-5 tilt reveal" role="img" aria-label="Segnaposto: foto reale della tavolata dello Chef Table da inserire">
           <span>Foto reale da inserire<br><small>tavolata davanti alla cucina</small></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LO CHEF ============ -->
+    <section class="section" id="chef" aria-labelledby="chef-nome-titolo">
+      <div class="wrap split">
+        <!-- FOTO: sostituire il riquadro con <img src="foto/chef-jakun.jpg" alt="Lo chef Jakun in cucina" width="800" height="1000">
+             usando solo foto fornite dal locale o con il suo permesso scritto (le foto di Instagram sono del locale e dei fotografi, non si copiano). -->
+        <div class="placeholder ratio-4-5 tilt reveal" role="img" aria-label="Segnaposto: foto reale dello chef Jakun da inserire">
+          <span>Foto reale da inserire<br><small>lo chef Jakun</small></span>
+        </div>
+        <div class="split-text">
+          <p class="eyebrow">Il protagonista</p>
+          <h2 id="chef-nome-titolo">Lo chef Jakun</h2>
+          <div class="sep sep-left" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="lead">A guidare la cucina a vista c'è lo chef Jakun.</p>
+          <p>Davanti alla tavolata dello Chef Table è lui a portare i piatti e a raccontarli, a pochi passi da voi.</p>
+          <ul class="facts">
+            <li><strong>Nome</strong> Jakun <span class="da-confermare">[DA CONFERMARE: grafia esatta del nome]</span></li>
+            <li><strong>Percorso</strong> <span class="da-confermare">[DA CONFERMARE: formazione ed esperienze]</span></li>
+            <li><strong>Cucina</strong> <span class="da-confermare">[DA CONFERMARE: filosofia di cucina, in sue parole]</span></li>
+            <li><strong>Piatto firma</strong> <span class="da-confermare">[DA CONFERMARE: piatto che lo rappresenta]</span></li>
+          </ul>
+          <a class="btn" href="tel:+393290926979">Prenota allo Chef Table</a>
         </div>
       </div>
     </section>
@@ -260,13 +288,13 @@
         </header>
 
         <div class="grid-2">
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <p class="label">Serata a tema</p>
             <h3>La serata del baccalà</h3>
             <p>Una serata dedicata a un grande protagonista della tavola di mare.</p>
             <p class="date"><span class="da-confermare">[DA CONFERMARE: data e programma]</span></p>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <p class="label">Serata a tema</p>
             <h3>Capodanno con Chef Table</h3>
             <p>Il brindisi di fine anno, tutti insieme alla tavolata davanti alla cucina.</p>
@@ -352,6 +380,8 @@
         <h2>Note interne (non pubblicare)</h2>
         <ul>
           <li class="da-confermare">[DA CONFERMARE: sushi in menu?]</li>
+          <li class="da-confermare">[DA CONFERMARE: grafia del nome dello chef: in rete compare Jakun, Jiacun e Giuacun]</li>
+          <li>Foto: non usare immagini scaricate da Instagram senza permesso del locale; chiedere gli originali.</li>
           <li>Esiste un omonimo "Retroscena" a Porto San Giorgio (Marche): non c'entra, non attribuire al locale premi o stelle Michelin.</li>
           <li>Cercare nel codice la stringa "DA CONFERMARE" per trovare tutti i segnaposto.</li>
         </ul>
