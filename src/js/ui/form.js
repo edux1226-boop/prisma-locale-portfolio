@@ -8,6 +8,11 @@ export function initForm() {
   if (!form) return;
   const status = form.querySelector('[data-form-status]');
 
+  // Momento in cui la pagina è stata aperta: lo script sul server scarta gli invii
+  // arrivati troppo in fretta per essere di una persona.
+  const aperto = form.elements.aperto;
+  if (aperto) aperto.value = String(Date.now());
+
   // La validazione resta quella nativa (messaggi già tradotti dal browser):
   // qui si aggiunge solo aria-invalid per i lettori di schermo.
   form.addEventListener('invalid', (event) => event.target.setAttribute('aria-invalid', 'true'), true);
@@ -39,14 +44,25 @@ export function initForm() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
       }
       form.reset();
+      if (aperto) aperto.value = String(Date.now());
       status.classList.add('is-ok');
       status.textContent = 'Grazie! Il messaggio è arrivato: ti rispondiamo presto, di persona.';
     } catch (error) {
       console.error('Invio modulo non riuscito:', error);
       status.classList.add('is-error');
-      status.innerHTML =
-        'Non siamo riusciti a inviarlo. Scrivici su <a href="https://wa.me/393758350800">WhatsApp</a> ' +
-        'o a <a href="mailto:info@prismalocale.it">info@prismalocale.it</a>, facciamo prima.';
+      const link = (href, testo) => {
+        const a = document.createElement('a');
+        a.href = href;
+        a.textContent = testo;
+        return a;
+      };
+      status.replaceChildren(
+        'Non siamo riusciti a inviarlo. Scrivici su ',
+        link('https://wa.me/393758350800', 'WhatsApp'),
+        ' o a ',
+        link('mailto:info@prismalocale.it', 'info@prismalocale.it'),
+        ', facciamo prima.',
+      );
     } finally {
       form.classList.remove('is-sending');
     }

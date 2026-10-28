@@ -12,7 +12,15 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000"
+    Cross-Origin-Opener-Policy = "same-origin"
+    # Script solo dal sito stesso, più i pochi script inline ammessi per hash (si ricavano con
+    # `node scripts/check-csp.mjs --stampa`; `npm run build` fallisce se non tornano).
+    # connect-src: il modulo contatti scrive su Google Apps Script (che risponde con un
+    # redirect a script.googleusercontent.com). style-src ha 'unsafe-inline' perché GSAP e
+    # le pagine usano attributi style; gli script restano blindati.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-0wtmRqkd2WzFiWZ6H65lCm6EErTHpDMAafsEbF4MIRo=' 'sha256-CebfJtHJIryOL0c0SjpZlc8v2dIuiZiz0cz+ZVSsYqY=' 'sha256-TulqEh1BSaNny31PsDoCCEvZ1f17ntTB+FYYhiuubR4=' 'sha256-WRiTwWWhNusWvPHq464qkthda8R+fxIo7OVWP4m217M=' 'sha256-ta6PsVVzlhJA/KyAR0GMrFBUs72Q5EpSwT9uZKC0Fto='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; media-src 'self'; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
 
 # JS e CSS hanno l'hash nel nome, font e immagini non cambiano: cache lunga.
 [[headers]]

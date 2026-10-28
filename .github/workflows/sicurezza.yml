@@ -1,0 +1,26 @@
+name: Sicurezza
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  controlli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Fallisce se una dipendenza ha una vulnerabilità alta o critica.
+      - run: npm audit --audit-level=high
+      # Build + controllo che la CSP di netlify.toml sia coerente con le pagine.
+      - run: npm run build
