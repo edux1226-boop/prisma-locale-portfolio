@@ -703,16 +703,16 @@
 
         <div class="field">
           <label for="f-nome">Come ti chiami <span aria-hidden="true">*</span></label>
-          <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" maxlength="100" required>
         </div>
         <div class="field">
           <label for="f-attivita">La tua attività</label>
-          <input id="f-attivita" name="attivita" type="text" autocomplete="organization" aria-describedby="f-attivita-hint">
+          <input id="f-attivita" name="attivita" type="text" autocomplete="organization" maxlength="100" aria-describedby="f-attivita-hint">
           <p class="field__hint" id="f-attivita-hint">Pizzeria, palestra, B&amp;B, salone…</p>
         </div>
         <div class="field">
           <label for="f-contatto">Email o telefono <span aria-hidden="true">*</span></label>
-          <input id="f-contatto" name="contatto" type="text" inputmode="email" autocomplete="email" required aria-describedby="f-contatto-hint">
+          <input id="f-contatto" name="contatto" type="text" inputmode="email" autocomplete="email" maxlength="120" required aria-describedby="f-contatto-hint">
           <p class="field__hint" id="f-contatto-hint">Dove preferisci che ti rispondiamo.</p>
         </div>
 
@@ -727,7 +727,7 @@
 
         <div class="field">
           <label for="f-messaggio">Raccontaci qualcosa</label>
-          <textarea id="f-messaggio" name="messaggio" rows="4"></textarea>
+          <textarea id="f-messaggio" name="messaggio" rows="4" maxlength="2000"></textarea>
         </div>
 
         <div class="field field--check">

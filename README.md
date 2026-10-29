@@ -271,3 +271,15 @@ Il primo caso studio vero si aggiunge quando il primo lavoro commissionato è ch
 
 © 2026 Prisma Locale. Codice pubblico a scopo di trasparenza; grafica, testi e identità
 visiva non sono riutilizzabili senza autorizzazione.
+
+## Sicurezza
+
+- **Header**: `netlify.toml` imposta `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS e COOP.
+  La **Content-Security-Policy** per pagina la genera `scripts/vite-csp.mjs` in `dist/_headers` a ogni build,
+  con gli hash SHA-256 degli script inline. Se una pagina carica una nuova risorsa esterna, aggiungi il dominio
+  in `ECCEZIONI` di quel file (altrimenti il browser la blocca).
+- **Modulo contatti**: l'endpoint Apps Script è pubblico, quindi `scripts/google-sheets-modulo.gs` ricontrolla i campi
+  (lunghezze, formato del contatto, servizi ammessi, consenso privacy), neutralizza le formule di Fogli e limita a
+  20 invii/ora. Dopo ogni modifica va ripubblicato come nuova versione della distribuzione Web app.
+- **Anteprima Destino** (`public/anteprime/destino/`): carica three.js, GSAP e Lenis da CDN senza SRI.
+  Retroscena carica Google Fonts e una mappa Google. Entrambe sono `noindex` e non linkate dal sito principale.

@@ -1,4 +1,6 @@
 # Sito Vite multipagina: Netlify esegue la build e pubblica dist/.
+# La Content-Security-Policy per pagina non è qui: la genera scripts/vite-csp.mjs in dist/_headers
+# (contiene gli hash degli script inline, che cambiano se cambia lo script).
 [build]
   command = "npm run build"
   publish = "dist"
@@ -12,6 +14,8 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000"
+    Cross-Origin-Opener-Policy = "same-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
 
 # JS e CSS hanno l'hash nel nome, font e immagini non cambiano: cache lunga.

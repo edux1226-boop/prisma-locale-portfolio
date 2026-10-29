@@ -2,12 +2,13 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import morsi from './scripts/vite-morsi.mjs';
 import lordNelson from './scripts/vite-lordnelson.mjs';
+import csp from './scripts/vite-csp.mjs';
 
 const root = import.meta.dirname;
 
 export default defineConfig({
   appType: 'mpa',
-  plugins: [morsi(), lordNelson()],
+  plugins: [morsi(), lordNelson(), csp()],
   build: {
     target: 'es2022',
     // three.js (~146 kB gzip) vive in un chunk a parte, caricato solo su desktop.
