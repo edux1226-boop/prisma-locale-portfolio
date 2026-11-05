@@ -1,0 +1,25 @@
+{
+  "name": "grill-burger-sito",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/csp-hash.mjs",
+    "preview": "node scripts/serve-dist.mjs",
+    "typecheck": "astro check",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "security:scan": "npm audit --omit=dev && node scripts/scan-dist.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.5",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/playfair-display": "5.3.0",
+    "typescript": "6.0.3"
+  }
+}
