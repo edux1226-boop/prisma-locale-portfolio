@@ -7,6 +7,7 @@ import { Image } from 'astro:assets';
 import { site, hours, claims } from '../data/site';
 import { featured, imageOf, menu } from '../data/menu';
 import locale from '../assets/locale.jpg';
+import { u } from '../data/url';
 const words = 'Il pane preparato ogni giorno. La carne macinata fresca. Le salse fatte in casa.'.split(' ');
 const ribs = imageOf('ribs-bbq');
 ---
@@ -23,7 +24,7 @@ const ribs = imageOf('ribs-bbq');
   <section id="specialita" aria-labelledby="h-spec" class="spec">
     <div class="wrap sec-head">
       <h2 id="h-spec">Le specialità</h2>
-      <a class="btn" href="/menu/">Tutto il menu</a>
+      <a class="btn" href={u('/menu/')}>Tutto il menu</a>
     </div>
     <div class="rail" tabindex="0" aria-label="Specialità, scorri in orizzontale">
       {featured.map((i, n) => <DishCard item={i} variant="rail" eager={n < 2} />)}
@@ -39,7 +40,7 @@ const ribs = imageOf('ribs-bbq');
           {claims.map((c) => <li>{c}</li>)}
         </ul>
         <p class="note">Dichiarazioni del locale. <Todo>provenienza e processi</Todo></p>
-        <div class="btn-row"><a class="btn primary" href="/menu/#braceria">Vedi la braceria</a></div>
+        <div class="btn-row"><a class="btn primary" href={u('/menu/#braceria')}>Vedi la braceria</a></div>
       </div>
       {ribs && <figure class="photo wipe"><Image src={ribs} alt="Costine di maiale glassate alla barbecue con patatine" widths={[480, 800]} sizes="(min-width:860px) 50vw, 100vw" /></figure>}
     </div>
@@ -49,7 +50,7 @@ const ribs = imageOf('ribs-bbq');
     <div class="wrap">
       <h2 id="h-cats">Cosa si mangia</h2>
       <ul class="cat-links">
-        {menu.categories.map((c) => <li><a href={`/menu/#${c.id}`}>{c.title}<span>{c.items.length}</span></a></li>)}
+        {menu.categories.map((c) => <li><a href={u(`/menu/#${c.id}`)}>{c.title}<span>{c.items.length}</span></a></li>)}
       </ul>
     </div>
   </section>

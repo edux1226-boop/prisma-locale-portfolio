@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { site, hours } from '../data/site';
+import { u } from '../data/url';
 import { imageOf } from '../data/menu';
 const photo = imageOf('pulled-prok')!;
 // Punti da cui "cola" il succo, in coordinate della foto (viewBox 300×300)
@@ -39,7 +40,7 @@ const drips = [
       <h1 id="hero-title"><span class="hero-in">Hamburger</span><span class="hero-in l2">e carni <em>alla griglia</em></span></h1>
       <p class="lead hero-in l3">Con ispirazione sudamericana. Ordina dal telefono in un minuto.</p>
       <div class="btn-row hero-in l3">
-        <a class="btn primary" href="/menu/">Ordina ora</a>
+        <a class="btn primary" href={u('/menu/')}>Ordina ora</a>
         <a class="btn" href={`tel:${site.phoneTel}`}>Chiama</a>
       </div>
     </div>

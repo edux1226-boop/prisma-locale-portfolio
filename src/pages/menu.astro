@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import DishCard from '../components/DishCard.astro';
+import { u } from '../data/url';
 import { menu } from '../data/menu';
 ---
 <Base title="Menu e ordina" description="Il menu completo di Grill Burger con foto: hamburger di carne, pollo e vegan, braceria, hot dog, insalate, dessert e bevande. Ordina dal telefono e personalizza il tuo piatto." path="/menu/">
@@ -21,6 +22,6 @@ import { menu } from '../data/menu';
         </div>
       </section>
     ))}
-    <p class="note mt-l">Allergeni: segnali nel carrello o consulta <a href="/allergeni/">la pagina dedicata</a>. Prezzi dal menu ufficiale, soggetti a variazioni.</p>
+    <p class="note mt-l">Allergeni: segnali nel carrello o consulta <a href={u('/allergeni/')}>la pagina dedicata</a>. Prezzi dal menu ufficiale, soggetti a variazioni.</p>
   </div>
 </Base>

@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import { u } from '../data/url';
 const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'Soia', 'Sesamo', 'Sedano', 'Senape', 'Pesce', 'Crostacei', 'Molluschi', 'Solfiti', 'Lupini'];
 ---
 <dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
@@ -41,7 +42,7 @@ const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'S
     <form method="dialog"><button class="x" aria-label="Chiudi carrello">×</button></form>
   </header>
   <div class="drawer-scroll">
-    <p class="empty" data-empty>Il carrello è vuoto. Scegli qualcosa dal <a href="/menu/">menu</a>.</p>
+    <p class="empty" data-empty>Il carrello è vuoto. Scegli qualcosa dal <a href={u('/menu/')}>menu</a>.</p>
     <ul class="lines" data-lines></ul>
     <form class="checkout" data-checkout novalidate>
       <div class="sec">

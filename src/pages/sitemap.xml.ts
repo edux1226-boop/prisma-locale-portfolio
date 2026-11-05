@@ -1,4 +1,6 @@
-const paths = ['/', '/menu/', '/allergeni/', '/privacy/'];
+import { u } from '../data/url';
+
+const paths = ['/', '/menu/', '/allergeni/', '/privacy/'].map(u);
 
 export function GET({ site }: { site?: URL }) {
   const base = site ?? new URL('https://www.grillburger.it');

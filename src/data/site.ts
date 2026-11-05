@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { u } from './url';
 
 /** Segnaposto per ogni dato non confermato dal proprietario (vedi docs/DATI_DA_CONFERMARE.md). */
 export const TODO = 'TODO_CONFERMARE';
@@ -52,6 +53,6 @@ export const claims = [
 ] as const;
 
 export const nav = [
-  { href: '/menu/', label: 'Menu' },
-  { href: '/#dove', label: 'Dove siamo' },
+  { href: u('/menu/'), label: 'Menu' },
+  { href: u('/#dove'), label: 'Dove siamo' },
 ] as const;

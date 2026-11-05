@@ -39,7 +39,7 @@ function validLine(l: any): Line | null {
   const qty = Math.round(Number(l.qty));
   if (!(qty >= 1)) return null;
   return {
-    key: clampStr(l.key, 400), id: clampStr(l.id, 12), name: clampStr(l.name, 80), img: /^\/_astro\/[\w.\-]+$/.test(l.img) ? l.img : '',
+    key: clampStr(l.key, 400), id: clampStr(l.id, 12), name: clampStr(l.name, 80), img: typeof l.img === 'string' && okImg(l.img) ? l.img : '',
     unit: l.unit, qty: Math.min(qty, 30), choices: strArr(l.choices), removed: strArr(l.removed), extras: strArr(l.extras),
     allergens: strArr(l.allergens, 14), note: clampStr(l.note, 200),
   };
@@ -66,7 +66,7 @@ const count = () => lines.reduce((s, l) => s + l.qty, 0);
 let dishes: Map<string, Dish> | null = null;
 let pending: Promise<Map<string, Dish>> | null = null;
 function loadMenu() {
-  pending ??= fetch('/menu.json').then((r) => r.json() as Promise<Dish[]>).then((a) => (dishes = new Map(a.map((d) => [d.id, d]))));
+  pending ??= fetch(import.meta.env.BASE_URL.replace(/\/$/, '') + '/menu.json').then((r) => r.json() as Promise<Dish[]>).then((a) => (dishes = new Map(a.map((d) => [d.id, d]))));
   return pending;
 }
 addEventListener('pointerdown', () => void loadMenu(), { once: true, passive: true });
@@ -137,7 +137,8 @@ function openSheet(id: string, card: Element | null, edit?: Line) {
   if (!sheet) return;
   void loadMenu().then((m) => {
     const d = m.get(id); if (!d) return;
-    const imgSrc = edit?.img ?? card?.querySelector('img')?.currentSrc ?? card?.querySelector('img')?.src ?? '';
+    const ci = card?.querySelector('img');
+    const imgSrc = edit?.img ?? (ci?.currentSrc || ci?.src || '');
     cur = { d, img: imgSrc, srcEl: card?.querySelector('img') ?? card, qty: edit?.qty ?? 1, edit };
     $('#sheet-title')!.textContent = d.name;
     $('.sheet-desc', sheet)!.textContent = d.desc;
@@ -320,7 +321,7 @@ document.addEventListener('click', (e) => {
     const im = card.querySelector('img');
     void loadMenu().then((m) => {
       const d = m.get(id); if (!d) return;
-      const src = im?.currentSrc ?? '';
+      const src = im?.currentSrc || im?.src || '';
       addLine({ id, name: d.name, img: imgPath(src), unit: d.price, qty: 1, choices: [], removed: [], extras: [], allergens: [], note: '' }, im ?? card);
     });
     return;

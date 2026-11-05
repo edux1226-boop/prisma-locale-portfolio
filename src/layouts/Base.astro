@@ -3,6 +3,7 @@ import '../styles/global.css';
 import '../styles/site.css';
 import { Image } from 'astro:assets';
 import { site, nav, hours } from '../data/site';
+import { u } from '../data/url';
 import CartUI from '../components/CartUI.astro';
 import logo from '../assets/logo.png';
 import playfair from '@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url';
@@ -10,7 +11,7 @@ import inter from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 
 interface Props { title: string; description: string; path?: string; schema?: boolean; noindex?: boolean; cart?: boolean }
 const { title, description, path = '/', schema = false, noindex = false, cart = true } = Astro.props;
-const canonical = new URL(path, Astro.site ?? 'https://www.grillburger.it').href;
+const canonical = new URL(u(path), Astro.site ?? 'https://www.grillburger.it').href;
 const fullTitle = path === '/' ? title : `${title} | ${site.name}`;
 
 const jsonLd = {
@@ -22,7 +23,7 @@ const jsonLd = {
   email: site.email,
   address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.postalCode, addressLocality: site.city, addressRegion: site.province, addressCountry: 'IT' },
   servesCuisine: ['Hamburger', 'Carne alla griglia', 'Sudamericana'],
-  hasMenu: new URL('/menu/', canonical).href,
+  hasMenu: new URL(u('/menu/'), canonical).href,
   sameAs: [site.facebook, site.instagram, site.tripadvisor],
   // openingHoursSpecification e acceptsReservations: omessi finche' non confermati (docs/DATI_DA_CONFERMARE.md)
 };
@@ -46,7 +47,7 @@ const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta name="twitter:card" content="summary" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
   <link rel="preload" href={playfair} as="font" type="font/woff2" crossorigin />
   <link rel="preload" href={inter} as="font" type="font/woff2" crossorigin />
   {schema && <script type="application/ld+json" set:html={ld} />}
@@ -55,12 +56,12 @@ const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   <a class="skip" href="#contenuto">Vai al contenuto</a>
   <header class="site-head">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Grill Burger, home">
+      <a class="brand" href={u('/')} aria-label="Grill Burger, home">
         <Image src={logo} alt="" width={64} height={64} loading="eager" />
         <span>Grill Burger</span>
       </a>
       <nav class="nav" aria-label="Principale">
-        {nav.map((n) => <a href={n.href} aria-current={Astro.url.pathname === n.href ? 'page' : undefined}>{n.label}</a>)}
+        {nav.map((n) => <a href={n.href} aria-current={Astro.url.pathname === n.href.replace(/#.*/, '') ? 'page' : undefined}>{n.label}</a>)}
       </nav>
       <div class="head-end">
         <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Riduci animazioni</button>
@@ -85,14 +86,14 @@ const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       </div>
       <div>
         <p class="fh">Info</p>
-        <p><a href="/privacy/">Privacy e cookie</a><br /><a href="/allergeni/">Allergeni</a><br />
+        <p><a href={u('/privacy/')}>Privacy e cookie</a><br /><a href={u('/allergeni/')}>Allergeni</a><br />
           <a href={site.instagram} rel="noopener noreferrer" target="_blank">Instagram ↗</a><br />
           <a href={site.facebook} rel="noopener noreferrer" target="_blank">Facebook ↗</a></p>
       </div>
     </div>
   </footer>
   <nav class="action-bar" aria-label="Azioni rapide">
-    <a href="/menu/">Menu</a>
+    <a href={u('/menu/')}>Menu</a>
     <a href={`tel:${site.phoneTel}`}>Chiama</a>
     {cart ? <button class="cart-btn" type="button" data-cart-open aria-label="Apri il carrello">Carrello <span class="n" data-cart-count hidden>0</span></button> : <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni</a>}
   </nav>
