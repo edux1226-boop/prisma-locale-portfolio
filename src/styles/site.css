@@ -158,7 +158,7 @@ section{padding-block:clamp(64px,11vw,130px)}
 .chips ul{display:flex;gap:4px;list-style:none;margin:0;padding:0 var(--gut)}
 .chips a{scroll-snap-align:center;display:inline-flex;align-items:center;min-height:50px;padding:0 14px;color:var(--muted);text-decoration:none;font:500 .74rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;border-bottom:2px solid transparent;transition:color .2s}
 .chips a.on{color:#fff;border-color:#fff}
-.menu-cat{scroll-margin-top:120px;padding-block:40px 6px;content-visibility:auto;contain-intrinsic-size:auto 900px}
+.menu-cat{scroll-margin-top:120px;padding-block:40px 6px}
 .menu-cat>header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
 .menu-cat h2{font-size:clamp(1.6rem,4.5vw,2.2rem);margin:0}
 

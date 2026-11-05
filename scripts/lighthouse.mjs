@@ -7,7 +7,7 @@ const base = process.env.BASE_URL ?? 'http://127.0.0.1:4321';
 const min = { performance: 0.95, accessibility: 1, 'best-practices': 1, seo: 1 };
 mkdirSync('lighthouse-reports', { recursive: true });
 let failed = false;
-for (const path of ['/', '/menu/', '/dove-siamo/']) {
+for (const path of ['/', '/menu/', '/allergeni/']) {
   for (const preset of ['mobile', 'desktop']) {
     const out = `lighthouse-reports/${path.replaceAll('/', '_') || 'home'}-${preset}.json`;
     const args = ['--yes', 'lighthouse@12', base + path, '--only-categories=performance,accessibility,best-practices,seo',
