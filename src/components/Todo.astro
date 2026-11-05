@@ -1,0 +1,5 @@
+---
+// Segnaposto dati da confermare: visibile solo con PUBLIC_SHOW_TODO=1 (anteprima interna). In produzione non appare.
+const show = import.meta.env.PUBLIC_SHOW_TODO === '1';
+---
+{show && <span class="todo">TODO_CONFERMARE: <slot /></span>}

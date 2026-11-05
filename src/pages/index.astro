@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import DishCard from '../components/DishCard.astro';
+import Todo from '../components/Todo.astro';
+import { Image } from 'astro:assets';
+import { site, hours, claims } from '../data/site';
+import { featured, imageOf, menu } from '../data/menu';
+import locale from '../assets/locale.jpg';
+const words = 'Il pane preparato ogni giorno. La carne macinata fresca. Le salse fatte in casa.'.split(' ');
+const ribs = imageOf('ribs-bbq');
+---
+<Base title="Grill Burger | Hamburger e carni alla griglia a Roseto degli Abruzzi" description="Braceria, steakhouse e hamburgeria in Via Nazionale 531, Roseto degli Abruzzi. Hamburger e carni alla griglia con ispirazione sudamericana. Ordina dal telefono." schema>
+  <Hero />
+
+  <section class="statement" aria-label="Il nostro modo di lavorare">
+    <div class="wrap">
+      <p>{words.map((w) => <><span class="w">{w}</span>{' '}</>)}</p>
+      <p class="note statement-note">Dichiarazioni del locale, dal sito ufficiale.</p>
+    </div>
+  </section>
+
+  <section id="specialita" aria-labelledby="h-spec" class="spec">
+    <div class="wrap sec-head">
+      <h2 id="h-spec">Le specialità</h2>
+      <a class="btn" href="/menu/">Tutto il menu</a>
+    </div>
+    <div class="rail" tabindex="0" aria-label="Specialità, scorri in orizzontale">
+      {featured.map((i, n) => <DishCard item={i} variant="rail" eager={n < 2} />)}
+    </div>
+  </section>
+
+  <section aria-labelledby="h-brace">
+    <div class="wrap split">
+      <div data-reveal>
+        <p class="label">La braceria</p>
+        <h2 id="h-brace">Griglia e ispirazione sudamericana</h2>
+        <ul class="facts">
+          {claims.map((c) => <li>{c}</li>)}
+        </ul>
+        <p class="note">Dichiarazioni del locale. <Todo>provenienza e processi</Todo></p>
+        <div class="btn-row"><a class="btn primary" href="/menu/#braceria">Vedi la braceria</a></div>
+      </div>
+      {ribs && <figure class="photo wipe"><Image src={ribs} alt="Costine di maiale glassate alla barbecue con patatine" widths={[480, 800]} sizes="(min-width:860px) 50vw, 100vw" /></figure>}
+    </div>
+  </section>
+
+  <section class="cats" aria-labelledby="h-cats">
+    <div class="wrap">
+      <h2 id="h-cats">Cosa si mangia</h2>
+      <ul class="cat-links">
+        {menu.categories.map((c) => <li><a href={`/menu/#${c.id}`}>{c.title}<span>{c.items.length}</span></a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section id="dove" class="paper" aria-labelledby="h-dove">
+    <div class="wrap split">
+      <div data-reveal>
+        <p class="label">Dove siamo</p>
+        <h2 id="h-dove">Via Nazionale, Roseto</h2>
+        <address class="lead">{site.street}<br />{site.postalCode} {site.city} ({site.province})</address>
+        <dl class="hours">
+          <dt>Orari</dt><dd>Aperto la sera, {hours.opens}–{hours.closes}</dd>
+          <dt>Telefono</dt><dd><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></dd>
+          <dt>WhatsApp</dt><dd><a href={site.whatsapp} rel="noopener noreferrer">Scrivici</a></dd>
+          <dt>E-mail</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </dl>
+        <p class="note"><Todo>giorni di chiusura, ultimo ordine, parcheggio</Todo></p>
+        <div class="btn-row"><a class="btn primary" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni</a><a class="btn" href={`tel:${site.phoneTel}`}>Chiama</a></div>
+      </div>
+      <div class="stack-photo">
+        <figure class="photo wipe"><Image src={locale} alt="Il locale Grill Burger di sera, tavoli apparecchiati sotto il portico" widths={[480, 800]} sizes="(min-width:860px) 50vw, 100vw" /></figure>
+        <div class="map" data-reveal>
+          <div>
+            <p>La mappa è di Google e usa cookie di terze parti. Si carica solo se la richiedi.</p>
+            <button class="btn" type="button" data-load-map data-src="https://www.google.com/maps?q=Via+Nazionale+531+Roseto+degli+Abruzzi&output=embed">Carica mappa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

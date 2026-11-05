@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import { imageOf, eur, isSimple, type Item } from '../data/menu';
+interface Props { item: Item; eager?: boolean; variant?: 'card' | 'rail' }
+const { item, eager = false, variant = 'card' } = Astro.props;
+const img = imageOf(item.img);
+const simple = isSimple(item);
+const from = item.groups.some((g) => g.id === 'formato') ? 'da ' : '';
+---
+<article class:list={['dish', variant, { noimg: !img }]} data-id={item.id} data-simple={simple ? '1' : '0'} data-name={item.name} data-price={item.price}>
+  {img && (
+    <button class="dish-open dish-photo" type="button" data-open aria-label={`Personalizza ${item.name}`}>
+      <Image src={img} alt={item.name} widths={[320, 480, 640]} sizes="(min-width:860px) 280px, 46vw" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    </button>
+  )}
+  <div class="dish-body">
+    <h3 class="dish-name"><button class="dish-open" type="button" data-open>{item.name}</button></h3>
+    {item.desc && <p class="dish-desc">{item.desc}</p>}
+    <div class="dish-foot">
+      <span class="price">{from}{eur(item.price)}</span>
+      <button class="add" type="button" data-add aria-label={simple ? `Aggiungi ${item.name} al carrello` : `Scegli ${item.name}`}><span aria-hidden="true">+</span></button>
+    </div>
+  </div>
+</article>

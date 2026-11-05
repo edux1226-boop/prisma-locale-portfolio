@@ -1,0 +1,70 @@
+---
+import { site } from '../data/site';
+const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'Soia', 'Sesamo', 'Sedano', 'Senape', 'Pesce', 'Crostacei', 'Molluschi', 'Solfiti', 'Lupini'];
+---
+<dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
+  <form method="dialog" class="sheet-close"><button aria-label="Chiudi" class="x">×</button></form>
+  <div class="sheet-scroll">
+    <img class="sheet-img" alt="" width="640" height="640" hidden />
+    <div class="sheet-head">
+      <h2 id="sheet-title"></h2>
+      <p class="sheet-desc"></p>
+    </div>
+    <div class="sheet-sections"></div>
+    <fieldset class="sec allergy" data-allergy>
+      <legend>Allergie e intolleranze</legend>
+      <p class="hint">Segna quelle che hai: le riportiamo al locale insieme all'ordine.</p>
+      <div class="chips-wrap">
+        {allergens.map((a) => (
+          <label class="chip"><input type="checkbox" name="allergen" value={a} /><span>{a}</span></label>
+        ))}
+      </div>
+    </fieldset>
+    <div class="sec">
+      <label for="sheet-note" class="lab">Note per la cucina</label>
+      <textarea id="sheet-note" rows="2" maxlength="200" placeholder="Es. senza cipolla, ben cotto, taglia a metà"></textarea>
+    </div>
+  </div>
+  <div class="sheet-foot">
+    <div class="qty" role="group" aria-label="Quantità">
+      <button type="button" data-qty="-1" aria-label="Meno">−</button>
+      <output data-qty-out aria-live="polite">1</output>
+      <button type="button" data-qty="1" aria-label="Più">+</button>
+    </div>
+    <button type="button" class="btn primary grow" data-confirm>Aggiungi <span data-total></span></button>
+  </div>
+</dialog>
+
+<dialog id="cart" class="drawer" aria-labelledby="cart-title">
+  <header class="drawer-head">
+    <h2 id="cart-title">Il tuo ordine</h2>
+    <form method="dialog"><button class="x" aria-label="Chiudi carrello">×</button></form>
+  </header>
+  <div class="drawer-scroll">
+    <p class="empty" data-empty>Il carrello è vuoto. Scegli qualcosa dal <a href="/menu/">menu</a>.</p>
+    <ul class="lines" data-lines></ul>
+    <form class="checkout" data-checkout novalidate>
+      <div class="sec">
+        <label for="c-name" class="lab">Il tuo nome</label>
+        <input id="c-name" name="name" autocomplete="given-name" maxlength="60" required />
+      </div>
+      <div class="sec">
+        <label for="c-how" class="lab">Ritiro, consegna o tavolo?</label>
+        <textarea id="c-how" name="how" rows="2" maxlength="160" placeholder="Es. ritiro alle 20:30, oppure tavolo per 4"></textarea>
+      </div>
+      <p class="fine">L'ordine arriva al locale su WhatsApp e non è confermato finché non ti rispondono. Nessun pagamento online.</p>
+    </form>
+  </div>
+  <div class="drawer-foot" data-foot>
+    <div class="sum"><span>Totale</span><strong data-sum>€ 0</strong></div>
+    <button type="button" class="btn primary wide" data-send>Invia ordine su WhatsApp</button>
+    <div class="sec-actions">
+      <button type="button" class="link" data-copy>Copia ordine</button>
+      <button type="button" class="link" data-share hidden>Condividi</button>
+      <a class="link" href={`tel:${site.phoneTel}`}>Chiama</a>
+      <button type="button" class="link" data-clear>Svuota</button>
+    </div>
+    <p class="status" role="status" data-status></p>
+  </div>
+</dialog>
+<div class="toast" role="status" aria-live="polite" data-toast></div>

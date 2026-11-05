@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import Todo from '../components/Todo.astro';
+import { site } from '../data/site';
+---
+<Base title="Allergeni" description="Informazioni sugli allergeni di Grill Burger." path="/allergeni/">
+  <div class="wrap page-hero prose">
+    <h1>Allergeni</h1>
+    <p>La tabella allergeni per ogni piatto è in preparazione. <Todo>tabella allergeni e gestione contaminazioni</Todo></p>
+    <p>Comunica sempre intolleranze e allergie al personale prima di ordinare, al <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> o in sala. Finché la procedura non è documentata non possiamo garantire l'assenza di contaminazioni incrociate.</p>
+  </div>
+</Base>
