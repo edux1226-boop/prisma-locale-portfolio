@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Todo from '../components/Todo.astro';
+import { site } from '../data/site';
+---
+<Base title="Privacy e cookie" description="Informativa privacy e cookie del sito di Grill Burger." path="/privacy/">
+  <div class="wrap page-hero prose">
+    <h1>Privacy e cookie</h1>
+    <h2>Cookie</h2>
+    <p>Questo sito non usa cookie, tracker né statistiche di terze parti, quindi non mostra alcun banner. La preferenza sul movimento è salvata solo nel tuo browser (localStorage) e non ci arriva.</p>
+    <h2>Contenuti esterni</h2>
+    <ul>
+      <li>La mappa di Google si carica solo dopo il tuo clic su «Carica mappa»: da quel momento Google può trattare dati secondo la propria informativa.</li>
+      <li>I link a ordine online, Instagram, Facebook e Tripadvisor aprono servizi di terzi con proprie informative.</li>
+    </ul>
+    <h2>Dati personali</h2>
+    <p>Il sito non ha moduli: telefono, WhatsApp ed e-mail ({site.email}) sono canali diretti. <Todo>titolare del trattamento, base giuridica, conservazione</Todo></p>
+  </div>
+</Base>

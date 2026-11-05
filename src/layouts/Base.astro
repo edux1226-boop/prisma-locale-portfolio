@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import '../styles/site.css';
+import { Image } from 'astro:assets';
+import { site, nav, hours } from '../data/site';
+import CartUI from '../components/CartUI.astro';
+import logo from '../assets/logo.png';
+import playfair from '@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url';
+import inter from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+
+interface Props { title: string; description: string; path?: string; schema?: boolean; noindex?: boolean; cart?: boolean }
+const { title, description, path = '/', schema = false, noindex = false, cart = true } = Astro.props;
+const canonical = new URL(path, Astro.site ?? 'https://www.grillburger.it').href;
+const fullTitle = path === '/' ? title : `${title} | ${site.name}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: site.name,
+  url: canonical,
+  telephone: site.phoneTel,
+  email: site.email,
+  address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.postalCode, addressLocality: site.city, addressRegion: site.province, addressCountry: 'IT' },
+  servesCuisine: ['Hamburger', 'Carne alla griglia', 'Sudamericana'],
+  hasMenu: new URL('/menu/', canonical).href,
+  sameAs: [site.facebook, site.instagram, site.tripadvisor],
+  // openingHoursSpecification e acceptsReservations: omessi finche' non confermati (docs/DATI_DA_CONFERMARE.md)
+};
+const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="it" href={canonical} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <meta name="theme-color" content="#080808" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href={playfair} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={inter} as="font" type="font/woff2" crossorigin />
+  {schema && <script type="application/ld+json" set:html={ld} />}
+</head>
+<body>
+  <a class="skip" href="#contenuto">Vai al contenuto</a>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Grill Burger, home">
+        <Image src={logo} alt="" width={64} height={64} loading="eager" />
+        <span>Grill Burger</span>
+      </a>
+      <nav class="nav" aria-label="Principale">
+        {nav.map((n) => <a href={n.href} aria-current={Astro.url.pathname === n.href ? 'page' : undefined}>{n.label}</a>)}
+      </nav>
+      <div class="head-end">
+        <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Riduci animazioni</button>
+        {cart && <button class="cart-btn" type="button" data-cart-open aria-label="Apri il carrello">Carrello <span class="n" data-cart-count hidden>0</span></button>}
+      </div>
+    </div>
+  </header>
+  <main id="contenuto" tabindex="-1">
+    <slot />
+  </main>
+  <footer>
+    <div class="wrap cols">
+      <div>
+        <p class="fh">Grill Burger</p>
+        <p>{site.street}<br />{site.postalCode} {site.city} ({site.province})</p>
+        <p>Aperto la sera, {hours.opens}–{hours.closes}</p>
+        <p><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> · <a href={site.whatsapp} rel="noopener noreferrer">WhatsApp</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+      <div>
+        <p class="fh">Sito</p>
+        <p>{nav.map((n) => <><a href={n.href}>{n.label}</a><br /></>)}</p>
+      </div>
+      <div>
+        <p class="fh">Info</p>
+        <p><a href="/privacy/">Privacy e cookie</a><br /><a href="/allergeni/">Allergeni</a><br />
+          <a href={site.instagram} rel="noopener noreferrer" target="_blank">Instagram ↗</a><br />
+          <a href={site.facebook} rel="noopener noreferrer" target="_blank">Facebook ↗</a></p>
+      </div>
+    </div>
+  </footer>
+  <nav class="action-bar" aria-label="Azioni rapide">
+    <a href="/menu/">Menu</a>
+    <a href={`tel:${site.phoneTel}`}>Chiama</a>
+    {cart ? <button class="cart-btn" type="button" data-cart-open aria-label="Apri il carrello">Carrello <span class="n" data-cart-count hidden>0</span></button> : <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni</a>}
+  </nav>
+  {cart && <CartUI />}
+  <script>import '../scripts/main';</script>
+  {cart && <script>import '../scripts/cart';</script>}
+</body>
+</html>
