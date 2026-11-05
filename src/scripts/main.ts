@@ -68,3 +68,5 @@ const idle = (fn: () => void) => ('requestIdleCallback' in window ? requestIdleC
 if (!reduced && matchMedia('(hover: hover) and (pointer: fine)').matches) {
   idle(() => { void import('./desktop').then((m) => m.initDesktop()); });
 }
+
+export {};

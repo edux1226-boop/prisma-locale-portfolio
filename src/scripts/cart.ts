@@ -288,20 +288,20 @@ function orderText() {
 }
 function needName() {
   const f = $<HTMLInputElement>('#c-name', drawer!)!;
-  if (!f.value.trim()) { f.focus(); f.classList.add('err'); status('Scrivi il tuo nome, così il locale sa a chi rispondere.'); return true; }
+  if (!f.value.trim()) { f.focus(); f.classList.add('err'); setStatus('Scrivi il tuo nome, così il locale sa a chi rispondere.'); return true; }
   f.classList.remove('err'); return false;
 }
-const status = (m: string) => { const s = $('[data-status]', drawer!); if (s) s.textContent = m; };
+const setStatus = (m: string) => { const s = $('[data-status]', drawer!); if (s) s.textContent = m; };
 function sendOrder() {
   if (!lines.length || needName()) return;
   const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(orderText())}`;
-  status('Apro WhatsApp: premi invia per mandare l’ordine al locale.'); buzz(15);
+  setStatus('Apro WhatsApp: premi invia per mandare l’ordine al locale.'); buzz(15);
   const w = window.open(url, '_blank', 'noopener');
   if (!w) location.href = url;
 }
 async function copyOrder() {
   if (!lines.length) return;
-  try { await navigator.clipboard.writeText(orderText()); status('Ordine copiato.'); } catch { status('Copia non disponibile su questo browser.'); }
+  try { await navigator.clipboard.writeText(orderText()); setStatus('Ordine copiato.'); } catch { setStatus('Copia non disponibile su questo browser.'); }
 }
 async function shareOrder() {
   if (!lines.length || needName()) return;
@@ -312,7 +312,7 @@ if ('share' in navigator) $('[data-share]', drawer!)?.removeAttribute('hidden');
 /* ---------- eventi pagina ---------- */
 document.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
-  if (t.closest('[data-cart-open]')) { e.preventDefault(); status(''); drawer?.showModal(); return; }
+  if (t.closest('[data-cart-open]')) { e.preventDefault(); setStatus(''); drawer?.showModal(); return; }
   const card = t.closest<HTMLElement>('.dish');
   if (!card) return;
   const id = card.dataset.id!;
@@ -328,3 +328,5 @@ document.addEventListener('click', (e) => {
   if (t.closest('[data-add]') || t.closest('[data-open]')) openSheet(id, card);
 });
 renderCart();
+
+export {};
