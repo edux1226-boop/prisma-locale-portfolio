@@ -1,0 +1,30 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: fissare le azioni con lo SHA del commit prima di pubblicare
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npx astro check
+      - run: npm run build
+      - run: npm test
+      - run: npm audit --omit=dev
+      - name: Scansione segreti
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Lighthouse
+        run: |
+          npm run preview &
+          sleep 3
+          npm run lighthouse
