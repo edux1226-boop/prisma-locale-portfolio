@@ -353,3 +353,4 @@ html.lenis,html.lenis body{height:auto}
 html[data-motion=reduced] .hero-3d{display:none}
 @media(prefers-reduced-motion:reduce){html:not([data-motion=full]) .hero-3d{display:none}}
 .sheet-foot .btn{white-space:nowrap;padding:0 var(--sp-4);min-width:0}
+html[data-motion=reduced] .motion-toggle,html:not([data-motion]) .motion-toggle{color:var(--ink);border:1px solid var(--line-2);border-radius:var(--r);padding:0 var(--sp-3);text-decoration:none}

@@ -17,12 +17,13 @@ root.dataset.motion = reduced ? 'reduced' : 'full';
 // Toggle "Riduci animazioni" (header desktop e menu mobile)
 const toggles = document.querySelectorAll<HTMLButtonElement>('[data-motion-toggle]');
 toggles.forEach((toggle) => {
-  toggle.setAttribute('aria-pressed', String(reduced));
+  toggle.textContent = reduced ? 'Attiva animazioni' : 'Riduci animazioni';
   toggle.addEventListener('click', () => {
     const next = root.dataset.motion === 'reduced' ? 'full' : 'reduced';
     write(next);
     root.dataset.motion = next;
-    toggles.forEach((t) => t.setAttribute('aria-pressed', String(next === 'reduced')));
+    toggles.forEach((t) => (t.textContent = next === 'reduced' ? 'Attiva animazioni' : 'Riduci animazioni'));
+    if (next === 'full') location.reload(); // riparte l'hero 3D e lo scroll fluido
   });
 });
 
