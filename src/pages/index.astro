@@ -3,68 +3,68 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import DishCard from '../components/DishCard.astro';
 import Todo from '../components/Todo.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { site, hours, claims } from '../data/site';
 import { featured, imageOf, menu } from '../data/menu';
+import { HERO_WIDTHS, HERO_SIZES } from '../data/hero';
 import locale from '../assets/locale.jpg';
 import { u } from '../data/url';
-const words = 'Il pane preparato ogni giorno. La carne macinata fresca. Le salse fatte in casa.'.split(' ');
 const ribs = imageOf('ribs-bbq');
+const hero = await getImage({ src: imageOf('pulled-prok')!, widths: HERO_WIDTHS, sizes: HERO_SIZES, quality: 58, format: 'webp' });
 ---
 <Base title="Grill Burger | Hamburger e carni alla griglia a Roseto degli Abruzzi" description="Braceria, steakhouse e hamburgeria in Via Nazionale 531, Roseto degli Abruzzi. Hamburger e carni alla griglia con ispirazione sudamericana. Ordina dal telefono." schema>
+  <link slot="head" rel="preload" as="image" href={hero.src} imagesrcset={hero.srcSet.attribute} imagesizes={HERO_SIZES} fetchpriority="high" />
   <Hero />
-
-  <section class="statement" aria-label="Il nostro modo di lavorare">
-    <div class="wrap">
-      <p>{words.map((w) => <><span class="w">{w}</span>{' '}</>)}</p>
-      <p class="note statement-note">Dichiarazioni del locale, dal sito ufficiale.</p>
-    </div>
-  </section>
 
   <section id="specialita" aria-labelledby="h-spec" class="spec">
     <div class="wrap sec-head">
-      <h2 id="h-spec">Le specialità</h2>
-      <a class="btn" href={u('/menu/')}>Tutto il menu</a>
+      <div>
+        <p class="label"><span class="n">01 /</span> Specialità</p>
+        <h2 id="h-spec" data-reveal>Le più ordinate</h2>
+      </div>
+      <a class="btn" href={u('/menu/')}>Menu completo</a>
     </div>
-    <div class="rail" tabindex="0" aria-label="Specialità, scorri in orizzontale">
-      {featured.map((i, n) => <DishCard item={i} variant="rail" eager={n < 2} />)}
+    <div class="rail" tabindex="0" aria-label="Specialità, scorri in orizzontale" data-lenis-prevent>
+      {featured.map((i) => <DishCard item={i} variant="rail" />)}
     </div>
+    <div class="wrap"><p class="flow">Tocca un piatto, personalizzalo, invia l'ordine su WhatsApp.</p></div>
   </section>
 
   <section aria-labelledby="h-brace">
     <div class="wrap split">
-      <div data-reveal>
-        <p class="label">La braceria</p>
-        <h2 id="h-brace">Griglia e ispirazione sudamericana</h2>
+      <div>
+        <p class="label"><span class="n">02 /</span> In cucina</p>
+        <h2 id="h-brace" data-reveal>Braceria con ispirazione sudamericana</h2>
         <ul class="facts">
           {claims.map((c) => <li>{c}</li>)}
         </ul>
-        <p class="note">Dichiarazioni del locale. <Todo>provenienza e processi</Todo></p>
-        <div class="btn-row"><a class="btn primary" href={u('/menu/#braceria')}>Vedi la braceria</a></div>
+        <p class="note">Dichiarazioni del locale, dal sito ufficiale. <Todo>provenienza e processi</Todo></p>
+        <div class="btn-row"><a class="btn" href={u('/menu/#braceria')}>Vedi la braceria</a></div>
       </div>
       {ribs && <figure class="photo wipe"><Image src={ribs} alt="Costine di maiale glassate alla barbecue con patatine" widths={[480, 800]} sizes="(min-width:860px) 50vw, 100vw" /></figure>}
     </div>
   </section>
 
-  <section class="cats" aria-labelledby="h-cats">
+  <section class="inv" aria-labelledby="h-cats">
     <div class="wrap">
-      <h2 id="h-cats">Cosa si mangia</h2>
+      <p class="label"><span class="n">03 /</span> Menu</p>
+      <h2 id="h-cats" data-reveal>Tutto quello che c'è</h2>
       <ul class="cat-links">
-        {menu.categories.map((c) => <li><a href={u(`/menu/#${c.id}`)}>{c.title}<span>{c.items.length}</span></a></li>)}
+        {menu.categories.map((c) => <li><a href={u(`/menu/#${c.id}`)}>{c.title}<span>{String(c.items.length).padStart(2, '0')}</span></a></li>)}
       </ul>
     </div>
   </section>
 
-  <section id="dove" class="paper" aria-labelledby="h-dove">
+  <section id="dove" aria-labelledby="h-dove">
     <div class="wrap split">
-      <div data-reveal>
-        <p class="label">Dove siamo</p>
-        <h2 id="h-dove">Via Nazionale, Roseto</h2>
+      <div>
+        <p class="label"><span class="n">04 /</span> Dove siamo</p>
+        <h2 id="h-dove" data-reveal>Via Nazionale, Roseto</h2>
         <address class="lead">{site.street}<br />{site.postalCode} {site.city} ({site.province})</address>
         <dl class="hours">
-          <dt>Orari</dt><dd>Aperto la sera, {hours.opens}–{hours.closes}</dd>
+          <dt>Orari</dt><dd>Sera, {hours.opens}–{hours.closes}</dd>
           <dt>Telefono</dt><dd><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></dd>
-          <dt>WhatsApp</dt><dd><a href={site.whatsapp} rel="noopener noreferrer">Scrivici</a></dd>
+          <dt>WhatsApp</dt><dd><a href={site.whatsapp} rel="noopener noreferrer">{site.phoneDisplay}</a></dd>
           <dt>E-mail</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
         </dl>
         <p class="note"><Todo>giorni di chiusura, ultimo ordine, parcheggio</Todo></p>
@@ -72,7 +72,7 @@ const ribs = imageOf('ribs-bbq');
       </div>
       <div class="stack-photo">
         <figure class="photo wipe"><Image src={locale} alt="Il locale Grill Burger di sera, tavoli apparecchiati sotto il portico" widths={[480, 800]} sizes="(min-width:860px) 50vw, 100vw" /></figure>
-        <div class="map" data-reveal>
+        <div class="map">
           <div>
             <p>La mappa è di Google e usa cookie di terze parti. Si carica solo se la richiedi.</p>
             <button class="btn" type="button" data-load-map data-src="https://www.google.com/maps?q=Via+Nazionale+531+Roseto+degli+Abruzzi&output=embed">Carica mappa</button>

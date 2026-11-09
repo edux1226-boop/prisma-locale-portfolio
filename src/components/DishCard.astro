@@ -18,7 +18,18 @@ const from = item.groups.some((g) => g.id === 'formato') ? 'da ' : '';
     {item.desc && <p class="dish-desc">{item.desc}</p>}
     <div class="dish-foot">
       <span class="price">{from}{eur(item.price)}</span>
-      <button class="add" type="button" data-add aria-label={simple ? `Aggiungi ${item.name} al carrello` : `Scegli ${item.name}`}><span aria-hidden="true">+</span></button>
+      {simple ? (
+        <div class="act" data-act>
+          <button class="add" type="button" data-add aria-label={`Aggiungi ${item.name} al carrello`}><span aria-hidden="true">+</span></button>
+          <div class="step" role="group" aria-label={`Quantità di ${item.name}`} hidden>
+            <button type="button" data-step="-1" aria-label={`Meno ${item.name}`}>−</button>
+            <output data-step-n aria-live="polite">1</output>
+            <button type="button" data-step="1" aria-label={`Più ${item.name}`}>+</button>
+          </div>
+        </div>
+      ) : (
+        <button class="custom" type="button" data-add aria-label={`Personalizza ${item.name}`}><span>Personalizza</span><span class="badge" data-badge hidden>0</span></button>
+      )}
     </div>
   </div>
 </article>

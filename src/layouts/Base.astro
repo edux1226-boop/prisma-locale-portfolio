@@ -6,8 +6,9 @@ import { site, nav, hours } from '../data/site';
 import { u } from '../data/url';
 import CartUI from '../components/CartUI.astro';
 import logo from '../assets/logo.png';
-import playfair from '@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url';
-import inter from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+import { getImage } from 'astro:assets';
+import { imageOf } from '../data/menu';
+import grotesk from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 
 interface Props { title: string; description: string; path?: string; schema?: boolean; noindex?: boolean; cart?: boolean }
 const { title, description, path = '/', schema = false, noindex = false, cart = true } = Astro.props;
@@ -27,7 +28,9 @@ const jsonLd = {
   sameAs: [site.facebook, site.instagram, site.tripadvisor],
   // openingHoursSpecification e acceptsReservations: omessi finche' non confermati (docs/DATI_DA_CONFERMARE.md)
 };
-const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+const og = await getImage({ src: imageOf('pulled-prok')!, width: 900, format: 'jpg' });
+const ogUrl = new URL(og.src, Astro.site ?? 'https://www.grillburger.it').href;
+const ld = JSON.stringify({ ...jsonLd, image: ogUrl }).replace(/</g, '\\u003c');
 ---
 <!doctype html>
 <html lang="it">
@@ -39,17 +42,20 @@ const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   <link rel="canonical" href={canonical} />
   <link rel="alternate" hreflang="it" href={canonical} />
   {noindex && <meta name="robots" content="noindex" />}
-  <meta name="theme-color" content="#080808" />
+  <meta name="theme-color" content="#050505" />
+  <meta property="og:image" content={ogUrl} />
+  <meta property="og:image:width" content="900" />
+  <meta property="og:image:height" content="900" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="it_IT" />
   <meta property="og:site_name" content={site.name} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
-  <link rel="preload" href={playfair} as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href={inter} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={grotesk} as="font" type="font/woff2" crossorigin />
+  <slot name="head" />
   {schema && <script type="application/ld+json" set:html={ld} />}
 </head>
 <body>
@@ -64,11 +70,25 @@ const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         {nav.map((n) => <a href={n.href} aria-current={Astro.url.pathname === n.href.replace(/#.*/, '') ? 'page' : undefined}>{n.label}</a>)}
       </nav>
       <div class="head-end">
-        <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Riduci animazioni</button>
-        {cart && <button class="cart-btn" type="button" data-cart-open aria-label="Apri il carrello">Carrello <span class="n" data-cart-count hidden>0</span></button>}
+        <button class="motion-toggle desk-only" type="button" data-motion-toggle aria-pressed="false">Riduci animazioni</button>
+        {cart && <button class="cart-btn" type="button" data-cart-open aria-label="Apri il carrello"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.2 11H6.2L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="cart-lbl">Carrello</span><span class="n" data-cart-count hidden>0</span></button>}
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" data-menu-toggle><span class="bars" aria-hidden="true"></span><span class="sr">Apri o chiudi il menu di navigazione</span></button>
       </div>
     </div>
   </header>
+  <nav class="mnav" id="mnav" aria-label="Navigazione mobile" data-mnav inert>
+    <ul>
+      <li><a href={u('/menu/')}>Menu e ordina</a></li>
+      <li><a href={u('/#specialita')}>Specialità</a></li>
+      <li><a href={u('/#dove')}>Dove siamo</a></li>
+      <li><a href={u('/allergeni/')}>Allergeni</a></li>
+    </ul>
+    <div class="mnav-foot">
+      <a class="btn primary" href={`tel:${site.phoneTel}`}>Chiama {site.phoneDisplay}</a>
+      <a class="btn" href={site.whatsapp} rel="noopener noreferrer">WhatsApp</a>
+      <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Riduci animazioni</button>
+    </div>
+  </nav>
   <main id="contenuto" tabindex="-1">
     <slot />
   </main>
@@ -92,11 +112,7 @@ const ld = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       </div>
     </div>
   </footer>
-  <nav class="action-bar" aria-label="Azioni rapide">
-    <a href={u('/menu/')}>Menu</a>
-    <a href={`tel:${site.phoneTel}`}>Chiama</a>
-    {cart ? <button class="cart-btn" type="button" data-cart-open aria-label="Apri il carrello">Carrello <span class="n" data-cart-count hidden>0</span></button> : <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni</a>}
-  </nav>
+  {cart && <button class="cart-pill" type="button" data-cart-open aria-label="Apri il carrello"><span class="pill-n" data-cart-count>0</span><span class="pill-t">Vedi il tuo ordine</span><strong data-cart-total></strong></button>}
   {cart && <CartUI />}
   <script>import '../scripts/main';</script>
   {cart && <script>import '../scripts/cart';</script>}

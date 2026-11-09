@@ -5,7 +5,7 @@ const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'S
 ---
 <dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
   <form method="dialog" class="sheet-close"><button aria-label="Chiudi" class="x">×</button></form>
-  <div class="sheet-scroll">
+  <div class="sheet-scroll" data-lenis-prevent>
     <img class="sheet-img" alt="" width="640" height="640" hidden />
     <div class="sheet-head">
       <h2 id="sheet-title"></h2>
@@ -41,7 +41,7 @@ const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'S
     <h2 id="cart-title">Il tuo ordine</h2>
     <form method="dialog"><button class="x" aria-label="Chiudi carrello">×</button></form>
   </header>
-  <div class="drawer-scroll">
+  <div class="drawer-scroll" data-lenis-prevent>
     <p class="empty" data-empty>Il carrello è vuoto. Scegli qualcosa dal <a href={u('/menu/')}>menu</a>.</p>
     <ul class="lines" data-lines></ul>
     <form class="checkout" data-checkout novalidate>
@@ -52,6 +52,19 @@ const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'S
       <div class="sec">
         <label for="c-how" class="lab">Ritiro, consegna o tavolo?</label>
         <textarea id="c-how" name="how" rows="2" maxlength="160" placeholder="Es. ritiro alle 20:30, oppure tavolo per 4"></textarea>
+      </div>
+      <fieldset class="sec allergy order-allergy">
+        <legend>Allergie o intolleranze nell'ordine</legend>
+        <p class="hint">Valgono per tutto l'ordine. Per togliere ingredienti da un piatto usa «Modifica».</p>
+        <div class="chips-wrap">
+          {allergens.map((a) => (
+            <label class="chip"><input type="checkbox" name="oallergen" value={a} /><span>{a}</span></label>
+          ))}
+        </div>
+      </fieldset>
+      <div class="sec">
+        <label for="c-note" class="lab">Note per la cucina (facoltative)</label>
+        <textarea id="c-note" name="onote" rows="2" maxlength="240" placeholder="Es. patatine ben cotte, salse a parte"></textarea>
       </div>
       <p class="fine">L'ordine arriva al locale su WhatsApp e non è confermato finché non ti rispondono. Nessun pagamento online.</p>
     </form>

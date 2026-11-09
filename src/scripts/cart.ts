@@ -20,9 +20,10 @@ const $$ = <T extends Element = HTMLElement>(s: string, r: ParentNode = document
 const reduced = () => document.documentElement.dataset.motion === 'reduced' || matchMedia('(prefers-reduced-motion: reduce)').matches && document.documentElement.dataset.motion !== 'full';
 const f0 = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 });
 const f2 = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' });
-const eur = (n: number) => { const r = Math.round(n * 100) / 100; return (Number.isInteger(r) ? f0 : f2).format(r).replace(/s/g, ' '); };
-const imgPath = (s: string) => { try { const p = new URL(s, location.href).pathname; return /^\/_astro\/[\w.-]+$/.test(p) ? p : ''; } catch { return ''; } };
-const buzz = (ms = 10) => { if (!reduced()) navigator.vibrate?.(ms); };
+const eur = (n: number) => { const r = Math.round(n * 100) / 100; return (Number.isInteger(r) ? f0 : f2).format(r).replace(/ /g, ' '); };
+const imgPath = (s: string) => { try { const p = new URL(s, location.href).pathname; return /^(?:\/[\w.-]+)*\/_astro\/[\w.-]+$/.test(p) ? p : ''; } catch { return ''; } };
+const okImg = (s: string) => imgPath(s) === s;
+const buzz = (ms = 10) => { if (!reduced() && navigator.userActivation?.hasBeenActive) navigator.vibrate?.(ms); };
 
 function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = ''): HTMLElementTagNameMap[K] {
   const e = document.createElement(tag);
@@ -63,10 +64,9 @@ const total = () => lines.reduce((s, l) => s + l.unit * l.qty, 0);
 const count = () => lines.reduce((s, l) => s + l.qty, 0);
 
 /* ---------- dati menu (caricati una volta, alla prima necessita') ---------- */
-let dishes: Map<string, Dish> | null = null;
 let pending: Promise<Map<string, Dish>> | null = null;
 function loadMenu() {
-  pending ??= fetch(import.meta.env.BASE_URL.replace(/\/$/, '') + '/menu.json').then((r) => r.json() as Promise<Dish[]>).then((a) => (dishes = new Map(a.map((d) => [d.id, d]))));
+  pending ??= fetch(import.meta.env.BASE_URL.replace(/\/$/, '') + '/menu.json').then((r) => r.json() as Promise<Dish[]>).then((a) => new Map(a.map((d) => [d.id, d])));
   return pending;
 }
 addEventListener('pointerdown', () => void loadMenu(), { once: true, passive: true });
@@ -116,7 +116,7 @@ function addLine(base: Omit<Line, 'key'>, srcEl: Element | null) {
   const key = keyOf(base);
   const ex = lines.find((l) => l.key === key);
   if (ex) ex.qty = Math.min(30, ex.qty + base.qty); else lines.push({ ...base, key });
-  save(); buzz(); fly(srcEl, base.img); toast(`${base.name} aggiunto`);
+  save(); buzz(); if (!ex) fly(srcEl, base.img); toast(`${base.name} aggiunto`);
 }
 
 /* ---------- personalizzatore ---------- */
@@ -225,6 +225,7 @@ function renderCart() {
   $$('[data-cart-count]').forEach((e) => { e.textContent = String(n); e.hidden = n === 0; });
   $$('[data-cart-total]').forEach((e) => { e.textContent = n ? eur(t) : ''; });
   document.documentElement.classList.toggle('has-cart', n > 0);
+  syncCards();
   if (!drawer) return;
   $('[data-sum]', drawer)!.textContent = eur(t);
   $('[data-empty]', drawer)!.hidden = n > 0;
@@ -251,6 +252,25 @@ function renderCart() {
     li.append(mid, right); ul.append(li);
   }
 }
+/* ---------- stato sulle card del menu: stepper e badge ---------- */
+const isPlain = (l: Line) => !l.choices.length && !l.removed.length && !l.extras.length && !l.allergens.length && !l.note;
+function syncCards() {
+  for (const card of $$('.dish')) {
+    const id = card.dataset.id!;
+    if (card.dataset.simple === '1') {
+      const l = lines.find((x) => x.id === id && isPlain(x));
+      const q = l?.qty ?? 0;
+      const add = $('.add', card), step = $('.step', card);
+      if (!add || !step) continue;
+      add.hidden = q > 0; step.hidden = q === 0;
+      const out = $('[data-step-n]', step); if (out) out.textContent = String(q || 1);
+    } else {
+      const q = lines.filter((x) => x.id === id).reduce((n, x) => n + x.qty, 0);
+      const b = $('[data-badge]', card);
+      if (b) { b.hidden = q === 0; b.textContent = '×' + q; }
+    }
+  }
+}
 const byKey = (k: string) => lines.find((l) => l.key === k);
 drawer?.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
@@ -271,6 +291,33 @@ drawer?.addEventListener('click', (e) => {
   if (t.closest('[data-send]')) sendOrder();
 });
 
+/* ---------- allergie e note dell'ordine (salvate in locale) ---------- */
+const OKEY = 'gb-order-v1';
+function orderExtras() {
+  const f = drawer ? $<HTMLFormElement>('[data-checkout]', drawer) : null;
+  const allergens = f ? $$<HTMLInputElement>('input[name=oallergen]:checked', f).map((i) => i.value) : [];
+  const note = f ? ((f.elements.namedItem('onote') as HTMLTextAreaElement | null)?.value.trim().slice(0, 240) ?? '') : '';
+  return { allergens, note };
+}
+function restoreOrderExtras() {
+  const f = drawer ? $<HTMLFormElement>('[data-checkout]', drawer) : null;
+  if (!f) return;
+  try {
+    const o = JSON.parse(localStorage.getItem(OKEY) ?? '{}');
+    const al = strArr(o.allergens, 14);
+    $$<HTMLInputElement>('input[name=oallergen]', f).forEach((i) => (i.checked = al.includes(i.value)));
+    const n = f.elements.namedItem('onote') as HTMLTextAreaElement | null; if (n) n.value = clampStr(o.note, 240);
+    const nm = f.elements.namedItem('name') as HTMLInputElement | null; if (nm && !nm.value) nm.value = clampStr(o.name, 60);
+  } catch { /* ignora */ }
+}
+function saveOrderExtras() {
+  const f = drawer ? $<HTMLFormElement>('[data-checkout]', drawer) : null;
+  if (!f) return;
+  try { localStorage.setItem(OKEY, JSON.stringify({ ...orderExtras(), name: (f.elements.namedItem('name') as HTMLInputElement).value.trim().slice(0, 60) })); } catch { /* ignora */ }
+}
+restoreOrderExtras();
+drawer?.addEventListener('input', saveOrderExtras);
+
 function orderText() {
   const f = $<HTMLFormElement>('[data-checkout]', drawer!)!;
   const name = (f.elements.namedItem('name') as HTMLInputElement).value.trim();
@@ -280,11 +327,14 @@ function orderText() {
   if (how) out.push(`*Ritiro / consegna / tavolo:* ${how}`);
   out.push('');
   for (const l of lines) {
-    out.push(`${l.qty}× ${l.name} — ${eur(l.unit * l.qty)}`);
+    out.push(`${l.qty}× ${l.name} · ${eur(l.unit * l.qty)}`);
     for (const s of summary(l)) out.push(`   ${s.startsWith('⚠') ? s.toUpperCase() : '• ' + s}`);
   }
+  const ox = orderExtras();
+  if (ox.note) out.push('', `*Note:* ${ox.note}`);
+  if (ox.allergens.length) out.push('', `⚠ *ALLERGIE / INTOLLERANZE:* ${ox.allergens.join(', ')}`);
   out.push('', `*Totale: ${eur(total())}*`);
-  if (lines.some((l) => l.allergens.length)) out.push('', '⚠ Ci sono allergie nell\'ordine: confermatemi gli ingredienti, grazie.');
+  if (ox.allergens.length || lines.some((l) => l.allergens.length)) out.push('', '⚠ Ci sono allergie nell\'ordine: confermatemi gli ingredienti, grazie.');
   return out.join('\n');
 }
 function needName() {
@@ -317,6 +367,12 @@ document.addEventListener('click', (e) => {
   const card = t.closest<HTMLElement>('.dish');
   if (!card) return;
   const id = card.dataset.id!;
+  const st = t.closest<HTMLElement>('[data-step]');
+  if (st) {
+    const l = lines.find((x) => x.id === id && isPlain(x));
+    if (l) { l.qty += Number(st.dataset.step); if (l.qty < 1) lines = lines.filter((x) => x !== l); else l.qty = Math.min(30, l.qty); save(); buzz(6); }
+    return;
+  }
   if (t.closest('[data-add]') && card.dataset.simple === '1') {
     const im = card.querySelector('img');
     void loadMenu().then((m) => {

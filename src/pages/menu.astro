@@ -6,9 +6,9 @@ import { menu } from '../data/menu';
 ---
 <Base title="Menu e ordina" description="Il menu completo di Grill Burger con foto: hamburger di carne, pollo e vegan, braceria, hot dog, insalate, dessert e bevande. Ordina dal telefono e personalizza il tuo piatto." path="/menu/">
   <div class="wrap page-hero">
-    <p class="label">Menu</p>
-    <h1>Scegli, personalizza, ordina</h1>
-    <p class="lead">Tocca un piatto per togliere ingredienti, aggiungere extra e segnalare allergie. Coperto €2. Menu aggiornato al 5 novembre 2026.</p>
+    <p class="label"><span class="n">/</span> Menu e ordine</p>
+    <h1>Menu</h1>
+    <p class="lead">Tocca un piatto per togliere ingredienti, aggiungere extra e segnalare allergie. Coperto 2 €. Prezzi dal menu ufficiale, aggiornato al 5 novembre 2026.</p>
   </div>
   <nav class="chips" aria-label="Categorie del menu">
     <ul>{menu.categories.map((c) => <li><a href={`#${c.id}`}>{c.title}</a></li>)}</ul>

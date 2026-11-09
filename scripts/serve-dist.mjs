@@ -4,10 +4,11 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { join, normalize, extname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { brotliCompressSync, gzipSync } from 'node:zlib';
 
 const root = resolve(fileURLToPath(new URL('../dist', import.meta.url)));
 
-const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml', '.png': 'image/png' };
+const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.json': 'application/json' };
 
 export async function parseHeaders() {
   const raw = await readFile(new URL('../dist/_headers', import.meta.url), 'utf8');
@@ -42,6 +43,14 @@ export function start() {
       const h = { 'Content-Type': mime[extname(file)] ?? 'application/octet-stream' };
       for (const r of rules) if (matches(r.pattern, path)) Object.assign(h, r.headers);
       if (status === 404) h['Cache-Control'] = 'no-store';
+      
+      // compressione come su una CDN: Brotli, altrimenti gzip, solo per testo
+      const ae = req.headers['accept-encoding'] ?? '';
+      if (/^(text\/|application\/(json|xml)|image\/svg)|javascript/.test(h['Content-Type']) && body.length > 512) {
+        if (/\bbr\b/.test(ae)) { body = brotliCompressSync(body); h['Content-Encoding'] = 'br'; }
+        else if (/\bgzip\b/.test(ae)) { body = gzipSync(body); h['Content-Encoding'] = 'gzip'; }
+        h['Vary'] = 'Accept-Encoding';
+      }
       res.writeHead(status, h); res.end(req.method === 'HEAD' ? undefined : body);
     });
     srv.listen(Number(process.env.PORT ?? 4321), '127.0.0.1', () => ok(srv));
