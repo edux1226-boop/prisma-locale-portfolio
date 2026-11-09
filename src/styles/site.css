@@ -237,7 +237,7 @@ footer p a{display:inline-block;padding:3px 0;min-height:24px}
 .chips ul{display:flex;gap:var(--sp-1);list-style:none;margin:0;padding:0 var(--gut)}
 .chips a{scroll-snap-align:center;display:inline-flex;align-items:center;min-height:48px;padding:0 var(--sp-4);color:var(--g1);text-decoration:none;font:500 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
 .chips a.on{color:var(--ink);border-color:var(--ink)}
-.menu-cat{scroll-margin-top:120px;padding-block:var(--sp-7) var(--sp-2);content-visibility:auto;contain-intrinsic-size:auto 900px}
+.menu-cat{scroll-margin-top:120px;padding-block:var(--sp-7) var(--sp-2)}
 .menu-cat>header{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-3);margin-bottom:var(--sp-5);padding-bottom:var(--sp-3);border-bottom:1px solid var(--line-2)}
 .menu-cat h2{font-size:clamp(1.8rem,5vw,2.8rem);margin:0}
 .menu-cat>header span{font:400 .75rem var(--f-mono);color:var(--g3)}

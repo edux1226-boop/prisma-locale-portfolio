@@ -109,3 +109,5 @@ const warm = (e: Event) => {
 };
 document.addEventListener('pointerover', warm, { passive: true });
 document.addEventListener('touchstart', warm, { passive: true });
+
+export {};
