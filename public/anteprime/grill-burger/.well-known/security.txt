@@ -1,5 +1,0 @@
-Contact: mailto:info@grillburger.it
-Expires: 2027-11-04T00:00:00.000Z
-Preferred-Languages: it, en
-Canonical: https://www.grillburger.it/.well-known/security.txt
-# TODO_CONFERMARE: casella e-mail monitorata per segnalazioni di sicurezza
