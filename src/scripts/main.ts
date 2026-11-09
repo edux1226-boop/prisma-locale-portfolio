@@ -94,6 +94,8 @@ const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 if (!reduced && strong) {
   const canvas = document.querySelector<HTMLCanvasElement>('canvas[data-gl]');
   if (canvas) idle(() => { void import('./hero-gl').then((m) => m.initHeroGL(canvas)).catch(() => {}); });
+  const c3 = document.querySelector<HTMLCanvasElement>('canvas[data-3d]'), hero = document.querySelector<HTMLElement>('[data-hero]');
+  if (c3 && hero) idle(() => { void import('./hero-3d').then((m) => m.initHero3D(c3, hero)).catch(() => {}); });
   if (fine) idle(() => { void import('./smooth').then((m) => m.initSmooth()).catch(() => {}); });
 }
 

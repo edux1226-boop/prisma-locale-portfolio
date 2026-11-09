@@ -11,8 +11,9 @@ const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'S
       <h2 id="sheet-title"></h2>
       <p class="sheet-desc"></p>
     </div>
+    <div class="sheet-tabs" data-tabs></div>
     <div class="sheet-sections"></div>
-    <fieldset class="sec allergy" data-allergy>
+    <fieldset class="sec allergy" id="sec-all" data-allergy>
       <legend>Allergie e intolleranze</legend>
       <p class="hint">Segna quelle che hai: le riportiamo al locale insieme all'ordine.</p>
       <div class="chips-wrap">
@@ -21,7 +22,7 @@ const allergens = ['Glutine', 'Latte', 'Uova', 'Frutta a guscio', 'Arachidi', 'S
         ))}
       </div>
     </fieldset>
-    <div class="sec">
+    <div class="sec" id="sec-note">
       <label for="sheet-note" class="lab">Note per la cucina</label>
       <textarea id="sheet-note" rows="2" maxlength="200" placeholder="Es. senza cipolla, ben cotto, taglia a metà"></textarea>
     </div>

@@ -157,17 +157,22 @@ function openSheet(id: string, card: Element | null, edit?: Line) {
     }
     const rem = d.ingredients.filter((x) => x.removable);
     if (rem.length) {
-      const fs = el('fieldset', 'sec ingr'); fs.append(el('legend', '', 'Ingredienti'));
+      const fs = el('fieldset', 'sec ingr'); fs.id = 'sec-ing'; fs.append(el('legend', '', 'Togli ingredienti'));
       fs.append(el('p', 'hint', 'Tocca per togliere un ingrediente.'));
       const w = el('div', 'chips-wrap');
       for (const x of rem) w.append(chip('checkbox', 'ing', x.label, x.label, '', !edit?.removed.includes(x.label)));
       fs.append(w); box.append(fs);
     }
     if (d.extras) {
-      const fs = el('fieldset', 'sec extras'); fs.append(el('legend', '', `Aggiungi (fino a ${d.extras.max})`));
+      const fs = el('fieldset', 'sec extras'); fs.id = 'sec-ext'; fs.append(el('legend', '', `Aggiungi ingredienti (fino a ${d.extras.max})`));
       const w = el('div', 'chips-wrap');
       for (const x of d.extras.options) w.append(chip('checkbox', 'extra', x.label, x.label, '+' + eur(x.price), !!edit?.extras.includes(x.label)));
       fs.append(w); box.append(fs);
+    }
+    const tabs = $('[data-tabs]', sheet)!; tabs.replaceChildren();
+    for (const [id, label] of [['sec-ing', 'Togli'], ['sec-ext', 'Aggiungi'], ['sec-all', 'Allergie'], ['sec-note', 'Note']] as const) {
+      if (!sheet.querySelector('#' + id)) continue;
+      const b = el('button', 'tab', label); b.type = 'button'; b.dataset.go = id; tabs.append(b);
     }
     $$<HTMLInputElement>('input[name=allergen]', sheet).forEach((i) => (i.checked = !!edit?.allergens.includes(i.value)));
     $<HTMLTextAreaElement>('#sheet-note', sheet)!.value = edit?.note ?? '';
@@ -203,6 +208,8 @@ sheet?.addEventListener('input', refreshSheet);
 sheet?.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
   if (t === sheet) return sheet.close();
+  const go = t.closest<HTMLElement>('[data-go]');
+  if (go) { sheet.querySelector('#' + go.dataset.go)?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); return; }
   const q = t.closest<HTMLElement>('[data-qty]');
   if (q && cur) { cur.qty = Math.min(20, Math.max(1, cur.qty + Number(q.dataset.qty))); buzz(6); refreshSheet(); }
   if (t.closest('[data-confirm]') && cur) {
