@@ -122,6 +122,7 @@ export function initHero3D(canvas: HTMLCanvasElement, hero: HTMLElement) {
     w = canvas.clientWidth; h = canvas.clientHeight; if (!w || !h) return;
     renderer.setSize(w, h, false); asp = w / h; camera.aspect = asp;
     zAsm = Math.max(9.2, 3.4 / (2 * tanH * asp)); zExp = Math.max(13.5, 3.8 / (2 * tanH * asp));
+    if (asp < 0.8) zExp = Math.max(zExp, 17); // telefono: il panino scomposto deve stare tra intestazione e testo
     if (asp > 1.1) camera.setViewOffset(w, h, -w * 0.15, h * 0.02, w, h); else camera.setViewOffset(w, h, 0, h * 0.12, w, h);
     camera.updateProjectionMatrix();
   };
@@ -141,7 +142,7 @@ export function initHero3D(canvas: HTMLCanvasElement, hero: HTMLElement) {
     mx += (tmx - mx) * 0.06; my += (tmy - my) * 0.06;
     for (const l of layers) {
       const k = clamp(cur * 1.15 - (l.dy < 0 ? 0 : 0.0));
-      l.g.position.set(l.base.x + l.dx * k * (asp > 1.1 ? 0.72 : 1), l.base.y + l.dy * k, l.base.z + l.dz * k);
+      l.g.position.set(l.base.x + l.dx * k * (asp > 1.1 ? 0.72 : 1), l.base.y + l.dy * k * (asp < 0.8 ? 0.72 : 1), l.base.z + l.dz * k);
       l.g.rotation.set(l.rx * k, l.ry * k, l.rz * k);
     }
     rig.rotation.y = p * Math.PI * 2.4 + now / 9000 + (mx - 0.5) * 0.5;
