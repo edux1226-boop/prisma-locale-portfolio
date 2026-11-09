@@ -88,7 +88,7 @@ if (!reduced && matchMedia('(hover: hover) and (pointer: fine)').matches) {
 
 // Dispositivo capace di effetti pesanti: no risparmio dati, almeno 4 core e 4 GB, rete non lenta
 const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean; effectiveType?: string } };
-const strong = !nav.connection?.saveData && !/(^|-)2g$|3g/.test(nav.connection?.effectiveType ?? '') && (nav.hardwareConcurrency ?? 8) > 4 && (nav.deviceMemory ?? 8) > 2;
+const strong = !nav.connection?.saveData && !/(^|-)2g$/.test(nav.connection?.effectiveType ?? '') && (nav.hardwareConcurrency ?? 8) > 4 && (nav.deviceMemory ?? 8) > 2;
 const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 // Sfondo WebGL dell'hero e scroll fluido: import dinamici, solo dopo il primo paint e solo su dispositivi capaci
