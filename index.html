@@ -88,7 +88,8 @@
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Siti web" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing page" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Presenza locale e scheda Google" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Presenza locale e scheda Google" } },
+          { "@type": "Service", "name": "Automazioni su misura", "description": "Automazioni progettate dopo una visita al locale, con preventivo su misura." }
         ]
       }
     },
@@ -143,6 +144,7 @@
   <nav class="site-nav" aria-label="Principale" data-intro>
     <ul role="list">
       <li><a class="link-grow" href="#servizi" data-spy>Servizi</a></li>
+      <li><a class="link-grow" href="#automazioni" data-spy>Automazioni</a></li>
       <li><a class="link-grow" href="#prima-dopo" data-spy>Prima e dopo</a></li>
       <li><a class="link-grow" href="#metodo" data-spy>Metodo</a></li>
       <li><a class="link-grow" href="#lavori" data-spy>Lavori</a></li>
@@ -167,6 +169,7 @@
   <nav aria-label="Menu mobile">
     <ul class="menu__list" role="list">
       <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#automazioni">Automazioni</a></li>
       <li><a href="#prima-dopo">Prima e dopo</a></li>
       <li><a href="#metodo">Metodo</a></li>
       <li><a href="#lavori">Lavori</a></li>
@@ -274,7 +277,79 @@
         <p class="servizio__per"><span class="sr-only">Per: </span>Google · Mappe · Social</p>
         <span class="servizio__ray" aria-hidden="true"></span>
       </li>
+      <li class="servizio grid" data-fade>
+        <h3 class="servizio__title display">Automazioni</h3>
+        <p class="servizio__text">Messaggi, promemoria, prenotazioni: quello che ripeti ogni giorno, sistemato su misura
+          dopo una visita al locale. <a class="servizio__link" href="#automazioni">Come funziona</a></p>
+        <p class="servizio__per"><span class="sr-only">Per: </span>Ristoranti · Palestre · Saloni · B&amp;B</p>
+        <span class="servizio__ray" aria-hidden="true"></span>
+      </li>
     </ol>
+  </div>
+</section>
+
+<!-- ============================ AUTOMAZIONI ============================ -->
+<!-- Tutto su misura, dopo una visita al locale: nessun prezzo, nessun risultato
+     promesso, nessuna automazione presentata come già fatta. -->
+<section class="section section--light automazioni" id="automazioni" aria-labelledby="automazioni-title">
+  <div class="wrap">
+    <div class="section-head grid">
+      <p class="label">Automazioni</p>
+      <h2 class="section-head__title display" id="automazioni-title" data-split>Quello che fai a mano ogni giorno, <em>può farsi da solo.</em></h2>
+    </div>
+
+    <div class="automazioni__intro grid">
+      <p class="lead" data-fade>Prima veniamo da te e guardiamo come lavori. Poi sistemiamo solo quello che ti fa perdere tempo.</p>
+    </div>
+
+    <!-- Il filo: tre nodi collegati, la luce bianca diventa spettro. Solo decorazione. -->
+    <div class="filo" aria-hidden="true" data-filo>
+      <span class="filo__linea"><i data-filo-linea></i></span>
+      <span class="filo__nodo filo__nodo--1" data-filo-nodo style="--x:12%"><i></i><b>messaggio</b></span>
+      <span class="filo__nodo filo__nodo--2" data-filo-nodo style="--x:50%"><i></i><b>promemoria</b></span>
+      <span class="filo__nodo filo__nodo--3" data-filo-nodo style="--x:88%"><i></i><b>conferma</b></span>
+    </div>
+
+    <ol class="automazioni__passi grid" role="list">
+      <li class="passo" data-fade>
+        <p class="passo__n label label--num">01</p>
+        <h3 class="passo__title display">Veniamo a vedere.</h3>
+        <p>Una visita al locale: guardiamo dove si perde tempo, tra messaggi, prenotazioni, ordini, fogli e promemoria.</p>
+      </li>
+      <li class="passo" data-fade>
+        <p class="passo__n label label--num">02</p>
+        <h3 class="passo__title display">Scegliamo cosa automatizzare.</h3>
+        <p>Solo i processi che pesano davvero. Il resto resta com'è.</p>
+      </li>
+      <li class="passo" data-fade>
+        <p class="passo__n label label--num">03</p>
+        <h3 class="passo__title display">Lo costruiamo su misura e restiamo.</h3>
+        <p>Lo montiamo, ti spieghiamo come funziona e restiamo a una telefonata di distanza.</p>
+      </li>
+    </ol>
+
+    <div class="esempi grid" data-fade>
+      <h3 class="esempi__title label" id="esempi-title">Qualche esempio</h3>
+      <ul class="esempi__list" role="list" aria-labelledby="esempi-title">
+        <li><span>Risposta automatica alle richieste su WhatsApp fuori orario</span><small>Ristoranti · B&amp;B</small></li>
+        <li><span>Promemoria di prenotazione o appuntamento</span><small>Saloni · Palestre</small></li>
+        <li><span>Richieste dal modulo raccolte e ordinate in un posto solo</span><small>B&amp;B · Società sportive</small></li>
+        <li><span>Conferma e riepilogo degli ordini</span><small>Ristoranti</small></li>
+        <li><span>Richiesta di recensione dopo la visita</span><small>Saloni · Ristoranti · B&amp;B</small></li>
+        <li><span>Riepilogo settimanale di quello che è arrivato</span><small>Per tutti</small></li>
+      </ul>
+      <p class="esempi__nota">Sono esempi, non un listino: cosa serve a te lo decidiamo dopo aver visto il tuo locale.</p>
+    </div>
+
+    <div class="automazioni__fine grid" data-fade>
+      <p class="automazioni__chiusa display">Ogni locale è diverso, quindi ogni automazione è diversa. Il preventivo arriva dopo la visita, <em>scritto per te.</em></p>
+      <div class="automazioni__cta">
+        <a class="btn btn--primary" href="https://wa.me/393758350800?text=Ciao%20Prisma%20Locale%2C%20vorrei%20capire%20quali%20processi%20del%20mio%20locale%20si%20possono%20automatizzare." target="_blank" rel="noopener">
+          Chiedi una visita <span class="sr-only">(si apre in una nuova scheda)</span><svg class="btn__arrow" aria-hidden="true"><use href="#f-obliqua"/></svg>
+        </a>
+        <p class="automazioni__nota">Nessun prezzo di listino: ogni automazione è un lavoro su misura.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -661,6 +736,8 @@
       Per esempio: <strong>Presenza Locale</strong> 1.000&nbsp;€ una tantum + <strong>Visibile</strong> 40&nbsp;€ al mese.
     </p>
 
+    <p class="prezzi__auto" data-fade>Le <a href="#automazioni">automazioni</a> non sono a listino: si preventivano su misura dopo la visita.</p>
+
     <div class="prezzi__note grid" data-fade>
       <div class="prezzi__hosting">
         <h3 class="label">Hosting e dominio</h3>
@@ -746,6 +823,7 @@
           <label class="chip"><input type="checkbox" name="servizi" value="Landing page"><span>Landing page</span></label>
           <label class="chip"><input type="checkbox" name="servizi" value="Branding"><span>Branding</span></label>
           <label class="chip"><input type="checkbox" name="servizi" value="Presenza locale"><span>Presenza locale</span></label>
+          <label class="chip"><input type="checkbox" name="servizi" value="Automazioni"><span>Automazioni</span></label>
           <label class="chip"><input type="checkbox" name="servizi" value="Non lo so ancora"><span>Non lo so ancora</span></label>
         </fieldset>
 

@@ -15,6 +15,7 @@ import { initHeader, initAnchors, initMenu, initScrollSpy } from './ui/nav.js';
 import { initTitleReveals, initFades, showEverything } from './ui/reveal.js';
 import { fontsReady, playIntro, skipIntro } from './ui/intro.js';
 import { initBench } from './ui/beams.js';
+import { initFilo } from './ui/filo.js';
 import { initForm } from './ui/form.js';
 import { initProfondita } from './ui/profondita.js';
 import { initStory } from './story.js';
@@ -71,6 +72,7 @@ gsap.matchMedia().add(
     later(() => {
       initFades();
       initBench();
+      initFilo();
       if (wants3D) disposeDepth = initProfondita();
     });
     later(() => {
