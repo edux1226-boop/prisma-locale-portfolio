@@ -1060,7 +1060,7 @@
 .chip input:checked + span { background: var(--calce); color: var(--notte); box-shadow: none; }
 .chip input:focus-visible + span { outline: 2px solid var(--arancio); outline-offset: 2px; }
 .field--check { grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 12px; }
-.field--check input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--arancio); }
+.field--check input { width: 24px; height: 24px; margin: 1px 0 0; accent-color: var(--arancio); }
 .field--check label { font-weight: 400; color: var(--testo-2); }
 .field--check a { color: var(--calce); }
 .form__end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
