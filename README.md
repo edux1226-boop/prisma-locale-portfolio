@@ -53,7 +53,7 @@ che a sua volta aggiorna ScrollTrigger.
 │       ├── hero.js            regia dell'hero: 3D o immagine statica
 │       ├── prism/             scena Three.js e shader
 │       ├── story.js           la vetrina grigia (timeline pinnata)
-│       └── ui/                nav, intro, titoli, banco ottico, modulo
+│       └── ui/                nav, intro, titoli, banco ottico, filo delle automazioni, modulo
 ├── public/                    font, immagini, favicon, robots, sitemap
 ├── dev/                       pagine di servizio per generare le immagini (non pubblicate)
 └── scripts/render-stills.mjs  rigenera immagini statiche, immagine social e icone
@@ -116,6 +116,16 @@ la scena si regola da sola (vedi sotto).
 - **Netlify Forms**: al primo deploy attivare le notifiche email del modulo "contatti".
 - **Privacy**: il testo è aggiornato al modulo e ai caratteri self-hosted, ma va fatto
   rivedere a un consulente.
+- **Chi c'è dietro** (sezione "Perché locale"): per ora è un segnaposto con "Foto in arrivo"
+  e due righe da scrivere. Va completato con foto e testo veri **prima di pubblicare**
+  (in `index.html` cerca `data-segnaposto`).
+
+## Sicurezza
+
+`scripts/vite-csp.mjs` scrive a ogni build `dist/_headers` con la Content-Security-Policy
+di home, privacy, grazie e 404. Lo script inline in `<head>` è autorizzato per hash, che si
+ricalcola da solo se lo script cambia. Le anteprime non ricevono questa policy. Se aggiungi
+risorse da altri domini (font, script, iframe), vanno aggiunte nel plugin.
 
 ## Anteprime per i clienti
 
