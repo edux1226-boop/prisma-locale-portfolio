@@ -453,7 +453,9 @@ html:has(dialog[open]) { overflow: clip; }
   opacity: 0;
   animation: pl-failsafe 0.01s linear 3.5s forwards;
 }
-.is-loading .line__in {
+/* Le righe dell'hero restano visibili dal primo disegno (vedi intro.js):
+   la maschera di pre-caricamento vale solo per le pagine interne. */
+.is-loading .line__in:not(.hero__title .line__in) {
   transform: translateY(105%);
   animation: pl-failsafe 0.01s linear 3.5s forwards;
 }

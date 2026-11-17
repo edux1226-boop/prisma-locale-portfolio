@@ -56,6 +56,19 @@
   margin-left: -0.045em;
   text-wrap: nowrap;
 }
+/* Le righe dell'hero non si rivelano più con la maschera: senza ritaglio la
+   coda della "g" di "già" non viene tagliata e l'alone qui sotto non forma
+   bordi netti. L'interlinea resta 0.9. */
+.hero__title .line { overflow: visible; padding-bottom: 0; margin-bottom: 0; }
+
+/* Su schermi bassi il fascio di luce passa dietro l'etichetta e il titolo:
+   un alone scuro sotto le lettere lo attenua solo lì, senza spegnerlo. */
+.hero__eyebrow,
+.hero__title { text-shadow: 0 0 0.6em rgb(var(--notte-rgb) / 0.9), 0 0 0.25em rgb(var(--notte-rgb) / 0.6); }
+.hero__eyebrow { text-shadow: 0 0 10px rgb(var(--notte-rgb) / 0.95), 0 0 3px rgb(var(--notte-rgb) / 0.9); }
+/* Sul testo a spettro l'ombra coprirebbe il colore: si usa un filtro. */
+.colore__base, .colore__spettro { text-shadow: none; }
+.colore__spettro { filter: drop-shadow(0 0 0.18em rgb(var(--notte-rgb) / 0.8)); }
 .hero__foot {
   grid-row: 4;
   display: grid;
@@ -79,7 +92,9 @@
 .is-loading .colore__base { opacity: 1; }
 .is-loading .colore__spettro { opacity: 0; }
 
-@media (min-width: 48em) {
+/* Paragrafo e pulsanti restano in colonna, allineati a sinistra, finché
+   c'è spazio per affiancarli senza stringere il paragrafo. */
+@media (min-width: 80em) {
   .hero__foot { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
 }
 @media (min-width: 64em) {
@@ -90,7 +105,7 @@
   }
   .hero__eyebrow { grid-column: 1 / span 6; }
   .hero__title { grid-column: 1 / span 10; }
-  .hero__foot { grid-column: 1 / span 9; grid-template-columns: minmax(0, 34rem) auto; column-gap: 40px; }
+  .hero__foot { grid-column: 1 / span 9; column-gap: 40px; }
   .hero__fig {
     display: block;
     grid-row: 4;
@@ -105,6 +120,9 @@
     color: var(--testo-2);
   }
   .hero__fig .label { display: block; font-style: normal; margin-bottom: 6px; color: var(--testo-2); }
+}
+@media (min-width: 80em) {
+  .hero__foot { grid-template-columns: minmax(0, 34rem) auto; }
 }
 
 /* ---- SERVIZI --------------------------------------------------------------- */
