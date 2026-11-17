@@ -77,6 +77,20 @@
 .hero__lead { max-width: 38ch; font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.4rem); color: var(--calce); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .hero__fig { display: none; }
+/* Il prezzo d'ingresso, discreto, sotto i pulsanti. */
+.hero__prezzo {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  margin-top: -12px;
+  min-height: 44px;
+  font-size: var(--t-small);
+  color: var(--testo-2);
+  text-decoration: underline;
+  text-decoration-color: var(--filo-forte);
+  text-underline-offset: 0.3em;
+}
+.hero__prezzo:hover { color: var(--calce); text-decoration-color: currentColor; }
 
 /* "colore." — l'unica parola a colori dell'hero */
 .colore { position: relative; display: inline-block; padding-right: 0.06em; }
@@ -123,6 +137,8 @@
 }
 @media (min-width: 80em) {
   .hero__foot { grid-template-columns: minmax(0, 34rem) auto; }
+  .hero__lead { grid-row: 1 / span 2; }
+  .hero__prezzo { grid-column: 2; }
 }
 
 /* ---- SERVIZI --------------------------------------------------------------- */
@@ -904,6 +920,29 @@
 .locale__body { margin-top: clamp(40px, 5vw, 80px); row-gap: 56px; }
 .locale__lead { max-width: 36ch; }
 .locale__list { border-top: 1px solid var(--filo); }
+/* Chi c'è dietro: per ora un segnaposto, da sostituire con foto e testo veri. */
+.persona {
+  display: grid;
+  grid-template-columns: minmax(96px, 30%) minmax(0, 1fr);
+  gap: 20px;
+  align-items: end;
+  margin: 0;
+}
+.persona__foto {
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--filo-forte);
+  border-radius: 6px;
+  font-size: var(--t-small);
+  color: var(--inchiostro-2);
+  text-align: center;
+  padding: 8px;
+}
+.persona__foto img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.persona__testo { display: grid; gap: 10px; }
+.persona__testo .label { color: var(--inchiostro-2); }
+.persona__righe { font-family: var(--f-display); font-size: var(--t-m); line-height: 1.25; max-width: 30ch; text-wrap: pretty; }
 .ragione {
   display: grid;
   gap: 8px;
@@ -973,6 +1012,7 @@
 }
 @media (min-width: 64em) {
   .locale__lead { grid-column: 1 / span 6; }
+  .persona { grid-column: 8 / span 5; grid-row: 1; }
   .locale__list { grid-column: 1 / span 8; grid-row: 2; }
   .costa { grid-column: 10 / span 3; grid-row: 2; }
 }
@@ -1114,6 +1154,8 @@
 .canoni__title em { font-style: italic; }
 .canoni__intro { margin-top: 16px; max-width: 52ch; color: var(--testo-2); text-wrap: pretty; }
 .canoni__list { margin-top: clamp(28px, 3.5vw, 48px); }
+.prezzi__esempio { margin-top: clamp(24px, 3vw, 40px); color: var(--testo-2); }
+.prezzi__esempio strong { color: var(--calce); font-weight: 600; }
 .prezzi__note {
   margin-top: clamp(32px, 4vw, 56px);
   row-gap: 28px;
