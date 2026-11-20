@@ -24,6 +24,7 @@ export default defineConfig({
         morsi: resolve(root, 'anteprime/morsi/index.html'),
         lordNelson: resolve(root, 'anteprime/lord-nelson/index.html'),
         retroscena: resolve(root, 'anteprime/retroscena/index.html'),
+        ludwig: resolve(root, 'anteprime/ludwig-risto-pub/index.html'),
       },
     },
   },
