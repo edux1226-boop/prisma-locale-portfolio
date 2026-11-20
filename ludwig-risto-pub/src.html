@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ludwig Risto Pub | Pub bavarese e musica live a Roseto degli Abruzzi</title>
+<meta name="description" content="Ludwig Risto Pub a Roseto degli Abruzzi: ristopub bavarese con carne alla brace, panini, tante birre e musica dal vivo il giovedì. Via Nazionale Adriatica 615.">
+<meta name="theme-color" content="#F2E4C4">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Ludwig Risto Pub | Pub bavarese e musica live a Roseto degli Abruzzi">
+<meta property="og:description" content="Brace, birra e musica dal vivo a Roseto degli Abruzzi.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23E08A00' stroke='%232A1A0E' stroke-width='2.5'/%3E%3C/svg%3E">
+<script>
+/* Le animazioni si preparano solo se il browser le consente; senza JS la pagina resta tutta visibile. */
+(function(){var h=document.documentElement;
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var seen=false;try{seen=sessionStorage.getItem('ld')}catch(e){}
+h.classList.add('anim');if(!seen){h.classList.add('has-loader');setTimeout(function(){h.classList.remove('has-loader')},3500)}
+try{sessionStorage.setItem('ld','1')}catch(e){}}})();
+</script>
+<style>
+@font-face{font-family:"Alfa Slab One";font-weight:400;font-style:normal;font-display:swap;src:url(data:font/woff2;base64,{{FONT_SLAB}}) format("woff2")}
+@font-face{font-family:"Hanken Grotesk";font-weight:400;font-style:normal;font-display:swap;src:url(data:font/woff2;base64,{{FONT_400}}) format("woff2")}
+@font-face{font-family:"Hanken Grotesk";font-weight:700;font-style:normal;font-display:swap;src:url(data:font/woff2;base64,{{FONT_700}}) format("woff2")}
+
+:root{
+  --crema:#F2E4C4;      /* dominante */
+  --caffe:#2A1A0E;      /* testo */
+  --ambra:#E08A00;      /* accento: solo riempimenti (contrasto testo 6,2:1 con caffè) */
+  --bavaro:#2F6FB0;     /* solo losanghe e dettagli rari */
+  --cartone:#E8D3A4;
+  --cartone-2:#CDB27B;
+  --ambra-testo:#8A4E00;/* ambra scuro per testo piccolo su crema (5,2:1) */
+  --slab:"Alfa Slab One",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --pad:clamp(1rem,4.5vw,3rem);
+  --bar:64px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:1rem}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis-stopped{overflow:hidden}
+html.has-loader{overflow:hidden}
+body{
+  margin:0;color:var(--caffe);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;
+  background:
+    radial-gradient(70rem 42rem at 88% -8%,#FBF2D9 0,rgba(251,242,217,0) 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .1 0 0 0 0 .05 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    var(--crema);
+  overflow-x:clip;
+  padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom));
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,figure,table{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--caffe);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-5rem;background:var(--caffe);color:var(--crema);padding:.75rem 1rem;z-index:100}
+.skip:focus{top:1rem}
+.wrap{width:100%;max-width:1280px;margin-inline:auto;padding-inline:var(--pad)}
+.dc{display:inline-block;font-size:.72em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px dashed currentColor;padding:.05em .5em;line-height:1.5;vertical-align:.08em}
+.eyebrow{font-weight:700;font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ambra-testo)}
+.h2{font-family:var(--slab);font-weight:400;font-size:clamp(2.9rem,11.5vw,7.5rem);line-height:.94;letter-spacing:-.01em;text-wrap:balance}
+.rauten{height:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 2.5 23.5 13 13 23.5 2.5 13z' fill='%232F6FB0'/%3E%3C/svg%3E") repeat-x}
+
+/* pulsanti */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-height:56px;padding:.7rem 1.4rem;border:2.5px solid var(--caffe);border-radius:4px;background:var(--crema);color:var(--caffe);font:700 1.125rem/1.1 var(--sans);text-decoration:none;box-shadow:4px 4px 0 var(--caffe);transition:transform .12s ease,box-shadow .12s ease}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--caffe)}
+.btn svg{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn small{font:400 .875rem/1 var(--sans)}
+.btn .num{display:none}
+@media (min-width:760px){.hero .btn .num{display:inline;font-weight:700;font-size:1rem}}
+.btn-call{background:var(--ambra)}
+.btn-wa{background:var(--caffe);color:var(--crema);box-shadow:4px 4px 0 var(--ambra)}
+.btn-wa:active{box-shadow:1px 1px 0 var(--ambra)}
+@media (hover:hover){.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--caffe)}.btn-wa:hover{box-shadow:6px 6px 0 var(--ambra)}}
+
+/* testata */
+.top{position:absolute;inset:0 0 auto 0;z-index:5;padding-top:max(.9rem,env(safe-area-inset-top))}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:48px}
+.logo{font-family:var(--slab);font-size:1.35rem;text-decoration:none}
+.top nav{display:none;gap:1.75rem}
+.top nav a{font-weight:700;font-size:.9375rem;text-decoration:none;padding:.5rem 0;border-bottom:2.5px solid transparent}
+.top nav a:hover{border-color:var(--ambra)}
+@media (min-width:760px){.top nav{display:flex}}
+
+/* hero */
+.hero{position:relative;overflow:clip;padding-top:9.2rem;padding-bottom:2.5rem;min-height:min(100svh,60rem);display:flex;flex-direction:column;justify-content:center}
+.hero-coaster{position:absolute;z-index:0;right:-11vw;top:3.7rem;width:47vw;transform:rotate(-14deg);pointer-events:none}
+.hero-coaster svg{width:100%;aspect-ratio:1}
+.hero .wrap{position:relative;z-index:1}
+.hero .eyebrow{max-width:12.5rem}
+.hero h1{font-family:var(--slab);font-weight:400;line-height:.86;margin:.9rem 0 1.1rem}
+.hero h1 .l{display:block;font-size:min(22.4vw,19rem);letter-spacing:-.02em}
+.hero h1 .s{display:block;font-size:clamp(1.1rem,4.2vw,2.2rem);letter-spacing:.02em;margin:.55rem 0 0 .25em}
+.claim{font-size:clamp(1.5rem,5.6vw,2.6rem);line-height:1.12;font-weight:700;max-width:16ch;text-wrap:balance}
+.hero-meta{margin-top:1rem;font-size:1rem;max-width:30rem}
+.cta{display:grid;gap:.9rem;margin-top:1.75rem;max-width:26rem}
+@media (min-width:760px){
+  .hero{padding-top:7rem}
+  .hero .eyebrow{max-width:none}
+  .hero-coaster{right:-3vw;top:auto;bottom:1.5rem;width:min(38vw,36rem)}
+  .hero h1 .l{font-size:clamp(11rem,19vw,17rem)}
+  .cta{grid-template-columns:repeat(3,auto);max-width:none;justify-content:start;gap:1.1rem}
+  .hero-meta{max-width:34rem}
+}
+
+.quick{display:grid;grid-template-columns:repeat(3,1fr);border-block:2.5px solid var(--caffe);background:var(--crema)}
+.quick a{display:flex;align-items:center;justify-content:center;min-height:52px;padding:.5rem;text-align:center;font-weight:700;font-size:.9375rem;text-decoration:none;border-right:1.5px solid var(--caffe)}
+.quick a:last-child{border-right:0}
+@media (min-width:760px){.quick{display:none}}
+
+/* giovedì live */
+.live{background:var(--ambra)}
+.live-track{position:relative}
+html.anim .live-track{height:210vh}
+.live-stick{display:grid;align-items:center;gap:1.4rem;padding-block:3rem}
+html.anim .live-stick{position:sticky;top:0;height:calc(100svh - var(--bar) - env(safe-area-inset-bottom));padding-block:.8rem;align-content:center;gap:.9rem}
+.live-copy .h2{font-size:10.4vw}.live .rows li{padding:.4rem 0 .6rem}.live .btn{margin-top:.9rem}
+.live-copy .eyebrow{color:var(--caffe)}
+.live-copy .h2{margin:.5rem 0 1rem}
+.live-copy p.lead{font-size:1.125rem;max-width:30rem}
+.live .rows{margin-top:1.1rem;max-width:30rem}
+.live .btn{margin-top:1.4rem}
+.live-stage{position:relative;width:min(62vw,33svh,34rem);aspect-ratio:1;margin-inline:auto;perspective:900px}
+.live-svg{width:100%;height:100%;will-change:transform}
+.live-canvas{position:absolute;inset:0;width:100%;height:100%;display:none}
+.live-stage.is-3d .live-canvas{display:block}
+.live-stage.is-3d .live-svg{visibility:hidden}
+@media (min-width:860px){
+  .live-copy .h2{font-size:clamp(2.9rem,11.5vw,7.5rem)}.live .rows li{padding:.6rem 0 .75rem}.live .btn{margin-top:1.4rem}.br{display:block}
+  html.anim .live-stick{height:100svh;gap:3rem;padding-block:1.2rem}
+  .live-stick{grid-template-columns:1.05fr 1fr;gap:3rem}
+  .live-stage{width:min(40vw,72svh,34rem)}
+  html.anim .live-track{height:260vh}
+}
+
+/* righe di conto a penna */
+.rows li{position:relative;display:flex;align-items:baseline;gap:.8rem;padding:.6rem 0 .75rem}
+.rows li::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;opacity:.6;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='6'%3E%3Cpath d='M0 3Q5.5 1.2 11 3T22 3' fill='none' stroke='%232A1A0E' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x}
+.rows li:nth-child(even)::after{transform:rotate(.35deg)}
+.rows li:nth-child(odd)::after{transform:rotate(-.3deg)}
+.rows .k{font-weight:700}
+.rows .v{margin-left:auto;text-align:right}
+
+/* menù */
+.menu{padding-block:clamp(4rem,11vw,8rem) clamp(3rem,8vw,6rem)}
+.menu-head{display:grid;gap:1.2rem;align-items:end;margin-bottom:2rem}
+.menu-head p{max-width:34rem}
+.pila-ui{display:none;gap:.75rem;align-items:center}
+html.js .pila-ui{display:flex}
+.pila-ui button{width:56px;height:56px;border:2.5px solid var(--caffe);border-radius:4px;background:var(--crema);color:var(--caffe);font:700 1.5rem/1 var(--sans);cursor:pointer;box-shadow:3px 3px 0 var(--caffe)}
+.pila-ui button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--caffe)}
+.pila-ui button:disabled{opacity:.35;cursor:default}
+.pila-ui output{font-weight:700;min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
+@media (min-width:860px){.menu-head{grid-template-columns:1fr auto}}
+.pila{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.4rem 0 2.6rem;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--caffe) transparent}
+.pila{align-items:flex-start}
+.pila>li{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;min-width:0}
+.sb{position:relative;width:min(72%,20rem);margin:0 auto 1.8rem;aspect-ratio:1;border-radius:50%;background:var(--cartone);border:3px solid var(--caffe);box-shadow:6px 6px 0 var(--cartone-2),6px 6px 0 3px var(--caffe),12px 12px 0 var(--cartone-2),12px 12px 0 3px var(--caffe);display:grid;place-items:center}
+.pila>li:nth-child(odd) .sb{transform:rotate(-2deg)}
+.pila>li:nth-child(even) .sb{transform:rotate(1.5deg)}
+.sb .ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sb-in{position:relative;width:68%;display:grid;gap:.15rem;text-align:left}
+.sb h3{font-family:var(--slab);font-weight:400;font-size:clamp(1.5rem,6.2vw,2.1rem);line-height:1;text-align:center}
+.sb .intro{font-size:.8125rem;line-height:1.3;text-align:center;margin:.2rem 0 .3rem}
+.sb .rows li{padding:.45rem 0 .8rem;font-size:.9375rem;line-height:1.2}
+.sb .rows .k{font-weight:700}
+.dishes{max-width:30rem;margin-inline:auto;border:3px solid var(--caffe);border-radius:4px;background:rgba(251,242,217,.55);padding:.3rem 1rem .1rem}
+.dishes li{flex-wrap:wrap;font-size:1rem;line-height:1.25;padding:.55rem 0 .8rem}
+.dishes .k{flex:1 1 auto}
+.dishes .d{flex-basis:100%;font-size:.875rem;line-height:1.3}
+.menu-note{margin-top:.4rem;font-size:.9375rem}
+.menu-note strong{font-weight:700}
+
+/* il locale */
+.locale{padding-block:clamp(3rem,9vw,7rem);position:relative}
+.locale-grid{display:grid;gap:2.4rem}
+.locale .h2{margin-bottom:1.2rem}
+.locale .testo p{font-size:1.1875rem;max-width:36rem}
+.locale .testo p+p{margin-top:1rem}
+.ledger{align-self:end;border:3px solid var(--caffe);border-radius:4px;padding:1.2rem 1.3rem .6rem;background:rgba(251,242,217,.55);max-width:28rem}
+.ledger h3{font-family:var(--slab);font-weight:400;font-size:1.4rem;margin-bottom:.3rem}
+@media (min-width:860px){.locale-grid{grid-template-columns:1.25fr 1fr;gap:5rem;align-items:start}.ledger{justify-self:end;margin-top:6rem}}
+
+/* dove siamo */
+.dove{padding-block:clamp(3rem,9vw,7rem);background:var(--cartone)}
+.dove-grid{display:grid;gap:2.4rem;margin-top:1.6rem}
+.dove address{font-style:normal;font-size:1.25rem;font-weight:700;line-height:1.35}
+.dove .contatti{margin-top:1.2rem}
+.dove .contatti li{padding:0}
+.dove .contatti a{display:inline-block;min-height:44px;line-height:44px;font-weight:700;text-underline-offset:.2em}
+.dove .btn{margin-top:1.4rem}
+.orari{width:100%;border-collapse:collapse;border:3px solid var(--caffe);background:var(--crema)}
+.orari th,.orari td{padding:.7rem 1rem;text-align:left;border-bottom:1.5px solid var(--caffe)}
+.orari tr:last-child th,.orari tr:last-child td{border-bottom:0}
+.orari th{font-weight:700}
+.orari td{font-variant-numeric:tabular-nums}
+.orari-note{margin-top:.9rem;font-size:.9375rem;max-width:30rem}
+@media (min-width:860px){.dove-grid{grid-template-columns:1fr 1fr;gap:5rem;align-items:start}}
+
+/* piè di pagina */
+.foot{background:var(--caffe);color:var(--crema);padding-block:2.6rem 2.2rem;font-size:.9375rem}
+.foot .wrap{display:grid;gap:1.4rem}
+.foot .logo{font-size:1.8rem}
+.foot ul{display:grid;gap:.3rem}
+.foot .bevi{font-weight:700}
+@media (min-width:860px){.foot .wrap{grid-template-columns:1.2fr 1.4fr 1fr;align-items:start}}
+.foot .rauten{margin-bottom:2rem}
+.foot-rauten{background:var(--caffe)}
+
+/* barra fissa mobile */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--caffe);padding-bottom:env(safe-area-inset-bottom);transition:transform .3s ease;border-top:2.5px solid var(--caffe)}
+.bar a{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:var(--bar);color:var(--crema);font-weight:700;font-size:1rem;text-decoration:none;border-right:1.5px solid rgba(242,228,196,.35)}
+.bar a:last-child{border-right:0}
+.bar a:first-child{background:var(--ambra);color:var(--caffe)}
+.bar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bar.is-hidden{transform:translateY(100%)}
+@media (min-width:760px){.bar{display:none}body{padding-bottom:0}}
+
+/* caricamento: il boccale */
+#loader{display:none;position:fixed;inset:0;z-index:200;background:var(--crema);place-items:center;will-change:transform}
+html.has-loader #loader{display:grid}
+.ld{display:grid;justify-items:center;gap:1rem}
+.ld svg{width:min(38vw,9rem);height:auto;overflow:visible}
+.ld-word{font-family:var(--slab);font-size:clamp(3.4rem,15vw,7rem);line-height:1;overflow:hidden;padding-bottom:.08em}
+.ld-word .c{display:inline-block}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#top">Vai al contenuto</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-4.8A9 9 0 1 1 8 19.4z"/><path d="M9 9c0 3 3 6 6 6l1-1.5-2-1-1 .6c-.8-.4-1.6-1.2-2-2l.6-1-1-2z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+{{SYMBOLS}}
+</defs>
+</svg>
+
+<div id="loader" aria-hidden="true">
+  <div class="ld">
+    <svg viewBox="0 0 200 220" fill="none">
+      <defs><clipPath id="mugClip"><path d="M40 -20h110v200q0 20-20 20H60q-20 0-20-20z"/></clipPath></defs>
+      <g clip-path="url(#mugClip)">
+        <rect class="ld-beer" x="40" y="40" width="110" height="160" fill="#E08A00"/>
+        <g class="ld-foam" fill="#FBF3DF" stroke="#2A1A0E" stroke-width="3">
+          <circle cx="58" cy="34" r="20"/><circle cx="88" cy="24" r="24"/><circle cx="122" cy="28" r="22"/><circle cx="140" cy="44" r="14"/><rect x="40" y="38" width="110" height="26" stroke="none"/>
+        </g>
+      </g>
+      <path d="M150 70h20q20 0 20 24v30q0 24-20 24h-20" stroke="#2A1A0E" stroke-width="8" stroke-linecap="round"/>
+      <path d="M40 40v140q0 20 20 20h70q20 0 20-20V40" stroke="#2A1A0E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="ld-word">Ludwig</div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Ludwig Risto Pub, inizio pagina">Ludwig</a>
+    <nav aria-label="Principale">
+      <a href="#giovedi">Giovedì live</a>
+      <a href="#menu">Menù</a>
+      <a href="#locale">Il locale</a>
+      <a href="#dove">Dove siamo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="titolo">
+  <div class="hero-coaster" aria-hidden="true"><svg><use href="#c-hero"/></svg></div>
+  <div class="wrap">
+    <p class="eyebrow">Ristopub bavarese · Roseto degli Abruzzi</p>
+    <h1 id="titolo"><span class="l">Ludwig</span> <span class="s">Risto Pub</span></h1>
+    <p class="claim">Brace, birra e musica dal vivo a Roseto.</p>
+    <p class="hero-meta">Aperti dalle 19:30, da lunedì a sabato <span class="dc">da confermare</span><br>Via Nazionale Adriatica 615 · Asporto disponibile</p>
+    <div class="cta" id="cta">
+      <a class="btn btn-call" href="tel:+390858943039"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Chiama</span><small class="num">085 894 3039</small></a>
+      <a class="btn btn-wa" href="https://wa.me/393488964508?text=Ciao%20Ludwig%2C%20vorrei%20prenotare%20un%20tavolo%20per%20__%20persone%20alle%20ore%20__" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+      <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=42.664186,14.025228" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Indicazioni</span></a>
+    </div>
+  </div>
+</section>
+
+<nav class="quick" aria-label="Vai a">
+  <a href="#giovedi">Giovedì live</a>
+  <a href="#menu">Menù</a>
+  <a href="#dove">Orari e dove</a>
+</nav>
+
+<section class="live" id="giovedi" aria-labelledby="t-live">
+  <div class="rauten" aria-hidden="true"></div>
+  <div class="live-track">
+    <div class="live-stick wrap">
+      <div class="live-copy">
+        <p class="eyebrow">Musica dal vivo</p>
+        <h2 class="h2" id="t-live">Giovedì <span class="br">live.</span></h2>
+        <p class="lead">Il giovedì sera da Ludwig c’è musica dal vivo. Si mangia alla brace, si beve una birra, si ascolta.</p></div></article>
+      <ul class="rows dishes">
+          <li><span class="k">Quando</span><span class="v">il giovedì</span></li>
+          <li><span class="k">Chi suona</span><span class="v">in aggiornamento</span></li>
+          <li><span class="k">Date e orario</span><span class="v">in aggiornamento</span></li>
+        </ul>
+        <a class="btn btn-wa" href="https://wa.me/393488964508?text=Ciao%20Ludwig%2C%20chi%20suona%20questo%20gioved%C3%AC%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Chiedi chi suona</span></a>
+      </div>
+      <div class="live-stage" id="stage">
+        <svg class="live-svg" role="img" aria-label="Sottobicchiere con la scritta Giovedì live"><use href="#c-live"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu" aria-labelledby="t-menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div>
+        <p class="eyebrow">Cucina e birre</p>
+        <h2 class="h2" id="t-menu">Menù</h2>
+        <p class="menu-note"><strong>Menù in aggiornamento.</strong> Piatti singoli e prezzi arrivano a breve: per ora ecco cosa trovi, per categoria. Asporto disponibile.</p>
+      </div>
+      <div class="pila-ui" aria-label="Sfoglia il menù">
+        <button type="button" id="prev" aria-label="Sottobicchiere precedente">←</button>
+        <output id="count" aria-live="polite">1 / 5</output>
+        <button type="button" id="next" aria-label="Sottobicchiere successivo">→</button>
+      </div>
+    </div>
+    <ol class="pila" id="pila" tabindex="0" aria-label="Categorie del menù, scorri in orizzontale">
+      <li><article class="sb"><svg class="ring" aria-hidden="true"><use href="#c-ring"/></svg><div class="sb-in">
+        <h3>Panini</h3><p class="intro">Tra i punti forti della casa.</p>
+        <ul class="rows"><li><span class="k">Pulled pork</span><span class="v"><span aria-hidden="true">—</span><span class="sr">prezzo in aggiornamento</span></span></li><li><span class="k">Altri panini</span><span class="v">in agg.</span></li></ul></li>
+      <li><article class="sb"><svg class="ring" aria-hidden="true"><use href="#c-ring"/></svg><div class="sb-in">
+        <h3>Brace</h3><p class="intro">Dalla griglia.</p></div></article>
+      <ul class="rows dishes"><li><span class="k">Carne alla brace</span><span class="v"><span aria-hidden="true">—</span><span class="sr">prezzo in aggiornamento</span></span></li><li><span class="k">Wurstel</span><span class="v"><span aria-hidden="true">—</span><span class="sr">prezzo in aggiornamento</span></span></li><li><span class="k">Verdure grigliate</span><span class="v"><span aria-hidden="true">—</span><span class="sr">prezzo in aggiornamento</span></span></li></ul></li>
+      <li><article class="sb"><svg class="ring" aria-hidden="true"><use href="#c-ring"/></svg><div class="sb-in">
+        <h3>Taglieri</h3><p class="intro">Da dividere al tavolo.</p></div></article>
+      <ul class="rows dishes"><li><span class="k">Taglieri di formaggi</span><span class="v"><span aria-hidden="true">—</span><span class="sr">prezzo in aggiornamento</span></span></li><li><span class="k">Altri taglieri</span><span class="v">in agg.</span></li></ul></li>
+      <li><article class="sb"><svg class="ring" aria-hidden="true"><use href="#c-ring"/></svg><div class="sb-in">
+        <h3>Dolci</h3><p class="intro">Per chiudere.</p></div></article>
+      <ul class="rows dishes"><li><span class="k">Dolci</span><span class="v">in agg.</span></li></ul></li>
+      <li><article class="sb"><svg class="ring" aria-hidden="true"><use href="#c-ring"/></svg><div class="sb-in">
+        <h3>Birre</h3><p class="intro">Tante, e il giovedì c’è la musica.</p></div></article>
+      <ul class="rows dishes"><li><span class="k">Lista delle birre</span><span class="v">in agg.</span></li></ul></li>
+    </ol>
+    <p class="menu-note">Prezzi e allergeni: chiedi in sala o chiamaci. <span class="dc">in aggiornamento</span></p>
+  </div>
+</section>
+
+<section class="locale" id="locale" aria-labelledby="t-locale">
+  <div class="wrap locale-grid">
+    <div class="testo">
+      <p class="eyebrow">Il locale</p>
+      <h2 class="h2" id="t-locale">Un pub bavarese sulla Statale.</h2>
+      <p>Ludwig è un ristopub di stampo bavarese a Roseto degli Abruzzi, sulla Via Nazionale Adriatica. In cucina comanda la brace: carne, wurstel e verdure grigliate, più taglieri di formaggi, panini e dolci.</p>
+      <p>Il pulled pork e i panini sono il nostro forte. La lista delle birre è lunga, e il giovedì c’è la musica dal vivo. Se preferisci mangiare a casa, puoi ordinare d’asporto.</p>
+    </div>
+    <aside class="ledger" aria-label="Il conto in breve">
+      <h3>In breve</h3>
+      <ul class="rows">
+        <li><span class="k">Stile</span><span class="v">bavarese</span></li>
+        <li><span class="k">Cucina</span><span class="v">brace</span></li>
+        <li><span class="k">Da bere</span><span class="v">tante birre</span></li>
+        <li><span class="k">Musica</span><span class="v">il giovedì</span></li>
+        <li><span class="k">Asporto</span><span class="v">disponibile</span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="dove" id="dove" aria-labelledby="t-dove">
+  <div class="wrap">
+    <p class="eyebrow">Dove siamo e orari</p>
+    <h2 class="h2" id="t-dove">Vieni a trovarci.</h2>
+    <div class="dove-grid">
+      <div>
+        <address>Ludwig Risto Pub<br>Via Nazionale Adriatica (SS16) 615<br>64026 Roseto degli Abruzzi (TE)</address>
+        <ul class="contatti">
+          <li>Telefono: <a href="tel:+390858943039">085 894 3039</a></li>
+          <li>WhatsApp: <a href="https://wa.me/393488964508?text=Ciao%20Ludwig%2C%20vorrei%20prenotare%20un%20tavolo%20per%20__%20persone%20alle%20ore%20__" target="_blank" rel="noopener">348 896 4508</a></li>
+          <li>Email: <a href="mailto:info@ludwigpub.it">info@ludwigpub.it</a></li>
+        </ul>
+        <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=42.664186,14.025228" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Apri in Google Maps</span></a>
+      </div>
+      <div>
+        <table class="orari">
+          <caption class="sr">Orari di apertura</caption>
+          <tbody>
+            <tr><th scope="row">Lunedì</th><td>19:30 – 03:00</td></tr>
+            <tr><th scope="row">Martedì</th><td>19:30 – 03:00</td></tr>
+            <tr><th scope="row">Mercoledì</th><td>19:30 – 03:00</td></tr>
+            <tr><th scope="row">Giovedì</th><td>19:30 – 03:00 · musica dal vivo</td></tr>
+            <tr><th scope="row">Venerdì</th><td>19:30 – 03:00</td></tr>
+            <tr><th scope="row">Sabato</th><td>19:30 – 03:00</td></tr>
+            <tr><th scope="row">Domenica</th><td><span class="dc">da confermare</span></td></tr>
+          </tbody>
+        </table>
+        <p class="orari-note">Orari in corso di conferma, anche quelli estivi <span class="dc">da confermare</span>. Prima di venire, una telefonata toglie ogni dubbio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="rauten" aria-hidden="true" style="margin-top:-2.6rem;margin-bottom:2rem"></div>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#top">Ludwig</a>
+      <p>Risto Pub<br>Via Nazionale Adriatica (SS16) 615<br>64026 Roseto degli Abruzzi (TE)</p>
+    </div>
+    <ul>
+      <li>Ragione sociale: <span class="dc">da confermare</span></li>
+      <li>P. IVA: <span class="dc">da confermare</span></li>
+      <li>Privacy e cookie policy: <span class="dc">da confermare</span></li>
+    </ul>
+    <div>
+      <p class="bevi">Bevi responsabilmente.</p>
+      <p>Sito realizzato da Prisma Locale</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="bar" id="bar" aria-label="Contatti rapidi">
+  <a href="tel:+390858943039"><svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama</a>
+  <a href="https://wa.me/393488964508?text=Ciao%20Ludwig%2C%20vorrei%20prenotare%20un%20tavolo%20per%20__%20persone%20alle%20ore%20__" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=42.664186,14.025228" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Indicazioni</a>
+</nav>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","name":"Ludwig Risto Pub","description":"Ristopub bavarese a Roseto degli Abruzzi con carne alla brace, panini, tante birre e musica dal vivo il giovedì.","telephone":"+39 085 894 3039","email":"info@ludwigpub.it","address":{"@type":"PostalAddress","streetAddress":"Via Nazionale Adriatica (SS16) 615","postalCode":"64026","addressLocality":"Roseto degli Abruzzi","addressRegion":"TE","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":42.664186,"longitude":14.025228},"hasMap":"https://www.google.com/maps/search/?api=1&query=42.664186,14.025228","servesCuisine":["Carne alla brace","Panini"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"19:30","closes":"03:00"}]}
+</script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
+<script>
+(function(){
+'use strict';
+var H=document.documentElement;
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $=function(s,r){return (r||document).querySelector(s)};
+H.classList.add('js');
+
+/* Parte senza librerie: menù e barra fissa */
+function basics(){
+  var pila=$('#pila'),prev=$('#prev'),next=$('#next'),count=$('#count');
+  var items=pila.children,n=items.length;
+  function step(){return items[1].offsetLeft-items[0].offsetLeft}
+  function idx(){if(pila.scrollLeft>=pila.scrollWidth-pila.clientWidth-4)return n-1;return Math.min(n-1,Math.max(0,Math.round(pila.scrollLeft/step())))}
+  function upd(){var i=idx();count.textContent=(i+1)+' / '+n;prev.disabled=i===0;next.disabled=i===n-1}
+  function go(d){pila.scrollBy({left:d*step(),behavior:reduce?'auto':'smooth'})}
+  prev.addEventListener('click',function(){go(-1)});
+  next.addEventListener('click',function(){go(1)});
+  var t;pila.addEventListener('scroll',function(){cancelAnimationFrame(t);t=requestAnimationFrame(upd)},{passive:true});
+  upd();
+  function track(n){try{if(window.plausible)window.plausible(n);if(window.dataLayer)window.dataLayer.push({event:n})}catch(e){}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href');
+    if(h.indexOf('tel:')===0)track('chiama');else if(h.indexOf('wa.me')>-1)track('whatsapp');else if(h.indexOf('google.com/maps')>-1)track('indicazioni');else if(h.indexOf('mailto:')===0)track('email')});
+  var bar=$('#bar'),cta=$('#cta');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){bar.classList.toggle('is-hidden',e[0].isIntersecting)},{threshold:0.2}).observe(cta);
+  }
+}
+
+var lenis=null,cleanups=[];
+
+/* Scena 3D: un sottobicchiere che ruota e si inclina con lo scroll */
+function svgScroll(){
+  var svg=$('.live-svg');
+  gsap.set(svg,{transformPerspective:900});
+  var tl=gsap.timeline({scrollTrigger:{trigger:'.live-track',start:'top top',end:'bottom bottom',scrub:0.6}});
+  tl.to(svg,{rotation:150,ease:'none',duration:2},0).to(svg,{rotationX:40,ease:'sine.inOut',duration:1},0).to(svg,{rotationX:0,ease:'sine.inOut',duration:1},1);
+}
+
+function drawFace(cv){
+  var S=cv.width,c=cv.getContext('2d'),R=S/2,k=S/420;
+  c.translate(R,R);c.scale(k,k);
+  c.fillStyle='#E8D3A4';c.beginPath();c.arc(0,0,206,0,7);c.fill();
+  c.strokeStyle='#2A1A0E';c.lineWidth=3;c.beginPath();c.arc(0,0,198,0,7);c.stroke();
+  c.fillStyle='#2F6FB0';
+  for(var i=0;i<36;i++){c.save();c.rotate(i*Math.PI/18);c.translate(0,-177);c.beginPath();c.moveTo(0,-12);c.lineTo(8,0);c.lineTo(0,12);c.lineTo(-8,0);c.closePath();c.fill();c.restore()}
+  c.lineWidth=1.5;c.beginPath();c.arc(0,0,150,0,7);c.stroke();
+  c.fillStyle='#2A1A0E';c.font='19px "Alfa Slab One"';c.textAlign='center';c.textBaseline='middle';
+  var txt='MUSICA DAL VIVO · IL GIOVEDÌ · ROSETO DEGLI ABRUZZI · ',m=txt.length,tot=0,w=[];
+  for(i=0;i<m;i++){w[i]=c.measureText(txt[i]).width+2.2;tot+=w[i]}
+  var a=-Math.PI/2,sc=2*Math.PI/tot;
+  for(i=0;i<m;i++){var h=w[i]*sc/2;a+=h;c.save();c.rotate(a);c.translate(0,-126);c.fillText(txt[i],0,0);c.restore();a+=h}
+  c.fillStyle='#E08A00';c.beginPath();c.arc(0,0,92,0,7);c.fill();c.stroke();
+  c.lineWidth=3;c.beginPath();c.arc(0,0,92,0,7);c.stroke();
+  c.fillStyle='#2A1A0E';c.font='30px "Alfa Slab One"';c.fillText('GIOVEDÌ',0,-14);
+  c.font='50px "Alfa Slab One"';c.fillText('LIVE',0,36);
+}
+
+function scene3D(){
+  var stage=$('#stage'),T=window.THREE;
+  var cv=document.createElement('canvas');cv.className='live-canvas';cv.setAttribute('aria-hidden','true');
+  var renderer;
+  try{renderer=new T.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'low-power'})}catch(e){return false}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
+  renderer.outputEncoding=T.sRGBEncoding;
+  stage.appendChild(cv);
+  var scene=new T.Scene(),cam=new T.PerspectiveCamera(28,1,0.1,50);cam.position.set(0,0,8);
+  var face=document.createElement('canvas');face.width=face.height=1024;drawFace(face);
+  var tex=new T.CanvasTexture(face);tex.encoding=T.sRGBEncoding;tex.anisotropy=4;tex.center.set(0.5,0.5);tex.rotation=Math.PI/2;
+  var side=new T.MeshStandardMaterial({color:0xC9AE78,roughness:0.95});
+  var top=new T.MeshStandardMaterial({map:tex,roughness:0.9});
+  var bot=new T.MeshStandardMaterial({color:0xE0CB9A,roughness:0.95});
+  var geo=new T.CylinderGeometry(1.7,1.7,0.16,96,1);
+  var mesh=new T.Mesh(geo,[side,top,bot]);mesh.rotation.x=Math.PI/2;
+  var grp=new T.Group();grp.add(mesh);scene.add(grp);
+  scene.add(new T.AmbientLight(0xfff0d8,0.72));
+  var lamp=new T.DirectionalLight(0xffe2b0,0.35);lamp.position.set(-3,4,6);scene.add(lamp);
+  function size(){var w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+  size();
+  var ro=window.ResizeObserver?new ResizeObserver(size):null;if(ro)ro.observe(stage);
+  var target=0,cur=0,active=false;
+  var st=ScrollTrigger.create({trigger:'.live-track',start:'top top',end:'bottom bottom',onUpdate:function(s){target=s.progress}});
+  var vis=ScrollTrigger.create({trigger:stage,start:'top bottom',end:'bottom top',onToggle:function(s){active=s.isActive}});
+  function tick(){
+    if(!active)return;
+    cur+=(target-cur)*0.1;
+    grp.rotation.y=cur*Math.PI*2-0.35;
+    grp.rotation.x=Math.sin(cur*Math.PI)*0.7;
+    grp.rotation.z=-0.12+cur*0.2;
+    renderer.render(scene,cam);
+  }
+  gsap.ticker.add(tick);
+  cv.addEventListener('webglcontextlost',function(e){e.preventDefault();stage.classList.remove('is-3d');svgScroll()});
+  stage.classList.add('is-3d');
+  active=true;tick();
+  cleanups.push(function(){
+    gsap.ticker.remove(tick);st.kill();vis.kill();if(ro)ro.disconnect();
+    geo.dispose();side.dispose();top.dispose();bot.dispose();tex.dispose();renderer.dispose();
+    try{renderer.forceContextLoss()}catch(e){}
+    if(cv.parentNode)cv.parentNode.removeChild(cv);
+  });
+  return true;
+}
+
+function maybe3D(){
+  var small=matchMedia('(max-width: 859px)').matches||matchMedia('(pointer: coarse)').matches;
+  var c=navigator.connection||{};
+  var weak=c.saveData||(navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2);
+  if(reduce||small||weak){if(!reduce)svgScroll();return}
+  var probe=document.createElement('canvas');
+  if(!(probe.getContext('webgl')||probe.getContext('experimental-webgl'))){svgScroll();return}
+  function load(){
+    var s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';s.integrity='sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu';s.crossOrigin='anonymous';
+    s.onload=function(){
+      var go=function(){var ok=false;try{ok=scene3D()}catch(e){}if(!ok)svgScroll()};
+      (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(go);
+    };
+    s.onerror=svgScroll;
+    document.head.appendChild(s);
+  }
+  var idle=window.requestIdleCallback||function(f){setTimeout(f,300)};
+  if(document.readyState==='complete')idle(load);else addEventListener('load',function(){idle(load)});
+}
+
+function animations(){
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+
+  if(!reduce&&window.Lenis){
+    lenis=new Lenis({lerp:0.1,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    var lr=function(t){if(lenis)lenis.raf(t*1000)};gsap.ticker.add(lr);cleanups.push(function(){gsap.ticker.remove(lr)});
+    gsap.ticker.lagSmoothing(0);
+    document.addEventListener('click',function(e){
+      var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+      var id=a.getAttribute('href');var el=id.length>1?$(id):null;
+      if(id==='#top'){e.preventDefault();lenis.scrollTo(0)}
+      else if(el){e.preventDefault();lenis.scrollTo(el,{offset:0})}
+    });
+  }
+
+  /* 1. caricamento: boccale che si riempie, schiuma, lettere sfalsate */
+  var loader=$('#loader');
+  var fr=(document.fonts&&document.fonts.ready)?document.fonts.ready:Promise.resolve();
+  if(H.classList.contains('has-loader')&&loader){fr.then(function(){
+    var split=SplitText.create('.ld-word',{type:'chars',charsClass:'c'});
+    gsap.set(split.chars,{yPercent:110});
+    gsap.set('.ld-beer',{transformOrigin:'50% 100%',scaleY:0});
+    gsap.set('.ld-foam',{y:170});
+    var tl=gsap.timeline({onComplete:function(){H.classList.remove('has-loader');gsap.set(loader,{clearProps:'all'});ScrollTrigger.refresh()}});
+    tl.to('.ld-beer',{scaleY:1,duration:0.8,ease:'power1.inOut'},0)
+      .to('.ld-foam',{y:0,duration:0.8,ease:'power1.inOut'},0)
+      .to('.ld-foam',{y:-8,duration:0.2,ease:'power2.out'},0.8)
+      .to(split.chars,{yPercent:0,duration:0.55,ease:'back.out(1.6)',stagger:0.06},0.6)
+      .to(loader,{yPercent:-100,duration:0.7,ease:'power3.inOut'},'+=0.1');
+  });}
+
+  /* contenuto: ingressi quieti, solo opacity e transform */
+  var rv=gsap.utils.toArray('.live-copy>*,.menu-head>*,.pila-wrap,.locale .testo>*,.ledger,.dove-grid>div');
+  gsap.set(rv,{opacity:0,y:22});
+  ScrollTrigger.batch(rv,{start:'top 90%',once:true,onEnter:function(els){gsap.to(els,{opacity:1,y:0,duration:0.7,stagger:0.08,ease:'power2.out',overwrite:true})}});
+
+  maybe3D();
+
+  var refresh=function(){ScrollTrigger.refresh()};
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refresh);
+  addEventListener('load',refresh);
+}
+
+function ready(){
+  basics();
+  var ok=window.gsap&&window.ScrollTrigger&&window.SplitText;
+  if(reduce){return}
+  if(!ok){H.classList.remove('anim','has-loader');return}
+  try{animations()}catch(e){H.classList.remove('anim','has-loader');if(window.console)console.warn(e)}
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready);else ready();
+
+addEventListener('pagehide',function(){
+  cleanups.forEach(function(f){try{f()}catch(e){}});cleanups=[];
+  if(lenis){lenis.destroy();lenis=null}
+  if(window.ScrollTrigger)ScrollTrigger.getAll().forEach(function(t){t.kill()});
+});
+})();
+</script>
+</body>
+</html>
