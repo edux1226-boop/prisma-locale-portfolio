@@ -1,0 +1,4 @@
+Contact: mailto:info@prismalocale.it
+Expires: 2027-11-19T00:00:00Z
+Preferred-Languages: it, en
+Canonical: https://prismalocale.it/.well-known/security.txt

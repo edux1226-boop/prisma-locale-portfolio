@@ -8,6 +8,10 @@ export function initForm() {
   if (!form) return;
   const status = form.querySelector('[data-form-status]');
 
+  // Ora di caricamento: lo script Google scarta invii troppo rapidi (bot) o vecchi di ore.
+  const ora = form.querySelector('input[name="t"]');
+  if (ora) ora.value = String(Date.now());
+
   // La validazione resta quella nativa (messaggi già tradotti dal browser):
   // qui si aggiunge solo aria-invalid per i lettori di schermo.
   form.addEventListener('invalid', (event) => event.target.setAttribute('aria-invalid', 'true'), true);
@@ -39,6 +43,7 @@ export function initForm() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
       }
       form.reset();
+      if (ora) ora.value = String(Date.now());
       status.classList.add('is-ok');
       status.textContent = 'Grazie! Il messaggio è arrivato: ti rispondiamo presto, di persona.';
     } catch (error) {
