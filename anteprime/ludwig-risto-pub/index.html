@@ -150,20 +150,22 @@ html.anim .live-stick{position:sticky;top:0;height:calc(100svh - var(--bar) - en
 /* menù */
 .menu{padding-block:clamp(4rem,11vw,8rem) clamp(3rem,8vw,6rem)}
 .menu-head{display:grid;gap:1.2rem;align-items:end;margin-bottom:2rem}
+.menu-head{text-align:center;justify-items:center}
 .menu-head p{max-width:34rem}
-.pila-ui{display:none;gap:.75rem;align-items:center}
+.menu>.wrap>.menu-note{text-align:center;margin-inline:auto}
+.pila-ui{display:none;gap:.75rem;align-items:center;justify-content:center}
 html.js .pila-ui{display:flex}
 .pila-ui button{width:56px;height:56px;border:2.5px solid var(--caffe);border-radius:4px;background:var(--crema);color:var(--caffe);font:700 1.5rem/1 var(--sans);cursor:pointer;box-shadow:3px 3px 0 var(--caffe)}
 .pila-ui button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--caffe)}
 .pila-ui button:disabled{opacity:.35;cursor:default}
 .pila-ui output{font-weight:700;min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
-@media (min-width:860px){.menu-head{grid-template-columns:1fr auto}}
+@media (min-width:860px){.menu-head{grid-template-columns:1fr auto;text-align:left;justify-items:stretch}.menu>.wrap>.menu-note{text-align:left;margin-inline:0}}
 .pila{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.4rem 0 2.6rem;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--caffe) transparent}
 .pila{align-items:flex-start}
 .pila>li{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;min-width:0}
 .sb{position:relative;width:min(72%,20rem);margin:0 auto 1.8rem;aspect-ratio:1;border-radius:50%;background:var(--cartone);border:3px solid var(--caffe);box-shadow:6px 6px 0 var(--cartone-2),6px 6px 0 3px var(--caffe),12px 12px 0 var(--cartone-2),12px 12px 0 3px var(--caffe);display:grid;place-items:center}
-.pila>li:nth-child(odd) .sb{transform:rotate(-2deg)}
-.pila>li:nth-child(even) .sb{transform:rotate(1.5deg)}
+.pila>li:nth-child(odd) .sb{transform:translate(-6px,-4px) rotate(-2deg)}
+.pila>li:nth-child(even) .sb{transform:translate(-6px,-4px) rotate(1.5deg)}
 .sb .ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .sb-in{position:relative;width:68%;display:grid;gap:.15rem;text-align:left}
 .sb h3{font-family:var(--slab);font-weight:400;font-size:clamp(1.5rem,6.2vw,2.1rem);line-height:1;text-align:center}
