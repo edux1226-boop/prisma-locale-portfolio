@@ -46,12 +46,12 @@
   </symbol>
 </svg>
 
-<!-- Niente menu: solo il marchio (non cliccabile), il telefono e, da tablet in su, WhatsApp. -->
+<!-- Niente menu: il marchio (porta al sito completo), il telefono e, da tablet in su, WhatsApp. -->
 <header class="top">
-  <p class="brand">
+  <a class="brand" href="/" aria-label="Prisma Locale, vai al sito completo">
     <svg class="brand__mark" aria-hidden="true"><use href="#glifo"/></svg>
     <span class="brand__name">Prisma <em>Locale</em></span>
-  </p>
+  </a>
   <div class="top__azioni">
     <a class="top__tel" href="tel:+393758350800">
       <span class="sr-only">Chiama il </span>375 835 0800
@@ -291,6 +291,7 @@
     <!-- P. IVA e ragione sociale: DA CONFERMARE prima di pubblicare. Il footer della home non ha ancora
          il punto previsto (README, "Da completare"): quando c'è il dato, scriverlo qui, nello stesso
          formato della home, senza inventare il numero. -->
+    <p class="foot__riga">Vuoi vedere com'è fatto il nostro sito? <a class="foot__sito" href="/">prismalocale.it</a></p>
     <p class="foot__riga foot__riga--piccola">© 2026 Prisma Locale · <a href="/privacy.html">Privacy</a></p>
   </div>
 </footer>

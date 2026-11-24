@@ -20,6 +20,8 @@ body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   padding: 10px var(--gutter);
 }
 .top .brand { font-size: 1.2rem; }
+a.brand { color: inherit; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.foot__sito { color: var(--calce); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
 .top__azioni { display: flex; align-items: center; gap: 8px; }
 .top__tel {
   display: inline-flex;
