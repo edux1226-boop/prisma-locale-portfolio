@@ -26,3 +26,9 @@
   for = "/anteprime/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Landing per il traffico da Instagram: fuori dall'indice finché non si decide di pubblicarla.
+[[headers]]
+  for = "/inizia*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

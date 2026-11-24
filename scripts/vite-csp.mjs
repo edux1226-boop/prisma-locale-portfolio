@@ -1,5 +1,5 @@
 /* Plugin Vite: a fine build scrive dist/_headers con la Content-Security-Policy
-   delle pagine dello studio (home, privacy, grazie, 404).
+   delle pagine dello studio (home, privacy, grazie, inizia, 404).
 
    Lo script inline in <head> (quello che aggiunge le classi "js" e "motion")
    è autorizzato per hash SHA-256, calcolato sull'HTML finale: se lo script
@@ -42,6 +42,7 @@ const PAGINE = {
   'index.html': ['/', '/index.html'],
   'privacy.html': ['/privacy', '/privacy.html'],
   'grazie.html': ['/grazie', '/grazie.html'],
+  'inizia.html': ['/inizia', '/inizia.html'],
   '404.html': ['/404', '/404.html'],
 };
 
